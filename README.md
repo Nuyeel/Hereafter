@@ -2,9 +2,8 @@
 Mfee-26 project
 
 
-# GoogleFont的引入
-### M PLUS Rounded 1c
-### Noto Fonts
+### GoogleFont的引入
+M PLUS Rounded 1c & Noto Fonts
 
 在public > index.html
 <!-- googlefont -->
