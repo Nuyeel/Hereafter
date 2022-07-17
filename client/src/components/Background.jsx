@@ -7,7 +7,7 @@ import { ReactComponent as BGLCloudRB } from '../images/Background/bg-L-cloud-ri
 
 // Background Dark
 import { ReactComponent as BGDCloudLB } from '../images/Background/bg-D-cloud-left-bottom.svg';
-import { ReactComponent as BGDCloudRT } from '../images/Background/bg-D-wave-right-top.svg';
+import { ReactComponent as BGDWavedRT } from '../images/Background/bg-D-wave-right-top.svg';
 import { ReactComponent as BGDStarL } from '../images/Background/bg-D-star-left.svg';
 import { ReactComponent as BGDStarR } from '../images/Background/bg-D-star-right.svg';
 
@@ -30,7 +30,7 @@ function Background(props) {
                 <>
                     <BGDCloudLB className="bg-D-cloud-left-bottom" />
                     {/* FIXME: 目前下行 svg 素材會導致視窗被撐高 */}
-                    {/* <BGDCloudRT className="bg-D-wave-right-top" /> */}
+                    {/* <BGDWaveRT className="bg-D-wave-right-top" /> */}
                     <BGDStarL className="bg-D-star-left" />
                     <BGDStarR className="bg-D-star-right" />
                 </>
