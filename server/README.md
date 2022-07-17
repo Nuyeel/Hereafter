@@ -20,7 +20,7 @@
             /uploads/images/用途名稱 (shared, events, news, avatars, ...)
         /routes
         /src
-            /data (放一些可能不需要存在資料庫的東西)
+            /data (放一些可能不需要存在資料庫的東西 資料庫 sql 備份放這邊)
         .env
         app.js
         package.json
