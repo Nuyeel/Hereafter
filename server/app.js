@@ -113,7 +113,7 @@ app.use('/test', testRouter);
 // 第一個參數放 '/uploads/檔案類別/資料夾名稱'
 // 這是為了從路由判斷這些是使用者上傳的檔案 (怕和其他 routes 中的路由衝突)
 app.use(
-    '/uploads/shared',
+    '/uploads/images/shared',
     express.static(`${__dirname}/public/uploads/images/shared`)
 );
 
