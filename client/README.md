@@ -8,7 +8,7 @@
     副檔名為 .jsx 時會很清楚地標示其為 React Component
     比較不需要辛苦地判斷首字大寫
 
-# 前端架構 (使用 CRA, create-react-app 並手動更新與刪減)：
+### 前端架構 (使用 CRA, create-react-app 並手動更新與刪減)：
 
     // Ref: https://github.com/mfee-react/use-cart-hook
     /client
@@ -35,19 +35,21 @@
         package.json
         package-lock.json
 
-# 使用套件一覽：
+### 使用套件一覽：
 
     可至 package.json 的 dependencies 中查看
 
-# 使用套件：
+### 使用套件：
 
-## fontawesome-free 6.1.1
+#### fontawesome-free 6.1.1
 
     // npm i @fortawesome/fontawesome-free
     // 用量不大的話其實可以只引用用到的 svg
     // 便於多人開發先全部引用
 
-# 可能將來會使用或學到的套件
+### 筆記：
+
+#### 可能將來會使用或學到的套件
 
     // Ref: https://github.com/mfee-react/use-cart-hook/blob/main/package.json
     bootstrap
@@ -57,12 +59,12 @@
     sass
     @fortawesome/react-fontawesome (目前只到 fontawesome 5)
 
-# favicon
+#### favicon
 
     要放在 public 中
     檔名為 favicon.ico
 
-# CRA (Create-React-App) 原架構
+#### CRA (Create-React-App) 原架構
 
     /client
         /node_modules

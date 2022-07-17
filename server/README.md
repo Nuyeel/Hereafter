@@ -9,34 +9,35 @@
     Step 2. 進行第一層路由設定
     Step 3. 在路由宣告的位址撰寫自己的 RESTful API
 
-# 後端架構 (使用 express-generator 並手動更新與刪減)：
+### 後端架構 (使用 express-generator 並手動更新與刪減)：
 
-/server
-    /bin
-        www (執行檔案 其中 require('../app'))
-    /modules
-    /node_modules
-    /routes
-    /src
-        /imgs (其中放使用者上傳的圖片資料夾 前端取得時要精準 請參考靜態資料夾部分)
-        /data (放一些可能不需要存在資料庫的東西 這類私密資料也可以考慮存在 .env 中)
-    .env
-    app.js
-    package.json
-    package-lock.json
+    /server
+        /bin
+            www (執行檔案 其中 require('../app'))
+        /modules
+        /node_modules
+        /public
+            /uploads/images/用途名稱 (shared, events, news, avatars, ...)
+        /routes
+        /src
+            /data (放一些可能不需要存在資料庫的東西)
+        .env
+        app.js
+        package.json
+        package-lock.json
 
-# 使用套件一覽：
+### 使用套件一覽：
 
     可至 package.json 的 dependencies 中查看
 
-# 使用套件：
+### 使用套件：
 
-## 取得並設定 .env 內的資料用
+#### 取得並設定 .env 內的資料用
 
     // npm i dotenv
     require('dotenv').config();
 
-### .env 相關
+##### .env 相關
     
     # 註解 (Comments)
     # 不要有多餘的空格
@@ -60,12 +61,12 @@
     DB_PASS=myPass
     DB_NAME=ourDatabaseName    
 
-## 自動重啟 Server 用
+#### 自動重啟 Server 用
 
     // npm i nodemon
     // 正式上線可以考慮使用 pm2
 
-## 建立 Server 用
+#### 建立 Server 用
 
     // npm i express
     我們 Express 的 Server 只用來和資料庫建立連線
@@ -112,13 +113,13 @@
         console.log(`server started at port: ${process.env.PORT}`);
     });
 
-## Top-level Middlewares 開始
+#### Top-level Middlewares 開始
 
     // 放在所有路由之前
     // 根據 headers 判斷需不需要對資料加工處理或解析
     // 只有最共通且常用的處理需要作為 Top-level Middlewares
 
-### 跨來源資源共用 (CORS, Cross-Origin Resource Sharing)
+##### 跨來源資源共用 (CORS, Cross-Origin Resource Sharing)
 
     // npm i cors
     // 會將網址列的 Protocol, Domain 和 Port 三個字串比對
@@ -159,7 +160,7 @@
 
     // 想解決這個問題可以使用 JWT (JSON Web Token)
 
-### 建立 Session 用 (如果之後想改用 JWT 可以移除)
+##### 建立 Session 用 (如果之後想改用 JWT 可以移除)
 
     // npm i express-session
     // 注意 session 在手機等移動裝置實作非常麻煩
@@ -209,7 +210,7 @@
         }
     );
 
-### 解析 body 用
+##### 解析 body 用
 
     // body 指 http document 的 body
     // 也就是 post 的那個 body
@@ -234,14 +235,14 @@
     // 注意: 無法處理 (Content-Type: multipart/form-data)
     app.use(express.urlencoded({extended: false}));
 
-### 解析 JSON
+##### 解析 JSON
 
     // (Content-Type: application/json) 才處理
     app.use(express.json());
 
-## Top-level Middlewares 結束
+#### Top-level Middlewares 結束
 
-## 解析 (Content-Type: multipart/form-data) 用
+#### 解析 (Content-Type: multipart/form-data) 用
     
     // npm i multer
     // 在根目錄新增一個 tmp-uploads 資料夾
@@ -306,7 +307,7 @@
 
     module.exports = multer({ fileFilter, storage });
 
-## 錯誤處理用
+#### 錯誤處理用
 
     // npm i http-errors
     const createError = require('http-errors');
@@ -321,7 +322,7 @@
         res.send(err.status || 500, err);
     });
 
-## 處理時間格式用
+#### 處理時間格式用
 
     // npm i dayjs
     // 比 Moment 更輕量因此比較快
@@ -360,7 +361,7 @@
         }
     );
 
-## 和資料庫連線用
+#### 和資料庫連線用
 
     // npm i mysql2
 
@@ -407,7 +408,7 @@
         }
     );
 
-## 將 Session 存入資料庫用 (若之後不使用 Session 的話可以移除)
+#### 將 Session 存入資料庫用 (若之後不使用 Session 的話可以移除)
 
     // npm i express-mysql-session
     // 若之後不使用 Session 的話可以移除
@@ -423,7 +424,7 @@
 
     // 測試: http://localhost:3500/test/session/count
 
-## 驗證表單資料用
+#### 驗證表單資料用
 
     // npm i joi
 
@@ -461,7 +462,7 @@
         }
     );
     
-## 發送 AJAX (Asynchronous JavaScript and XML) 用
+#### 發送 AJAX (Asynchronous JavaScript and XML) 用
 
     // npm i axios
     // 傳統的 Promise 只能得知做完的狀態
@@ -481,7 +482,7 @@
         });
     });
 
-## 生成雜湊 (hash) 字串用
+#### 生成雜湊 (hash) 字串用
 
     // npm i uuid
     // 用在將使用者上傳的圖片隨機改名的時候
@@ -495,7 +496,7 @@
     // ex.
     // ./modules/upload-images.js
 
-## 會員登入密碼和啟用帳號時加密用
+#### 會員登入密碼和啟用帳號時加密用
 
     // npm i bcryptjs
 
@@ -505,26 +506,26 @@
     // 建議使用 compare() 而非 compareSync()
     // Ref: https://stackoverflow.com/questions/69324159/bcrypt-compare-or-bcrypt-comparesync
 
-# 可以考慮使用的套件：
+### 可以考慮使用的套件：
 
-## 處理使用者上傳的圖片
+#### 處理使用者上傳的圖片
 
     // jimp
     // sharp
     
-## 生成雜湊 (hash) 字串
+#### 生成雜湊 (hash) 字串
 
     // nanoID (Redux 官方使用)
     
-## 啟動伺服器相關
+#### 啟動伺服器相關
     
     // pm2
 
-## 解析 Cookie 用 (Top-level Middlewares)
+#### 解析 Cookie 用 (Top-level Middlewares)
 
     // cookie-parser
 
-## 驗證表單資料用
+#### 驗證表單資料用
 
     // validator 
     // 週下載量比 joi 多一點點
@@ -532,15 +533,15 @@
     // 可以在前端如下宣告來獲得一致的程式碼 
     const Joi = joi;
 
-# 筆記：
+### 筆記：
 
-## 處理檔案的核心套件
+#### 處理檔案的核心套件
 
     // NodeJS 原生功能
     // fs for File System
     const fs = require('fs');
 
-## 自動重新啟動 server 的套件 (package)
+#### 自動重新啟動 server 的套件 (package)
 
     // nodemon 和 pm2
     
@@ -552,7 +553,7 @@
     // 發生錯誤時也會在有限次數內嘗試重啟
     // 但不同執行緒間的 .env 無法互通 如果有建立多個要另外處理
 
-## 錯誤處理
+#### 錯誤處理
 
     async(req, res) => {
         try {
@@ -565,7 +566,7 @@
         }
     }
 
-## process
+#### process
 
     // process 代表整個 node 執行的行程 (process)
     // process.env 可以取得作業系統的環境變數
@@ -584,7 +585,7 @@
     // 'bbbb'
     // '-ac'
 
-## 關於 package-lock.json
+#### 關於 package-lock.json
 
     // package-lock.json 是 package.json 的相依性 (dependencies) 的展開
     // package.json 這隻檔案並不會紀錄套件相依的套件的版本
@@ -592,7 +593,7 @@
 
     // 有些人認為這隻檔案可以不用放在版本控制 (VC, Version Control) 中
     
-## 遇到用 XML 回傳資料的 API 怎麼辦
+#### 遇到用 XML 回傳資料的 API 怎麼辦
 
     // 丟到隱形的 div 的 innerHTML 中存取資料
     
@@ -607,7 +608,7 @@
     const dataXML = document.querySelector('#xml');
     dataXML.querySelector('name').innerText; // 'Bill'
 
-## Router 處理
+#### Router 處理
 
     // 使用變數代稱設定路由
     // 也可以使用 regular expression (RegExp) 設定路由
@@ -646,7 +647,7 @@
         res.send({ url: req.url, code: 'array' })
     });
 
-## 進階 Router 處理
+#### 進階 Router 處理 (建議使用)
 
     // ./server/app.js
     // 用 use 接受所有方法 各種處理在 ./routes 中的檔案各自定義
@@ -690,11 +691,11 @@
     // 可以參考教材的 ./routes/admin.js
     // 裏面有關於 req.url, req.baseUrl, req.originalUrl 的範例
 
-## 設定路由比對時重視大小寫
+#### 設定路由比對時重視大小寫
 
     app.set('case sensitive routing', true);
 
-## 用戶搜尋時使用單引號等破壞 SQL 語法時
+#### 用戶搜尋時使用單引號等破壞 SQL 語法時
 
     const db = require(`${__dirname}/../modules/mysql2-connect`);
     // 可以使用 db.escape() 方法
@@ -706,11 +707,11 @@
     // 如果想查看到底是怎麼跳脫的話
     console.log(db.escape('%'+search+'%'));
 
-## SQL 語法字串片段的小提醒
+#### SQL 語法字串片段的小提醒
 
     // 最好頭尾都留空白 多空不會出錯 少空會出錯
 
-## db (mysql2 資料庫連線) 的 result
+#### db (mysql2 資料庫連線) 的 result
 
     const db = require(`${__dirname}/modules/mysql2-connect`);
     // 假設透過 POST 送進來的資料被這樣使用
@@ -749,7 +750,7 @@
         // affectedRows 相當於 PHP 時的 rowCount() 影響欄位數
     });
 
-## 希望使用者點選下一頁切換列表資料時維持住搜尋字串的做法
+#### 希望使用者點選下一頁切換列表資料時維持住搜尋字串的做法
 
     // 使用 URLSearchParams 這個 Web APIs
     // Ref: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
@@ -759,7 +760,7 @@
     // 假設 API 回傳物件中有 page 和 query 這兩個 key
     new URLSearchParams({page: i, search: query.search});
 
-## 靜態內容的路由調整方法
+#### 靜態內容的路由調整方法
 
     // 靜態資料夾 (static folder)
     // 所謂的靜態內容指的是不會受後端改變的內容
@@ -781,12 +782,12 @@
     // 請注意靜態路由必須精準定義
     // 前端取資料時不能再前往子資料夾
 
-## Helper Function
+#### Helper Function
 
     // 可以在 ./modules 中撰寫一些處理資料格式的 function
     // 並 exports 出來在別的地方使用
 
-## 後端登出轉向
+#### 後端登出轉向
 
     // 大概像這樣
     app.get('/logout', (req, res) => {
@@ -811,7 +812,7 @@
         }
     });
 
-## req 的方法 (method)
+#### req 的方法 (method)
 
     // req.query 可以取得 Query String 中的資料
     // ex. req.query.a
@@ -860,7 +861,7 @@
     // 這個方法會比對 request cookie 中的 session ID 
     // 去取得伺服器端的 session 資料
 
-## res 的方法 (method)
+#### res 的方法 (method)
 
     // 只能進行其中之一 且一旦執行就不會執行函式後續內容
 
@@ -893,7 +894,7 @@
 
     res.redirect() // 使頁面重新跳轉
 
-## RESTful API
+#### RESTful API
 
     # CRUD
 
@@ -916,7 +917,7 @@
     # 刪除商品 (DELETE)
     /products/:id
 
-## 購物車資料表與 SQL TRANSACTION
+#### 購物車資料表與 SQL TRANSACTION
 
     // 也就是在資料庫中用一張資料表儲存購物車的內容 (登入狀態)
     // 未登入時可以把這些資料存在 localStorage

@@ -12,7 +12,7 @@ function App() {
             <Nav />
             <Background />
             <NextLife />
-            <img src="http://localhost:3500/shared/test.png" alt="" />
+            <img src="http://localhost:3500/uploads/shared/test.png" alt="" />
         </>
     );
 }

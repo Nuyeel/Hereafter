@@ -40,7 +40,7 @@ const db = require(`${__dirname}/modules/mysql2-connect`);
 const app = express();
 
 // 路由宣告 (Declaration)
-// TODO: 組員新增路由 Step 1. 創建檔案並進行路由宣告  
+// TODO: 組員新增路由 Step 1. 創建檔案並進行路由宣告
 const testRouter = require(`${__dirname}/routes/test`);
 
 // 設定路由比對時重視大小寫
@@ -64,25 +64,27 @@ const corsOptions = {
         // console.log('origin: ', origin);
         if (whitelist.indexOf(origin) !== -1) {
             // true: 將 origin 傳給 Access-Control-Allow-Origin
-            callback(null, true); 
+            callback(null, true);
         } else {
             callback(new Error('Not Allowed by CORS'));
         }
-    }
+    },
 };
 app.use(cors(corsOptions));
 
 // 設定 express-session (若之後不使用 Session 的話可以移除)
-app.use(session({
-    saveUninitialized: false,
-    resave: false, 
-    secret: 'anythingyouwanttoencryptyoursession',
-    cookie: {
-        maxAge: 1800000,
-    },
-    // TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫 (會存入資料庫)
-    // store: sessionStore
-}))
+app.use(
+    session({
+        saveUninitialized: false,
+        resave: false,
+        secret: 'anythingyouwanttoencryptyoursession',
+        cookie: {
+            maxAge: 1800000,
+        },
+        // TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫 (會存入資料庫)
+        // store: sessionStore
+    })
+);
 
 // 解析 JSON
 // 驗證 (Content-Type: application/json) 才處理
@@ -107,8 +109,13 @@ app.use('/test', testRouter);
 // 將 '/public' 簡寫為 '/'
 // 下行等同於 app.use('/', express.static(`${__dirname}/public`));
 // app.use(express.static(`${__dirname}/public`));
-// 前端取得資料時要精準定義 不能再前往下一層 第一個參數放 '/資料夾名稱'
-app.use('/shared', express.static(`${__dirname}/src/imgs/shared`));
+// 前端取得資料時要精準定義 不能再前往下一層
+// 第一個參數放 '/uploads/檔案類別/資料夾名稱'
+// 這是為了從路由判斷這些是使用者上傳的檔案 (怕和其他 routes 中的路由衝突)
+app.use(
+    '/uploads/shared',
+    express.static(`${__dirname}/public/uploads/images/shared`)
+);
 
 // catch 404 and forward to error handler
 // Http Status Code 404: 倒數第二道防線
