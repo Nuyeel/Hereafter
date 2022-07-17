@@ -8,6 +8,10 @@
     副檔名為 .jsx 時會很清楚地標示其為 React Component
     比較不需要辛苦地判斷首字大寫
 
+    CRA 產生的專案在 node 環境會被警告有 6 high severity vulnerabilities
+    意思是有六個高威脅性的脆弱處 這有可能是誤報 可以先不用緊張
+    Ref: https://github.com/facebook/create-react-app/issues/11174
+
 ### 前端架構 (使用 CRA, create-react-app 並手動更新與刪減)：
 
     // Ref: https://github.com/mfee-react/use-cart-hook
@@ -20,6 +24,9 @@
             /components (共用元件)
                 Nav.jsx
                 Background.jsx
+            /images (固定供前端使用的圖片放這裡)
+                    (但如果是使用者或管理員上傳的圖片就統一放後端)
+                    (才不會部分在前端 部分在後端反而亂掉)
             /pages (請記得裡面可以有 index.js (也可以取名為 Index.jsx) (購物車範例))
                 /NextLife (其中也可以有 components 資料夾)
                     Nextlife.jsx
@@ -47,12 +54,87 @@
     // 用量不大的話其實可以只引用用到的 svg
     // 便於多人開發先全部引用
 
+#### bootstrap 5.1.3
+
+    // npm i bootstrap
+    // Eason 建議只使用 bootstrap-grid.css
+
+#### Coding Style 檢查工具
+
+    // npm i eslint-config-react-app
+    // npm i eslint-plugin-import
+    // npm i eslint-plugin-jsx-a11y
+    // npm i eslint-plugin-prettier
+    // npm i eslint-plugin-react
+    // npm i eslint-plugin-react-hooks
+    // npm i prettier
+
+#### react-three-fiber (three.js)
+
+    // npm i three @react-three/fiber
+
+### 可以考慮使用的套件：
+
+#### styled component 套件
+
+    // npm i @emotion/styled
+    // 這可以撰寫具有 props 的 styled component
+    // ex. 
+    // Step 1. 引入
+    import styled from "@emotion/styled";
+    // Step 2. 宣告 theme
+    const theme = {
+        light: {
+            backgroundColor: "#ededed",
+            titleColor: "#212121",
+        },
+        dark: {
+            backgroundColor: "#1F2022",
+            titleColor: "#f9f9fa",
+        },
+    };
+    // Step 3. 在該 Component.jsx 上方宣告
+    const Location = styled.div`
+        font-size: 28px;
+        color: ${({ theme }) => theme.titleColor};
+        margin-bottom: 20px;
+    `;
+    // Step 4. 在組件函式中使用它並給予 props
+    function Component() {
+        return <Location theme='light' />;
+    }
+
+    // npm i @emotion/react
+    // 這可以撰寫更複雜的 styled component
+    // 將 css 物件傳入 Component 中
+    // 請注意 buttonDefault 是一個回傳 css 物件的函式
+    // Step 1. 引入
+    import { css } from "@emotion/react";
+    // Step 2. 在該 Component.jsx 上方宣告
+    const buttonDefault = (props) => css`
+        display: block;
+        width: 120px;
+        height: 30px;
+        font-size: 14px;
+        color: ${props.theme === "dark" ? "#dadada" : "#212121"};
+    `;
+    const RejectButton = styled.button`
+        ${buttonDefault}
+        background-color: red;
+    `;
+    // Step 3. 在組件函式中使用它並給予 props
+    function Component() {
+        return <RejectButton theme='light'>R</RejectButton>;
+    }
+
+    // 缺點是會產生奇怪的 className
+    // 但不用開發者工具看不到 而且週下載量不低
+
 ### 筆記：
 
 #### 可能將來會使用或學到的套件
 
     // Ref: https://github.com/mfee-react/use-cart-hook/blob/main/package.json
-    bootstrap
     react-bootstrap
     react-icons
     react-router-dom
