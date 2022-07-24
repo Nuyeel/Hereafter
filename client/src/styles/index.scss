@@ -1,0 +1,242 @@
+/* 正式上線改用 bootstrap-grid.min.css */
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
+/* 引入自定義變數 */
+@import './variables.scss';
+
+/* ============================================================ */
+/* 通用設定 */
+/* ============================================================ */
+// FIXME: 如果背景顏色不同會有露餡問題
+// 可能要傳參數進來調整背景顏色
+// TODO: 在 onClick 切換顏色按鈕時執行一段 JavaScript
+// 用 const body = document.querySelector('body').classList.add()
+// 的方式用 className toggles background-color
+// 因為 React 的 useRef() 只能參照到 #root 以下
+body {
+    background-image: linear-gradient(180deg, $bgc-L-l, $bgc-L-d);
+    // background-color: #3C3B67;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: $ff-t, Arial, sans-serif;
+}
+
+/* 有些手機橫放會超過 768px 所以選擇在 992px 切換 */
+@media screen and (min-width: 992px) {
+    body {
+        width: 100%;
+        height: calc(var(--vh, 1vh) * 100);
+    }
+}
+
+#root {
+    // TODO: 請記得這目前是所有 React Component 的父元素
+    height: 100%;
+    overflow: hidden; // 與 body 配合防止視窗滾動
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 40px;
+    font-family: $ff-h;
+}
+
+/* ============================================================ */
+/* Nav */
+/* ============================================================ */
+.nav {
+    position: fixed;
+    top: 0;
+    z-index: 100000;
+    outline: 1px solid red;
+    
+    // 高度由內容撐高
+    >.nav-inner {
+        height: $height-nav;
+        color: #FFFFFF;
+        
+        >.nav-inner-right {
+            font-size: 2.25rem;
+
+            // TODO: 某寬度時只顯示漢堡選單
+            * + * {
+                padding-left: 0.75rem;
+            }
+        }
+    }
+}
+
+.nav-dark {
+    background-color: $bgc-Nav-D;
+}
+
+
+/* ============================================================ */
+/* Background */
+/* ============================================================ */
+.background {
+    // 不可以 absolute 只會在調整視窗大小時渲染一次
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -100000;
+
+    .bg-L-cloud-left-top {
+        display: none;
+        position: absolute;
+        left: 0;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        top: -2.2%;
+        width: 40%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-L-cloud-left-top {
+            display: block;
+        }
+    }
+
+    .bg-L-mist-right-top {
+        display: none;
+        position: absolute;
+        right: 0;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        top: -1.6%;
+        width: 40%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-L-mist-right-top {
+            display: block;
+        }
+    }
+
+    .bg-L-cloud-right-bottom {
+        display: none;
+        position: absolute;
+        right: 0;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        bottom: -4.8%;
+        width: 40%;
+    }
+    
+    @media screen and (min-width: 992px) {
+        .bg-L-cloud-right-bottom {
+            display: block;
+        }
+    }
+}
+
+.background-dark {
+    background-color: $bgc-D;
+
+    .bg-D-cloud-left-bottom {
+        display: none;
+        position: absolute;
+        left: 0;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        bottom: -5%;
+        width: 35%;
+    }
+    
+    @media screen and (min-width: 992px) {
+        .bg-D-cloud-left-bottom {
+            display: block;
+        }
+    }
+
+    .bg-D-wave-right-top {
+        display: none;
+        position: absolute;
+        right: 0;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        top: -13%;
+        width: 28%;
+    }
+    
+    @media screen and (min-width: 992px) {
+        .bg-D-wave-right-top {
+            display: block;
+        }
+    }
+    
+    .bg-D-star-left {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 17%;
+    }
+    
+    @media screen and (min-width: 992px) {
+        .bg-D-star-left {
+            display: block;
+        }
+    }
+    
+    .bg-D-star-right {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 23%;
+    }
+    
+    @media screen and (min-width: 992px) {
+        .bg-D-star-right {
+            display: block;
+        }
+    }
+}
+
+/* ============================================================ */
+/* Header */
+/* ============================================================ */
+.header {
+    font-size: 50pt;
+    font-weight: 500;
+    font-family: $ff-h;
+    width: 100%;
+    padding-left: 20px;
+    color: #FFF;
+    letter-spacing: 0.5rem;
+    outline: 1px solid red;
+    
+    &::after {
+        content: '';
+        display: block;
+        background-color: #00000033;
+        position: relative;
+        bottom: 10px;
+        right: 20px;
+        width: 33vw;
+        // TODO: height (%)
+        height: 20px;
+        z-index: -1;
+    }
+}
+
+
+/* ============================================================ */
+/* Genie */
+/* ============================================================ */
+/* FIXME: 素材修正後要調整 css position */
+/* TODO: Genie 的 z-index 要僅次於浮出的全頁式 Nav Page */
+.genie {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 11%;
+    /* 思方老師說最好不要超過 85px */
+    max-width: 85px;
+}
+
+@media screen and (min-width: 992px) {
+    .genie {
+        bottom: -30px;
+    }
+}

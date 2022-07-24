@@ -1,0 +1,42 @@
+/* 1 pt = px * 4/3 */
+
+/* ============================================================ */
+/* 變數宣告 variables */
+/* ============================================================ */
+$primary: #E384F2;
+$secondary: #9587E1;
+$primary-50p: #E384F288; // 自定義
+$secondary-50p: #9587E188; // 自定義
+// 小銘有抓出大概的不透明版本 #9B80DD
+$accent-blue: #81A8E0; // 自定義
+$accent-green: #B9DED2; // 自定義
+$highlight: #F3F59F;
+$alert: #FF52BA;
+
+$bgc-D: #3C3B67; // 自定義
+$bgc-L-l: #EDEFF7; // 自定義
+$bgc-L-d: #DBE0ED; // 自定義
+
+$bgc-Nav-D: #2D2828CC;
+
+$ff-h: 'M PLUS Rounded 1c';
+$ff-t: 'Noto Sans TC';
+
+// h1 ~ h6 的字型都是 $ff-h: 'M PLUS Rounded 1c'
+// TODO: 可以考慮用 vw 來換算所有尺寸
+// 或是系統性的命名
+// fz-h2-lg, fz-h2-md, ...
+$fz-h2: 3rem;
+$fz-h3: 2.5rem;
+$fz-h4: 2.25rem;
+$fz-h5: 2rem;
+
+$fz-title: 1.5rem;
+$fz-subtitle: 1.25rem;
+$fz-body: 1rem;
+$fz-caption: 0.875rem;
+$fz-boby-mobile: 0.75rem;
+
+// $fw-MC-Extrabold: 
+
+$height-nav: 96px;
