@@ -483,6 +483,18 @@
         });
     });
 
+    // 錯誤處理範例 (大專或許不用 但實務上這很重要)
+    // ex.
+    async function updateMyView() {
+        try {
+            const response = await fetch('http://example.com/items')
+            const data = await response.json()
+            updateView(data)
+        } catch (error) {
+            console.log('Update failed', error)
+        }
+    }
+
 #### 生成雜湊 (hash) 字串用
 
     // npm i uuid
@@ -511,28 +523,37 @@
 
 #### 處理使用者上傳的圖片
 
-    // jimp
-    // sharp
+    // Ref: https://www.npmjs.com/package/jimp
+    // Ref: https://www.npmjs.com/package/sharp
     
 #### 生成雜湊 (hash) 字串
 
-    // nanoID (Redux 官方使用)
+    // nanoid (Redux 官方使用)
+    // Ref: https://www.npmjs.com/package/nanoid
     
 #### 啟動伺服器相關
     
-    // pm2
+    // Ref: https://www.npmjs.com/package/pm2
 
 #### 解析 Cookie 用 (Top-level Middlewares)
 
-    // cookie-parser
+    // Ref: https://www.npmjs.com/package/cookie-parser
 
 #### 驗證表單資料用
 
-    // validator 
+    // Ref: https://www.npmjs.com/package/validator
     // 週下載量比 joi 多一點點
     // 但是前端的 joi 是首字小寫的 後端的 Joi 是首字大寫的
     // 可以在前端如下宣告來獲得一致的程式碼 
     const Joi = joi;
+
+#### 寄信 (啟用帳號 忘記密碼...)
+
+    // Ref: https://www.npmjs.com/package/nodemailer
+
+#### 使用社群網站連動登入
+
+    // https://www.npmjs.com/package/passport
 
 ### 筆記：
 

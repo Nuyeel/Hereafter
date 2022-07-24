@@ -26,12 +26,12 @@ const cookieParser = require('cookie-parser');
 // 跨來源資源共用 (CORS, Cross-Origin Resource Sharing)
 const cors = require('cors');
 // 建立 Session 用 (若之後想改用 JWT, JSON Web Token 可以移除)
-const session = require('express-session');
+// const session = require('express-session');
 // 將 Session 資料存入資料庫用 (若之後不使用 Session 可以移除)
 // TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫
 // const MySQLStore = require('express-mysql-session')(session);
 // 建立連線池 (Connection Pool) 用
-const db = require(`${__dirname}/modules/mysql2-connect`);
+// const db = require(`${__dirname}/modules/mysql2-connect`);
 // 有第二個參數時忽略第一個 使用既有的連線 (第二個參數)
 // TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫
 // const sessionStore = new MySQLStore({}, db);
@@ -42,6 +42,8 @@ const app = express();
 // 路由宣告 (Declaration)
 // TODO: 組員新增路由 Step 1. 創建檔案並進行路由宣告
 const testRouter = require(`${__dirname}/routes/test`);
+const memberRouter = require(`${__dirname}/routes/member`);
+const sharewallRouter = require(`${__dirname}/routes/sharewall`);
 
 // 設定路由比對時重視大小寫
 app.set('case sensitive routing', true);
@@ -56,7 +58,18 @@ app.set('case sensitive routing', true);
 // CORS
 // 使用白名單 (whitelist) 的使用方式 (需使用 Cookies 和 Session 時)
 const whitelist = require(`${__dirname}/src/data/whitelist`);
+// FIXME: JSON 中有一 key-value pairs 為空可以自動成為 undefined?
 whitelist.push(undefined); // 未經過 AJAX 時 origin 是 undefined
+
+// 優雅寫法比較嚴謹 (注意 Authorization for JWT)
+// const corsOptions = {
+//     credentials: true,
+//     origin: 'http://localhost:3000',
+//     methods: 'GET,PUT,POST,DELETE,OPTIONS',
+//     allowedHeaders:
+//         'Origin,X-Requested-With,Content-Type,Accept,x-token,Authorization',
+// };
+
 const corsOptions = {
     // 總是接受 cookie
     credentials: true,
@@ -73,18 +86,18 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // 設定 express-session (若之後不使用 Session 的話可以移除)
-app.use(
-    session({
-        saveUninitialized: false,
-        resave: false,
-        secret: 'anythingyouwanttoencryptyoursession',
-        cookie: {
-            maxAge: 1800000,
-        },
-        // TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫 (會存入資料庫)
-        // store: sessionStore
-    })
-);
+// app.use(
+// session({
+// saveUninitialized: false,
+// resave: false,
+// secret: 'anythingyouwanttoencryptyoursession',
+// cookie: {
+// maxAge: 1800000,
+// },
+// TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫 (會存入資料庫)
+// store: sessionStore
+// })
+// );
 
 // 解析 JSON
 // 驗證 (Content-Type: application/json) 才處理
@@ -101,8 +114,12 @@ app.use(cookieParser());
 
 // 路由管理 (重視先後順序 前者優先 只會進入一個路由)
 // 用 use 接受所有方法 各種方法的不同處理在 ./routes 中的檔案定義
+// FIXME: 目前寫了一個測試用的 JWT 登入 (只是方便測試用)
+// 資料表的名稱是 admin_test_jwt 之後再看余昕想要怎麼寫
 // TODO: 組員新增路由 Step 2. 在此進行第一層路由設定
 app.use('/test', testRouter);
+app.use('/api/member', memberRouter);
+app.use('/api/sharewall', sharewallRouter);
 // TODO: 組員新增路由 Step 3. 在路由宣告的位址撰寫自己的 RESTful API
 
 // 靜態路由 (Shinder: 最好不要超過三個 效能會不好)
@@ -113,8 +130,8 @@ app.use('/test', testRouter);
 // 第一個參數放 '/uploads/檔案類別/資料夾名稱'
 // 這是為了從路由判斷這些是使用者上傳的檔案 (怕和其他 routes 中的路由衝突)
 app.use(
-    '/uploads/images/shared',
-    express.static(`${__dirname}/public/uploads/images/shared`)
+    '/uploads/images/share',
+    express.static(`${__dirname}/public/uploads/images/share`)
 );
 
 // catch 404 and forward to error handler
@@ -125,9 +142,16 @@ app.use((req, res, next) => {
 
 // error handler
 // Http Status Code 500: 最後一道防線 出現嚴重錯誤
-app.use((err, req, res, next) => {
+// app.use((err, req, res, next) => { ... }
+app.use((err, req, res) => {
     // render the error page
-    res.status(err.status || 500).send(err);
+    // res.status(err.status || 500).send(err);
+    res.json({
+        error: {
+            code: err.status || 500,
+            message: err.message,
+        },
+    });
 });
 
 module.exports = app;
