@@ -1,4 +1,7 @@
-import '../../styles/NextLife.css';
+import { useRef, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+
+// import '../../styles/NextLife.css';
 
 function NextLife() {
     return (
