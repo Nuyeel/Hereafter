@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { TEST_LOGIN } from '../../config/ajax-path';
+import LoginForm from './LoginForm';
 
 function Login(props) {
     const { auth, setAuth } = props;
@@ -11,7 +12,8 @@ function Login(props) {
     return (
         <div className="container">
             <h1 className="mb-3">Login.jsx</h1>
-            <button
+            <LoginForm />
+            {/* <button
                 onClick={async () => {
                     // 目前這是無條件會通過的
                     // 因為在 /App.jsx 中被 setState(false)
@@ -44,7 +46,7 @@ function Login(props) {
                 }}
             >
                 {auth ? 'LOGOUT' : 'LOGIN'}
-            </button>
+            </button> */}
         </div>
     );
 }
