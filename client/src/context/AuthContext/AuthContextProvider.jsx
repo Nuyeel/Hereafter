@@ -32,7 +32,7 @@ function AuthContextProvider(props) {
         localStorage.removeItem('auth');
         setAuth({ ...unAuthState });
         navigate('/');
-    }
+    };
 
     return (
         <AuthContext.Provider value={{ ...auth, setAuth, userLogout }}>
