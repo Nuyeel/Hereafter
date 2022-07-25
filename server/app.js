@@ -36,6 +36,8 @@ const cors = require('cors');
 // TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫
 // const sessionStore = new MySQLStore({}, db);
 // 測試: http://localhost:3500/test/session/count
+// 使用 JWT 用
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -107,6 +109,37 @@ app.use(express.json());
 // 驗證 (Content-Type: application/x-www-form-urlencoded) 才處理
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// 處理 JWT
+app.use((req, res, next) => {
+    // request 的 get 方法可以取得 headers 的資料
+    const auth = req.get('Authorization');
+
+    // 預設值
+    res.locals.loginUser = null;
+
+    // 利用 locals 將資料傳給後續的 Middleware 使用
+    if (auth && auth.indexOf('Bearer ') === 0) {
+        const token = auth.slice(7);
+        res.locals.loginUser = jwt.verify(token, process.env.JWT_SECRET);
+        // console.log(res.locals.loginUser);
+    }
+    // TODO: 所以之後 "如果這個頁面要登入才能使用" 
+    // 每次發送 AJAX 都要像這樣
+    // const r = await axios(`${AB_LIST_AUTH_GET}?page=${gotoPage}`, {
+    //     method: 'GET',
+    //     headers: {
+    //         Authorization: `Bearer ${token}`,
+    //     },
+    // });
+    // 在 headers 中塞入 token
+    // token 會從 AuthContext 中取得
+    // 後續的路由可以利用 res.locals.loginUser 取得資料
+    // { id: 1, account: 'HappyCat01', iat: 1658734804 }
+
+    // 呼叫後續的 Middleware
+    next();
+});
 
 // ============================================================
 // Top-level Middlewares End Here
