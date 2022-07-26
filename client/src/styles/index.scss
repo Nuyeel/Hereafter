@@ -24,6 +24,9 @@ body {
 }
 
 /* 有些手機橫放會超過 768px 所以選擇在 992px 切換 */
+/* FIXME: 要想辦法讓他保留高度 否則無法實現水平捲動頁面 */
+/* 要讓內容 fixed 在螢幕中 但垂直條可以滾動 */
+/* DONE: 目前可以利用 Overlay Scrollbars 來達成 */
 @media screen and (min-width: 992px) {
     body {
         width: 100%;
@@ -38,10 +41,19 @@ body {
 }
 
 h2 {
-    font-weight: 400;
-    font-size: 40px;
+    font-weight: 700;
+    font-size: $fz-h2;
     font-family: $ff-h;
 }
+
+h3 {
+    font-weight: 700;
+    font-size: $fz-h3;
+}
+
+/* ============================================================ */
+/* 通用 className */
+/* ============================================================ */
 
 /* ============================================================ */
 /* Nav */
@@ -88,10 +100,10 @@ h2 {
     .bg-L-cloud-left-top {
         display: none;
         position: absolute;
-        left: 0;
+        left: -22%;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
-        top: -2.2%;
-        width: 40%;
+        top: 0%;
+        width: 60%;
     }
 
     @media screen and (min-width: 992px) {
@@ -100,17 +112,32 @@ h2 {
         }
     }
 
-    .bg-L-mist-right-top {
+    .bg-L-mist-right-top-L {
         display: none;
         position: absolute;
-        right: 0;
+        right: -10%;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
-        top: -1.6%;
-        width: 40%;
+        top: -50%;
+        width: 50%;
     }
 
     @media screen and (min-width: 992px) {
-        .bg-L-mist-right-top {
+        .bg-L-mist-right-top-L {
+            display: block;
+        }
+    }
+
+    .bg-L-mist-right-top-S {
+        display: none;
+        position: absolute;
+        right: -10%;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        top: -52%;
+        width: 50%;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-L-mist-right-top-S {
             display: block;
         }
     }
@@ -118,9 +145,9 @@ h2 {
     .bg-L-cloud-right-bottom {
         display: none;
         position: absolute;
-        right: 0;
+        right: -13%;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
-        bottom: -4.8%;
+        bottom: 0%;
         width: 40%;
     }
     
@@ -138,28 +165,52 @@ h2 {
         display: none;
         position: absolute;
         left: 0;
-        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
-        bottom: -5%;
+        bottom: 0;
         width: 35%;
     }
     
     @media screen and (min-width: 992px) {
         .bg-D-cloud-left-bottom {
             display: block;
+            // animation: bgDclb ease-in-out 12s infinite alternate-reverse;
+        }
+
+        @keyframes bgDclb {
+            0% {
+                left: -20px;
+            }
+            100% {
+                left: 0px;
+            }
         }
     }
 
-    .bg-D-wave-right-top {
+    .bg-D-wave-right-top-L {
         display: none;
         position: absolute;
         right: 0;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
-        top: -13%;
-        width: 28%;
+        top: 0%;
+        width: 40%;
     }
     
     @media screen and (min-width: 992px) {
-        .bg-D-wave-right-top {
+        .bg-D-wave-right-top-L {
+            display: block;
+        }
+    }
+
+    .bg-D-wave-right-top-S {
+        display: none;
+        position: absolute;
+        right: 0;
+        // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        top: 0%;
+        width: 32%;
+    }
+    
+    @media screen and (min-width: 992px) {
+        .bg-D-wave-right-top-S {
             display: block;
         }
     }
@@ -197,13 +248,14 @@ h2 {
 /* Header */
 /* ============================================================ */
 .header {
-    font-size: 50pt;
-    font-weight: 500;
+    // font-size: 50pt;
+    // font-weight: 500;
     font-family: $ff-h;
     width: 100%;
     padding-left: 20px;
+    padding-top: 10px;
     color: #FFF;
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.6rem;
     outline: 1px solid red;
     
     &::after {
@@ -215,7 +267,7 @@ h2 {
         right: 20px;
         width: 33vw;
         // TODO: height (%)
-        height: 20px;
+        height: 25px;
         z-index: -1;
     }
 }
