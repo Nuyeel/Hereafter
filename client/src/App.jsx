@@ -21,6 +21,9 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import ShareWallList from './pages/ShareWall/ShareWallList';
 import ShareWallDetail from './pages/ShareWall/ShareWallDetail';
 import Login from './pages/Login';
+import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
+import ForgotPasswordRevise from './pages/ForgotPasswordRevise';
 import MainPage from './pages/MainPage';
 
 function App() {
@@ -80,9 +83,42 @@ function App() {
                             {/* 登入路由 */}
                             {/* ============================== */}
                             <Route
-                                path="member/login"
+                                path="/login"
                                 element={
                                     <Login auth={auth} setAuth={setAuth} />
+                                }
+                            />
+                            {/* ============================== */}
+                            {/* 註冊路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="/register"
+                                element={
+                                    <Register auth={auth} setAuth={setAuth} />
+                                }
+                            />
+                            {/* ============================== */}
+                            {/* 忘記密碼路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="/forgotpassword"
+                                element={
+                                    <ForgotPassword
+                                        auth={auth}
+                                        setAuth={setAuth}
+                                    />
+                                }
+                            />
+                            {/* ============================== */}
+                            {/* 忘記密碼修改頁路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="/forgotpasswordrevise"
+                                element={
+                                    <ForgotPasswordRevise
+                                        auth={auth}
+                                        setAuth={setAuth}
+                                    />
                                 }
                             />
                             {/* 404 是最後一個路由 */}
