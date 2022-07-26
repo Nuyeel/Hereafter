@@ -1,14 +1,14 @@
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { TEST_LOGIN } from '../../config/ajax-path';
+import { TEST_REGISTER } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-function LoginForm() {
+function RegisterForm() {
     const [loginData, setLoginData] = useState({
         account: '',
         password: '',
@@ -39,7 +39,7 @@ function LoginForm() {
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        const result = await axios(TEST_LOGIN, {
+        const result = await axios(TEST_REGISTER, {
             method: 'POST',
             data: JSON.stringify(loginData),
             headers: {
@@ -89,7 +89,8 @@ function LoginForm() {
                                             <div className="tab-content">
                                                 <form
                                                     name="form1"
-                                                    onSubmit={handleSubmit}
+                                                    onsubmit="sendData();return false;"
+                                                    novalidate
                                                 >
                                                     <div className="mb-3">
                                                         <label
@@ -103,12 +104,23 @@ function LoginForm() {
                                                             className="form-control"
                                                             id="account"
                                                             name="account"
-                                                            value={
-                                                                loginData.account
-                                                            }
-                                                            onChange={
-                                                                handleFieldsChange
-                                                            }
+                                                            required
+                                                        />
+                                                        <div className="form-text red"></div>
+                                                    </div>
+                                                    <div className="mb-3">
+                                                        <label
+                                                            htmlFor="email"
+                                                            className="form-label"
+                                                        >
+                                                            電子信箱
+                                                        </label>
+                                                        <input
+                                                            type="email"
+                                                            className="form-control"
+                                                            id="email"
+                                                            name="email"
+                                                            required
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
@@ -124,34 +136,77 @@ function LoginForm() {
                                                             className="form-control"
                                                             id="password"
                                                             name="password"
-                                                            value={
-                                                                loginData.password
-                                                            }
-                                                            onChange={
-                                                                handleFieldsChange
-                                                            }
+                                                            required
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
-                                                    <div className="text-center mb-3"></div>
-                                                    <div className="d-flex justify-content-center">
+                                                    <div className="mb-3">
+                                                        <label
+                                                            htmlFor="repeatpw"
+                                                            className="form-label"
+                                                        >
+                                                            重新輸入密碼
+                                                        </label>
+                                                        <input
+                                                            type="password"
+                                                            className="form-control"
+                                                            id="repeatpw"
+                                                            name="repeatpw"
+                                                            required
+                                                        />
+                                                        <div className=" form-text red"></div>
+                                                    </div>
+                                                    {/* <div className="text-center mb-3">
+                          <p>以其他方式註冊：</p>
+                          <button
+                            type="button"
+                            className="btn btn-link btn-floating mx-1"
+                          >
+                            <i className="fab fa-facebook-f"></i>
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-link btn-floating mx-1"
+                          >
+                            <i className="fab fa-google"></i>
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-link btn-floating mx-1"
+                          >
+                            <i className="fab fa-twitter"></i>
+                          </button>
+                        </div> */}
+                                                    <div className="form-check d-flex  mb-4">
+                                                        <input
+                                                            className="form-check-input me-2"
+                                                            type="checkbox"
+                                                            value=""
+                                                            id="registerCheck"
+                                                            name="registerCheck"
+                                                            checked=""
+                                                            aria-describedby="registerCheckHelpText"
+                                                        />
+                                                        <label
+                                                            htmlFor="registercheckbox"
+                                                            className="form-check-label"
+                                                            for="registerCheck"
+                                                        >
+                                                            已閱讀並同意上述條款
+                                                        </label>
+                                                    </div>
+                                                    <div className="d-flex justify-content-center ">
                                                         <button
                                                             type="submit"
                                                             className="btn btn-outline-primary "
                                                         >
-                                                            登入
+                                                            確認註冊
                                                         </button>
                                                     </div>
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
-                                                        <Link to="/register">
-                                                            未註冊，先創建帳戶
-                                                        </Link>
-                                                    </div>
-                                                    <br />
-                                                    <div className="d-flex justify-content-center ">
-                                                        <Link to="/forgotpassword">
-                                                            忘記密碼
+                                                        <Link to="/login">
+                                                            已註冊，直接登入
                                                         </Link>
                                                     </div>
                                                     <br />
@@ -161,54 +216,13 @@ function LoginForm() {
                                                     className="alert alert-success d-flex justify-content-center"
                                                     role="alert"
                                                 >
-                                                    您已成功登入
+                                                    您已成功完成註冊
                                                 </div>
                                             </div>
                                         </div>
                                     </section>
                                 </div>
                             </section>
-
-                            {/* <form name="formLogin" onSubmit={handleSubmit}>
-                                <div className="mb-3">
-                                    <label
-                                        htmlFor="account"
-                                        className="form-label"
-                                    >
-                                        Account
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="account"
-                                        name="account"
-                                        value={loginData.account}
-                                        onChange={handleFieldsChange}
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label
-                                        htmlFor="password"
-                                        className="form-label"
-                                    >
-                                        Password
-                                    </label>
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        id="password"
-                                        name="password"
-                                        value={loginData.password}
-                                        onChange={handleFieldsChange}
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary"
-                                >
-                                    Submit
-                                </button>
-                            </form> */}
                         </div>
                     </div>
                 </div>
@@ -217,4 +231,4 @@ function LoginForm() {
     );
 }
 
-export default LoginForm;
+export default RegisterForm;

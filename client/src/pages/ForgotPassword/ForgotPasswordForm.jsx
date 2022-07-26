@@ -1,14 +1,14 @@
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { TEST_LOGIN } from '../../config/ajax-path';
+import { TEST_FORGOT_PASSWORD } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-function LoginForm() {
+function ForgotPasswordForm() {
     const [loginData, setLoginData] = useState({
         account: '',
         password: '',
@@ -39,7 +39,7 @@ function LoginForm() {
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        const result = await axios(TEST_LOGIN, {
+        const result = await axios(TEST_FORGOT_PASSWORD, {
             method: 'POST',
             data: JSON.stringify(loginData),
             headers: {
@@ -89,7 +89,8 @@ function LoginForm() {
                                             <div className="tab-content">
                                                 <form
                                                     name="form1"
-                                                    onSubmit={handleSubmit}
+                                                    onsubmit="sendData();return false;"
+                                                    novalidate
                                                 >
                                                     <div className="mb-3">
                                                         <label
@@ -103,33 +104,23 @@ function LoginForm() {
                                                             className="form-control"
                                                             id="account"
                                                             name="account"
-                                                            value={
-                                                                loginData.account
-                                                            }
-                                                            onChange={
-                                                                handleFieldsChange
-                                                            }
+                                                            required
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
                                                     <div className="mb-3">
                                                         <label
-                                                            htmlFor="password"
+                                                            For="email"
                                                             className="form-label"
                                                         >
-                                                            登入密碼
+                                                            電子信箱
                                                         </label>
                                                         <input
-                                                            type="password"
+                                                            type="email"
                                                             className="form-control"
-                                                            id="password"
-                                                            name="password"
-                                                            value={
-                                                                loginData.password
-                                                            }
-                                                            onChange={
-                                                                handleFieldsChange
-                                                            }
+                                                            id="email"
+                                                            name="email"
+                                                            required
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
@@ -139,76 +130,35 @@ function LoginForm() {
                                                             type="submit"
                                                             className="btn btn-outline-primary "
                                                         >
-                                                            登入
+                                                            接收驗證信
                                                         </button>
+                                                    </div>
+                                                    <br />
+                                                    <div
+                                                        id="info-bar"
+                                                        className="alert alert-success"
+                                                        role="alert"
+                                                    >
+                                                        驗證信已發送，請前往信箱確認
+                                                    </div>
+                                                    <div className="d-flex justify-content-center ">
+                                                        <Link to="/login">
+                                                            想起密碼了，直接登入
+                                                        </Link>
                                                     </div>
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
                                                         <Link to="/register">
-                                                            未註冊，先創建帳戶
-                                                        </Link>
-                                                    </div>
-                                                    <br />
-                                                    <div className="d-flex justify-content-center ">
-                                                        <Link to="/forgotpassword">
-                                                            忘記密碼
+                                                            重新註冊
                                                         </Link>
                                                     </div>
                                                     <br />
                                                 </form>
-                                                <div
-                                                    id="info-bar"
-                                                    className="alert alert-success d-flex justify-content-center"
-                                                    role="alert"
-                                                >
-                                                    您已成功登入
-                                                </div>
                                             </div>
                                         </div>
                                     </section>
                                 </div>
                             </section>
-
-                            {/* <form name="formLogin" onSubmit={handleSubmit}>
-                                <div className="mb-3">
-                                    <label
-                                        htmlFor="account"
-                                        className="form-label"
-                                    >
-                                        Account
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="account"
-                                        name="account"
-                                        value={loginData.account}
-                                        onChange={handleFieldsChange}
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label
-                                        htmlFor="password"
-                                        className="form-label"
-                                    >
-                                        Password
-                                    </label>
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        id="password"
-                                        name="password"
-                                        value={loginData.password}
-                                        onChange={handleFieldsChange}
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary"
-                                >
-                                    Submit
-                                </button>
-                            </form> */}
                         </div>
                     </div>
                 </div>
@@ -217,4 +167,4 @@ function LoginForm() {
     );
 }
 
-export default LoginForm;
+export default ForgotPasswordForm;

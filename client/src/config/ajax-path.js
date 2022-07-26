@@ -6,3 +6,6 @@ export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tags`;
 
 // 測試部分 (之後可以刪除)
 export const TEST_LOGIN = `${SERVER}/test/member/login`;
+export const TEST_REGISTER = `${SERVER}/test/member/register`;
+export const TEST_FORGOT_PASSWORD = `${SERVER}/test/member/forgotpassword`;
+export const TEST_FORGOT_PASSWORD_REVISE = `${SERVER}/test/member/forgotpassword-revise`;
