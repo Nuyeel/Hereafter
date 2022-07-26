@@ -83,7 +83,7 @@ function LoginForm() {
                     <div className="row">
                         <div className="col">
                             <section className="pb-4">
-                                <div className="bg-white border rounded-5">
+                                <div className="bg-white bg-opacity-75 rounded-5">
                                     <section className="w-100 p-4 d-flex justify-content-center pb-4">
                                         <div>
                                             <div className="tab-content">
@@ -91,6 +91,9 @@ function LoginForm() {
                                                     name="form1"
                                                     onSubmit={handleSubmit}
                                                 >
+                                                <div className="mb-3 d-flex justify-content-center">
+                                                    會員登入
+                                                </div>
                                                     <div className="mb-3">
                                                         <label
                                                             htmlFor="account"
