@@ -14,6 +14,7 @@ import Genie from './components/Genie';
 import Background from './components/Background';
 
 // 頁面組件
+import Test from './components/Test'; // 僅供測試
 // import NextLife from './pages/NextLife/NextLife';
 import ShareWall from './pages/ShareWall/ShareWall';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
@@ -51,6 +52,10 @@ function App() {
                                 element={<MainPage pageName="mainpage" />}
                             />
                             {/* ============================== */}
+                            {/* 測試路由 */}
+                            {/* ============================== */}
+                            <Route path="test" element={<Test />} />
+                            {/* ============================== */}
                             {/* 分享牆路由 */}
                             {/* ============================== */}
                             <Route
@@ -87,8 +92,8 @@ function App() {
                     </ScrolltoTop>
                 </MainContent>
                 {/* <Genie /> */}
-                {/* <Background theme="light" /> */}
-                <Background />
+                <Background theme="light" />
+                {/* <Background /> */}
             </ProviderContainer>
         </BrowserRouter>
     );
