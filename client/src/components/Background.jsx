@@ -2,12 +2,14 @@
 
 // Background Light
 import { ReactComponent as BGLCloudLT } from '../images/Background/bg-L-cloud-left-top.svg';
-import { ReactComponent as BGLMistRT } from '../images/Background/bg-L-mist-right-top.svg';
+import { ReactComponent as BGLMistRTL } from '../images/Background/bg-L-mist-right-top-L.svg';
+import { ReactComponent as BGLMistRTS } from '../images/Background/bg-L-mist-right-top-S.svg';
 import { ReactComponent as BGLCloudRB } from '../images/Background/bg-L-cloud-right-bottom.svg';
 
 // Background Dark
 import { ReactComponent as BGDCloudLB } from '../images/Background/bg-D-cloud-left-bottom.svg';
-import { ReactComponent as BGDWaveRT } from '../images/Background/bg-D-wave-right-top.svg';
+import { ReactComponent as BGDWaveRTL } from '../images/Background/bg-D-wave-right-top-L.svg';
+import { ReactComponent as BGDWaveRTS } from '../images/Background/bg-D-wave-right-top-S.svg';
 import { ReactComponent as BGDStarL } from '../images/Background/bg-D-star-left.svg';
 import { ReactComponent as BGDStarR } from '../images/Background/bg-D-star-right.svg';
 
@@ -25,13 +27,15 @@ function Background(props) {
             {theme === 'light' ? (
                 <>
                     <BGLCloudLT className="bg-L-cloud-left-top" />
-                    <BGLMistRT className="bg-L-mist-right-top" />
+                    <BGLMistRTL className="bg-L-mist-right-top-L" />
+                    <BGLMistRTS className="bg-L-mist-right-top-S" />
                     <BGLCloudRB className="bg-L-cloud-right-bottom" />
                 </>
             ) : (
                 <>
                     <BGDCloudLB className="bg-D-cloud-left-bottom" />
-                    <BGDWaveRT className="bg-D-wave-right-top" />
+                    <BGDWaveRTL className="bg-D-wave-right-top-L" />
+                    <BGDWaveRTS className="bg-D-wave-right-top-S" />
                     <BGDStarL className="bg-D-star-left" />
                     <BGDStarR className="bg-D-star-right" />
                 </>
