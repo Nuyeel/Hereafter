@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { TEST_FORGOT_PASSWORD } from '../../config/ajax-path';
+import { TEST_FORGOT_PASSWORD_REVISE } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -39,7 +39,7 @@ function ForgotPasswordReviseForm() {
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        const result = await axios(TEST_FORGOT_PASSWORD, {
+        const result = await axios(TEST_FORGOT_PASSWORD_REVISE, {
             method: 'POST',
             data: JSON.stringify(loginData),
             headers: {

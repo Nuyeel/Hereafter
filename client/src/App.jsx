@@ -14,7 +14,7 @@ import Genie from './components/Genie';
 import Background from './components/Background';
 
 // 頁面組件
-import Test from './components/Test'; // 僅供測試
+// import Test from './components/Test'; // 僅供測試
 // import NextLife from './pages/NextLife/NextLife';
 import ShareWall from './pages/ShareWall/ShareWall';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
@@ -24,6 +24,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import ForgotPasswordRevise from './pages/ForgotPasswordRevise';
+import MemberProfile from './pages/MemberProfile';
+import MemberProfileRevise from './pages/MemberProfileRevise';
+import MemberPasswordRevise from './pages/MemberPasswordRevise';
+import MemberEventOrder from './pages/MemberEventOrder/MemberEventOrderForm';
 import MainPage from './pages/MainPage';
 
 function App() {
@@ -57,7 +61,7 @@ function App() {
                             {/* ============================== */}
                             {/* 測試路由 */}
                             {/* ============================== */}
-                            <Route path="test" element={<Test />} />
+                            {/* <Route path="test" element={<Test />} /> */}
                             {/* ============================== */}
                             {/* 分享牆路由 */}
                             {/* ============================== */}
@@ -116,6 +120,54 @@ function App() {
                                 path="/forgotpasswordrevise"
                                 element={
                                     <ForgotPasswordRevise
+                                        auth={auth}
+                                        setAuth={setAuth}
+                                    />
+                                }
+                            />
+                            {/* ============================== */}
+                            {/* 會員中心主頁路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="/memberprofile"
+                                element={
+                                    <MemberProfile
+                                        auth={auth}
+                                        setAuth={setAuth}
+                                    />
+                                }
+                            />
+                            {/* ============================== */}
+                            {/* 會員中心資料修改頁路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="/memberprofilerevise"
+                                element={
+                                    <MemberProfileRevise
+                                        auth={auth}
+                                        setAuth={setAuth}
+                                    />
+                                }
+                            />
+                            {/* ============================== */}
+                            {/* 會員中心密碼修改頁路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="/memberpasswordrevise"
+                                element={
+                                    <MemberPasswordRevise
+                                        auth={auth}
+                                        setAuth={setAuth}
+                                    />
+                                }
+                            />
+                            {/* ============================== */}
+                            {/* 會員中心活動訂單頁路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="/membereventorder"
+                                element={
+                                    <MemberEventOrder
                                         auth={auth}
                                         setAuth={setAuth}
                                     />

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { TEST_FORGOT_PASSWORD } from '../../config/ajax-path';
+import { TEST_REGISTER } from '../../config/ajax-path';
 import RegisterForm from './RegisterForm';
 
 function Register(props) {
