@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { TEST_FORGOT_PASSWORD } from '../../config/ajax-path';
+import { TEST_FORGOT_PASSWORD_REVISE } from '../../config/ajax-path';
 import ForgotPasswordReviseForm from './ForgotPasswordReviseForm';
 
 function ForgotPasswordRevise(props) {

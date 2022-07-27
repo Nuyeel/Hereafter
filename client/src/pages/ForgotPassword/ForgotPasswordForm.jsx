@@ -1,3 +1,4 @@
+import './style.scss'
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
@@ -131,7 +132,7 @@ function ForgotPasswordForm() {
                                                     <div className="d-flex justify-content-center">
                                                         <button
                                                             type="submit"
-                                                            className="btn btn-outline-primary "
+                                                            className="btn btn-pri btn-outline-light "
                                                         >
                                                             接收驗證信
                                                         </button>
@@ -144,14 +145,14 @@ function ForgotPasswordForm() {
                                                     >
                                                         驗證信已發送，請前往信箱確認
                                                     </div>
-                                                    <div className="d-flex justify-content-center ">
-                                                        <Link to="/login">
+                                                    <div className="d-flex justify-content-center">
+                                                        <Link className='link' to="/login">
                                                             想起密碼了，直接登入
                                                         </Link>
                                                     </div>
                                                     <br />
-                                                    <div className="d-flex justify-content-center ">
-                                                        <Link to="/register">
+                                                    <div className="d-flex justify-content-center">
+                                                        <Link className='link' to="/register">
                                                             重新註冊
                                                         </Link>
                                                     </div>

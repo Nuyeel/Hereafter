@@ -1,0 +1,14 @@
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+import { TEST_MEMBER_PROFILE_REVISE } from '../../config/ajax-path';
+import MemberProfileReviseForm from './MemberProfileReviseForm';
+
+function MemberProfileRevise(props) {
+    const { auth, setAuth } = props;
+    // 嘗試進行頁面跳轉
+    const navigate = useNavigate();
+
+    return <MemberProfileReviseForm />;
+}
+export default MemberProfileRevise;

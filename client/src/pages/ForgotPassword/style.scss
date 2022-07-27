@@ -1,0 +1,43 @@
+@import "../../styles/variables.scss";
+
+
+
+.mb-3 {
+    font-family: $ff-t, $ff-h;
+    color: $secondary;
+    font-size: $fz-body
+}
+
+.btn {
+    height: 32px;
+    font:700 16px var(--text-font), Arial, sans-serif;
+    border-radius: 10px;
+}
+
+.btn-pri{
+    background-color: #CE59E7;
+}
+
+.btn:hover {
+    font-family: $ff-t, $ff-h;
+    color: #FFF;
+    font-size: $fz-body;
+    background-color: $secondary
+}
+
+.link {
+    font-family: $ff-t, $ff-h;
+    color: $secondary;
+    font-size: $fz-body;
+    border-color: $secondary;
+    text-decoration: none
+}
+
+.link:hover {
+    font-family: $ff-t, $ff-h;
+    color: $secondary-50p;
+    font-size: $fz-body;
+    text-decoration: none
+}
+
+
