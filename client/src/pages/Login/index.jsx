@@ -6,10 +6,12 @@ import LoginForm from './LoginForm';
 
 function Login(props) {
     const { auth, setAuth } = props;
+    
     // 嘗試進行頁面跳轉
     const navigate = useNavigate();
 
-    return <LoginForm />;
+    // 傳入 setHeader 需要的 props
+    return <LoginForm pageName="default" />;
 }
 
 export default Login;
