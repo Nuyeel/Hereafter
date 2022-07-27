@@ -37,6 +37,8 @@ body {
 #root {
     // TODO: 請記得這目前是所有 React Component 的父元素
     height: 100%;
+    // 處理內容不足撐不高的狀況
+    min-height: calc(var(--vh, 1vh) * 100);
     overflow: hidden; // 與 body 配合防止視窗滾動
 }
 
@@ -74,7 +76,7 @@ h3 {
 
             // TODO: 某寬度時只顯示漢堡選單
             * + * {
-                padding-left: 0.75rem;
+                margin-left: 0.75rem;
             }
         }
     }
