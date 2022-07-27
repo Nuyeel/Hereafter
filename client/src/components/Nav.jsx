@@ -1,4 +1,5 @@
 // TODO: 條狀與全頁轉換
+// FIXME: 設計上的問題 行動版捲動時會與 LOGO 部分重疊 不好看
 
 // 使用套件
 import { Link } from 'react-router-dom';
@@ -29,7 +30,7 @@ function Nav() {
                     <Link
                         to="login"
                         style={{
-                            color: '#FFFFFF',
+                            color: 'inherit',
                             fontSize: '2rem',
                             verticalAlign: 'baseline',
                         }}
