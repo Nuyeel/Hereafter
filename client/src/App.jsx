@@ -3,37 +3,33 @@ import { useState, useEffect, useContext } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 // Context
-import HeaderContext, { headers } from './context/HeaderContext/HeaderContext';
+// import HeaderContext, { headers } from './context/HeaderContext/HeaderContext';
 
 // 共通組件
 import ProviderContainer from './context/ProviderContainer';
 import ScrolltoTop from './components/ScrolltoTop';
 import Nav from './components/Nav';
 import MainContent from './components/MainContent';
-import Genie from './components/Genie';
+// import Genie from './components/Genie';
 import Background from './components/Background';
 
 // 頁面組件
+import MainPage from './pages/MainPage';
 import Test from './components/Test'; // 僅供測試
 // import NextLife from './pages/NextLife/NextLife';
 import ShareWall from './pages/ShareWall/ShareWall';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import ShareWallList from './pages/ShareWall/ShareWallList';
 import ShareWallDetail from './pages/ShareWall/ShareWallDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import ForgotPasswordRevise from './pages/ForgotPasswordRevise';
-import MainPage from './pages/MainPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
     // auth for Authorization
     const [auth, setAuth] = useState(false);
-
-    // TODO: useEffect() 時發送 AJAX 給 Server 端 setAuth()
-    // 否則使用者自己刷新頁面就會變回未登入
-    // 不知道可以不可以用 JWT 解決
 
     return (
         <BrowserRouter>
@@ -76,7 +72,12 @@ function App() {
                                 />
                                 <Route
                                     path=":sharePostID"
-                                    element={<ShareWallDetail auth={auth} />}
+                                    element={
+                                        <ShareWallDetail
+                                            auth={auth}
+                                            pageName="default"
+                                        />
+                                    }
                                 />
                             </Route>
                             {/* ============================== */}
