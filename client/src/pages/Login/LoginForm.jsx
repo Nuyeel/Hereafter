@@ -1,21 +1,24 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import { TEST_LOGIN } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
+import HeaderContext, { headers } from '../../context/HeaderContext/HeaderContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-function LoginForm() {
+function LoginForm(props) {
     const [loginData, setLoginData] = useState({
         account: '',
         password: '',
     });
 
+    const { pageName } = props;
     const themeContext = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
+    const { setHeader } = useContext(HeaderContext);
     const navigate = useNavigate();
 
     const handleFieldsChange = (e) => {
@@ -57,6 +60,11 @@ function LoginForm() {
             alert('帳密錯誤～～');
         }
     };
+
+    // 設定 Header
+    useEffect(() => {
+        setHeader(headers[pageName]);
+    }, []);
 
     return (
         <>
