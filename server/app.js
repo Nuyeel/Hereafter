@@ -155,6 +155,17 @@ app.use('/api/member', memberRouter);
 app.use('/api/sharewall', sharewallRouter);
 // TODO: 組員新增路由 Step 3. 在路由宣告的位址撰寫自己的 RESTful API
 
+
+
+// 二路 - 活動頁面路由
+app.use('/events', require(__dirname + '/routes/events'));
+
+// 二路 - 活動購物車路由
+app.use('/eventcarts', require(__dirname + '/routes/eventcarts'));
+
+
+
+
 // 靜態路由 (Shinder: 最好不要超過三個 效能會不好)
 // 將 '/public' 簡寫為 '/'
 // 下行等同於 app.use('/', express.static(`${__dirname}/public`));
