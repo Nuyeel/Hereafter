@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { TEST_MEMBER_PASSWORD_REVISE } from '../../config/ajax-path';
+import { MEMBER_PASSWORD_REVISE } from '../../config/ajax-path';
 import MemberPasswordReviseForm from './MemberPasswordReviseForm';
 
 function MemberPasswordRevise(props) {

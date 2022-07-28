@@ -1,8 +1,8 @@
-import './style.scss'
+import './style.scss';
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { TEST_FORGOT_PASSWORD } from '../../config/ajax-path';
+import { FORGOT_PASSWORD } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -40,7 +40,7 @@ function ForgotPasswordForm() {
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        const result = await axios(TEST_FORGOT_PASSWORD, {
+        const result = await axios(FORGOT_PASSWORD, {
             method: 'POST',
             data: JSON.stringify(loginData),
             headers: {
@@ -90,16 +90,15 @@ function ForgotPasswordForm() {
                                             <div className="tab-content">
                                                 <form
                                                     name="form1"
-                                                    onsubmit="sendData();return false;"
-                                                    novalidate
                                                 >
-                                                    <div className="mb-3 d-flex justify-content-center">
+                                                    <div className="mb-3 d-flex justify-content-center page-title ">
                                                         忘記密碼
                                                     </div>
-                                                    <div className="mb-3">
+                                                    <br />
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             htmlFor="account"
-                                                            className="form-label"
+                                                            className=" form-label"
                                                         >
                                                             帳戶名稱
                                                         </label>
@@ -108,11 +107,12 @@ function ForgotPasswordForm() {
                                                             className="form-control"
                                                             id="account"
                                                             name="account"
+                                                            placeholder="請輸入您註冊過的帳戶"
                                                             required
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
-                                                    <div className="mb-3">
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             For="email"
                                                             className="form-label"
@@ -124,6 +124,7 @@ function ForgotPasswordForm() {
                                                             className="form-control"
                                                             id="email"
                                                             name="email"
+                                                            placeholder="請輸入您註冊過的信箱"
                                                             required
                                                         />
                                                         <div className="form-text red"></div>
@@ -132,7 +133,7 @@ function ForgotPasswordForm() {
                                                     <div className="d-flex justify-content-center">
                                                         <button
                                                             type="submit"
-                                                            className="btn btn-pri btn-outline-light "
+                                                            className="btn btn-l btn-pri btn-outline-light "
                                                         >
                                                             接收驗證信
                                                         </button>
@@ -146,13 +147,19 @@ function ForgotPasswordForm() {
                                                         驗證信已發送，請前往信箱確認
                                                     </div>
                                                     <div className="d-flex justify-content-center">
-                                                        <Link className='link' to="/login">
+                                                        <Link
+                                                            className="link"
+                                                            to="/login"
+                                                        >
                                                             想起密碼了，直接登入
                                                         </Link>
                                                     </div>
                                                     <br />
                                                     <div className="d-flex justify-content-center">
-                                                        <Link className='link' to="/register">
+                                                        <Link
+                                                            className="link"
+                                                            to="/register"
+                                                        >
                                                             重新註冊
                                                         </Link>
                                                     </div>

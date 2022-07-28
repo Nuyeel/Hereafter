@@ -1,7 +1,8 @@
+import './style.scss';
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { TEST_FORGOT_PASSWORD_REVISE } from '../../config/ajax-path';
+import { FORGOT_PASSWORD_REVISE } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -39,7 +40,7 @@ function ForgotPasswordReviseForm() {
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        const result = await axios(TEST_FORGOT_PASSWORD_REVISE, {
+        const result = await axios(FORGOT_PASSWORD_REVISE, {
             method: 'POST',
             data: JSON.stringify(loginData),
             headers: {
@@ -89,13 +90,12 @@ function ForgotPasswordReviseForm() {
                                             <div className="tab-content">
                                                 <form
                                                     name="form1"
-                                                    onsubmit="sendData();return false;"
-                                                    novalidate
                                                 >
-                                                <div className="mb-3 d-flex justify-content-center">
-                                                    修改密碼
-                                                </div>
-                                                    <div className="mb-3">
+                                                    <div className="mb-3 d-flex justify-content-center page-title">
+                                                        修改密碼
+                                                    </div>
+                                                    <br />
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             htmlFor="account"
                                                             className="form-label"
@@ -107,11 +107,12 @@ function ForgotPasswordReviseForm() {
                                                             className="form-control"
                                                             id="account"
                                                             name="account"
+                                                            placeholder="請輸入您註冊過的帳戶"
                                                             required
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
-                                                    <div className="mb-3">
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             htmlFor="password"
                                                             className="form-label"
@@ -123,11 +124,12 @@ function ForgotPasswordReviseForm() {
                                                             className="form-control"
                                                             id="password"
                                                             name="password"
+                                                            placeholder="請輸入您的新密碼帳戶"
                                                             required
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
-                                                    <div className="mb-3">
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             htmlFor="password"
                                                             className="form-label"
@@ -139,6 +141,7 @@ function ForgotPasswordReviseForm() {
                                                             className="form-control"
                                                             id="password"
                                                             name="password"
+                                                            placeholder="請再輸入一次您的新密碼"
                                                             required
                                                         />
                                                         <div className="form-text red"></div>
@@ -147,20 +150,26 @@ function ForgotPasswordReviseForm() {
                                                     <div className="d-flex justify-content-center">
                                                         <button
                                                             type="submit"
-                                                            className="btn btn-outline-primary "
+                                                            className="btn btn-l btn-pri btn-outline-light "
                                                         >
                                                             確認修改
                                                         </button>
                                                     </div>
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
-                                                        <Link to="/login">
+                                                        <Link
+                                                            className="link"
+                                                            to="/login"
+                                                        >
                                                             想起密碼了，直接登入
                                                         </Link>
                                                     </div>
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
-                                                        <Link to="/register">
+                                                        <Link
+                                                            className="link"
+                                                            to="/register"
+                                                        >
                                                             重新註冊
                                                         </Link>
                                                     </div>

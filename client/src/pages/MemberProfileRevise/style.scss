@@ -14,50 +14,33 @@
     font-size: $fz-body
 }
 
-input[type=text], input[type=email], input[type=password] {
+input[type=text], input[type=email], input[type=password], [type=date] {
     font: 400 16px var(--text-font), Arial, sans-serif;
     outline: none;
     height: 40px;
     border-radius: 10px;
 }
 
-input[type=text]::placeholder, input[type=email]::placeholder, input[type=password]::placeholder{
+input[type=text]::placeholder, input[type=email]::placeholder, input[type=password]::placeholder,  [type=date]::placeholder {
     color:#BDBDBD;
 }
 
-input[type=text]:focus, input[type=email]:focus, input[type=password]:focus{
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, [type=date]:focus{
     border: $secondary 2px solid;
     outline: none;
 }
 
-input[type=text]:focus::placeholder, input[type=email]:focus::placeholder, input[type=password]:focus::placeholder{
+input[type=text]:focus::placeholder, input[type=email]:focus::placeholder, input[type=password]:focus::placeholder, [type=date]:focus::placeholder{
     color: transparent;
 }
 
-input[type=text].error, input[type=email].error, input[type=password].error {
+input[type=text].error, input[type=email].error, input[type=password].error, input[type=date].error {
     border: var(--alert-l) 2px solid;
     outline: none;
 }
 
-.btn {
-    height: 32px;
-    font:700 var(--text-font), Arial, sans-serif;
-    border-radius: 10px;
-}
-
-.btn:hover {
-    color: #FFF;
-    background-color: $primary
-}
-
-.btn-pri{
-    background-color: $secondary;
-}
-
-.btn-l {
-    height: 40px;
-    font:700 18px var(--text-font), Arial, sans-serif;
-    border-radius: 12px;
+.breadcrumb {
+    $breadcrumb-divider: none;
 }
 
 button {
@@ -77,6 +60,7 @@ button:active {
     top: 1px;
     filter: drop-shadow(2px 2px 0px transparent);
 }
+
 
 .link {
     font-family: $ff-t, $ff-h;
@@ -105,3 +89,4 @@ button:active {
     background-color: $highlight;
     border: $highlight;
 }
+

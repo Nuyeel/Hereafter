@@ -1,7 +1,8 @@
+import './style.scss';
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { TEST_MEMBER_PROFILE_REVISE } from '../../config/ajax-path';
+import { MEMBER_PROFILE_REVISE } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -39,7 +40,7 @@ function MemberProfileReviseForm() {
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        const result = await axios(TEST_MEMBER_PROFILE_REVISE, {
+        const result = await axios(MEMBER_PROFILE_REVISE, {
             method: 'POST',
             data: JSON.stringify(loginData),
             headers: {
@@ -89,28 +90,46 @@ function MemberProfileReviseForm() {
                                         <div className="card-2 d-flex">
                                             <div className="cards">
                                                 <br />
-                                                <ol className="breadcrumb justify-content-center">
+                                                <ol
+                                                    className="breadcrumb justify-content-center"
+                                                    style={{
+                                                        '--bs-breadcrumb-divider':
+                                                            'none',
+                                                    }}
+                                                >
                                                     <li
                                                         className="breadcrumb-item active"
                                                         aria-current="page"
                                                     >
-                                                        <Link to="/memberprofile">
+                                                        <Link
+                                                            to="/memberprofile"
+                                                            className="breadcrumb-item breadcrumb-item-link"
+                                                        >
                                                             會員中心主頁
                                                         </Link>
                                                     </li>
-                                                    <li
-                                                        className="breadcrumb-item active"
-                                                        aria-current="page"
-                                                    >
-                                                        修改會員資料
+
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/memberprofilerevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            修改會員資料
+                                                        </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
-                                                        <Link to="/memberpasswordrevise">
+                                                        <Link
+                                                            to="/memberpasswordrevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
                                                             修改登入密碼
                                                         </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
-                                                        <Link to="/membereventorder">
+                                                        <Link
+                                                            to="/membereventorder"
+                                                            className="breadcrumb-item-link"
+                                                        >
                                                             法喜充滿訂單
                                                         </Link>
                                                     </li>
@@ -120,15 +139,12 @@ function MemberProfileReviseForm() {
                                                         <section className="w-100 p-4 d-flex justify-content-center pb-4">
                                                             <div>
                                                                 <div className="tab-content">
-                                                                    <form
-                                                                        name="form1"
-                                                                        onsubmit="sendData();return false;"
-                                                                        novalidate
-                                                                    >
-                                                                        <div className="mb-3 d-flex justify-content-center">
+                                                                    <form name="form1">
+                                                                        <div className="mb-3 d-flex justify-content-center page-title">
                                                                             修改會員資料
                                                                         </div>
-                                                                        <div className="mb-3">
+                                                                        <br />
+                                                                        <div className="mb-3 page-field">
                                                                             <label
                                                                                 htmlFor="account"
                                                                                 className="form-label"
@@ -140,10 +156,11 @@ function MemberProfileReviseForm() {
                                                                                 className="form-control"
                                                                                 id="account"
                                                                                 name="account"
+                                                                                disabled="disabled"
                                                                             />
                                                                             <div className="form-text red"></div>
                                                                         </div>
-                                                                        <div className="mb-3">
+                                                                        <div className="mb-3 page-field">
                                                                             <label
                                                                                 htmlFor="name"
                                                                                 className="form-label"
@@ -155,10 +172,11 @@ function MemberProfileReviseForm() {
                                                                                 className="form-control"
                                                                                 id="name"
                                                                                 name="name"
+                                                                                placeholder="請輸入您的名稱"
                                                                             />
                                                                             <div className="form-text red"></div>
                                                                         </div>
-                                                                        <div className="mb-3">
+                                                                        <div className="mb-3 page-field">
                                                                             <label
                                                                                 htmlFor="birthdate"
                                                                                 className="form-label"
@@ -173,7 +191,7 @@ function MemberProfileReviseForm() {
                                                                             />
                                                                             <div className="form-text red"></div>
                                                                         </div>
-                                                                        <div className="mb-3">
+                                                                        <div className="mb-3 page-field">
                                                                             <label
                                                                                 htmlFor="deathdate"
                                                                                 className="form-label"
@@ -188,7 +206,7 @@ function MemberProfileReviseForm() {
                                                                             />
                                                                             <div className="form-text red"></div>
                                                                         </div>
-                                                                        <div className="mb-3">
+                                                                        <div className="mb-3 page-field">
                                                                             <label
                                                                                 htmlFor="email"
                                                                                 className="form-label"
@@ -200,6 +218,7 @@ function MemberProfileReviseForm() {
                                                                                 className="form-control"
                                                                                 id="email"
                                                                                 name="email"
+                                                                                placeholder="請輸入您的電子信箱"
                                                                             />
                                                                             <div className="form-text red"></div>
                                                                         </div>
@@ -207,13 +226,13 @@ function MemberProfileReviseForm() {
                                                                         <div className="d-flex justify-content-sm-evenly ">
                                                                             <button
                                                                                 type="submit"
-                                                                                className="btn btn-outline-primary btn-lg"
+                                                                                className="btn btn-l btn-pri btn-outline-light"
                                                                             >
                                                                                 修改
                                                                             </button>
                                                                             <button
                                                                                 type="submit"
-                                                                                className="btn btn-outline-secondary btn-lg"
+                                                                                className="btn btn-sec btn-l btn-outline-light"
                                                                             >
                                                                                 清除
                                                                             </button>

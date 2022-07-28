@@ -1,7 +1,8 @@
+import './style.scss';
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { TEST_MEMBER_PROFILE } from '../../config/ajax-path';
+import { MEMBER_PROFILE } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -39,7 +40,7 @@ function MemberProfileForm() {
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        const result = await axios(TEST_MEMBER_PROFILE, {
+        const result = await axios(MEMBER_PROFILE, {
             method: 'POST',
             data: JSON.stringify(loginData),
             headers: {
@@ -88,25 +89,46 @@ function MemberProfileForm() {
                                         <div className="card-2 d-flex">
                                             <div className="cards">
                                                 <br />
-                                                <ol className="breadcrumb justify-content-center">
+                                                <ol
+                                                    className="breadcrumb justify-content-center"
+                                                    style={{
+                                                        '--bs-breadcrumb-divider':
+                                                            'none',
+                                                    }}
+                                                >
                                                     <li
                                                         className="breadcrumb-item active"
                                                         aria-current="page"
                                                     >
-                                                        會員中心主頁
+                                                        <Link
+                                                            to="/memberprofile"
+                                                            className="breadcrumb-item breadcrumb-item-link"
+                                                        >
+                                                            會員中心主頁
+                                                        </Link>
                                                     </li>
+
                                                     <li className="breadcrumb-item">
-                                                        <Link to="/memberprofilerevise">
+                                                        <Link
+                                                            to="/memberprofilerevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
                                                             修改會員資料
                                                         </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
-                                                        <Link to="/memberpasswordrevise">
+                                                        <Link
+                                                            to="/memberpasswordrevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
                                                             修改登入密碼
                                                         </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
-                                                        <Link to="/membereventorder">
+                                                        <Link
+                                                            to="/membereventorder"
+                                                            className="breadcrumb-item-link"
+                                                        >
                                                             法喜充滿訂單
                                                         </Link>
                                                     </li>
@@ -117,16 +139,16 @@ function MemberProfileForm() {
                                                         <section className="w-100 p-4 d-flex justify-content-center pb-4">
                                                             <div>
                                                                 <div className="tab-content">
-                                                                    <div className="mb-3 d-flex justify-content-center">
+                                                                    <div className="mb-3 d-flex justify-content-center page-title">
                                                                         會員中心主頁
                                                                     </div>
                                                                     <br />
                                                                     <div className="card">
                                                                         <div className="card-body d-flex align-items-center">
-                                                                            <div className="col-md-9 mb-md-0 p-md-4">
+                                                                            <div className="col-md-9 mb-md-0 p-md-4 page-field">
                                                                                 <h5 className="card-title">
                                                                                     歡迎回來，
-                                                                                    <p className="card-text">
+                                                                                    <p className="card-text ">
                                                                                         <br />
                                                                                         這裡預計會放使用者的資料
                                                                                     </p>
@@ -144,15 +166,12 @@ function MemberProfileForm() {
                                                                                 <i className="fa-solid fa-earth-asia"></i>
                                                                             </div>
                                                                             <div className="card-body d-flex flex-column">
-                                                                                <h5 className="card-title">
+                                                                                <h5 className="card-title page-field">
                                                                                     這裡說不定會放東西
                                                                                 </h5>
-                                                                                <Link
-                                                                                    to="#"
-                                                                                    className="btn btn-primary"
-                                                                                >
+                                                                                <button className="btn btn-pri btn-m btn-outline-light">
                                                                                     開始預約
-                                                                                </Link>
+                                                                                </button>
                                                                             </div>
                                                                         </div>
                                                                         <div className="card d-flex justify-content-evenly align-items-center">
@@ -160,15 +179,12 @@ function MemberProfileForm() {
                                                                                 <i className="fa-solid fa-wand-magic-sparkles"></i>
                                                                             </div>
                                                                             <div className="card-body d-flex flex-column">
-                                                                                <h5 className="card-title">
+                                                                                <h5 className="card-title page-field">
                                                                                     這裡說不定會放東西
                                                                                 </h5>
-                                                                                <Link
-                                                                                    to="#"
-                                                                                    className="btn btn-primary"
-                                                                                >
+                                                                                <button className="btn btn-sec btn-m btn-outline-light">
                                                                                     開始創建
-                                                                                </Link>
+                                                                                </button>
                                                                             </div>
                                                                         </div>
                                                                     </div>

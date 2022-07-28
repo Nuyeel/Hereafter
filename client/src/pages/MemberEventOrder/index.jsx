@@ -1,15 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { TEST_MEMBER_PROFILE } from '../../config/ajax-path';
-import MemberProfileForm from './MemberProfileForm';
+import { MEMBER_EVENT_ORDER } from '../../config/ajax-path';
+import MemberEventOrderForm from './MemberEventOrderForm';
 
-function MemberProfile(props) {
+function MemberEventOrder(props) {
     const { auth, setAuth } = props;
     // 嘗試進行頁面跳轉
     const navigate = useNavigate();
 
-    return <MemberProfileForm />;
+    return <MemberEventOrderForm />;
 }
 
-export default MemberProfile;
+export default MemberEventOrder;
