@@ -2,7 +2,7 @@
 export const SERVER = 'http://localhost:3500';
 
 // 分享牆部分
-export const API_SHAREWALL = `${SERVER}/api/sharewall/`;
+export const API_SHAREWALL = `${SERVER}/api/sharewall`;
 export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tags`;
 
 // 測試部分 (之後可以刪除)
