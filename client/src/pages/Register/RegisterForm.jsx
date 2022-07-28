@@ -1,7 +1,8 @@
+import './style.scss';
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { TEST_REGISTER } from '../../config/ajax-path';
+import { MEMBER_REGISTER } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -39,7 +40,7 @@ function RegisterForm() {
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        const result = await axios(TEST_REGISTER, {
+        const result = await axios(MEMBER_REGISTER, {
             method: 'POST',
             data: JSON.stringify(loginData),
             headers: {
@@ -92,10 +93,11 @@ function RegisterForm() {
                                                     onsubmit="sendData();return false;"
                                                     novalidate
                                                 >
-                                                    <div className="mb-3 d-flex justify-content-center">
+                                                    <div className="mb-3 d-flex justify-content-center page-title">
                                                         會員註冊
                                                     </div>
-                                                    <div className="mb-3">
+                                                    <br />
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             htmlFor="account"
                                                             className="form-label"
@@ -107,11 +109,12 @@ function RegisterForm() {
                                                             className="form-control"
                                                             id="account"
                                                             name="account"
+                                                            placeholder="請建立一個登入帳戶"
                                                             required
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
-                                                    <div className="mb-3">
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             htmlFor="email"
                                                             className="form-label"
@@ -123,11 +126,12 @@ function RegisterForm() {
                                                             className="form-control"
                                                             id="email"
                                                             name="email"
+                                                            placeholder="請輸入一個有效信箱"
                                                             required
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
-                                                    <div className="mb-3">
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             htmlFor="password"
                                                             className="form-label"
@@ -139,11 +143,12 @@ function RegisterForm() {
                                                             className="form-control"
                                                             id="password"
                                                             name="password"
+                                                            placeholder="請建立一個密碼"
                                                             required
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
-                                                    <div className="mb-3">
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             htmlFor="repeatpw"
                                                             className="form-label"
@@ -155,60 +160,49 @@ function RegisterForm() {
                                                             className="form-control"
                                                             id="repeatpw"
                                                             name="repeatpw"
+                                                            placeholder="再輸入一次密碼"
                                                             required
                                                         />
                                                         <div className=" form-text red"></div>
                                                     </div>
-                                                    {/* <div className="text-center mb-3">
-                          <p>以其他方式註冊：</p>
-                          <button
-                            type="button"
-                            className="btn btn-link btn-floating mx-1"
-                          >
-                            <i className="fab fa-facebook-f"></i>
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-link btn-floating mx-1"
-                          >
-                            <i className="fab fa-google"></i>
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-link btn-floating mx-1"
-                          >
-                            <i className="fab fa-twitter"></i>
-                          </button>
-                        </div> */}
-                                                    <div className="form-check d-flex  mb-4">
-                                                        <input
-                                                            className="form-check-input me-2"
-                                                            type="checkbox"
-                                                            value=""
-                                                            id="registerCheck"
-                                                            name="registerCheck"
-                                                            checked=""
-                                                            aria-describedby="registerCheckHelpText"
-                                                        />
-                                                        <label
-                                                            htmlFor="registercheckbox"
-                                                            className="form-check-label"
-                                                            for="registerCheck"
+                                                    {/* 
+                                                    <div className="text-center mb-3">
+                                                        <p>以其他方式註冊：</p>
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-link btn-floating mx-1"
                                                         >
-                                                            已閱讀並同意上述條款
-                                                        </label>
-                                                    </div>
+                                                            <i className="fab fa-facebook-f"></i>
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-link btn-floating mx-1"
+                                                        >
+                                                            <i className="fab fa-google"></i>
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-link btn-floating mx-1"
+                                                        >
+                                                            <i className="fab fa-twitter"></i>
+                                                        </button>
+                                                    </div> 
+                                                    */}
+
                                                     <div className="d-flex justify-content-center ">
                                                         <button
                                                             type="submit"
-                                                            className="btn btn-outline-primary "
+                                                            className="btn btn-l btn-pri btn-outline-light "
                                                         >
                                                             確認註冊
                                                         </button>
                                                     </div>
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
-                                                        <Link to="/login">
+                                                        <Link
+                                                            className="link"
+                                                            to="/login"
+                                                        >
                                                             已註冊，直接登入
                                                         </Link>
                                                     </div>

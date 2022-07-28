@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { TEST_MEMBER_PROFILE } from '../../config/ajax-path';
+import { MEMBER_PROFILE } from '../../config/ajax-path';
 import MemberProfileForm from './MemberProfileForm';
 
 function MemberProfile(props) {

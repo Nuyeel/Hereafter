@@ -1,7 +1,8 @@
+import './style.scss';
 import { useState, useContext } from 'react';
 import axios from 'axios';
 
-import { TEST_MEMBER_PROFILE } from '../../config/ajax-path';
+import { MEMBER_PASSWORD_REVISE } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -39,7 +40,7 @@ function MemberProfileForm() {
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        const result = await axios(TEST_MEMBER_PROFILE, {
+        const result = await axios(MEMBER_PASSWORD_REVISE, {
             method: 'POST',
             data: JSON.stringify(loginData),
             headers: {
@@ -89,25 +90,46 @@ function MemberProfileForm() {
                                         <div className="card-2 d-flex">
                                             <div className="cards">
                                                 <br />
-                                                <ol className="breadcrumb justify-content-center">
-                                                    <li className="breadcrumb-item">
-                                                        <Link to="/memberprofile">
-                                                            會員中心主頁
-                                                        </Link>
-                                                    </li>
-                                                    <li className="breadcrumb-item">
-                                                        <Link to="/memberprofilerevise">
-                                                            修改會員資料
-                                                        </Link>
-                                                    </li>
+                                                <ol
+                                                    className="breadcrumb justify-content-center"
+                                                    style={{
+                                                        '--bs-breadcrumb-divider':
+                                                            'none',
+                                                    }}
+                                                >
                                                     <li
                                                         className="breadcrumb-item active"
                                                         aria-current="page"
                                                     >
-                                                        修改登入密碼
+                                                        <Link
+                                                            to="/memberprofile"
+                                                            className="breadcrumb-item breadcrumb-item-link"
+                                                        >
+                                                            會員中心主頁
+                                                        </Link>
+                                                    </li>
+
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/memberprofilerevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            修改會員資料
+                                                        </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
-                                                        <Link to="/membereventorder">
+                                                        <Link
+                                                            to="/memberpasswordrevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            修改登入密碼
+                                                        </Link>
+                                                    </li>
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/membereventorder"
+                                                            className="breadcrumb-item-link"
+                                                        >
                                                             法喜充滿訂單
                                                         </Link>
                                                     </li>
@@ -123,14 +145,14 @@ function MemberProfileForm() {
                                                                         onsubmit="sendData();return false;"
                                                                         novalidate
                                                                     >
-                                                                        <div className="mb-3 d-flex justify-content-center">
+                                                                        <div className="mb-3 d-flex justify-content-center page-title">
                                                                             修改登入密碼
                                                                         </div>
                                                                         <br />
                                                                         <div className="mb-3">
                                                                             <label
                                                                                 htmlFor="account"
-                                                                                className="form-label"
+                                                                                className="form-label page-field"
                                                                             >
                                                                                 帳戶名稱
                                                                             </label>
@@ -146,7 +168,7 @@ function MemberProfileForm() {
                                                                         <div className="mb-3">
                                                                             <label
                                                                                 htmlFor="password"
-                                                                                className="form-label"
+                                                                                className="form-label page-field"
                                                                             >
                                                                                 登入密碼
                                                                             </label>
@@ -162,7 +184,7 @@ function MemberProfileForm() {
                                                                         <div className="mb-3">
                                                                             <label
                                                                                 htmlFor="repeatpw"
-                                                                                className="form-label"
+                                                                                className="form-label page-field"
                                                                             >
                                                                                 重新輸入密碼
                                                                             </label>
@@ -179,13 +201,13 @@ function MemberProfileForm() {
                                                                         <div className="d-flex justify-content-sm-evenly ">
                                                                             <button
                                                                                 type="submit"
-                                                                                className="btn btn-outline-primary btn-lg"
+                                                                                className="btn btn-l btn-pri btn-outline-light"
                                                                             >
                                                                                 修改
                                                                             </button>
                                                                             <button
                                                                                 type="submit"
-                                                                                className="btn btn-outline-secondary btn-lg"
+                                                                                className="btn btn-sec btn-l btn-outline-light"
                                                                             >
                                                                                 清除
                                                                             </button>

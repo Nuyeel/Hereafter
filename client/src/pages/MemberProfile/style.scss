@@ -39,10 +39,36 @@ input[type=text].error, input[type=email].error, input[type=password].error {
     outline: none;
 }
 
+.fa-solid {
+    font-size: 30px;
+    text-align: center;
+    color: $secondary
+}
+
+.breadcrumb-item-link {
+    border-radius: 15px;
+    padding: 3px 10px;
+    line-height: 30px;
+    text-decoration: none;
+    font-family: $ff-t, $ff-h;
+    color: $secondary;
+    background-color: $highlight
+}
+
+.breadcrumb-item-link:hover {
+    border-radius: 15px;
+    padding: 3px 10px;
+    line-height: 30px;
+    text-decoration: none;
+    font-family: $ff-t, $ff-h;
+    color: #fff;
+    background-color: $accent-blue
+}
+
 .btn {
     height: 32px;
     font:700 var(--text-font), Arial, sans-serif;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 .btn:hover {
@@ -50,14 +76,21 @@ input[type=text].error, input[type=email].error, input[type=password].error {
     background-color: $primary
 }
 
-.btn-pri{
-    background-color: $secondary;
+.btn-sec{
+    background-color: #E7ACF3;
+    border: 1px solid #fff;
 }
 
-.btn-l {
-    height: 40px;
-    font:700 18px var(--text-font), Arial, sans-serif;
-    border-radius: 12px;
+.btn-ter{
+    background-color: #fff;
+    border: 1px solid $secondary;
+    color: $secondary;
+}
+
+.btn-ter:hover{
+    background-color: $secondary;
+    border: 1px solid $secondary;
+    color: #fff;
 }
 
 button {
@@ -77,6 +110,7 @@ button:active {
     top: 1px;
     filter: drop-shadow(2px 2px 0px transparent);
 }
+
 
 .link {
     font-family: $ff-t, $ff-h;

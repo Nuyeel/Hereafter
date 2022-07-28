@@ -1,11 +1,14 @@
+import './style.scss';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
-import { TEST_LOGIN } from '../../config/ajax-path';
+import { MEMBER_LOGIN } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
-import HeaderContext, { headers } from '../../context/HeaderContext/HeaderContext';
+import HeaderContext, {
+    headers,
+} from '../../context/HeaderContext/HeaderContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -42,7 +45,7 @@ function LoginForm(props) {
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        const result = await axios(TEST_LOGIN, {
+        const result = await axios(MEMBER_LOGIN, {
             method: 'POST',
             data: JSON.stringify(loginData),
             headers: {
@@ -99,10 +102,11 @@ function LoginForm(props) {
                                                     name="form1"
                                                     onSubmit={handleSubmit}
                                                 >
-                                                <div className="mb-3 d-flex justify-content-center">
-                                                    會員登入
-                                                </div>
-                                                    <div className="mb-3">
+                                                    <div className="mb-3 d-flex justify-content-center page-title">
+                                                        會員登入
+                                                    </div>
+                                                    <br />
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             htmlFor="account"
                                                             className="form-label"
@@ -114,6 +118,7 @@ function LoginForm(props) {
                                                             className="form-control"
                                                             id="account"
                                                             name="account"
+                                                            placeholder="請輸入您的帳戶"
                                                             value={
                                                                 loginData.account
                                                             }
@@ -123,7 +128,7 @@ function LoginForm(props) {
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
-                                                    <div className="mb-3">
+                                                    <div className="mb-3 page-field">
                                                         <label
                                                             htmlFor="password"
                                                             className="form-label"
@@ -135,6 +140,7 @@ function LoginForm(props) {
                                                             className="form-control"
                                                             id="password"
                                                             name="password"
+                                                            placeholder="請輸入您的密碼"
                                                             value={
                                                                 loginData.password
                                                             }
@@ -144,24 +150,30 @@ function LoginForm(props) {
                                                         />
                                                         <div className="form-text red"></div>
                                                     </div>
-                                                    <div className="text-center mb-3"></div>
-                                                    <div className="d-flex justify-content-center">
+
+                                                    <div className="d-flex justify-content-center ">
                                                         <button
                                                             type="submit"
-                                                            className="btn btn-outline-primary "
+                                                            className="btn btn-l btn-pri btn-outline-light "
                                                         >
                                                             登入
                                                         </button>
                                                     </div>
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
-                                                        <Link to="/register">
+                                                        <Link
+                                                            className="link"
+                                                            to="/register"
+                                                        >
                                                             未註冊，先創建帳戶
                                                         </Link>
                                                     </div>
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
-                                                        <Link to="/forgotpassword">
+                                                        <Link
+                                                            className="link"
+                                                            to="/forgotpassword"
+                                                        >
                                                             忘記密碼
                                                         </Link>
                                                     </div>

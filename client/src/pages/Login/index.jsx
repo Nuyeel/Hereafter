@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { TEST_LOGIN } from '../../config/ajax-path';
+import { MEMBER_LOGIN } from '../../config/ajax-path';
 import LoginForm from './LoginForm';
 
 function Login(props) {

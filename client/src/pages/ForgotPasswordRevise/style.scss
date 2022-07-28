@@ -1,5 +1,38 @@
 @import "../../styles/variables.scss";
 
+:root { 
+    $primary: #E384F2;
+    $secondary: #9587E1;
+    $primary-50p: #E384F288; 
+    $secondary-50p: #9587E188; 
+    $accent-blue: #81A8E0;
+    $accent-green: #B9DED2; 
+    $highlight: #F3F59F;
+    $alert: #FF52BA;
+    
+    $bgc-D: #3C3B67; 
+    $bgc-L-l: #EDEFF7; 
+    $bgc-L-d: #DBE0ED; 
+    
+    $bgc-Nav-D: #2D2828CC;
+    
+    $ff-h: 'M PLUS Rounded 1c';
+    $ff-t: 'Noto Sans TC';
+    
+    $fz-h2: 3rem;
+    $fz-h3: 2.5rem;
+    $fz-h4: 2.25rem;
+    $fz-h5: 2rem;
+    
+    $fz-title: 1.5rem;
+    $fz-subtitle: 1.25rem;
+    $fz-body: 1rem;
+    $fz-caption: 0.875rem;
+    $fz-boby-mobile: 0.75rem;
+    
+    $height-nav: 96px;
+}
+
 .page-title {
     font-family: $ff-h, $ff-t;
     font-weight: 700;
