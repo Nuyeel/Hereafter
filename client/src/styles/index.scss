@@ -63,6 +63,7 @@ h3 {
 .nav {
     position: fixed;
     top: 0;
+    background-color: $bgc-L-l;
     z-index: 100000;
     outline: 1px solid red;
     
@@ -82,9 +83,22 @@ h3 {
     }
 }
 
+@media screen and (min-width: 992px) {
+    .nav {
+        background-color: transparent;
+    }
+}
+
 .nav-dark {
     background-color: $bgc-Nav-D;
 }
+
+@media screen and (min-width: 992px) {
+    .nav-dark {
+        background-color: transparent;
+    }
+}
+
 
 
 /* ============================================================ */
