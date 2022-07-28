@@ -139,11 +139,7 @@ function MemberProfileReviseForm() {
                                                         <section className="w-100 p-4 d-flex justify-content-center pb-4">
                                                             <div>
                                                                 <div className="tab-content">
-                                                                    <form
-                                                                        name="form1"
-                                                                        onsubmit="sendData();return false;"
-                                                                        novalidate
-                                                                    >
+                                                                    <form name="form1">
                                                                         <div className="mb-3 d-flex justify-content-center page-title">
                                                                             修改會員資料
                                                                         </div>

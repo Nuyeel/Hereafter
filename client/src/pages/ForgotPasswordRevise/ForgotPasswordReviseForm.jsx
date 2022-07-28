@@ -90,8 +90,6 @@ function ForgotPasswordReviseForm() {
                                             <div className="tab-content">
                                                 <form
                                                     name="form1"
-                                                    onsubmit="sendData();return false;"
-                                                    novalidate
                                                 >
                                                     <div className="mb-3 d-flex justify-content-center page-title">
                                                         修改密碼
