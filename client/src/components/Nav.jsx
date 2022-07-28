@@ -1,10 +1,12 @@
 // TODO: 條狀與全頁轉換
 // FIXME: 設計上的問題 行動版捲動時會與 LOGO 部分重疊 不好看
+// DONE: 修復 加上底色即可
+// FIXME: 全頁跳出後 Nav 底色在寬度不足時會暴露
+// DONE: 不完全修復 因為底色要跟著 ThemeContext 更動
 
 // 使用套件
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { ReactComponent as NavLogo } from '../images/Nav/nav_logo.svg';
 import { ReactComponent as NavSoul } from '../images/Nav/nav_soul.svg';
@@ -19,15 +21,14 @@ function Nav() {
 
     return (
         <>
-            {/* Nav漢堡光箱(網站目錄) */}
+            {/* Nav漢堡光箱 (網站目錄) */}
             <div className={lightBox}>
                 <div className="nav_lightbox_wrap">
-
                     <div className="nav_lightbox_list">
                         <h2
                             className="nav_link"
                             onClick={() => {
-                                navigate('#/', { replace: true });
+                                navigate('', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
                             }}
                         >
@@ -59,6 +60,7 @@ function Nav() {
                                 setLightBox('nav_lightbox_hidden');
                             }}
                         >
+                            {/* FIXME: 德 缺字 */}
                             功德撲滿
                         </h2>
                         <h4 class="subtitle">介紹文字放這邊</h4>
@@ -94,7 +96,7 @@ function Nav() {
                         <h2
                             className="nav_link"
                             onClick={() => {
-                                navigate('#/', { replace: true });
+                                navigate('/sharewall', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
                             }}
                         >
@@ -109,10 +111,30 @@ function Nav() {
                 // p-0 (如果 container 左右比較寬的話是 padding)
                 // TODO: useContext Theme.Provider
                 className={`nav container-fluid`}
+                // FIXME: 等 ThemeContext 有雛型後要改底色為亮暗色
+                style={{
+                    backgroundColor:
+                        lightBox === 'nav_lightbox_visible'
+                            ? 'transparent'
+                            : '',
+                }}
             >
                 <div className="nav-inner container d-flex justify-content-between align-items-center">
                     <div className="nav-inner-left">
-                        <Link to="">
+                        <Link
+                            to=""
+                            style={{
+                                cursor:
+                                    lightBox === 'nav_lightbox_visible'
+                                        ? 'default'
+                                        : 'pointer',
+                            }}
+                            onClick={(e) => {
+                                if (lightBox === 'nav_lightbox_visible') {
+                                    e.preventDefault();
+                                }
+                            }}
+                        >
                             <NavLogo />
                         </Link>
                     </div>
@@ -125,6 +147,15 @@ function Nav() {
                                 color: 'inherit',
                                 fontSize: '2rem',
                                 verticalAlign: 'baseline',
+                                cursor:
+                                    lightBox === 'nav_lightbox_visible'
+                                        ? 'default'
+                                        : 'pointer',
+                            }}
+                            onClick={(e) => {
+                                if (lightBox === 'nav_lightbox_visible') {
+                                    e.preventDefault();
+                                }
                             }}
                         >
                             <BsFillPersonFill />
@@ -132,7 +163,16 @@ function Nav() {
 
                         <FaBars
                             onClick={() => {
-                                setLightBox('nav_lightbox_visible');
+                                if (lightBox === 'nav_lightbox_hidden') {
+                                    setLightBox('nav_lightbox_visible');
+                                } else if (
+                                    lightBox === 'nav_lightbox_visible'
+                                ) {
+                                    setLightBox('nav_lightbox_hidden');
+                                }
+                            }}
+                            style={{
+                                cursor: 'pointer',
                             }}
                         />
                     </div>
