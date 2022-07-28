@@ -1,0 +1,214 @@
+@import '../../../../styles/variables.scss';
+
+.cpl-share-post-card {
+    width: 100%;
+    aspect-ratio: 6/7;
+    border: 2px solid $secondary;
+    border-radius: 20px;
+    position: relative;
+    backdrop-filter: blur(2px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    overflow: hidden;
+
+    .cpl-spc-avatar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 15%;
+        margin: auto;
+        width: 80%;
+        z-index: -1;
+    }
+
+    .cpl-spc-af-round,
+    .cpl-spc-af-square {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        aspect-ratio: 1/1;
+        border: 2px solid $bgc-D;
+        z-index: -2;
+    }
+
+    .cpl-spc-af-round {
+        bottom: 16%;
+        border-radius: 50%;
+        width: 83%;
+    }
+    
+    .cpl-spc-af-square {
+        bottom: 4.8%;
+        width: 70%;
+    }
+
+    .cpl-spc-info-area {
+        background-color: $secondary-50p;
+        position: relative;
+        margin-top: 100%;
+
+        .cpl-spc-mh-area {
+            width: 16%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid $bgc-L-l;
+            background-color: $bgc-L-l;
+            top: -44%;
+            
+            .cpl-spc-memberhead {
+                width: 400%;
+                position: relative;
+                left: -150%; /* 200% - 50% */
+                top: -45%; /* - 50% + 5% 規避頸部 */
+            }
+        }
+    }
+
+    .cpl-spc-info-abstract {
+        // height: 88px;
+        aspect-ratio: 11/2; /* 先心算估一個比例 */
+        font-size: $fz-subtitle;
+        color: #FFFFFF;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-share-post-card {
+        width: 350px;
+        height: 420px;
+        margin-right: 40px;
+        margin-bottom: 0;
+
+        .cpl-spc-avatar {
+            bottom: 60px;
+        }
+
+        .cpl-spc-info-area {
+            margin-top: 360px;
+
+            .cpl-spc-mh-area {
+                width: 70px;
+                top: -35px;
+            }
+        }
+
+        .cpl-spc-info-abstract {
+            height: 56px; /* 60px - 2px - 2px */
+        }
+    }
+}
+
+// .cpl-spc-ib-inner-right {
+    // outline: 1px solid red;
+// }
+
+.cpl-spc-info-content {
+    display: none;
+    position: absolute;
+    bottom: 20%;
+    color: #FFFFFF;
+}
+
+.cpl-apc-ic-title {
+    font-size: $fz-title;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.cpl-apc-ic-text {
+    font-size: $fz-body;
+    margin-bottom: 1rem;
+}
+
+.cpl-apc-ic-more {
+    display: flex;
+    justify-content: end;
+    font-weight: 500;
+    
+    > p {
+        cursor: pointer;
+        display: inline-block;
+        width: fit-content;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-spc-info-content {
+        bottom: 75px;
+    }
+    
+    .cpl-apc-ic-title,
+    .cpl-apc-ic-text {
+        margin-bottom: 0.75rem;
+    }
+}
+
+.cpl-share-post-card {
+    &:hover {
+        border: 2px solid $primary;
+
+        .cpl-spc-info-area {
+            background-color: $primary-50p;
+        }
+
+        .cpl-spc-info-content {
+            display: block;
+        }
+
+        .cpl-spc-shadow {
+            background-image: linear-gradient(180deg, transparent 30%, #000000)
+            ;
+            opacity: 0.8;
+            position: absolute;
+            top: 0;
+            // 長寬比會變動的地方 用 padding-bottom 處理
+            // aspect-ratio: 1 / 1;
+            width: 100%;
+            padding-bottom: 100%;
+            z-index: -1;
+        }
+
+        @media screen and (min-width: 992px) {
+            .cpl-spc-shadow {
+                bottom: 56px;
+            }
+        }
+    }
+}
+
+.cpl-spc-heart-icon {
+    font-size: 2rem;
+    margin-left: 4vw;
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-spc-heart-icon {
+        margin-left: 5px;
+        position: relative;
+        cursor: pointer;
+        right: -10px;
+    }
+}
+
+.cpl-spc-ib-inner-left {
+    font-size: 125%;
+    padding-left: 20%;
+    // outline: 1px solid green;
+    line-height: normal;
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-spc-ib-inner-left {
+        padding-left: 75px;
+        font-size: $fz-subtitle;
+    }
+}
+
+
+

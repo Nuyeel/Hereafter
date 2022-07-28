@@ -1,0 +1,45 @@
+@import '../../../../styles/variables.scss';
+
+.cpl-searchbar {
+    width: 400px;
+    height: 50px;
+    color: $bgc-D; // TODO: 這是在設定平時的顏色
+    background-color: transparent;
+    border: $secondary 2px solid;
+    border-radius: 10px;
+    padding-left: 20px;
+
+    &:focus {
+        background-color: transparent;
+        color: green; // TODO: 這是在設定 focus 時的
+    }
+
+    &:active {
+        color: red; // TODO: 保險或玩花樣可以設定 因為按 x 會觸發
+    }
+
+    &::placeholder {
+        color: #FFFFFF;
+        line-height: 50px;
+        font-size: 1.5rem;
+        position: relative;
+        top: 5px;
+        right: 40px;
+        font-family: $ff-t;
+        text-align: right;
+    }
+
+    &::-webkit-search-cancel-button{
+        position:relative;
+        right:40px;    
+    }
+}
+
+.cpl-search-icon {
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    position: relative;
+    left: -3rem;
+    top: 5px;
+    cursor: pointer;
+}
