@@ -101,68 +101,62 @@ h3 {
 
 // --------Nav光箱目錄--------------
 
-.nav_lightbox_hidden{
-    background-color: black;
-    opacity: .8;
+.nav_lightbox_hidden {
+    background-color: #000000CC;
     position: fixed;
-    top: 0px;
+    top: 0;
+    bottom: 0;
     width: 100%;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     visibility: hidden;
 }
 
-.nav_lightbox_visible{
-    background-color: black;
-    opacity: .8;
+.nav_lightbox_visible {
+    background-color: #000000CC;
     position: fixed;
-    top: 0px;
+    top: 0;
+    bottom: 0;
     width: 100%;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     visibility: visible;
-    transition: linear .4s;
-    z-index: 500;
+    transition: linear .4s; /* FIXME: 目前無法正確作用 */
+    z-index: 100000;
 }
 
-.nav_lightbox_wrap{
-
+.nav_lightbox_wrap {
     width: 80%;
 
-        >.nav_lightbox_list{
-
-            display: flex;
-            
-                >h2{
-                    color: #FFF;
-                    line-height: 6rem;
-                    margin-right: 25px;
-                }
+    > .nav_lightbox_list {
+        display: flex;
         
-                >h4{
-                    color: #FFF;
-                    line-height: 6rem;
-                    letter-spacing: 0.2rem;
-                }
+        > h2 {
+            color: #FFFFFF;
+            line-height: 6rem;
+            margin-right: 25px;
         }
 
-        .nav_lightbox_list:hover{
-            background-color: #F3F59F;;
-            color: #3C3B67;
-            cursor: pointer;
+        > h4 {
+            color: #FFFFFF;
+            line-height: 6rem;
+            letter-spacing: 0.2rem;
         }
+    }
 
-        .nav_lightbox_list:hover{
-            >h2, h4{
-                color: #3C3B67;
-            }
+    .nav_lightbox_list:hover {
+        background-color: $highlight;
+        cursor: pointer;
+    }
+
+    .nav_lightbox_list:hover {
+        > h2, h4 {
+            color: $bgc-D;
         }
+    }
 }
-
 
 /* ============================================================ */
 /* Background */
