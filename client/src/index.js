@@ -8,10 +8,11 @@ import App from './App';
 import './utils/onWindowResize';
 
 // 這里引入的 css 會套用至全域
+// css reset 的 scss 版本 自行增補了處理 border-box 的部分
 import './styles/reset.scss';
 // 正式上線改用 all.min.css
 import '@fortawesome/fontawesome-free/css/all.css';
-// 共通 css
+// 共通 scss
 import './styles/index.scss';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
