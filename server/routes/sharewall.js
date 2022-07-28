@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const db = require(`${__dirname}/../modules/mysql2-connect`);
 
+// 專用處理 sql 字串的工具，主要 format 與 escape
+const SqlString = require('sqlstring');
+
 // 路由裏面的 Top-level Middlewares
 
 // TODO: 修改貼文標籤的版
@@ -55,20 +58,67 @@ const db = require(`${__dirname}/../modules/mysql2-connect`);
 //     updated_at: '' // 最後編輯時間
 // };
 
-router.route('/').get(async (req, res) => {
-    // query srting: ?search=貓貓
-    console.log(req.query.search);
+// ASK: 會員是否喜歡此貼文的處理層級 (愛心是否實心)
+// 這應該可以偷吃步啦... toggle-like things...
+// ASK: 會員是否收藏此貼文的處理層級 (旗幟是否實心)
+// TODO: 建立一張各會員按讚貼文的對應表
+// TODO: 建立一張會員收藏貼文的對應表
 
-    // sql 前後多留空 多空不會錯 少空會錯
-    const $sql = req.query.search
-        ? ` SELECT * FROM share_avatar_posts WHERE share_post_title like '%${req.query.search}%' `
-        : ` SELECT * FROM share_avatar_posts `;
+// FIXME: 利用中介軟體 JOIN 表單資料後再送出有喜歡資訊的版本
+router
+    .route('/')
+    .get(async (req, res) => {
+        if (req.query.searchtag) {
+            // 如果來的是標籤做標籤搜尋
+            // ASK: Discuss with shinder
+            console.log(req.query.searchtag);
+            // console.log(req.query.search);
 
-    // TODO: 新增 hashtag 條件搜尋
+            // const [results] = await db.query($sql);
+            // console.log(results);
+            // res.json(results);
 
-    const [results] = await db.query($sql);
-    res.json(results);
-});
+            res.json('searchtags');
+        } else {
+            // 如果來的是純文字做標題搜尋或全搜尋
+            // sql 前後多留空 多空不會錯 少空會錯
+            const $sql = req.query.search
+                ? ` SELECT * FROM share_avatar_posts s JOIN member m ON s.member_sid = m.sid WHERE share_post_title like '%${req.query.search}%' ORDER BY created_at DESC `
+                : ` SELECT * FROM share_avatar_posts s JOIN member m ON s.member_sid = m.sid ORDER BY created_at DESC `;
+            const formatSql = SqlString.format($sql, [req.query.search]);
+            console.log(formatSql);
+            const [results] = await db.query(formatSql);
+            // console.log(results);
+            res.json(results);
+        }
+    })
+    .post(async (req, res) => {
+        // 用 POST 方法的話會取得無限捲動的文章
+        // FIXME: 先用 Postman 測試
+        // console.log(req.body.num);
+        const pageNumStart = Number(req.body.num);
+        const pageNumEnd = pageNumStart + 10; // 目前一次十筆
+
+        // FIXME: 只拿需要的資料 先全拿
+        // 寫法一：
+        // const $sql =
+        // ' SELECT * FROM `share_avatar_posts` s JOIN `member` m ON s.member_sid = m.sid ORDER BY created_at DESC LIMIT ?, ? ';
+        // const [results] = await db.query($sql, [pageNumStart, pageNumEnd]);
+        // res.json(results);
+        // DONE: 目前可以成功取得貼文 剩下 setState
+        // DONE: setState() 完成
+
+        // 寫法二：
+        // 先做出 formatSql
+        const $sql =
+            ' SELECT * FROM `share_avatar_posts` s JOIN `member` m ON s.member_sid = m.sid ORDER BY created_at DESC LIMIT ?, ? ';
+        const formatSql = SqlString.format($sql, [pageNumStart, pageNumEnd]);
+        // 這樣寫的好處是可以 console.log
+        // console.log(formatSql);
+        const [results] = await db.query(formatSql);
+        // console.log(results);
+        res.json(results);
+    });
 
 router.route('/tags').get(async (req, res) => {
     const $sql =
