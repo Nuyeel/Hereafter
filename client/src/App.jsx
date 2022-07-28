@@ -28,7 +28,7 @@ import MemberProfileRevise from './pages/MemberProfileRevise';
 import MemberPasswordRevise from './pages/MemberPasswordRevise';
 import MemberEventOrder from './pages/MemberEventOrder/MemberEventOrderForm';
 import MainPage from './pages/MainPage';
-import NotFoundPage from './pages/NotFoundPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
