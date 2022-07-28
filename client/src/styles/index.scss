@@ -99,6 +99,68 @@ h3 {
     }
 }
 
+// --------Nav光箱目錄--------------
+
+.nav_lightbox_hidden{
+    background-color: black;
+    opacity: .8;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.nav_lightbox_visible{
+    background-color: black;
+    opacity: .8;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    transition: linear .4s;
+}
+
+.nav_lightbox_wrap{
+
+    width: 80%;
+
+        >.nav_lightbox_list{
+
+            display: flex;
+            
+                >h2{
+                    color: #FFF;
+                    line-height: 6rem;
+                    margin-right: 25px;
+                }
+        
+                >h4{
+                    color: #FFF;
+                    line-height: 6rem;
+                    letter-spacing: 0.2rem;
+                }
+        }
+
+        .nav_lightbox_list:hover{
+            background-color: #F3F59F;;
+            color: #3C3B67;
+            cursor: pointer;
+        }
+
+        .nav_lightbox_list:hover{
+            >h2, h4{
+                color: #3C3B67;
+            }
+        }
+}
 
 
 /* ============================================================ */
