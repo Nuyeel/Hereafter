@@ -69,11 +69,43 @@
     // npm i eslint-plugin-react-hooks
     // npm i prettier
 
-#### react-three-fiber (three.js)
+#### 希望方塊使用
 
-    // npm i three @react-three/fiber
+    // npm i three 
+    // npm i @react-three/fiber
+    // 因為是必須跟 Real DOM 交互的動畫
+    // 所以會大量使用 useRef()
 
-### 可以考慮使用的套件：
+#### 發送 AJAX (Asynchronous JavaScript and XML) 用
+
+    // npm i axios
+    // ./server/README.md 裏面寫得比較詳細
+    // 至寧老師: 使用 axios 可以延長五到十年的壽命
+
+    // 前端這邊是用 React 作為框架
+    // 所以把 React 中會碰到的問題寫在這裡
+
+    // Ref: https://stackoverflow.com/questions/53332321/react-hook-warnings-for-async-function-in-useeffect-useeffect-function-must-ret
+    // Ref: https://github.com/facebook/react/issues/14326
+    // Redux 作者 (Dan Abramov) 的建議
+    // 因為 useEffect() 是同步的
+    // 其中不能直接使用 async/await function
+    // 所以要多包一層
+    // ex.
+    // 涼枕補上了錯誤處理的部分
+    useEffect(() => {
+        async function fetchMyAPI() {
+            try {
+                let response = await fetch('api/data');
+                response = await response.json();
+                dataSet(response);
+            } catch (error) {
+                console.log('Fetch failed', error);
+            }
+        }
+
+        fetchMyAPI();
+    }, []);
 
 #### styled component 套件
 
@@ -129,6 +161,53 @@
 
     // 缺點是會產生奇怪的 className
     // 但不用開發者工具看不到 而且週下載量不低
+
+#### lodash
+
+    // npm i lodash
+    // 算是一個函式庫
+    // 我想單純是為了使用 chunk 功能先給大家方便
+    // 另外有 deepclone 深層拷貝
+    // 跟 random 可以將陣列任意洗牌
+    // 這些算比較常用
+    // 可以參考中文文檔
+    // Ref: https://www.lodashjs.com/
+    // Ref: https://www.npmjs.com/package/lodash
+
+### 可以考慮使用的套件：
+
+#### 前端表單驗證用
+
+    // 可以考慮用 Formik (React 官方建議) 或 yup (周下載量較高)
+    // Ref: https://www.npmjs.com/package/formik
+    // Ref: https://www.npmjs.com/package/yup
+
+#### 讀取動畫相關
+
+    // 讀取轉圈等待動畫
+    // Ref: https://www.npmjs.com/package/react-spinners
+    // Ref: https://www.npmjs.com/package/react-loader-spinner
+
+    // 讀取文字等待動畫
+    // Ref: https://react.semantic-ui.com/elements/placeholder/
+
+#### checkbox 相關
+
+    // react-checkbox-tree
+    // 主要是關於 :indeterminate (不定核選方塊)
+    // Ref: https://www.npmjs.com/package/react-checkbox-tree
+
+#### UI 相關
+
+    // mui
+    // Ref: https://mui.com/zh/core/
+    // 點左上的漢堡選單看 Components 其實是都有中文翻譯的
+
+#### 還沒有後端時想要模擬從 API 取得 JSON 的話
+
+    // npm i -g json-server
+    // 有權限的問題 所以最好裝在全域
+    // Ref: https://www.npmjs.com/package/json-server
 
 ### 筆記：
 
