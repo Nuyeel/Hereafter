@@ -46,6 +46,8 @@ const app = express();
 const testRouter = require(`${__dirname}/routes/test`);
 const memberRouter = require(`${__dirname}/routes/member`);
 const sharewallRouter = require(`${__dirname}/routes/sharewall`);
+const placeRouter = require(`${__dirname}/routes/place`);
+const rebornRouter = require(`${__dirname}/routes/reborn-cart`);
 
 // 設定路由比對時重視大小寫
 app.set('case sensitive routing', true);
@@ -153,6 +155,10 @@ app.use((req, res, next) => {
 app.use('/test', testRouter);
 app.use('/api/member', memberRouter);
 app.use('/api/sharewall', sharewallRouter);
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb1ab27bf474043ca9365eb0591858b08a66f509
 // TODO: 組員新增路由 Step 3. 在路由宣告的位址撰寫自己的 RESTful API
 
 // 二路 - 活動頁面路由
@@ -160,6 +166,11 @@ app.use('/events', require(__dirname + '/routes/events'));
 
 // 二路 - 活動購物車路由
 app.use('/eventcarts', require(__dirname + '/routes/eventcarts'));
+
+// 良辰吉地
+app.use('/api/place', placeRouter);
+// 轉生購物車
+app.use('/api/reborn-cart', rebornRouter);
 
 // 靜態路由 (Shinder: 最好不要超過三個 效能會不好)
 // 將 '/public' 簡寫為 '/'
