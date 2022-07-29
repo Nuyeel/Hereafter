@@ -321,30 +321,28 @@ h3 {
 /* Header */
 /* ============================================================ */
 .header {
-    // font-size: 50pt;
-    // font-weight: 500;
+    font-weight: 700;
     font-family: $ff-h;
     width: 100%;
     padding-left: 20px;
     padding-top: 10px;
+    margin-bottom: 20px;
     color: $bgc-D;
     letter-spacing: 0.6rem;
     outline: 1px solid red;
-    
-    &::after {
-        content: '';
-        display: block;
-        background-color: $highlight-60p;
-        position: relative;
-        bottom: 10px;
-        right: 20px;
-        width: 33vw;
-        // TODO: height (%)
-        height: 25px;
-        z-index: -1;
-    }
+    position: relative;
 }
 
+.header-baseline-decoration {
+    background-color: $highlight-60p;
+    width: 33vw;
+    // TODO: height (%)
+    height: 25px;
+    position: absolute;
+    left: 0;
+    bottom: -13px;
+    z-index: -1;
+}
 
 /* ============================================================ */
 /* Genie */
