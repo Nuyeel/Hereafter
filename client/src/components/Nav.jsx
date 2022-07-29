@@ -5,8 +5,10 @@
 // DONE: 不完全修復 因為底色要跟著 ThemeContext 更動
 
 // 使用套件
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+
+import ThemeContext, { themes } from '../context/ThemeContext/ThemeContext';
 
 import { ReactComponent as NavLogo } from '../images/Nav/nav_logo.svg';
 import { ReactComponent as NavSoul } from '../images/Nav/nav_soul.svg';
@@ -17,6 +19,8 @@ import { FaBars } from 'react-icons/fa';
 
 function Nav() {
     const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
+
+    const { theme, setTheme } = useContext(ThemeContext);
     const navigate = useNavigate(); //跳轉頁面用
 
     return (
@@ -34,7 +38,7 @@ function Nav() {
                         >
                             投放所介紹
                         </h2>
-                        <h4 class="subtitle">
+                        <h4 className="subtitle">
                             搞不清楚發生什麼事？先來看看這裡吧
                         </h4>
                     </div>
@@ -49,7 +53,7 @@ function Nav() {
                         >
                             投胎速報
                         </h2>
-                        <h4 class="subtitle">最新最即時的投胎資訊都在這</h4>
+                        <h4 className="subtitle">最新最即時的投胎資訊都在這</h4>
                     </div>
 
                     <div className="nav_lightbox_list">
@@ -63,7 +67,7 @@ function Nav() {
                             {/* FIXME: 德 缺字 */}
                             功德撲滿
                         </h2>
-                        <h4 class="subtitle">介紹文字放這邊</h4>
+                        <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
 
                     <div className="nav_lightbox_list">
@@ -76,7 +80,7 @@ function Nav() {
                         >
                             來生形象
                         </h2>
-                        <h4 class="subtitle">介紹文字放這邊</h4>
+                        <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
 
                     <div className="nav_lightbox_list">
@@ -89,7 +93,7 @@ function Nav() {
                         >
                             良辰吉地
                         </h2>
-                        <h4 class="subtitle">介紹文字放這邊</h4>
+                        <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
 
                     <div className="nav_lightbox_list">
@@ -102,7 +106,7 @@ function Nav() {
                         >
                             交流分享
                         </h2>
-                        <h4 class="subtitle">介紹文字放這邊</h4>
+                        <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
                 </div>
             </div>
@@ -137,6 +141,26 @@ function Nav() {
                         >
                             <NavLogo />
                         </Link>
+                    </div>
+                    {/* FIXME: 這是暫時的按鈕 */}
+                    <div
+                        style={{
+                            outline: '1px solid red',
+                            cursor: 'pointer',
+                            color: theme.bgcd,
+                        }}
+                        onClick={() => {
+                            // 注意 setState() 會最後做 所以會印出一樣的 theme
+                            console.log('theme before :', theme);
+                            if (theme.title === 'light') {
+                                setTheme(themes.dark);
+                            } else if (theme.title === 'dark') {
+                                setTheme(themes.light);
+                            }
+                            console.log('theme after :', theme);
+                        }}
+                    >
+                        我換！
                     </div>
                     <div className="nav-inner-right">
                         <NavSoul />
