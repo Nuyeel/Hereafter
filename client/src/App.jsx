@@ -29,6 +29,9 @@ import MemberPasswordRevise from './pages/MemberPasswordRevise';
 import MemberEventOrder from './pages/MemberEventOrder/MemberEventOrderForm';
 import MainPage from './pages/MainPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import Event from './pages/Event';
+import EventList from './pages/Event/EventList';
+import EventDetail from './pages/EventDetail/EventDetail';
 import Place from './pages/Place';
 import RebornCart from './pages/RebornCart';
 
@@ -202,6 +205,37 @@ function App() {
                                     />
                                 }
                             />
+
+                            {/* ============================== */}
+                            {/* 活動列表路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="/events"
+                                element={
+                                    <Event auth={auth} setAuth={setAuth} />
+                                }
+                            >
+                                <Route
+                                    index
+                                    element={
+                                        <EventList
+                                            auth={auth}
+                                            setAuth={setAuth}
+                                        />
+                                    }
+                                />
+                                <Route
+                                    path=":eventSid"
+                                    element={
+                                        <EventDetail
+                                            auth={auth}
+                                            setAuth={setAuth}
+                                        />
+                                    }
+                                />
+                            </Route>
+
+
                             {/* ============================== */}
                             {/* 404 是最後一個路由 */}
                             <Route path="*" element={<NotFoundPage />} />
