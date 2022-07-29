@@ -5,8 +5,11 @@ export const SERVER = 'http://localhost:3500';
 export const API_SHAREWALL = `${SERVER}/api/sharewall`;
 export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tags`;
 
+// 分享牆來生形象靜態路由
+export const STATIC_SHAREWALL_AVA = `${SERVER}/uploads/images/share/ava`;
+
 // 測試部分 (之後可以刪除)
-export const MEMBER_LOGIN = `${SERVER}/member/login`;
+export const MEMBER_LOGIN = `${SERVER}/api/member/login`;
 export const MEMBER_REGISTER = `${SERVER}/member/register`;
 export const FORGOT_PASSWORD = `${SERVER}/member/forgot-password`;
 export const FORGOT_PASSWORD_REVISE = `${SERVER}/member/forgot-password-revise`;
