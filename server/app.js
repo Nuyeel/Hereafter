@@ -124,7 +124,7 @@ app.use((req, res, next) => {
         res.locals.loginUser = jwt.verify(token, process.env.JWT_SECRET);
         // console.log(res.locals.loginUser);
     }
-    // TODO: 所以之後 "如果這個頁面要登入才能使用" 
+    // TODO: 所以之後 "如果這個頁面要登入才能使用"
     // 每次發送 AJAX 都要像這樣
     // const r = await axios(`${AB_LIST_AUTH_GET}?page=${gotoPage}`, {
     //     method: 'GET',
@@ -155,16 +155,11 @@ app.use('/api/member', memberRouter);
 app.use('/api/sharewall', sharewallRouter);
 // TODO: 組員新增路由 Step 3. 在路由宣告的位址撰寫自己的 RESTful API
 
-
-
 // 二路 - 活動頁面路由
 app.use('/events', require(__dirname + '/routes/events'));
 
 // 二路 - 活動購物車路由
 app.use('/eventcarts', require(__dirname + '/routes/eventcarts'));
-
-
-
 
 // 靜態路由 (Shinder: 最好不要超過三個 效能會不好)
 // 將 '/public' 簡寫為 '/'
