@@ -37,9 +37,9 @@ export const headers = {
     place: {
         title: '良辰吉地',
     },
-    // TODO: 頁面名稱: {
-    //     title: '轉生投胎',
-    // },
+    rebornCart: {
+        title: '轉生投胎',
+    },
     // TODO: 頁面名稱: {
     //     title: '投胎結帳',
     // },

@@ -1,0 +1,382 @@
+.reborn-cart-container {
+    .select-row {
+        width: 100%;
+        height: 55vh;
+        max-height: 55vh;
+        border-radius: 16px;
+        background-color: rgba(0, 0, 0, 0.3);
+        margin-top: 15px;
+        display: flex;
+        padding: 25px 0 10px;
+
+        .title {
+            font-size: 22px;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+    }
+
+    .select-ava,
+    .select-place {
+        text-align: center;
+        color: #fff;
+        letter-spacing: 3px;
+        padding: 0 20px;
+        width: 50%;
+        height: 100%;
+    }
+
+    .select-ava {
+        border-right: 1px solid #fff;
+    }
+
+    .ava-wrap {
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 90%;
+    }
+
+    .caret-wrap {
+        padding: 0 5px;
+        text-align: center;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .caret-icon {
+        font-size: 35px;
+    }
+
+    .ava-img {
+        width: 45%;
+    }
+
+    .price {
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .ava-option .price {
+        background-color: rgba(255, 255, 255, 1);
+        padding: 5px 14px;
+        width: 130px;
+        margin: 20px auto 0;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #fff !important;
+    }
+
+    .soul-icon {
+        fill: #81a8e0;
+        width: 30px;
+    }
+
+    .price > span {
+        font-family: 'Noto Sans TC', Arial, sans-serif;
+        font-size: 24px;
+        letter-spacing: 2px;
+        line-height: 0px;
+        color: #81a8e0;
+    }
+
+    /* 良辰吉地 */
+
+    .place-wrap {
+        padding: 15px 25px;
+        height: 90%;
+        width: 100%;
+    }
+
+    .place-options-box,
+    .place-add-btn-box {
+        position: absolute;
+        width: 32%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .place-radio {
+        display: none;
+    }
+
+    .place-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 6px 15px;
+        border-radius: 20px;
+        position: relative;
+        width: 100%;
+        height: 48px;
+    }
+
+    .to-liked-page-add-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 6px 15px;
+        border-radius: 20px;
+        position: relative;
+        width: 100%;
+        height: 48px;
+        background-color: rgba(255, 255, 255, 0.4);
+        font-size: 30px;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.4);
+        transition: 0.3s;
+        width: 93%;
+
+        &:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+
+    .add-btn-fill {
+        opacity: 0;
+    }
+
+    .to-liked-page-add-btn:hover .add-btn-fill,
+    .add-btn-normal {
+        opacity: 1;
+    }
+
+    .to-liked-page-add-btn:hover .add-btn-normal {
+        opacity: 0;
+    }
+
+    .add-btn-icon-wrap {
+        position: relative;
+    }
+
+    .add-btn-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.5s;
+    }
+
+    .place-option-felx {
+        display: flex;
+        align-items: center;
+        z-index: 2;
+    }
+
+    .place-option {
+        background-color: rgba(255, 255, 255, 1);
+        width: 95%;
+
+        &:hover,
+        &.selected {
+            background-color: #f0f8a6;
+            cursor: pointer;
+        }
+
+        .title {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 0;
+        }
+
+        .price {
+            background-color: none;
+        }
+    }
+
+    .place-option-del-btn {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 38px;
+        position: relative;
+        right: -5px;
+        transition: 0.3s;
+
+        &:hover {
+            color: #e97bee;
+        }
+    }
+
+    /* reborn-order-wrap */
+
+    .reborn-order-wrap {
+        width: 100%;
+        height: 22vh;
+        min-height: 20vh;
+        border-radius: 16px;
+        background-color: rgba(0, 0, 0, 0.3);
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-around;
+        padding: 15px;
+    }
+
+    .my-deed-wrap {
+        border-radius: 16px;
+        border: 1px solid #b9ded2;
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 15%;
+        overflow: hidden;
+    }
+
+    .my-deed-wrap-title {
+        background-color: #b9ded2;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .my-deed-wrap-text {
+        color: #5fac93;
+        text-align: center;
+        font-size: 35px;
+        font-weight: bold;
+        padding-top: 6px;
+    }
+
+    .deed-enough-wrap {
+        border-radius: 16px;
+        border: 1px solid #eebcdd;
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 15%;
+        overflow: hidden;
+    }
+
+    .deed-enough-wrap-title {
+        background-color: #eebcdd;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .deed-enough-wrap-text {
+        color: #ff52ba;
+        text-align: center;
+        font-size: 35px;
+        font-weight: bold;
+        padding-top: 6px;
+    }
+
+    .reborn-order-card {
+        width: 65%;
+        border-radius: 16px;
+        border: 1px solid #f3f59f;
+        background-color: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+        height: 100%;
+    }
+
+    .reborn-order-card-title {
+        writing-mode: vertical-rl;
+        padding: 0 15px;
+        background-color: #f3f59f;
+        font: 600 20px 'M PLUS Rounded 1c', sans-serif;
+        color: #222;
+        letter-spacing: 6px;
+        height: 100%;
+    }
+
+    .reborn-order-card-ava {
+        height: 100%;
+
+        > img {
+            height: 100px;
+            position: relative;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+    }
+
+    .reborn-order-card-place > h4 {
+        font-size: 20px;
+        font-weight: normal;
+        margin: 0;
+        line-height: 32px;
+        letter-spacing: 2px;
+    }
+
+    .reborn-order-card-summary {
+        width: 26%;
+
+        table {
+            width: 100%;
+            font-size: 14px;
+            line-height: 26px;
+
+            td {
+                border-collapse: collapse;
+            }
+        }
+
+        tr td {
+            &:nth-child(1) {
+                text-align: left;
+            }
+
+            &:nth-child(2) {
+                text-align: right;
+            }
+        }
+
+        tfoot td {
+            border-top: 1px solid #fff;
+        }
+    }
+
+    .reborn-order-total-price {
+        font-size: 32px;
+        font-weight: bold;
+        color: #ce59e7;
+        padding: 8px 0;
+    }
+
+    .totalTD {
+        vertical-align: bottom;
+    }
+
+    .reborn-order-total-price > .soul-icon {
+        margin-right: 5px;
+        padding-top: 10px;
+    }
+
+    button.reborn-order-card-btn {
+        border: none;
+        background-color: #f3f59f;
+        padding: 15px 10px;
+        margin-right: 8px;
+        height: 90%;
+        border-radius: 12px;
+        transition: 0.3s;
+
+        > p {
+            writing-mode: vertical-lr;
+            font: 600 20px 'M PLUS Rounded 1c', Arial, sans-serif;
+            color: #6247f4;
+            letter-spacing: 1.5px;
+            margin: 0;
+            transform: translate(-2px, 0);
+        }
+
+        .exclamation-mark {
+            font-size: 26px;
+            color: #6247f4;
+            transform: translate(-1px, 0);
+        }
+
+        &:hover {
+            cursor: pointer;
+            transform: translate(-2px, -2px);
+        }
+    }
+}

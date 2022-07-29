@@ -182,7 +182,11 @@ function App() {
                             <Route
                                 path="place"
                                 element={
-                                    <Place auth={auth} setAuth={setAuth} />
+                                    <Place
+                                        auth={auth}
+                                        setAuth={setAuth}
+                                        pageName="place"
+                                    />
                                 }
                             />
                             {/* ============================== */}
@@ -191,7 +195,11 @@ function App() {
                             <Route
                                 path="reborn-cart"
                                 element={
-                                    <RebornCart auth={auth} setAuth={setAuth} />
+                                    <RebornCart
+                                        auth={auth}
+                                        setAuth={setAuth}
+                                        pageName="rebornCart"
+                                    />
                                 }
                             />
                             {/* ============================== */}
@@ -202,8 +210,8 @@ function App() {
                     </ScrolltoTop>
                 </MainContent>
                 {/* <Genie /> */}
-                <Background theme="light" />
-                {/* <Background /> */}
+                {/* <Background theme="light" /> */}
+                <Background />
             </ProviderContainer>
         </BrowserRouter>
     );
