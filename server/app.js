@@ -48,6 +48,8 @@ const memberRouter = require(`${__dirname}/routes/member`);
 const sharewallRouter = require(`${__dirname}/routes/sharewall`);
 const placeRouter = require(`${__dirname}/routes/place`);
 const rebornRouter = require(`${__dirname}/routes/reborn-cart`);
+const eventsRouter = require(`${__dirname}/routes/events`);
+const eventcartsRouter = require(`${__dirname}/routes/eventcarts`);
 
 // 設定路由比對時重視大小寫
 app.set('case sensitive routing', true);
@@ -155,17 +157,16 @@ app.use((req, res, next) => {
 app.use('/test', testRouter);
 app.use('/api/member', memberRouter);
 app.use('/api/sharewall', sharewallRouter);
-<<<<<<< HEAD
-=======
+// <<<<<<< HEAD
+// =======
 
->>>>>>> bb1ab27bf474043ca9365eb0591858b08a66f509
+// >>>>>>> bb1ab27bf474043ca9365eb0591858b08a66f509
 // TODO: 組員新增路由 Step 3. 在路由宣告的位址撰寫自己的 RESTful API
 
 // 二路 - 活動頁面路由
-app.use('/events', require(__dirname + '/routes/events'));
-
+app.use('/events', eventsRouter);
 // 二路 - 活動購物車路由
-app.use('/eventcarts', require(__dirname + '/routes/eventcarts'));
+app.use('/eventcarts', eventcartsRouter);
 
 // 良辰吉地
 app.use('/api/place', placeRouter);
