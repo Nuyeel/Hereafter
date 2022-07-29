@@ -3,13 +3,18 @@ import React from 'react';
 export const themes = {
     dark: {
         title: 'dark',
-        backgroundColor: '#000',
-        color: '#FFF',
+        bgcl: '#3C3B67', // 方便對應
+        bgcd: '#3C3B67', // 方便對應
+        cHeader: '#FFFFFF',
+        bgcHeaderDecor: '#00000033',
     },
     light: {
         title: 'light',
-        backgroundColor: '#FFF',
-        color: '#000',
+        bgcl: '#EDEFF7', // 方便對應
+        bgcd: '#DBE0ED', // 方便對應
+        cHeader: '#3C3B67',
+        bgcHeaderDecor: '#F4F59F9A',
+        // bgcNavD: '#2D2828CC', // 這個要改 key name
     },
 };
 
