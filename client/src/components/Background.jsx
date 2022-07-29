@@ -1,5 +1,9 @@
 // import styled from '@emotion/styled';
 
+import { useContext } from 'react';
+
+import ThemeContext from '../context/ThemeContext/ThemeContext';
+
 // Background Light
 import { ReactComponent as BGLCloudLT } from '../images/Background/bg-L-cloud-left-top.svg';
 import { ReactComponent as BGLMistRTL } from '../images/Background/bg-L-mist-right-top-L.svg';
@@ -15,16 +19,16 @@ import { ReactComponent as BGDStarR } from '../images/Background/bg-D-star-right
 
 // TODO: 調整切換背景的動畫 底色換完 svg 再從兩側滑入應該較易實作
 
-function Background(props) {
-    const { theme } = props;
+function Background() {
+    const { theme } = useContext(ThemeContext);
 
     return (
         <div
             className={`background ${
-                theme === 'light' ? '' : 'background-dark'
+                theme.title === 'light' ? '' : 'background-dark'
             }`}
         >
-            {theme === 'light' ? (
+            {theme.title === 'light' ? (
                 <>
                     <BGLCloudLT className="bg-L-cloud-left-top" />
                     <BGLMistRTL className="bg-L-mist-right-top-L" />
