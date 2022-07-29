@@ -83,7 +83,7 @@ function Nav() {
                         <h2
                             className="nav_link"
                             onClick={() => {
-                                navigate('#/', { replace: true });
+                                navigate('/Place', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
                             }}
                         >

@@ -29,6 +29,8 @@ import MemberPasswordRevise from './pages/MemberPasswordRevise';
 import MemberEventOrder from './pages/MemberEventOrder/MemberEventOrderForm';
 import MainPage from './pages/MainPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import Place from './pages/Place';
+import RebornCart from './pages/RebornCart';
 
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
@@ -174,6 +176,25 @@ function App() {
                                     />
                                 }
                             />
+                            {/* ============================== */}
+                            {/* 良辰吉地路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="place"
+                                element={
+                                    <Place auth={auth} setAuth={setAuth} />
+                                }
+                            />
+                            {/* ============================== */}
+                            {/* 轉生購物車路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="reborn-cart"
+                                element={
+                                    <RebornCart auth={auth} setAuth={setAuth} />
+                                }
+                            />
+                            {/* ============================== */}
                             {/* 404 是最後一個路由 */}
                             <Route path="*" element={<NotFoundPage />} />
                         </Routes>

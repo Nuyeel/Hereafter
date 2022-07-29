@@ -5,6 +5,12 @@ export const SERVER = 'http://localhost:3500';
 export const API_SHAREWALL = `${SERVER}/api/sharewall`;
 export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tags`;
 
+// 良辰吉地
+export const PLACE_GETDATA_API = `${SERVER}/api/place`;
+
+// 轉生購物車
+export const PLACE_CARTDATA_API = `${SERVER}/api/reborn-cart`;
+
 // 測試部分 (之後可以刪除)
 export const MEMBER_LOGIN = `${SERVER}/member/login`;
 export const MEMBER_REGISTER = `${SERVER}/member/register`;
