@@ -256,6 +256,8 @@ router.route('/member/login').post(async (req, res) => {
             row.sid,
             token,
             // 用 JavaScript 當前毫秒數 + 20 分鐘存入
+            // TODO: 目前登入後再登出前會永遠登入
+            // 沒有去驗證過不過期 但大專這樣就夠了
             Date.now() + 1200000,
             JSON.stringify(jwtPayload),
         ]);
