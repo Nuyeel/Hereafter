@@ -1,0 +1,37 @@
+@import '../../styles/variables.scss';
+
+// FIXME: 手機版可以直接變長閱讀 桌面版就跳轉吧
+.cpl-post-card-body {
+    border: 2px solid $accent-blue;
+    border-radius: 20px;
+    width: 100%;
+    background-color: #FFFFFF55;
+    backdrop-filter: blur(2px);
+
+    >.row {
+        >.col-lg-6 {
+            position: relative;
+        }
+    }
+}
+
+@media screen and (min-width:992px) {
+    .cpl-post-card-body {
+        // width: 80%;
+        max-height: 70vh;
+        aspect-ratio: 12/7;
+    }
+
+    .cpl-post-card-container {
+        // FIXME: 先隨便抓個數字
+        height: calc(var(--vh, 1vh) * 100 - 120px);
+    }
+}
+
+.cpl-psb-avatar {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
