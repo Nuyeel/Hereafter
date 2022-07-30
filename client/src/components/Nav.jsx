@@ -164,7 +164,18 @@ function Nav() {
                     </div>
                     <div className="nav-inner-right">
                         <NavSoul />
-                        <FaShoppingCart />
+                        <FaShoppingCart
+                            style={{
+                                cursor:
+                                    lightBox === 'nav_lightbox_visible'
+                                        ? 'default'
+                                        : 'pointer',
+                            }}
+                            onClick={() => {
+                                navigate('/ordersteps', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                            }}
+                        />
                         <Link
                             to="login"
                             style={{

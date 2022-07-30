@@ -1,0 +1,65 @@
+.xuan-summary-col{
+
+
+    .xuan-cart-cost{
+      margin-top: 50px;
+      width: 100%;
+      // height: 73%;
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+
+          .xuan-cart-title{
+            margin-bottom: 50px;
+          }      
+
+
+          .xuan-donate-cost, .xuan-volunteer-cost{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 15px;
+            margin-top: 20px;
+          }
+
+          .xuan-total-cost{
+            text-align: right;
+            border-top: 1px solid rgb(193, 193, 193);
+            margin: auto;
+            margin-top: 65px;
+            width: 90%;
+            padding-top: 40px;
+
+              >h4{
+                margin-top: 10px;
+              }
+          }
+
+
+    }
+
+
+
+
+
+}
+
+
+// .xuan-good-sum{
+//   width: 100%;
+//   height: 12%;
+// }
+
+// .xuan-num-choose{
+//   width: 10%;
+  
+// }
+
+// .xuan-num-choose>*{
+//   margin: 5px;
+//   text-decoration: none;
+// }
+
+
+
