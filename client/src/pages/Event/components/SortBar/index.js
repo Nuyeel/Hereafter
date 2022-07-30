@@ -6,8 +6,8 @@ function SortBar(props) {
         <>
             <div className="btn-group">
                 <select
-                    className="form-select form-select-sm"
-                    aria-label=".form-select-sm example"
+                    className="xuan-form-select xuan-form-select-sm"
+                    aria-label="xuan-form-select-sm xuan-example"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
                 >

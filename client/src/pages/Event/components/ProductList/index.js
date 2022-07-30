@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../../../styles/index.scss';
 import '../../_xuan_styles.scss';
 
 import soul from '../../imgs/soul.svg';
-import location from '../../imgs/location.png';
 
 
 

@@ -4,7 +4,7 @@ function SearchBar(props) {
     const { searchWord, setSearchWord } = props;
     return (
         <>
-            <div className="input-group">
+            <div className="xuan-input-group">
                 <input
                     type="text"
                     className="xuan-input-text form-control"

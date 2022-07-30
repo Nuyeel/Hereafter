@@ -7,7 +7,6 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 const EventDetail = () => {
-
     // 此段模擬會員登入------------------------------------------------------
     let memberlogin = {
         authorized: true,
@@ -68,16 +67,15 @@ const EventDetail = () => {
             });
     };
 
-
     return (
         <>
-            <div className="eventdetail-container">
+            <div className="xuan-eventdetail-container">
                 <div className="row">
                     {/* 左方活動內容 */}
                     <div className="col-8">
                         {/* 考慮不放麵包屑 */}
                         <button
-                            className="xuan-btn intro-bread"
+                            className="xuan-btn xuan-intro-bread"
                             onClick={() => {
                                 navigate('/events', { replace: true });
                             }}
@@ -86,8 +84,8 @@ const EventDetail = () => {
                             返回上一頁
                         </button>
 
-                        <div className="intro-box">
-                            <div className="intro-img">
+                        <div className="xuan-intro-box">
+                            <div className="xuan-intro-img">
                                 <img src="" alt="" />
                             </div>
 
@@ -116,12 +114,15 @@ const EventDetail = () => {
 
                     {/* 右方按鈕+評論 */}
                     <div className="col-4">
-                        <div className="btn-wrap">
+                        <div className="xuan-btn-wrap">
                             {/* 參加 group */}
-                            <div className="buy-btn">
+                            <div className="xuan-buy-btn">
                                 {eventDetail.map((v, i) => {
                                     return (
-                                        <div className="cost-price" key={v.sid}>
+                                        <div
+                                            className="xuan-cost-price"
+                                            key={v.sid}
+                                        >
                                             <p>贊助費用</p>
                                             <h2>{v.price}</h2>
                                             <p>陰德值獎勵</p>
@@ -130,7 +131,7 @@ const EventDetail = () => {
                                     );
                                 })}
 
-                                <div className="btn-group">
+                                <div className="xuan-btn-group">
                                     {/* 會員檢查: 沒登入跳通知 */}
 
                                     {/* {authorized ? (
@@ -177,7 +178,7 @@ const EventDetail = () => {
                                     )} */}
 
                                     <button
-                                        className="btn-m btn-pri"
+                                        className="xuan-btn-m xuan-btn-pri"
                                         onClick={() => {
                                             navigate('/events', {
                                                 replace: true,
@@ -189,24 +190,24 @@ const EventDetail = () => {
                                 </div>
                             </div>
 
-                            <div className="comment-group">
+                            <div className="xuan-comment-group">
                                 <SimpleBar style={{ maxHeight: 300 }}>
-                                    <div className="comment-item">
+                                    <div className="xuan-comment-item">
                                         <p>評論內容</p>
                                     </div>
-                                    <div className="comment-item">
+                                    <div className="xuan-comment-item">
                                         <p>評論內容</p>
                                     </div>
-                                    <div className="comment-item">
+                                    <div className="xuan-comment-item">
                                         <p>評論內容</p>
                                     </div>
-                                    <div className="comment-item">
+                                    <div className="xuan-comment-item">
                                         <p>評論內容</p>
                                     </div>
-                                    <div className="comment-item">
+                                    <div className="xuan-comment-item">
                                         <p>評論內容</p>
                                     </div>
-                                    <div className="comment-item">
+                                    <div className="xuan-comment-item">
                                         <p>評論內容</p>
                                     </div>
                                 </SimpleBar>

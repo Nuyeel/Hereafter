@@ -4,7 +4,8 @@ import { Event_List_GET } from '../../config/ajax-path';
 
 // scss
 import './_eventlist.scss';
-import '../../styles/index.scss';
+import './_xuan_styles.scss';
+
 
 // 改為資料夾方式中的index.js
 import FilterBar from './components/FilterBar';

@@ -1,3 +1,11 @@
+/* 正式上線改用 bootstrap-grid.min.css */
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
+/* 引入自定義變數 */
+@import '../../styles/variables.scss';
+
+
+
 a{
   text-decoration: none;
 }
@@ -26,7 +34,7 @@ a{
   margin-top: 38px;
 }
 
-.event-container li{
+.event-container >li{
   list-style: none;
   background-color: white;
   border-radius: 10px;
@@ -38,7 +46,7 @@ a{
   padding: 10px;
 }
 
-.event-container li:nth-child(1){
+.event-container >li:nth-child(1){
   margin-left: auto;
 }
 
@@ -182,7 +190,7 @@ a{
   margin: auto;
 }
 
-.page-soul img{
+.page-soul >img{
   margin: 5px; 
 }
 

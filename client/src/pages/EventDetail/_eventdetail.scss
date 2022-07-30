@@ -1,4 +1,15 @@
-.eventdetail-container{
+/* 正式上線改用 bootstrap-grid.min.css */
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
+/* 引入自定義變數 */
+@import '../../styles/variables.scss';
+
+
+
+
+
+
+.xuan-eventdetail-container{
   width: 100%;
   height: 85%;
   margin: auto;
@@ -9,18 +20,18 @@
 }
 
 
-.eventdetail-container .row{
+.xuan-eventdetail-container .row{
   width: 85%;
   height: 100%;
   margin: auto;
 }
 
-.intro-bread{
+.xuan-intro-bread{
   height: 5%;
   color: black;
 }
 
-.intro-box{
+.xuan-intro-box{
   width: 80%;
   height: 85%;
   background-color: white;
@@ -28,11 +39,11 @@
   padding: 30px 35px;
 }
 
-.intro-box>*{
+.xuan-intro-box>*{
   margin-bottom: 10px;
 }
 
-.intro-img{
+.xuan-intro-img{
   width: 90%;
   height: 50%;
   background-color: gray;
@@ -41,7 +52,7 @@
   margin-bottom: 15px;
 }
 
-.comment-item{
+.xuan-comment-item{
   border-radius: 15px;
   background-color: white;
   width: 90%;
@@ -49,7 +60,7 @@
   margin-bottom: 15px;
 }
 
-.buy-btn{
+.xuan-buy-btn{
   width: 75%;
   height:150px;
   border-radius: 15px;
@@ -59,20 +70,20 @@
   display: flex;
 }
 
-.buy-btn p{
+.xuan-buy-btn >p{
   color: white;
   margin-top: 15px;
 }
 
-.buy-btn h2{
+.xuan-buy-btn >h2{
   color: #F3F59F;
 }
 
-.cost-price, .btn-group{
+.xuan-cost-price, .xuan-btn-group{
   width: 100%;
 }
 
-.btn-group button{
+.xuan-btn-group >button{
   width: 100%;
   margin-top: 15px;
 }
