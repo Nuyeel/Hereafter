@@ -23,14 +23,14 @@ import 'simplebar/dist/simplebar.min.css';
 
 const EventDetail = () => {
     // 此段模擬會員登入------------------------------------------------------
-    let memberlogin = {
-        authorized: true,
-        sid: 100,
-        account: 'membertest',
-        token: '12345',
-    };
+    // let memberlogin = {
+    //     authorized: true,
+    //     sid: 100,
+    //     account: 'membertest',
+    //     token: '12345',
+    // };
 
-    localStorage.setItem('auth', JSON.stringify(memberlogin));
+    // localStorage.setItem('auth', JSON.stringify(memberlogin));
 
     // 此段模擬會員登出------------------------------------------------------
     // let memberlogout = {
