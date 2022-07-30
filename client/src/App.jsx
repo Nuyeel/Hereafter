@@ -2,9 +2,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Context
-// import HeaderContext, { headers } from './context/HeaderContext/HeaderContext';
-
 // 共通組件
 import ProviderContainer from './context/ProviderContainer';
 import ScrolltoTop from './components/ScrolltoTop';
@@ -29,8 +26,8 @@ import MemberPasswordRevise from './pages/MemberPasswordRevise';
 import MemberEventOrder from './pages/MemberEventOrder/MemberEventOrderForm';
 import MainPage from './pages/MainPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import Place from './pages/Place';
-import RebornCart from './pages/RebornCart';
+// import Place from './pages/Place';
+// import RebornCart from './pages/RebornCart';
 
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
@@ -179,7 +176,7 @@ function App() {
                             {/* ============================== */}
                             {/* 良辰吉地路由 */}
                             {/* ============================== */}
-                            <Route
+                            {/* <Route
                                 path="place"
                                 element={
                                     <Place
@@ -188,11 +185,11 @@ function App() {
                                         pageName="place"
                                     />
                                 }
-                            />
+                            /> */}
                             {/* ============================== */}
                             {/* 轉生購物車路由 */}
                             {/* ============================== */}
-                            <Route
+                            {/* <Route
                                 path="reborn-cart"
                                 element={
                                     <RebornCart
@@ -201,7 +198,7 @@ function App() {
                                         pageName="rebornCart"
                                     />
                                 }
-                            />
+                            /> */}
                             {/* ============================== */}
                             {/* 404 是最後一個路由 */}
                             <Route path="*" element={<NotFoundPage />} />
@@ -210,8 +207,7 @@ function App() {
                     </ScrolltoTop>
                 </MainContent>
                 {/* <Genie /> */}
-                {/* <Background theme="light" /> */}
-                <Background />
+                <Background theme="light" />
             </ProviderContainer>
         </BrowserRouter>
     );
