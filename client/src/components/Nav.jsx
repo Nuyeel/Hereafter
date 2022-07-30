@@ -147,7 +147,7 @@ function Nav() {
                         style={{
                             outline: '1px solid red',
                             cursor: 'pointer',
-                            color: theme.bgcd,
+                            color: theme.bcAvatarFrame,
                         }}
                         onClick={() => {
                             // 注意 setState() 會最後做 所以會印出一樣的 theme
