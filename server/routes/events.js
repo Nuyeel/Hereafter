@@ -50,6 +50,8 @@ router.get('/:sid?', async (req, res) => {
     results.forEach((value) => {
         const mo = dayjs(value.start).format('YYYY-MM-DD');
         value.start = mo;
+        const me = dayjs(value.end).format('YYYY-MM-DD');
+        value.end = me;
     });
 
     console.log(results);
