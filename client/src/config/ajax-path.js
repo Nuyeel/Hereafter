@@ -23,3 +23,8 @@ export const MEMBER_PROFILE = `${SERVER}/member/profile`;
 export const MEMBER_PROFILE_REVISE = `${SERVER}/member/profile-revise`;
 export const MEMBER_PASSWORD_REVISE = `${SERVER}/member/profile-password-revise`;
 export const MEMBER_EVENT_ORDER = `${SERVER}/member/profile-event-order`;
+
+// 活動列表
+export const Event_List_GET = `${SERVER}/events `;
+// 活動購物車(增加商品)
+export const Event_Cart_ADD_POST = `${SERVER}/eventcarts/addcart `;

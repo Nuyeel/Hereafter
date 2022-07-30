@@ -4,16 +4,12 @@ const db = require(__dirname + '/../modules/mysql2-connect'); // 建立跟資料
 const dayjs = require('dayjs'); // day.js
 const upload = require(__dirname + '/../modules/upload-images'); // 處理formdata資料用
 
-// 引入modules裡的date-tools工具(轉換時間格式用)
-// const {toDateString, toDatetimeString} = require(__dirname + '/../modules/date-tools');
-// const moment = require('moment-timezone');
-
 // 把獲得購物車清單的function 獨立寫
 const getUserCart = async (member_sid) => {
     const sql = ` SELECT * FROM event_cart 
-  JOIN npo_act ON event_cart.event_sid = npo_act.sid
-  WHERE member_sid = ?  
-  ORDER BY event_cart.created_at `;
+    JOIN npo_act ON event_cart.event_sid = npo_act.sid
+    WHERE member_sid = ?  
+    ORDER BY event_cart.created_at `;
 
     const [r] = await db.query(sql, [member_sid]);
 
@@ -141,5 +137,22 @@ router.post('/person', upload.none(), async (req, res) => {
 });
 
 // 信用卡資料
+// 一訂要加upload.none() ... 不然資料無法解析
+router.post('/creditcard', upload.none(), async (req, res) => {
+    const sql =
+        'INSERT INTO `event_cart_creditcard`(`member_sid`, `cardnumber`, `cardholder`, `ex_month`, `ex_year`, `cvv`, `credit_created_at`) VALUES (?,?,?,?,?,?, NOW())';
+    const { member_sid, cardnumber, cardholder, ex_month, ex_year, cvv } =
+        req.body;
+    const [result] = await db.query(sql, [
+        member_sid,
+        cardnumber,
+        cardholder,
+        ex_month,
+        ex_year,
+        cvv,
+    ]);
+
+    res.json(req.body);
+});
 
 module.exports = router;
