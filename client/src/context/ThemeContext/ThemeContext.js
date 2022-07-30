@@ -7,6 +7,7 @@ export const themes = {
         bgcd: '#3C3B67', // 方便對應
         cHeader: '#FFFFFF',
         bgcHeaderDecor: '#00000033',
+        bcAvatarFrame: '#FFE9F6', // bc for Border Color
     },
     light: {
         title: 'light',
@@ -14,6 +15,7 @@ export const themes = {
         bgcd: '#DBE0ED', // 方便對應
         cHeader: '#3C3B67',
         bgcHeaderDecor: '#F4F59F9A',
+        bcAvatarFrame: '#3C3B67',
         // bgcNavD: '#2D2828CC', // 這個要改 key name
     },
 };
