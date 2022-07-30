@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import axios from 'axios';
 
-import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.css';
+// import SimpleBar from 'simplebar-react';
+// import 'simplebar/dist/simplebar.css';
 
 // scss
 import 'overlayscrollbars/css/OverlayScrollbars.css';
-import '../../styles/test.scss'; // 用來換掉 scroll bar 的樣式
+// import '../../styles/test.scss'; // 用來換掉 scroll bar 的樣式
 
 // Context
 import HeaderContext, {
@@ -25,7 +25,7 @@ import { API_SHAREWALL } from '../../config/ajax-path';
 import ShareWallTagbar from './components/ShareWallTagbar';
 import ShareWallSearchBar from './components/ShareWallSearchBar';
 import SharePostCard from './components/SharePostCard';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function ShareWallList(props) {
     const { pageName } = props;
@@ -84,10 +84,11 @@ function ShareWallList(props) {
             {/* 實務上永遠捲不完 先不要處理 */}
             <OverlayScrollbarsComponent
                 options={{
-                    // className: 'os-host-flexbox', // 預設為 os-theme-dark
+                    // className: 'os-theme-dark spc-osbc', // 預設為 os-theme-dark
                     // className: "String", // 類別名稱
                     // resize: 'String', // 可否調整大小的設定 n, b, h, or v.
-                    // paddingAbsolute: false,
+                    // normalizeRTL: false,
+                    // paddingAbsolute: true,
                     // clipAlways: false,
                     overflowBehavior: {
                         x: 'scroll',
