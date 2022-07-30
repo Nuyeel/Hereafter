@@ -155,10 +155,6 @@ app.use((req, res, next) => {
 app.use('/test', testRouter);
 app.use('/api/member', memberRouter);
 app.use('/api/sharewall', sharewallRouter);
-<<<<<<< HEAD
-=======
-
->>>>>>> bb1ab27bf474043ca9365eb0591858b08a66f509
 // TODO: 組員新增路由 Step 3. 在路由宣告的位址撰寫自己的 RESTful API
 
 // 二路 - 活動頁面路由
