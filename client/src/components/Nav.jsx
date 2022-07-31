@@ -153,8 +153,13 @@ function Nav() {
                             // 注意 setState() 會最後做 所以會印出一樣的 theme
                             // console.log('theme before :', theme);
                             if (theme.title === 'light') {
+                                // DONE: 存進去 localStorage
+                                // FIXME: 如果要記憶會員 要跟資料庫連線
+                                // 而且這個資料庫的檔案順位要高於 localStorage
+                                localStorage.setItem('theme', 'dark');
                                 setTheme(themes.dark);
-                            } else if (theme.title === 'dark') {
+                            } else {
+                                localStorage.setItem('theme', 'light');
                                 setTheme(themes.light);
                             }
                             // console.log('theme after :', theme);
