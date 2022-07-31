@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+import { descrement, increment } from '../../features/counter/counterSlice';
+
 // react icons
 import { BiTimeFive } from 'react-icons/bi';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
@@ -23,6 +27,11 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 const EventDetail = () => {
+    // Redux
+    const count = useSelector((state) => state.counter.value);
+    const dispatch = useDispatch();
+
+
     // 此段模擬會員登入------------------------------------------------------
     // let memberlogin = {
     //     authorized: true,
@@ -239,6 +248,7 @@ const EventDetail = () => {
                                         onClick={() => {
                                             fetchEventAddCart();
                                             alert('商品已加至購物車');
+                                            dispatch(increment());
                                         }}
                                     >
                                         <FaShoppingCart /> 加入購物車
@@ -259,6 +269,7 @@ const EventDetail = () => {
                                     <button
                                         className="xuan-btn-m xuan-btn-pri"
                                         onClick={() => {
+                                            dispatch(increment());
                                             navigate('/ordersteps', {
                                                 replace: true,
                                             });
