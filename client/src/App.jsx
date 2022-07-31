@@ -29,6 +29,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Event from './pages/Event';
 import EventList from './pages/Event/EventList';
 import EventDetail from './pages/EventDetail/EventDetail';
+import OrderSteps from './pages/OrderSteps';
 // import Place from './pages/Place';
 // import RebornCart from './pages/RebornCart';
 
@@ -230,6 +231,15 @@ function App() {
                                     }
                                 />
                             </Route>
+
+                            {/* ============================== */}
+                            {/* 活動購物車路由 */}
+                            {/* ============================== */}
+                            <Route
+                                path="/ordersteps"
+                                element={<OrderSteps />}
+                            />
+
                             {/* ============================== */}
                             {/* 404 是最後一個路由 */}
                             <Route path="*" element={<NotFoundPage />} />

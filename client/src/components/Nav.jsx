@@ -164,8 +164,19 @@ function Nav() {
                     </div>
                     <div className="nav-inner-right">
                         <NavSoul />
-                        <FaShoppingCart />
                         {/* FIXME: 為了 RWD 字體大小不能寫在這裡 */}
+                        <FaShoppingCart
+                            style={{
+                                cursor:
+                                    lightBox === 'nav_lightbox_visible'
+                                        ? 'default'
+                                        : 'pointer',
+                            }}
+                            onClick={() => {
+                                navigate('/ordersteps', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                            }}
+                        />
                         <Link
                             to="login"
                             style={{

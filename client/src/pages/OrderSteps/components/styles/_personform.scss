@@ -1,0 +1,103 @@
+// 對位用DIV(無內容) 
+.xuan-personform-top{
+  height: 10%;
+  width: 100%;
+  // margin-bottom: 3px;
+}
+
+
+.xuan-person-infor-window{
+  width: 95%;
+  height: 100%;
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+
+      .xuan-title-left{
+        width: 80%;
+        line-height: 15px;
+
+          .xuan-check{
+            display: flex;
+
+            >input{
+              margin-right: 5px;
+            }
+          }
+
+
+          .xuan-h5{
+            margin-right: 15px;
+          }
+
+          >p{
+            margin-top: 15px;
+            letter-spacing: 0.1rem;
+            color: rgb(109, 109, 109);
+          }
+      
+      }
+
+
+  
+
+
+}
+
+
+
+
+
+
+
+.xuan-personform{
+  display: flex;
+}
+
+
+.xuan-infor-left{
+  width: 55%;
+}
+
+.xuan-infor-left>input, .xuan-infor-right>input{
+  margin-bottom: 10px;
+}
+
+.xuan-info-gender{
+  display: flex;
+}
+.xuan-gender-group{
+  display: flex;
+
+
+    .xuan-input-radio{
+      margin-right: 3px;
+    }
+
+    .xuan-label{
+      margin-right: 5px;
+    }
+}
+
+.xuan-person-infor-title{
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.xuan-personform-btn-group{
+  width: 100%;
+
+  .xuan-btn-m{
+    margin-right: 15px;
+  }
+}
+
+
+
+.xuan-error-text{
+  color: #FF52BA;
+  letter-spacing: 0.1rem;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+
