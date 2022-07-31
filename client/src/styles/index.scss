@@ -63,34 +63,62 @@ h3 {
 .nav {
     position: fixed;
     top: 0;
-    background-color: $bgc-L-l;
     z-index: 100000;
     outline: 1px solid red;
     
     // 高度由內容撐高
     >.nav-inner {
-        height: $height-nav;
+        height: $height-nav-mobile;
         color: #FFFFFF;
         
         >.nav-inner-right {
             font-size: 2.25rem;
-
+            position: relative;
+            bottom: 2px; // 修正 baseline 問題
+            
             // TODO: 某寬度時只顯示漢堡選單
-            * + * {
-                margin-left: 0.75rem;
+            // FIXME: 這 className 不好 但是辨識度高
+            // DONE: 先暫定為 768px
+            .nir-NavSoul,
+            .nir-FaShoppingCart,
+            .nir-BsFillPersonFill {
+                display: none;
             }
         }
     }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
     .nav {
+        >.nav-inner {
+            height: $height-nav;
+
+            >.nav-inner-right {
+                .nir-NavSoul,
+                .nir-FaShoppingCart,
+                .nir-BsFillPersonFill {
+                    display: inline-block;
+                }
+                * + * {
+                    margin-left: 0.75rem;
+                }
+            }
+        }
+    }
+}
+
+.nav-light {
+    background-color: $bgc-Nav-mobile-light;
+}
+
+@media screen and (min-width: 992px) {
+    .nav-light {
         background-color: transparent;
     }
 }
 
 .nav-dark {
-    background-color: $bgc-Nav-D;
+    background-color: $bgc-Nav-mobile-dark;
 }
 
 @media screen and (min-width: 992px) {
@@ -156,6 +184,57 @@ h3 {
             color: $bgc-D;
         }
     }
+}
+
+/* ============================================================ */
+/* MainContent */
+/* ============================================================ */
+
+.main-padding-top {
+    padding-top: $height-nav-mobile;
+}
+
+@media screen and (min-width: 768px) {
+    .main-padding-top {
+        padding-top: $height-nav;
+    }
+}
+
+/* ============================================================ */
+/* Header */
+/* ============================================================ */
+// FIXME: 目前字體大小是吃 h2 的設定 必須要改成 RWD
+.header {
+    font-weight: 700;
+    font-family: $ff-h;
+    width: 100%;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 0.6rem;
+    outline: 1px solid red;
+    position: relative;
+}
+
+.header-padding-top {
+    padding-top: 20px;
+}
+
+@media screen and (min-width: 992px) {
+    .header-padding-top {
+        padding-top: 10px;
+    }
+}
+
+.header-baseline-decoration {
+    width: 33vw;
+    // FIXME: min-width 要配合字體大小 RWD
+    min-width: 280px;
+    // TODO: height (%)
+    height: 25px;
+    position: absolute;
+    left: 0;
+    bottom: -13px;
+    z-index: -1;
 }
 
 /* ============================================================ */
@@ -353,33 +432,6 @@ h3 {
         //     100% { transform: rotate(0); }
         // }
     }
-}
-
-/* ============================================================ */
-/* Header */
-/* ============================================================ */
-.header {
-    font-weight: 700;
-    font-family: $ff-h;
-    width: 100%;
-    padding-left: 20px;
-    padding-top: 10px;
-    margin-bottom: 20px;
-    color: $bgc-D;
-    letter-spacing: 0.6rem;
-    outline: 1px solid red;
-    position: relative;
-}
-
-.header-baseline-decoration {
-    background-color: $highlight-60p;
-    width: 33vw;
-    // TODO: height (%)
-    height: 25px;
-    position: absolute;
-    left: 0;
-    bottom: -13px;
-    z-index: -1;
 }
 
 /* ============================================================ */
