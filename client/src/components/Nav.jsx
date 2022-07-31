@@ -151,13 +151,13 @@ function Nav() {
                         }}
                         onClick={() => {
                             // 注意 setState() 會最後做 所以會印出一樣的 theme
-                            console.log('theme before :', theme);
+                            // console.log('theme before :', theme);
                             if (theme.title === 'light') {
                                 setTheme(themes.dark);
                             } else if (theme.title === 'dark') {
                                 setTheme(themes.light);
                             }
-                            console.log('theme after :', theme);
+                            // console.log('theme after :', theme);
                         }}
                     >
                         我換！
@@ -165,6 +165,7 @@ function Nav() {
                     <div className="nav-inner-right">
                         <NavSoul />
                         <FaShoppingCart />
+                        {/* FIXME: 為了 RWD 字體大小不能寫在這裡 */}
                         <Link
                             to="login"
                             style={{
