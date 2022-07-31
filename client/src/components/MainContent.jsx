@@ -1,7 +1,3 @@
-import { useContext } from 'react';
-
-import ThemeContext from '../context/ThemeContext/ThemeContext';
-
 import Header from './Header';
 
 // TODO: 記得要修正根據不同的設備高度調整 paddingTop
