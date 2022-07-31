@@ -20,6 +20,8 @@ function TWZipCode(props) {
     return (
         <>
             <select
+                id="test-text"
+                className="xuan-input-text"
                 name="add_city"
                 value={countryIndex}
                 onChange={(e) => {
@@ -43,6 +45,8 @@ function TWZipCode(props) {
                 })}
             </select>
             <select
+                id="test-text"
+                className="xuan-input-text"
                 name="add_town"
                 value={townshipIndex}
                 onChange={(e) => {
