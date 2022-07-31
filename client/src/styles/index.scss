@@ -299,6 +299,16 @@ h3 {
     @media screen and (min-width: 992px) {
         .bg-D-star-left {
             display: block;
+            animation: star-left-flickering 10s infinite;
+        }
+
+        // FIXME: 星星閃爍效果的一種寫法 或許可以想辦法柔和一點
+        @keyframes star-left-flickering {
+            0%   { opacity:1; }
+            15%  { opacity:1; }
+            25%  { opacity:0; }
+            35%  { opacity:1; }
+            100% { opacity:1; }
         }
     }
     
@@ -313,7 +323,35 @@ h3 {
     @media screen and (min-width: 992px) {
         .bg-D-star-right {
             display: block;
+            // animation: star-right-flickering 10s infinite;
+            // animation: star-right-sizing 10s infinite;
+            // animation: star-right-rotating 10s infinite;
         }
+
+        // FIXME: 右邊的星星比較大 比較搶眼 視覺上要更柔和才行
+        // @keyframes star-right-flickering {
+        //     0%   { opacity:1; }
+        //     50%  { opacity:1; }
+        //     75%  { opacity:0; }
+        //     // 85%  { opacity:1; }
+        //     100% { opacity:1; }
+        // }
+
+        // @keyframes star-right-sizing {
+            // 0%   { transform: scale(1); }
+            // 50%  { transform: scale(1); }
+            // 75%  { transform: scale(0.98); }
+            // 85%  { transform: scale(1); }
+            // 100% { transform: scale(1); }
+        // }
+
+        // @keyframes star-right-rotating {
+        //     0%   { transform: rotate(0); }
+        //     50%  { transform: rotate(0); }
+        //     75%  { transform: rotate(1deg) scale(0.99) }
+        //     // 85%  { transform: rotate(0); }
+        //     100% { transform: rotate(0); }
+        // }
     }
 }
 
