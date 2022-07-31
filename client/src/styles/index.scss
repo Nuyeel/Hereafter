@@ -75,6 +75,15 @@ h3 {
             font-size: 2.25rem;
             position: relative;
             bottom: 2px; // 修正 baseline 問題
+
+
+            // 此為Nav上的活動購物車數字
+            // TODO: 目前預設 RWD 時購物車數字直接消失，待討論
+            .nav-xuan-event-cartnum{
+                display: none;
+            }
+
+
             
             // TODO: 某寬度時只顯示漢堡選單
             // FIXME: 這 className 不好 但是辨識度高
@@ -102,6 +111,27 @@ h3 {
                 * + * {
                     margin-left: 0.75rem;
                 }
+
+                // 此為Nav上的活動購物車數字
+                // FIXME: 購物車數字背景顏色待討論
+                // FIXME: 購物車數字目前只有綁定「加入購物車」的按鈕，跟會員id還有localStorage的串聯待處理
+                .nav-xuan-event-cartnum{
+                background-color: red;
+                outline: 1px solid red;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                color: white;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: -2px;
+                left: 55px;
+                font-size: 11px;
+                }
+
+
             }
         }
     }
@@ -185,6 +215,13 @@ h3 {
         }
     }
 }
+
+
+
+
+
+
+
 
 /* ============================================================ */
 /* MainContent */
