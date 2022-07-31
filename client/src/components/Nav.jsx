@@ -2,11 +2,12 @@
 // FIXME: 設計上的問題 行動版捲動時會與 LOGO 部分重疊 不好看
 // DONE: 修復 加上底色即可
 // FIXME: 全頁跳出後 Nav 底色在寬度不足時會暴露
-// DONE: 不完全修復 因為底色要跟著 ThemeContext 更動
+// DONE: 完全修復
+// TODO: 滑動 Navbar 消失可以視情況套用
 
 // 使用套件
 import React, { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import ThemeContext, { themes } from '../context/ThemeContext/ThemeContext';
 
@@ -114,8 +115,10 @@ function Nav() {
             <div
                 // p-0 (如果 container 左右比較寬的話是 padding)
                 // TODO: useContext Theme.Provider
-                className={`nav container-fluid`}
-                // FIXME: 等 ThemeContext 有雛型後要改底色為亮暗色
+                // DONE: 已經會根據 theme 套用 className
+                className={`nav ${
+                    theme.title === 'light' ? 'nav-light' : 'nav-dark'
+                } container-fluid`}
                 style={{
                     backgroundColor:
                         lightBox === 'nav_lightbox_visible'
@@ -125,22 +128,15 @@ function Nav() {
             >
                 <div className="nav-inner container d-flex justify-content-between align-items-center">
                     <div className="nav-inner-left">
-                        <Link
-                            to=""
+                        <NavLogo
                             style={{
-                                cursor:
-                                    lightBox === 'nav_lightbox_visible'
-                                        ? 'default'
-                                        : 'pointer',
+                                cursor: 'pointer',
                             }}
-                            onClick={(e) => {
-                                if (lightBox === 'nav_lightbox_visible') {
-                                    e.preventDefault();
-                                }
+                            onClick={() => {
+                                navigate('', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
                             }}
-                        >
-                            <NavLogo />
-                        </Link>
+                        />
                     </div>
                     {/* FIXME: 這是暫時的按鈕 */}
                     <div
@@ -168,52 +164,41 @@ function Nav() {
                         我換！
                     </div>
                     <div className="nav-inner-right">
-                        <NavSoul />
-                        {/* FIXME: 為了 RWD 字體大小不能寫在這裡 */}
+                        <NavSoul className="nir-NavSoul" />
+
                         <FaShoppingCart
+                            className="nir-FaShoppingCart"
                             style={{
-                                cursor:
-                                    lightBox === 'nav_lightbox_visible'
-                                        ? 'default'
-                                        : 'pointer',
+                                cursor: 'pointer',
                             }}
                             onClick={() => {
                                 navigate('/ordersteps', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
                             }}
                         />
-                        <Link
-                            to="login"
+
+                        <BsFillPersonFill
+                            className="nir-BsFillPersonFill"
                             style={{
-                                color: 'inherit',
-                                fontSize: '2rem',
-                                verticalAlign: 'baseline',
-                                cursor:
-                                    lightBox === 'nav_lightbox_visible'
-                                        ? 'default'
-                                        : 'pointer',
+                                cursor: 'pointer',
                             }}
-                            onClick={(e) => {
-                                if (lightBox === 'nav_lightbox_visible') {
-                                    e.preventDefault();
-                                }
+                            onClick={() => {
+                                navigate('/login', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
                             }}
-                        >
-                            <BsFillPersonFill />
-                        </Link>
+                        />
 
                         <FaBars
+                            className="nir-FaBars"
+                            style={{
+                                cursor: 'pointer',
+                            }}
                             onClick={() => {
                                 if (lightBox === 'nav_lightbox_hidden') {
                                     setLightBox('nav_lightbox_visible');
-                                } else if (
-                                    lightBox === 'nav_lightbox_visible'
-                                ) {
+                                } else {
                                     setLightBox('nav_lightbox_hidden');
                                 }
-                            }}
-                            style={{
-                                cursor: 'pointer',
                             }}
                         />
                     </div>
