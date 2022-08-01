@@ -1,7 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import SoulIcon from '../../Place/components/SoulIcon';
 import { TiDelete } from 'react-icons/ti';
-import { Side } from 'three';
 
 function PlaceOption(props) {
     const { value, selectedPlace, setSelectedPlace, removePlaceFromCart } =

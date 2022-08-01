@@ -96,6 +96,9 @@ function PlaceMap(props) {
             });
             // console.log(newData);
             setFilterGeo(newData);
+        } else if (cityFilter === 'all') {
+            const newData = [];
+            setFilterGeo(newData);
         }
     };
 
@@ -147,7 +150,7 @@ function PlaceMap(props) {
                     placeDisplay={placeDisplay}
                     centerRef={centerRef}
                 />
-                {filterGeo.length > 0 && (
+                {filterGeo.length > 0 ? (
                     <GeoJSON
                         // 給特定的key才可以讓geoJSON rerender
                         key={filterGeo[0].properties.COUNTY_ID}
@@ -160,6 +163,8 @@ function PlaceMap(props) {
                             fillOpacity: 0.2,
                         })}
                     />
+                ) : (
+                    <></>
                 )}
 
                 {/* render 座標 marker */}

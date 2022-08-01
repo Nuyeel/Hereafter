@@ -363,13 +363,14 @@
             transform: translate(0, -1.5px);
         }
 
-        > .title {
+        > .list-card-title {
             padding: 0 20px;
             letter-spacing: 2px;
             font-size: 22px;
             display: flex;
             align-items: center;
             width: 48%;
+            background-color: none;
         }
 
         .yeartitle {

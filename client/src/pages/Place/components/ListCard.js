@@ -23,7 +23,7 @@ function ListCard(props) {
     return (
         <>
             <div className="list-card place-info-card" data-placesid={sid}>
-                <div className="title">
+                <div className="list-card-title">
                     <p className="yeartitle">
                         {year}年 {+month < 10 ? `0${month}` : `${month}`}月
                     </p>

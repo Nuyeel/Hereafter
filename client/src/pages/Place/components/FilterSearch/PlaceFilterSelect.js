@@ -58,6 +58,7 @@ function PlaceFilterSelect(props) {
                         onChange={(e) => {
                             const nowCity = e.target.value;
                             if (nowCity === 'all') {
+                                setCityFilter('all');
                                 filtByCountry(countryFilter, null);
                             } else {
                                 setCityFilter(nowCity);

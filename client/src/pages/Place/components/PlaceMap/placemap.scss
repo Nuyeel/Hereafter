@@ -36,7 +36,7 @@
             position: relative;
             cursor: pointer;
 
-            .title {
+            .list-card-title {
                 display: block;
                 font-size: 18px;
                 width: fit-content;
@@ -174,7 +174,7 @@
                 .map-popup-card {
                     margin: 25px 20px 15px;
 
-                    .title {
+                    .list-card-title {
                         > p {
                             margin: 5px;
                             font-size: 16px;
@@ -228,6 +228,12 @@
                     }
                 }
             }
+        }
+
+        // popup資訊框arrow
+        .leaflet-popup-tip {
+            // background: linear-gradient(to right, #ce59e7 50%, #6247f4 50%);
+            display: none;
         }
     }
 }

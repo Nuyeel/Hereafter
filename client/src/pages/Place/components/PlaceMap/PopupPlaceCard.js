@@ -20,7 +20,7 @@ function PopupPlaceCard(props) {
         <>
             <div className="place-info-card" data-placesid={sid}>
                 <div className="map-popup-card ">
-                    <div className="title">
+                    <div className="list-card-title">
                         <p className="yeartitle">
                             {year}年 {month}月
                         </p>
