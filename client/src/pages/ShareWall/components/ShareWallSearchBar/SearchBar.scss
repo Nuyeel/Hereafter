@@ -7,6 +7,7 @@
     border: $secondary 2px solid;
     border-radius: 10px;
     padding-left: 20px;
+    margin-bottom: 8px;
 
     &:focus {
         background-color: transparent;
@@ -34,6 +35,14 @@
         mask-size: cover;
     }
 }
+
+@media screen and (min-width: 1400px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .cpl-searchbar {
+        margin-bottom: calc(var(--vh, 1vh) * 3);
+    }
+}
+
 
 .cpl-searchbar-light {
     color: $bgc-D; // TODO: 這是在設定平時的顏色

@@ -129,13 +129,7 @@ function ShareWallDetail(props) {
                                         {fakePrice}
                                     </p>
                                     {/* FIXME: 不要寫 inline */}
-                                    <AiFillPlusCircle
-                                        style={{
-                                            fontSize: '3rem',
-                                            color: '#CE59E7',
-                                            // outline: '1px solid red',
-                                        }}
-                                    />
+                                    <AiFillPlusCircle className="cpl-pcb-ivi-ia-AiFillPlusCircle" />
                                     {theme.title === 'dark' ? (
                                         <div className="cpl-pcb-ivi-ia-AiFillPlusCircle-filler"></div>
                                     ) : (

@@ -48,7 +48,7 @@
     }
 }
 
-@media screen and (min-width:992px) {
+@media screen and (min-width: 992px) {
     .cpl-post-card-body {
         min-height: 560px;
         // max-width: calc(var(--vh, 1vh) * 120);
@@ -57,12 +57,20 @@
     }
 }
 
-@media screen and (min-width:1200px) {
+@media screen and (min-width: 1200px) {
     .cpl-post-card-body {
         top: 5px;
         max-width: 1080px;
         max-height: 630px;
         aspect-ratio: 12/7;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-post-card-body {
+        top: -10px;
+        max-width: 1320px;
+        max-height: 770px;
     }
 }
 
@@ -79,17 +87,30 @@
     margin: auto;
 }
 
-@media screen and (min-width:992px) {
+@media screen and (min-width: 768px) {
+    .cpl-pcb-avatar {
+        top: 60px;
+    }
+}
+
+@media screen and (min-width: 992px) {
     .cpl-pcb-avatar {
         max-width: 400px;
         top: 35px;
     }
 }
 
-@media screen and (min-width:1200px) {
+@media screen and (min-width: 1200px) {
     .cpl-pcb-avatar {
         min-width: 440px;
-        top: 30px;
+        top: 40px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-avatar {
+        min-width: 520px;
+        top: 50px;
     }
 }
 
@@ -175,14 +196,14 @@
         font-weight: 700;
         font-size: $fz-body;
         margin-bottom: 12px;
-        outline: 1px solid red;
+        // outline: 1px solid red;
         padding-left: 6%;
     }
 
     .cpl-ivi-detail {
         font-size: $fz-caption;
         margin-bottom: 16px;
-        outline: 1px solid red;
+        // outline: 1px solid red;
         padding-left: 6%;
     }
 }
@@ -221,11 +242,30 @@
     }
 }
 
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-inner-avatar-info{
+        .cpl-ivi-title {
+            font-size: $fz-title;
+            margin-bottom: 16px;
+        }
+    
+        .cpl-ivi-detail {
+            font-size: $fz-body;
+            margin-bottom: 20px;
+        }
+    }
+}
+
 // FIXME: 先簡單處理 baseline 問題 有空再回來處理
 .cpl-pcb-ivi-ia-price {
     font-size: 1.875rem;
     position: relative;
     top: -2px;
+}
+
+.cpl-pcb-ivi-ia-AiFillPlusCircle {
+    font-size: 3rem;
+    color: #CE59E7;
 }
 
 // FIXME: 有問題的話要調整定位
@@ -246,6 +286,31 @@
 
 .cpl-pcb-inner-text-area {
     padding-top: 20px;
+    padding-left: 6% !important;
+    padding-right: 6% !important;
+    position: relative;
+    // outline: 1px solid green;
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-inner-text-area {
+        padding-left: 0 !important;
+        padding-right: 20px !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-inner-text-area {
+        padding-top: 28px;
+        padding-right: 40px !important;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-inner-text-area {
+        padding-top: 34px;
+        padding-right: 50px !important;
+    }
 }
 
 .cpl-pcb-ita-title-area {
@@ -311,7 +376,7 @@
         }
 
         >.cpl-pcb-ita-th-il-account {
-            padding-left: 20px;
+            padding-left: 10px;
             font-size: $fz-subtitle;
         }
     }
@@ -325,7 +390,7 @@
             }
             
             >.cpl-pcb-ita-th-ir-la-likes-number {
-                padding-left: 5px;
+                padding-left: 3px;
             }
         }
         
@@ -337,7 +402,7 @@
             }
     
             >.cpl-pcb-ita-th-ir-la-collects-number {
-                padding-left: 5px;
+                padding-left: 3px;
             }
         }
     }
@@ -386,6 +451,7 @@
 
         >.cpl-pcb-ita-th-inner-right {
             font-size: $fz-subtitle;
+            padding-right: 14px;
         
             >.cpl-pcb-ita-th-ir-likes-area {
                 
@@ -418,12 +484,16 @@
         }
 
         >.cpl-pcb-ita-th-inner-right {
+            padding-right: 0px;
+
             >.cpl-pcb-ita-th-ir-collects-area {
                 margin-left: 12px;
             }
         }
     }
 }
+
+// FIXME: 1400px up RWD
 
 .cpl-pcb-ita-text-content {
     line-height: normal;

@@ -111,7 +111,7 @@ function ShareWallSearchBar(props) {
                     theme.title === 'light'
                         ? 'cpl-searchbar-light'
                         : 'cpl-searchbar-dark'
-                } mb-2`}
+                }`}
                 type="search"
                 ref={searchRef}
                 value={searchParams}

@@ -211,13 +211,13 @@
 .cpl-spc-heart-icon {
     font-size: 2rem;
     margin-left: 4vw; // FIXME: 可能要改用 vh 算
+    cursor: pointer;
 }
 
 @media screen and (min-width: 992px) {
     .cpl-spc-heart-icon {
         margin-left: 5px;
         position: relative;
-        cursor: pointer;
         right: -10px;
     }
 }

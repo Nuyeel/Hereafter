@@ -9,6 +9,7 @@ import axios from 'axios';
 
 // scss
 import 'overlayscrollbars/css/OverlayScrollbars.css';
+import './ShareWallList.scss';
 // import '../../styles/test.scss'; // 用來換掉 scroll bar 的樣式
 
 // Context

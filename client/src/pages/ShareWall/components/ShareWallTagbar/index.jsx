@@ -26,7 +26,7 @@ function Tagbar(props) {
     }, []);
 
     return (
-        <div className="mb-4">
+        <div className="cpl-tagbar">
             {/* TODO: onClick 時將值傳送到搜尋欄中 */}
             {tagList &&
                 tagList.map((v, i) => (
