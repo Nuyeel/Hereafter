@@ -58,11 +58,37 @@ const SqlString = require('sqlstring');
 //     updated_at: '' // 最後編輯時間
 // };
 
-// ASK: 會員是否喜歡此貼文的處理層級 (愛心是否實心)
-// 這應該可以偷吃步啦... toggle-like things...
-// ASK: 會員是否收藏此貼文的處理層級 (旗幟是否實心)
 // TODO: 建立一張各會員按讚貼文的對應表
+// TABLE: share_avatar_likes (一對多)
+// const row = {
+//     share_post_like_sid, // 分享文章按讚流水號 // PK
+//     share_post_sid, // 分享文章流水號 // FK
+//     member_sid, // 留言者 sid // FK
+// }
+// ASK: (感覺是多對多...) 一篇文可以有很多人按讚
+// ASK: 對這個會員來說 按讚哪些文章是重要的嗎
+// ASK: 對這篇文章來說 是誰按了自己讚是重要的嗎 要顯示嗎 (NO!)
+// DONE: 像 comment 一樣處理即可
+// DONE: 新增假資料 會員會按讚 sid 因數的貼文
+
 // TODO: 建立一張會員收藏貼文的對應表
+// TABLE: share_avatar_collects (一對多) (感覺是多對多...)
+// const row = {
+//     share_post_collect_sid, // 分享文章按讚流水號 // PK
+//     share_post_sid, // 分享文章流水號 // FK
+//     member_sid, // 留言者 sid // FK
+// }
+// ASK: (感覺是多對多...) 一篇文可以有很多人收藏
+// ASK: 對這個會員來說 收藏哪些文章是重要的吧 會員中心要用
+// ASK: 對這篇文章來說 是誰收藏了自己是重要的嗎 感覺只有數字重要吧
+// DONE: 像 comment 一樣處理即可
+// DONE: 新增假資料 會員會收藏 11 - sid 因數的貼文
+
+// DONE: 至寧醬: 可以用一個 type 欄位區分 就可以只建兩張表
+// 但一般來說是分開 因為可能用途不同
+
+// ASK: 會員是否喜歡此貼文的處理層級 (愛心是否實心)
+// ASK: 會員是否收藏此貼文的處理層級 (旗幟是否實心)
 
 // FIXME: 利用中介軟體 JOIN 表單資料後再送出有喜歡資訊的版本
 router
@@ -72,9 +98,11 @@ router
             // 如果來的是標籤做標籤搜尋
             // console.log(req.query.searchtag);
 
+            // console.log(res.locals.loginUser); // 取得 token 內容
+
             let searchtagString = '';
             if (!Array.isArray(req.query.searchtag)) {
-                searchtagString = `'${req.query.searchtag}'`;
+                searchtagString = SqlString.escape(req.query.searchtag);
             } else {
                 for (
                     let i = 0, strLength = req.query.searchtag.length;
@@ -84,12 +112,18 @@ router
                     if (i !== 0) {
                         searchtagString += ', ';
                     }
-                    searchtagString += `'${req.query.searchtag[i]}'`;
+                    searchtagString += SqlString.escape(req.query.searchtag[i]);
                 }
             }
             // console.log(searchtagString);
 
-            const $tag_sql = ` SELECT share_post_tag_sid FROM share_avatar_tags WHERE share_post_tag_text IN (${searchtagString}) `;
+            const $tag_sql = ` 
+                SELECT share_post_tag_sid 
+                FROM share_avatar_tags 
+                WHERE share_post_tag_text 
+                IN (${searchtagString}) 
+            `;
+
             const [tag_results] = await db.query($tag_sql);
             // console.log(tag_results);
 
@@ -99,7 +133,8 @@ router
             }
 
             // TODO: 進行標籤搜尋
-            let $searchtag_sql = ' SELECT t1.* FROM ';
+            // DONE: 標籤搜尋 OK
+            let $searchtag_sql = ` SELECT t1.* FROM `;
             let tableIndex = 1;
             for (
                 let i = 0, strLength = tag_results.length;
@@ -107,13 +142,19 @@ router
                 i++
             ) {
                 if (i !== 0) {
-                    $searchtag_sql += ' JOIN ';
+                    $searchtag_sql += ` JOIN `;
                 }
-                $searchtag_sql += ` (SELECT share_post_sid FROM share_avatar_posts_to_tags WHERE share_post_tag_sid = ${tag_results[i].share_post_tag_sid}) t${tableIndex} `;
+                $searchtag_sql += ` 
+                    (SELECT share_post_sid 
+                    FROM share_avatar_posts_to_tags 
+                    WHERE share_post_tag_sid = ${tag_results[i].share_post_tag_sid}) t${tableIndex} 
+                `;
                 if (i !== 0) {
-                    $searchtag_sql += ` ON t${
-                        tableIndex - 1
-                    }.share_post_sid=t${tableIndex}.share_post_sid `;
+                    $searchtag_sql += ` 
+                        ON t${
+                            tableIndex - 1
+                        }.share_post_sid=t${tableIndex}.share_post_sid 
+                    `;
                 }
                 tableIndex++;
             }
@@ -140,17 +181,53 @@ router
                 searchPostsString += `${post_results[i].share_post_sid}`;
             }
             // console.log(searchPostsString);
-            const $sql = ` SELECT * FROM share_avatar_posts s JOIN member m ON s.member_sid = m.sid WHERE share_post_sid IN (${searchPostsString}) ORDER BY created_at DESC `;
+            const $sql = ` 
+                SELECT * 
+                FROM share_avatar_posts s 
+                JOIN member m 
+                ON s.member_sid = m.sid 
+                WHERE share_post_sid 
+                IN (${searchPostsString}) 
+                ORDER BY created_at DESC 
+            `;
+
             // console.log($sql);
             const [results] = await db.query($sql);
             res.json(results);
         } else {
             // 如果來的是純文字做標題搜尋或全搜尋
             // sql 前後多留空 多空不會錯 少空會錯
-            const $search_sql = req.query.search
-                ? ` SELECT * FROM share_avatar_posts s JOIN member m ON s.member_sid = m.sid WHERE share_post_title like '%${req.query.search}%' ORDER BY created_at DESC `
-                : ` SELECT * FROM share_avatar_posts s JOIN member m ON s.member_sid = m.sid ORDER BY created_at DESC `;
-            const formatSql = SqlString.format($search_sql, [req.query.search]);
+            // FIXME: 處理跳脫
+            // DONE: 跳脫 OK
+            let formatSql;
+            if (req.query.search) {
+                const escapeString = SqlString.escape(req.query.search);
+                const likeString = `'%${escapeString.slice(1, -1)}%'`;
+                // console.log(likeString);
+                const $search_sql = ` 
+                    SELECT * 
+                    FROM share_avatar_posts s 
+                    JOIN member m 
+                    ON s.member_sid = m.sid 
+                    WHERE share_post_title 
+                    LIKE ${likeString} 
+                    ORDER BY created_at DESC 
+                `;
+
+                // console.log($search_sql);
+                formatSql = $search_sql;
+            } else {
+                const $search_sql = ` 
+                    SELECT * 
+                    FROM share_avatar_posts s 
+                    JOIN member m 
+                    ON s.member_sid = m.sid 
+                    ORDER BY created_at DESC 
+                `;
+
+                // formatSql = SqlString.format($search_sql);
+                formatSql = $search_sql;
+            }
             // console.log(formatSql);
             const [results] = await db.query(formatSql);
             // console.log(results);
@@ -158,6 +235,24 @@ router
         }
     })
     .post(async (req, res) => {
+        // TODO: 改成 GET 要資料
+        // 之後每次捲動都必須繼承條件來要
+        // ASK: 德醬
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
+        // FIXME: 這個改成 GET
         // 用 POST 方法的話會取得無限捲動的文章
         // FIXME: 先用 Postman 測試
         // console.log(req.body.num);
@@ -175,8 +270,15 @@ router
 
         // 寫法二：
         // 先做出 formatSql
-        const $sql =
-            ' SELECT * FROM `share_avatar_posts` s JOIN `member` m ON s.member_sid = m.sid ORDER BY created_at DESC LIMIT ?, ? ';
+        const $sql = ` 
+            SELECT * 
+            FROM share_avatar_posts s 
+            JOIN member m 
+            ON s.member_sid = m.sid 
+            ORDER BY created_at DESC 
+            LIMIT ?, ? 
+        `;
+
         const formatSql = SqlString.format($sql, [pageNumStart, pageNumEnd]);
         // 這樣寫的好處是可以 console.log
         // console.log(formatSql);
@@ -185,9 +287,56 @@ router
         res.json(results);
     });
 
-router.route('/tags').get(async (req, res) => {
-    const $sql =
-        ' SELECT `share_post_tag_text` FROM `share_avatar_tags` WHERE 1 ORDER BY `share_post_tag_search_times` DESC LIMIT 5; ';
+router.route('/:sharepostID').get(async (req, res) => {
+    if (isNaN(Number(req.params.sharepostID))) {
+        // TODO: 更好的處理方式？
+        console.log('這不是文章ID');
+        return res.json({});
+    }
+
+    // FIXME: 之後要詳細寫出需要的欄位 或許可以加上狀態碼等資訊
+    // 請注意一個是陣列而另一個是物件
+    let results = {
+        postResults: {},
+        postTagResults: [],
+    };
+
+    const $post_sql = ` 
+        SELECT * 
+        FROM share_avatar_posts s
+        JOIN member m 
+        ON s.member_sid = m.sid 
+        WHERE share_post_sid = ${req.params.sharepostID} 
+    `;
+
+    const [[post_results]] = await db.query($post_sql);
+    results.postResults = post_results;
+
+    const $post_tag_sql = ` 
+        SELECT sat.share_post_tag_text, sat.share_post_tag_sid  
+        FROM share_avatar_posts sap 
+        JOIN share_avatar_posts_to_tags saptt 
+        ON sap.share_post_sid = saptt.share_post_sid 
+        JOIN share_avatar_tags sat 
+        ON saptt.share_post_tag_sid = sat.share_post_tag_sid 
+        WHERE sap.share_post_sid = ${req.params.sharepostID} 
+    `;
+
+    const [post_tag_results] = await db.query($post_tag_sql);
+    results.postTagResults = post_tag_results;
+
+    // console.log(results);
+    res.json(results);
+});
+
+router.route('/tagbar/tags').get(async (req, res) => {
+    const $sql = ` 
+        SELECT share_post_tag_text
+        FROM share_avatar_tags 
+        WHERE 1 
+        ORDER BY share_post_tag_search_times DESC 
+        LIMIT 5; 
+    `;
 
     const [results] = await db.query($sql);
     res.json(results);
