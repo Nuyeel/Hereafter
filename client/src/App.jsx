@@ -36,6 +36,7 @@ import EventDetail from './pages/EventDetail/EventDetail';
 import OrderSteps from './pages/OrderSteps';
 import Place from './pages/Place';
 import RebornCart from './pages/RebornCart';
+import Maker from './pages/avatar/maker/Maker';
 
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
@@ -247,7 +248,19 @@ function App() {
                                     path="/ordersteps"
                                     element={<OrderSteps />}
                                 />
-
+                                {/* ============================== */}
+                                {/*  */}
+                                {/* ============================== */}
+                                <Route
+                                    path="/maker"
+                                    element={
+                                        <Maker
+                                            auth={auth}
+                                            setAuth={setAuth}
+                                            pageName="maker"
+                                        />
+                                    }
+                                />
                                 {/* ============================== */}
                                 {/* 404 是最後一個路由 */}
                                 <Route path="*" element={<NotFoundPage />} />
