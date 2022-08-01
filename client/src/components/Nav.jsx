@@ -183,9 +183,13 @@ function Nav() {
                             }}
                         />
 
-
-                            {count === 0 ? '' : <span className='nav-xuan-event-cartnum xuan-notion'>{count}</span>}
-
+                        {count === 0 ? (
+                            ''
+                        ) : (
+                            <span className="nav-xuan-event-cartnum xuan-notion">
+                                {count}
+                            </span>
+                        )}
 
                         <BsFillPersonFill
                             className="nir-BsFillPersonFill"
