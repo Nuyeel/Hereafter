@@ -1,5 +1,9 @@
 import React from 'react';
 
+// 大專可能不會去做到那樣
+// 但更簡潔的寫法是寫成一個 Custom Hook
+// FIXME: 請不要在未知會他人時調整 key name
+
 export const themes = {
     dark: {
         title: 'dark',
@@ -7,6 +11,7 @@ export const themes = {
         bgcd: '#3C3B67', // 方便對應
         cHeader: '#FFFFFF',
         bgcHeaderDecor: '#00000033',
+        bgcMainDiv: '#0000004D',
         bcAvatarFrame: '#FFE9F6', // bc for Border Color
     },
     light: {
@@ -15,8 +20,8 @@ export const themes = {
         bgcd: '#DBE0ED', // 方便對應
         cHeader: '#3C3B67',
         bgcHeaderDecor: '#F4F59F9A',
+        bgcMainDiv: '#FFFFFF55',
         bcAvatarFrame: '#3C3B67',
-        // bgcNavD: '#2D2828CC', // 這個要改 key name
     },
 };
 
