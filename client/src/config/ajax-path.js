@@ -10,6 +10,8 @@ export const STATIC_SHAREWALL_AVA = `${SERVER}/uploads/images/share/ava`;
 
 // 良辰吉地
 export const PLACE_GETDATA_API = `${SERVER}/api/place`;
+export const PLACE_FILTER_COUNTRYDATA_API = `${SERVER}/api/place/country-city`;
+export const PLACE_LIKED_API = `${SERVER}/api/place/liked`;
 
 // 轉生購物車
 export const PLACE_CARTDATA_API = `${SERVER}/api/reborn-cart`;
