@@ -64,7 +64,7 @@ h3 {
     position: fixed;
     top: 0;
     z-index: 100000;
-    outline: 1px solid red;
+    // outline: 1px solid red;
     
     // 高度由內容撐高
     >.nav-inner {
@@ -227,12 +227,12 @@ h3 {
 /* MainContent */
 /* ============================================================ */
 
-.main-padding-top {
+.main-container  {
     padding-top: $height-nav-mobile;
 }
 
 @media screen and (min-width: 768px) {
-    .main-padding-top {
+    .main-container  {
         padding-top: $height-nav;
     }
 }
@@ -248,17 +248,33 @@ h3 {
     padding-left: 20px;
     margin-bottom: 20px;
     letter-spacing: 0.6rem;
-    outline: 1px solid red;
+    // outline: 1px solid red;
     position: relative;
 }
 
-.header-padding-top {
+@media screen and (min-width: 1400px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .header {
+        font-size: 3.5rem;
+    }
+}
+
+.header-container {
     padding-top: 20px;
+    margin-bottom: 16px;
 }
 
 @media screen and (min-width: 992px) {
-    .header-padding-top {
+    .header-container {
         padding-top: 10px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .header-container {
+        padding-top: calc(var(--vh, 1vh) * 3);
+        margin-bottom: calc(var(--vh, 1vh) * 2);
     }
 }
 
