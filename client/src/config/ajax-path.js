@@ -3,7 +3,7 @@ export const SERVER = 'http://localhost:3500';
 
 // 分享牆部分
 export const API_SHAREWALL = `${SERVER}/api/sharewall`;
-export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tags`;
+export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tagbar/tags`;
 
 // 分享牆來生形象靜態路由
 export const STATIC_SHAREWALL_AVA = `${SERVER}/uploads/images/share/ava`;
