@@ -34,8 +34,8 @@ import Event from './pages/Event';
 import EventList from './pages/Event/EventList';
 import EventDetail from './pages/EventDetail/EventDetail';
 import OrderSteps from './pages/OrderSteps';
-// import Place from './pages/Place';
-// import RebornCart from './pages/RebornCart';
+import Place from './pages/Place';
+import RebornCart from './pages/RebornCart';
 
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
@@ -188,30 +188,30 @@ function App() {
                                 {/* ============================== */}
                                 {/* 良辰吉地路由 */}
                                 {/* ============================== */}
-                                {/* <Route
-                                path="place"
-                                element={
-                                    <Place
-                                        auth={auth}
-                                        setAuth={setAuth}
-                                        pageName="place"
-                                    />
-                                }
-                            /> */}
+                                <Route
+                                    path="place"
+                                    element={
+                                        <Place
+                                            auth={auth}
+                                            setAuth={setAuth}
+                                            pageName="place"
+                                        />
+                                    }
+                                />
                                 {/* ============================== */}
                                 {/* 轉生購物車路由 */}
                                 {/* ============================== */}
-                                {/* <Route
-                                path="reborn-cart"
-                                element={
-                                    <RebornCart
-                                        auth={auth}
-                                        setAuth={setAuth}
-                                        pageName="rebornCart"
-                                    />
-                                }
-                            />
-                            {/* ============================== */}
+                                <Route
+                                    path="reborn-cart"
+                                    element={
+                                        <RebornCart
+                                            auth={auth}
+                                            setAuth={setAuth}
+                                            pageName="rebornCart"
+                                        />
+                                    }
+                                />
+                                {/* ============================== */}
                                 {/* 活動列表路由 */}
                                 {/* ============================== */}
                                 <Route
