@@ -9,7 +9,7 @@
         display: flex;
         padding: 25px 0 10px;
 
-        .title {
+        .reborn-cart-main-title {
             font-size: 22px;
             margin: 0;
             margin-bottom: 10px;
@@ -182,7 +182,7 @@
             cursor: pointer;
         }
 
-        .title {
+        .place-option-title {
             font-size: 18px;
             color: #444;
             margin-bottom: 0;
@@ -238,7 +238,7 @@
         text-align: center;
         font-size: 35px;
         font-weight: bold;
-        padding-top: 6px;
+        transform: translate(0, 60%);
     }
 
     .deed-enough-wrap {
@@ -260,7 +260,7 @@
         text-align: center;
         font-size: 35px;
         font-weight: bold;
-        padding-top: 6px;
+        transform: translate(0, 60%);
     }
 
     .reborn-order-card {

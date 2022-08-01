@@ -92,7 +92,7 @@ function RebornCart() {
                 </div> */}
                 <div className="select-row">
                     <div className="select-ava">
-                        <h4 className="title">轉生形象</h4>
+                        <h4 className="reborn-cart-main-title">轉生形象</h4>
                         <div className="ava-wrap">
                             {/* <div className="caret-wrap">
                                 <FaCaretLeft className="caret-icon" />
@@ -107,7 +107,7 @@ function RebornCart() {
                         </div>
                     </div>
                     <div className="select-place">
-                        <h4 className="title">良辰吉地</h4>
+                        <h4 className="reborn-cart-main-title">良辰吉地</h4>
                         <div className="place-wrap">
                             {/* place option */}
                             <div className="place-options-box">

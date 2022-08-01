@@ -32,10 +32,10 @@ function PlaceOption(props) {
                         setSelectedPlace(nowPlaceSid);
                     }}
                 >
-                    <p className="title">
+                    <p className="place-option-title">
                         {year}年{month}月
                     </p>
-                    <p className="title">
+                    <p className="place-option-title">
                         {country} {city} {dist}
                     </p>
                     <div className="price">
