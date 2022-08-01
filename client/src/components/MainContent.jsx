@@ -7,7 +7,7 @@ function MainContent(props) {
     return (
         // 感覺以我們的設計來說不用 <main> 但先維持
         // 各子區域 margin 最好統一是 bottom 來防止 margin collapsing
-        <main role="main" className="main-padding-top flex-shrink-0">
+        <main role="main" className="main-container flex-shrink-0">
             <Header />
             {props.children}
         </main>
