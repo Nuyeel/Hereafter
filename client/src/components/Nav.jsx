@@ -21,11 +21,17 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaBars } from 'react-icons/fa';
 
+// Redux(活動購物車數字)
+import { useSelector, useDispatch } from 'react-redux';
+
 function Nav() {
     const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
     const { theme, setTheme } = useContext(ThemeContext);
     const navigate = useNavigate(); //跳轉頁面用
+
+    // Redux(活動購物車數字)
+    const count = useSelector((state) => state.counter.value);
 
     return (
         <>
@@ -179,6 +185,14 @@ function Nav() {
                                 setLightBox('nav_lightbox_hidden');
                             }}
                         />
+
+                        {count === 0 ? (
+                            ''
+                        ) : (
+                            <span className="nav-xuan-event-cartnum xuan-notion">
+                                {count}
+                            </span>
+                        )}
 
                         <BsFillPersonFill
                             className="nir-BsFillPersonFill"
