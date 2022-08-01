@@ -32,7 +32,7 @@ function Tagbar(props) {
                 tagList.map((v, i) => (
                     <button
                         key={i}
-                        className="tag-item p-2"
+                        className="cpl-tag-item p-2"
                         onClick={(e) => {
                             // ASK: 標籤搜尋與標題搜尋的 RESTful API 設計
                             // console.log(e.target.innerText);
