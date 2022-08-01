@@ -70,23 +70,88 @@ router
     .get(async (req, res) => {
         if (req.query.searchtag) {
             // 如果來的是標籤做標籤搜尋
-            // ASK: Discuss with shinder
-            console.log(req.query.searchtag);
-            // console.log(req.query.search);
+            // console.log(req.query.searchtag);
 
-            // const [results] = await db.query($sql);
-            // console.log(results);
-            // res.json(results);
+            let searchtagString = '';
+            if (!Array.isArray(req.query.searchtag)) {
+                searchtagString = `'${req.query.searchtag}'`;
+            } else {
+                for (
+                    let i = 0, strLength = req.query.searchtag.length;
+                    i < strLength;
+                    i++
+                ) {
+                    if (i !== 0) {
+                        searchtagString += ', ';
+                    }
+                    searchtagString += `'${req.query.searchtag[i]}'`;
+                }
+            }
+            // console.log(searchtagString);
 
-            res.json('searchtags');
+            const $tag_sql = ` SELECT share_post_tag_sid FROM share_avatar_tags WHERE share_post_tag_text IN (${searchtagString}) `;
+            const [tag_results] = await db.query($tag_sql);
+            // console.log(tag_results);
+
+            if (!tag_results.length) {
+                // 沒有匹配的標籤
+                return res.json([]);
+            }
+
+            // TODO: 進行標籤搜尋
+            let $searchtag_sql = ' SELECT t1.* FROM ';
+            let tableIndex = 1;
+            for (
+                let i = 0, strLength = tag_results.length;
+                i < strLength;
+                i++
+            ) {
+                if (i !== 0) {
+                    $searchtag_sql += ' JOIN ';
+                }
+                $searchtag_sql += ` (SELECT share_post_sid FROM share_avatar_posts_to_tags WHERE share_post_tag_sid = ${tag_results[i].share_post_tag_sid}) t${tableIndex} `;
+                if (i !== 0) {
+                    $searchtag_sql += ` ON t${
+                        tableIndex - 1
+                    }.share_post_sid=t${tableIndex}.share_post_sid `;
+                }
+                tableIndex++;
+            }
+            // console.log($searchtag_sql);
+            const [post_results] = await db.query($searchtag_sql);
+            // console.log(post_results);
+
+            if (!post_results.length) {
+                // 沒有匹配的貼文
+                return res.json([]);
+            }
+
+            // TODO: 製作搜尋字串
+            // DONE: 標籤搜尋 OK
+            let searchPostsString = '';
+            for (
+                let i = 0, strLength = post_results.length;
+                i < strLength;
+                i++
+            ) {
+                if (i !== 0) {
+                    searchPostsString += ', ';
+                }
+                searchPostsString += `${post_results[i].share_post_sid}`;
+            }
+            // console.log(searchPostsString);
+            const $sql = ` SELECT * FROM share_avatar_posts s JOIN member m ON s.member_sid = m.sid WHERE share_post_sid IN (${searchPostsString}) ORDER BY created_at DESC `;
+            // console.log($sql);
+            const [results] = await db.query($sql);
+            res.json(results);
         } else {
             // 如果來的是純文字做標題搜尋或全搜尋
             // sql 前後多留空 多空不會錯 少空會錯
-            const $sql = req.query.search
+            const $search_sql = req.query.search
                 ? ` SELECT * FROM share_avatar_posts s JOIN member m ON s.member_sid = m.sid WHERE share_post_title like '%${req.query.search}%' ORDER BY created_at DESC `
                 : ` SELECT * FROM share_avatar_posts s JOIN member m ON s.member_sid = m.sid ORDER BY created_at DESC `;
-            const formatSql = SqlString.format($sql, [req.query.search]);
-            console.log(formatSql);
+            const formatSql = SqlString.format($search_sql, [req.query.search]);
+            // console.log(formatSql);
             const [results] = await db.query(formatSql);
             // console.log(results);
             res.json(results);

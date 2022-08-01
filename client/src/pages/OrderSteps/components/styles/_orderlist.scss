@@ -1,0 +1,125 @@
+
+
+.xuan-all-select-delete{
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 5px;
+  // outline: 1px solid red;
+}
+
+.xuan-all-select-delete>input{
+  margin-left: 35px;
+}
+
+.xuan-all-select-delete>img{
+  margin-left: 180px;
+}
+
+.xuan-cart-list-window{
+  height: 70%;
+}
+
+.xuan-cart-list-wrap{
+  padding-right: 50px;
+}
+
+
+// ---購物車條目CSS------------
+
+.xuan-cart-list{
+  height: 100px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 30px auto;
+  padding-right: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+
+      >.xuan-cart-check{
+        width: 8%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      
+      >.xuan-cart-img{
+        width: 15%;
+        height: 85%;
+        border-radius: 15px;
+        background-color: rgb(188, 188, 188);
+      }
+
+      >.xuan-cart-intro{
+        width: 57%;
+        height: 75%;
+        margin: auto;
+
+            >*{
+              margin-bottom: 12px;
+            }
+
+            >.xuan-subtitle{
+              font-weight: 400;
+            }
+
+            >.xuan-time-location{
+              >.xuan-subtitle{
+                font-weight: 400;
+              }
+            }
+
+
+            >.xuan-cart-intro-title{
+                >span:nth-child(1){
+                  background-color: 
+                  #EDEFF7;
+                  border-radius: 5px;
+                  padding: 2px 5px;
+                  margin-right: 10px;
+                }
+
+                >span:nth-child(2){
+                  font-weight: 400;
+                }
+
+              
+            }
+
+            
+            >.xuan-time-location{
+              display: flex;
+            }
+
+      }
+
+      >.xuan-cost{
+        width: 10%;
+      }
+
+      >.xuan-delete-cross{
+        width: 5%;
+        height: 100%;
+      
+            >img{
+              width: 30%;
+              height: 100%;
+            }
+      
+      }
+
+      
+      
+  
+}
+
+

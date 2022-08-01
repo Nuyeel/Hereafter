@@ -1,0 +1,276 @@
+/* 正式上線改用 bootstrap-grid.min.css */
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
+/* 引入自定義變數 */
+@import '../../styles/variables.scss';
+
+
+
+
+.xuan-eventdetail-container{
+      width: 100%;
+      height: 85%;
+      margin: auto;
+      color: black;
+      list-style: none;
+      position: absolute;
+      top:97px; 
+
+        >.row{
+          width: 85%;
+          height: 100%;
+          margin: auto;
+        }
+
+            >.xuan-intro-bread{
+              height: 5%;
+              color: black;
+            }
+}
+
+
+
+
+.xuan-intro-box{
+  width: 90%;
+  height: 92%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px 35px;
+  position: relative;
+  margin-top: 30px;
+
+      >*{
+        margin-bottom: 10px;
+      }
+
+      .xuan-intro-box-title{
+        background-color: #9587E1;
+        width: 47%;
+        height: 50px;
+        position: absolute;
+        left: 0px;
+        top: -30px;
+        border-radius: 20px 50px 50px 0px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 3px;
+
+          >span{
+            letter-spacing: 0.08em;
+            line-height: 25px;
+          }
+
+      }
+
+      .xuan-intro-img{
+        width: 100%;
+        height: 50%;
+        background-color: rgb(185, 185, 185);
+        border-radius: 15px;
+        margin: auto;
+        margin-bottom: 15px;
+      }
+
+      .xuan-intro-word{
+        width: 100%;
+        letter-spacing: 0.1em;
+        line-height: 30px;
+        color: rgb(119, 119, 119);
+        margin-right: 10px;
+
+
+          >svg{
+            margin-right: 10px;
+            color: rgb(163, 163, 163);
+          }
+ 
+      }
+
+      .xuan-mr{
+        margin-right: 30px;
+      }
+
+
+      .xuan-intro-tag-1{
+        background-color: rgba(227, 132, 242, 0.5);;
+        line-height: 25px;
+        letter-spacing: 0.08em;
+        padding: 7px;
+        border-radius: 7px;
+        margin: auto 5px;
+        color: #3C3B67;
+        
+        >svg{
+          margin-right: 3px;
+        }
+      }    
+
+      .xuan-intro-tag-2{
+        background-color: #F3F59F;
+        line-height: 25px;
+        letter-spacing: 0.08em;
+        padding: 7px;
+        border-radius: 7px;
+        margin: auto 5px;
+        color: #3C3B67;
+
+        >svg{
+          margin-right: 3px;
+        }
+      }      
+  
+}
+
+
+.xuan-btn-wrap{
+  height: 100%;
+  padding-top: 30px;
+
+
+      .xuan-buy-btn{
+        width: 100%;
+        height:200px;
+        background: rgba(0, 0, 0, 0.8);
+        opacity: 0.8;
+        border-radius: 20px;
+        margin-bottom: 15px;
+        padding: 30px 20px;
+        display: flex;
+
+            .xuan-cost-price{
+
+              width: 100%;
+              padding-left: 20px;
+
+              >h2{
+                color: #F3F59F;
+                margin: 0px;
+                padding: 0px;
+              }
+
+              >span{
+                color: white;
+                letter-spacing: 0.1em;
+              }
+              >span:nth-child(3){
+                margin-bottom: 10px;
+                margin-top: 50px;
+              }
+
+              >.xuan-h3{
+                color: white;
+
+                
+              }
+              
+              >.xuan-detail-soul{
+                width: 30px;
+                margin-right: 10px;
+              }
+
+
+            }
+
+
+
+      }
+
+
+
+      .xuan-btn-group{
+        padding-left: 40px;
+
+        >button{
+          margin-bottom: 15px;
+          letter-spacing: 0.2em;
+
+            >svg{
+              margin-right: 6px;
+              padding-bottom: 3px;
+              margin-left: 5px;
+            }
+        }
+
+
+        >button:nth-child(3){
+          background-color: #9587E1;
+        }
+
+      
+      }
+
+
+}
+
+
+
+
+.xuan-comment-group{
+  // outline: 1px solid red;
+}
+
+
+
+.xuan-comment-item{
+  // outline: 1px solid blue;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  background-color: white;
+  width: 100%;
+  height: 95px;
+  margin-bottom: 15px;
+  padding: 10px;
+
+
+      .xuan-comment-avatar{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: gray;
+        // margin-right: 5px;
+      }
+
+
+      .xuan-comment-word-wrap{
+        width: 60%;
+        height: 100%;
+        // outline: 1px solid red;
+        margin:auto  10px;
+        
+      
+          >*{
+            margin-bottom: 10px;
+          }
+
+          .xuan-subtitle{
+              margin-right: 10px;
+          }
+
+          .xuan-body{
+            color: gray;
+          }
+
+          >span{
+            line-height: 1.3rem;
+          }
+      }
+}
+
+
+.xuan-comment-imgupload{
+  width: 20%;
+  height: 100%;
+  background-color: rgb(165, 165, 165);
+  border-radius: 2px;
+}
+
+
+.xuan-comment-chart{
+  height: 50px;
+  // outline: 1px solid red;
+  // margin-bottom: 10px;
+}

@@ -63,34 +63,92 @@ h3 {
 .nav {
     position: fixed;
     top: 0;
-    background-color: $bgc-L-l;
     z-index: 100000;
     outline: 1px solid red;
     
     // 高度由內容撐高
     >.nav-inner {
-        height: $height-nav;
+        height: $height-nav-mobile;
         color: #FFFFFF;
         
         >.nav-inner-right {
             font-size: 2.25rem;
+            position: relative;
+            bottom: 2px; // 修正 baseline 問題
 
+
+            // 此為Nav上的活動購物車數字
+            // TODO: 目前預設 RWD 時購物車數字直接消失，待討論
+            .nav-xuan-event-cartnum{
+                display: none;
+            }
+
+
+            
             // TODO: 某寬度時只顯示漢堡選單
-            * + * {
-                margin-left: 0.75rem;
+            // FIXME: 這 className 不好 但是辨識度高
+            // DONE: 先暫定為 768px
+            .nir-NavSoul,
+            .nir-FaShoppingCart,
+            .nir-BsFillPersonFill {
+                display: none;
             }
         }
     }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
     .nav {
+        >.nav-inner {
+            height: $height-nav;
+
+            >.nav-inner-right {
+                .nir-NavSoul,
+                .nir-FaShoppingCart,
+                .nir-BsFillPersonFill {
+                    display: inline-block;
+                }
+                * + * {
+                    margin-left: 0.75rem;
+                }
+
+                // 此為Nav上的活動購物車數字
+                // FIXME: 購物車數字背景顏色待討論
+                // FIXME: 購物車數字目前只有綁定「加入購物車」的按鈕，跟會員id還有localStorage的串聯待處理
+                .nav-xuan-event-cartnum{
+                background-color: red;
+                outline: 1px solid red;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                color: white;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: -2px;
+                left: 55px;
+                font-size: 11px;
+                }
+
+
+            }
+        }
+    }
+}
+
+.nav-light {
+    background-color: $bgc-Nav-mobile-light;
+}
+
+@media screen and (min-width: 992px) {
+    .nav-light {
         background-color: transparent;
     }
 }
 
 .nav-dark {
-    background-color: $bgc-Nav-D;
+    background-color: $bgc-Nav-mobile-dark;
 }
 
 @media screen and (min-width: 992px) {
@@ -156,6 +214,64 @@ h3 {
             color: $bgc-D;
         }
     }
+}
+
+
+
+
+
+
+
+
+/* ============================================================ */
+/* MainContent */
+/* ============================================================ */
+
+.main-padding-top {
+    padding-top: $height-nav-mobile;
+}
+
+@media screen and (min-width: 768px) {
+    .main-padding-top {
+        padding-top: $height-nav;
+    }
+}
+
+/* ============================================================ */
+/* Header */
+/* ============================================================ */
+// FIXME: 目前字體大小是吃 h2 的設定 必須要改成 RWD
+.header {
+    font-weight: 700;
+    font-family: $ff-h;
+    width: 100%;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 0.6rem;
+    outline: 1px solid red;
+    position: relative;
+}
+
+.header-padding-top {
+    padding-top: 20px;
+}
+
+@media screen and (min-width: 992px) {
+    .header-padding-top {
+        padding-top: 10px;
+    }
+}
+
+.header-baseline-decoration {
+    width: 33vw;
+    // FIXME: min-width 要配合字體大小 RWD
+    min-width: 280px;
+    // TODO: height (%)
+    height: 25px;
+    position: absolute;
+    left: 0;
+    bottom: -13px;
+    z-index: -1;
 }
 
 /* ============================================================ */
@@ -299,6 +415,16 @@ h3 {
     @media screen and (min-width: 992px) {
         .bg-D-star-left {
             display: block;
+            animation: star-left-flickering 10s infinite;
+        }
+
+        // FIXME: 星星閃爍效果的一種寫法 或許可以想辦法柔和一點
+        @keyframes star-left-flickering {
+            0%   { opacity:1; }
+            15%  { opacity:1; }
+            25%  { opacity:0; }
+            35%  { opacity:1; }
+            100% { opacity:1; }
         }
     }
     
@@ -313,38 +439,37 @@ h3 {
     @media screen and (min-width: 992px) {
         .bg-D-star-right {
             display: block;
+            // animation: star-right-flickering 10s infinite;
+            // animation: star-right-sizing 10s infinite;
+            // animation: star-right-rotating 10s infinite;
         }
+
+        // FIXME: 右邊的星星比較大 比較搶眼 視覺上要更柔和才行
+        // @keyframes star-right-flickering {
+        //     0%   { opacity:1; }
+        //     50%  { opacity:1; }
+        //     75%  { opacity:0; }
+        //     // 85%  { opacity:1; }
+        //     100% { opacity:1; }
+        // }
+
+        // @keyframes star-right-sizing {
+            // 0%   { transform: scale(1); }
+            // 50%  { transform: scale(1); }
+            // 75%  { transform: scale(0.98); }
+            // 85%  { transform: scale(1); }
+            // 100% { transform: scale(1); }
+        // }
+
+        // @keyframes star-right-rotating {
+        //     0%   { transform: rotate(0); }
+        //     50%  { transform: rotate(0); }
+        //     75%  { transform: rotate(1deg) scale(0.99) }
+        //     // 85%  { transform: rotate(0); }
+        //     100% { transform: rotate(0); }
+        // }
     }
 }
-
-/* ============================================================ */
-/* Header */
-/* ============================================================ */
-.header {
-    // font-size: 50pt;
-    // font-weight: 500;
-    font-family: $ff-h;
-    width: 100%;
-    padding-left: 20px;
-    padding-top: 10px;
-    color: #FFF;
-    letter-spacing: 0.6rem;
-    outline: 1px solid red;
-    
-    &::after {
-        content: '';
-        display: block;
-        background-color: #00000033;
-        position: relative;
-        bottom: 10px;
-        right: 20px;
-        width: 33vw;
-        // TODO: height (%)
-        height: 25px;
-        z-index: -1;
-    }
-}
-
 
 /* ============================================================ */
 /* Genie */
