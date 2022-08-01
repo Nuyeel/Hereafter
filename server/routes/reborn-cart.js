@@ -5,7 +5,7 @@ const router = express.Router();
 const SqlString = require('sqlstring');
 
 // 假會員id
-const fake_member = 10;
+// const fake_member = 10;
 
 // place_in_cart
 const getPlaceInCart = async (member) => {
