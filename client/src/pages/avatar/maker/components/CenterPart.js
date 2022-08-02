@@ -45,6 +45,7 @@ function CenterPart(props) {
         flex: 0 0 auto;
         padding: 50px 0 0 0;
         box-sizing: border-box;
+        position: relative;
     `;
     const BGSquare = styled.div`
         position: absolute;
@@ -529,6 +530,26 @@ function CenterPart(props) {
         display: ${controlChange ? 'block' : 'none'};
         cursor: pointer;
     `;
+    const Info = styled.div`
+        position: relative;
+        top: -10%;
+        left: 40%;
+    `;
+    const SaveBtn = styled.div`
+        display: ${controlChange ? 'none' : 'flex'};
+        justify-content: center;
+        div {
+            border: 1px solid;
+            padding: 10px 30px;
+            border-radius: 12px;
+            margin: 0 10px;
+            font-size: 20px;
+            cursor: pointer;
+            i {
+                font-size: 24px;
+            }
+        }
+    `;
     return (
         <>
             <Center>
@@ -612,20 +633,24 @@ function CenterPart(props) {
                         }}
                     ></TaleControl>
                     <BodyControl
-                        onClick={() => setControlChange(0)}
+                        onClick={() => {
+                            setControlChange(0);
+                            setBodyControlChange('hand');
+                            setColorControlSwitch(0);
+                        }}
                     ></BodyControl>
                 </div>
-                <div
-                    className="info d-flex justify-content-center"
-                    style={{ display: 'flex' }}
-                >
+                <Info>
+                    <p>總計:3000</p>
+                </Info>
+                <SaveBtn>
                     <div onClick={onButtonClick}>
                         <i className="fa-solid fa-floppy-disk"></i> 儲存
                     </div>
                     <div>
                         <i className="fa-solid fa-dice"></i> 隨機
                     </div>
-                </div>
+                </SaveBtn>
             </Center>
         </>
     );

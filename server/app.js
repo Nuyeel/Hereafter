@@ -25,15 +25,10 @@ const cookieParser = require('cookie-parser');
 // const dayjs = require('dayjs');
 // 跨來源資源共用 (CORS, Cross-Origin Resource Sharing)
 const cors = require('cors');
-// 建立 Session 用 (若之後想改用 JWT, JSON Web Token 可以移除)
-// const session = require('express-session');
-// 將 Session 資料存入資料庫用 (若之後不使用 Session 可以移除)
-// TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫
-// const MySQLStore = require('express-mysql-session')(session);
 // 建立連線池 (Connection Pool) 用
 // const db = require(`${__dirname}/modules/mysql2-connect`);
 // 有第二個參數時忽略第一個 使用既有的連線 (第二個參數)
-// TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫
+// ex.
 // const sessionStore = new MySQLStore({}, db);
 // 測試: http://localhost:3500/test/session/count
 // 使用 JWT 用

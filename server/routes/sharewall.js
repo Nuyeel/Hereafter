@@ -298,9 +298,17 @@ router.route('/:sharepostID').get(async (req, res) => {
     // 請注意一個是陣列而另一個是物件
     let results = {
         postResults: {},
-        postTagResults: [],
+        postTagsResults: [],
+        postCommentsResults: [],
+        loginUserResults: {
+            id: 0, // 預設值 沒有 sid 是 0 的會員
+            account: '',
+            isLiked: false, // 預設沒有按讚
+            isCollected: false, // 預設沒有收藏
+        },
     };
 
+    // 取得貼文內容
     const $post_sql = ` 
         SELECT * 
         FROM share_avatar_posts s
@@ -312,7 +320,8 @@ router.route('/:sharepostID').get(async (req, res) => {
     const [[post_results]] = await db.query($post_sql);
     results.postResults = post_results;
 
-    const $post_tag_sql = ` 
+    // 藉由文章編號取得內含所有標籤中文陣列
+    const $post_tags_sql = ` 
         SELECT sat.share_post_tag_text, sat.share_post_tag_sid  
         FROM share_avatar_posts sap 
         JOIN share_avatar_posts_to_tags saptt 
@@ -322,9 +331,70 @@ router.route('/:sharepostID').get(async (req, res) => {
         WHERE sap.share_post_sid = ${req.params.sharepostID} 
     `;
 
-    const [post_tag_results] = await db.query($post_tag_sql);
-    results.postTagResults = post_tag_results;
+    const [post_tags_results] = await db.query($post_tags_sql);
+    results.postTagsResults = post_tags_results;
 
+    // 取得評論內容並按照留言時間排序
+    // FIXME: 如果有編輯過要多顯示已編輯？
+    const $post_comments_sql = ` 
+        SELECT * 
+        FROM share_avatar_comments sac
+        JOIN member m
+        ON sac.member_sid = m.sid
+        WHERE share_post_sid = ${req.params.sharepostID} 
+        ORDER BY created_at ASC 
+    `;
+
+    const [post_comments_results] = await db.query($post_comments_sql);
+    results.postCommentsResults = post_comments_results;
+
+    // 取得現在登入會員相關狀態 是否收藏 是否按讚 以及頭像 為登入要有預設圖示
+    // FIXME: 為登入會員頭貼素材 尺寸應該完全跟現有素材相同
+    // 要登入狀態才做這些事
+    if (res.locals.loginUser) {
+        // console.log(res.locals.loginUser);
+        results.loginUserResults.id = res.locals.loginUser.id;
+        results.loginUserResults.account = res.locals.loginUser.account;
+
+        // 進行是否按讚確認
+        const $post_isliked_sql = ` 
+            SELECT COUNT(*) 
+            FROM share_avatar_likes 
+            WHERE member_sid = ${res.locals.loginUser.id} 
+            AND share_post_sid = ${req.params.sharepostID} 
+        `;
+
+        // 解構賦職同時改名
+        const [[{ 'COUNT(*)': post_isliked_result }]] = await db.query(
+            $post_isliked_sql
+        );
+        // console.log(post_isliked_result); // 0 或 1
+
+        if (post_isliked_result) {
+            // 如果會員有按讚才需要改
+            results.loginUserResults.isLiked = true;
+        }
+
+        // 進行是否收藏確認
+        const $post_iscollected_sql = ` 
+            SELECT COUNT(*) 
+            FROM share_avatar_collects 
+            WHERE member_sid = ${res.locals.loginUser.id} 
+            AND share_post_sid = ${req.params.sharepostID} 
+        `;
+
+        // 解構賦職同時改名
+        const [[{ 'COUNT(*)': post_iscollected_result }]] = await db.query(
+            $post_iscollected_sql
+        );
+
+        if (post_iscollected_result) {
+            // 如果會員有收藏才需要改
+            results.loginUserResults.isCollected = true;
+        }
+    }
+
+    // 送出最終結果
     // console.log(results);
     res.json(results);
 });

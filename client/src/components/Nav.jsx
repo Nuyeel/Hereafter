@@ -70,7 +70,7 @@ function Nav() {
 
             const result = await r.json();
             //把初始購物車數量先存在localStorage
-            // localStorage.setItem('event_cart_num',result); 
+            // localStorage.setItem('event_cart_num',result);
             //強制Redux的dispatch方法為promise，否則會報錯
             dispatch(eventCartNum(result));
             return;
@@ -131,7 +131,7 @@ function Nav() {
                         <h2
                             className="nav_link"
                             onClick={() => {
-                                navigate('#/', { replace: true });
+                                navigate('/showcase', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
                             }}
                         >
