@@ -42,6 +42,7 @@ import Games from './pages/Games';
 import Place from './pages/Place';
 import RebornCart from './pages/RebornCart';
 import Maker from './pages/avatar/maker/Maker';
+import Showcase from './pages/avatar/showcase/Showcase.js';
 
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
@@ -254,7 +255,20 @@ function App() {
                                     element={<OrderSteps />}
                                 />
                                 {/* ============================== */}
-                                {/*  */}
+                                {/*  我的衣櫃路由*/}
+                                {/* ============================== */}
+                                <Route
+                                    path="/showcase"
+                                    element={
+                                        <Showcase
+                                            auth={auth}
+                                            setAuth={setAuth}
+                                            pageName="showcase"
+                                        />
+                                    }
+                                />
+                                {/* ============================== */}
+                                {/*  來生形象製造器路由*/}
                                 {/* ============================== */}
                                 <Route
                                     path="/maker"
