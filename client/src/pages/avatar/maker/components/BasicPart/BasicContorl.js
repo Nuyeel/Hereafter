@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const BasicC = styled.div`
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 `;
 
 const Btns = styled.div`
@@ -24,7 +24,7 @@ function BasicContorl(props) {
                             width: 90px;
                             border: 1px solid #d259dd;
                             &:hover {
-                                background-color: FloralWhite;
+                                background-color: MintCream;
                             }
                         `;
                         return (

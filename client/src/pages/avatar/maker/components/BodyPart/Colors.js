@@ -1,14 +1,15 @@
-import styled from "@emotion/styled";
-import BodyData from "../BodyData";
+import styled from '@emotion/styled';
+import BodyData from '../BodyData';
 
 const Btns = styled.div`
     padding-top: 5px;
-    padding-right: 80px;
+    padding-right: 20px;
+    padding-left: 10px;
     display: flex;
     flex-wrap: wrap;
 `;
 
-const Colors = (props) => {
+function Colors(props) {
     const {
         conbination,
         setConbination,
@@ -18,13 +19,13 @@ const Colors = (props) => {
     const colors = {
         hand: [],
         foot: [],
-        tale: BodyData["taleColors"],
-        special: BodyData["specialColors"],
+        tale: BodyData['taleColors'],
+        special: BodyData['specialColors'],
     };
     if (colorControlSwitch) {
         return (
             <>
-                <h4>顏色</h4>
+                <h4 style={{ paddingBottom: '15px' }}>顏色</h4>
                 <Btns>
                     {colors[bodyControlChange].map((v, i) => {
                         const Circle = styled.div`
@@ -56,6 +57,6 @@ const Colors = (props) => {
             </>
         );
     }
-};
+}
 
 export default Colors;

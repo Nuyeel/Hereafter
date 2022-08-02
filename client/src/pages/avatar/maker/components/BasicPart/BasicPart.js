@@ -20,17 +20,20 @@ function BasicPart(props) {
     return (
         <>
             <Basic>
-                {basic.map((v, i) => {
-                    return (
-                        <BasicContorl
-                            key={i}
-                            title={v}
-                            conbination={conbination}
-                            setConbination={setConbination}
-                            index={i}
-                        />
-                    );
-                })}
+                <div style={{ marginBottom: '20px' }}>
+                    {basic.map((v, i) => {
+                        return (
+                            <BasicContorl
+                                key={i}
+                                title={v}
+                                conbination={conbination}
+                                setConbination={setConbination}
+                                index={i}
+                            />
+                        );
+                    })}
+                </div>
+
                 <Colors
                     conbination={conbination}
                     setConbination={setConbination}

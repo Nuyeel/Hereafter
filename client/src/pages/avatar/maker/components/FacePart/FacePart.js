@@ -51,7 +51,7 @@ function FacePart(props) {
                                 ? theme.cHeader
                                 : '#888'};
                             padding-right: 15px;
-                            font-size: 18px;
+                            font-size: 22px;
                             z-index: 3;
                             position: relative;
                             &:hover {
@@ -59,7 +59,7 @@ function FacePart(props) {
                                 &:before {
                                     content: '';
                                     display: block;
-                                    background-color: #fff;
+                                    background-color: ${theme.bgcAvatarMaker};
                                     z-index: -1;
                                     height: 40px;
                                     width: 25px;
