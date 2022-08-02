@@ -8,9 +8,12 @@
 // DONE: 完全修復
 // TODO: 滑動 Navbar 消失可以視情況套用
 
+import axios from 'axios';
+
 // 使用套件
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'; //sweetalert2
 
 import ThemeContext, { themes } from '../context/ThemeContext/ThemeContext';
 
@@ -24,14 +27,58 @@ import { FaBars } from 'react-icons/fa';
 // Redux(活動購物車數字)
 import { useSelector, useDispatch } from 'react-redux';
 
+// 會員登入登出驗證
+import AuthContext from '../context/AuthContext/AuthContext';
+
+import {
+    descrement,
+    increment,
+    eventCartNum,
+} from '../features/counter/counterSlice';
+
+// redux
+
 function Nav() {
     const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
     const { theme, setTheme } = useContext(ThemeContext);
     const navigate = useNavigate(); //跳轉頁面用
 
+    // -------------此段處理Redux活動購物車數字-------------------------
+
+    // let event_cart_num = localStorage.getItem('event_cart_num'); //當購物車
+    const dispatch = useDispatch();
+
     // Redux(活動購物車數字)
     const count = useSelector((state) => state.counter.value);
+    // 會員登入登出驗證(auth)
+    const { authorized, sid, account, token } = useContext(AuthContext);
+
+    useEffect(() => {
+        const fetchEventCartNum = async () => {
+            const r = await fetch(
+                `http://localhost:3500/events/eventcartnum/${sid}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type':
+                            'application/x-www-form-urlencoded;charset=UTF-8',
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            const result = await r.json();
+            //把初始購物車數量先存在localStorage
+            // localStorage.setItem('event_cart_num',result); 
+            //強制Redux的dispatch方法為promise，否則會報錯
+            dispatch(eventCartNum(result));
+            return;
+        };
+        fetchEventCartNum();
+    }, [sid]);
+
+    // -------------------------------------------
 
     return (
         <>
@@ -175,16 +222,30 @@ function Nav() {
                     <div className="nav-inner-right">
                         <NavSoul className="nir-NavSoul" />
 
-                        <FaShoppingCart
-                            className="nir-FaShoppingCart"
-                            style={{
-                                cursor: 'pointer',
-                            }}
-                            onClick={() => {
-                                navigate('/ordersteps', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        />
+                        {authorized ? (
+                            <FaShoppingCart
+                                className="nir-FaShoppingCart"
+                                style={{
+                                    cursor: 'pointer',
+                                }}
+                                onClick={() => {
+                                    navigate('/ordersteps', { replace: true });
+                                    setLightBox('nav_lightbox_hidden');
+                                }}
+                            />
+                        ) : (
+                            <FaShoppingCart
+                                className="nir-FaShoppingCart"
+                                style={{
+                                    cursor: 'pointer',
+                                }}
+                                onClick={() => {
+                                    Swal.fire('請先登入會員');
+                                    navigate('/login', { replace: true });
+                                    setLightBox('nav_lightbox_hidden');
+                                }}
+                            />
+                        )}
 
                         {count === 0 ? (
                             ''

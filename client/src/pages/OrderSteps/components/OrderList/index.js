@@ -2,7 +2,15 @@ import cart_step_1 from '../../imgs/cart-step-1.svg'; //先暫時用老師的
 import scroll_down from '../../imgs/scroll-down.svg';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import Swal from 'sweetalert2'; //sweetalert2
+
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    decrement,
+    increment,
+} from '../../../../features/counter/counterSlice';
 
 // scss
 import '../../../Event/_xuan_styles.scss';
@@ -11,7 +19,14 @@ import '../styles/_orderlist.scss';
 
 import EventItem from './EventItem';
 
+// 會員登入登出驗證
+import AuthContext from '../../../../context/AuthContext/AuthContext';
+
 function OrderList(props) {
+    // Redux
+    const count = useSelector((state) => state.counter.value);
+    const dispatch = useDispatch();
+
     //從Cart.js裡傳來的props
     const {
         totalNumber,
@@ -23,12 +38,10 @@ function OrderList(props) {
         setEventPick,
     } = props; // 從Cart.js來
 
+    // 會員登入登出驗證(auth)
+    const { authorized, sid, account, token } = useContext(AuthContext);
+
     // 在購物車按下"x" 將資料從MySQL刪除  //因為axios方式不熟 先用fetch方式
-
-    // 透過localStorage 取得登入會員sid
-    let memberinfor = JSON.parse(localStorage.getItem('auth'));
-    let membersid = Object.values(memberinfor)[1];
-
     const fetchEventDelCart = async (del_event_sid) => {
         fetch('http://localhost:3500/eventcarts/deletecart', {
             method: 'DELETE',
@@ -36,7 +49,7 @@ function OrderList(props) {
                 'Content-Type':
                     'application/x-www-form-urlencoded;charset=UTF-8',
             },
-            body: `event_sid=${del_event_sid}&member_sid=${membersid}`,
+            body: `event_sid=${del_event_sid}&member_sid=${sid}`,
         })
             .then((r) => r.json())
             .then((obj) => {
@@ -113,24 +126,43 @@ function OrderList(props) {
                                             );
                                             setEventCart(newEventCart); //新array取代舊array
                                         }}
-                                        // 刪除功能
                                         removeItem={() => {
-                                            //let del_event_sid = ""; //用來取得是哪個event_sid被刪除
+                                            Swal.fire({
+                                                title: '確定要刪除此筆訂單?',
+                                                // text: "You won't be able to revert this!",
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                cancelButtonText: '取消',
+                                                confirmButtonText: '確定刪除',
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    Swal.fire(
+                                                        '已刪除'
+                                                        // '此筆訂單已刪除',
+                                                        // 'success'
+                                                    );
 
-                                            const newEventCart =
-                                                eventCart.filter((v2, i2) => {
-                                                    // del_event_sid = v.sid;
-                                                    return v.sid !== v2.sid; //只留沒有點到的
-                                                });
+                                                    const newEventCart =
+                                                        eventCart.filter(
+                                                            (v2, i2) => {
+                                                                // del_event_sid = v.sid;
+                                                                return (
+                                                                    v.sid !==
+                                                                    v2.sid
+                                                                ); //只留沒有點到的
+                                                            }
+                                                        );
 
-                                            console.log(v.sid);
+                                                    console.log(v.sid);
 
-                                            fetchEventDelCart(v.sid); //同步把MySQL資料刪掉
-                                            setEventCart(newEventCart);
+                                                    fetchEventDelCart(v.sid); //同步把MySQL資料刪掉
+                                                    setEventCart(newEventCart);
+                                                    dispatch(decrement());
+                                                }
+                                            });
                                         }}
-
-                                        // 目前Bug是一次只能刪一個(????)
-                                        // 觀察: 要重新整理完後的click才會有效
                                     />
                                 );
                             })}

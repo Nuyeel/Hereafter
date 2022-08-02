@@ -66,6 +66,8 @@ router.post('/addorder', async (req, res) => {
         error: '',
     };
 
+    console.log(res.locals.loginUser);
+
     const sql =
         'INSERT INTO `event_order_detail`( `member_sid`, `event_order_detail`, `order_created_at`) VALUES ( ?, ?, NOW() )';
 

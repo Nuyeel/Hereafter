@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import TWZipCode from './TWZipCode';
 import '../styles/_cart.scss';
 import './styles/_personform.scss';
+import Swal from 'sweetalert2'; //sweetalert2
+
+// 會員登入登出驗證
+import AuthContext from '../../../context/AuthContext/AuthContext';
 
 function PersonForm(props) {
+    // 會員登入登出驗證(auth)
+    const { authorized, sid, account, token } = useContext(AuthContext);
+
     const {
         myInfor,
         setMyInfor,
@@ -12,10 +19,6 @@ function PersonForm(props) {
         townshipIndex,
         setTownshipIndex,
     } = props;
-
-    // 透過localStorage 取得登入會員sid
-    let memberinfor = JSON.parse(localStorage.getItem('auth'));
-    const membersid = Object.values(memberinfor)[1];
 
     // multiple State
     //   const [myInfor, setMyInfor] = useState({
@@ -64,6 +67,7 @@ function PersonForm(props) {
     };
 
     const handleSubmit = (e) => {
+        Swal.fire('已收到報名資訊');
         e.preventDefault(); // 先阻擋預設送出行為(預設用GET URLencoded)
 
         // 這裡可以得到目前輸入的值
@@ -186,7 +190,6 @@ function PersonForm(props) {
                 <div className="xuan-personform-top"></div>
 
                 <div className="xuan-person-infor-window">
-                
                     <div className="xuan-form-wrap">
                         <div className="xuan-person-infor-title">
                             <div className="xuan-title-left">
@@ -224,8 +227,7 @@ function PersonForm(props) {
                             name="form1"
                             className="xuan-personform"
                         >
-
-                        {/* FIXME: type=input會被style.css汙染，目前先註解 */}
+                            {/* FIXME: type=input會被style.css汙染，目前先註解 */}
                             <div className="xuan-infor-left">
                                 {/* 從localStorage獲得membersid，設一個隱藏欄位進fd一起送 */}
                                 <input
@@ -234,7 +236,7 @@ function PersonForm(props) {
                                     name="member_sid"
                                     // type="text"
                                     id="test-text"
-                                    defaultValue={membersid}
+                                    defaultValue={sid}
                                 />
 
                                 <label
@@ -258,10 +260,16 @@ function PersonForm(props) {
                                 <span className="xuan-error-text">
                                     {inputErrors.fullname}
                                 </span>
-                                <br /><br />
+                                <br />
+                                <br />
 
                                 {/* mobileOptions */}
-                                <label htmlFor="test-text" className='xuan-label-title'>行動電話：</label>
+                                <label
+                                    htmlFor="test-text"
+                                    className="xuan-label-title"
+                                >
+                                    行動電話：
+                                </label>
 
                                 <select
                                     id="test-text"
@@ -300,9 +308,15 @@ function PersonForm(props) {
                                 <span className="xuan-error-text">
                                     {inputErrors.mobile}
                                 </span>
-                                <br /><br />
+                                <br />
+                                <br />
 
-                                <label htmlFor="test-text" className='xuan-label-title'>電子信箱：</label>
+                                <label
+                                    htmlFor="test-text"
+                                    className="xuan-label-title"
+                                >
+                                    電子信箱：
+                                </label>
 
                                 {/* FIXME: CSS待改(因為type一定要是email才能檢查，CSS預設統一是text*/}
                                 <input
@@ -320,10 +334,16 @@ function PersonForm(props) {
                                 <span className="xuan-error-text">
                                     {inputErrors.email}
                                 </span>
-                                <br /><br />
+                                <br />
+                                <br />
 
                                 <div className="xuan-gender-group">
-                                    <label htmlFor="test-text" className='xuan-label-title'>性別：</label>
+                                    <label
+                                        htmlFor="test-text"
+                                        className="xuan-label-title"
+                                    >
+                                        性別：
+                                    </label>
 
                                     {genderOptions.map((v, i) => {
                                         return (
@@ -350,12 +370,16 @@ function PersonForm(props) {
                                     <span className="xuan-error-text">
                                         {inputErrors.gender}
                                     </span>
-                                    
                                 </div>
                             </div>
 
                             <div className="xuan-infor-right">
-                                <label htmlFor="test-text " className='xuan-label-title'>身分證字號：</label>
+                                <label
+                                    htmlFor="test-text "
+                                    className="xuan-label-title"
+                                >
+                                    身分證字號：
+                                </label>
                                 <input
                                     className="xuan-input-text"
                                     name="ID"
@@ -371,9 +395,15 @@ function PersonForm(props) {
                                 <span className="xuan-error-text">
                                     {inputErrors.ID}
                                 </span>
-                                <br /><br />
+                                <br />
+                                <br />
 
-                                <label htmlFor="test-text" className='xuan-label-title'>出生日期：</label>
+                                <label
+                                    htmlFor="test-text"
+                                    className="xuan-label-title"
+                                >
+                                    出生日期：
+                                </label>
                                 <input
                                     className="xuan-input-text"
                                     name="birthday"
@@ -389,9 +419,15 @@ function PersonForm(props) {
                                 <span className="xuan-error-text">
                                     {inputErrors.birthday}
                                 </span>
-                                <br /><br />
+                                <br />
+                                <br />
 
-                                <label htmlFor="test-text" className='xuan-label-title'>地址：</label>
+                                <label
+                                    htmlFor="test-text"
+                                    className="xuan-label-title"
+                                >
+                                    地址：
+                                </label>
 
                                 <TWZipCode
                                     myInfor={myInfor}
@@ -419,7 +455,8 @@ function PersonForm(props) {
                                 <span className="xuan-error-text">
                                     {inputErrors.address}
                                 </span>
-                                <br /><br />
+                                <br />
+                                <br />
 
                                 {/* FIXME: 希望在把送出表單功能，改放到Summary「下一步」*/}
 

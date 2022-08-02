@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2'; //sweetalert2
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
-import { descrement, increment } from '../../features/counter/counterSlice';
+import { decrement, increment } from '../../features/counter/counterSlice';
+
+// 會員登入登出驗證
+import AuthContext from '../../context/AuthContext/AuthContext';
 
 // react icons
 import { BiTimeFive } from 'react-icons/bi';
@@ -31,27 +35,15 @@ const EventDetail = () => {
     const count = useSelector((state) => state.counter.value);
     const dispatch = useDispatch();
 
-
-    // 此段模擬會員登入------------------------------------------------------
-    // let memberlogin = {
-    //     authorized: true,
-    //     sid: 100,
-    //     account: 'membertest',
-    //     token: '12345',
-    // };
-
-    // localStorage.setItem('auth', JSON.stringify(memberlogin));
-
-    // 此段模擬會員登出------------------------------------------------------
-    // let memberlogout = {
-    //   authorized: false,
-    //   sid: 0,
-    //   account: '',
-    //   token:''}
-
-    // localStorage.setItem('auth', JSON.stringify(memberlogout));
+    // 會員登入登出驗證(auth)
+    const { authorized, sid, account, token } = useContext(AuthContext);
 
     const [eventDetail, setEventDetail] = useState([]);
+
+    // 限定活動商品只能加入一次
+    const [cartBtn, setCartBtn] = useState(false);
+    const [cartBtnWord, setCartBtnWord] = useState('加入購物車');
+    const [cartBuyWord, setCartBuyWord] = useState('直接結帳');
 
     const navigate = useNavigate();
     let { eventSid } = useParams(); //取得是哪個活動sid後發fetch //要跟Router列表名稱對應
@@ -68,11 +60,23 @@ const EventDetail = () => {
     // 避免無窮迴圈(DidMount)
     useEffect(() => {
         fetchEventDetail();
+        // fetchCheckEventCart();
     }, []);
 
-    // 透過localStorage 取得登入會員sid
-    let memberinfor = JSON.parse(localStorage.getItem('auth'));
-    let membersid = Object.values(memberinfor)[1];
+    // TODO: 待處理購物車驗證問題
+    // 一進頁面就先確認使用者是否有報名過此活動
+    // 要傳給後端使用者sid+活動sid
+    // 如果回傳是 null 則代表沒有這個活動 -> button照常運作
+    // 如果回傳不是null 則button要取消運作
+
+    // const fetchCheckEventCart = async () => {
+    //     const response = await axios.get(
+    //         // TODO:修成 ajax-path
+    //         `http://localhost:3500/events/${eventSid}/${sid}`
+    //     );
+    //     setEventDetail(response.data);
+    // };
+
 
     // 按下「加入購物車」將資料存進MySQL //因為axios方式不熟 先用fetch方式POST
     const fetchEventAddCart = async () => {
@@ -83,21 +87,13 @@ const EventDetail = () => {
                 'Content-Type':
                     'application/x-www-form-urlencoded;charset=UTF-8',
             },
-            body: `event_sid=${eventSid}&member_sid=${membersid}`,
+            body: `event_sid=${eventSid}&member_sid=${sid}`,
         })
             .then((r) => r.json())
             .then((obj) => {
                 console.log(obj);
             });
     };
-
-    // 目前實驗起來，用localStorage沒辦法及時更新
-    // 更新購物車localStorage數量 function
-    // const  addLocalStorageNum = () =>{
-    //   let nowEventCartNum = +(localStorage.getItem('event_cart_num')); //字串轉num
-    //   nowEventCartNum++;
-    //   localStorage.setItem('event_cart_num',nowEventCartNum);
-    // }
 
     return (
         <>
@@ -242,51 +238,83 @@ const EventDetail = () => {
                                 <div className="xuan-btn-group">
                                     {/* 會員檢查: 沒登入跳通知 */}
 
-                                    {/* {authorized ? ( */}
-                                    <button
-                                        className="xuan-btn-m xuan-btn-pri"
-                                        onClick={() => {
-                                            fetchEventAddCart();
-                                            alert('商品已加至購物車');
-                                            dispatch(increment());
-                                        }}
-                                    >
-                                        <FaShoppingCart /> 加入購物車
-                                    </button>
-                                    {/* ) : ( */}
-                                    {/* <button
-                                            className="btn-m btn-pri"
-                                            onClick={() => {
-                                                alert('請先登入會員');
-                                            }}
-                                        >
-                                            加入購物車
-                                        </button> */}
-                                    {/* )} */}
+                                    {/* 要去fetch資料 看event_cart裡面有沒有這個活動的資料 */}
+                                    {/* 有的話: 顯示灰階+disabled；沒有：照常運作 */}
 
-                                    {/* FIXME: 檢查會員登入功能目前關掉 */}
-                                    {/* {authorized ? ( */}
-                                    <button
-                                        className="xuan-btn-m xuan-btn-pri"
-                                        onClick={() => {
-                                            dispatch(increment());
-                                            navigate('/ordersteps', {
-                                                replace: true,
-                                            });
-                                        }}
-                                    >
-                                        <AiFillShopping /> 前往結帳
-                                    </button>
-                                    {/* ) : ( */}
-                                    {/* <button
-                                            className="btn-m btn-pri"
+                                    {authorized ? (
+                                        <button
+                                            disabled={cartBtn}
+                                            className="xuan-btn-m xuan-btn-pri"
                                             onClick={() => {
-                                                alert('請先登入會員');
+                                                fetchEventAddCart();
+                                                // alert('商品已加至購物車');
+                                                Swal.fire('商品已加入購物車');
+                                                dispatch(increment());
+                                                setCartBtn(true);
+                                                setCartBtnWord('已加入');
+                                                setCartBuyWord('前往結帳');
+                                                // 這邊要多加顏色變化(變淡)
                                             }}
                                         >
-                                            直接結帳
-                                        </button> */}
-                                    {/* )} */}
+                                            <FaShoppingCart /> {cartBtnWord}
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="xuan-btn-m xuan-btn-pri"
+                                            onClick={() => {
+                                                // alert('請先登入會員');
+                                                Swal.fire('請先登入會員');
+                                                navigate('/login', {
+                                                    replace: true,
+                                                });
+                                            }}
+                                        >
+                                            <FaShoppingCart /> {cartBtnWord}
+                                        </button>
+                                    )}
+
+                                    {/* 有登入會員 直接結帳:數字加1  前往結帳: 數字不要加 */}
+
+                                    {authorized ? (
+                                        <button
+                                            className="xuan-btn-m xuan-btn-pri"
+                                            onClick={() => {
+                                                if (
+                                                    cartBtnWord === '加入購物車'
+                                                ) {
+                                                    dispatch(increment());
+                                                    fetchEventAddCart();
+                                                    Swal.fire(
+                                                        '商品已加入購物車'
+                                                    );
+                                                    setCartBtn(true);
+                                                    setCartBtnWord('已加入');
+                                                    setCartBuyWord('前往結帳');
+                                                    navigate('/ordersteps', {
+                                                        replace: true,
+                                                    });
+                                                } else {
+                                                    navigate('/ordersteps', {
+                                                        replace: true,
+                                                    });
+                                                }
+                                            }}
+                                        >
+                                            <AiFillShopping /> {cartBuyWord}
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="xuan-btn-m xuan-btn-pri"
+                                            onClick={() => {
+                                                Swal.fire('請先登入會員');
+                                                navigate('/login', {
+                                                    replace: true,
+                                                });
+                                            }}
+                                        >
+                                            <AiFillShopping /> {cartBuyWord}
+                                        </button>
+                                    )}
 
                                     <button
                                         className="xuan-btn-m xuan-btn-pri"
