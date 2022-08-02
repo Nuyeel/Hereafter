@@ -4,12 +4,11 @@ function Test() {
     return (
         <>
             <div className="yun-card-container">
-                <div className='yun-card'>
-                <h3>Hello!</h3>
+                <div className="yun-card">
+                    <h3>Hello!</h3>
                 </div>
-               <TestCard /> 
+                <TestCard />
             </div>
-            
         </>
     );
 }
