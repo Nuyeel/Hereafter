@@ -32,6 +32,9 @@ import EventDetail from './pages/EventDetail/EventDetail';
 import OrderSteps from './pages/OrderSteps';
 // import Place from './pages/Place';
 // import RebornCart from './pages/RebornCart';
+import Test from './pages/Test';
+import Games from './pages/Games';
+// import Intro from './pages/Intro';
 
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
@@ -239,6 +242,18 @@ function App() {
                                 path="/ordersteps"
                                 element={<OrderSteps />}
                             />
+                            {/* ============================== */}
+                            {/* 陰德值測驗路由 */}
+                            {/* ============================== */}
+                            <Route path="/test" element={<Test />} />
+                            {/* ============================== */}
+                            {/* 陰德值遊戲路由 */}
+                            {/* ============================== */}
+                            <Route path="/games" element={<Games />} />
+                            {/* ============================== */}
+                            {/* Intro路由 */}
+                            {/* ============================== */}
+                            {/* <Route path="/intro" element={<Intro />} /> */}
 
                             {/* ============================== */}
                             {/* 404 是最後一個路由 */}
