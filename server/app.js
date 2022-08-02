@@ -123,9 +123,19 @@ app.use((req, res, next) => {
     res.locals.loginUser = null;
 
     // 利用 locals 將資料傳給後續的 Middleware 使用
+    // FIXME: JsonWebTokenError: jwt malformed
     if (auth && auth.indexOf('Bearer ') === 0) {
         const token = auth.slice(7);
-        res.locals.loginUser = jwt.verify(token, process.env.JWT_SECRET);
+        // DONE:由於前端的 AuthContext 對 token 的預設值是 ''
+        // 在登入攸關的驗證我們又一定會送 Authorization
+        // 導致以下 JWT 驗證可能出錯
+        // 所以此處必須做錯誤處理
+        try {
+            res.locals.loginUser = jwt.verify(token, process.env.JWT_SECRET);
+            console.log(res.locals.loginUser);
+        } catch (ex) {
+            console.log('狀態：瀏覽者並未登入');
+        }
         // console.log(res.locals.loginUser);
     }
     // TODO: 所以之後 "如果這個頁面要登入才能使用"
