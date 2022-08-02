@@ -73,4 +73,15 @@ router.get('/eventcartnum/:membersid?', async (req, res) => {
     res.json(results);
 });
 
+// 此段處理該會員目前購物車有哪些活動sid
+router.get('/checkeventcart/:membersid?', async (req, res) => {
+    let memberSid = req.params.membersid || '';
+
+    const $sql = 'SELECT `event_sid` FROM `event_cart` WHERE `member_sid` = ? ';
+
+    // const [[{ 'COUNT(*)': results }]] = await db.query($sql, [memberSid]);
+    const [results] = await db.query($sql, [memberSid]);
+    res.json(results); //會獲得一個JSON包
+});
+
 module.exports = router;
