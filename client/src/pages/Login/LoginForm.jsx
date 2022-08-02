@@ -36,11 +36,6 @@ function LoginForm(props) {
         e.preventDefault();
         // TODO: 欄位檢查
 
-        // 請注意 axios 和 fetch 的不同之處
-        // fetch 要多轉換一次 .then(r => r.json())
-        // fetch 的內容放在 body: fd
-        // axios 會自動轉換 JSON 但結果放在 r.data 中
-        // axios 的內容要放在 data: fd
         fetch(MEMBER_LOGIN, {
             method: 'POST',
             body: JSON.stringify(loginData),
