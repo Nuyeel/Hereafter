@@ -1,8 +1,9 @@
-import { useCallback, useRef } from "react";
-import { toPng } from "html-to-image";
-import styled from "@emotion/styled";
-import BodyData from "./BodyData";
-import FaceData from "./FaceData";
+import { useCallback, useRef, useContext } from 'react';
+import { toPng } from 'html-to-image';
+import styled from '@emotion/styled';
+import BodyData from './BodyData';
+import FaceData from './FaceData';
+import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
 //import Bodytry from "../../../images/avatar/hereafter-imgs/body-M.png";
 
 function CenterPart(props) {
@@ -14,6 +15,7 @@ function CenterPart(props) {
         setColorControlSwitch,
     } = props;
     const ref = useRef(null);
+    const { theme } = useContext(ThemeContext);
 
     const onButtonClick = useCallback(() => {
         if (ref.current === null) {
@@ -27,8 +29,8 @@ function CenterPart(props) {
             canvasHeight: 535,
         })
             .then((dataUrl) => {
-                const link = document.createElement("a");
-                link.download = "my-image-name.png";
+                const link = document.createElement('a');
+                link.download = 'my-image-name.png';
                 link.href = dataUrl;
                 link.click();
             })
@@ -46,7 +48,7 @@ function CenterPart(props) {
     `;
     const BGSquare = styled.div`
         position: absolute;
-        border: #ffc 3px solid;
+        border: ${theme.bcAvatarFrame} 3px solid;
         height: 310px;
         width: 307px;
         top: 22%;
@@ -54,7 +56,7 @@ function CenterPart(props) {
     `;
     const BGCircle = styled.div`
         position: absolute;
-        border: #ffc 3px solid;
+        border: ${theme.bcAvatarFrame} 3px solid;
         border-radius: 50%;
         height: 385px;
         width: 385px;
@@ -68,13 +70,13 @@ function CenterPart(props) {
         left: 38.6%;
         width: 109px;
         height: 95px;
-        mask-image: url(${BodyData["head"][0]});
+        mask-image: url(${BodyData['head'][0]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         mask-size: cover;
-        background-color: ${BodyData["basicColors"][
-            conbination["basic_color"]
+        background-color: ${BodyData['basicColors'][
+            conbination['basic_color']
         ]};
     `;
     const Body = styled.div`
@@ -83,11 +85,11 @@ function CenterPart(props) {
         left: 28%;
         width: 205px;
         height: 123px;
-        mask-image: url(${BodyData["bodycenter"][conbination["basic"][0]]});
+        mask-image: url(${BodyData['bodycenter'][conbination['basic'][0]]});
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${BodyData["basicColors"][
-            conbination["basic_color"]
+        background-color: ${BodyData['basicColors'][
+            conbination['basic_color']
         ]};
     `;
     const Arm = styled.div`
@@ -96,43 +98,43 @@ function CenterPart(props) {
         left: 1.8%;
         width: 442px;
         height: 102px;
-        mask-image: url(${BodyData["arm"][conbination["basic"][1]]});
+        mask-image: url(${BodyData['arm'][conbination['basic'][1]]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${BodyData["basicColors"][
-            conbination["basic_color"]
+        background-color: ${BodyData['basicColors'][
+            conbination['basic_color']
         ]};
     `;
     const handLPosition = [
-        { top: "20.5%", left: "12%" },
-        { top: "15%", left: "7.2%" },
-        { top: "11.5%", left: "3%" },
+        { top: '20.5%', left: '12%' },
+        { top: '15%', left: '7.2%' },
+        { top: '11.5%', left: '3%' },
     ];
     const HandL = styled.div`
         position: absolute;
-        top: ${handLPosition[conbination["basic"][1]]["top"]};
-        left: ${handLPosition[conbination["basic"][1]]["left"]};
+        top: ${handLPosition[conbination['basic'][1]]['top']};
+        left: ${handLPosition[conbination['basic'][1]]['left']};
         width: 102px;
         height: 102px;
-        mask-image: url(${BodyData["hand"][conbination["body"]["hand"]][
-            "left"
+        mask-image: url(${BodyData['hand'][conbination['body']['hand']][
+            'left'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${BodyData["basicColors"][
-            conbination["basic_color"]
+        background-color: ${BodyData['basicColors'][
+            conbination['basic_color']
         ]};
     `;
     const HandPalmL = styled.div`
         position: absolute;
-        top: ${handLPosition[conbination["basic"][1]]["top"]};
-        left: ${handLPosition[conbination["basic"][1]]["left"]};
+        top: ${handLPosition[conbination['basic'][1]]['top']};
+        left: ${handLPosition[conbination['basic'][1]]['left']};
         width: 102px;
         height: 102px;
-        mask-image: url(${BodyData["hand"][conbination["body"]["hand"]][
-            "palmLeft"
+        mask-image: url(${BodyData['hand'][conbination['body']['hand']][
+            'palmLeft'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
@@ -141,34 +143,34 @@ function CenterPart(props) {
         opacity: 0.3;
     `;
     const handRPosition = [
-        { top: "20.5%", left: "66.5%" },
-        { top: "15%", left: "71%" },
-        { top: "11.5%", left: "75.5%" },
+        { top: '20.5%', left: '66.5%' },
+        { top: '15%', left: '71%' },
+        { top: '11.5%', left: '75.5%' },
     ];
     const HandR = styled.div`
         position: absolute;
-        top: ${handRPosition[conbination["basic"][1]]["top"]};
-        left: ${handRPosition[conbination["basic"][1]]["left"]};
+        top: ${handRPosition[conbination['basic'][1]]['top']};
+        left: ${handRPosition[conbination['basic'][1]]['left']};
         width: 102px;
         height: 102px;
-        mask-image: url(${BodyData["hand"][conbination["body"]["hand"]][
-            "right"
+        mask-image: url(${BodyData['hand'][conbination['body']['hand']][
+            'right'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${BodyData["basicColors"][
-            conbination["basic_color"]
+        background-color: ${BodyData['basicColors'][
+            conbination['basic_color']
         ]};
     `;
     const HandPalmR = styled.div`
         position: absolute;
-        top: ${handRPosition[conbination["basic"][1]]["top"]};
-        left: ${handRPosition[conbination["basic"][1]]["left"]};
+        top: ${handRPosition[conbination['basic'][1]]['top']};
+        left: ${handRPosition[conbination['basic'][1]]['left']};
         width: 102px;
         height: 102px;
-        mask-image: url(${BodyData["hand"][conbination["body"]["hand"]][
-            "palmRight"
+        mask-image: url(${BodyData['hand'][conbination['body']['hand']][
+            'palmRight'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
@@ -182,103 +184,103 @@ function CenterPart(props) {
         left: 1.5%;
         width: 442px;
         height: 170px;
-        -webkit-mask-image: url(${BodyData["leg"][conbination["basic"][2]]});
-        mask-image: url(${BodyData["leg"][conbination["basic"][2]]});
+        -webkit-mask-image: url(${BodyData['leg'][conbination['basic'][2]]});
+        mask-image: url(${BodyData['leg'][conbination['basic'][2]]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${BodyData["basicColors"][
-            conbination["basic_color"]
+        background-color: ${BodyData['basicColors'][
+            conbination['basic_color']
         ]};
-        display: ${conbination["body"]["special"] > 0 ? "none" : "block"};
+        display: ${conbination['body']['special'] > 0 ? 'none' : 'block'};
     `;
     const footLPosition = [
-        { top: "62%", left: "7.5%" },
-        { top: "67.5%", left: "5%" },
-        { top: "79%", left: "2.5%" },
+        { top: '62%', left: '7.5%' },
+        { top: '67.5%', left: '5%' },
+        { top: '79%', left: '2.5%' },
     ];
     const FootL = styled.div`
         position: absolute;
-        top: ${footLPosition[conbination["basic"][2]]["top"]};
-        left: ${footLPosition[conbination["basic"][2]]["left"]};
+        top: ${footLPosition[conbination['basic'][2]]['top']};
+        left: ${footLPosition[conbination['basic'][2]]['left']};
         width: 153px;
         height: 85px;
-        -webkit-mask-image: url(${BodyData["foot"][conbination["body"]["foot"]][
-            "left"
-        ][conbination["basic"][2]]});
-        mask-image: url(${BodyData["foot"][conbination["body"]["foot"]]["left"][
-            conbination["basic"][2]
+        -webkit-mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+            'left'
+        ][conbination['basic'][2]]});
+        mask-image: url(${BodyData['foot'][conbination['body']['foot']]['left'][
+            conbination['basic'][2]
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${BodyData["basicColors"][
-            conbination["basic_color"]
+        background-color: ${BodyData['basicColors'][
+            conbination['basic_color']
         ]};
-        display: ${conbination["body"]["special"] > 0 ? "none" : "block"};
+        display: ${conbination['body']['special'] > 0 ? 'none' : 'block'};
     `;
     const FootPalmL = styled.div`
         position: absolute;
-        top: ${footLPosition[conbination["basic"][2]]["top"]};
-        left: ${footLPosition[conbination["basic"][2]]["left"]};
+        top: ${footLPosition[conbination['basic'][2]]['top']};
+        left: ${footLPosition[conbination['basic'][2]]['left']};
         width: 153px;
         height: 85px;
-        -webkit-mask-image: url(${BodyData["foot"][conbination["body"]["foot"]][
-            "palmLeft"
-        ][conbination["basic"][2]]});
-        mask-image: url(${BodyData["foot"][conbination["body"]["foot"]][
-            "palmLeft"
-        ][conbination["basic"][2]]});
+        -webkit-mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+            'palmLeft'
+        ][conbination['basic'][2]]});
+        mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+            'palmLeft'
+        ][conbination['basic'][2]]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: #555;
         opacity: 0.3;
-        display: ${conbination["body"]["special"] > 0 ? "none" : "block"};
+        display: ${conbination['body']['special'] > 0 ? 'none' : 'block'};
     `;
     const footRPosition = [
-        { top: "62%", left: "59.5%" },
-        { top: "67.5%", left: "62.2%" },
-        { top: "79%", left: "64.5%" },
+        { top: '62%', left: '59.5%' },
+        { top: '67.5%', left: '62.2%' },
+        { top: '79%', left: '64.5%' },
     ];
     const FootR = styled.div`
         position: absolute;
-        top: ${footRPosition[conbination["basic"][2]]["top"]};
-        left: ${footRPosition[conbination["basic"][2]]["left"]};
+        top: ${footRPosition[conbination['basic'][2]]['top']};
+        left: ${footRPosition[conbination['basic'][2]]['left']};
         width: 153px;
         height: 85px;
-        -webkit-mask-image: url(${BodyData["foot"][conbination["body"]["foot"]][
-            "right"
-        ][conbination["basic"][2]]});
-        mask-image: url(${BodyData["foot"][conbination["body"]["foot"]][
-            "right"
-        ][conbination["basic"][2]]});
+        -webkit-mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+            'right'
+        ][conbination['basic'][2]]});
+        mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+            'right'
+        ][conbination['basic'][2]]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${BodyData["basicColors"][
-            conbination["basic_color"]
+        background-color: ${BodyData['basicColors'][
+            conbination['basic_color']
         ]};
-        display: ${conbination["body"]["special"] > 0 ? "none" : "block"};
+        display: ${conbination['body']['special'] > 0 ? 'none' : 'block'};
     `;
     const FootPalmR = styled.div`
         position: absolute;
-        top: ${footRPosition[conbination["basic"][2]]["top"]};
-        left: ${footRPosition[conbination["basic"][2]]["left"]};
+        top: ${footRPosition[conbination['basic'][2]]['top']};
+        left: ${footRPosition[conbination['basic'][2]]['left']};
         width: 153px;
         height: 85px;
-        -webkit-mask-image: url(${BodyData["foot"][conbination["body"]["foot"]][
-            "palmRight"
-        ][conbination["basic"][2]]});
-        mask-image: url(${BodyData["foot"][conbination["body"]["foot"]][
-            "palmRight"
-        ][conbination["basic"][2]]});
+        -webkit-mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+            'palmRight'
+        ][conbination['basic'][2]]});
+        mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+            'palmRight'
+        ][conbination['basic'][2]]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: #555;
         opacity: 0.3;
-        display: ${conbination["body"]["special"] > 0 ? "none" : "block"};
+        display: ${conbination['body']['special'] > 0 ? 'none' : 'block'};
     `;
     //MING:Face區
     const Eye = styled.div`
@@ -287,12 +289,12 @@ function CenterPart(props) {
         left: 0%;
         width: 109px;
         height: 68px;
-        mask-image: url(${FaceData["eye"][conbination["face"]["eye"]]["eye"]});
+        mask-image: url(${FaceData['eye'][conbination['face']['eye']]['eye']});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${FaceData["eyeColors"][
-            conbination["face_color"]["eye"]
+        background-color: ${FaceData['eyeColors'][
+            conbination['face_color']['eye']
         ]};
     `;
     const EyeWhite = styled.div`
@@ -301,7 +303,7 @@ function CenterPart(props) {
         left: 0%;
         width: 109px;
         height: 68px;
-        mask-image: url(${FaceData["eye"][conbination["face"]["eye"]]["eyeW"]});
+        mask-image: url(${FaceData['eye'][conbination['face']['eye']]['eyeW']});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
@@ -313,14 +315,14 @@ function CenterPart(props) {
         left: 30%;
         width: 187px;
         height: 95px;
-        mask-image: url(${FaceData["ear"][conbination["face"]["ear"]]["src"]});
+        mask-image: url(${FaceData['ear'][conbination['face']['ear']]['src']});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${BodyData["basicColors"][
-            conbination["basic_color"]
+        background-color: ${BodyData['basicColors'][
+            conbination['basic_color']
         ]};
-        display: ${conbination["face"]["topEar"] > 0 ? "none" : "block"};
+        display: ${conbination['face']['topEar'] > 0 ? 'none' : 'block'};
     `;
     const TopEar = styled.div`
         position: absolute;
@@ -328,17 +330,17 @@ function CenterPart(props) {
         left: 30%;
         width: 187px;
         height: 119px;
-        -webkit-mask-image: url(${FaceData["topEar"][
-            conbination["face"]["topEar"]
-        ]["src"]});
-        mask-image: url(${FaceData["topEar"][conbination["face"]["topEar"]][
-            "src"
+        -webkit-mask-image: url(${FaceData['topEar'][
+            conbination['face']['topEar']
+        ]['src']});
+        mask-image: url(${FaceData['topEar'][conbination['face']['topEar']][
+            'src'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${FaceData["topEarColors"][
-            conbination["face_color"]["topEar"]
+        background-color: ${FaceData['topEarColors'][
+            conbination['face_color']['topEar']
         ]};
     `;
     const Nose = styled.div`
@@ -347,17 +349,17 @@ function CenterPart(props) {
         left: 38.2%;
         width: 27px;
         height: 27px;
-        -webkit-mask-image: url(${FaceData["nose"][conbination["face"]["nose"]][
-            "src"
+        -webkit-mask-image: url(${FaceData['nose'][conbination['face']['nose']][
+            'src'
         ]});
-        mask-image: url(${FaceData["nose"][conbination["face"]["nose"]][
-            "src"
+        mask-image: url(${FaceData['nose'][conbination['face']['nose']][
+            'src'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${FaceData["noseColors"][
-            conbination["face_color"]["nose"]
+        background-color: ${FaceData['noseColors'][
+            conbination['face_color']['nose']
         ]};
     `;
     const Lip = styled.div`
@@ -366,7 +368,7 @@ function CenterPart(props) {
         left: 27.5%;
         width: 51px;
         height: 25px;
-        background: url(${FaceData["lip"][conbination["face"]["lip"]]["src"]});
+        background: url(${FaceData['lip'][conbination['face']['lip']]['src']});
     `;
     const HairFront = styled.div`
         position: absolute;
@@ -374,17 +376,17 @@ function CenterPart(props) {
         left: 22.4%;
         width: 225px;
         height: 119px;
-        -webkit-mask-image: url(${FaceData["hairFront"][
-            conbination["face"]["hairFront"]
-        ]["hairFront"]});
-        mask-image: url(${FaceData["hairFront"][
-            conbination["face"]["hairFront"]
-        ]["src"]});
+        -webkit-mask-image: url(${FaceData['hairFront'][
+            conbination['face']['hairFront']
+        ]['hairFront']});
+        mask-image: url(${FaceData['hairFront'][
+            conbination['face']['hairFront']
+        ]['src']});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${FaceData["hairColors"][
-            conbination["face_color"]["hairFront"]
+        background-color: ${FaceData['hairColors'][
+            conbination['face_color']['hairFront']
         ]};
     `;
     const HairBack = styled.div`
@@ -393,18 +395,18 @@ function CenterPart(props) {
         left: 16.4%;
         width: 302px;
         height: 207px;
-        -webkit-mask-image: url(${
-            FaceData["hairBack"][conbination["face"]["hairBack"]]["hairBack"]
-        });
-        mask-image: url(${
-            FaceData["hairBack"][conbination["face"]["hairBack"]]["src"]
-        });
+        -webkit-mask-image: url(${FaceData['hairBack'][
+            conbination['face']['hairBack']
+        ]['hairBack']});
+        mask-image: url(${FaceData['hairBack'][conbination['face']['hairBack']][
+            'src'
+        ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${
-            FaceData["hairColors"][conbination["face_color"]["hairFront"]]
-        };
+        background-color: ${FaceData['hairColors'][
+            conbination['face_color']['hairFront']
+        ]};
     `;
     //MING:特殊
     const Tale = styled.div`
@@ -413,17 +415,17 @@ function CenterPart(props) {
         left: 0%;
         width: 450px;
         height: 450px;
-        -webkit-mask-image: url(${BodyData["tale"][conbination["body"]["tale"]][
-            "src"
+        -webkit-mask-image: url(${BodyData['tale'][conbination['body']['tale']][
+            'src'
         ]});
-        mask-image: url(${BodyData["tale"][conbination["body"]["tale"]][
-            "src"
+        mask-image: url(${BodyData['tale'][conbination['body']['tale']][
+            'src'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-color: ${BodyData["taleColors"][
-            conbination["special_color"]["tale"]
+        background-color: ${BodyData['taleColors'][
+            conbination['special_color']['tale']
         ]};
     `;
     const Special = styled.div`
@@ -432,24 +434,27 @@ function CenterPart(props) {
         left: 0%;
         width: 450px;
         height: 450px;
-        -webkit-mask-image: url(${BodyData["special"][
-            conbination["body"]["special"]
-        ]["src"]});
-        mask-image: url(${BodyData["special"][conbination["body"]["special"]][
-            "src"
+        -webkit-mask-image: url(${BodyData['special'][
+            conbination['body']['special']
+        ]['src']});
+        mask-image: url(${BodyData['special'][conbination['body']['special']][
+            'src'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
-        background-image: linear-gradient(Ivory 10%, ${BodyData["specialColors"][
-            conbination["special_color"]["special"]
-        ]});
+        background-image: linear-gradient(
+            Ivory 10%,
+            ${BodyData['specialColors'][
+                conbination['special_color']['special']
+            ]}
+        );
     `;
 
     //MING:控制面板
     const FaceControl = styled.div`
         position: absolute;
-        ${"" /* border: #ffc 5px dotted; */}
+        ${'' /* border: #ffc 5px dotted; */}
         height: 135px;
         width: 135px;
         border-radius: 50%;
@@ -459,7 +464,7 @@ function CenterPart(props) {
     `;
     const HandRControl = styled.div`
         position: absolute;
-        ${"" /* border: #ffc 5px dotted; */}
+        ${'' /* border: #ffc 5px dotted; */}
         height: 120px;
         width: 90px;
         border-radius: 50%;
@@ -469,7 +474,7 @@ function CenterPart(props) {
     `;
     const HandLControl = styled.div`
         position: absolute;
-        ${"" /* border: #ffc 5px dotted; */}
+        ${'' /* border: #ffc 5px dotted; */}
         height: 120px;
         width: 90px;
         border-radius: 50%;
@@ -479,7 +484,7 @@ function CenterPart(props) {
     `;
     const FootRControl = styled.div`
         position: absolute;
-        ${"" /* border: #ffc 5px dotted; */}
+        ${'' /* border: #ffc 5px dotted; */}
         height: 130px;
         width: 120px;
         border-radius: 50%;
@@ -489,7 +494,7 @@ function CenterPart(props) {
     `;
     const FootLControl = styled.div`
         position: absolute;
-        ${"" /* border: #ffc 5px dotted; */}
+        ${'' /* border: #ffc 5px dotted; */}
         height: 130px;
         width: 120px;
         border-radius: 50%;
@@ -499,7 +504,7 @@ function CenterPart(props) {
     `;
     const TaleControl = styled.div`
         position: absolute;
-        ${"" /* border: #cff 5px dotted; */}
+        ${'' /* border: #cff 5px dotted; */}
         height: 60px;
         width: 150px;
         border-radius: 50%;
@@ -509,7 +514,7 @@ function CenterPart(props) {
     `;
     const SpecialControl = styled.div`
         position: absolute;
-        ${"" /* border: #cff 5px dotted; */}
+        ${'' /* border: #cff 5px dotted; */}
         height: 60px;
         width: 150px;
         border-radius: 50%;
@@ -521,7 +526,7 @@ function CenterPart(props) {
         position: absolute;
         height: 450px;
         width: 450px;
-        display: ${controlChange ? "block" : "none"};
+        display: ${controlChange ? 'block' : 'none'};
         cursor: pointer;
     `;
     return (
@@ -531,12 +536,11 @@ function CenterPart(props) {
                     ref={ref}
                     className="pic text-center mb-4"
                     style={{
-                        width: "450px",
-                        height: "450px",
-                        position: "relative",
-                        border: "1px solid",
-                        boxSizing: "border-box",
-                        opacity: `${controlChange ? "0.3" : "1"}`,
+                        width: '450px',
+                        height: '450px',
+                        position: 'relative',
+                        boxSizing: 'border-box',
+                        opacity: `${controlChange ? '0.3' : '1'}`,
                     }}
                 >
                     <BGSquare></BGSquare>
@@ -573,37 +577,37 @@ function CenterPart(props) {
                     ></FaceControl>
                     <HandRControl
                         onClick={() => {
-                            setBodyControlChange("hand");
+                            setBodyControlChange('hand');
                             setColorControlSwitch(0);
                         }}
                     ></HandRControl>
                     <HandLControl
                         onClick={() => {
-                            setBodyControlChange("hand");
+                            setBodyControlChange('hand');
                             setColorControlSwitch(0);
                         }}
                     ></HandLControl>
                     <FootRControl
                         onClick={() => {
-                            setBodyControlChange("foot");
+                            setBodyControlChange('foot');
                             setColorControlSwitch(0);
                         }}
                     ></FootRControl>
                     <FootLControl
                         onClick={() => {
-                            setBodyControlChange("foot");
+                            setBodyControlChange('foot');
                             setColorControlSwitch(0);
                         }}
                     ></FootLControl>
                     <SpecialControl
                         onClick={() => {
-                            setBodyControlChange("special");
+                            setBodyControlChange('special');
                             setColorControlSwitch(1);
                         }}
                     ></SpecialControl>
                     <TaleControl
                         onClick={() => {
-                            setBodyControlChange("tale");
+                            setBodyControlChange('tale');
                             setColorControlSwitch(1);
                         }}
                     ></TaleControl>
@@ -613,7 +617,7 @@ function CenterPart(props) {
                 </div>
                 <div
                     className="info d-flex justify-content-center"
-                    style={{ display: "flex" }}
+                    style={{ display: 'flex' }}
                 >
                     <div onClick={onButtonClick}>
                         <i className="fa-solid fa-floppy-disk"></i> 儲存

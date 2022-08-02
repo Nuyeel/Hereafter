@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import BodyData from "../BodyData";
+import styled from '@emotion/styled';
+import BodyData from '../BodyData';
 
 const Btns = styled.div`
     padding-top: 5px;
@@ -32,7 +32,9 @@ const Colors = (props) => {
                                 newConbination.basic_color = i;
                                 setConbination(newConbination);
                             }}
-                            style={{ backgroundColor: BodyData['basicColors'][i] }}
+                            style={{
+                                backgroundColor: BodyData['basicColors'][i],
+                            }}
                         ></Circle>
                     );
                 })}

@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import FaceData from "../FaceData";
+import styled from '@emotion/styled';
+import FaceData from '../FaceData';
 
 const Btns = styled.div`
     padding-top: 5px;
@@ -14,16 +14,15 @@ const Colors = (props) => {
         setConbination,
         colorControlSwitch,
         faceControlChange,
-        
     } = props;
     const colors = {
-        eye: FaceData["eyeColors"],
-        nose: FaceData["noseColors"],
-        hairFront: FaceData["hairColors"],
+        eye: FaceData['eyeColors'],
+        nose: FaceData['noseColors'],
+        hairFront: FaceData['hairColors'],
         hairBack: [],
-        ear:[],
-        lip:[],
-        topEar:FaceData["topEarColors"],
+        ear: [],
+        lip: [],
+        topEar: FaceData['topEarColors'],
     };
 
     if (colorControlSwitch) {

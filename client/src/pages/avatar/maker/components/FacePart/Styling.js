@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import FaceImage from "../FaceData";
+import styled from '@emotion/styled';
+import FaceImage from '../FaceData';
 
 function Style(props) {
     const { faceControlChange, setConbination, conbination } = props;
@@ -8,8 +8,8 @@ function Style(props) {
         width: 70px;
         height: 70px;
         background-image: url(${FaceImage[faceControlChange][
-            conbination["face"][faceControlChange]
-        ]["preview"]});
+            conbination['face'][faceControlChange]
+        ]['preview']});
         background-color: #000;
         background-repeat: no-repeat;
         border-radius: 50%;
@@ -23,10 +23,10 @@ function Style(props) {
                     <div
                         onClick={() => {
                             const newConbination = { ...conbination };
-                            newConbination["face"][faceControlChange] =
-                                conbination["face"][faceControlChange] <= 0
+                            newConbination['face'][faceControlChange] =
+                                conbination['face'][faceControlChange] <= 0
                                     ? 0
-                                    : conbination["face"][faceControlChange] -
+                                    : conbination['face'][faceControlChange] -
                                       1;
                             setConbination(newConbination);
                         }}
@@ -37,11 +37,11 @@ function Style(props) {
                     <div
                         onClick={() => {
                             const newConbination = { ...conbination };
-                            newConbination["face"][faceControlChange] =
+                            newConbination['face'][faceControlChange] =
                                 FaceImage[faceControlChange].length - 1 <=
-                                conbination["face"][faceControlChange]
+                                conbination['face'][faceControlChange]
                                     ? FaceImage[faceControlChange].length - 1
-                                    : conbination["face"][faceControlChange] +
+                                    : conbination['face'][faceControlChange] +
                                       1;
                             setConbination(newConbination);
                         }}

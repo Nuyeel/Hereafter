@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 const BasicC = styled.div`
     padding-bottom: 10px;
@@ -23,19 +23,22 @@ function BasicContorl(props) {
                             height: 20px;
                             width: 90px;
                             border: 1px solid #d259dd;
+                            &:hover {
+                                background-color: FloralWhite;
+                            }
                         `;
                         return (
                             <Sizebtn
                                 key={i}
                                 onClick={() => {
                                     const newConbination = { ...conbination };
-                                    newConbination["basic"][index] = i;
+                                    newConbination['basic'][index] = i;
                                     setConbination(newConbination);
                                 }}
                                 style={
-                                    conbination["basic"][index] === i
-                                        ? { backgroundColor: "#FFE9F6" }
-                                        : {  }
+                                    conbination['basic'][index] === i
+                                        ? { backgroundColor: '#FFE9F6' }
+                                        : {}
                                 }
                             ></Sizebtn>
                         );

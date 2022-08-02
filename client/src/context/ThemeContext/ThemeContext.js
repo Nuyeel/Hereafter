@@ -13,6 +13,7 @@ export const themes = {
         bgcHeaderDecor: '#00000033',
         bgcMainDiv: '#0000004D',
         bcAvatarFrame: '#FFE9F6', // bc for Border Color
+        bgcAvatarMaker: 'rgba(0, 0, 0, 0.5)',
     },
     light: {
         title: 'light',
@@ -22,6 +23,7 @@ export const themes = {
         bgcHeaderDecor: '#F4F59F9A',
         bgcMainDiv: '#FFFFFF55',
         bcAvatarFrame: '#3C3B67',
+        bgcAvatarMaker: 'rgba(255, 255, 255, 0.4)',
     },
 };
 
