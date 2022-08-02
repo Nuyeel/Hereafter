@@ -5,20 +5,34 @@
 /* ============================================================ */
 $primary: #E384F2;
 $secondary: #9587E1;
-$primary-50p: #E384F288; // 自定義
-$secondary-50p: #9587E188; // 自定義
-// 小銘有抓出大概的不透明版本 #9B80DD
-$accent-blue: #81A8E0; // 自定義
-$accent-green: #B9DED2; // 自定義
+$primary-50p: #E384F288;
+$secondary-50p: #9587E188;
+$secondary-50p-opaque: #BDB8E8; // 不透明的 $secondary-50p
+
+$accent-blue: #81A8E0;
+$accent-blue-50p: #81A8E088;
+$accent-green: #B9DED2;
 $highlight: #F3F59F;
 $highlight-60p: #F4F59F9A;
 $alert: #FF52BA;
+$interact: #CE59E7;
 
-$bgc-D: #3C3B67; // 自定義
-$bgc-L-l: #EDEFF7; // 自定義
-$bgc-L-d: #DBE0ED; // 自定義
+$bgc-D: #3C3B67;
+$bgc-L-l: #EDEFF7;
+$bgc-L-d: #DBE0ED;
 
-$bgc-Nav-D: #2D2828CC;
+$black-20p: #00000033;
+$black-30p: #0000004D;
+$black-70p: #000000B3;
+
+$white-33p: #FFFFFF55;
+
+// $bgc-Nav-mobile: #2D2828CC; // 原半透明版本
+// $bgc-Nav-mobile-light: #535051; // 不透明深灰
+// $bgc-Nav-mobile-light: #bdb8e8; // 不透明粉紫
+$bgc-Nav-mobile-light: $bgc-D; // 背景藍
+$bgc-Nav-mobile-dark: #2F2C34; // 不透明暗底深灰疊加背景藍
+
 
 $ff-h: 'M PLUS Rounded 1c';
 $ff-t: 'Noto Sans TC';

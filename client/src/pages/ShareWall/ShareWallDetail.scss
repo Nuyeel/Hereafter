@@ -1,37 +1,502 @@
 @import '../../styles/variables.scss';
 
-// FIXME: 手機版可以直接變長閱讀 桌面版就跳轉吧
+// FIXME: 手機版可以直接變長閱讀 桌面版就跳轉吧 
+// DONE: 手機版也先跳頁 不然麻煩
+// FIXME: 應該要把寬高都設定在子層
+
+// ============================================================
+// 卡片主體部分
+// ============================================================
+
+// 只拿來定位
+.cpl-post-card-container {
+    // outline: 1px solid blueviolet;
+    position: relative;
+}
+
 .cpl-post-card-body {
+    width: 100%;
     border: 2px solid $accent-blue;
     border-radius: 20px;
-    width: 100%;
-    background-color: #FFFFFF55;
     backdrop-filter: blur(2px);
+    position: relative;
+    top: 20px; // 讓視覺上低一點
+    margin-bottom: 60px; // FIXME: 日後有錯誤可能是這裡來的
+    
+    >.col-lg-6 {
+        position: relative;
+    }
+}
 
-    >.row {
-        >.col-lg-6 {
-            position: relative;
+.cpl-pcb-box-shadow-light {
+    box-shadow: 10px 10px 5px $black-20p;
+}
+
+@media screen and (min-width: 576px) {
+    .cpl-pcb-box-shadow-light {
+        box-shadow: 15px 15px 8px $black-20p;
+    }
+}
+
+.cpl-pcb-box-shadow-dark {
+    box-shadow: 10px 10px 5px $black-30p;
+}
+
+@media screen and (min-width: 576px) {
+    .cpl-pcb-box-shadow-dark {
+        box-shadow: 15px 15px 8px $black-30p;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-post-card-body {
+        min-height: 560px;
+        // max-width: calc(var(--vh, 1vh) * 120);
+        // max-height: calc(var(--vh, 1vh) * 70);
+        // aspect-ratio: 12/7;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-post-card-body {
+        top: 5px;
+        max-width: 1080px;
+        max-height: 630px;
+        aspect-ratio: 12/7;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-post-card-body {
+        top: -10px;
+        max-width: 1320px;
+        max-height: 770px;
+    }
+}
+
+// ============================================================
+// 來生形象部分
+// ============================================================
+
+.cpl-pcb-avatar {
+    width: 80%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .cpl-pcb-avatar {
+        top: 60px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-avatar {
+        max-width: 400px;
+        top: 35px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-avatar {
+        min-width: 440px;
+        top: 40px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-avatar {
+        min-width: 520px;
+        top: 50px;
+    }
+}
+
+.cpl-pcb-af-round,
+.cpl-pcb-af-square {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    aspect-ratio: 1/1;
+    border: 2px solid $bgc-D;
+    z-index: -2;
+}
+
+.cpl-pcb-af-round {
+    width: 83%;
+    border-radius: 50%;
+    bottom: 16%;
+}
+
+.cpl-pcb-af-square {
+    width: 70%;
+    bottom: 4.6%;
+}
+
+@media screen and (min-width: 768px) {
+    .cpl-pcb-af-round {
+        bottom: 15.4%;
+    }
+
+    .cpl-pcb-af-square {
+        bottom: 4%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-af-round {
+        bottom: 22%;
+    }
+
+    .cpl-pcb-af-square {
+        bottom: 11.2%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-af-round {
+        bottom: 19%;
+    }
+    .cpl-pcb-af-square {
+        bottom: 7.8%;
+    }
+}
+
+.cpl-pcb-close-icon {
+    position: absolute;
+    font-size: $fz-h3;
+    right: 5px;
+    top: 5px;
+}
+
+@media screen and (min-width: 768px) {
+    .cpl-pcb-close-icon {
+        font-size: $fz-h2;
+        right: 10px;
+        top: 10px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-close-icon {
+        font-size: 3.5rem;
+        right: 15px;
+        top: 15px;
+    }
+}
+
+.cpl-pcb-inner-avatar-info{
+    padding-top: 95%;
+
+    .cpl-ivi-title {
+        font-weight: 700;
+        font-size: $fz-body;
+        margin-bottom: 12px;
+        // outline: 1px solid red;
+        padding-left: 6%;
+    }
+
+    .cpl-ivi-detail {
+        font-size: $fz-caption;
+        margin-bottom: 16px;
+        // outline: 1px solid red;
+        padding-left: 6%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .cpl-pcb-inner-avatar-info{
+        .cpl-ivi-title {
+            font-size: $fz-title;
+            margin-bottom: 16px;
+        }
+    
+        .cpl-ivi-detail {
+            font-size: $fz-body;
+            margin-bottom: 20px;
         }
     }
 }
 
-@media screen and (min-width:992px) {
-    .cpl-post-card-body {
-        // width: 80%;
-        max-height: 70vh;
-        aspect-ratio: 12/7;
-    }
-
-    .cpl-post-card-container {
-        // FIXME: 先隨便抓個數字
-        height: calc(var(--vh, 1vh) * 100 - 120px);
+@media screen and (min-width: 992px) {
+    .cpl-pcb-inner-avatar-info{
+        .cpl-ivi-title {
+            font-size: $fz-body;
+            margin-bottom: 12px;
+        }
+    
+        .cpl-ivi-detail {
+            font-size: $fz-caption;
+            margin-bottom: 16px;
+        }
     }
 }
 
-.cpl-psb-avatar {
-    width: 100%;
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-inner-avatar-info{
+        padding-top: 93%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-inner-avatar-info{
+        .cpl-ivi-title {
+            font-size: $fz-title;
+            margin-bottom: 16px;
+        }
+    
+        .cpl-ivi-detail {
+            font-size: $fz-body;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+// FIXME: 先簡單處理 baseline 問題 有空再回來處理
+.cpl-pcb-ivi-ia-price {
+    font-size: 1.875rem;
+    position: relative;
+    top: -2px;
+}
+
+.cpl-pcb-ivi-ia-AiFillPlusCircle {
+    font-size: 3rem;
+    color: #CE59E7;
+}
+
+// FIXME: 有問題的話要調整定位
+.cpl-pcb-ivi-ia-AiFillPlusCircle-filler {
+    width: 25px;
+    height: 25px;
+    background-color: $bgc-L-l;
     position: absolute;
-    left: 0;
+    left: 120px;
     right: 0;
     margin: auto;
+    z-index: -1;
+}
+
+// ============================================================
+// 分享文章部分
+// ============================================================
+
+.cpl-pcb-inner-text-area {
+    padding-top: 20px;
+    padding-left: 6% !important;
+    padding-right: 6% !important;
+    position: relative;
+    // outline: 1px solid green;
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-inner-text-area {
+        padding-left: 0 !important;
+        padding-right: 20px !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-inner-text-area {
+        padding-top: 28px;
+        padding-right: 40px !important;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-inner-text-area {
+        padding-top: 34px;
+        padding-right: 50px !important;
+    }
+}
+
+.cpl-pcb-ita-title-area {
+    margin-bottom: 24px;
+}
+
+.cpl-pcb-ita-ta-inner-title {
+    font-family: $ff-h;
+    font-size: $fz-h4;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .cpl-pcb-ita-ta-inner-title {
+        font-size: $fz-h3;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-ita-ta-inner-title {
+        font-size: $fz-h4;
+    }
+}
+
+.cpl-pcb-ita-ta-inner-tags {
+    font-size: $fz-caption;
+
+    >.cpl-pcb-ita-ta-it-tag-item {
+        color: #FFFFFF;
+        border-radius: 20px;
+        font-weight: 500;
+        background-color: $secondary;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 4px;
+        padding-bottom: 5px;
+
+        + .cpl-pcb-ita-ta-it-tag-item {
+            margin-left: 10px;
+        }
+    }
+}
+
+.cpl-pcb-ita-text-heading {
+    margin-bottom: 12px;
+
+    >.cpl-pcb-ita-th-inner-left {
+        >.cpl-pcb-ita-th-il-mh-area {
+            width: 80px;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 2px solid $bgc-L-l;
+            background-color: $bgc-L-l;
+
+            >.cpl-pcb-ita-th-memberhead {
+                width: 400%;
+                position: relative;
+                left: -150%; /* 200% - 50% */
+                top: -45%; /* - 50% + 5% 規避頸部 */
+            }
+        }
+
+        >.cpl-pcb-ita-th-il-account {
+            padding-left: 10px;
+            font-size: $fz-subtitle;
+        }
+    }
+
+    >.cpl-pcb-ita-th-inner-right {
+        font-size: $fz-subtitle;
+    
+        >.cpl-pcb-ita-th-ir-likes-area {
+            >.cpl-pcb-ita-th-ir-la-AiHeart {
+                font-size: $fz-h3;
+            }
+            
+            >.cpl-pcb-ita-th-ir-la-likes-number {
+                padding-left: 3px;
+            }
+        }
+        
+        >.cpl-pcb-ita-th-ir-collects-area {
+            margin-left: 10px;
+            
+            >.cpl-pcb-ita-th-ir-la-AiBookmark {
+                font-size: $fz-h5;
+            }
+    
+            >.cpl-pcb-ita-th-ir-la-collects-number {
+                padding-left: 3px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .cpl-pcb-ita-text-heading {
+        >.cpl-pcb-ita-th-inner-left {
+            >.cpl-pcb-ita-th-il-account {
+                font-size: $fz-title;
+            }
+        }
+
+        >.cpl-pcb-ita-th-inner-right {
+            font-size: $fz-title;
+        
+            >.cpl-pcb-ita-th-ir-likes-area {
+                >.cpl-pcb-ita-th-ir-la-likes-number {
+                    padding-left: 10px;
+                }
+            }
+            
+            >.cpl-pcb-ita-th-ir-collects-area {
+                margin-left: 20px;
+        
+                >.cpl-pcb-ita-th-ir-la-collects-number {
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-ita-text-heading {
+        >.cpl-pcb-ita-th-inner-left {
+            >.cpl-pcb-ita-th-il-mh-area {
+                width: 60px;
+            }
+
+            >.cpl-pcb-ita-th-il-account {
+                padding-left: 12px;
+                font-size: $fz-subtitle;
+            }
+        }
+
+        >.cpl-pcb-ita-th-inner-right {
+            font-size: $fz-subtitle;
+            padding-right: 14px;
+        
+            >.cpl-pcb-ita-th-ir-likes-area {
+                
+                >.cpl-pcb-ita-th-ir-la-likes-number {
+                    padding-left: 5px;
+                }
+            }
+            
+            >.cpl-pcb-ita-th-ir-collects-area {
+                margin-left: 10px;
+        
+                >.cpl-pcb-ita-th-ir-la-collects-number {
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-ita-text-heading {
+        >.cpl-pcb-ita-th-inner-left {
+            >.cpl-pcb-ita-th-il-mh-area {
+                width: 80px;
+            }
+
+            >.cpl-pcb-ita-th-il-account {
+                padding-left: 20px;
+            }
+        }
+
+        >.cpl-pcb-ita-th-inner-right {
+            padding-right: 0px;
+
+            >.cpl-pcb-ita-th-ir-collects-area {
+                margin-left: 12px;
+            }
+        }
+    }
+}
+
+// FIXME: 1400px up RWD
+
+.cpl-pcb-ita-text-content {
+    line-height: normal;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid $accent-blue-50p;
 }

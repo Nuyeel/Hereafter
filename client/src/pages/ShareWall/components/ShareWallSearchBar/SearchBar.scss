@@ -3,43 +3,99 @@
 .cpl-searchbar {
     width: 400px;
     height: 50px;
-    color: $bgc-D; // TODO: 這是在設定平時的顏色
     background-color: transparent;
     border: $secondary 2px solid;
     border-radius: 10px;
     padding-left: 20px;
+    margin-bottom: 8px;
 
     &:focus {
         background-color: transparent;
-        color: green; // TODO: 這是在設定 focus 時的
-    }
-
-    &:active {
-        color: red; // TODO: 保險或玩花樣可以設定 因為按 x 會觸發
     }
 
     &::placeholder {
-        color: #FFFFFF;
         line-height: 50px;
         font-size: 1.5rem;
         position: relative;
-        top: 5px;
+        top: 2px;
         right: 40px;
         font-family: $ff-t;
         text-align: right;
     }
 
-    &::-webkit-search-cancel-button{
-        position:relative;
-        right:40px;    
+    &::-webkit-search-cancel-button {
+        position: relative;
+        right: 40px;
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        -webkit-mask-image: url('../../../../images/SearchBar/CgClose.svg');
+        mask-image: url('../../../../images/SearchBar/CgClose.svg');
+        -webkit-mask-size: cover;
+        mask-size: cover;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .cpl-searchbar {
+        margin-bottom: calc(var(--vh, 1vh) * 3);
+    }
+}
+
+
+.cpl-searchbar-light {
+    color: $bgc-D; // TODO: 這是在設定平時的顏色
+
+    &:focus {
+        color: $bgc-D; // TODO: 這是在設定 focus 時的
+    }
+
+    &:active {
+        color: $bgc-D; // TODO: 保險或玩花樣可以設定 因為按 x 會觸發
+    }
+
+    &::placeholder {
+        color: $bgc-D;
+    }
+
+    &::-webkit-search-cancel-button {
+        background-color: $bgc-D;       
+    }
+}
+
+.cpl-searchbar-dark {
+    color: $bgc-L-l; // TODO: 這是在設定平時的顏色
+
+    &:focus {
+        color: $bgc-L-l; // TODO: 這是在設定 focus 時的
+    }
+
+    &:active {
+        color: $bgc-L-l; // TODO: 保險或玩花樣可以設定 因為按 x 會觸發
+    }
+
+    &::placeholder {
+        color: $bgc-L-l;
+    }
+
+    &::-webkit-search-cancel-button {
+        background-color: $bgc-L-l;       
     }
 }
 
 .cpl-search-icon {
     font-size: 2.5rem;
-    color: #FFFFFF;
     position: relative;
     left: -3rem;
     top: 5px;
     cursor: pointer;
+}
+
+.cpl-search-icon-light {
+    color: $bgc-D;
+}
+
+.cpl-search-icon-dark {
+    color: $bgc-L-l;
 }

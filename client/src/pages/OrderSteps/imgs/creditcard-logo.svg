@@ -1,0 +1,38 @@
+<svg id="圖層_1" data-name="圖層 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64.26 76.16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f29865;
+      }
+
+      .cls-2 {
+        fill: #e87272;
+      }
+
+      .cls-3 {
+        fill: #ccc;
+      }
+
+      .cls-4 {
+        fill: #d6d6d6;
+      }
+
+      .cls-5 {
+        fill: none;
+        stroke: #d6d6d6;
+        stroke-miterlimit: 10;
+        stroke-width: 0.5px;
+      }
+    </style>
+  </defs>
+  <g>
+    <circle class="cls-1" cx="41.44" cy="56.54" r="15.71"/>
+    <circle class="cls-2" cx="22.83" cy="56.54" r="15.71"/>
+  </g>
+  <g>
+    <rect class="cls-3" x="7.11" y="6.66" width="50.03" height="30.51" rx="4.88"/>
+    <rect class="cls-4" x="10.62" y="10.01" width="43.02" height="5.49" rx="2.75"/>
+    <rect class="cls-4" x="10.62" y="29.84" width="43.02" height="5.49" rx="2.75"/>
+  </g>
+  <rect class="cls-5" x="0.25" y="0.25" width="63.76" height="75.66" rx="11.34"/>
+</svg>

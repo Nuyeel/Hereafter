@@ -1,14 +1,25 @@
 /* 引入自定義變數 */
 @import '../../../../styles/variables.scss';
 
-.tag-item {
-    display: inline-block;
-    color: #FFFFFF;
-    border: 1px solid #FFFFFF;
-    border-radius: 20px;
-    background-color: $primary-50p;
+.cpl-tagbar {
+    margin-bottom: 24px;
 
-    + .tag-item {
-        margin-left: 10px;
+    .cpl-tag-item {
+        display: inline-block;
+        color: #FFFFFF;
+        border: 1px solid #FFFFFF;
+        border-radius: 20px;
+        background-color: $primary-50p;
+    
+        + .cpl-tag-item {
+            margin-left: 10px;
+        }
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .cpl-tagbar {
+        margin-bottom: calc(var(--vh, 1vh) * 3);
     }
 }

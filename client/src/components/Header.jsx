@@ -9,7 +9,7 @@ function Header() {
     const headerContext = useContext(HeaderContext);
 
     return (
-        <div className="container d-flex mb-3">
+        <div className="container d-flex header-container">
             {headerContext.title && (
                 <h2
                     className="header"

@@ -37,8 +37,8 @@
 
     .cpl-spc-af-round {
         bottom: 16%;
-        border-radius: 50%;
         width: 83%;
+        border-radius: 50%;
     }
     
     .cpl-spc-af-square {
@@ -78,10 +78,34 @@
     }
 }
 
+.cpl-spc-box-shadow-light {
+    box-shadow: 10px 10px 5px $black-20p;
+}
+
+@media screen and (min-width: 576px) {
+    .cpl-spc-box-shadow-light {
+        box-shadow: 15px 15px 8px $black-20p;
+    }
+}
+
+.cpl-spc-box-shadow-dark {
+    box-shadow: 10px 10px 5px $black-30p;
+}
+
+@media screen and (min-width: 576px) {
+    .cpl-spc-box-shadow-dark {
+        box-shadow: 15px 15px 8px $black-30p;
+    }
+}
+
+// FIXME: 要調成百分比
+// DONE: 粗略調整過
 @media screen and (min-width: 992px) {
     .cpl-share-post-card {
-        width: 350px;
-        height: 420px;
+        // width: 350px;
+        width: calc(var(--vh, 1vh) * 45);
+        // height: 420px;
+        height: calc(var(--vh, 1vh) * 54);
         margin-left: 0;
         margin-right: 40px;
         margin-bottom: 0;
@@ -91,7 +115,8 @@
         }
 
         .cpl-spc-info-area {
-            margin-top: 360px;
+            // margin-top: 360px;
+            margin-top: 104.2%;
 
             .cpl-spc-mh-area {
                 width: 70px;
@@ -100,7 +125,8 @@
         }
 
         .cpl-spc-info-abstract {
-            height: 56px; /* 60px - 2px - 2px */
+            // height: 56px; /* 60px - 2px - 2px */
+            height: 13.3%;
         }
     }
 }
@@ -128,8 +154,6 @@
 }
 
 .cpl-apc-ic-more {
-    display: flex;
-    justify-content: end;
     font-weight: 500;
     
     > p {
@@ -140,9 +164,10 @@
 }
 
 @media screen and (min-width: 992px) {
-    .cpl-spc-info-content {
-        bottom: 75px;
-    }
+    // .cpl-spc-info-content {
+        // bottom: 75px;
+        // bottom: 20%;
+    // }
     
     .cpl-apc-ic-title,
     .cpl-apc-ic-text {
@@ -163,9 +188,8 @@
         }
 
         .cpl-spc-shadow {
-            background-image: linear-gradient(180deg, transparent 30%, #000000)
+            background-image: linear-gradient(180deg, transparent 30%, #000000CC)
             ;
-            opacity: 0.8;
             position: absolute;
             top: 0;
             // 長寬比會變動的地方 用 padding-bottom 處理
@@ -177,7 +201,8 @@
 
         @media screen and (min-width: 992px) {
             .cpl-spc-shadow {
-                bottom: 56px;
+                // bottom: 56px;
+                bottom: 13.3%;
             }
         }
     }
@@ -185,14 +210,14 @@
 
 .cpl-spc-heart-icon {
     font-size: 2rem;
-    margin-left: 4vw;
+    margin-left: 4vw; // FIXME: 可能要改用 vh 算
+    cursor: pointer;
 }
 
 @media screen and (min-width: 992px) {
     .cpl-spc-heart-icon {
         margin-left: 5px;
         position: relative;
-        cursor: pointer;
         right: -10px;
     }
 }
@@ -206,10 +231,10 @@
 
 @media screen and (min-width: 992px) {
     .cpl-spc-ib-inner-left {
-        padding-left: 75px;
+        // padding-left: 75px;
+        padding-left: 23.5%;
         font-size: $fz-subtitle;
     }
 }
-
 
 

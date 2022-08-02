@@ -72,185 +72,285 @@ function MemberProfileReviseForm() {
                     >
                         Logout
                     </button>
-                </>
-            ) : (
-                <div
-                    className="container"
-                    // style={{
-                    //     backgroundColor: themeContext.backgroundColor,
-                    //     color: themeContext.color,
-                    // }}
-                >
-                    <div className="row">
-                        <div className="col">
-                            <section className="pb-4">
-                                <div className="bg-white bg-opacity-75 rounded-5">
-                                    <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                        {/* php */}
-                                        <div className="card-2 d-flex">
-                                            <div className="cards">
-                                                <br />
-                                                <ol
-                                                    className="breadcrumb justify-content-center"
-                                                    style={{
-                                                        '--bs-breadcrumb-divider':
-                                                            'none',
-                                                    }}
-                                                >
-                                                    <li
-                                                        className="breadcrumb-item active"
-                                                        aria-current="page"
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <section className="pb-4">
+                                    <div className="bg-white bg-opacity-75 rounded-5">
+                                        <section className="w-100 p-4 d-flex justify-content-center pb-4">
+                                            {/* php */}
+                                            <div className="card-2 d-flex">
+                                                <div className="cards">
+                                                    <br />
+                                                    <ol
+                                                        className="breadcrumb justify-content-center"
+                                                        style={{
+                                                            '--bs-breadcrumb-divider':
+                                                                'none',
+                                                        }}
                                                     >
-                                                        <Link
-                                                            to="/memberprofile"
-                                                            className="breadcrumb-item breadcrumb-item-link"
+                                                        <li
+                                                            className="breadcrumb-item active"
+                                                            aria-current="page"
                                                         >
-                                                            會員中心主頁
-                                                        </Link>
-                                                    </li>
+                                                            <Link
+                                                                to="/memberprofile"
+                                                                className="breadcrumb-item breadcrumb-item-link"
+                                                            >
+                                                                會員中心主頁
+                                                            </Link>
+                                                        </li>
 
-                                                    <li className="breadcrumb-item">
-                                                        <Link
-                                                            to="/memberprofilerevise"
-                                                            className="breadcrumb-item-link"
-                                                        >
-                                                            修改會員資料
-                                                        </Link>
-                                                    </li>
-                                                    <li className="breadcrumb-item">
-                                                        <Link
-                                                            to="/memberpasswordrevise"
-                                                            className="breadcrumb-item-link"
-                                                        >
-                                                            修改登入密碼
-                                                        </Link>
-                                                    </li>
-                                                    <li className="breadcrumb-item">
-                                                        <Link
-                                                            to="/membereventorder"
-                                                            className="breadcrumb-item-link"
-                                                        >
-                                                            法喜充滿訂單
-                                                        </Link>
-                                                    </li>
-                                                </ol>
-                                                <section className="pb-4">
-                                                    <div className="bg-white bg-opacity-75 rounded-5">
-                                                        <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                                            <div>
-                                                                <div className="tab-content">
-                                                                    <form name="form1">
-                                                                        <div className="mb-3 d-flex justify-content-center page-title">
-                                                                            修改會員資料
-                                                                        </div>
-                                                                        <br />
-                                                                        <div className="mb-3 page-field">
-                                                                            <label
-                                                                                htmlFor="account"
-                                                                                className="form-label"
-                                                                            >
-                                                                                帳戶名稱
-                                                                            </label>
-                                                                            <input
-                                                                                type="text"
-                                                                                className="form-control"
-                                                                                id="account"
-                                                                                name="account"
-                                                                                disabled="disabled"
-                                                                            />
-                                                                            <div className="form-text red"></div>
-                                                                        </div>
-                                                                        <div className="mb-3 page-field">
-                                                                            <label
-                                                                                htmlFor="name"
-                                                                                className="form-label"
-                                                                            >
-                                                                                會員名稱
-                                                                            </label>
-                                                                            <input
-                                                                                type="text"
-                                                                                className="form-control"
-                                                                                id="name"
-                                                                                name="name"
-                                                                                placeholder="請輸入您的名稱"
-                                                                            />
-                                                                            <div className="form-text red"></div>
-                                                                        </div>
-                                                                        <div className="mb-3 page-field">
-                                                                            <label
-                                                                                htmlFor="birthdate"
-                                                                                className="form-label"
-                                                                            >
-                                                                                出生日
-                                                                            </label>
-                                                                            <input
-                                                                                type="date"
-                                                                                className="form-control"
-                                                                                id="birthdate"
-                                                                                name="birthdate"
-                                                                            />
-                                                                            <div className="form-text red"></div>
-                                                                        </div>
-                                                                        <div className="mb-3 page-field">
-                                                                            <label
-                                                                                htmlFor="deathdate"
-                                                                                className="form-label"
-                                                                            >
-                                                                                死亡日
-                                                                            </label>
-                                                                            <input
-                                                                                type="date"
-                                                                                className="form-control"
-                                                                                id="deathdate"
-                                                                                name="deathdate"
-                                                                            />
-                                                                            <div className="form-text red"></div>
-                                                                        </div>
-                                                                        <div className="mb-3 page-field">
-                                                                            <label
-                                                                                htmlFor="email"
-                                                                                className="form-label"
-                                                                            >
-                                                                                電子信箱
-                                                                            </label>
-                                                                            <input
-                                                                                type="email"
-                                                                                className="form-control"
-                                                                                id="email"
-                                                                                name="email"
-                                                                                placeholder="請輸入您的電子信箱"
-                                                                            />
-                                                                            <div className="form-text red"></div>
-                                                                        </div>
+                                                        <li className="breadcrumb-item">
+                                                            <Link
+                                                                to="/memberprofilerevise"
+                                                                className="breadcrumb-item-link"
+                                                            >
+                                                                修改會員資料
+                                                            </Link>
+                                                        </li>
+                                                        <li className="breadcrumb-item">
+                                                            <Link
+                                                                to="/memberpasswordrevise"
+                                                                className="breadcrumb-item-link"
+                                                            >
+                                                                修改登入密碼
+                                                            </Link>
+                                                        </li>
+                                                        <li className="breadcrumb-item">
+                                                            <Link
+                                                                to="/membereventorder"
+                                                                className="breadcrumb-item-link"
+                                                            >
+                                                                法喜充滿訂單
+                                                            </Link>
+                                                        </li>
+                                                    </ol>
+                                                    <section className="pb-4">
+                                                        <div className="bg-white bg-opacity-75 rounded-5">
+                                                            <section className="w-100 p-4 d-flex justify-content-center pb-4">
+                                                                <div>
+                                                                    <div className="tab-content">
+                                                                        <form name="form1">
+                                                                            <div className="mb-3 d-flex justify-content-center page-title">
+                                                                                修改會員資料
+                                                                            </div>
+                                                                            <br />
+                                                                            <div className="mb-3 page-field">
+                                                                                <label
+                                                                                    htmlFor="account"
+                                                                                    className="form-label"
+                                                                                >
+                                                                                    帳戶名稱
+                                                                                </label>
+                                                                                <input
+                                                                                    type="text"
+                                                                                    className="form-control"
+                                                                                    id="account"
+                                                                                    name="account"
+                                                                                    disabled="disabled"
+                                                                                />
+                                                                                <div className="form-text red"></div>
+                                                                            </div>
+                                                                            <div className="mb-3 page-field">
+                                                                                <label
+                                                                                    htmlFor="name"
+                                                                                    className="form-label"
+                                                                                >
+                                                                                    會員名稱
+                                                                                </label>
+                                                                                <input
+                                                                                    type="text"
+                                                                                    className="form-control"
+                                                                                    id="name"
+                                                                                    name="name"
+                                                                                    placeholder="請輸入您的名稱"
+                                                                                />
+                                                                                <div className="form-text red"></div>
+                                                                            </div>
+                                                                            <div className="mb-3 page-field">
+                                                                                <label
+                                                                                    htmlFor="birthdate"
+                                                                                    className="form-label"
+                                                                                >
+                                                                                    出生日
+                                                                                </label>
+                                                                                <input
+                                                                                    type="date"
+                                                                                    className="form-control"
+                                                                                    id="birthdate"
+                                                                                    name="birthdate"
+                                                                                />
+                                                                                <div className="form-text red"></div>
+                                                                            </div>
+                                                                            <div className="mb-3 page-field">
+                                                                                <label
+                                                                                    htmlFor="deathdate"
+                                                                                    className="form-label"
+                                                                                >
+                                                                                    死亡日
+                                                                                </label>
+                                                                                <input
+                                                                                    type="date"
+                                                                                    className="form-control"
+                                                                                    id="deathdate"
+                                                                                    name="deathdate"
+                                                                                />
+                                                                                <div className="form-text red"></div>
+                                                                            </div>
+                                                                            <div className="mb-3 page-field">
+                                                                                <label
+                                                                                    htmlFor="email"
+                                                                                    className="form-label"
+                                                                                >
+                                                                                    電子信箱
+                                                                                </label>
+                                                                                <input
+                                                                                    type="email"
+                                                                                    className="form-control"
+                                                                                    id="email"
+                                                                                    name="email"
+                                                                                    placeholder="請輸入您的電子信箱"
+                                                                                />
+                                                                                <div className="form-text red"></div>
+                                                                            </div>
 
-                                                                        <div className="d-flex justify-content-sm-evenly ">
-                                                                            <button
-                                                                                type="submit"
-                                                                                className="btn btn-l btn-pri btn-outline-light"
-                                                                            >
-                                                                                修改
-                                                                            </button>
-                                                                            <button
-                                                                                type="submit"
-                                                                                className="btn btn-sec btn-l btn-outline-light"
-                                                                            >
-                                                                                清除
-                                                                            </button>
-                                                                        </div>
-                                                                    </form>
+                                                                            <div className="d-flex justify-content-sm-evenly ">
+                                                                                <button
+                                                                                    type="submit"
+                                                                                    className="btn btn-l btn-pri btn-outline-light"
+                                                                                >
+                                                                                    修改
+                                                                                </button>
+                                                                                <button
+                                                                                    type="submit"
+                                                                                    className="btn btn-sec btn-l btn-outline-light"
+                                                                                >
+                                                                                    清除
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </section>
-                                                    </div>
-                                                </section>
+                                                            </section>
+                                                        </div>
+                                                    </section>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </section>
+                                        </section>
+                                    </div>
+                                </section>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </>
+            ) : (
+                <>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <section className="pb-4">
+                                    <div className="bg-white bg-opacity-75 rounded-5">
+                                        <section className="w-100 p-4 d-flex justify-content-center pb-4">
+                                            <div>
+                                                <div className="tab-content">
+                                                    <form
+                                                        name="form1"
+                                                        onSubmit={handleSubmit}
+                                                    >
+                                                        <div className="mb-3 d-flex justify-content-center page-title">
+                                                            會員登入
+                                                        </div>
+                                                        <br />
+                                                        <div className="mb-3 page-field">
+                                                            <label
+                                                                htmlFor="account"
+                                                                className="form-label"
+                                                            >
+                                                                帳戶名稱
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                id="account"
+                                                                name="account"
+                                                                placeholder="請輸入您的帳戶"
+                                                                value={
+                                                                    loginData.account
+                                                                }
+                                                                onChange={
+                                                                    handleFieldsChange
+                                                                }
+                                                            />
+                                                            <div className="form-text red"></div>
+                                                        </div>
+                                                        <div className="mb-3 page-field">
+                                                            <label
+                                                                htmlFor="password"
+                                                                className="form-label"
+                                                            >
+                                                                登入密碼
+                                                            </label>
+                                                            <input
+                                                                type="password"
+                                                                className="form-control"
+                                                                id="password"
+                                                                name="password"
+                                                                placeholder="請輸入您的密碼"
+                                                                value={
+                                                                    loginData.password
+                                                                }
+                                                                onChange={
+                                                                    handleFieldsChange
+                                                                }
+                                                            />
+                                                            <div className="form-text red"></div>
+                                                        </div>
+
+                                                        <div className="d-flex justify-content-center ">
+                                                            <button
+                                                                type="submit"
+                                                                className="btn btn-l btn-pri btn-outline-light "
+                                                            >
+                                                                登入
+                                                            </button>
+                                                        </div>
+                                                        <br />
+                                                        <div className="d-flex justify-content-center ">
+                                                            <Link
+                                                                className="link"
+                                                                to="/register"
+                                                            >
+                                                                未註冊，先創建帳戶
+                                                            </Link>
+                                                        </div>
+                                                        <br />
+                                                        <div className="d-flex justify-content-center ">
+                                                            <Link
+                                                                className="link"
+                                                                to="/forgotpassword"
+                                                            >
+                                                                忘記密碼
+                                                            </Link>
+                                                        </div>
+                                                        <br />
+                                                    </form>
+                                                    <div
+                                                        id="info-bar"
+                                                        className="alert alert-success d-flex justify-content-center"
+                                                        role="alert"
+                                                    >
+                                                        您已成功登入
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </>
             )}
         </>
     );
