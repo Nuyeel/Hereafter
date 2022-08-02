@@ -51,7 +51,7 @@
 
 
 # custom
-# .gitignore
+.gitignore
 .vscode
 .DS_Store
 
@@ -61,3 +61,18 @@
 
 /client/.vscode
 /client/package-lock.json
+
+
+
+# for test or experimental codes
+/server/models
+/server/routes/test.js
+
+/client/src/components/Test.jsx
+/client/src/styles/test.scss
+
+
+
+# stop logging
+/server/README.md
+/client/README.md
