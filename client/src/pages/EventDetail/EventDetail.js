@@ -57,26 +57,37 @@ const EventDetail = () => {
         setEventDetail(response.data);
     };
 
+    // 一進頁面就跟MySQL確認此項商品是否已加入購物車
+    const fetchCheckEvent = async () => {
+        const response = await axios.get(
+            `http://localhost:3500/events/checkeventcart/${sid}`
+        );
+        console.log(typeof response.data);
+        console.log(response.data); //會獲得一個array
+
+        let output = [];
+        let r = response.data;
+
+        r.map((v, i) => {
+            output.push(r[i].event_sid); //分別取得24.30
+            console.log(output); //[取得24.30]
+        });
+
+        if (output.includes(+eventSid)) {
+            setCartBtnWord('已加入');
+            setCartBuyWord('前往結帳');
+            setCartBtn(true);
+        } else {
+            setCartBtnWord('加入購物車');
+            setCartBuyWord('直接結帳');
+        }
+    };
+
     // 避免無窮迴圈(DidMount)
     useEffect(() => {
         fetchEventDetail();
-        // fetchCheckEventCart();
+        fetchCheckEvent();
     }, []);
-
-    // TODO: 待處理購物車驗證問題
-    // 一進頁面就先確認使用者是否有報名過此活動
-    // 要傳給後端使用者sid+活動sid
-    // 如果回傳是 null 則代表沒有這個活動 -> button照常運作
-    // 如果回傳不是null 則button要取消運作
-
-    // const fetchCheckEventCart = async () => {
-    //     const response = await axios.get(
-    //         // TODO:修成 ajax-path
-    //         `http://localhost:3500/events/${eventSid}/${sid}`
-    //     );
-    //     setEventDetail(response.data);
-    // };
-
 
     // 按下「加入購物車」將資料存進MySQL //因為axios方式不熟 先用fetch方式POST
     const fetchEventAddCart = async () => {
@@ -243,6 +254,7 @@ const EventDetail = () => {
 
                                     {authorized ? (
                                         <button
+                                            // TODO: 每次進來頁面都要核對一次是否已被加進購物車
                                             disabled={cartBtn}
                                             className="xuan-btn-m xuan-btn-pri"
                                             onClick={() => {
