@@ -88,6 +88,7 @@ h3 {
             // TODO: 某寬度時只顯示漢堡選單
             // FIXME: 這 className 不好 但是辨識度高
             // DONE: 先暫定為 768px
+            // FIXME: 手機版要怎麼進登入頁面？
             .nir-NavSoul,
             .nir-FaShoppingCart,
             .nir-BsFillPersonFill {
@@ -242,14 +243,23 @@ h3 {
 /* ============================================================ */
 // FIXME: 目前字體大小是吃 h2 的設定 必須要改成 RWD
 .header {
+    font-size: 2rem;
     font-weight: 700;
     font-family: $ff-h;
     width: 100%;
     padding-left: 20px;
     margin-bottom: 20px;
-    letter-spacing: 0.6rem;
+    letter-spacing: 0.4rem;
     // outline: 1px solid red;
     position: relative;
+}
+
+// FIXME: Header RWD font-size
+@media screen and (min-width: 500px) {
+    .header {
+        font-size: 3rem;
+        letter-spacing: 0.6rem;
+    }
 }
 
 @media screen and (min-width: 1400px) {
@@ -283,11 +293,18 @@ h3 {
     // FIXME: min-width 要配合字體大小 RWD
     min-width: 280px;
     // TODO: height (%)
-    height: 25px;
+    height: 15px;
     position: absolute;
     left: 0;
-    bottom: -13px;
+    bottom: -7px;
     z-index: -1;
+}
+
+@media screen and (min-width: 500px) {
+    .header-baseline-decoration {
+        height: 25px;
+        bottom: -13px;
+    }
 }
 
 /* ============================================================ */
@@ -307,51 +324,55 @@ h3 {
         position: absolute;
         left: -22%;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
         top: 0%;
         width: 60%;
     }
-
+    
     @media screen and (min-width: 992px) {
         .bg-L-cloud-left-top {
             display: block;
         }
     }
-
+    
     .bg-L-mist-right-top-L {
         display: none;
         position: absolute;
         right: -10%;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
         top: -50%;
         width: 50%;
     }
-
+    
     @media screen and (min-width: 992px) {
         .bg-L-mist-right-top-L {
             display: block;
         }
     }
-
+    
     .bg-L-mist-right-top-S {
         display: none;
         position: absolute;
         right: -10%;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
         top: -52%;
         width: 50%;
     }
-
+    
     @media screen and (min-width: 992px) {
         .bg-L-mist-right-top-S {
             display: block;
         }
     }
-
+    
     .bg-L-cloud-right-bottom {
         display: none;
         position: absolute;
         right: -13%;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
         bottom: 0%;
         width: 40%;
     }
@@ -365,7 +386,7 @@ h3 {
 
 .background-dark {
     background-color: $bgc-D;
-
+    
     .bg-D-cloud-left-bottom {
         display: none;
         position: absolute;
@@ -379,7 +400,7 @@ h3 {
             display: block;
             // animation: bgDclb ease-in-out 12s infinite alternate-reverse;
         }
-
+        
         @keyframes bgDclb {
             0% {
                 left: -20px;
@@ -389,12 +410,13 @@ h3 {
             }
         }
     }
-
+    
     .bg-D-wave-right-top-L {
         display: none;
         position: absolute;
         right: 0;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
         top: 0%;
         width: 40%;
     }
@@ -404,12 +426,13 @@ h3 {
             display: block;
         }
     }
-
+    
     .bg-D-wave-right-top-S {
         display: none;
         position: absolute;
         right: 0;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
+        // DONE: 目前暫時沒問題
         top: 0%;
         width: 32%;
     }
