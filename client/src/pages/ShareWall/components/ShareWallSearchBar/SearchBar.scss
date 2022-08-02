@@ -1,12 +1,19 @@
 @import '../../../../styles/variables.scss';
 
+.cpl-searchbar-container {
+    width: 100%;
+}
+
 .cpl-searchbar {
-    width: 400px;
-    height: 50px;
+    // FIXME: 改成 %
+    width: 100%;
+    max-width: 400px;
+    margin-right: 0;
+    height: 40px;
     background-color: transparent;
-    border: $secondary 2px solid;
+    border: 2px solid $secondary;
     border-radius: 10px;
-    padding-left: 20px;
+    padding-left: 10px;
     margin-bottom: 8px;
 
     &:focus {
@@ -14,25 +21,43 @@
     }
 
     &::placeholder {
-        line-height: 50px;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         position: relative;
-        top: 2px;
-        right: 40px;
+        top: 1px;
+        right: 20px;
         font-family: $ff-t;
         text-align: right;
     }
 
     &::-webkit-search-cancel-button {
         position: relative;
-        right: 40px;
+        right: 30px;
         -webkit-appearance: none;
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
         -webkit-mask-image: url('../../../../images/SearchBar/CgClose.svg');
         mask-image: url('../../../../images/SearchBar/CgClose.svg');
         -webkit-mask-size: cover;
         mask-size: cover;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-searchbar {
+        height: 50px;
+        padding-left: 20px;
+
+        &::placeholder {
+            font-size: 1.5rem;
+            top: 2px;
+            right: 40px;
+        }
+    
+        &::-webkit-search-cancel-button {
+            right: 40px;
+            width: 20px;
+            height: 20px;
+        }
     }
 }
 
@@ -85,11 +110,19 @@
 }
 
 .cpl-search-icon {
-    font-size: 2.5rem;
+    font-size: 2rem;
     position: relative;
-    left: -3rem;
-    top: 5px;
+    left: -2.5rem;
+    top: 4px;
     cursor: pointer;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-search-icon {
+        font-size: 2.5rem;
+        left: -3rem;
+        top: 5px;
+    }
 }
 
 .cpl-search-icon-light {

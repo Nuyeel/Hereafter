@@ -104,7 +104,7 @@ function ShareWallSearchBar(props) {
     };
 
     return (
-        <form className="d-flex">
+        <form className="d-flex cpl-searchbar-container">
             {/* TODO: useDebouncing */}
             <input
                 className={`form-control cpl-searchbar ${

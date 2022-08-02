@@ -72,9 +72,17 @@
 
     .cpl-spc-info-abstract {
         // height: 88px;
-        aspect-ratio: 11/2; /* 先心算估一個比例 */
-        font-size: $fz-subtitle;
+        aspect-ratio: 107/20; /* 先心算估一個比例 */
+        font-size: $fz-body;
         color: #FFFFFF;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-share-post-card {
+        .cpl-spc-info-abstract {
+            font-size: $fz-subtitle;
+        }
     }
 }
 

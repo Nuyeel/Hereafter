@@ -3,6 +3,8 @@
 // FIXME: 手機版可以直接變長閱讀 桌面版就跳轉吧 
 // DONE: 手機版也先跳頁 不然麻煩
 // FIXME: 應該要把寬高都設定在子層
+// DONE: 用兩種方式強制控制高度
+// FIXME: 編輯貼文功能可能要看情況了
 
 // ============================================================
 // 卡片主體部分
@@ -15,16 +17,24 @@
 }
 
 .cpl-post-card-body {
-    width: 100%;
+    // width: 100%;
+    overflow: hidden; // 用來規避 Overlay Scrollbars 有時爆版問題
     border: 2px solid $accent-blue;
     border-radius: 20px;
     backdrop-filter: blur(2px);
     position: relative;
-    top: 20px; // 讓視覺上低一點
-    margin-bottom: 60px; // FIXME: 日後有錯誤可能是這裡來的
+    top: -10px;
+    margin-bottom: 20px; // FIXME: 日後有錯誤可能是這裡來的
     
     >.col-lg-6 {
         position: relative;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-post-card-body {
+        top: 20px; // 讓視覺上低一點
+        margin-bottom: 60px; // FIXME: 日後有錯誤可能是這裡來的
     }
 }
 
@@ -50,7 +60,7 @@
 
 @media screen and (min-width: 992px) {
     .cpl-post-card-body {
-        min-height: 560px;
+        max-height: 560px;
         // max-width: calc(var(--vh, 1vh) * 120);
         // max-height: calc(var(--vh, 1vh) * 70);
         // aspect-ratio: 12/7;
@@ -68,9 +78,12 @@
 
 @media screen and (min-width: 1400px) {
     .cpl-post-card-body {
-        top: -10px;
-        max-width: 1320px;
-        max-height: 770px;
+        // top: -30px;
+        top: calc(var(--vh, 1vh) * -4);
+        // max-width: 1200px;
+        max-width: 1200px;
+        max-width: calc(var(--vh, 1vh) * 144);
+        max-height: calc(var(--vh, 1vh) * 84);
     }
 }
 
@@ -83,8 +96,14 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 50px;
+    top: 30px;
     margin: auto;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-avatar {
+        top: 50px;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -96,21 +115,21 @@
 @media screen and (min-width: 992px) {
     .cpl-pcb-avatar {
         max-width: 400px;
-        top: 35px;
+        top: 25px;
     }
 }
 
 @media screen and (min-width: 1200px) {
     .cpl-pcb-avatar {
-        min-width: 440px;
+        max-width: 440px;
         top: 40px;
     }
 }
 
 @media screen and (min-width: 1400px) {
     .cpl-pcb-avatar {
-        min-width: 520px;
-        top: 50px;
+        max-width: calc(var(--vh, 1vh) * 60);
+        top: 40px;
     }
 }
 
@@ -129,12 +148,22 @@
 .cpl-pcb-af-round {
     width: 83%;
     border-radius: 50%;
-    bottom: 16%;
+    bottom: 27.7%;
 }
 
 .cpl-pcb-af-square {
     width: 70%;
-    bottom: 4.6%;
+    bottom: 18%;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-af-round {
+        bottom: 15.4%;
+    }
+    
+    .cpl-pcb-af-square {
+        bottom: 4.6%;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -149,7 +178,7 @@
 
 @media screen and (min-width: 992px) {
     .cpl-pcb-af-round {
-        bottom: 22%;
+        bottom: 22.4%;
     }
 
     .cpl-pcb-af-square {
@@ -168,9 +197,15 @@
 
 .cpl-pcb-close-icon {
     position: absolute;
-    font-size: $fz-h3;
+    font-size: $fz-h4;
     right: 5px;
     top: 5px;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-close-icon {
+        font-size: $fz-h3;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -190,7 +225,7 @@
 }
 
 .cpl-pcb-inner-avatar-info{
-    padding-top: 95%;
+    padding-top: 97%;
 
     .cpl-ivi-title {
         font-weight: 700;
@@ -203,8 +238,28 @@
     .cpl-ivi-detail {
         font-size: $fz-caption;
         margin-bottom: 16px;
+        line-height: normal;
         // outline: 1px solid red;
         padding-left: 6%;
+
+        .cpl-ivi-d-more {
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-inner-avatar-info{
+        padding-top: 95%;
+    
+        .cpl-ivi-title {
+            margin-bottom: 12px;
+        }
+    
+        .cpl-ivi-detail {
+            margin-bottom: 16px;
+        }
     }
 }
 
@@ -224,6 +279,8 @@
 
 @media screen and (min-width: 992px) {
     .cpl-pcb-inner-avatar-info{
+        padding-top: 91%;
+
         .cpl-ivi-title {
             font-size: $fz-body;
             margin-bottom: 12px;
@@ -244,15 +301,28 @@
 
 @media screen and (min-width: 1400px) {
     .cpl-pcb-inner-avatar-info{
+        padding-top: 92%;
         .cpl-ivi-title {
             font-size: $fz-title;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
         }
     
         .cpl-ivi-detail {
             font-size: $fz-body;
             margin-bottom: 20px;
         }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-ivi-interaction-area {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-ivi-interaction-area {
+        margin-bottom: 20px;
     }
 }
 
@@ -264,8 +334,17 @@
 }
 
 .cpl-pcb-ivi-ia-AiFillPlusCircle {
-    font-size: 3rem;
+    font-size: 2.75rem;
     color: #CE59E7;
+    cursor: pointer;
+    position: relative;
+    top: -1px;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-ivi-ia-AiFillPlusCircle {
+        font-size: 3rem;
+    }
 }
 
 // FIXME: 有問題的話要調整定位
@@ -317,11 +396,30 @@
     margin-bottom: 24px;
 }
 
+@media screen and (min-width: 992px) {
+    .cpl-pcb-ita-title-area {
+        margin-bottom: 16px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-ita-title-area {
+        margin-bottom: 24px;
+    }
+}
+
 .cpl-pcb-ita-ta-inner-title {
     font-family: $ff-h;
-    font-size: $fz-h4;
+    font-size: $fz-h5;
     font-weight: 500;
     margin-bottom: 20px;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-ita-ta-inner-title {
+        font-size: $fz-h4;
+        margin-bottom: 20px;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -333,11 +431,18 @@
 @media screen and (min-width: 992px) {
     .cpl-pcb-ita-ta-inner-title {
         font-size: $fz-h4;
+        margin-bottom: 12px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-ita-ta-inner-title {
+        margin-bottom: 20px;
     }
 }
 
 .cpl-pcb-ita-ta-inner-tags {
-    font-size: $fz-caption;
+    font-size: $fz-body-mobile;
 
     >.cpl-pcb-ita-ta-it-tag-item {
         color: #FFFFFF;
@@ -350,24 +455,36 @@
         padding-bottom: 5px;
 
         + .cpl-pcb-ita-ta-it-tag-item {
-            margin-left: 10px;
+            margin-left: 5px;
+        }
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-ita-ta-inner-tags {
+        font-size: $fz-caption;
+    
+        >.cpl-pcb-ita-ta-it-tag-item {
+            + .cpl-pcb-ita-ta-it-tag-item {
+                margin-left: 10px;
+            }
         }
     }
 }
 
 .cpl-pcb-ita-text-heading {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 
     >.cpl-pcb-ita-th-inner-left {
         >.cpl-pcb-ita-th-il-mh-area {
-            width: 80px;
+            width: 50px;
             aspect-ratio: 1/1;
             overflow: hidden;
             border-radius: 50%;
             border: 2px solid $bgc-L-l;
             background-color: $bgc-L-l;
 
-            >.cpl-pcb-ita-th-memberhead {
+            >.cpl-pcb-ita-th-il-mh-memberhead {
                 width: 400%;
                 position: relative;
                 left: -150%; /* 200% - 50% */
@@ -377,16 +494,17 @@
 
         >.cpl-pcb-ita-th-il-account {
             padding-left: 10px;
-            font-size: $fz-subtitle;
+            font-size: $fz-body;
         }
     }
 
     >.cpl-pcb-ita-th-inner-right {
-        font-size: $fz-subtitle;
+        font-size: $fz-body;
     
         >.cpl-pcb-ita-th-ir-likes-area {
             >.cpl-pcb-ita-th-ir-la-AiHeart {
-                font-size: $fz-h3;
+                font-size: $fz-h5;
+                cursor: pointer;
             }
             
             >.cpl-pcb-ita-th-ir-la-likes-number {
@@ -398,7 +516,8 @@
             margin-left: 10px;
             
             >.cpl-pcb-ita-th-ir-la-AiBookmark {
-                font-size: $fz-h5;
+                font-size: $fz-title;
+                cursor: pointer;
             }
     
             >.cpl-pcb-ita-th-ir-la-collects-number {
@@ -406,6 +525,56 @@
             }
         }
     }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-ita-text-heading {
+        margin-bottom: 12px;
+    
+        >.cpl-pcb-ita-th-inner-left {
+            >.cpl-pcb-ita-th-il-mh-area {
+                width: 80px;
+            }
+    
+            >.cpl-pcb-ita-th-il-account {
+                font-size: $fz-subtitle;
+            }
+        }
+    
+        >.cpl-pcb-ita-th-inner-right {
+            font-size: $fz-subtitle;
+        
+            >.cpl-pcb-ita-th-ir-likes-area {
+                >.cpl-pcb-ita-th-ir-la-AiHeart {
+                    font-size: $fz-h3;
+                }
+                
+                >.cpl-pcb-ita-th-ir-la-likes-number {
+                    padding-left: 3px;
+                }
+            }
+            
+            >.cpl-pcb-ita-th-ir-collects-area {
+                margin-left: 10px;
+                
+                >.cpl-pcb-ita-th-ir-la-AiBookmark {
+                    font-size: $fz-h5;
+                }
+        
+                >.cpl-pcb-ita-th-ir-la-collects-number {
+                    padding-left: 3px;
+                }
+            }
+        }
+    }
+}
+
+.cpl-pcb-ita-th-ir-la-AiHeart.isLiked {
+    color: $primary;
+}
+
+.cpl-pcb-ita-th-ir-la-AiBookmark.isCollected {
+    color: $primary;
 }
 
 @media screen and (min-width: 768px) {
@@ -499,4 +668,175 @@
     line-height: normal;
     padding-bottom: 1rem;
     border-bottom: 2px solid $accent-blue-50p;
+    margin-bottom: 12px;
+}
+
+@media screen and (min-width: 500px) {
+    
+}
+
+// ============================================================
+// 分享文章留言部分
+// ============================================================
+
+// 這裡宣告基本尺寸
+.cpl-pcb-ita-comments-container {
+    max-height: 200px;
+    margin-bottom: 10px;
+    // outline: 1px solid green;
+
+    >.os-scrollbar {
+        >.os-scrollbar-track {
+            // FIXME: 知道怎麼控制寬度了
+            width: 10px;
+            // position: relative;
+            right: 10px;
+            >.os-scrollbar-handle {
+                background: $accent-blue-50p;
+                // FIXME: 可以調整置中和捲動握把寬度
+                // FIXME: 上下留邊怎麼調整？
+                // width: 6px;
+                // left: 0;
+                // right: 0;
+                // margin-left: auto;
+                // margin-right: auto;
+                
+            }
+
+            .os-scrollbar-handle.active {
+                background: $accent-blue-50p;
+                // background: rgba(207, 27, 159, 0.7);
+            }
+        }
+    }
+
+    >.os-scrollbar:hover {
+        >.os-scrollbar-track { 
+            >.os-scrollbar-handle {
+                background: $accent-blue-50p;
+                // background: rgba(46, 149, 213, 0.55);
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-ita-comments-container {
+        // FIXME: 桌機版要想辦法定住高度
+        // min-height max-height 夾著應該可以
+        min-height: 90px;
+        max-height: 90px;
+        margin-bottom: 18px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-ita-comments-container {
+        // FIXME: 桌機版要想辦法定住高度
+        // min-height max-height 夾著應該可以
+        min-height: 140px;
+        max-height: 140px;
+        margin-bottom: 18px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-ita-comments-container {
+        // FIXME: 桌機版要想辦法定住高度
+        // min-height max-height 夾著應該可以
+        min-height: calc(var(--vh, 1vh) * 20);
+        max-height: calc(var(--vh, 1vh) * 20);
+        margin-bottom: 18px;
+    }
+}
+
+.cpl-pcb-ita-comment-item {
+    // outline: 1px solid red;
+    margin-bottom: 10px;
+    padding-right: 30px; // FIXME: 用來幫捲動條留白
+
+    // .cpl-pcb-ita-ci-account {
+        // padding-left: 20px;
+    // }
+
+    .cpl-pcb-ita-ci-text {
+        padding-left: 10px;
+        font-weight: 100;
+        line-height: 20px;
+        // outline: 1px solid red;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-ita-comment-item {
+    // outline: 1px solid red;
+    margin-bottom: 10px;
+    padding-right: 30px; // FIXME: 用來幫捲動條留白
+
+        // .cpl-pcb-ita-ci-account {
+            // padding-left: 20px;
+        // }
+
+        .cpl-pcb-ita-ci-text {
+            padding-left: 10px;
+            font-weight: 100;
+            // line-height: normal;
+            // outline: 1px solid red;
+        }
+    }
+}
+
+// 這裡處理淺色配色
+.cpl-pcb-ita-comments-container.os-theme-light {
+    >.os-scrollbar {
+        >.os-scrollbar-track {
+            background-color: $white-50p;
+        }
+    }
+}
+
+// 這裡處理深色配色
+.cpl-pcb-ita-comments-container.os-theme-dark {
+    >.os-scrollbar {
+        >.os-scrollbar-track {
+            background-color: $black-50p;
+        }
+    }
+}
+
+.cpl-pcb-ita-text-comment-area {
+    margin-bottom: 20px;
+
+    >.cpl-pcb-ita-tca-mh-area {
+        width: 50px;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 2px solid $bgc-L-l;
+        background-color: $bgc-L-l;
+
+        >.cpl-pcb-ita-tca-mh-memberhead {
+            width: 400%;
+            position: relative;
+            left: -150%; /* 200% - 50% */
+            top: -45%; /* - 50% + 5% 規避頸部 */
+        }
+    }
+}
+
+.cpl-pcb-ita-tca-comment-area {
+    padding-left: 20px;
+    width: 100%;
+
+    .cpl-pcb-ita-tca-c-text {
+        // width: 220%;
+        background-color: transparent;
+        border: 1px solid $white-60p;
+        border-radius: 20px;
+
+        &::placeholder {
+            position: relative;
+            top: -1px;
+        }
+    }
 }
