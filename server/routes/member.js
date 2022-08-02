@@ -24,6 +24,7 @@ const bcryptjs = require('bcryptjs');
 
 // FIXME: 實際路由設計可以自己決定
 // 測試: http://localhost:3500/api/member/login
+// 登入
 router
     .get(async (req, res) => {
         res.render('login');
@@ -41,13 +42,13 @@ router
         const [q1] = await db.query(sql, [req.body.account]);
 
         if (!q1.length) {
-            output.code = 405;
+            output.code = 401;
             output.error = '帳戶錯誤';
             return res.json(output);
         }
 
         if (!req.body.password) {
-            output.code = 405;
+            output.code = 402;
             output.error = '請輸入密碼';
             return res.json(output);
         }
@@ -59,7 +60,7 @@ router
             row.password
         );
         if (!output.success) {
-            output.code = 406;
+            output.code = 403;
             output.error = '密碼錯誤';
             return res.json(output);
         } else {
@@ -78,7 +79,7 @@ router
 
             const token = await jwt.sign(jwtPayload, process.env.JWT_SECRET);
 
-            // 然後將之寫入資料表中
+            // 將之寫入資料表中
             const $sql =
                 'INSERT INTO `admin_test_jwt`(`member_sid`, `token`, `expires`, `payload`) VALUES (?, ?, ?, ?)';
 
@@ -97,6 +98,56 @@ router
                 token,
                 account: row.account,
             };
+        }
+        res.json(output);
+    });
+
+// FIXME: 實際路由設計可以自己決定
+// 測試: http://localhost:3500/api/member/register
+// 註冊
+router
+    .route('/register')
+    .get(async (req, res) => {
+        res.render('register');
+    })
+    .post(async (req, res) => {
+        const output = {
+            success: false,
+            error: '',
+            code: 0,
+        };
+
+        // 用query方法查詢
+        const sql = 'SELECT * FROM `member` WHERE account = ?';
+        const [q1] = await db.query(sql, [req.body.account]);
+        if (q1.length > 0) {
+            output.code = 405;
+            output.error = '您輸入的帳戶已經存在';
+            return res.json(output);
+        }
+
+        const sql2 = 'SELECT * FROM `member` WHERE email = ?';
+        const [q2] = await db.query(sql2, [req.body.email]);
+        if (q2.length > 0) {
+            output.code = 406;
+            output.error = '您輸入的電子信箱已經存在';
+            return res.json(output);
+        }
+
+        // 用execute方法執行新增資料
+        const sql3 =
+            'INSERT INTO `member`(`account`, `email`, `password`, `create_at`) VALUES (?,?,?,Now())';
+        const salt = bcryptjs.genSaltSync(10);
+        const hash = await bcryptjs.hash(req.body.password, salt);
+        const [q3] = await db.execute(sql3, [
+            req.body.account,
+            req.body.email,
+            hash,
+        ]);
+
+        if (!output.success) {
+            output.code = 407;
+            output.error = '您的註冊資料有誤';
         }
         res.json(output);
     });
