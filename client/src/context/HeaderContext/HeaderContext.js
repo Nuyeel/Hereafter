@@ -8,7 +8,7 @@ export const headers = {
         title: '',
     },
     mainpage: {
-        title: '我是首頁',
+        title: '',
     },
     about: {
         title: '關於我們',
