@@ -1,0 +1,1000 @@
+/* 引入自定義變數 */
+@import '../../styles/variables.scss';
+
+
+body {
+position: relative;
+}
+
+.xuan-parent{
+  // background-color: black;
+  // outline: 5px solid red;
+  width:100%;
+  height: 100vh;
+  /* outline:5px solid red; */
+  overflow-x: hidden; 
+  overflow-y: hidden;
+  float:left;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.xuan-child{
+  // background-color:rgb(255, 210, 75);
+  width:200%;
+  height: 300%;
+  float:left;
+  font-size:15px;
+  font-family:arial;
+  padding:10px;
+  position: relative;
+}
+
+.xuan-mainpage-nav{
+  /* 禁止元素被反藍選取 */
+  user-select: none; 
+  /* 禁止元素被拖拉 */
+  -webkit-user-drag: none;
+  z-index: 1000;
+}
+
+.xuan-mainpage-nav:hover{
+  cursor: pointer;
+}
+
+
+// ------- fixed按鈕 Part -------------------
+
+/* 按了回中心點 */
+.xuan-btn-center{
+    user-select: none; 
+    -webkit-user-drag: none;
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    z-index: 1000;
+    cursor: pointer;
+    // background-color: black;
+    /* 禁止元素被反藍選取 */
+    user-select: none; 
+    /* 禁止元素被拖拉 */
+    -webkit-user-drag: none;
+    color: white;
+
+    >img{
+      width: 80%;
+    }
+    >span{
+      margin-top:10px;
+    }
+} 
+
+.xuan_mainpage_nav{
+  position: fixed;
+  right:0px;
+  top:0px;
+  width: 20%;
+  min-width: 120px;
+  /* 禁止元素被反藍選取 */
+  user-select: none; 
+  /* 禁止元素被拖拉 */
+  -webkit-user-drag: none;
+}
+
+
+@media screen and (min-width: 992px) {
+  .xuan-mainpage-nav{
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 12%;
+
+      >img{
+        width: 100%;
+      }
+  }
+}
+
+// 手機版(768)----------------------------------
+
+/* 中心位置 */
+.xuan-child-center{
+    border-radius: 20px;
+    width: 330px;
+    height: 320px;
+    background-color: #9587E1;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-48%, -47%);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    >img{
+      width: 80%;
+      height: 80%;
+    }
+}
+
+
+// 背景素材圖
+.xuan-mainpage-bg{
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+    /* 禁止元素被反藍選取 */
+    user-select: none; 
+    /* 禁止元素被拖拉 */
+    -webkit-user-drag: none;
+}
+
+
+// 轉生形象box
+.xuan-box-avatar{
+  width: 14%;
+  height:12%;
+  position:absolute;
+  top: 57%;
+  left: 26%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  background-color: #E384F2;
+  z-index: 300;
+  color: white;
+
+      >div:nth-child(3){
+        background-color: white;
+        width: 85%;
+        height: 65%;
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 10px;
+      }
+
+      >p:nth-child(1){
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        font-size: $fz-h4;
+        font-family: $ff-t, $ff-h;
+        font-weight: 500;
+        margin: 15px auto;
+      }
+
+      >div:nth-child(2){
+        width: 100%;
+        text-align: center;
+                  
+            >img{
+              width: 40%;
+              margin: auto;
+            }
+
+      }
+
+}
+
+
+
+
+
+
+
+// 一般版面(桌機版)-----------------------------
+@media screen and (min-width: 1900px) {
+  
+  .xuan-child-center{
+    width: 10%;
+    height: 12%;
+    transform: translate(-52%, -46%);
+
+      >img{
+        width: 80%;
+        height: 80%;
+      }
+
+    }
+
+  .xuan-mainpage-bg{
+    width: 100vw;
+    transform: translate(-50%, -50%);
+      >img{
+        width: 100%;
+        height: 100%;
+      }
+  }
+  
+  // 轉生形象box
+  .xuan-box-avatar{
+    border-radius: 20px;
+    width: 7%;
+    height: 12.5%;
+    background-color: #E384F2;
+    position:absolute;
+    top: 57.5%;
+    left: 40.3%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+
+      >p:nth-child(1){
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        font-size: $fz-h2;
+        font-family: $ff-t, $ff-h;
+        font-weight: 500;
+        line-height: 50px;
+      }
+
+      >div:nth-child(2){
+        width: 100%;
+        text-align: center;
+                  
+            >img{
+              width: 40%;
+              margin: auto;
+            }
+
+      }
+
+
+      >div:nth-child(3){
+        background-color: white;
+        width: 85%;
+        height: 60%;
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 10px;
+      }
+
+  }
+
+  // 會員中心box
+  .xuan-box-member{
+    border-radius: 20px;
+    width: 6.5%;
+    height: 12%;
+    background-color: #81A8E0;
+    position:absolute;
+    top: 66%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    color: white;
+
+
+        >div:nth-child(1){
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+
+            >img{
+              width: 15%;
+            }
+
+
+            >p{
+              width: 70%;
+              text-align: center;
+              font-size: $fz-h2;
+              font-family: $ff-t, $ff-h;
+              font-weight: 500;
+            }
+        }
+
+
+        >div:nth-child(2){
+          background-color: white;
+          border-radius: 10px;
+          width: 85%;
+          height: 63%;
+          margin: auto;
+          margin-top: 20px;
+        }
+
+    }
+  
+  // 投胎去！
+  .xuan-go-future{
+    width: 2.5%;
+    border-radius: 50%;
+    background-color: #9587E1;
+    position:absolute;
+    top: 44%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+
+    >img{
+      width: 100%;
+    }
+  }
+
+  // 良辰吉地
+  .xuan-time{
+    width: 13.5%;
+    height: 4.3%;
+    background-color: #9587E1;
+    border-radius: 20px;
+    position:absolute;
+    top: 59.2%;
+    left: 62%;
+    transform: translate(-50%, -50%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+      >div:nth-child(1){
+        width: 35%;
+        text-align: center;
+        
+        >p{
+          // width: 70%;
+          text-align: center;
+          font-size: $fz-h2;
+          font-family: $ff-t, $ff-h;
+          font-weight: 500;
+          margin-bottom: 15px;
+        }
+
+        >img{
+          width: 60%;
+        }
+      }
+
+      >div:nth-child(2){
+        width: 60%;
+
+        >img{
+          width: 95%;
+          margin: auto;
+        }
+      }
+  }
+
+  .xuan-box-event{
+    background-color: #81A8E0;
+    border-radius: 20px;
+    width: 7%;
+    height: 13.5%;
+    position:absolute;
+    top: 53.5%;
+    left: 32%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+
+    >p:nth-child(1){
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        font-size: $fz-h2;
+        font-family: $ff-t, $ff-h;
+        font-weight: 500;
+        line-height: 71px;
+        margin-bottom: 12px;
+    }
+    >div:nth-child(2){
+      background-color: white;
+      width: 80%;
+      height: 70%;
+      margin: auto;
+      border-radius: 10px;
+    }
+
+  }
+
+}
+
+
+
+
+
+// 方塊大小跟背景圖 RWD連動調整
+@media screen and (min-width: 1500px) and (max-width: 1900px){ 
+  .xuan-child-center{
+    width: 10%;
+    height: 10%;
+    transform: translate(-52%, -47%);
+    }
+
+  .xuan-mainpage-bg{
+    width: 100vw;
+    transform: translate(-50%, -50%);
+      >img{
+        width: 100%;
+        height: 100%;
+      }
+  }
+
+
+  // 轉生形象box
+  .xuan-box-avatar{
+    width: 7%;
+    height:10%;
+    position:absolute;
+    top: 56%;
+    left: 40.3%;
+    transform: translate(-50%, -50%);
+
+      >div:nth-child(3){
+        background-color: white;
+        width: 85%;
+        height: 60%;
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 10px;
+      }
+
+      >p:nth-child(1){
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        font-size: $fz-h3;
+        font-family: $ff-t, $ff-h;
+        font-weight: 500;
+        margin: 15px auto;
+      }
+
+  }
+
+  // 會員中心box
+  .xuan-box-member{
+    border-radius: 20px;
+    width: 6.5%;
+    height: 10.5%;
+    background-color: #81A8E0;
+    position:absolute;
+    top: 65%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    color: white;
+
+
+        >div:nth-child(1){
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+
+            >img{
+              width: 15%;
+            }
+
+
+            >p{
+              width: 70%;
+              text-align: center;
+              font-size: $fz-h3;
+              font-family: $ff-t, $ff-h;
+              font-weight: 500;
+            }
+        }
+
+
+        >div:nth-child(2){
+          background-color: white;
+          border-radius: 10px;
+          width: 85%;
+          height: 60%;
+          margin: auto;
+          margin-top: 20px;
+        }
+
+    }
+
+  // 投胎去！
+  .xuan-go-future{
+    width: 2.5%;
+    // height: 10%;
+    border-radius: 50%;
+    background-color: #9587E1;
+    position:absolute;
+    top: 44.9%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+
+    >img{
+      width: 100%;
+    }
+  }
+
+
+  // 良辰吉地
+  .xuan-time{
+    width: 13.5%;
+    height: 4.5%;
+    background-color: #9587E1;
+    border-radius: 20px;
+    position:absolute;
+    top: 58%;
+    left: 62%;
+    transform: translate(-50%, -50%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+      >div:nth-child(1){
+        width: 35%;
+        text-align: center;
+        
+        >p{
+          // width: 70%;
+          text-align: center;
+          font-size: $fz-h3;
+          font-family: $ff-t, $ff-h;
+          font-weight: 500;
+          margin-bottom: 15px;
+        }
+
+        >img{
+          width: 55%;
+        }
+      }
+
+      >div:nth-child(2){
+        width: 60%;
+
+        >img{
+          width: 90%;
+          margin: auto;
+        }
+      }
+  }
+
+  // 功德撲滿
+  .xuan-box-event{
+    background-color: #81A8E0;
+    border-radius: 20px;
+    width: 7%;
+    height: 11%;
+    position:absolute;
+    top: 53%;
+    left: 32%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+
+    >p:nth-child(1){
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        font-size: $fz-h2;
+        font-family: $ff-t, $ff-h;
+        font-weight: 500;
+        line-height: 71px;
+        margin-bottom: 12px;
+    }
+    >div:nth-child(2){
+      background-color: white;
+      width: 80%;
+      height: 65%;
+      margin: auto;
+      border-radius: 10px;
+    }
+
+  }
+
+}
+
+
+
+
+@media screen and (min-width: 1200px) and (max-width: 1500px){ 
+  .xuan-child-center{
+    width: 10%;
+    height: 8%;
+    transform: translate(-52%, -47%);
+    }
+
+  .xuan-mainpage-bg{
+    width: 100vw;
+    transform: translate(-50%, -50%);
+      >img{
+        width: 100%;
+        height: 100%;
+      }
+  }
+
+  // 轉生形象box
+  .xuan-box-avatar{
+    width: 7%;
+    height:8%;
+    position:absolute;
+    top: 55%;
+    left: 40.3%;
+    transform: translate(-50%, -50%);
+
+        >div:nth-child(3){
+          background-color: white;
+          width: 85%;
+          height: 53%;
+          border-radius: 10px;
+          margin: auto;
+          margin-top: 10px;
+        }
+
+        >p:nth-child(1){
+          width: 100%;
+          margin-top: 10px;
+          text-align: center;
+          font-size: $fz-h3;
+          font-family: $ff-t, $ff-h;
+          font-weight: 500;
+          margin: 15px auto;
+        }
+
+  }
+
+  // 會員中心box
+  .xuan-box-member{
+    border-radius: 20px;
+    width: 6.5%;
+    height: 9%;
+    background-color: #81A8E0;
+    position:absolute;
+    top: 63%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    color: white;
+
+
+        >div:nth-child(1){
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+
+            >img{
+              width: 15%;
+            }
+
+            >p{
+              width: 70%;
+              text-align: center;
+              font-size: $fz-h4;
+              font-family: $ff-t, $ff-h;
+              font-weight: 500;
+            }
+        }
+
+
+        >div:nth-child(2){
+          background-color: white;
+          border-radius: 10px;
+          width: 85%;
+          height: 60%;
+          margin: auto;
+          margin-top: 20px;
+        }
+
+    }
+
+
+  // 投胎去！
+  .xuan-go-future{
+    width: 2.5%;
+    // height: 10%;
+    border-radius: 50%;
+    background-color: #9587E1;
+    position:absolute;
+    top: 46%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+
+    >img{
+      width: 100%;
+    }
+  }
+
+  // 良辰吉地
+  .xuan-time{
+    width: 13.5%;
+    height: 3%;
+    background-color: #9587E1;
+    border-radius: 20px;
+    position:absolute;
+    top: 56.2%;
+    left: 62%;
+    transform: translate(-50%, -50%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+      >div:nth-child(1){
+        width: 35%;
+        text-align: center;
+        
+        >p{
+          // width: 70%;
+          text-align: center;
+          font-size: $fz-h4;
+          font-family: $ff-t, $ff-h;
+          font-weight: 500;
+          margin-bottom:15px;
+        }
+
+        >img{
+          width: 55%;
+        }
+      }
+
+      >div:nth-child(2){
+        width: 60%;
+
+        >img{
+          width: 85%;
+          margin: auto;
+        }
+      }
+  }
+
+    // 功德撲滿
+  .xuan-box-event{
+    background-color: #81A8E0;
+    border-radius: 20px;
+    width: 7%;
+    height: 8.5%;
+    position:absolute;
+    top: 52%;
+    left: 32%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+
+    >p:nth-child(1){
+        width: 100%;
+        margin-top: 15px;
+        text-align: center;
+        font-size: $fz-h3;
+        font-family: $ff-t, $ff-h;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    >div:nth-child(2){
+      background-color: white;
+      width: 80%;
+      height: 65%;
+      margin: auto;
+      border-radius: 10px;
+    }
+
+  }
+
+
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px){ 
+  .xuan-child-center{
+    width: 10%;
+    height: 6.5%;
+    transform: translate(-52%, -47%);
+    }
+
+  .xuan-mainpage-bg{
+    width: 100vw;
+    transform: translate(-50%, -50%);
+      >img{
+        width: 100%;
+        height: 100%;
+      }
+  }
+
+  // 轉生形象box
+  .xuan-box-avatar{
+    width: 7%;
+    height:6%;
+    position:absolute;
+    top: 54%;
+    left: 40.3%;
+    transform: translate(-50%, -50%);
+
+        >div:nth-child(3){
+          background-color: white;
+          width: 85%;
+          height: 48%;
+          border-radius: 10px;
+          margin: auto;
+          margin-top: 10px;
+        }
+
+        >p:nth-child(1){
+          width: 100%;
+          margin-top: 10px;
+          text-align: center;
+          margin: 15px auto;
+
+          font-family: $ff-t, $ff-h;
+          font-weight: 700;
+          font-size: $fz-title;
+        }
+
+        >div:nth-child(2){
+          width: 100%;
+          text-align: center;
+                    
+              >img{
+                width: 35%;
+                margin: auto;
+              }
+  
+        }
+
+  }
+
+  // 會員中心box
+  .xuan-box-member{
+    border-radius: 20px;
+    width: 6%;
+    height: 6.5%;
+    background-color: #81A8E0;
+    position:absolute;
+    top: 59%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    color: white;
+
+
+        >div:nth-child(1){
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+
+            >img{
+              width: 15%;
+            }
+
+            >p{
+              width: 70%;
+              text-align: center;
+              font-family: $ff-t, $ff-h;
+              font-weight: 700;
+              font-size: $fz-title;
+            }
+        }
+
+
+        >div:nth-child(2){
+          background-color: white;
+          border-radius: 10px;
+          width: 85%;
+          height: 55%;
+          margin: auto;
+          margin-top: 20px;
+        }
+
+    }
+
+  // 投胎去！
+  .xuan-go-future{
+    width: 2.5%;
+    border-radius: 50%;
+    background-color: #9587E1;
+    position:absolute;
+    top: 46.8%;
+    left: 57%;
+    transform: translate(-50%, -50%);
+
+    >img{
+      width: 100%;
+    }
+  }
+
+  // 良辰吉地
+  .xuan-time{
+    width: 13.2%;
+    height: 2.5%;
+    background-color: #9587E1;
+    border-radius: 20px;
+    position:absolute;
+    top: 55%;
+    left: 62%;
+    transform: translate(-50%, -50%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+      >div:nth-child(1){
+        width: 35%;
+        text-align: center;
+        
+        >p{
+          // width: 70%;
+          text-align: center;
+          font-family: $ff-t, $ff-h;
+          font-weight: 700;
+          font-size: $fz-title;
+          margin-bottom:15px;
+        }
+
+        >img{
+          width: 55%;
+        }
+      }
+
+      >div:nth-child(2){
+        width: 60%;
+
+        >img{
+          width: 90%;
+          margin: auto;
+        }
+      }
+  }
+
+  // 功德撲滿
+  .xuan-box-event{
+    background-color: #81A8E0;
+    border-radius: 20px;
+    width: 7%;
+    height: 7%;
+    position:absolute;
+    top: 52%;
+    left: 32%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+
+    >p:nth-child(1){
+        width: 100%;
+        margin-top: 15px;
+        text-align: center;
+        font-size: $fz-h5;
+        font-family: $ff-t, $ff-h;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    >div:nth-child(2){
+      background-color: white;
+      width: 80%;
+      height: 60%;
+      margin: auto;
+      border-radius: 10px;
+    }
+
+  }
+    
+  
+
+
+}
+
+
+// 內容小盒----------------------------------------
+
+.xuan-box{
+/* 禁止元素被反藍選取 */
+user-select: none; 
+/* 禁止元素被拖拉 */
+-webkit-user-drag: none;
+}
+
+.xuan-box:hover{
+  cursor: pointer;
+}
+
+
+
+
+
+

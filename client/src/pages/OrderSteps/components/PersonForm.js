@@ -3,6 +3,8 @@ import TWZipCode from './TWZipCode';
 import '../styles/_cart.scss';
 import './styles/_personform.scss';
 import Swal from 'sweetalert2'; //sweetalert2
+import { MdReplay } from 'react-icons/md';
+import { FiSend } from 'react-icons/fi';
 
 // 會員登入登出驗證
 import AuthContext from '../../../context/AuthContext/AuthContext';
@@ -105,7 +107,8 @@ function PersonForm(props) {
             .then((r) => r.json())
             .then((obj) => {
                 console.log('收到的res', obj);
-            });
+            })
+
     };
 
     // TODO: 這一段可以把 button 改成 reset 就可以不用把inputErrors改成 ''
@@ -167,20 +170,7 @@ function PersonForm(props) {
             address: '',
         });
 
-        // 錯誤訊息也都清空
-        setInputErrors({
-            ...inputErrors,
-            fullname: '',
-            mobile_city: '', //select
-            mobile: '',
-            email: '',
-            gender: '',
-            ID: '',
-            birthday: '',
-            add_city: '', //select
-            add_town: '', //select
-            address: '',
-        });
+        //因為type設成reset了，所以只要清myInfor的資訊就好，不用清inputErrors
     };
 
     return (
@@ -464,21 +454,18 @@ function PersonForm(props) {
                                     <button
                                         className="xuan-btn-m xuan-btn-sec"
                                         type="submit"
+                                    
                                     >
-                                        送出報名資訊
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="xuan-btn-m xuan-btn-sec"
-                                        onClick={handleClearForm}
-                                    >
-                                        重新填寫
+                                        <FiSend />
+                                        送出
                                     </button>
                                     <button
                                         type="reset"
                                         className="xuan-btn-m xuan-btn-sec"
+                                        onClick={handleClearForm}
                                     >
-                                        重新填寫2
+                                        <MdReplay />
+                                        清空
                                     </button>
                                 </div>
                             </div>

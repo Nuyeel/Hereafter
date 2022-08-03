@@ -43,9 +43,15 @@ import RebornCart from './pages/RebornCart';
 import Maker from './pages/avatar/maker/Maker';
 import Showcase from './pages/avatar/showcase/Showcase.js';
 
+// 讓setLightBox方法 <MainPage><Nav>可共用
+import { useState } from 'react';
+
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
     // auth for Authorization
+
+    // 讓setLightBox方法 <MainPage><Nav>可共用
+    const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
     return (
         <BrowserRouter>
@@ -55,7 +61,7 @@ function App() {
                     {/* TODO: 一般頁面的 navbar 是一種 */}
                     {/* TODO: 點擊變成全頁面的 navbar 是一種 */}
                     {/* TODO: 用 props 做條件 render */}
-                    <Nav />
+                    <Nav lightBox={lightBox} setLightBox={setLightBox} />
                     <MainContent>
                         {/* ScrollToTop 會在切換分頁時讓頁面回到最上方 */}
                         <ScrolltoTop>
@@ -65,7 +71,12 @@ function App() {
                                 {/* 利用 props 傳入頁面組件狀態 */}
                                 <Route
                                     path=""
-                                    element={<MainPage pageName="mainpage" />}
+                                    element={
+                                        <MainPage
+                                            pageName="mainpage"
+                                            setLightBox={setLightBox}
+                                        />
+                                    }
                                 />
                                 {/* ============================== */}
                                 {/* 測試路由 */}
