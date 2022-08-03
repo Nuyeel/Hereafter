@@ -79,24 +79,29 @@ function TestCard(props) {
 
                 console.log(ques);
                 return (
-                    <div key={i} className='yun-card'>
-                        <h5>{ques}</h5>
-                        {opt.map((v2, i2) => {
-                            console.log(`Q${i}`);
-                            let inputName = `Q${i}`;
-                            return (
-                                <div className="form-check">
-                                    <input
-                                        name={inputName}
-                                        type="radio"
-                                        value={v2}
-                                        checked={gooddeed === v2}
-                                        onChange={handleChange}
-                                    />
-                                    <label>{v2}</label>
-                                </div>
-                            );
-                        })}
+                    <div key={i} className="yun-card">
+                        <div className="yun-ques">
+                            <h3>Q{i + 1}.</h3>
+                            <h5>{ques}</h5>
+                        </div>
+                        <div className="yun-opts">
+                            {opt.map((v2, i2) => {
+                                console.log(`Q${i}`);
+                                let inputName = `Q${i}`;
+                                return (
+                                    <div className="yun-radio-form">
+                                        <input
+                                            name={inputName}
+                                            type="radio"
+                                            value={v2}
+                                            checked={gooddeed === v2}
+                                            onChange={handleChange}
+                                        />
+                                        <label>{v2}</label>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
                 );
             })}
