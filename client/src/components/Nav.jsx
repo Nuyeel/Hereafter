@@ -11,7 +11,7 @@
 // import axios from 'axios';
 
 // 使用套件
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2'; //sweetalert2
 
@@ -29,13 +29,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // 會員登入登出驗證
 import AuthContext from '../context/AuthContext/AuthContext';
-
 import { eventCartNum } from '../features/counter/counterSlice';
 
-// redux
-
-function Nav() {
-    const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
+function Nav(props) {
+    const { lightBox, setLightBox } = props; //從App.jsx傳入
+    // const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
     const { theme, setTheme } = useContext(ThemeContext);
     const navigate = useNavigate(); //跳轉頁面用
@@ -273,16 +271,32 @@ function Nav() {
                                 </span>
                             )}
 
-                            <BsFillPersonFill
-                                className="nir-BsFillPersonFill"
-                                style={{
-                                    cursor: 'pointer',
-                                }}
-                                onClick={() => {
-                                    navigate('/login', { replace: true });
-                                    setLightBox('nav_lightbox_hidden');
-                                }}
-                            />
+                            {authorized ? (
+                                <BsFillPersonFill
+                                    className="nir-BsFillPersonFill"
+                                    style={{
+                                        cursor: 'pointer',
+                                    }}
+                                    onClick={() => {
+                                        navigate('/memberprofile', {
+                                            replace: true,
+                                        });
+                                        setLightBox('nav_lightbox_hidden');
+                                    }}
+                                />
+                            ) : (
+                                <BsFillPersonFill
+                                    className="nir-BsFillPersonFill"
+                                    style={{
+                                        cursor: 'pointer',
+                                    }}
+                                    onClick={() => {
+                                        Swal.fire('請先登入會員');
+                                        navigate('/login', { replace: true });
+                                        setLightBox('nav_lightbox_hidden');
+                                    }}
+                                />
+                            )}
 
                             <FaBars
                                 className="nir-FaBars"
