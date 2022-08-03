@@ -111,6 +111,7 @@ const FaceData = {
         'MediumPurple',
         'Maroon',
     ],
+    eyeColorsName: ['灰', '綠', '午夜藍', '土耳其藍', '水藍', '紫', '紅'],
     noseColors: [
         '#FFF',
         'pink',
@@ -120,6 +121,7 @@ const FaceData = {
         '#ccccff',
         '#F17C67',
     ],
+    noseColorsName: ['白', '粉', '灰', '黃', '綠', '紫', '紅'],
     hairColors: [
         '#333',
         'brown',
@@ -130,6 +132,7 @@ const FaceData = {
         'wheat',
         'snow',
     ],
+    hairColorsName: ['黑', '棕', '天藍', '鮭魚', '金', '紫', '小麥', '雪'],
     topEarColors: [
         'LavenderBlush',
         'gray',
@@ -140,6 +143,7 @@ const FaceData = {
         'salmon',
         'SlateGrey',
     ],
+    topEarColorsName: ['白', '灰', '鼠灰', '小麥', '粉', '棕', '鮭魚', '鐵灰'],
     eye: [
         {
             id: 0,
@@ -147,7 +151,7 @@ const FaceData = {
             eyeW: eyeWhiteA,
             eye: eyeA,
             limit: 0,
-            name: '饅頭',
+            name: '瞇瞇眼',
             price: 100,
         },
         {
@@ -156,7 +160,7 @@ const FaceData = {
             eyeW: eyeWhiteB,
             eye: eyeB,
             limit: 0,
-            name: '饅頭',
+            name: '往左看',
             price: 100,
         },
         {
@@ -165,7 +169,7 @@ const FaceData = {
             eyeW: eyeWhiteC,
             eye: eyeC,
             limit: 3000,
-            name: '饅頭',
+            name: '外星人',
             price: 100,
         },
         {
@@ -174,7 +178,7 @@ const FaceData = {
             eyeW: eyeWhiteD,
             eye: eyeD,
             limit: 0,
-            name: '饅頭',
+            name: '小眉毛',
             price: 100,
         },
         {
@@ -183,7 +187,7 @@ const FaceData = {
             eyeW: eyeWhiteE,
             eye: eyeE,
             limit: 0,
-            name: '饅頭',
+            name: '往右看',
             price: 100,
         },
     ],
@@ -193,7 +197,7 @@ const FaceData = {
             preview: earpre,
             src: ear,
             limit: 0,
-            name: '饅頭',
+            name: '小饅頭',
             price: 0,
         },
         {
@@ -201,7 +205,7 @@ const FaceData = {
             preview: earApre,
             src: earA,
             limit: 3000,
-            name: '饅頭',
+            name: '小精靈',
             price: 200,
         },
         {
@@ -209,7 +213,7 @@ const FaceData = {
             preview: earBpre,
             src: earB,
             limit: 3000,
-            name: '饅頭',
+            name: '尖尖耳',
             price: 200,
         },
         {
@@ -217,7 +221,7 @@ const FaceData = {
             preview: earCpre,
             src: earC,
             limit: 3000,
-            name: '饅頭',
+            name: '蠑螈',
             price: 200,
         },
         {
@@ -225,7 +229,7 @@ const FaceData = {
             preview: earDpre,
             src: earD,
             limit: 3000,
-            name: '饅頭',
+            name: '垂垂耳',
             price: 200,
         },
     ],
@@ -235,7 +239,7 @@ const FaceData = {
             preview: nose,
             src: nose,
             limit: 0,
-            name: '饅頭',
+            name: '那個人',
             price: 100,
         },
         {
@@ -243,7 +247,7 @@ const FaceData = {
             preview: noseApre,
             src: noseA,
             limit: 0,
-            name: '饅頭',
+            name: '貓貓鼻',
             price: 100,
         },
         {
@@ -251,7 +255,7 @@ const FaceData = {
             preview: noseBpre,
             src: noseB,
             limit: 0,
-            name: '饅頭',
+            name: '狗狗鼻',
             price: 100,
         },
         {
@@ -259,7 +263,7 @@ const FaceData = {
             preview: noseCpre,
             src: noseC,
             limit: 0,
-            name: '饅頭',
+            name: '大鼻子',
             price: 100,
         },
         {
@@ -267,7 +271,7 @@ const FaceData = {
             preview: noseDpre,
             src: noseD,
             limit: 0,
-            name: '饅頭',
+            name: '圓圓',
             price: 100,
         },
         {
@@ -275,7 +279,7 @@ const FaceData = {
             preview: noseEpre,
             src: noseE,
             limit: 0,
-            name: '饅頭',
+            name: '小豬',
             price: 200,
         },
     ],
@@ -285,7 +289,7 @@ const FaceData = {
             preview: lip,
             src: lip,
             limit: 0,
-            name: '饅頭',
+            name: 'kitty',
             price: 0,
         },
         {
@@ -293,7 +297,7 @@ const FaceData = {
             preview: lipApre,
             src: lipA,
             limit: 0,
-            name: '饅頭',
+            name: '上門牙',
             price: 100,
         },
         {
@@ -301,7 +305,7 @@ const FaceData = {
             preview: lipBpre,
             src: lipB,
             limit: 0,
-            name: '饅頭',
+            name: '下門牙',
             price: 100,
         },
         {
@@ -309,7 +313,7 @@ const FaceData = {
             preview: lipCpre,
             src: lipC,
             limit: 0,
-            name: '饅頭',
+            name: '貓貓嘴',
             price: 100,
         },
         {
@@ -317,7 +321,7 @@ const FaceData = {
             preview: lipDpre,
             src: lipD,
             limit: 0,
-            name: '饅頭',
+            name: '不開心',
             price: 100,
         },
         {
@@ -325,7 +329,7 @@ const FaceData = {
             preview: lipEpre,
             src: lipE,
             limit: 0,
-            name: '饅頭',
+            name: '笑笑',
             price: 100,
         },
     ],
@@ -335,7 +339,7 @@ const FaceData = {
             preview: hairFrontApre,
             src: hairFrontA,
             limit: 0,
-            name: '饅頭',
+            name: '中分',
             price: 100,
         },
         {
@@ -343,7 +347,7 @@ const FaceData = {
             preview: hairFrontBpre,
             src: hairFrontB,
             limit: 0,
-            name: '饅頭',
+            name: '捲捲',
             price: 100,
         },
         {
@@ -351,7 +355,7 @@ const FaceData = {
             preview: hairFrontCpre,
             src: hairFrontC,
             limit: 0,
-            name: '饅頭',
+            name: '飛機',
             price: 100,
         },
         {
@@ -359,7 +363,7 @@ const FaceData = {
             preview: hairFrontDpre,
             src: hairFrontD,
             limit: 0,
-            name: '饅頭',
+            name: '阿嬤',
             price: 100,
         },
         {
@@ -367,7 +371,7 @@ const FaceData = {
             preview: hairFrontEpre,
             src: hairFrontE,
             limit: 0,
-            name: '饅頭',
+            name: '旁分',
             price: 100,
         },
     ],
@@ -377,7 +381,7 @@ const FaceData = {
             preview: hairBack,
             src: hairBack,
             limit: 0,
-            name: '饅頭',
+            name: '不留長',
             price: 0,
         },
         {
@@ -385,7 +389,7 @@ const FaceData = {
             preview: hairBackApre,
             src: hairBackA,
             limit: 0,
-            name: '饅頭',
+            name: '辮子',
             price: 100,
         },
         {
@@ -393,7 +397,7 @@ const FaceData = {
             preview: hairBackBpre,
             src: hairBackB,
             limit: 0,
-            name: '饅頭',
+            name: '俐落短',
             price: 100,
         },
         {
@@ -401,7 +405,7 @@ const FaceData = {
             preview: hairBackCpre,
             src: hairBackC,
             limit: 0,
-            name: '饅頭',
+            name: '飄逸長',
             price: 100,
         },
         {
@@ -409,7 +413,7 @@ const FaceData = {
             preview: hairBackDpre,
             src: hairBackD,
             limit: 0,
-            name: '饅頭',
+            name: '學生妹',
             price: 100,
         },
         {
@@ -417,7 +421,7 @@ const FaceData = {
             preview: hairBackEpre,
             src: hairBackE,
             limit: 0,
-            name: '饅頭',
+            name: '捲捲',
             price: 100,
         },
     ],
@@ -427,7 +431,7 @@ const FaceData = {
             preview: topEar,
             src: topEar,
             limit: 0,
-            name: '饅頭',
+            name: '',
             price: 0,
         },
         {
@@ -435,7 +439,7 @@ const FaceData = {
             preview: topEarApre,
             src: topEarA,
             limit: 3000,
-            name: '饅頭',
+            name: '貓耳',
             price: 200,
         },
         {

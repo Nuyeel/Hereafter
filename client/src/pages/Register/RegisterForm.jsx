@@ -38,22 +38,26 @@ function RegisterForm() {
         e.preventDefault();
         // TODO: 欄位檢查
 
-        // const accountRe = /^[a-zA-Z0-9_]\w*$/;
-
+        // 正規表達式定義在這邊，為方便開發可都先註解
+        const accountRe = /^[a-zA-Z0-9_]\w*$/;
         // const emailRe =
         //     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
-
-        // const passwordRe = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        const passwordRe = /^[a-zA-Z0-9_]\w*.{8,}$/;
 
         if (registerData.account.length > 10) {
             alert('您設定的帳戶字數過長');
             return;
         }
 
-        // if (accountRe.test(registerData.account)) {
-        //     alert('您輸入的帳戶不可含有空白格或特殊字元');
-        //     return;
-        // }
+        if (!registerData.account.match(accountRe)) {
+            alert('您輸入的帳戶不可含有空白格或特殊字元');
+            return;
+        }
+
+        if (!registerData.password.match(passwordRe)) {
+            alert('您輸入的密碼須包含字母及數字共八位數');
+            return;
+        }
 
         if (registerData.confirmPassword !== registerData.password) {
             alert('密碼與確認密碼需要一致');

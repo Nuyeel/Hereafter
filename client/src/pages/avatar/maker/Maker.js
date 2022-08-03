@@ -47,6 +47,9 @@ const Maker = () => {
         margin: 0 auto;
         box-sizing: border-box;
         color: ${theme.cHeader};
+        i {
+            color: ${theme.cHeader};
+        }
     `;
     const AvatarTitle = styled.div`
         padding-top: 30px;
