@@ -82,10 +82,10 @@ function CenterPart(props) {
     `;
     const Body = styled.div`
         position: absolute;
-        top: 36%;
+        top: 35.8%;
         left: 28%;
         width: 205px;
-        height: 123px;
+        height: 136px;
         mask-image: url(${BodyData['bodycenter'][conbination['basic'][0]]});
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-size: cover;
@@ -578,8 +578,9 @@ function CenterPart(props) {
                     </Face>
                     <HairFront></HairFront>
                     <Tale></Tale>
-                    <Body></Body>
                     <Special></Special>
+                    <Body></Body>
+
                     <Arm></Arm>
                     <HandL></HandL>
                     <HandPalmL></HandPalmL>
