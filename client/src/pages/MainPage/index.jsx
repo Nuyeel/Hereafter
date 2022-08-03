@@ -1,5 +1,7 @@
 import { useContext, useEffect } from 'react';
-import HeaderContext, { headers } from '../../context/HeaderContext/HeaderContext';
+import HeaderContext, {
+    headers,
+} from '../../context/HeaderContext/HeaderContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
 
 function MainPage(props) {
@@ -7,7 +9,7 @@ function MainPage(props) {
     const { setHeader } = useContext(HeaderContext);
     const { authorized, sid, account, token } = useContext(AuthContext);
 
-    useEffect(()=> {
+    useEffect(() => {
         setHeader(headers[pageName]);
     }, []);
 
