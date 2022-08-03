@@ -8,11 +8,11 @@
 // DONE: 完全修復
 // TODO: 滑動 Navbar 消失可以視情況套用
 
-import axios from 'axios';
+// import axios from 'axios';
 
 // 使用套件
 import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2'; //sweetalert2
 
 import ThemeContext, { themes } from '../context/ThemeContext/ThemeContext';
@@ -30,11 +30,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // 會員登入登出驗證
 import AuthContext from '../context/AuthContext/AuthContext';
 
-import {
-    descrement,
-    increment,
-    eventCartNum,
-} from '../features/counter/counterSlice';
+import { eventCartNum } from '../features/counter/counterSlice';
 
 // redux
 
@@ -43,6 +39,9 @@ function Nav() {
 
     const { theme, setTheme } = useContext(ThemeContext);
     const navigate = useNavigate(); //跳轉頁面用
+    const location = useLocation();
+
+    console.log(location.pathname);
 
     // -------------此段處理Redux活動購物車數字-------------------------
 
@@ -79,6 +78,8 @@ function Nav() {
     }, [sid]);
 
     // -------------------------------------------
+    // FIXME: 我先簡單的讓首頁的 nav 消失方便二路施工
+    // FIXME: 之後要做成條件渲染 首頁的 Nav 是小框框
 
     return (
         <>
@@ -168,121 +169,139 @@ function Nav() {
                 </div>
             </div>
 
-            <div
-                // p-0 (如果 container 左右比較寬的話是 padding)
-                // TODO: useContext Theme.Provider
-                // DONE: 已經會根據 theme 套用 className
-                className={`nav ${
-                    theme.title === 'light' ? 'nav-light' : 'nav-dark'
-                } container-fluid`}
-                style={{
-                    backgroundColor:
-                        lightBox === 'nav_lightbox_visible'
-                            ? 'transparent'
-                            : '',
-                }}
-            >
-                <div className="nav-inner container d-flex justify-content-between align-items-center">
-                    <div className="nav-inner-left">
-                        <NavLogo
-                            style={{
-                                cursor: 'pointer',
-                            }}
-                            onClick={() => {
-                                navigate('', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        />
-                    </div>
-                    {/* FIXME: 這是暫時的按鈕 */}
-                    <div
-                        style={{
-                            outline: '1px solid red',
-                            cursor: 'pointer',
-                            color: theme.bcAvatarFrame,
-                        }}
-                        onClick={() => {
-                            // 注意 setState() 會最後做 所以會印出一樣的 theme
-                            // console.log('theme before :', theme);
-                            if (theme.title === 'light') {
-                                // DONE: 存進去 localStorage
-                                // FIXME: 如果要記憶會員 要跟資料庫連線
-                                // 而且這個資料庫的檔案順位要高於 localStorage
-                                localStorage.setItem('theme', 'dark');
-                                setTheme(themes.dark);
-                            } else {
-                                localStorage.setItem('theme', 'light');
-                                setTheme(themes.light);
-                            }
-                            // console.log('theme after :', theme);
-                        }}
-                    >
-                        我換！
-                    </div>
-                    <div className="nav-inner-right">
-                        <NavSoul className="nir-NavSoul" />
-
-                        {authorized ? (
-                            <FaShoppingCart
-                                className="nir-FaShoppingCart"
+            {location.pathname !== '/' ? (
+                <div
+                    // p-0 (如果 container 左右比較寬的話是 padding)
+                    // TODO: useContext Theme.Provider
+                    // DONE: 已經會根據 theme 套用 className
+                    className={`nav ${
+                        theme.title === 'light' ? 'nav-light' : 'nav-dark'
+                    } container-fluid`}
+                    style={{
+                        backgroundColor:
+                            lightBox === 'nav_lightbox_visible'
+                                ? 'transparent'
+                                : '',
+                    }}
+                >
+                    <div className="nav-inner container d-flex justify-content-between align-items-center">
+                        <div className="nav-inner-left">
+                            <NavLogo
                                 style={{
                                     cursor: 'pointer',
                                 }}
                                 onClick={() => {
-                                    navigate('/ordersteps', { replace: true });
+                                    navigate('', { replace: true });
                                     setLightBox('nav_lightbox_hidden');
                                 }}
                             />
-                        ) : (
-                            <FaShoppingCart
-                                className="nir-FaShoppingCart"
+                        </div>
+                        {/* FIXME: 這是暫時的按鈕 */}
+                        <div
+                            style={{
+                                outline: '1px solid red',
+                                cursor: 'pointer',
+                                color: theme.bcAvatarFrame,
+                            }}
+                            onClick={() => {
+                                // 注意 setState() 會最後做 所以會印出一樣的 theme
+                                // console.log('theme before :', theme);
+                                if (theme.title === 'light') {
+                                    // DONE: 存進去 localStorage
+                                    // FIXME: 如果要記憶會員 要跟資料庫連線
+                                    // 而且這個資料庫的檔案順位要高於 localStorage
+                                    localStorage.setItem('theme', 'dark');
+                                    setTheme(themes.dark);
+                                } else {
+                                    localStorage.setItem('theme', 'light');
+                                    setTheme(themes.light);
+                                }
+                                // console.log('theme after :', theme);
+                            }}
+                        >
+                            我換！
+                        </div>
+                        {/* FIXME: 這是暫時的按鈕 */}
+                        <div
+                            style={{
+                                outline: '1px solid red',
+                                cursor: 'pointer',
+                                color: theme.bcAvatarFrame,
+                            }}
+                            onClick={() => {
+                                navigate('/nextlife', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                            }}
+                        >
+                            我要投胎
+                        </div>
+                        <div className="nav-inner-right">
+                            <NavSoul className="nir-NavSoul" />
+
+                            {authorized ? (
+                                <FaShoppingCart
+                                    className="nir-FaShoppingCart"
+                                    style={{
+                                        cursor: 'pointer',
+                                    }}
+                                    onClick={() => {
+                                        navigate('/ordersteps', { replace: true });
+                                        setLightBox('nav_lightbox_hidden');
+                                    }}
+                                />
+                            ) : (
+                                <FaShoppingCart
+                                    className="nir-FaShoppingCart"
+                                    style={{
+                                        cursor: 'pointer',
+                                    }}
+                                    onClick={() => {
+                                        Swal.fire('請先登入會員');
+                                        navigate('/login', { replace: true });
+                                        setLightBox('nav_lightbox_hidden');
+                                    }}
+                                />
+                            )}
+
+                            {count === 0 ? (
+                                ''
+                            ) : (
+                                <span className="nav-xuan-event-cartnum xuan-notion">
+                                    {count}
+                                </span>
+                            )}
+
+                            <BsFillPersonFill
+                                className="nir-BsFillPersonFill"
                                 style={{
                                     cursor: 'pointer',
                                 }}
                                 onClick={() => {
-                                    Swal.fire('請先登入會員');
                                     navigate('/login', { replace: true });
                                     setLightBox('nav_lightbox_hidden');
                                 }}
                             />
-                        )}
 
-                        {count === 0 ? (
-                            ''
-                        ) : (
-                            <span className="nav-xuan-event-cartnum xuan-notion">
-                                {count}
-                            </span>
-                        )}
-
-                        <BsFillPersonFill
-                            className="nir-BsFillPersonFill"
-                            style={{
-                                cursor: 'pointer',
-                            }}
-                            onClick={() => {
-                                navigate('/login', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        />
-
-                        <FaBars
-                            className="nir-FaBars"
-                            style={{
-                                cursor: 'pointer',
-                            }}
-                            onClick={() => {
-                                if (lightBox === 'nav_lightbox_hidden') {
-                                    setLightBox('nav_lightbox_visible');
-                                } else {
-                                    setLightBox('nav_lightbox_hidden');
-                                }
-                            }}
-                        />
+                            <FaBars
+                                className="nir-FaBars"
+                                style={{
+                                    cursor: 'pointer',
+                                }}
+                                onClick={() => {
+                                    if (lightBox === 'nav_lightbox_hidden') {
+                                        setLightBox('nav_lightbox_visible');
+                                    } else {
+                                        setLightBox('nav_lightbox_hidden');
+                                    }
+                                }}
+                            />
+                        </div>
+                        {/* <Soul /> */}
                     </div>
-                    {/* <Soul /> */}
                 </div>
-            </div>
+            ) : (
+                <></>
+            )}
         </>
     );
 }
