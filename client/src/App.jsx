@@ -194,13 +194,7 @@ function App() {
                                 {/* ============================== */}
                                 <Route
                                     path="/test"
-                                    element={
-                                        <Test
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                            pageName="test"
-                                        />
-                                    }
+                                    element={<Test pageName="test" />}
                                 />
                                 {/* ============================== */}
                                 {/* 陰德值遊戲路由 */}
@@ -216,8 +210,7 @@ function App() {
                                 {/* ============================== */}
                                 <Route
                                     path="nextlife"
-                                    element={<NextLife />}
-                                    pageName="default"
+                                    element={<NextLife pageName="default" />}
                                 />
 
                                 {/* 404 是最後一個路由 */}
