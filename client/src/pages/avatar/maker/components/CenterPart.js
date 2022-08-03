@@ -16,13 +16,48 @@ function CenterPart(props) {
     } = props;
     const ref = useRef(null);
     const { theme } = useContext(ThemeContext);
-
-    const onButtonClick = useCallback(() => {
+    const conbinationText = {
+        hand: BodyData['hand'][conbination['body']['hand']]['name'],
+        foot: conbination['body']['special']
+            ? BodyData['special'][conbination['body']['special']]['name']
+            : BodyData['foot'][conbination['body']['foot']]['name'],
+        bodyColor: BodyData['basicColorsName'][conbination['basic_color']],
+        specialColor: conbination['body']['special']
+            ? BodyData['specialColorsName'][
+                  conbination['special_color']['special']
+              ]
+            : '',
+        tale: conbination['body']['tale'] ? '有' : '無',
+        taleColor: conbination['body']['tale']
+            ? BodyData['taleColorsName'][conbination['special_color']['tale']]
+            : '',
+        eye: FaceData['eye'][conbination['face']['eye']]['name'],
+        eyeColor: FaceData['eyeColorsName'][conbination['face_color']['eye']],
+        nose: FaceData['nose'][conbination['face']['nose']]['name'],
+        noseColor:
+            FaceData['noseColorsName'][conbination['face_color']['nose']],
+        hair:
+            FaceData['hairFront'][conbination['face']['hairFront']]['name'] +
+            '+' +
+            FaceData['hairBack'][conbination['face']['hairBack']]['name'],
+        hairColor:
+            FaceData['hairColorsName'][conbination['face_color']['hairFront']],
+        ear: conbination['face']['topEar']
+            ? FaceData['topEar'][conbination['face']['topEar']]['name']
+            : FaceData['ear'][conbination['face']['ear']]['name'],
+        topearColor: conbination['face']['topEar']
+            ? FaceData['topEarColorsName'][conbination['face_color']['topEar']]
+            : '',
+        lip: FaceData['lip'][conbination['face']['lip']]['name'],
+    };
+    const orderData = { conbination: { ...conbination } };
+    orderData.id = 36;
+    orderData.conbinationText = conbinationText;
+    const onButtonClick = useCallback(async () => {
         if (ref.current === null) {
             return;
         }
-
-        toPng(ref.current, {
+        await toPng(ref.current, {
             cacheBust: true,
             pixelRatio: 1.2,
             canvasWidth: 535,
@@ -32,11 +67,15 @@ function CenterPart(props) {
                 const link = document.createElement('a');
                 link.download = 'my-image-name.png';
                 link.href = dataUrl;
-                link.click();
+                orderData.img = 'dataUrl(假的)';
+                // link.click();
             })
             .catch((err) => {
                 console.log(err);
             });
+
+        console.log(orderData.img);
+        console.log(orderData);
     }, [ref]);
 
     const Center = styled.div`
