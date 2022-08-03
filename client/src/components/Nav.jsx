@@ -245,7 +245,9 @@ function Nav() {
                                         cursor: 'pointer',
                                     }}
                                     onClick={() => {
-                                        navigate('/ordersteps', { replace: true });
+                                        navigate('/ordersteps', {
+                                            replace: true,
+                                        });
                                         setLightBox('nav_lightbox_hidden');
                                     }}
                                 />
