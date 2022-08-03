@@ -255,16 +255,32 @@ function Nav() {
                             </span>
                         )}
 
-                        <BsFillPersonFill
-                            className="nir-BsFillPersonFill"
-                            style={{
-                                cursor: 'pointer',
-                            }}
-                            onClick={() => {
-                                navigate('/login', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        />
+                        {authorized ? (
+                            <BsFillPersonFill
+                                className="nir-BsFillPersonFill"
+                                style={{
+                                    cursor: 'pointer',
+                                }}
+                                onClick={() => {
+                                    navigate('/memberprofile', {
+                                        replace: true,
+                                    });
+                                    setLightBox('nav_lightbox_hidden');
+                                }}
+                            />
+                        ) : (
+                            <BsFillPersonFill
+                                className="nir-BsFillPersonFill"
+                                style={{
+                                    cursor: 'pointer',
+                                }}
+                                onClick={() => {
+                                    Swal.fire('請先登入會員');
+                                    navigate('/login', { replace: true });
+                                    setLightBox('nav_lightbox_hidden');
+                                }}
+                            />
+                        )}
 
                         <FaBars
                             className="nir-FaBars"
