@@ -15,7 +15,7 @@ import Background from './components/Background';
 
 // 頁面組件
 // import Test from './components/Test'; // 僅供測試
-import NextLife from './pages/NextLife';
+// import NextLife from './pages/NextLife';
 import ShareWall from './pages/ShareWall/ShareWall';
 import ShareWallList from './pages/ShareWall/ShareWallList';
 import ShareWallDetail from './pages/ShareWall/ShareWallDetail';
@@ -208,10 +208,10 @@ function App() {
                                 {/* ============================== */}
                                 {/* 來生路由 */}
                                 {/* ============================== */}
-                                <Route
+                                {/* <Route
                                     path="nextlife"
                                     element={<NextLife pageName="default" />}
-                                />
+                                /> */}
 
                                 {/* 404 是最後一個路由 */}
                                 <Route path="*" element={<NotFoundPage />} />
