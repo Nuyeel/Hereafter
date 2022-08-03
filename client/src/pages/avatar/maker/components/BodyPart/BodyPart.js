@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import Style from "./Styling";
-import Colors from "./Colors";
+import styled from '@emotion/styled';
+import Style from './Styling';
+import Colors from './Colors';
 
 function BodyPart(props) {
     const {
@@ -10,7 +10,7 @@ function BodyPart(props) {
         conbination,
         colorControlSwitch,
     } = props;
-    const title = { hand: "手", foot: "腳", tale: "尾巴", special: "特殊" };
+    const title = { hand: '手', foot: '腳', tale: '尾巴', special: '特殊' };
     const Body = styled.div`
         width: 375px;
         height: 100%;
@@ -19,7 +19,13 @@ function BodyPart(props) {
         padding-right: 40px;
         padding-top: 70px;
         box-sizing: border-box;
-        display: ${controlChange ? "none" : "block"};
+        display: ${controlChange ? 'none' : 'block'};
+    `;
+    const Title = styled.div`
+        font-size: 24px;
+        i {
+            font-size: 24px;
+        }
     `;
 
     return (
@@ -28,10 +34,10 @@ function BodyPart(props) {
                 <div className="line"></div>
                 <div className="line"></div>
                 <div className="line"></div>
-                <h4>
+                <Title>
                     {title[bodyControlChange]}
                     <i className="fa-solid fa-dice"></i>
-                </h4>
+                </Title>
                 <div className="controlarea" id="controlareaEyes">
                     <Style
                         conbination={conbination}

@@ -1,16 +1,16 @@
-import BasicPart from "./components/BasicPart/BasicPart.js";
-import BodyPart from "./components/BodyPart/BodyPart.js";
-import CenterPart from "./components/CenterPart.js";
-import FacePart from "./components/FacePart/FacePart.js";
-import FaceView from "./components/FaceView.js";
-//import "./maker.css";
-import { useState } from "react";
-import styled from "@emotion/styled";
+import BasicPart from './components/BasicPart/BasicPart.js';
+import BodyPart from './components/BodyPart/BodyPart.js';
+import CenterPart from './components/CenterPart.js';
+import FacePart from './components/FacePart/FacePart.js';
+import FaceView from './components/FaceView.js';
+import { useState, useContext } from 'react';
+import ThemeContext from '../../../context/ThemeContext/ThemeContext.js';
+import styled from '@emotion/styled';
 
 const Maker = () => {
     const [conbination, setConbination] = useState({
         basic: [1, 1, 1],
-        basic_color: "0",
+        basic_color: '0',
         body: { hand: 0, foot: 0, tale: 0, special: 0 },
         special_color: { tale: 0, special: 0 },
         face: {
@@ -25,9 +25,11 @@ const Maker = () => {
         face_color: { eye: 0, nose: 0, hairFront: 0, topEar: 0 },
     });
     const [controlChange, setControlChange] = useState(0);
-    const [bodyControlChange, setBodyControlChange] = useState("hand");
-    const [faceControlChange, setFaceControlChange] = useState("eye");
+    const [bodyControlChange, setBodyControlChange] = useState('hand');
+    const [faceControlChange, setFaceControlChange] = useState('eye');
     const [colorControlSwitch, setColorControlSwitch] = useState(0);
+
+    const { theme } = useContext(ThemeContext);
     const ContainerFluid = styled.div`
         margin: 0;
         box-sizing: border-box;
@@ -38,13 +40,13 @@ const Maker = () => {
     const AvatarMaker = styled.div`
         width: 1200px;
         height: 610px;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: ${theme.bgcAvatarMaker};
         border-radius: 16px;
         position: relative;
         display: flex;
         margin: 0 auto;
         box-sizing: border-box;
-        color: white;
+        color: ${theme.cHeader};
     `;
     const AvatarTitle = styled.div`
         padding-top: 30px;
@@ -56,20 +58,31 @@ const Maker = () => {
         flex-shrink: 0;
         box-sizing: border-box;
     `;
+    const Back = styled.div`
+        position: absolute;
+        top: 5px;
+        right: 18px;
+        cursor: pointer;
+        i {
+            font-size: 40px;
+        }
+    `;
 
     return (
         <>
             <ContainerFluid>
                 <AvatarMaker>
                     <AvatarTitle>
-                        <h2 style={{ margin: 0 }}>投生形象1</h2>
+                        <h3 className="subtitle" style={{ margin: 0 }}>
+                            投生形象1
+                        </h3>
                         <p className="created_time">
                             建立時間：20220616/Thr/08:12:23
                         </p>
                     </AvatarTitle>
-                    <div className="back">
+                    <Back>
                         <i className="fa-solid fa-xmark"></i>
-                    </div>
+                    </Back>
                     <BasicPart
                         controlChange={controlChange}
                         conbination={conbination}

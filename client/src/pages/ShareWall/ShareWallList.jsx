@@ -1,11 +1,11 @@
 // 使用套件
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import axios from 'axios';
 
 // import SimpleBar from 'simplebar-react';
 // import 'simplebar/dist/simplebar.css';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 // scss
 import 'overlayscrollbars/css/OverlayScrollbars.css';
@@ -124,6 +124,8 @@ function ShareWallList(props) {
                     <SharePostCard /> */}
 
                     {/* FIXME: 偷懶頭貼先用同一張 */}
+                    {/* FIXME: 找不到資料的時候應該要顯示一個東西 */}
+                    {/* FIXME: spinner */}
                     {postsData &&
                         postsData.map((v, i) => (
                             <SharePostCard

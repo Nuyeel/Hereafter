@@ -1,9 +1,10 @@
-import styled from "@emotion/styled";
-import BodyData from "../BodyData";
+import styled from '@emotion/styled';
+import BodyData from '../BodyData';
 
 const Btns = styled.div`
     padding-top: 5px;
-    padding-right: 80px;
+    padding-right: 20px;
+    padding-left: 10px;
     display: flex;
     flex-wrap: wrap;
 `;
@@ -13,7 +14,7 @@ const Colors = (props) => {
 
     return (
         <>
-            <h4>顏色</h4>
+            <h4 style={{ paddingBottom: '15px' }}>顏色</h4>
             <Btns>
                 {BodyData['basicColors'].map((v, i) => {
                     const Circle = styled.div`
@@ -32,7 +33,9 @@ const Colors = (props) => {
                                 newConbination.basic_color = i;
                                 setConbination(newConbination);
                             }}
-                            style={{ backgroundColor: BodyData['basicColors'][i] }}
+                            style={{
+                                backgroundColor: BodyData['basicColors'][i],
+                            }}
                         ></Circle>
                     );
                 })}

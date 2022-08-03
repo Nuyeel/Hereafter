@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- 主機： 127.0.0.1
--- 產生時間： 2022-08-01 15:41:23
--- 伺服器版本： 10.4.24-MariaDB
--- PHP 版本： 7.4.29
+-- Host: localhost
+-- Generation Time: Aug 02, 2022 at 05:15 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫: `mfee26-d`
+-- Database: `mfee26-d`
 --
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `admin_test_jwt`
+-- Table structure for table `admin_test_jwt`
 --
 
 CREATE TABLE `admin_test_jwt` (
@@ -36,17 +36,21 @@ CREATE TABLE `admin_test_jwt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `admin_test_jwt`
+-- Dumping data for table `admin_test_jwt`
 --
 
 INSERT INTO `admin_test_jwt` (`sid`, `member_sid`, `token`, `expires`, `payload`) VALUES
-(15, 5, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWNjb3VudCI6IkhhcHB5Q2F0MDUiLCJpYXQiOjE2NTg4NDI5MzJ9.EY__1624umJz1OPvI6vWNHtPB5TtILH0391bVgR6iR8', '1658844132212', '{\"id\":5,\"account\":\"HappyCat05\"}'),
-(18, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudCI6IkhhcHB5Q2F0MDEiLCJpYXQiOjE2NTg5OTg0NTF9.Y9YAQ3siFHyN5TJE0PvolxmNmkU0_vF7w9pVL-rc8zk', '1658999651783', '{\"id\":1,\"account\":\"HappyCat01\"}');
+(20, 9, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWNjb3VudCI6IkhhcHB5Q2F0MDkiLCJpYXQiOjE2NTkzNjAzOTJ9.L119afkYgJLyMgJmAAyuHr148_H5IfmrrbuonXcQDtw', '1659361592683', '{\"id\":9,\"account\":\"HappyCat09\"}'),
+(21, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudCI6IkhhcHB5Q2F0MDEiLCJpYXQiOjE2NTk0MTAyNDR9.FnevyouQqRWfOOYzPpPIO87-hqFWTVowIJvNoIeb7Sc', '1659411444353', '{\"id\":1,\"account\":\"HappyCat01\"}'),
+(23, 10, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImFjY291bnQiOiJIYXBweUNhdDEwIiwiaWF0IjoxNjU5NDE0NjE3fQ.AsUBiqvKtd3BRIq28RONs3DWGGLrdoPtplH9a7tvj7U', '1659415817214', '{\"id\":10,\"account\":\"HappyCat10\"}'),
+(24, 12, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImFjY291bnQiOiJIYXBweUNhdDEyIiwiaWF0IjoxNjU5NDE1NDA2fQ.Sdb-iHJV936lBgaBaOGWESS78NIvV7QmCAxDBcBjkaA', '1659416606039', '{\"id\":12,\"account\":\"HappyCat12\"}'),
+(25, 7, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWNjb3VudCI6IkhhcHB5Q2F0MDciLCJpYXQiOjE2NTk0NDY1NDJ9.6hkhSxjE-gUvR0E4caVThp9BqehT2T6z_OFDiNbH6Nc', '1659447742919', '{\"id\":7,\"account\":\"HappyCat07\"}'),
+(26, 2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiYWNjb3VudCI6IkhhcHB5Q2F0MDIiLCJpYXQiOjE2NTk0NDcyMTd9.kazSs15TlCgcy0ssLiwxwoXl-lAa7ICzAz26GB3WXGM', '1659448417609', '{\"id\":2,\"account\":\"HappyCat02\"}');
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `body_parts`
+-- Table structure for table `body_parts`
 --
 
 CREATE TABLE `body_parts` (
@@ -59,7 +63,7 @@ CREATE TABLE `body_parts` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `city_type`
+-- Table structure for table `city_type`
 --
 
 CREATE TABLE `city_type` (
@@ -70,7 +74,7 @@ CREATE TABLE `city_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `city_type`
+-- Dumping data for table `city_type`
 --
 
 INSERT INTO `city_type` (`city_sid`, `city`, `area_sid`, `area_name`) VALUES
@@ -100,7 +104,7 @@ INSERT INTO `city_type` (`city_sid`, `city`, `area_sid`, `area_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `cube`
+-- Table structure for table `cube`
 --
 
 CREATE TABLE `cube` (
@@ -111,7 +115,7 @@ CREATE TABLE `cube` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `cube`
+-- Dumping data for table `cube`
 --
 
 INSERT INTO `cube` (`member_sid`, `cube_sid`, `cube_text`, `cube_style_sid`) VALUES
@@ -129,7 +133,7 @@ INSERT INTO `cube` (`member_sid`, `cube_sid`, `cube_text`, `cube_style_sid`) VAL
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `cube_category`
+-- Table structure for table `cube_category`
 --
 
 CREATE TABLE `cube_category` (
@@ -144,7 +148,7 @@ CREATE TABLE `cube_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `cube_category`
+-- Dumping data for table `cube_category`
 --
 
 INSERT INTO `cube_category` (`cube_style_sid`, `cube_img_a`, `cube_img_b`, `cube_img_c`, `cube_img_t`, `cube_color_1`, `cube_color_2`, `cube_color_font`) VALUES
@@ -177,7 +181,7 @@ INSERT INTO `cube_category` (`cube_style_sid`, `cube_img_a`, `cube_img_b`, `cube
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `cube_music`
+-- Table structure for table `cube_music`
 --
 
 CREATE TABLE `cube_music` (
@@ -187,7 +191,7 @@ CREATE TABLE `cube_music` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `cube_music`
+-- Dumping data for table `cube_music`
 --
 
 INSERT INTO `cube_music` (`cube_music_sid`, `cube_music_type`, `cube_music_name`) VALUES
@@ -199,7 +203,7 @@ INSERT INTO `cube_music` (`cube_music_sid`, `cube_music_type`, `cube_music_name`
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `date_price`
+-- Table structure for table `date_price`
 --
 
 CREATE TABLE `date_price` (
@@ -208,7 +212,7 @@ CREATE TABLE `date_price` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `date_price`
+-- Dumping data for table `date_price`
 --
 
 INSERT INTO `date_price` (`year`, `price`) VALUES
@@ -220,7 +224,7 @@ INSERT INTO `date_price` (`year`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `event_cart`
+-- Table structure for table `event_cart`
 --
 
 CREATE TABLE `event_cart` (
@@ -231,19 +235,20 @@ CREATE TABLE `event_cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `event_cart`
+-- Dumping data for table `event_cart`
 --
 
 INSERT INTO `event_cart` (`order_sid`, `event_sid`, `member_sid`, `created_at`) VALUES
 (17, 23, 50, '2022-07-24 13:48:31'),
 (18, 103, 50, '2022-07-24 13:48:35'),
 (19, 24, 50, '2022-07-24 13:48:39'),
-(97, 24, 100, '2022-07-30 16:03:20');
+(97, 24, 100, '2022-07-30 16:03:20'),
+(98, 22, 100, '2022-07-31 18:04:56');
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `event_cart_creditcard`
+-- Table structure for table `event_cart_creditcard`
 --
 
 CREATE TABLE `event_cart_creditcard` (
@@ -258,7 +263,7 @@ CREATE TABLE `event_cart_creditcard` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `event_cart_creditcard`
+-- Dumping data for table `event_cart_creditcard`
 --
 
 INSERT INTO `event_cart_creditcard` (`credit_sid`, `member_sid`, `cardnumber`, `cardholder`, `ex_month`, `ex_year`, `cvv`, `credit_created_at`) VALUES
@@ -267,7 +272,7 @@ INSERT INTO `event_cart_creditcard` (`credit_sid`, `member_sid`, `cardnumber`, `
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `event_cart_personinfo`
+-- Table structure for table `event_cart_personinfo`
 --
 
 CREATE TABLE `event_cart_personinfo` (
@@ -287,7 +292,7 @@ CREATE TABLE `event_cart_personinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `event_cart_personinfo`
+-- Dumping data for table `event_cart_personinfo`
 --
 
 INSERT INTO `event_cart_personinfo` (`sid`, `member_sid`, `name`, `mobile_city`, `mobile`, `email`, `gender`, `ID`, `birthday`, `add_city`, `add_town`, `add_detail`, `info_created_at`) VALUES
@@ -297,7 +302,7 @@ INSERT INTO `event_cart_personinfo` (`sid`, `member_sid`, `name`, `mobile_city`,
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `event_order_detail`
+-- Table structure for table `event_order_detail`
 --
 
 CREATE TABLE `event_order_detail` (
@@ -308,7 +313,7 @@ CREATE TABLE `event_order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `event_order_detail`
+-- Dumping data for table `event_order_detail`
 --
 
 INSERT INTO `event_order_detail` (`event_order_sid`, `member_sid`, `event_order_detail`, `order_created_at`) VALUES
@@ -325,7 +330,7 @@ INSERT INTO `event_order_detail` (`event_order_sid`, `member_sid`, `event_order_
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `good_deed_games`
+-- Table structure for table `good_deed_games`
 --
 
 CREATE TABLE `good_deed_games` (
@@ -336,7 +341,7 @@ CREATE TABLE `good_deed_games` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `good_deed_games`
+-- Dumping data for table `good_deed_games`
 --
 
 INSERT INTO `good_deed_games` (`sid`, `game_id`, `game_name`, `game_detail`) VALUES
@@ -346,7 +351,7 @@ INSERT INTO `good_deed_games` (`sid`, `game_id`, `game_name`, `game_detail`) VAL
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `good_deed_games_record`
+-- Table structure for table `good_deed_games_record`
 --
 
 CREATE TABLE `good_deed_games_record` (
@@ -362,7 +367,7 @@ CREATE TABLE `good_deed_games_record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `good_deed_games_record`
+-- Dumping data for table `good_deed_games_record`
 --
 
 INSERT INTO `good_deed_games_record` (`sid`, `member_sid`, `member_account`, `member_name`, `member_birth`, `member_death`, `play_date`, `game_id`, `game_score`) VALUES
@@ -372,7 +377,7 @@ INSERT INTO `good_deed_games_record` (`sid`, `member_sid`, `member_account`, `me
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `good_deed_score`
+-- Table structure for table `good_deed_score`
 --
 
 CREATE TABLE `good_deed_score` (
@@ -393,7 +398,7 @@ CREATE TABLE `good_deed_score` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `good_deed_test`
+-- Table structure for table `good_deed_test`
 --
 
 CREATE TABLE `good_deed_test` (
@@ -409,7 +414,7 @@ CREATE TABLE `good_deed_test` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `good_deed_test`
+-- Dumping data for table `good_deed_test`
 --
 
 INSERT INTO `good_deed_test` (`sid`, `test_sid`, `test_content`, `op1_content`, `op1_score`, `op2_content`, `op2_score`, `op3_content`, `op3_score`) VALUES
@@ -422,7 +427,7 @@ INSERT INTO `good_deed_test` (`sid`, `test_sid`, `test_content`, `op1_content`, 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `good_deed_test_record`
+-- Table structure for table `good_deed_test_record`
 --
 
 CREATE TABLE `good_deed_test_record` (
@@ -440,7 +445,7 @@ CREATE TABLE `good_deed_test_record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `good_deed_test_record`
+-- Dumping data for table `good_deed_test_record`
 --
 
 INSERT INTO `good_deed_test_record` (`sid`, `member_account`, `member_name`, `member_birth`, `member_death`, `test_Q1`, `test_Q2`, `test_Q3`, `test_Q4`, `test_Q5`, `test_score`) VALUES
@@ -450,7 +455,7 @@ INSERT INTO `good_deed_test_record` (`sid`, `member_account`, `member_name`, `me
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `location`
+-- Table structure for table `location`
 --
 
 CREATE TABLE `location` (
@@ -459,7 +464,7 @@ CREATE TABLE `location` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `location`
+-- Dumping data for table `location`
 --
 
 INSERT INTO `location` (`l_sid`, `location`) VALUES
@@ -484,7 +489,7 @@ INSERT INTO `location` (`l_sid`, `location`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `member`
+-- Table structure for table `member`
 --
 
 CREATE TABLE `member` (
@@ -501,7 +506,7 @@ CREATE TABLE `member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `member`
+-- Dumping data for table `member`
 --
 
 INSERT INTO `member` (`sid`, `name`, `birthdate`, `deathdate`, `isdead`, `mobile`, `email`, `account`, `password`, `create_at`) VALUES
@@ -612,7 +617,7 @@ INSERT INTO `member` (`sid`, `name`, `birthdate`, `deathdate`, `isdead`, `mobile
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `music_category`
+-- Table structure for table `music_category`
 --
 
 CREATE TABLE `music_category` (
@@ -622,7 +627,7 @@ CREATE TABLE `music_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `music_category`
+-- Dumping data for table `music_category`
 --
 
 INSERT INTO `music_category` (`music_type_sid`, `music_type_en`, `music_type_ch`) VALUES
@@ -633,7 +638,7 @@ INSERT INTO `music_category` (`music_type_sid`, `music_type_en`, `music_type_ch`
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE `news` (
@@ -648,7 +653,7 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `news`
+-- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`sid`, `topic`, `event_time`, `type_sid`, `img`, `location_sid`, `content`, `publish_date`) VALUES
@@ -666,7 +671,7 @@ INSERT INTO `news` (`sid`, `topic`, `event_time`, `type_sid`, `img`, `location_s
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `news_tag`
+-- Table structure for table `news_tag`
 --
 
 CREATE TABLE `news_tag` (
@@ -676,7 +681,7 @@ CREATE TABLE `news_tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `news_tag`
+-- Dumping data for table `news_tag`
 --
 
 INSERT INTO `news_tag` (`nt_sid`, `news_sid`, `tag_sid`) VALUES
@@ -749,7 +754,7 @@ INSERT INTO `news_tag` (`nt_sid`, `news_sid`, `tag_sid`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `npo_act`
+-- Table structure for table `npo_act`
 --
 
 CREATE TABLE `npo_act` (
@@ -774,7 +779,7 @@ CREATE TABLE `npo_act` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `npo_act`
+-- Dumping data for table `npo_act`
 --
 
 INSERT INTO `npo_act` (`sid`, `img`, `type_sid`, `program_type`, `comment_star`, `price`, `value`, `start`, `start_time`, `end`, `end_time`, `npo_name`, `act_title`, `place_city`, `place_other`, `place_location`, `limit_num`, `intro`) VALUES
@@ -792,7 +797,7 @@ INSERT INTO `npo_act` (`sid`, `img`, `type_sid`, `program_type`, `comment_star`,
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `npo_act_type`
+-- Table structure for table `npo_act_type`
 --
 
 CREATE TABLE `npo_act_type` (
@@ -801,7 +806,7 @@ CREATE TABLE `npo_act_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `npo_act_type`
+-- Dumping data for table `npo_act_type`
 --
 
 INSERT INTO `npo_act_type` (`typesid`, `name`) VALUES
@@ -815,7 +820,7 @@ INSERT INTO `npo_act_type` (`typesid`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `npo_name`
+-- Table structure for table `npo_name`
 --
 
 CREATE TABLE `npo_name` (
@@ -830,7 +835,7 @@ CREATE TABLE `npo_name` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `npo_name`
+-- Dumping data for table `npo_name`
 --
 
 INSERT INTO `npo_name` (`npo_sid`, `npo_name`, `npo_img`, `email`, `phone`, `mobile`, `npo_intro`, `create_at`) VALUES
@@ -847,132 +852,116 @@ INSERT INTO `npo_name` (`npo_sid`, `npo_name`, `npo_img`, `email`, `phone`, `mob
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place`
+-- Table structure for table `place`
 --
 
 CREATE TABLE `place` (
   `sid` int(11) NOT NULL,
-  `year` year(4) NOT NULL,
-  `month` int(11) NOT NULL,
-  `country` varchar(225) NOT NULL,
-  `city` varchar(225) NOT NULL,
-  `dist` varchar(225) NOT NULL,
-  `quota` int(11) NOT NULL,
-  `booked` int(11) NOT NULL,
-  `place_price` int(11) NOT NULL DEFAULT 2000
+  `year` year(4) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL,
+  `country` varchar(225) DEFAULT NULL,
+  `city` varchar(225) DEFAULT NULL,
+  `dist` varchar(225) DEFAULT NULL,
+  `quota` int(11) DEFAULT NULL,
+  `booked` int(11) DEFAULT NULL,
+  `place_price` int(11) DEFAULT 200
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `place`
+-- Dumping data for table `place`
 --
 
 INSERT INTO `place` (`sid`, `year`, `month`, `country`, `city`, `dist`, `quota`, `booked`, `place_price`) VALUES
-(2, 2025, 10, '美國', '紐約', '布魯克林', 2, 1, 5000),
-(4, 2032, 1, '台灣', '新北市', '三峽區', 5, 4, 3200),
-(5, 2072, 2, '台灣', '臺南市', '安平區', 2, 1, 2500),
-(6, 2030, 5, '台灣', '臺南市', '中西區', 5, 3, 2500),
-(7, 2055, 8, '台灣', '臺北市', '大安區', 5, 5, 3600),
-(10, 2025, 12, '台灣', '臺南市', '安平區', 4, 2, 2500),
-(12, 2025, 12, '台灣', '臺北市', '大安區', 3, 2, 3600),
-(13, 2022, 12, '美國', '加州', '聖荷西', 2, 0, 5000),
-(14, 2027, 5, '台灣', '臺北市', '大安區', 2, 1, 3600),
-(15, 2026, 10, '台灣', '臺北市', '大安區', 3, 1, 3600),
-(16, 2030, 6, '台灣', '臺北市', '內湖區', 1, 1, 3600),
-(17, 2029, 6, '台灣', '臺南市', '中西區', 2, 1, 2500),
+(13, 2022, 12, '美國', '加州', '聖荷西', 2, 1, 200),
+(16, 2030, 6, '台灣', '台北市', '內湖區', 1, 1, 200),
+(17, 2029, 6, '台灣', '台南市', '中西區', 2, 1, 200),
 (18, 2029, 5, '台灣', '桃園市', '蘆竹區', 3, 1, 200),
-(19, 2027, 5, '美國', '紐約', '皇后區', 4, 2, 5000),
-(20, 2027, 12, '美國', '加州', '比佛利山莊', 1, 0, 5000),
-(21, 2023, 5, '台灣', '新竹縣', '竹北市', 2, 0, 2800),
-(22, 2025, 6, '台灣', '臺北市', '大安區', 2, 1, 3600),
-(23, 2052, 2, '台灣', '臺北市', '大安區', 1, 1, 3600),
-(24, 2045, 6, '台灣', '臺北市', '大安區', 3, 1, 3600),
-(25, 2105, 10, '台灣', '臺北市', '大安區', 2, 0, 3600),
-(26, 2023, 8, '台灣', '臺北市', '大安區', 4, 2, 3600),
-(27, 2065, 9, '台灣', '臺北市', '大安區', 2, 0, 3600),
-(28, 2044, 2, '台灣', '新北市', '三峽區', 5, 1, 3200),
-(29, 2048, 12, '台灣', '新北市', '三峽區', 2, 1, 3200),
-(30, 2064, 4, '台灣', '新北市', '三峽區', 3, 2, 3200),
-(31, 2098, 10, '台灣', '新北市', '三峽區', 5, 2, 3200),
-(32, 2084, 2, '台灣', '新北市', '三峽區', 2, 0, 3200),
-(33, 2100, 7, '台灣', '新北市', '三峽區', 5, 2, 3200),
-(34, 2088, 12, '台灣', '臺北市', '內湖區', 2, 1, 3600),
-(35, 2054, 4, '台灣', '臺北市', '內湖區', 3, 2, 3600),
-(36, 2028, 10, '台灣', '臺北市', '內湖區', 5, 2, 3600),
-(37, 2034, 2, '台灣', '臺北市', '內湖區', 2, 0, 3600),
-(38, 2070, 7, '台灣', '臺北市', '內湖區', 5, 2, 3600),
+(19, 2027, 5, '美國', '紐約', '皇后區', 4, 2, 200),
+(20, 2027, 12, '美國', '加州', '比佛利山莊', 1, 0, 200),
+(21, 2023, 5, '台灣', '新竹縣', '竹北市', 2, 0, 200),
+(22, 2025, 6, '台灣', '台北市', '大安區', 2, 1, 200),
+(23, 2052, 2, '台灣', '台北市', '大安區', 1, 1, 200),
+(24, 2045, 6, '台灣', '台北市', '大安區', 3, 1, 200),
+(25, 2105, 10, '台灣', '台北市', '大安區', 2, 0, 200),
+(28, 2044, 2, '台灣', '新北市', '三峽區', 5, 1, 200),
+(29, 2048, 12, '台灣', '新北市', '三峽區', 2, 1, 200),
+(30, 2064, 4, '台灣', '新北市', '三峽區', 3, 2, 200),
+(31, 2098, 10, '台灣', '新北市', '三峽區', 5, 2, 200),
+(32, 2084, 2, '台灣', '新北市', '三峽區', 2, 0, 200),
+(33, 2100, 7, '台灣', '新北市', '三峽區', 5, 2, 200),
+(34, 2088, 12, '台灣', '台北市', '內湖區', 2, 1, 200),
+(35, 2054, 4, '台灣', '台北市', '內湖區', 3, 2, 200),
+(36, 2028, 10, '台灣', '台北市', '內湖區', 5, 2, 200),
+(37, 2034, 2, '台灣', '台北市', '內湖區', 2, 0, 200),
+(38, 2070, 7, '台灣', '台北市', '內湖區', 5, 2, 200),
 (39, 2039, 3, '台灣', '桃園市', '中壢區', 4, 2, 200),
-(40, 2069, 9, '台灣', '桃園市', '大園區', 2, 1, 200),
+(40, 2069, 9, '台灣', '桃園市', '中壢區', 2, 1, 200),
 (41, 2089, 3, '台灣', '桃園市', '中壢區', 2, 0, 200),
 (42, 2027, 5, '台灣', '桃園市', '大園區', 3, 2, 200),
 (43, 2039, 12, '台灣', '桃園市', '大園區', 2, 1, 200),
 (44, 2039, 9, '台灣', '桃園市', '蘆竹區', 4, 2, 200),
 (45, 2039, 11, '台灣', '桃園市', '蘆竹區', 2, 1, 200),
-(46, 2052, 3, '台灣', '新北市', '三峽區', 4, 1, 3200),
-(47, 2077, 12, '台灣', '新北市', '三重區', 4, 2, 3200),
-(48, 2099, 7, '台灣', '新北市', '三重區', 2, 1, 3200),
-(49, 2054, 6, '台灣', '新北市', '三重區', 4, 0, 3200),
-(50, 2068, 8, '台灣', '新北市', '蘆洲區', 3, 2, 3200),
-(51, 2084, 2, '台灣', '新北市', '蘆洲區', 4, 2, 3200),
-(52, 2072, 3, '台灣', '臺北市', '中山區', 4, 1, 3600),
-(53, 2077, 11, '台灣', '臺北市', '中山區', 4, 2, 3600),
-(54, 2069, 7, '台灣', '臺北市', '中山區', 3, 1, 3600),
+(46, 2052, 3, '台灣', '新北市', '三峽區', 4, 1, 200),
+(47, 2077, 12, '台灣', '新北市', '三重區', 4, 2, 200),
+(48, 2099, 7, '台灣', '新北市', '三重區', 2, 1, 200),
+(49, 2054, 6, '台灣', '新北市', '三重區', 4, 0, 200),
+(50, 2068, 8, '台灣', '新北市', '蘆洲區', 3, 2, 200),
+(51, 2084, 2, '台灣', '新北市', '蘆洲區', 4, 2, 200),
+(52, 2072, 3, '台灣', '台北市', '中山區', 4, 1, 200),
+(53, 2077, 11, '台灣', '台北市', '中山區', 4, 2, 200),
+(54, 2069, 7, '台灣', '台北市', '中山區', 3, 1, 200),
 (55, 2074, 6, '台灣', '宜蘭縣', '宜蘭市', 4, 0, 200),
 (56, 2038, 8, '台灣', '宜蘭縣', '宜蘭市', 3, 2, 200),
 (57, 2094, 2, '台灣', '台中市', '烏日區', 4, 2, 200),
-(58, 2040, 11, '台灣', '臺北市', '北投區', 2, 0, 3600),
+(58, 2040, 11, '台灣', '台北市', '北投區', 2, 0, 200),
 (59, 2055, 12, '台灣', '高雄市', '左營區', 3, 1, 200),
 (60, 2075, 2, '台灣', '高雄市', '左營區', 2, 1, 200),
 (61, 2035, 8, '台灣', '高雄市', '三民區', 3, 1, 200),
-(62, 2033, 4, '台灣', '臺南市', '仁德區', 2, 0, 2500),
-(63, 2023, 1, '台灣', '臺南市', '中西區', 2, 1, 2500),
-(64, 2041, 12, '台灣', '臺南市', '中西區', 3, 1, 2500),
-(65, 2062, 7, '台灣', '臺南市', '仁德區', 3, 2, 2500),
-(66, 2055, 9, '台灣', '臺南市', '仁德區', 5, 1, 2500),
-(67, 2022, 10, '台灣', '臺北市', '中山區', 4, 2, 3800),
-(68, 2022, 10, '台灣', '臺北市', '北投區', 3, 1, 4100),
-(69, 2025, 12, '台灣', '臺北市', '中山區', 4, 2, 3500),
-(70, 2024, 1, '台灣', '臺北市', '北投區', 3, 1, 4000),
-(71, 2027, 12, '台灣', '臺北市', '內湖區', 3, 1, 3500),
-(72, 2034, 3, '台灣', '臺北市', '北投區', 3, 2, 2900),
-(73, 2030, 5, '台灣', '臺南市', '中西區', 4, 1, 3400),
-(74, 2028, 7, '台灣', '臺南市', '中西區', 3, 0, 2800),
-(75, 2037, 11, '台灣', '宜蘭縣', '宜蘭市', 4, 1, 3200),
-(76, 2022, 11, '台灣', '宜蘭縣', '宜蘭市', 4, 1, 3000),
-(77, 2067, 1, '台灣', '宜蘭縣', '羅東鎮', 4, 2, 3800),
-(78, 2062, 6, '台灣', '宜蘭縣', '羅東鎮', 4, 0, 4000),
-(79, 2054, 2, '台灣', '臺北市', '北投區', 3, 1, 4300),
-(80, 2029, 12, '台灣', '新北市', '三峽區', 4, 2, 3700),
-(81, 2029, 12, '台灣', '新北市', '三峽區', 4, 2, 3700),
-(82, 2033, 12, '台灣', '桃園市', '中壢區', 3, 1, 3000),
-(83, 2038, 3, '台灣', '桃園市', '蘆竹區', 3, 2, 2600),
-(84, 2038, 5, '台灣', '臺南市', '中西區', 4, 1, 3000),
-(85, 2040, 7, '台灣', '臺南市', '中西區', 3, 2, 3600),
-(86, 2030, 11, '台灣', '新竹縣', '竹北市', 4, 1, 3900),
-(87, 2039, 1, '台灣', '新竹縣', '竹北市', 3, 1, 4000),
-(88, 2024, 7, '台灣', '新竹縣', '竹東鎮', 2, 1, 3000),
-(89, 2050, 10, '台灣', '新竹縣', '竹北市', 2, 1, 4300),
-(90, 2026, 8, '台灣', '臺中市', '西區', 4, 2, 3800),
-(91, 2032, 10, '台灣', '臺中市', '烏日區', 3, 1, 3800),
-(92, 2066, 6, '台灣', '臺中市', '烏日區', 4, 2, 4800),
-(93, 2028, 8, '台灣', '臺中市', '北屯區', 3, 0, 3600);
+(62, 2033, 4, '台灣', '台南市', '仁德區', 2, 0, 200),
+(63, 2023, 1, '台灣', '台南市', '中西區', 2, 1, 200),
+(64, 2041, 12, '台灣', '台南市', '中西區', 3, 1, 200),
+(65, 2062, 7, '台灣', '台南市', '仁德區', 3, 2, 200),
+(66, 2055, 9, '台灣', '台南市', '仁德區', 5, 2, 200),
+(67, 2023, 3, '美國', '加州', '舊金山', 2, 0, 200),
+(68, 2023, 12, '台灣', '宜蘭縣', '羅東鎮', 3, 1, 200),
+(69, 2026, 8, '台灣', '台中市', '西區', 3, 1, 200),
+(70, 2032, 7, '台灣', '新北市', '蘆洲區', 2, 0, 200),
+(71, 2029, 5, '台灣', '高雄市', '左營區', 2, 0, 200),
+(72, 2032, 7, '台灣', '新竹縣', '竹北市', 4, 1, 200),
+(73, 2043, 8, '台灣', '宜蘭縣', '羅東鎮', 2, 0, 200),
+(74, 2047, 1, '台灣', '高雄市', '三民區', 4, 2, 200),
+(75, 2057, 9, '台灣', '桃園市', '中壢區', 3, 0, 200),
+(76, 2122, 1, '台灣', '新北市', '三重區', 2, 0, 200),
+(77, 2032, 12, '台灣', '台中市', '豐原區', 2, 0, 200),
+(78, 2024, 5, '台灣', '高雄市', '左營區', 2, 1, 200),
+(79, 2022, 12, '台灣', '新北市', '三重區', 2, 0, 200),
+(80, 2022, 11, '台灣', '新北市', '三峽區', 2, 1, 200),
+(81, 2022, 10, '台灣', '新竹縣', '竹北市', 3, 1, 200),
+(82, 2030, 2, '美國', '加州', '聖地牙哥', 2, 0, 200),
+(84, 2022, 11, '美國', '加州', '聖荷西', 3, 0, 200),
+(85, 2022, 11, '台灣', '桃園市', '中壢區', 5, 1, 200);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place_city`
+-- Table structure for table `place_city`
 --
 
 CREATE TABLE `place_city` (
-  `country` varchar(225) NOT NULL,
+  `country_id` varchar(225) DEFAULT NULL,
   `city` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `place_city`
+-- Dumping data for table `place_city`
 --
 
-INSERT INTO `place_city` (`country`, `city`) VALUES
+INSERT INTO `place_city` (`country_id`, `city`) VALUES
 ('台灣', '南投縣'),
+('台灣', '台中市'),
+('台灣', '台北市'),
+('台灣', '台南市'),
+('台灣', '台東縣'),
 ('台灣', '基隆市'),
 ('台灣', '宜蘭縣'),
 ('台灣', '屏東縣'),
@@ -981,10 +970,6 @@ INSERT INTO `place_city` (`country`, `city`) VALUES
 ('台灣', '新竹縣'),
 ('台灣', '桃園市'),
 ('台灣', '澎湖縣'),
-('台灣', '臺中市'),
-('台灣', '臺北市'),
-('台灣', '臺南市'),
-('台灣', '臺東縣'),
 ('台灣', '花蓮縣'),
 ('台灣', '金門縣'),
 ('台灣', '高雄市'),
@@ -995,7 +980,7 @@ INSERT INTO `place_city` (`country`, `city`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place_country`
+-- Table structure for table `place_country`
 --
 
 CREATE TABLE `place_country` (
@@ -1004,7 +989,7 @@ CREATE TABLE `place_country` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `place_country`
+-- Dumping data for table `place_country`
 --
 
 INSERT INTO `place_country` (`country`, `country_price`) VALUES
@@ -1014,60 +999,39 @@ INSERT INTO `place_country` (`country`, `country_price`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place_country_list`
---
-
-CREATE TABLE `place_country_list` (
-  `sid` int(11) NOT NULL,
-  `country` varchar(225) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- 傾印資料表的資料 `place_country_list`
---
-
-INSERT INTO `place_country_list` (`sid`, `country`) VALUES
-(1, '台灣'),
-(2, '美國');
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `place_dist`
+-- Table structure for table `place_dist`
 --
 
 CREATE TABLE `place_dist` (
-  `country` varchar(225) NOT NULL,
-  `city` varchar(225) NOT NULL,
+  `country_id` varchar(225) DEFAULT NULL,
+  `city_id` varchar(225) DEFAULT NULL,
   `dist` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `place_dist`
+-- Dumping data for table `place_dist`
 --
 
-INSERT INTO `place_dist` (`country`, `city`, `dist`) VALUES
+INSERT INTO `place_dist` (`country_id`, `city_id`, `dist`) VALUES
 ('台灣', '新北市', '三峽區'),
 ('台灣', '高雄市', '三民區'),
 ('台灣', '新北市', '三重區'),
 ('台灣', '桃園市', '中壢區'),
-('台灣', '臺北市', '中山區'),
-('台灣', '臺南市', '中西區'),
-('台灣', '臺南市', '仁德區'),
-('台灣', '臺北市', '內湖區'),
-('台灣', '臺中市', '北區'),
-('台灣', '臺中市', '北屯區'),
-('台灣', '臺北市', '北投區'),
+('台灣', '台北市', '中山區'),
+('台灣', '台南市', '中西區'),
+('台灣', '台南市', '仁德區'),
+('台灣', '台北市', '內湖區'),
+('台灣', '台北市', '北投區'),
 ('台灣', '桃園市', '大園區'),
-('台灣', '臺北市', '大安區'),
-('台灣', '臺南市', '安平區'),
+('台灣', '台北市', '大安區'),
+('台灣', '台南市', '安平區'),
 ('台灣', '宜蘭縣', '宜蘭市'),
 ('台灣', '高雄市', '左營區'),
 ('美國', '紐約', '布魯克林'),
-('台灣', '臺南市', '新化區'),
-('台灣', '臺南市', '歸仁區'),
+('台灣', '台南市', '新化區'),
+('台灣', '台南市', '歸仁區'),
 ('美國', '加州', '比佛利山莊'),
-('台灣', '臺中市', '烏日區'),
+('台灣', '台中市', '烏日區'),
 ('美國', '紐約', '皇后區'),
 ('台灣', '新竹縣', '竹北市'),
 ('台灣', '新竹縣', '竹東鎮'),
@@ -1077,92 +1041,44 @@ INSERT INTO `place_dist` (`country`, `city`, `dist`) VALUES
 ('美國', '加州', '舊金山'),
 ('台灣', '新北市', '蘆洲區'),
 ('台灣', '桃園市', '蘆竹區'),
-('台灣', '臺中市', '西區'),
-('台灣', '臺中市', '豐原區'),
+('台灣', '台中市', '西區'),
+('台灣', '台中市', '豐原區'),
 ('台灣', '宜蘭縣', '頭城鄉');
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place_in_cart`
+-- Table structure for table `place_order`
 --
 
-CREATE TABLE `place_in_cart` (
+CREATE TABLE `place_order` (
   `sid` int(11) NOT NULL,
-  `member_sid` int(11) NOT NULL,
-  `place_sid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `member_sid` varchar(225) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `place_sid` int(225) DEFAULT NULL,
+  `date_price` int(11) DEFAULT NULL,
+  `place_price` int(11) DEFAULT NULL,
+  `created_date` date DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `place_in_cart`
+-- Dumping data for table `place_order`
 --
 
-INSERT INTO `place_in_cart` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUES
-(3, 21, 4, '2022-07-25 21:27:38'),
-(4, 21, 13, '2022-07-25 21:27:38'),
-(5, 21, 23, '2022-07-25 21:27:57'),
-(6, 21, 24, '2022-07-25 21:27:57'),
-(7, 12, 23, '2022-07-25 21:28:27'),
-(8, 12, 18, '2022-07-25 21:28:27'),
-(15, 10, 68, '2022-07-31 21:32:27'),
-(16, 10, 13, '2022-07-31 21:32:33'),
-(18, 10, 93, '2022-07-31 21:36:45'),
-(20, 10, 76, '2022-07-31 23:13:57');
+INSERT INTO `place_order` (`sid`, `member_sid`, `place_sid`, `date_price`, `place_price`, `created_date`) VALUES
+(8, '11', 6, 50, 150, '2022-06-09'),
+(10, '31', 2, 50, 150, '2022-06-09'),
+(12, '15', 4, 50, 150, '2022-06-09'),
+(15, '20', 5, 50, 150, '2022-06-09'),
+(19, '1', 66, 50, 150, '2022-06-10'),
+(29, '12', 4, 50, 150, '2022-06-12'),
+(33, '3', 2, 50, 150, '2022-06-13'),
+(34, '33', 5, 50, 150, '2022-06-13'),
+(36, '23', 6, 50, 150, '2022-06-13');
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place_liked`
---
-
-CREATE TABLE `place_liked` (
-  `sid` int(11) NOT NULL,
-  `member_sid` int(11) NOT NULL,
-  `place_sid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- 傾印資料表的資料 `place_liked`
---
-
-INSERT INTO `place_liked` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUES
-(1, 21, 11, '2022-07-31 20:02:22'),
-(2, 21, 4, '2022-07-31 20:02:22'),
-(3, 21, 17, '2022-07-31 20:02:42'),
-(4, 21, 18, '2022-07-31 20:02:42'),
-(5, 21, 20, '2022-07-31 20:02:55'),
-(6, 21, 21, '2022-07-31 20:02:55'),
-(7, 21, 22, '2022-07-31 20:03:09'),
-(8, 21, 23, '2022-07-31 20:03:09'),
-(9, 4, 21, '2022-07-31 20:16:08'),
-(10, 4, 10, '2022-07-31 20:16:08'),
-(11, 10, 10, '2022-07-31 21:41:37'),
-(12, 10, 76, '2022-07-31 21:41:54'),
-(13, 10, 68, '2022-07-31 21:46:01'),
-(14, 10, 87, '2022-07-31 21:59:21'),
-(15, 10, 67, '2022-07-31 21:59:28'),
-(16, 10, 29, '2022-07-31 22:49:58');
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `reborn_order`
---
-
-CREATE TABLE `reborn_order` (
-  `sid` int(11) NOT NULL,
-  `member_sid` int(11) NOT NULL,
-  `avatar_id` int(11) NOT NULL,
-  `place_sid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `reincarnation`
+-- Table structure for table `reincarnation`
 --
 
 CREATE TABLE `reincarnation` (
@@ -1172,7 +1088,7 @@ CREATE TABLE `reincarnation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `reincarnation`
+-- Dumping data for table `reincarnation`
 --
 
 INSERT INTO `reincarnation` (`member_sid`, `soul_id`, `generation`) VALUES
@@ -1188,7 +1104,7 @@ INSERT INTO `reincarnation` (`member_sid`, `soul_id`, `generation`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `reincarnation_order`
+-- Table structure for table `reincarnation_order`
 --
 
 CREATE TABLE `reincarnation_order` (
@@ -1209,7 +1125,7 @@ CREATE TABLE `reincarnation_order` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `sessions`
+-- Table structure for table `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -1221,7 +1137,52 @@ CREATE TABLE `sessions` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `share_avatar_comments`
+-- Table structure for table `share_avatar_collects`
+--
+
+CREATE TABLE `share_avatar_collects` (
+  `share_post_collect_sid` int(11) NOT NULL,
+  `share_post_sid` int(11) DEFAULT NULL,
+  `member_sid` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `share_avatar_collects`
+--
+
+INSERT INTO `share_avatar_collects` (`share_post_collect_sid`, `share_post_sid`, `member_sid`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 5, 1),
+(4, 10, 1),
+(5, 1, 2),
+(6, 3, 2),
+(7, 9, 2),
+(8, 1, 3),
+(9, 2, 3),
+(10, 4, 3),
+(11, 8, 3),
+(12, 1, 4),
+(13, 7, 4),
+(14, 1, 5),
+(15, 2, 5),
+(16, 3, 5),
+(17, 6, 5),
+(18, 1, 6),
+(19, 5, 6),
+(20, 1, 7),
+(21, 2, 7),
+(22, 4, 7),
+(23, 1, 8),
+(24, 3, 8),
+(25, 1, 9),
+(26, 2, 9),
+(27, 1, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `share_avatar_comments`
 --
 
 CREATE TABLE `share_avatar_comments` (
@@ -1234,7 +1195,7 @@ CREATE TABLE `share_avatar_comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `share_avatar_comments`
+-- Dumping data for table `share_avatar_comments`
 --
 
 INSERT INTO `share_avatar_comments` (`share_post_comment_sid`, `share_post_sid`, `member_sid`, `share_post_comment_text`, `created_at`, `updated_at`) VALUES
@@ -1272,12 +1233,57 @@ INSERT INTO `share_avatar_comments` (`share_post_comment_sid`, `share_post_sid`,
 (32, 8, 3, '感覺是看待世界的方式會改變的身高', '2022-07-22 23:45:05', NULL),
 (33, 8, 2, '我也要改成這個！', '2022-07-22 23:45:38', NULL),
 (34, 9, 4, '芝麻眼睛好酷～', '2022-07-22 23:45:48', NULL),
-(35, 2, 10, '這到底什麼造型喔喔喔喔', '2022-07-22 23:45:56', NULL);
+(35, 2, 2, '我怎麼會知道喔喔喔喔', '2022-07-22 23:45:56', NULL);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `share_avatar_posts`
+-- Table structure for table `share_avatar_likes`
+--
+
+CREATE TABLE `share_avatar_likes` (
+  `share_post_like_sid` int(11) NOT NULL,
+  `share_post_sid` int(11) DEFAULT NULL,
+  `member_sid` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `share_avatar_likes`
+--
+
+INSERT INTO `share_avatar_likes` (`share_post_like_sid`, `share_post_sid`, `member_sid`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 2),
+(4, 1, 3),
+(5, 3, 3),
+(6, 1, 4),
+(7, 2, 4),
+(8, 4, 4),
+(9, 1, 5),
+(10, 5, 5),
+(11, 1, 6),
+(12, 2, 6),
+(13, 3, 6),
+(14, 6, 6),
+(15, 1, 7),
+(16, 7, 7),
+(17, 1, 8),
+(18, 2, 8),
+(19, 4, 8),
+(20, 8, 8),
+(21, 1, 9),
+(22, 3, 9),
+(23, 9, 9),
+(24, 1, 10),
+(25, 2, 10),
+(26, 5, 10),
+(27, 10, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `share_avatar_posts`
 --
 
 CREATE TABLE `share_avatar_posts` (
@@ -1293,7 +1299,7 @@ CREATE TABLE `share_avatar_posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `share_avatar_posts`
+-- Dumping data for table `share_avatar_posts`
 --
 
 INSERT INTO `share_avatar_posts` (`share_post_sid`, `member_sid`, `avatar_sid`, `share_post_title`, `share_post_text`, `share_post_likes`, `share_post_collects`, `created_at`, `updated_at`) VALUES
@@ -1311,7 +1317,7 @@ INSERT INTO `share_avatar_posts` (`share_post_sid`, `member_sid`, `avatar_sid`, 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `share_avatar_posts_to_tags`
+-- Table structure for table `share_avatar_posts_to_tags`
 --
 
 CREATE TABLE `share_avatar_posts_to_tags` (
@@ -1321,7 +1327,7 @@ CREATE TABLE `share_avatar_posts_to_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `share_avatar_posts_to_tags`
+-- Dumping data for table `share_avatar_posts_to_tags`
 --
 
 INSERT INTO `share_avatar_posts_to_tags` (`share_p_to_t_sid`, `share_post_sid`, `share_post_tag_sid`) VALUES
@@ -1351,7 +1357,7 @@ INSERT INTO `share_avatar_posts_to_tags` (`share_p_to_t_sid`, `share_post_sid`, 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `share_avatar_tags`
+-- Table structure for table `share_avatar_tags`
 --
 
 CREATE TABLE `share_avatar_tags` (
@@ -1361,7 +1367,7 @@ CREATE TABLE `share_avatar_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `share_avatar_tags`
+-- Dumping data for table `share_avatar_tags`
 --
 
 INSERT INTO `share_avatar_tags` (`share_post_tag_sid`, `share_post_tag_text`, `share_post_tag_search_times`) VALUES
@@ -1386,7 +1392,7 @@ INSERT INTO `share_avatar_tags` (`share_post_tag_sid`, `share_post_tag_text`, `s
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `showcase`
+-- Table structure for table `showcase`
 --
 
 CREATE TABLE `showcase` (
@@ -1397,7 +1403,7 @@ CREATE TABLE `showcase` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `showcase`
+-- Dumping data for table `showcase`
 --
 
 INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combination`) VALUES
@@ -1414,7 +1420,7 @@ INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combina
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `tag`
+-- Table structure for table `tag`
 --
 
 CREATE TABLE `tag` (
@@ -1423,7 +1429,7 @@ CREATE TABLE `tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `tag`
+-- Dumping data for table `tag`
 --
 
 INSERT INTO `tag` (`tg_sid`, `tag_name`) VALUES
@@ -1459,7 +1465,7 @@ INSERT INTO `tag` (`tg_sid`, `tag_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `type`
+-- Table structure for table `type`
 --
 
 CREATE TABLE `type` (
@@ -1468,7 +1474,7 @@ CREATE TABLE `type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `type`
+-- Dumping data for table `type`
 --
 
 INSERT INTO `type` (`ty_sid`, `type_name`) VALUES
@@ -1480,120 +1486,120 @@ INSERT INTO `type` (`ty_sid`, `type_name`) VALUES
 (6, '投胎');
 
 --
--- 已傾印資料表的索引
+-- Indexes for dumped tables
 --
 
 --
--- 資料表索引 `admin_test_jwt`
+-- Indexes for table `admin_test_jwt`
 --
 ALTER TABLE `admin_test_jwt`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `body_parts`
+-- Indexes for table `body_parts`
 --
 ALTER TABLE `body_parts`
   ADD PRIMARY KEY (`parts_sid`);
 
 --
--- 資料表索引 `city_type`
+-- Indexes for table `city_type`
 --
 ALTER TABLE `city_type`
   ADD PRIMARY KEY (`city_sid`);
 
 --
--- 資料表索引 `cube`
+-- Indexes for table `cube`
 --
 ALTER TABLE `cube`
   ADD PRIMARY KEY (`cube_sid`),
   ADD KEY `member_sid` (`member_sid`);
 
 --
--- 資料表索引 `cube_category`
+-- Indexes for table `cube_category`
 --
 ALTER TABLE `cube_category`
   ADD PRIMARY KEY (`cube_style_sid`);
 
 --
--- 資料表索引 `cube_music`
+-- Indexes for table `cube_music`
 --
 ALTER TABLE `cube_music`
   ADD PRIMARY KEY (`cube_music_sid`);
 
 --
--- 資料表索引 `date_price`
+-- Indexes for table `date_price`
 --
 ALTER TABLE `date_price`
   ADD PRIMARY KEY (`year`);
 
 --
--- 資料表索引 `event_cart`
+-- Indexes for table `event_cart`
 --
 ALTER TABLE `event_cart`
   ADD PRIMARY KEY (`order_sid`);
 
 --
--- 資料表索引 `event_cart_creditcard`
+-- Indexes for table `event_cart_creditcard`
 --
 ALTER TABLE `event_cart_creditcard`
   ADD PRIMARY KEY (`credit_sid`);
 
 --
--- 資料表索引 `event_cart_personinfo`
+-- Indexes for table `event_cart_personinfo`
 --
 ALTER TABLE `event_cart_personinfo`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `event_order_detail`
+-- Indexes for table `event_order_detail`
 --
 ALTER TABLE `event_order_detail`
   ADD PRIMARY KEY (`event_order_sid`);
 
 --
--- 資料表索引 `good_deed_games`
+-- Indexes for table `good_deed_games`
 --
 ALTER TABLE `good_deed_games`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `good_deed_games_record`
+-- Indexes for table `good_deed_games_record`
 --
 ALTER TABLE `good_deed_games_record`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `good_deed_score`
+-- Indexes for table `good_deed_score`
 --
 ALTER TABLE `good_deed_score`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `good_deed_test`
+-- Indexes for table `good_deed_test`
 --
 ALTER TABLE `good_deed_test`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `location`
+-- Indexes for table `location`
 --
 ALTER TABLE `location`
   ADD PRIMARY KEY (`l_sid`);
 
 --
--- 資料表索引 `member`
+-- Indexes for table `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `music_category`
+-- Indexes for table `music_category`
 --
 ALTER TABLE `music_category`
   ADD PRIMARY KEY (`music_type_sid`);
 
 --
--- 資料表索引 `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`sid`),
@@ -1601,7 +1607,7 @@ ALTER TABLE `news`
   ADD KEY `type_sid` (`type_sid`);
 
 --
--- 資料表索引 `news_tag`
+-- Indexes for table `news_tag`
 --
 ALTER TABLE `news_tag`
   ADD PRIMARY KEY (`nt_sid`),
@@ -1609,7 +1615,7 @@ ALTER TABLE `news_tag`
   ADD KEY `tag_sid` (`tag_sid`);
 
 --
--- 資料表索引 `npo_act`
+-- Indexes for table `npo_act`
 --
 ALTER TABLE `npo_act`
   ADD PRIMARY KEY (`sid`),
@@ -1617,363 +1623,351 @@ ALTER TABLE `npo_act`
   ADD KEY `place_city` (`place_city`);
 
 --
--- 資料表索引 `npo_act_type`
+-- Indexes for table `npo_act_type`
 --
 ALTER TABLE `npo_act_type`
   ADD PRIMARY KEY (`typesid`);
 
 --
--- 資料表索引 `npo_name`
+-- Indexes for table `npo_name`
 --
 ALTER TABLE `npo_name`
   ADD PRIMARY KEY (`npo_sid`);
 
 --
--- 資料表索引 `place`
+-- Indexes for table `place`
 --
 ALTER TABLE `place`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `place_city`
+-- Indexes for table `place_city`
 --
 ALTER TABLE `place_city`
   ADD PRIMARY KEY (`city`),
-  ADD KEY `place_city_ibfk_1` (`country`);
+  ADD KEY `place_city_ibfk_1` (`country_id`);
 
 --
--- 資料表索引 `place_country`
+-- Indexes for table `place_country`
 --
 ALTER TABLE `place_country`
   ADD PRIMARY KEY (`country`);
 
 --
--- 資料表索引 `place_country_list`
---
-ALTER TABLE `place_country_list`
-  ADD PRIMARY KEY (`sid`);
-
---
--- 資料表索引 `place_dist`
+-- Indexes for table `place_dist`
 --
 ALTER TABLE `place_dist`
   ADD PRIMARY KEY (`dist`),
-  ADD KEY `place_dist_ibfk_2` (`country`);
+  ADD KEY `place_dist_ibfk_2` (`country_id`);
 
 --
--- 資料表索引 `place_in_cart`
+-- Indexes for table `place_order`
 --
-ALTER TABLE `place_in_cart`
+ALTER TABLE `place_order`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `place_liked`
---
-ALTER TABLE `place_liked`
-  ADD PRIMARY KEY (`sid`);
-
---
--- 資料表索引 `reborn_order`
---
-ALTER TABLE `reborn_order`
-  ADD PRIMARY KEY (`sid`);
-
---
--- 資料表索引 `reincarnation`
+-- Indexes for table `reincarnation`
 --
 ALTER TABLE `reincarnation`
   ADD KEY `member_sid` (`member_sid`);
 
 --
--- 資料表索引 `reincarnation_order`
+-- Indexes for table `reincarnation_order`
 --
 ALTER TABLE `reincarnation_order`
   ADD PRIMARY KEY (`reincarnation_order_sid`);
 
 --
--- 資料表索引 `sessions`
+-- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`session_id`);
 
 --
--- 資料表索引 `share_avatar_comments`
+-- Indexes for table `share_avatar_collects`
+--
+ALTER TABLE `share_avatar_collects`
+  ADD PRIMARY KEY (`share_post_collect_sid`);
+
+--
+-- Indexes for table `share_avatar_comments`
 --
 ALTER TABLE `share_avatar_comments`
   ADD PRIMARY KEY (`share_post_comment_sid`);
 
 --
--- 資料表索引 `share_avatar_posts`
+-- Indexes for table `share_avatar_likes`
+--
+ALTER TABLE `share_avatar_likes`
+  ADD PRIMARY KEY (`share_post_like_sid`);
+
+--
+-- Indexes for table `share_avatar_posts`
 --
 ALTER TABLE `share_avatar_posts`
   ADD PRIMARY KEY (`share_post_sid`);
 
 --
--- 資料表索引 `share_avatar_posts_to_tags`
+-- Indexes for table `share_avatar_posts_to_tags`
 --
 ALTER TABLE `share_avatar_posts_to_tags`
   ADD PRIMARY KEY (`share_p_to_t_sid`);
 
 --
--- 資料表索引 `share_avatar_tags`
+-- Indexes for table `share_avatar_tags`
 --
 ALTER TABLE `share_avatar_tags`
   ADD PRIMARY KEY (`share_post_tag_sid`);
 
 --
--- 資料表索引 `showcase`
+-- Indexes for table `showcase`
 --
 ALTER TABLE `showcase`
   ADD PRIMARY KEY (`avatar_id`);
 
 --
--- 資料表索引 `tag`
+-- Indexes for table `tag`
 --
 ALTER TABLE `tag`
   ADD PRIMARY KEY (`tg_sid`);
 
 --
--- 資料表索引 `type`
+-- Indexes for table `type`
 --
 ALTER TABLE `type`
   ADD PRIMARY KEY (`ty_sid`);
 
 --
--- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `admin_test_jwt`
+-- AUTO_INCREMENT for table `admin_test_jwt`
 --
 ALTER TABLE `admin_test_jwt`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `body_parts`
+-- AUTO_INCREMENT for table `body_parts`
 --
 ALTER TABLE `body_parts`
   MODIFY `parts_sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `city_type`
+-- AUTO_INCREMENT for table `city_type`
 --
 ALTER TABLE `city_type`
   MODIFY `city_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `cube`
+-- AUTO_INCREMENT for table `cube`
 --
 ALTER TABLE `cube`
   MODIFY `cube_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `cube_category`
+-- AUTO_INCREMENT for table `cube_category`
 --
 ALTER TABLE `cube_category`
   MODIFY `cube_style_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `cube_music`
+-- AUTO_INCREMENT for table `cube_music`
 --
 ALTER TABLE `cube_music`
   MODIFY `cube_music_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart`
+-- AUTO_INCREMENT for table `event_cart`
 --
 ALTER TABLE `event_cart`
-  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart_creditcard`
+-- AUTO_INCREMENT for table `event_cart_creditcard`
 --
 ALTER TABLE `event_cart_creditcard`
   MODIFY `credit_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart_personinfo`
+-- AUTO_INCREMENT for table `event_cart_personinfo`
 --
 ALTER TABLE `event_cart_personinfo`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `event_order_detail`
+-- AUTO_INCREMENT for table `event_order_detail`
 --
 ALTER TABLE `event_order_detail`
   MODIFY `event_order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `good_deed_games`
+-- AUTO_INCREMENT for table `good_deed_games`
 --
 ALTER TABLE `good_deed_games`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `good_deed_games_record`
+-- AUTO_INCREMENT for table `good_deed_games_record`
 --
 ALTER TABLE `good_deed_games_record`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `good_deed_score`
+-- AUTO_INCREMENT for table `good_deed_score`
 --
 ALTER TABLE `good_deed_score`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `good_deed_test`
+-- AUTO_INCREMENT for table `good_deed_test`
 --
 ALTER TABLE `good_deed_test`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `location`
+-- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
   MODIFY `l_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `member`
+-- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `music_category`
+-- AUTO_INCREMENT for table `music_category`
 --
 ALTER TABLE `music_category`
   MODIFY `music_type_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `news`
+-- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `news_tag`
+-- AUTO_INCREMENT for table `news_tag`
 --
 ALTER TABLE `news_tag`
   MODIFY `nt_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `npo_act`
+-- AUTO_INCREMENT for table `npo_act`
 --
 ALTER TABLE `npo_act`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `npo_act_type`
+-- AUTO_INCREMENT for table `npo_act_type`
 --
 ALTER TABLE `npo_act_type`
   MODIFY `typesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `npo_name`
+-- AUTO_INCREMENT for table `npo_name`
 --
 ALTER TABLE `npo_name`
   MODIFY `npo_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `place`
+-- AUTO_INCREMENT for table `place`
 --
 ALTER TABLE `place`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `place_country_list`
+-- AUTO_INCREMENT for table `place_order`
 --
-ALTER TABLE `place_country_list`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `place_order`
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `place_in_cart`
---
-ALTER TABLE `place_in_cart`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `place_liked`
---
-ALTER TABLE `place_liked`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `reborn_order`
---
-ALTER TABLE `reborn_order`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `reincarnation_order`
+-- AUTO_INCREMENT for table `reincarnation_order`
 --
 ALTER TABLE `reincarnation_order`
   MODIFY `reincarnation_order_sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_comments`
+-- AUTO_INCREMENT for table `share_avatar_collects`
+--
+ALTER TABLE `share_avatar_collects`
+  MODIFY `share_post_collect_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `share_avatar_comments`
 --
 ALTER TABLE `share_avatar_comments`
   MODIFY `share_post_comment_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_posts`
+-- AUTO_INCREMENT for table `share_avatar_likes`
+--
+ALTER TABLE `share_avatar_likes`
+  MODIFY `share_post_like_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `share_avatar_posts`
 --
 ALTER TABLE `share_avatar_posts`
   MODIFY `share_post_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_posts_to_tags`
+-- AUTO_INCREMENT for table `share_avatar_posts_to_tags`
 --
 ALTER TABLE `share_avatar_posts_to_tags`
   MODIFY `share_p_to_t_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_tags`
+-- AUTO_INCREMENT for table `share_avatar_tags`
 --
 ALTER TABLE `share_avatar_tags`
   MODIFY `share_post_tag_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `showcase`
+-- AUTO_INCREMENT for table `showcase`
 --
 ALTER TABLE `showcase`
   MODIFY `avatar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `tag`
+-- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
   MODIFY `tg_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `type`
+-- AUTO_INCREMENT for table `type`
 --
 ALTER TABLE `type`
   MODIFY `ty_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- 已傾印資料表的限制式
+-- Constraints for dumped tables
 --
 
 --
--- 資料表的限制式 `news`
+-- Constraints for table `news`
 --
 ALTER TABLE `news`
   ADD CONSTRAINT `news_ibfk_1` FOREIGN KEY (`location_sid`) REFERENCES `location` (`l_sid`),
   ADD CONSTRAINT `news_ibfk_2` FOREIGN KEY (`type_sid`) REFERENCES `type` (`ty_sid`);
 
 --
--- 資料表的限制式 `place_city`
+-- Constraints for table `place_city`
 --
 ALTER TABLE `place_city`
-  ADD CONSTRAINT `place_city_ibfk_1` FOREIGN KEY (`country`) REFERENCES `place_country` (`country`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `place_city_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `place_country` (`country`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- 資料表的限制式 `place_dist`
+-- Constraints for table `place_dist`
 --
 ALTER TABLE `place_dist`
-  ADD CONSTRAINT `place_dist_ibfk_2` FOREIGN KEY (`country`) REFERENCES `place_country` (`country`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `place_dist_ibfk_2` FOREIGN KEY (`country_id`) REFERENCES `place_country` (`country`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

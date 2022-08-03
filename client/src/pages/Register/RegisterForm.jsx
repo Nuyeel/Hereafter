@@ -6,13 +6,14 @@ import { MEMBER_REGISTER } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
+
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 function RegisterForm() {
-    const [fields, setFields] = useState({
-        email: '',
+    const [registerData, setRegisterData] = useState({
         account: '',
+        email: '',
         password: '',
         confirmPassword: '',
     });
@@ -27,74 +28,66 @@ function RegisterForm() {
     const navigate = useNavigate();
 
     const handleFieldsChange = (e) => {
-        setFields({
-            ...fields,
+        setRegisterData({
+            ...registerData,
             [e.target.name]: e.target.value,
         });
-        // const id = e.target.id;
-        // const val = e.target.value;
-        // // console.log({ id, val });
-        // setFields((prevState) => ({
-        //     ...prevState,
-        //     [id]: val,
-        // }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // TODO: 欄位檢查
 
-        if (fields.confirmPassword !== fields.password) {
-            alert('密碼與確認密碼需要一致');
+        // const accountRe = /^[a-zA-Z0-9_]\w*$/;
+
+        // const emailRe =
+        //     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
+
+        // const passwordRe = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+        if (registerData.account.length > 10) {
+            alert('您設定的帳戶字數過長');
             return;
         }
 
-        const { confirmPassword, ...registerFields } = fields;
-
-        const result = await axios(MEMBER_REGISTER, {
-            method: 'POST',
-            data: JSON.stringify(fields),
-            headers: {
-                'Content-Type': 'Application/json',
-            },
-        });
-
-        // const res = await axios.post('api/users', registerFields);
-
-        // console.log(res);
-
-        // if (result.data.message === 'success') {
-        //     // 2s後再跳訊息
-        //     setTimeout(() => {
-        //         alert('註冊完成');
-        //     }, 2000);
-        // } else {
-        //     alert('有錯誤');
+        // if (accountRe.test(registerData.account)) {
+        //     alert('您輸入的帳戶不可含有空白格或特殊字元');
+        //     return;
         // }
 
-        // TODO: 欄位檢查
+        if (registerData.confirmPassword !== registerData.password) {
+            alert('密碼與確認密碼需要一致');
+            return;
+        }
+        // const { confirmPassword, ...registerFields } = registerData;
 
         // 請注意 axios 和 fetch 的不同之處
         // fetch 要多轉換一次 .then(r => r.json())
         // fetch 的內容放在 body: fd
         // axios 會自動轉換 JSON 但結果放在 r.data 中
         // axios 的內容要放在 data: fd
-        // const result = await axios(MEMBER_REGISTER, {
-        //     method: 'POST',
-        //     data: JSON.stringify(fields),
-        //     headers: {
-        //         'Content-Type': 'Application/json',
-        //     },
-        // });
 
-        // console.log(result.data);
-
-        if (result.data.success) {
-            localStorage.setItem('auth', JSON.stringify(result.data.data));
-            setAuth({ ...result.data.data, authorized: true });
-            navigate('/');
-        } else {
-            alert('操作錯誤');
-        }
+        fetch(MEMBER_REGISTER, {
+            method: 'POST',
+            body: JSON.stringify(registerData),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((result) => {
+                console.log(result);
+                if (result.success) {
+                    localStorage.setItem('auth', JSON.stringify(result.data));
+                    setAuth({
+                        ...result.data,
+                        authorized: true,
+                    });
+                    navigate('/login');
+                } else {
+                    alert('註冊失敗');
+                }
+            });
     };
 
     return (
@@ -127,7 +120,9 @@ function RegisterForm() {
                                                         className="form-control"
                                                         name="account"
                                                         placeholder="請建立一個登入帳戶"
-                                                        value={fields.account}
+                                                        value={
+                                                            registerData.account
+                                                        }
                                                         onChange={
                                                             handleFieldsChange
                                                         }
@@ -147,7 +142,9 @@ function RegisterForm() {
                                                         className="form-control"
                                                         name="email"
                                                         placeholder="請輸入一個有效信箱"
-                                                        value={fields.email}
+                                                        value={
+                                                            registerData.email
+                                                        }
                                                         onChange={
                                                             handleFieldsChange
                                                         }
@@ -167,7 +164,9 @@ function RegisterForm() {
                                                         className="form-control"
                                                         name="password"
                                                         placeholder="請建立一個密碼"
-                                                        value={fields.password}
+                                                        value={
+                                                            registerData.password
+                                                        }
                                                         onChange={
                                                             handleFieldsChange
                                                         }
@@ -190,7 +189,7 @@ function RegisterForm() {
                                                         name="confirmPassword"
                                                         placeholder="再輸入一次密碼"
                                                         value={
-                                                            fields.confirmPassword
+                                                            registerData.confirmPassword
                                                         }
                                                         onChange={
                                                             handleFieldsChange
@@ -227,14 +226,6 @@ function RegisterForm() {
                                                     <button
                                                         type="submit"
                                                         className="btn btn-l btn-pri btn-outline-light "
-                                                        onClick={() => {
-                                                            setConfirmPasswordFieldType(
-                                                                confirmPasswordFieldType ===
-                                                                    'text'
-                                                                    ? 'password'
-                                                                    : 'text'
-                                                            );
-                                                        }}
                                                     >
                                                         確認註冊
                                                     </button>

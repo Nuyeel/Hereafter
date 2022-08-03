@@ -1,5 +1,5 @@
 import Summary from '../components/Summary';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 // scss
 import '../styles/sub-pages.scss';
@@ -8,7 +8,13 @@ import './_payment.scss';
 import creditcard_logo from '../imgs/creditcard-logo.svg';
 import creditcard_logo_back from '../imgs/creditcard-logo-back.svg';
 
+// 會員登入登出驗證
+import AuthContext from '../../../context/AuthContext/AuthContext';
+
 function Payment(props) {
+
+        // 會員登入登出驗證(auth)
+        const { authorized, sid, account, token } = useContext(AuthContext);
     const {
         calcPickNumber,
         calcPickPrice,
@@ -48,9 +54,6 @@ function Payment(props) {
 
     // ------------這段處理資料傳進 MySQL 過程-------------------
 
-    // 透過localStorage 取得登入會員sid
-    let memberinfor = JSON.parse(localStorage.getItem('auth'));
-    const membersid = Object.values(memberinfor)[1];
 
     const handleChange = (e) => {
         setCardInfor({ ...cardInfor, [e.target.name]: e.target.value });
@@ -67,7 +70,7 @@ function Payment(props) {
         const formData = new FormData(e.target);
 
         console.log(
-            formData.get('member_sid'),
+            formData.get('sid'),
             formData.get('cardnumber'),
             formData.get('cardholder'),
             formData.get('ex_month'),

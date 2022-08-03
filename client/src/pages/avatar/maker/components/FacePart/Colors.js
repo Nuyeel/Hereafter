@@ -1,35 +1,35 @@
-import styled from "@emotion/styled";
-import FaceData from "../FaceData";
+import styled from '@emotion/styled';
+import FaceData from '../FaceData';
 
 const Btns = styled.div`
     padding-top: 5px;
-    padding-right: 80px;
+    padding-right: 20px;
+    padding-left: 10px;
     display: flex;
     flex-wrap: wrap;
 `;
 
-const Colors = (props) => {
+function Colors(props) {
     const {
         conbination,
         setConbination,
         colorControlSwitch,
         faceControlChange,
-        
     } = props;
     const colors = {
-        eye: FaceData["eyeColors"],
-        nose: FaceData["noseColors"],
-        hairFront: FaceData["hairColors"],
+        eye: FaceData['eyeColors'],
+        nose: FaceData['noseColors'],
+        hairFront: FaceData['hairColors'],
         hairBack: [],
-        ear:[],
-        lip:[],
-        topEar:FaceData["topEarColors"],
+        ear: [],
+        lip: [],
+        topEar: FaceData['topEarColors'],
     };
 
     if (colorControlSwitch) {
         return (
             <>
-                <h4>顏色</h4>
+                <h4 style={{ paddingBottom: '15px' }}>顏色</h4>
                 <Btns>
                     {colors[faceControlChange].map((v, i) => {
                         const Circle = styled.div`
@@ -61,6 +61,6 @@ const Colors = (props) => {
             </>
         );
     }
-};
+}
 
 export default Colors;
