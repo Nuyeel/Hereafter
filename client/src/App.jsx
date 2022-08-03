@@ -1,5 +1,4 @@
 // 使用套件
-import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Redux(活動購物車數字)
@@ -16,7 +15,7 @@ import Background from './components/Background';
 
 // 頁面組件
 // import Test from './components/Test'; // 僅供測試
-// import NextLife from './pages/NextLife/NextLife';
+import NextLife from './pages/NextLife';
 import ShareWall from './pages/ShareWall/ShareWall';
 import ShareWallList from './pages/ShareWall/ShareWallList';
 import ShareWallDetail from './pages/ShareWall/ShareWallDetail';
@@ -47,7 +46,6 @@ import Showcase from './pages/avatar/showcase/Showcase.js';
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
     // auth for Authorization
-    const [auth, setAuth] = useState(false);
 
     return (
         <BrowserRouter>
@@ -57,7 +55,7 @@ function App() {
                     {/* TODO: 一般頁面的 navbar 是一種 */}
                     {/* TODO: 點擊變成全頁面的 navbar 是一種 */}
                     {/* TODO: 用 props 做條件 render */}
-                    <Nav theme="light" auth={auth}></Nav>
+                    <Nav />
                     <MainContent>
                         {/* ScrollToTop 會在切換分頁時讓頁面回到最上方 */}
                         <ScrolltoTop>
@@ -76,134 +74,79 @@ function App() {
                                 {/* ============================== */}
                                 {/* 分享牆路由 */}
                                 {/* ============================== */}
-                                <Route
-                                    path="sharewall"
-                                    element={<ShareWall auth={auth} />}
-                                >
+                                <Route path="sharewall" element={<ShareWall />}>
                                     <Route
                                         index
                                         element={
-                                            <ShareWallList
-                                                auth={auth}
-                                                pageName="sharewall"
-                                            />
+                                            <ShareWallList pageName="sharewall" />
                                         }
                                     />
                                     <Route
                                         path=":sharePostID"
                                         element={
-                                            <ShareWallDetail
-                                                auth={auth}
-                                                pageName="default"
-                                            />
+                                            <ShareWallDetail pageName="default" />
                                         }
                                     />
                                 </Route>
                                 {/* ============================== */}
                                 {/* 登入路由 */}
                                 {/* ============================== */}
-                                <Route
-                                    path="/login"
-                                    element={
-                                        <Login auth={auth} setAuth={setAuth} />
-                                    }
-                                />
+                                <Route path="/login" element={<Login />} />
                                 {/* ============================== */}
                                 {/* 註冊路由 */}
                                 {/* ============================== */}
                                 <Route
                                     path="/register"
-                                    element={
-                                        <Register
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                        />
-                                    }
+                                    element={<Register />}
                                 />
                                 {/* ============================== */}
                                 {/* 忘記密碼路由 */}
                                 {/* ============================== */}
                                 <Route
                                     path="/forgotpassword"
-                                    element={
-                                        <ForgotPassword
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                        />
-                                    }
+                                    element={<ForgotPassword />}
                                 />
                                 {/* ============================== */}
                                 {/* 忘記密碼修改頁路由 */}
                                 {/* ============================== */}
                                 <Route
                                     path="/forgotpasswordrevise"
-                                    element={
-                                        <ForgotPasswordRevise
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                        />
-                                    }
+                                    element={<ForgotPasswordRevise />}
                                 />
                                 {/* ============================== */}
                                 {/* 會員中心主頁路由 */}
                                 {/* ============================== */}
                                 <Route
                                     path="/memberprofile"
-                                    element={
-                                        <MemberProfile
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                        />
-                                    }
+                                    element={<MemberProfile />}
                                 />
                                 {/* ============================== */}
                                 {/* 會員中心資料修改頁路由 */}
                                 {/* ============================== */}
                                 <Route
                                     path="/memberprofilerevise"
-                                    element={
-                                        <MemberProfileRevise
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                        />
-                                    }
+                                    element={<MemberProfileRevise />}
                                 />
                                 {/* ============================== */}
                                 {/* 會員中心密碼修改頁路由 */}
                                 {/* ============================== */}
                                 <Route
                                     path="/memberpasswordrevise"
-                                    element={
-                                        <MemberPasswordRevise
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                        />
-                                    }
+                                    element={<MemberPasswordRevise />}
                                 />
                                 {/* ============================== */}
                                 {/* 會員中心活動訂單頁路由 */}
                                 {/* ============================== */}
                                 <Route
                                     path="/membereventorder"
-                                    element={
-                                        <MemberEventOrder
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                        />
-                                    }
+                                    element={<MemberEventOrder />}
                                 />
                                 {/* ============================== */}
                                 {/* 良辰吉地路由 */}
                                 {/* ============================== */}
                                 <Route
                                     path="place"
-                                    element={
-                                        <Place
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                            pageName="place"
-                                        />
-                                    }
+                                    element={<Place pageName="place" />}
                                 />
                                 {/* ============================== */}
                                 {/* 轉生購物車路由 */}
@@ -211,39 +154,17 @@ function App() {
                                 <Route
                                     path="reborn-cart"
                                     element={
-                                        <RebornCart
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                            pageName="rebornCart"
-                                        />
+                                        <RebornCart pageName="rebornCart" />
                                     }
                                 />
                                 {/* ============================== */}
                                 {/* 活動列表路由 */}
                                 {/* ============================== */}
-                                <Route
-                                    path="/events"
-                                    element={
-                                        <Event auth={auth} setAuth={setAuth} />
-                                    }
-                                >
-                                    <Route
-                                        index
-                                        element={
-                                            <EventList
-                                                auth={auth}
-                                                setAuth={setAuth}
-                                            />
-                                        }
-                                    />
+                                <Route path="/events" element={<Event />}>
+                                    <Route index element={<EventList />} />
                                     <Route
                                         path=":eventSid"
-                                        element={
-                                            <EventDetail
-                                                auth={auth}
-                                                setAuth={setAuth}
-                                            />
-                                        }
+                                        element={<EventDetail />}
                                     />
                                 </Route>
 
@@ -259,26 +180,14 @@ function App() {
                                 {/* ============================== */}
                                 <Route
                                     path="/showcase"
-                                    element={
-                                        <Showcase
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                            pageName="showcase"
-                                        />
-                                    }
+                                    element={<Showcase pageName="showcase" />}
                                 />
                                 {/* ============================== */}
-                                {/*  來生形象製造器路由*/}
+                                {/* 來生形象製造器路由 */}
                                 {/* ============================== */}
                                 <Route
                                     path="/maker"
-                                    element={
-                                        <Maker
-                                            auth={auth}
-                                            setAuth={setAuth}
-                                            pageName="maker"
-                                        />
-                                    }
+                                    element={<Maker pageName="maker" />}
                                 />
                                 {/* ============================== */}
                                 {/* 陰德值測驗路由 */}
@@ -293,6 +202,15 @@ function App() {
                                 {/* ============================== */}
                                 {/* <Route path="/intro" element={<Intro />} /> */}
 
+                                {/* ============================== */}
+                                {/* 來生路由 */}
+                                {/* ============================== */}
+                                <Route
+                                    path="nextlife"
+                                    element={<NextLife />}
+                                    pageName="default"
+                                />
+
                                 {/* 404 是最後一個路由 */}
                                 <Route path="*" element={<NotFoundPage />} />
                             </Routes>
@@ -300,7 +218,7 @@ function App() {
                         </ScrolltoTop>
                     </MainContent>
                     {/* <Genie /> */}
-                    <Background theme="light" />
+                    <Background />
                 </ProviderContainer>
             </Provider>
         </BrowserRouter>
