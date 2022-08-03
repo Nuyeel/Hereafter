@@ -41,7 +41,7 @@ function Nav() {
     const navigate = useNavigate(); //跳轉頁面用
     const location = useLocation();
 
-    console.log(location.pathname);
+    // console.log(location.pathname);
 
     // -------------此段處理Redux活動購物車數字-------------------------
 
