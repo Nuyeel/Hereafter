@@ -152,7 +152,7 @@ function OrderSteps(props) {
     // ------------------------------------------------------------------------------
 
     //填寫完「付款資訊」後在MySQL建立一個新的訂單(1次付款只會有1個訂單編號))
-    const fetCreateOrder = async () => {
+    const fetchCreateOrder = async () => {
         fetch('http://localhost:3500/eventcarts/addorder', {
             method: 'POST',
             headers: {
@@ -167,6 +167,8 @@ function OrderSteps(props) {
                 console.log(obj);
             });
     };
+
+    // 當step===3時(送出匯款資訊)時，把對應的活動從event_cart裡刪除(要送memberSid跟eventSid)
 
     // multiple State  填寫報名活動資訊變數(放最上層，按上下頁時資料才會保留)
     const [myInfor, setMyInfor] = useState({
@@ -237,16 +239,12 @@ function OrderSteps(props) {
             //  有錯誤訊息會跳出警告，不會到"下一步"
             const errors = [];
             if (!fullname) errors.push('姓名未填 ');
-            if (!mobile) errors.push('電話沒填 ');
-            if (!ID) errors.push('身分證字號沒填~ ');
+            if (!mobile) errors.push('電話未填 ');
+            if (!ID) errors.push('身分證字號未填 ');
 
             if (errors.length > 0) {
                 // alert(errors.join(','));
-                Swal.fire(errors.join(','));
-                return;
-            } else {
-                // TODO: 研究一下個人資訊表單送出UIUX設計
-                // fetCreateOrder();
+                Swal.fire(errors.join('、'));
                 return;
             }
         }
@@ -334,7 +332,8 @@ function OrderSteps(props) {
                         disabled={step === maxSteps}
                         onClick={() => {
                             next();
-                            fetCreateOrder(); //把勾選項目存進MySQL
+                            fetchCreateOrder(); //把勾選項目存進MySQL
+                            // TODO: 同時把勾選項目從event_cart裡移出
                         }}
                     >
                         下一步
@@ -344,16 +343,7 @@ function OrderSteps(props) {
                         className="xuan-btn-m xuan-btn-pri"
                         disabled={step === maxSteps}
                         onClick={() => {
-                            // if (step === 1) {
-                            //     // 如果是在步驟一，檢查是否有選商品
-                            //     calcPickNumber === 0
-                            //         ? Swal.fire('您尚未選擇商品')
-                            //         : next();
-                            // } else {
-                            //     console.log('test');
-                            // 不是步驟一，繼續往下執行
                             next();
-                            // }
                         }}
                     >
                         下一步
