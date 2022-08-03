@@ -93,10 +93,31 @@ router
                 JSON.stringify(jwtPayload),
             ]);
 
+            // 查詢會員是否仍在人世
+            // FIXME: 這是個值什麼時候變 true 應該大專就不處理了
+            // DONE: 目前先將 7 號會員設定為 true
+            const $isdead_sql = ` 
+                SELECT isdead 
+                FROM member 
+                WHERE sid = ? 
+            `;
+
+            const [[{ isdead: isdead_result }]] = await db.query($isdead_sql, [
+                row.sid,
+            ]);
+
+            // console.log(isdead_result);
+            // console.log(typeof isdead_result); // string
+            let isdead_boolean = false;
+            if (isdead_result === 'true') {
+                isdead_boolean = true;
+            }
+
             output.data = {
                 sid: row.sid,
                 token,
                 account: row.account,
+                isDead: isdead_boolean,
             };
         }
         res.json(output);
