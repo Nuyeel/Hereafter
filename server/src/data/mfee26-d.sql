@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-08-01 15:41:23
+-- 產生時間： 2022-08-04 12:01:35
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 7.4.29
 
@@ -40,8 +40,12 @@ CREATE TABLE `admin_test_jwt` (
 --
 
 INSERT INTO `admin_test_jwt` (`sid`, `member_sid`, `token`, `expires`, `payload`) VALUES
-(15, 5, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWNjb3VudCI6IkhhcHB5Q2F0MDUiLCJpYXQiOjE2NTg4NDI5MzJ9.EY__1624umJz1OPvI6vWNHtPB5TtILH0391bVgR6iR8', '1658844132212', '{\"id\":5,\"account\":\"HappyCat05\"}'),
-(18, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudCI6IkhhcHB5Q2F0MDEiLCJpYXQiOjE2NTg5OTg0NTF9.Y9YAQ3siFHyN5TJE0PvolxmNmkU0_vF7w9pVL-rc8zk', '1658999651783', '{\"id\":1,\"account\":\"HappyCat01\"}');
+(20, 9, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWNjb3VudCI6IkhhcHB5Q2F0MDkiLCJpYXQiOjE2NTkzNjAzOTJ9.L119afkYgJLyMgJmAAyuHr148_H5IfmrrbuonXcQDtw', '1659361592683', '{\"id\":9,\"account\":\"HappyCat09\"}'),
+(21, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudCI6IkhhcHB5Q2F0MDEiLCJpYXQiOjE2NTk0MTAyNDR9.FnevyouQqRWfOOYzPpPIO87-hqFWTVowIJvNoIeb7Sc', '1659411444353', '{\"id\":1,\"account\":\"HappyCat01\"}'),
+(23, 10, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImFjY291bnQiOiJIYXBweUNhdDEwIiwiaWF0IjoxNjU5NDE0NjE3fQ.AsUBiqvKtd3BRIq28RONs3DWGGLrdoPtplH9a7tvj7U', '1659415817214', '{\"id\":10,\"account\":\"HappyCat10\"}'),
+(24, 12, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImFjY291bnQiOiJIYXBweUNhdDEyIiwiaWF0IjoxNjU5NDE1NDA2fQ.Sdb-iHJV936lBgaBaOGWESS78NIvV7QmCAxDBcBjkaA', '1659416606039', '{\"id\":12,\"account\":\"HappyCat12\"}'),
+(25, 7, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWNjb3VudCI6IkhhcHB5Q2F0MDciLCJpYXQiOjE2NTk0NDY1NDJ9.6hkhSxjE-gUvR0E4caVThp9BqehT2T6z_OFDiNbH6Nc', '1659447742919', '{\"id\":7,\"account\":\"HappyCat07\"}'),
+(26, 2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiYWNjb3VudCI6IkhhcHB5Q2F0MDIiLCJpYXQiOjE2NTk0NDcyMTd9.kazSs15TlCgcy0ssLiwxwoXl-lAa7ICzAz26GB3WXGM', '1659448417609', '{\"id\":2,\"account\":\"HappyCat02\"}');
 
 -- --------------------------------------------------------
 
@@ -238,7 +242,8 @@ INSERT INTO `event_cart` (`order_sid`, `event_sid`, `member_sid`, `created_at`) 
 (17, 23, 50, '2022-07-24 13:48:31'),
 (18, 103, 50, '2022-07-24 13:48:35'),
 (19, 24, 50, '2022-07-24 13:48:39'),
-(97, 24, 100, '2022-07-30 16:03:20');
+(97, 24, 100, '2022-07-30 16:03:20'),
+(98, 22, 100, '2022-07-31 18:04:56');
 
 -- --------------------------------------------------------
 
@@ -852,14 +857,14 @@ INSERT INTO `npo_name` (`npo_sid`, `npo_name`, `npo_img`, `email`, `phone`, `mob
 
 CREATE TABLE `place` (
   `sid` int(11) NOT NULL,
-  `year` year(4) NOT NULL,
-  `month` int(11) NOT NULL,
-  `country` varchar(225) NOT NULL,
-  `city` varchar(225) NOT NULL,
-  `dist` varchar(225) NOT NULL,
-  `quota` int(11) NOT NULL,
-  `booked` int(11) NOT NULL,
-  `place_price` int(11) NOT NULL DEFAULT 2000
+  `year` year(4) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL,
+  `country` varchar(225) DEFAULT NULL,
+  `city` varchar(225) DEFAULT NULL,
+  `dist` varchar(225) DEFAULT NULL,
+  `quota` int(11) DEFAULT NULL,
+  `booked` int(11) DEFAULT NULL,
+  `place_price` int(11) DEFAULT 2000
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -963,7 +968,7 @@ INSERT INTO `place` (`sid`, `year`, `month`, `country`, `city`, `dist`, `quota`,
 --
 
 CREATE TABLE `place_city` (
-  `country` varchar(225) NOT NULL,
+  `country` varchar(225) DEFAULT NULL,
   `city` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1019,7 +1024,7 @@ INSERT INTO `place_country` (`country`, `country_price`) VALUES
 
 CREATE TABLE `place_country_list` (
   `sid` int(11) NOT NULL,
-  `country` varchar(225) NOT NULL
+  `country` varchar(225) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1037,8 +1042,8 @@ INSERT INTO `place_country_list` (`sid`, `country`) VALUES
 --
 
 CREATE TABLE `place_dist` (
-  `country` varchar(225) NOT NULL,
-  `city` varchar(225) NOT NULL,
+  `country` varchar(225) DEFAULT NULL,
+  `city` varchar(225) DEFAULT NULL,
   `dist` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1089,9 +1094,9 @@ INSERT INTO `place_dist` (`country`, `city`, `dist`) VALUES
 
 CREATE TABLE `place_in_cart` (
   `sid` int(11) NOT NULL,
-  `member_sid` int(11) NOT NULL,
-  `place_sid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `member_sid` int(11) DEFAULT NULL,
+  `place_sid` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1099,16 +1104,19 @@ CREATE TABLE `place_in_cart` (
 --
 
 INSERT INTO `place_in_cart` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUES
-(3, 21, 4, '2022-07-25 21:27:38'),
-(4, 21, 13, '2022-07-25 21:27:38'),
-(5, 21, 23, '2022-07-25 21:27:57'),
-(6, 21, 24, '2022-07-25 21:27:57'),
-(7, 12, 23, '2022-07-25 21:28:27'),
-(8, 12, 18, '2022-07-25 21:28:27'),
-(15, 10, 68, '2022-07-31 21:32:27'),
-(16, 10, 13, '2022-07-31 21:32:33'),
-(18, 10, 93, '2022-07-31 21:36:45'),
-(20, 10, 76, '2022-07-31 23:13:57');
+(3, 21, 4, '2022-07-25 13:27:38'),
+(4, 21, 13, '2022-07-25 13:27:38'),
+(5, 21, 23, '2022-07-25 13:27:57'),
+(6, 21, 24, '2022-07-25 13:27:57'),
+(7, 12, 23, '2022-07-25 13:28:27'),
+(8, 12, 18, '2022-07-25 13:28:27'),
+(16, 10, 13, '2022-07-31 13:32:33'),
+(18, 10, 93, '2022-07-31 13:36:45'),
+(20, 10, 76, '2022-07-31 15:13:57'),
+(22, 10, 67, '2022-08-02 17:48:12'),
+(26, 100, 67, '2022-08-02 18:37:31'),
+(31, 100, 68, '2022-08-02 18:47:37'),
+(33, 100, 13, '2022-08-02 19:01:55');
 
 -- --------------------------------------------------------
 
@@ -1118,9 +1126,9 @@ INSERT INTO `place_in_cart` (`sid`, `member_sid`, `place_sid`, `created_at`) VAL
 
 CREATE TABLE `place_liked` (
   `sid` int(11) NOT NULL,
-  `member_sid` int(11) NOT NULL,
-  `place_sid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `member_sid` int(11) DEFAULT NULL,
+  `place_sid` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1128,22 +1136,22 @@ CREATE TABLE `place_liked` (
 --
 
 INSERT INTO `place_liked` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUES
-(1, 21, 11, '2022-07-31 20:02:22'),
-(2, 21, 4, '2022-07-31 20:02:22'),
-(3, 21, 17, '2022-07-31 20:02:42'),
-(4, 21, 18, '2022-07-31 20:02:42'),
-(5, 21, 20, '2022-07-31 20:02:55'),
-(6, 21, 21, '2022-07-31 20:02:55'),
-(7, 21, 22, '2022-07-31 20:03:09'),
-(8, 21, 23, '2022-07-31 20:03:09'),
-(9, 4, 21, '2022-07-31 20:16:08'),
-(10, 4, 10, '2022-07-31 20:16:08'),
-(11, 10, 10, '2022-07-31 21:41:37'),
-(12, 10, 76, '2022-07-31 21:41:54'),
-(13, 10, 68, '2022-07-31 21:46:01'),
-(14, 10, 87, '2022-07-31 21:59:21'),
-(15, 10, 67, '2022-07-31 21:59:28'),
-(16, 10, 29, '2022-07-31 22:49:58');
+(1, 21, 11, '2022-07-31 12:02:22'),
+(2, 21, 4, '2022-07-31 12:02:22'),
+(3, 21, 17, '2022-07-31 12:02:42'),
+(4, 21, 18, '2022-07-31 12:02:42'),
+(5, 21, 20, '2022-07-31 12:02:55'),
+(6, 21, 21, '2022-07-31 12:02:55'),
+(7, 21, 22, '2022-07-31 12:03:09'),
+(8, 21, 23, '2022-07-31 12:03:09'),
+(9, 4, 21, '2022-07-31 12:16:08'),
+(10, 4, 10, '2022-07-31 12:16:08'),
+(11, 10, 10, '2022-07-31 13:41:37'),
+(12, 10, 76, '2022-07-31 13:41:54'),
+(13, 10, 68, '2022-07-31 13:46:01'),
+(14, 10, 87, '2022-07-31 13:59:21'),
+(15, 10, 67, '2022-07-31 13:59:28'),
+(16, 10, 29, '2022-07-31 14:49:58');
 
 -- --------------------------------------------------------
 
@@ -1153,10 +1161,10 @@ INSERT INTO `place_liked` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUE
 
 CREATE TABLE `reborn_order` (
   `sid` int(11) NOT NULL,
-  `member_sid` int(11) NOT NULL,
-  `avatar_id` int(11) NOT NULL,
-  `place_sid` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `member_sid` int(11) DEFAULT NULL,
+  `avatar_id` int(11) DEFAULT NULL,
+  `place_sid` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -1221,6 +1229,51 @@ CREATE TABLE `sessions` (
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `share_avatar_collects`
+--
+
+CREATE TABLE `share_avatar_collects` (
+  `share_post_collect_sid` int(11) NOT NULL,
+  `share_post_sid` int(11) DEFAULT NULL,
+  `member_sid` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `share_avatar_collects`
+--
+
+INSERT INTO `share_avatar_collects` (`share_post_collect_sid`, `share_post_sid`, `member_sid`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 5, 1),
+(4, 10, 1),
+(5, 1, 2),
+(6, 3, 2),
+(7, 9, 2),
+(8, 1, 3),
+(9, 2, 3),
+(10, 4, 3),
+(11, 8, 3),
+(12, 1, 4),
+(13, 7, 4),
+(14, 1, 5),
+(15, 2, 5),
+(16, 3, 5),
+(17, 6, 5),
+(18, 1, 6),
+(19, 5, 6),
+(20, 1, 7),
+(21, 2, 7),
+(22, 4, 7),
+(23, 1, 8),
+(24, 3, 8),
+(25, 1, 9),
+(26, 2, 9),
+(27, 1, 10);
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `share_avatar_comments`
 --
 
@@ -1272,7 +1325,52 @@ INSERT INTO `share_avatar_comments` (`share_post_comment_sid`, `share_post_sid`,
 (32, 8, 3, '感覺是看待世界的方式會改變的身高', '2022-07-22 23:45:05', NULL),
 (33, 8, 2, '我也要改成這個！', '2022-07-22 23:45:38', NULL),
 (34, 9, 4, '芝麻眼睛好酷～', '2022-07-22 23:45:48', NULL),
-(35, 2, 10, '這到底什麼造型喔喔喔喔', '2022-07-22 23:45:56', NULL);
+(35, 2, 2, '我怎麼會知道喔喔喔喔', '2022-07-22 23:45:56', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `share_avatar_likes`
+--
+
+CREATE TABLE `share_avatar_likes` (
+  `share_post_like_sid` int(11) NOT NULL,
+  `share_post_sid` int(11) DEFAULT NULL,
+  `member_sid` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `share_avatar_likes`
+--
+
+INSERT INTO `share_avatar_likes` (`share_post_like_sid`, `share_post_sid`, `member_sid`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 2),
+(4, 1, 3),
+(5, 3, 3),
+(6, 1, 4),
+(7, 2, 4),
+(8, 4, 4),
+(9, 1, 5),
+(10, 5, 5),
+(11, 1, 6),
+(12, 2, 6),
+(13, 3, 6),
+(14, 6, 6),
+(15, 1, 7),
+(16, 7, 7),
+(17, 1, 8),
+(18, 2, 8),
+(19, 4, 8),
+(20, 8, 8),
+(21, 1, 9),
+(22, 3, 9),
+(23, 9, 9),
+(24, 1, 10),
+(25, 2, 10),
+(26, 5, 10),
+(27, 10, 10);
 
 -- --------------------------------------------------------
 
@@ -1697,10 +1795,22 @@ ALTER TABLE `sessions`
   ADD PRIMARY KEY (`session_id`);
 
 --
+-- 資料表索引 `share_avatar_collects`
+--
+ALTER TABLE `share_avatar_collects`
+  ADD PRIMARY KEY (`share_post_collect_sid`);
+
+--
 -- 資料表索引 `share_avatar_comments`
 --
 ALTER TABLE `share_avatar_comments`
   ADD PRIMARY KEY (`share_post_comment_sid`);
+
+--
+-- 資料表索引 `share_avatar_likes`
+--
+ALTER TABLE `share_avatar_likes`
+  ADD PRIMARY KEY (`share_post_like_sid`);
 
 --
 -- 資料表索引 `share_avatar_posts`
@@ -1746,7 +1856,7 @@ ALTER TABLE `type`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `admin_test_jwt`
 --
 ALTER TABLE `admin_test_jwt`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `body_parts`
@@ -1782,7 +1892,7 @@ ALTER TABLE `cube_music`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart`
 --
 ALTER TABLE `event_cart`
-  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart_creditcard`
@@ -1890,7 +2000,7 @@ ALTER TABLE `place_country_list`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `place_in_cart`
 --
 ALTER TABLE `place_in_cart`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `place_liked`
@@ -1911,10 +2021,22 @@ ALTER TABLE `reincarnation_order`
   MODIFY `reincarnation_order_sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_collects`
+--
+ALTER TABLE `share_avatar_collects`
+  MODIFY `share_post_collect_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_comments`
 --
 ALTER TABLE `share_avatar_comments`
   MODIFY `share_post_comment_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_likes`
+--
+ALTER TABLE `share_avatar_likes`
+  MODIFY `share_post_like_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_posts`
