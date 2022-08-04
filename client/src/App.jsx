@@ -42,6 +42,10 @@ import Place from './pages/Place';
 import RebornCart from './pages/RebornCart';
 import Maker from './pages/avatar/maker/Maker';
 import Showcase from './pages/avatar/showcase/Showcase.js';
+import News from './pages/News/News';
+import AboutUsFirst from './pages/AboutUsFirst/AboutUsFirst';
+import AboutUsSecond from './pages/AboutUsSecond/AboutUsSecond';
+import AboutUsThird from './pages/AboutUsThird/AboutUsThird';
 
 // 讓setLightBox方法 <MainPage><Nav>可共用
 import { useState } from 'react';
@@ -223,6 +227,40 @@ function App() {
                                 <Route
                                     path="nextlife"
                                     element={<NextLife pageName="default" />}
+                                />
+                                {/* ============================== */}
+                                {/*  關於我們路由*/}
+                                {/* ============================== */}
+                                <Route
+                                    path="/aboutusfirst"
+                                    element={
+                                        <AboutUsFirst pageName="aboutusfirst" />
+                                    }
+                                />
+                                {/* ============================== */}
+                                {/*  關於我們路由*/}
+                                {/* ============================== */}
+                                <Route
+                                    path="/aboutussecond"
+                                    element={
+                                        <AboutUsSecond pageName="aboutussecond" />
+                                    }
+                                />
+                                {/* ============================== */}
+                                {/*  關於我們路由*/}
+                                {/* ============================== */}
+                                <Route
+                                    path="/aboutusthird"
+                                    element={
+                                        <AboutUsThird pageName="aboutusthird" />
+                                    }
+                                />
+                                {/* ============================== */}
+                                {/*  最新消息路由*/}
+                                {/* ============================== */}
+                                <Route
+                                    path="/news"
+                                    element={<News pageName="news" />}
                                 />
 
                                 {/* 404 是最後一個路由 */}
