@@ -18,6 +18,7 @@ function BasicContorl(props) {
             <BasicC>
                 <h4>{title}</h4>
                 <Btns>
+                    <p>小</p>
                     {sizebtns.map((v, i) => {
                         const Sizebtn = styled.div`
                             height: 20px;
@@ -43,6 +44,7 @@ function BasicContorl(props) {
                             ></Sizebtn>
                         );
                     })}
+                    <p>大</p>
                 </Btns>
             </BasicC>
         </>

@@ -96,6 +96,7 @@ const Maker = () => {
                         controlChange={controlChange}
                         setControlChange={setControlChange}
                         setBodyControlChange={setBodyControlChange}
+                        setFaceControlChange={setFaceControlChange}
                         setColorControlSwitch={setColorControlSwitch}
                     />
                     <BodyPart

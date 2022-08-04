@@ -13,6 +13,7 @@ function CenterPart(props) {
         setControlChange,
         setBodyControlChange,
         setColorControlSwitch,
+        setFaceControlChange,
     } = props;
     const ref = useRef(null);
     const { theme } = useContext(ThemeContext);
@@ -68,7 +69,7 @@ function CenterPart(props) {
                 link.download = 'my-image-name.png';
                 link.href = dataUrl;
                 orderData.img = 'dataUrl(假的)';
-                // link.click();
+                link.click();
             })
             .catch((err) => {
                 console.log(err);
@@ -634,6 +635,7 @@ function CenterPart(props) {
                         onClick={() => {
                             setControlChange(1);
                             setColorControlSwitch(1);
+                            setFaceControlChange('eye');
                         }}
                     ></FaceControl>
                     <HandRControl
