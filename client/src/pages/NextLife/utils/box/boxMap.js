@@ -10,7 +10,7 @@ const mapArray_5 = ['A', 'B', 'C', 'D', 'T'];
 // FIXME: 有四個棘手的素材先跳過 26, 29, 33, 36
 // TODO: 這個陣列可以用來存 animation type
 // TODO: 找到 easing function library
-const pngMap = [
+const boxMap = [
     { ID: 0, Postfix: mapArray_3 },
     { ID: 1, Postfix: mapArray_3 },
     { ID: 2, Postfix: mapArray_4 },
@@ -47,4 +47,4 @@ const pngMap = [
     { ID: 37, Postfix: mapArray_4 },
 ];
 
-export default pngMap;
+export default boxMap;
