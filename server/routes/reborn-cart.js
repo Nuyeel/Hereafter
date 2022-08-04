@@ -25,6 +25,7 @@ const getPlaceInCart = async (member) => {
 };
 
 // CRUD
+// 從列表或收藏加入會員的購物車
 router.post('/', async (req, res) => {
     // body: place_sid, member_sid
     const output = {
@@ -89,6 +90,14 @@ router.delete('/', async (req, res) => {
     await db.query(sql, [req.body.place_sid, req.body.member_sid]);
 
     res.json(await getPlaceInCart(req.body.member_sid));
+});
+
+// TODO: 送出轉生訂單
+// 1. 燈箱確認 || 跳轉到訂單確認頁面
+// 2. 送出後存入資料庫(限定一筆)、plce booked+1
+// 3. 跳轉到希望方塊頁面
+router.post('/reborn-order', async (req, res) => {
+    // place_sid, member_sid, avatar_sid
 });
 
 module.exports = router;
