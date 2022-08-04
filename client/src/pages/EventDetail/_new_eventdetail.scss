@@ -5,17 +5,17 @@
 @import '../../styles/variables.scss';
 
 
+
+
 // 手機版
 .xuan-eventdetail-container{
   position: relative;
   top:0px;
-  outline: 1px solid red;
   padding-top: 50px;
 
   >.row{
     margin: 0px;
     width: 100%;
-    outline: 2px solid blue;
 
     >.xuan-col-8{
       width: 100%;
@@ -46,15 +46,29 @@
             background-color: gray;
             border-radius: 15px;
             height: 300px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
           }
 
           >.xuan-intro-bar{
-            outline: 1px solid red;
             width: 91%;
             margin: auto;
             margin-bottom: 20px;
             color: #3C3B67;
+
+              .d-flex{
+                align-items: center;
+
+                *{
+                  margin-right: 5px;
+                }
+
+                a{
+                  margin-bottom: 10px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+              }
 
               .xuan-tag-group{
                 display: flex;
@@ -102,6 +116,10 @@
                 }
               }
 
+              .xuan-intro-text{
+                line-height: 2rem;
+              }
+
           }
 
 
@@ -130,9 +148,22 @@
       opacity: .7;
       color: white;
       display: flex;
+      margin-bottom: 15px;
 
         >.xuan-cost-price{
           width: 50%;
+
+          h2:nth-child(2){
+            color: #F3F59F;
+            line-height: 60px;
+            margin-bottom: 5px;
+          }
+
+          img{
+            width: 30px;
+            margin-right: 10px;
+          }
+
         }
 
         >.xuan-btn-group{
@@ -140,6 +171,7 @@
 
           >button{
             margin-bottom: 20px;
+
           }
         }
 
@@ -147,10 +179,122 @@
 
   }
 
+}
 
+
+.xuan-comment-chart{
+  margin-bottom: 15px;
+  color: #3C3B67;
+
+  span, a{
+    margin-right: 10px;
+  }
+}
+
+.xuan-comment-group{
+  color: #3C3B67;
+
+  .xuan-comment-bar{
+    width: 100%;
+
+    // 單個小評論條
+    .xuan-comment-item{
+      display: flex;
+      align-items: center;
+      border-radius: 15px;
+      background-color: white;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+    
+          .xuan-comment-avatar{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: gray;
+          }
+    
+          .xuan-comment-word-wrap{
+            width: 60%;
+            height: 100%;
+            margin:auto  10px;
+            
+          
+              >svg{
+                padding-top:0.5px
+              }
+    
+              .xuan-subtitle{
+                  margin-right: 10px;
+              }
+    
+              .xuan-body{
+                color: gray;
+              }
+    
+              span{
+                line-height: 1.3rem;
+                margin-bottom: 10px;
+              }
+
+              // .xuan-detail-date{
+              //   margin-right: 10px;
+              // }
+
+
+          }
+    }
+
+
+  }
+
+
+  
+}
+
+// 桌機版 
+@media screen and (min-width: 992px) {
+  .xuan-eventdetail-container{
+
+    padding-top: 30px;
+
+    >.row{
+      width: 90%;
+      margin: auto;
+      display: flex;
+
+        .xuan-col-8{
+          width: 60%;
+        }
+
+        .xuan-col-4{
+          width: 40%;
+        }
+
+        .xuan-intro-bar{
+          max-height: 250px;
+        }
+
+
+    }
+  }
 
 }
 
-// .xuan-d-flex{
-//   display: flex;
-// }
+
+
+.xuan-buy-btn{
+  padding: 20px 40px 10px 40px;
+}
+
+.xuan-intro-img{
+  max-height: 33.5vh;
+}
+
+.xuan-intro-box-title {
+  padding: 10px 40px 10px 30px;
+}
+
+.xuan-comment-bar{
+  max-height: 300px;
+}
