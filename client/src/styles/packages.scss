@@ -1,0 +1,18 @@
+/* ============================================================ */
+/* sweetalert2 */
+/* node_modules/sweetalert2/dist/sweetalert2.css */
+/* ============================================================ */
+
+.swal2-popup { 
+    border-radius: 20px;
+    user-select: none;
+
+    .swal2-image {
+        pointer-events: none;
+        margin-bottom: 0;
+    }
+
+    .swal2-styled:focus {
+        box-shadow: none !important;
+    }
+}
