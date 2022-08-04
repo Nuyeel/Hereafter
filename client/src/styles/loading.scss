@@ -1,0 +1,122 @@
+.loading-background {
+    width: 100%;
+    height: 100vh;
+    background-color: #eee;
+    position: relative;
+
+    .loading-logo {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -80%);
+
+        .bird {
+            transform: translate(-100%, 0) rotate(180deg);
+        }
+
+        .hat {
+            transform: translate(-120%, -100%) rotate(-45deg);
+        }
+
+        .soul-bag {
+            opacity: 0;
+        }
+        .soul-bag-top {
+            opacity: 0;
+        }
+
+        .circle {
+            /* calculate using: (2 * PI * R) */
+            stroke-dasharray: 1884;
+            stroke-dashoffset: 1884;
+        }
+
+        &:hover {
+            .circle {
+                animation: run 1.5s linear forwards;
+            }
+
+            .bird {
+                animation: appear 2s ease-in forwards;
+            }
+
+            .hat {
+                animation: appear 1.5s 0.5s linear forwards;
+            }
+
+            .soul-bag {
+                animation: soulbagappear 1.5s 0.8s linear forwards;
+            }
+            .soul-bag-top {
+                animation: soulbagtop 1.5s 1s linear forwards;
+            }
+        }
+
+        @keyframes run {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes appear {
+            75% {
+                transform: translate(0, 0);
+            }
+            80% {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes soulbagappear {
+            0% {
+                opacity: 0;
+                transform: rotate(0);
+            }
+            75% {
+                opacity: 0;
+                transform: rotate(0);
+            }
+            80% {
+                opacity: 1;
+                transform: rotate(0);
+            }
+            90% {
+                opacity: 1;
+                transform: translate(2px, 2px) rotate(-5deg);
+            }
+            95% {
+                opacity: 1;
+                transform: translate(2px, 2px) rotate(5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(2px, 2px) rotate(0);
+            }
+        }
+        @keyframes soulbagtop {
+            0% {
+                opacity: 0;
+                transform: rotate(0);
+            }
+            85% {
+                opacity: 0;
+                transform: rotate(0);
+            }
+            88% {
+                opacity: 1;
+                transform: translate(2px, 2px) rotate(-5deg);
+            }
+            93% {
+                opacity: 1;
+                transform: translate(2px, 2px) rotate(5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(2px, 2px) rotate(0);
+            }
+        }
+    }
+}

@@ -33,13 +33,12 @@ import Event from './pages/Event';
 import EventList from './pages/Event/EventList';
 import EventDetail from './pages/EventDetail/EventDetail';
 import OrderSteps from './pages/OrderSteps';
-// import Place from './pages/Place';
-// import RebornCart from './pages/RebornCart';
 import Test from './pages/Test';
 import Games from './pages/Games';
 // import Intro from './pages/Intro';
 import Place from './pages/Place';
 import RebornCart from './pages/RebornCart';
+import LoadingLogo from './components/LoadingLogo.jsx';
 import Maker from './pages/avatar/maker/Maker';
 import Showcase from './pages/avatar/showcase/Showcase.js';
 import News from './pages/News/News';
@@ -171,6 +170,10 @@ function App() {
                                     element={
                                         <RebornCart pageName="rebornCart" />
                                     }
+                                />
+                                <Route
+                                    path="loading"
+                                    element={<LoadingLogo />}
                                 />
                                 {/* ============================== */}
                                 {/* 活動列表路由 */}
