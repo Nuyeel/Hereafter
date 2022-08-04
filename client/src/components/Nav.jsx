@@ -88,7 +88,7 @@ function Nav(props) {
                         <h2
                             className="nav_link"
                             onClick={() => {
-                                navigate('', { replace: true });
+                                navigate('/aboutusfirst', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
                             }}
                         >
@@ -103,7 +103,7 @@ function Nav(props) {
                         <h2
                             className="nav_link"
                             onClick={() => {
-                                navigate('#/', { replace: true });
+                                navigate('/news', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
                             }}
                         >
