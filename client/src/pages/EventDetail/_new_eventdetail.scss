@@ -1,0 +1,156 @@
+/* 正式上線改用 bootstrap-grid.min.css */
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
+/* 引入自定義變數 */
+@import '../../styles/variables.scss';
+
+
+// 手機版
+.xuan-eventdetail-container{
+  position: relative;
+  top:0px;
+  outline: 1px solid red;
+  padding-top: 50px;
+
+  >.row{
+    margin: 0px;
+    width: 100%;
+    outline: 2px solid blue;
+
+    >.xuan-col-8{
+      width: 100%;
+
+      >.xuan-intro-box{
+        width: 95%;
+        background-color: white;
+        border-radius: 20px;
+        margin: auto;
+        margin-bottom: 15px;
+        position: relative;
+        padding: 1px;
+        padding-top: 30px;
+
+          >.xuan-intro-box-title{
+            background-color:  #9587E1;
+            border-radius: 20px 50px 50px 0px;
+            padding: 10px 40px 10px 10px;
+            position: absolute;
+            left: 0px;
+            top: -30px;
+            color: white;
+          }
+
+          >.xuan-intro-img{
+            width: 92%;
+            margin: auto;
+            background-color: gray;
+            border-radius: 15px;
+            height: 300px;
+            margin-bottom: 10px;
+          }
+
+          >.xuan-intro-bar{
+            outline: 1px solid red;
+            width: 91%;
+            margin: auto;
+            margin-bottom: 20px;
+            color: #3C3B67;
+
+              .xuan-tag-group{
+                display: flex;
+                margin-bottom: 10px;
+
+                div{
+                  margin: auto 5px;
+                }
+
+                .xuan-intro-tag-1{
+                  background-color: rgba(227, 132, 242, 0.5);
+                  border-radius: 7px;
+                  color: #3C3B67;
+                  padding: 5px;
+                }
+
+                .xuan-intro-tag-2{
+                  display: flex;
+                  background-color: #F3F59F;
+                  border-radius: 7px;
+                  color: #3C3B67;
+                  padding: 5px;
+                }
+              }
+
+
+              .xuan-intro-word  {
+                margin-bottom: 7px;
+                letter-spacing: 0.1rem;
+
+                svg:nth-child(1){
+                  margin: 3px;
+                }
+
+                span:nth-child(2){
+                  margin-right: 3px;
+                }
+
+                span:nth-child(4){
+                  margin-right: 3px;
+                }
+
+                span:nth-child(5){
+                  margin-right: 3px;
+                }
+              }
+
+          }
+
+
+
+      }
+
+    }
+
+
+  }
+}
+
+
+.xuan-col-4{
+  width: 100%;
+
+  >.xuan-btn-wrap{
+    width: 95%;
+    margin: auto;
+
+    >.xuan-buy-btn{
+      width: 100%;
+      background-color: black;
+      padding: 20px 30px 10px 30px;
+      border-radius: 20px;
+      opacity: .7;
+      color: white;
+      display: flex;
+
+        >.xuan-cost-price{
+          width: 50%;
+        }
+
+        >.xuan-btn-group{
+          width: 50%;
+
+          >button{
+            margin-bottom: 20px;
+          }
+        }
+
+    }
+
+  }
+
+
+
+}
+
+// .xuan-d-flex{
+//   display: flex;
+// }
