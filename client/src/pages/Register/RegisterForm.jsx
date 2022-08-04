@@ -1,16 +1,17 @@
 import './style.scss';
-import { useState, useContext } from 'react';
+import { useState, useContext, useCallback } from 'react';
+import InputIME from './components/InputIME';
+import _ from 'lodash';
 import axios from 'axios';
 
 import { MEMBER_REGISTER } from '../../config/ajax-path';
-
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
 
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-function RegisterForm() {
+function RegisterForm(props) {
     const [registerData, setRegisterData] = useState({
         account: '',
         email: '',
@@ -19,7 +20,6 @@ function RegisterForm() {
     });
 
     const [passwordFieldType, setPasswordFieldType] = useState('password');
-
     const [confirmPasswordFieldType, setConfirmPasswordFieldType] =
         useState('password');
 
@@ -34,42 +34,70 @@ function RegisterForm() {
         });
     };
 
+    // 欄位處理
+    const [accountSearch, setAccountSearch] = useState('');
+    const [emailSearch, setEmailSearch] = useState('');
+    const [passwordSearch, setPasswordSearch] = useState('');
+    const [validationCssClassname, setValidationCssClassname] = useState('');
+
+    const handleAccountSearch = (searchAccountWord) => {
+        // 初始狀態設為空
+        if (!searchAccountWord) {
+            setValidationCssClassname('');
+            return;
+        }
+        // // 即時驗證欄位條件
+        if (searchAccountWord.length <= 10 && searchAccountWord.length >= 6) {
+            setValidationCssClassname('is-valid');
+        } else {
+            setValidationCssClassname('is-invalid');
+        }
+    };
+
+    // 400毫秒後做欄位檢查
+    const debounceHandleSearch = useCallback(
+        _.debounce(handleAccountSearch, 400),
+        []
+    );
+
+    const handleChange = (e) => {
+        // 可控元件綁用state使用
+        setAccountSearch(e.target.value);
+        // 搜尋用 - trim去除空白，toLowerCase轉小寫英文
+        const searchAccountWord = e.target.value.trim().toLowerCase();
+        // 傳至debounceFn中
+        debounceHandleSearch(searchAccountWord);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         // TODO: 欄位檢查
 
-        // 正規表達式定義在這邊，為方便開發可都先註解
-        const accountRe = /^[a-zA-Z0-9_]\w*$/;
-        // const emailRe =
-        //     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
-        const passwordRe = /^[a-zA-Z0-9_]\w*.{8,}$/;
+        // // 正規表達式定義在這邊，為方便開發可都先註解
+        // const accountRe = /^[a-zA-Z0-9_]\w*$/;
+        // // const emailRe =
+        // //     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
+        // const passwordRe = /^[a-zA-Z0-9_]\w*.{8,}$/;
 
-        if (registerData.account.length > 10) {
-            alert('您設定的帳戶字數過長');
-            return;
-        }
+        // if (registerData.account.length > 10) {
+        //     alert('您設定的帳戶字數過長');
+        //     return;
+        // }
 
-        if (!registerData.account.match(accountRe)) {
-            alert('您輸入的帳戶不可含有空白格或特殊字元');
-            return;
-        }
+        // if (!registerData.account.match(accountRe)) {
+        //     alert('您輸入的帳戶不可含有空白格或特殊字元');
+        //     return;
+        // }
 
-        if (!registerData.password.match(passwordRe)) {
-            alert('您輸入的密碼須包含字母及數字共八位數');
-            return;
-        }
+        // if (!registerData.password.match(passwordRe)) {
+        //     alert('您輸入的密碼須包含字母及數字共八位數');
+        //     return;
+        // }
 
-        if (registerData.confirmPassword !== registerData.password) {
-            alert('密碼與確認密碼需要一致');
-            return;
-        }
-        // const { confirmPassword, ...registerFields } = registerData;
-
-        // 請注意 axios 和 fetch 的不同之處
-        // fetch 要多轉換一次 .then(r => r.json())
-        // fetch 的內容放在 body: fd
-        // axios 會自動轉換 JSON 但結果放在 r.data 中
-        // axios 的內容要放在 data: fd
+        // if (registerData.confirmPassword !== registerData.password) {
+        //     alert('密碼與確認密碼需要一致');
+        //     return;
+        // }
 
         fetch(MEMBER_REGISTER, {
             method: 'POST',
@@ -119,20 +147,15 @@ function RegisterForm() {
                                                     >
                                                         帳戶名稱
                                                     </label>
-                                                    <input
+                                                    <InputIME
                                                         type="text"
-                                                        className="form-control"
+                                                        className={`form-control ${validationCssClassname}`}
                                                         name="account"
                                                         placeholder="請建立一個登入帳戶"
-                                                        value={
-                                                            registerData.account
-                                                        }
-                                                        onChange={
-                                                            handleFieldsChange
-                                                        }
+                                                        onChange={handleChange}
+                                                        maxLength="10"
                                                         required
                                                     />
-                                                    <div className="form-text red"></div>
                                                 </div>
                                                 <div className="mb-3 page-field">
                                                     <label
@@ -154,7 +177,6 @@ function RegisterForm() {
                                                         }
                                                         required
                                                     />
-                                                    <div className="form-text red"></div>
                                                 </div>
                                                 <div className="mb-3 page-field">
                                                     <label
@@ -176,7 +198,6 @@ function RegisterForm() {
                                                         }
                                                         required
                                                     />
-                                                    <div className="form-text red"></div>
                                                 </div>
                                                 <div className="mb-3 page-field">
                                                     <label
@@ -200,7 +221,6 @@ function RegisterForm() {
                                                         }
                                                         required
                                                     />
-                                                    <div className=" form-text red"></div>
                                                 </div>
                                                 {/* 
                                                     <div className="text-center mb-3">
@@ -245,13 +265,13 @@ function RegisterForm() {
                                                 </div>
                                                 <br />
                                             </form>
-                                            <div
+                                            {/* <div
                                                 id="info-bar"
                                                 className="alert alert-success d-flex justify-content-center"
                                                 role="alert"
                                             >
                                                 您已成功完成註冊
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </section>

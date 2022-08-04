@@ -69,6 +69,13 @@ button:active {
     text-decoration: none
 }
 
+.is-invalid:focus {
+    color: $alert;
+    border: $alert 2px solid;
+    outline: none;
+}
+
+
 .alert-success {
     color: $accent-blue;
     background-color: $highlight;

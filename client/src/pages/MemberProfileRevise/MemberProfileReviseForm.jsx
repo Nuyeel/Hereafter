@@ -33,17 +33,10 @@ function MemberProfileReviseForm() {
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault();
         // console.log(profileData);
 
-        // TODO: 欄位檢查
-
-        // 請注意 axios 和 fetch 的不同之處
-        // fetch 要多轉換一次 .then(r => r.json())
-        // fetch 的內容放在 body: fd
-        // axios 會自動轉換 JSON 但結果放在 r.data 中
-        // axios 的內容要放在 data: fd
         const result = await axios(MEMBER_PROFILE_REVISE, {
             method: 'POST',
             data: JSON.stringify(profileData),
@@ -52,12 +45,10 @@ function MemberProfileReviseForm() {
             },
         });
 
-        // console.log(result.data);
-
         if (result.data.success) {
             localStorage.setItem('auth', JSON.stringify(result.data.data));
             setAuth({ ...result.data.data, authorized: true });
-            navigate('/');
+            alert('資料已修改完成');
         } else {
             alert('帳密錯誤～～');
         }
@@ -137,7 +128,12 @@ function MemberProfileReviseForm() {
                                                                 <div>
                                                                     <div className="tab-content">
                                                                         <form name="form1">
-                                                                            <div className="mb-3 d-flex justify-content-center page-title">
+                                                                            <div
+                                                                                className="mb-3 d-flex justify-content-center page-title"
+                                                                                onSubmit={
+                                                                                    handleUpdate
+                                                                                }
+                                                                            >
                                                                                 修改會員資料
                                                                             </div>
                                                                             <br />
@@ -153,8 +149,11 @@ function MemberProfileReviseForm() {
                                                                                     className="form-control"
                                                                                     id="account"
                                                                                     name="account"
-                                                                                    placeholder={
+                                                                                    value={
                                                                                         profileData.account
+                                                                                    }
+                                                                                    onChange={
+                                                                                        handleFieldsChange
                                                                                     }
                                                                                     disabled="disabled"
                                                                                 />
@@ -172,8 +171,11 @@ function MemberProfileReviseForm() {
                                                                                     className="form-control"
                                                                                     id="name"
                                                                                     name="name"
-                                                                                    placeholder={
+                                                                                    value={
                                                                                         profileData.name
+                                                                                    }
+                                                                                    onChange={
+                                                                                        handleFieldsChange
                                                                                     }
                                                                                 />
                                                                                 <div className="form-text red"></div>
@@ -190,8 +192,11 @@ function MemberProfileReviseForm() {
                                                                                     className="form-control"
                                                                                     id="birthdate"
                                                                                     name="birthdate"
-                                                                                    placeholder={
+                                                                                    value={
                                                                                         profileData.birthdate
+                                                                                    }
+                                                                                    onChange={
+                                                                                        handleFieldsChange
                                                                                     }
                                                                                 />
                                                                                 <div className="form-text red"></div>
@@ -208,8 +213,11 @@ function MemberProfileReviseForm() {
                                                                                     className="form-control"
                                                                                     id="deathdate"
                                                                                     name="deathdate"
-                                                                                    placeholder={
+                                                                                    value={
                                                                                         profileData.deathdate
+                                                                                    }
+                                                                                    onChange={
+                                                                                        handleFieldsChange
                                                                                     }
                                                                                 />
                                                                                 <div className="form-text red"></div>
@@ -226,9 +234,13 @@ function MemberProfileReviseForm() {
                                                                                     className="form-control"
                                                                                     id="email"
                                                                                     name="email"
-                                                                                    placeholder={
+                                                                                    value={
                                                                                         profileData.email
                                                                                     }
+                                                                                    onChange={
+                                                                                        handleFieldsChange
+                                                                                    }
+                                                                                    required
                                                                                 />
                                                                                 <div className="form-text red"></div>
                                                                             </div>
