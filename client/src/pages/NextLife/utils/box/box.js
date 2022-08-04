@@ -72,121 +72,121 @@ import _30T from '../../../../images/NextLifeCube/box/30_t.png';
 // TEXTURE: Box 2
 import _2A from '../../../../images/NextLifeCube/box/2_a.png';
 import _2B from '../../../../images/NextLifeCube/box/2_b.png';
-import _2C from '../../../../images/NextLifeCube/box/2_b.png';
+import _2C from '../../../../images/NextLifeCube/box/2_c.png';
 import _2T from '../../../../images/NextLifeCube/box/2_t.png';
 
 // TEXTURE: Box 3
 import _3A from '../../../../images/NextLifeCube/box/3_a.png';
 import _3B from '../../../../images/NextLifeCube/box/3_b.png';
-import _3C from '../../../../images/NextLifeCube/box/3_b.png';
+import _3C from '../../../../images/NextLifeCube/box/3_c.png';
 import _3T from '../../../../images/NextLifeCube/box/3_t.png';
 
 // TEXTURE: Box 4
 import _4A from '../../../../images/NextLifeCube/box/4_a.png';
 import _4B from '../../../../images/NextLifeCube/box/4_b.png';
-import _4C from '../../../../images/NextLifeCube/box/4_b.png';
+import _4C from '../../../../images/NextLifeCube/box/4_c.png';
 import _4T from '../../../../images/NextLifeCube/box/4_t.png';
 
 // TEXTURE: Box 5
 import _5A from '../../../../images/NextLifeCube/box/5_a.png';
 import _5B from '../../../../images/NextLifeCube/box/5_b.png';
-import _5C from '../../../../images/NextLifeCube/box/5_b.png';
+import _5C from '../../../../images/NextLifeCube/box/5_c.png';
 import _5T from '../../../../images/NextLifeCube/box/5_t.png';
 
 // TEXTURE: Box 7
 import _7A from '../../../../images/NextLifeCube/box/7_a.png';
 import _7B from '../../../../images/NextLifeCube/box/7_b.png';
-import _7C from '../../../../images/NextLifeCube/box/7_b.png';
+import _7C from '../../../../images/NextLifeCube/box/7_c.png';
 import _7T from '../../../../images/NextLifeCube/box/7_t.png';
 
 // TEXTURE: Box 8
 import _8A from '../../../../images/NextLifeCube/box/8_a.png';
 import _8B from '../../../../images/NextLifeCube/box/8_b.png';
-import _8C from '../../../../images/NextLifeCube/box/8_b.png';
+import _8C from '../../../../images/NextLifeCube/box/8_c.png';
 import _8T from '../../../../images/NextLifeCube/box/8_t.png';
 
 // TEXTURE: Box 9
 import _9A from '../../../../images/NextLifeCube/box/9_a.png';
 import _9B from '../../../../images/NextLifeCube/box/9_b.png';
-import _9C from '../../../../images/NextLifeCube/box/9_b.png';
+import _9C from '../../../../images/NextLifeCube/box/9_c.png';
 import _9T from '../../../../images/NextLifeCube/box/9_t.png';
 
 // TEXTURE: Box 10
 import _10A from '../../../../images/NextLifeCube/box/10_a.png';
 import _10B from '../../../../images/NextLifeCube/box/10_b.png';
-import _10C from '../../../../images/NextLifeCube/box/10_b.png';
+import _10C from '../../../../images/NextLifeCube/box/10_c.png';
 import _10T from '../../../../images/NextLifeCube/box/10_t.png';
 
 // TEXTURE: Box 11
 import _11A from '../../../../images/NextLifeCube/box/11_a.png';
 import _11B from '../../../../images/NextLifeCube/box/11_b.png';
-import _11C from '../../../../images/NextLifeCube/box/11_b.png';
+import _11C from '../../../../images/NextLifeCube/box/11_c.png';
 import _11T from '../../../../images/NextLifeCube/box/11_t.png';
 
 // TEXTURE: Box 12
 import _12A from '../../../../images/NextLifeCube/box/12_a.png';
 import _12B from '../../../../images/NextLifeCube/box/12_b.png';
-import _12C from '../../../../images/NextLifeCube/box/12_b.png';
+import _12C from '../../../../images/NextLifeCube/box/12_c.png';
 import _12T from '../../../../images/NextLifeCube/box/12_t.png';
 
 // TEXTURE: Box 13
 import _13A from '../../../../images/NextLifeCube/box/13_a.png';
 import _13B from '../../../../images/NextLifeCube/box/13_b.png';
-import _13C from '../../../../images/NextLifeCube/box/13_b.png';
+import _13C from '../../../../images/NextLifeCube/box/13_c.png';
 import _13T from '../../../../images/NextLifeCube/box/13_t.png';
 
 // TEXTURE: Box 14
 import _14A from '../../../../images/NextLifeCube/box/14_a.png';
 import _14B from '../../../../images/NextLifeCube/box/14_b.png';
-import _14C from '../../../../images/NextLifeCube/box/14_b.png';
+import _14C from '../../../../images/NextLifeCube/box/14_c.png';
 import _14T from '../../../../images/NextLifeCube/box/14_t.png';
 
 // TEXTURE: Box 16
 import _16A from '../../../../images/NextLifeCube/box/16_a.png';
 import _16B from '../../../../images/NextLifeCube/box/16_b.png';
-import _16C from '../../../../images/NextLifeCube/box/16_b.png';
+import _16C from '../../../../images/NextLifeCube/box/16_c.png';
 import _16T from '../../../../images/NextLifeCube/box/16_t.png';
 
 // TEXTURE: Box 17
 import _17A from '../../../../images/NextLifeCube/box/17_a.png';
 import _17B from '../../../../images/NextLifeCube/box/17_b.png';
-import _17C from '../../../../images/NextLifeCube/box/17_b.png';
+import _17C from '../../../../images/NextLifeCube/box/17_c.png';
 import _17T from '../../../../images/NextLifeCube/box/17_t.png';
 
 // TEXTURE: Box 18
 import _18A from '../../../../images/NextLifeCube/box/18_a.png';
 import _18B from '../../../../images/NextLifeCube/box/18_b.png';
-import _18C from '../../../../images/NextLifeCube/box/18_b.png';
+import _18C from '../../../../images/NextLifeCube/box/18_c.png';
 import _18T from '../../../../images/NextLifeCube/box/18_t.png';
 
 // TEXTURE: Box 19
 import _19A from '../../../../images/NextLifeCube/box/19_a.png';
 import _19B from '../../../../images/NextLifeCube/box/19_b.png';
-import _19C from '../../../../images/NextLifeCube/box/19_b.png';
+import _19C from '../../../../images/NextLifeCube/box/19_c.png';
 import _19T from '../../../../images/NextLifeCube/box/19_t.png';
 
 // TEXTURE: Box 28
 import _28A from '../../../../images/NextLifeCube/box/28_a.png';
 import _28B from '../../../../images/NextLifeCube/box/28_b.png';
-import _28C from '../../../../images/NextLifeCube/box/28_b.png';
+import _28C from '../../../../images/NextLifeCube/box/28_c.png';
 import _28T from '../../../../images/NextLifeCube/box/28_t.png';
 
 // TEXTURE: Box 31
 import _31A from '../../../../images/NextLifeCube/box/31_a.png';
 import _31B from '../../../../images/NextLifeCube/box/31_b.png';
-import _31C from '../../../../images/NextLifeCube/box/31_b.png';
+import _31C from '../../../../images/NextLifeCube/box/31_c.png';
 import _31T from '../../../../images/NextLifeCube/box/31_t.png';
 
 // TEXTURE: Box 32
 import _32A from '../../../../images/NextLifeCube/box/32_a.png';
 import _32B from '../../../../images/NextLifeCube/box/32_b.png';
-import _32C from '../../../../images/NextLifeCube/box/32_b.png';
+import _32C from '../../../../images/NextLifeCube/box/32_c.png';
 import _32T from '../../../../images/NextLifeCube/box/32_t.png';
 
 // TEXTURE: Box 37
 import _37A from '../../../../images/NextLifeCube/box/37_a.png';
 import _37B from '../../../../images/NextLifeCube/box/37_b.png';
-import _37C from '../../../../images/NextLifeCube/box/37_b.png';
+import _37C from '../../../../images/NextLifeCube/box/37_c.png';
 import _37T from '../../../../images/NextLifeCube/box/37_t.png';
 
 // MATERIALS: 5
@@ -194,28 +194,28 @@ import _37T from '../../../../images/NextLifeCube/box/37_t.png';
 // TEXTURE: Box 21
 import _21A from '../../../../images/NextLifeCube/box/21_a.png';
 import _21B from '../../../../images/NextLifeCube/box/21_b.png';
-import _21C from '../../../../images/NextLifeCube/box/21_b.png';
+import _21C from '../../../../images/NextLifeCube/box/21_c.png';
 import _21D from '../../../../images/NextLifeCube/box/21_d.png';
 import _21T from '../../../../images/NextLifeCube/box/21_t.png';
 
 // TEXTURE: Box 24
 import _24A from '../../../../images/NextLifeCube/box/24_a.png';
 import _24B from '../../../../images/NextLifeCube/box/24_b.png';
-import _24C from '../../../../images/NextLifeCube/box/24_b.png';
+import _24C from '../../../../images/NextLifeCube/box/24_c.png';
 import _24D from '../../../../images/NextLifeCube/box/24_d.png';
 import _24T from '../../../../images/NextLifeCube/box/24_t.png';
 
 // TEXTURE: Box 34
 import _34A from '../../../../images/NextLifeCube/box/34_a.png';
 import _34B from '../../../../images/NextLifeCube/box/34_b.png';
-import _34C from '../../../../images/NextLifeCube/box/34_b.png';
+import _34C from '../../../../images/NextLifeCube/box/34_c.png';
 import _34D from '../../../../images/NextLifeCube/box/34_d.png';
 import _34T from '../../../../images/NextLifeCube/box/34_t.png';
 
 // TEXTURE: Box 35
 import _35A from '../../../../images/NextLifeCube/box/35_a.png';
 import _35B from '../../../../images/NextLifeCube/box/35_b.png';
-import _35C from '../../../../images/NextLifeCube/box/35_b.png';
+import _35C from '../../../../images/NextLifeCube/box/35_c.png';
 import _35D from '../../../../images/NextLifeCube/box/35_d.png';
 import _35T from '../../../../images/NextLifeCube/box/35_t.png';
 
