@@ -1,13 +1,21 @@
+$widthMax: 768px;
+
 .reborn-cart-container {
     .select-row {
         width: 100%;
-        height: 55vh;
-        max-height: 55vh;
+        height: 50vh;
+        max-height: 50vh;
         border-radius: 16px;
-        background-color: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.3);
         margin-top: 15px;
         display: flex;
         padding: 25px 0 10px;
+
+        @media screen and (max-width: $widthMax) {
+            flex-direction: column;
+            height: 70vh;
+            max-height: 70vh;
+        }
 
         .reborn-cart-main-title {
             font-size: 22px;
@@ -28,6 +36,26 @@
 
     .select-ava {
         border-right: 1px solid #fff;
+    }
+
+    @media screen and (max-width: $widthMax) {
+        .select-ava {
+            width: 100%;
+            height: 55%;
+        }
+
+        .select-place {
+            width: 100%;
+            height: 45%;
+        }
+        .select-ava {
+            border-right: none;
+            border-bottom: 1px solid #fff;
+            margin-bottom: 15px;
+        }
+        .ava-img {
+            margin-bottom: 20px;
+        }
     }
 
     .ava-wrap {
@@ -91,33 +119,70 @@
     /* 良辰吉地 */
 
     .place-wrap {
-        padding: 15px 25px;
+        padding: 25px;
         height: 90%;
         width: 100%;
     }
 
-    .place-options-box,
-    .place-add-btn-box {
-        position: absolute;
-        width: 32%;
+    @media screen and (max-width: $widthMax) {
+        .place-wrap {
+            padding: 20px 0;
+            width: 90vw;
+
+            // 改成可以scroll
+            .place-options-box {
+                width: 95%;
+                height: 190px;
+                padding-right: 15px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+            }
+        }
+    }
+
+    .place-options-box {
+        width: 100%;
+    }
+
+    .place-option-flex {
         display: flex;
-        flex-direction: column;
-        gap: 12px;
+        align-items: center;
+        margin-bottom: 12px;
+        height: 50px;
+    }
+
+    .place-options-box.while-no-options {
+        padding: 100px 0;
+        align-items: center;
+        justify-content: center;
+        width: 36%;
+
+        h4,
+        .reborn-link {
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: normal;
+            color: #f3f59f;
+            // color: #ff52ba;
+            // background-color: #f0f8a6;
+            padding: 0 5px;
+            margin-bottom: 5px;
+            border-radius: 2px;
+        }
+
+        span {
+            text-decoration: underline;
+            transition: 0.3s;
+
+            &:hover {
+                color: #e97bee;
+                cursor: pointer;
+            }
+        }
     }
 
     .place-radio {
         display: none;
-    }
-
-    .place-option {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        padding: 6px 15px;
-        border-radius: 20px;
-        position: relative;
-        width: 100%;
-        height: 48px;
     }
 
     .to-liked-page-add-btn {
@@ -128,16 +193,18 @@
         border-radius: 20px;
         position: relative;
         width: 100%;
-        height: 48px;
+        height: 50px;
         background-color: rgba(255, 255, 255, 0.4);
         font-size: 30px;
         font-weight: bold;
         color: rgba(255, 255, 255, 0.4);
         transition: 0.3s;
         width: 93%;
+        margin-bottom: 12px;
 
         &:hover {
             color: rgba(255, 255, 255, 1);
+            cursor: pointer;
         }
     }
 
@@ -166,13 +233,31 @@
         transition: 0.5s;
     }
 
-    .place-option-flex {
-        display: flex;
-        align-items: center;
-        z-index: 2;
+    @media screen and (max-width: $widthMax) {
+        .place-wrap {
+            .place-option {
+                padding: 6px 10px;
+                .place-option-title {
+                    font-size: 14px;
+                }
+
+                .price {
+                    span {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
     }
 
     .place-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 6px 15px;
+        border-radius: 20px;
+        position: relative;
+        height: 48px;
         background-color: rgba(255, 255, 255, 1);
         width: 95%;
 
@@ -186,6 +271,7 @@
             font-size: 18px;
             color: #444;
             margin-bottom: 0;
+            font-weight: 500;
         }
 
         .price {
@@ -202,11 +288,11 @@
 
         &:hover {
             color: #e97bee;
+            cursor: pointer;
         }
     }
 
-    /* reborn-order-wrap */
-
+    /* reborn-order-wrap 下方轉生訂單區塊 */
     .reborn-order-wrap {
         width: 100%;
         height: 22vh;
@@ -217,6 +303,121 @@
         display: flex;
         justify-content: space-around;
         padding: 15px;
+    }
+
+    @media screen and (max-width: $widthMax) {
+        .reborn-order-wrap {
+            max-width: 90%;
+            flex-direction: column;
+            position: fixed;
+            z-index: 9;
+            bottom: -350px;
+            left: 5%;
+            height: 400px;
+            background-color: rgba(255, 255, 255, 1);
+            border: 2px solid #f3f59f;
+            padding: 0;
+            padding-bottom: 25px;
+            animation: boxShowFromBottom;
+
+            .reborn-order-card {
+                flex-direction: column;
+                width: 100%;
+                color: #222;
+
+                .reborn-order-card-title {
+                    padding: 10px;
+                    width: 100%;
+                    text-align: center;
+                    writing-mode: horizontal-tb;
+                    font-size: 16px;
+                    height: 45px;
+                    margin-bottom: 120px;
+                }
+
+                .reborn-order-card-title:hover {
+                    cursor: pointer;
+                    .rwdBtn {
+                        top: -25px;
+                        opacity: 1;
+                    }
+                }
+                .reborn-order-card-ava,
+                .reborn-order-card-place {
+                    display: none;
+                }
+
+                .reborn-order-card-summary {
+                    width: 80%;
+                    tfoot {
+                        td {
+                            border-top: 1px solid #222;
+                        }
+                    }
+                }
+                button.reborn-order-card-btn {
+                    width: 90%;
+                    height: 50px;
+                    display: flex;
+                    justify-content: center;
+                    p {
+                        writing-mode: horizontal-tb;
+                        line-height: 20px;
+                    }
+                }
+            }
+
+            .my-deed-wrap,
+            .deed-enough-wrap {
+                position: absolute;
+                top: 65px;
+                width: 40%;
+                font-size: 14px;
+                height: 100px;
+            }
+            .my-deed-wrap {
+                left: 8%;
+            }
+            .deed-enough-wrap {
+                right: 8%;
+            }
+            .my-deed-wrap-text,
+            .deed-enough-wrap-text {
+                font-size: 20px;
+            }
+
+            // 開合按鈕
+            .rwdBtn {
+                width: 40px;
+                height: 40px;
+                background-color: #f3f59f;
+                border-radius: 10px;
+                position: absolute;
+                top: 20px;
+                left: 50%;
+                transform: translate(-50%);
+                opacity: 0;
+                transition: 0.3s;
+                z-index: -1;
+                color: #3c3b67;
+                font-size: 20px;
+            }
+        }
+        .box-show-ani {
+            animation: boxShowFromBottom 3s linear forwards;
+        }
+        .animate-reverse {
+            animation-direction: reverse;
+        }
+
+        @keyframes boxShowFromBottom {
+            from {
+                bottom: -350px;
+            }
+            to {
+                bottom: -25px;
+            }
+        }
     }
 
     .my-deed-wrap {
@@ -231,6 +432,7 @@
         background-color: #b9ded2;
         text-align: center;
         padding: 15px 0;
+        font-weight: 500;
     }
 
     .my-deed-wrap-text {
@@ -253,6 +455,7 @@
         background-color: #eebcdd;
         text-align: center;
         padding: 15px 0;
+        font-weight: 500;
     }
 
     .deed-enough-wrap-text {
@@ -311,11 +514,12 @@
 
         table {
             width: 100%;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 26px;
 
             td {
                 border-collapse: collapse;
+                font-weight: 400;
             }
         }
 
@@ -329,14 +533,16 @@
             }
         }
 
-        tfoot td {
-            border-top: 1px solid #fff;
+        tfoot {
+            td {
+                border-top: 1px solid #fff;
+            }
         }
     }
 
     .reborn-order-total-price {
         font-size: 32px;
-        font-weight: bold;
+
         color: #ce59e7;
         padding: 6px 0;
 
@@ -347,6 +553,7 @@
         > span {
             vertical-align: bottom;
             margin-top: 5px;
+            font-weight: bold;
         }
     }
 
@@ -362,6 +569,8 @@
         height: 90%;
         border-radius: 12px;
         transition: 0.3s;
+        width: fit-content;
+        display: block;
 
         > p {
             writing-mode: vertical-lr;
