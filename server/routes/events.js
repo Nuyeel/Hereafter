@@ -33,13 +33,13 @@ router.get('/', async (req, res) => {
 });
 
 // 活動細項(EventDetail)
-router.get('/:sid?', async (req, res) => {
+router.get('/:eventsid?', async (req, res) => {
     // 取得params的sid是多少
     // let output = {
     //     params: req.params,
     // };
 
-    let eventSid = req.params.sid || '';
+    let eventSid = req.params.eventsid || '';
 
     const $sql =
         'SELECT * FROM (`npo_act` JOIN `npo_act_type` ON `npo_act`.`type_sid` = `npo_act_type`.`typesid`)  INNER JOIN `city_type` ON `npo_act`.`place_city`= `city_type`.`city_sid` WHERE `sid`=? ';
@@ -56,6 +56,32 @@ router.get('/:sid?', async (req, res) => {
 
     console.log(results);
     res.json(results);
+});
+
+// TODO: 檢查使用者是否有報名過此活動 -> 影響button狀態
+// router.get('/:membersid?', async (req, res) => {
+
+// 此段處理Redux活動購物車NavBar數字
+router.get('/eventcartnum/:membersid?', async (req, res) => {
+    let memberSid = req.params.membersid || '';
+
+    const $sql = 'SELECT COUNT(*) FROM `event_cart` WHERE `member_sid` = ? ';
+
+    const [[{ 'COUNT(*)': results }]] = await db.query($sql, [memberSid]);
+
+    console.log('nodeJS', results);
+    res.json(results);
+});
+
+// 此段處理該會員目前購物車有哪些活動sid
+router.get('/checkeventcart/:membersid?', async (req, res) => {
+    let memberSid = req.params.membersid || '';
+
+    const $sql = 'SELECT `event_sid` FROM `event_cart` WHERE `member_sid` = ? ';
+
+    // const [[{ 'COUNT(*)': results }]] = await db.query($sql, [memberSid]);
+    const [results] = await db.query($sql, [memberSid]);
+    res.json(results); //會獲得一個JSON包
 });
 
 module.exports = router;

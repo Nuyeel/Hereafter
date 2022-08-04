@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'; //sweetalert2
 
 // 子頁面(區域)
 import Cart from './sub-pages/Cart'; //購物車明細
@@ -10,26 +11,16 @@ import OrderDetail from './sub-pages/OrderDetail'; //已付款清單
 // 進度條
 import ProgressBar from './components/ProgressBar';
 
+// 會員登入登出驗證
+import AuthContext from '../../context/AuthContext/AuthContext';
+
 // scss
 import '../Event/_xuan_styles.scss';
 import './styles/_cart.scss';
 
-
 function OrderSteps(props) {
-    // 這邊也要存localstorage，不然不逛商品直接點購物車會壞掉
-    // 此段模擬會員登入------------------------------------------------------
-    let memberlogin = {
-        authorized: true,
-        sid: 100,
-        account: 'membertest',
-        token: '12345',
-    };
-
-    localStorage.setItem('auth', JSON.stringify(memberlogin));
-
-    // 透過localStorage 取得登入會員sid
-    let memberinfor = JSON.parse(localStorage.getItem('auth'));
-    let membersid = Object.values(memberinfor)[1];
+    // 會員登入登出驗證(auth)
+    const { authorized, sid, account, token } = useContext(AuthContext);
 
     //取得 勾選要結帳的清單array
     const [eventPick, setEventPick] = useState([]);
@@ -161,14 +152,15 @@ function OrderSteps(props) {
     // ------------------------------------------------------------------------------
 
     //填寫完「付款資訊」後在MySQL建立一個新的訂單(1次付款只會有1個訂單編號))
-    const fetCreateOrder = async () => {
+    const fetchCreateOrder = async () => {
         fetch('http://localhost:3500/eventcarts/addorder', {
             method: 'POST',
             headers: {
                 'Content-Type':
                     'application/x-www-form-urlencoded;charset=UTF-8',
+                Authorization: `Bearer ${token}`,
             },
-            body: `event_order_detail=${eventPick}&member_sid=${membersid}`,
+            body: `event_order_detail=${eventPick}&member_sid=${sid}`,
         })
             .then((r) => r.json())
             .then((obj) => {
@@ -176,9 +168,11 @@ function OrderSteps(props) {
             });
     };
 
+    // 當step===3時(送出匯款資訊)時，把對應的活動從event_cart裡刪除(要送memberSid跟eventSid)
+
     // multiple State  填寫報名活動資訊變數(放最上層，按上下頁時資料才會保留)
     const [myInfor, setMyInfor] = useState({
-        member_sid: `${membersid}`,
+        member_sid: `${sid}`,
         fullname: '',
         mobile_city: '',
         mobile: '',
@@ -193,7 +187,7 @@ function OrderSteps(props) {
 
     // multiple State 信用卡資訊(放最上層，按上下頁時資料才會保留)
     const [cardInfor, setCardInfor] = useState({
-        member_sid: `${membersid}`,
+        member_sid: `${sid}`,
         cardnumber: '',
         cardholder: '',
         ex_month: '',
@@ -242,18 +236,16 @@ function OrderSteps(props) {
                 address,
             } = myInfor;
 
-            //   // 有錯誤訊息會跳出警告，不會到"下一步"
+            //  有錯誤訊息會跳出警告，不會到"下一步"
             const errors = [];
             if (!fullname) errors.push('姓名未填 ');
-            if (!mobile) errors.push('電話沒填 ');
-            if (!ID) errors.push('身分證字號沒填~ ');
+            if (!mobile) errors.push('電話未填 ');
+            if (!ID) errors.push('身分證字號未填 ');
 
             if (errors.length > 0) {
-                alert(errors.join(','));
+                // alert(errors.join(','));
+                Swal.fire(errors.join('、'));
                 return;
-            } else {
-                alert('報名表單已送出');
-                fetCreateOrder();
             }
         }
 
@@ -339,8 +331,9 @@ function OrderSteps(props) {
                         type="submit"
                         disabled={step === maxSteps}
                         onClick={() => {
-                            next(); //進到下一階段
-                            fetCreateOrder(); //把勾選項目存進MySQL
+                            next();
+                            fetchCreateOrder(); //把勾選項目存進MySQL
+                            // TODO: 同時把勾選項目從event_cart裡移出
                         }}
                     >
                         下一步
@@ -350,7 +343,7 @@ function OrderSteps(props) {
                         className="xuan-btn-m xuan-btn-pri"
                         disabled={step === maxSteps}
                         onClick={() => {
-                            next(); //進到下一階段
+                            next();
                         }}
                     >
                         下一步

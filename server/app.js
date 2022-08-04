@@ -25,15 +25,10 @@ const cookieParser = require('cookie-parser');
 // const dayjs = require('dayjs');
 // 跨來源資源共用 (CORS, Cross-Origin Resource Sharing)
 const cors = require('cors');
-// 建立 Session 用 (若之後想改用 JWT, JSON Web Token 可以移除)
-// const session = require('express-session');
-// 將 Session 資料存入資料庫用 (若之後不使用 Session 可以移除)
-// TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫
-// const MySQLStore = require('express-mysql-session')(session);
 // 建立連線池 (Connection Pool) 用
 // const db = require(`${__dirname}/modules/mysql2-connect`);
 // 有第二個參數時忽略第一個 使用既有的連線 (第二個參數)
-// TODO: (可取消下行註解) 使用 sessionStore 必須要啟動資料庫
+// ex.
 // const sessionStore = new MySQLStore({}, db);
 // 測試: http://localhost:3500/test/session/count
 // 使用 JWT 用
@@ -123,9 +118,19 @@ app.use((req, res, next) => {
     res.locals.loginUser = null;
 
     // 利用 locals 將資料傳給後續的 Middleware 使用
+    // FIXME: JsonWebTokenError: jwt malformed
     if (auth && auth.indexOf('Bearer ') === 0) {
         const token = auth.slice(7);
-        res.locals.loginUser = jwt.verify(token, process.env.JWT_SECRET);
+        // DONE:由於前端的 AuthContext 對 token 的預設值是 ''
+        // 在登入攸關的驗證我們又一定會送 Authorization
+        // 導致以下 JWT 驗證可能出錯
+        // 所以此處必須做錯誤處理
+        try {
+            res.locals.loginUser = jwt.verify(token, process.env.JWT_SECRET);
+            console.log(res.locals.loginUser);
+        } catch (ex) {
+            console.log('狀態：瀏覽者並未登入');
+        }
         // console.log(res.locals.loginUser);
     }
     // TODO: 所以之後 "如果這個頁面要登入才能使用"

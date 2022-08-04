@@ -1,0 +1,24 @@
+.cpl-share-post-container {
+    position: relative;
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-share-post-container {
+        // FIXME: 卡片尺寸是用 --vh
+        // DONE: 應該要用 vw
+        position: relative;
+        left: calc((992px - 15px - 100vw) / 2);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-share-post-container {
+        left: calc((1200px - 40px - 100vw) / 2);
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-share-post-container {
+        left: calc((1400px - 60px - 100vw) / 2);
+    }
+}

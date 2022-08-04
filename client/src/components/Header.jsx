@@ -9,26 +9,28 @@ function Header() {
     const headerContext = useContext(HeaderContext);
 
     return (
-        <div className="container d-flex mb-3 header-padding-top">
+        <>
             {headerContext.title && (
-                <h2
-                    className="header"
-                    style={{
-                        color: theme.cHeader,
-                    }}
-                >
-                    {headerContext.title}
-                    <span
-                        className="header-baseline-decoration"
+                <div className="container d-flex header-container">
+                    <h2
+                        className="header"
                         style={{
-                            backgroundColor: theme.bgcHeaderDecor,
+                            color: theme.cHeader,
                         }}
-                    />
-                </h2>
+                    >
+                        {headerContext.title}
+                        <span
+                            className="header-baseline-decoration"
+                            style={{
+                                backgroundColor: theme.bgcHeaderDecor,
+                            }}
+                        />
+                    </h2>
+                    {/* TODO: 某些頁面必須要顯示分頁鈕 例如分享牆 */}
+                    {/* <button style={{ height: '30px' }}>fddsfdfds</button> */}
+                </div>
             )}
-            {/* TODO: 某些頁面必須要顯示分頁鈕 例如分享牆 */}
-            {/* <button style={{ height: '30px' }}>fddsfdfds</button> */}
-        </div>
+        </>
     );
 }
 

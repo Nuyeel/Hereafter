@@ -1,14 +1,15 @@
 // 使用套件
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import axios from 'axios';
 
 // import SimpleBar from 'simplebar-react';
 // import 'simplebar/dist/simplebar.css';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 // scss
 import 'overlayscrollbars/css/OverlayScrollbars.css';
+import './ShareWallList.scss';
 // import '../../styles/test.scss'; // 用來換掉 scroll bar 的樣式
 
 // Context
@@ -31,6 +32,7 @@ function ShareWallList(props) {
     const { pageName } = props;
 
     // 當前應該顯示貼文的頁數 是一個狀態
+    // TODO: 滑動 lazy load 出頁數
     const [postsPage, setPostsPage] = useState(0);
     // axios POST 回來的資料
     // TABLE: {圖, 頭貼, 帳號, 讚數, 標題, 內文}
@@ -105,7 +107,6 @@ function ShareWallList(props) {
                 <div className="container d-flex flex-column flex-lg-row pb-4 cpl-share-post-container justify-content-start">
                     {/* ASK: Link 和 naivate 的差異 */}
                     {/* DONE: 機制也不同 navigate 會操作到 history */}
-                    {/* 僅在觸發條件的不同嗎 Link 觸發 navigate 這樣？ */}
                     {/* <Link
                         to="4"
                         style={{ textDecoration: 'none', color: 'inherit' }}
@@ -123,13 +124,15 @@ function ShareWallList(props) {
                     <SharePostCard /> */}
 
                     {/* FIXME: 偷懶頭貼先用同一張 */}
+                    {/* FIXME: 找不到資料的時候應該要顯示一個東西 */}
+                    {/* FIXME: spinner */}
                     {postsData &&
                         postsData.map((v, i) => (
                             <SharePostCard
                                 key={v.share_post_sid}
                                 postsid={v.share_post_sid}
                                 avatar={v.avatar_sid}
-                                memberhead={v.avatar_sid}
+                                memberhead={v.member_sid}
                                 account={v.account}
                                 likes={v.share_post_likes}
                                 title={v.share_post_title}

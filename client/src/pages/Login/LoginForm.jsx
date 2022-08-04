@@ -19,7 +19,6 @@ function LoginForm(props) {
     });
 
     const { pageName } = props;
-    const themeContext = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     const { setHeader } = useContext(HeaderContext);
     const navigate = useNavigate();
@@ -27,7 +26,6 @@ function LoginForm(props) {
     const handleFieldsChange = (e) => {
         const id = e.target.id;
         const val = e.target.value;
-        // console.log({ id, val });
         setLoginData((prevState) => ({
             ...prevState,
             [id]: val,
@@ -36,32 +34,29 @@ function LoginForm(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log(loginData);
-
         // TODO: 欄位檢查
 
-        // 請注意 axios 和 fetch 的不同之處
-        // fetch 要多轉換一次 .then(r => r.json())
-        // fetch 的內容放在 body: fd
-        // axios 會自動轉換 JSON 但結果放在 r.data 中
-        // axios 的內容要放在 data: fd
-        const result = await axios(MEMBER_LOGIN, {
+        fetch(MEMBER_LOGIN, {
             method: 'POST',
-            data: JSON.stringify(loginData),
+            body: JSON.stringify(loginData),
             headers: {
-                'Content-Type': 'Application/json',
+                'Content-Type': 'application/json',
             },
-        });
-
-        // console.log(result.data);
-
-        if (result.data.success) {
-            localStorage.setItem('auth', JSON.stringify(result.data.data));
-            setAuth({ ...result.data.data, authorized: true });
-            navigate('/');
-        } else {
-            alert('帳密錯誤～～');
-        }
+        })
+            .then((r) => r.json())
+            .then((result) => {
+                console.log(result);
+                if (result.success) {
+                    localStorage.setItem('auth', JSON.stringify(result.data));
+                    setAuth({
+                        ...result.data,
+                        authorized: true,
+                    });
+                    navigate('/memberprofile');
+                } else {
+                    alert('帳密錯誤');
+                }
+            });
     };
 
     // 設定 Header
@@ -84,13 +79,7 @@ function LoginForm(props) {
                     </button>
                 </>
             ) : (
-                <div
-                    className="container"
-                    // style={{
-                    //     backgroundColor: themeContext.backgroundColor,
-                    //     color: themeContext.color,
-                    // }}
-                >
+                <div className="container">
                     <div className="row">
                         <div className="col">
                             <section className="pb-4">
@@ -191,47 +180,6 @@ function LoginForm(props) {
                                     </section>
                                 </div>
                             </section>
-
-                            {/* <form name="formLogin" onSubmit={handleSubmit}>
-                                <div className="mb-3">
-                                    <label
-                                        htmlFor="account"
-                                        className="form-label"
-                                    >
-                                        Account
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="account"
-                                        name="account"
-                                        value={loginData.account}
-                                        onChange={handleFieldsChange}
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label
-                                        htmlFor="password"
-                                        className="form-label"
-                                    >
-                                        Password
-                                    </label>
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        id="password"
-                                        name="password"
-                                        value={loginData.password}
-                                        onChange={handleFieldsChange}
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary"
-                                >
-                                    Submit
-                                </button>
-                            </form> */}
                         </div>
                     </div>
                 </div>

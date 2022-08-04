@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import '../styles/_cart.scss';
 
 import OrderList from '../components/OrderList';
 import Summary from '../components/Summary';
+
+// 會員登入登出驗證
+import AuthContext from '../../../context/AuthContext/AuthContext';
 
 // 一個公式function
 // 計算一開始要useState[]裡要有幾個1([1,1,1])
@@ -20,14 +23,13 @@ const initState = (eventArray) => {
 const Cart = (props) => {
     // ---------此段用於「取得該會員購物車有什麼」的資訊--------------------------------------
 
-    // 透過localStorage 取得登入會員sid
-    let memberinfor = JSON.parse(localStorage.getItem('auth'));
-    let membersid = Object.values(memberinfor)[1];
+    // 會員登入登出驗證(auth)
+    const { authorized, sid, account, token } = useContext(AuthContext);
 
     // 一進購物車頁面就跟MySQL拿購物車資訊(取得JSON)
     const fetchEventShowCart = async () => {
         const events = await axios.get(
-            `http://localhost:3500/eventcarts/showcart?member_sid=${membersid}`
+            `http://localhost:3500/eventcarts/showcart?member_sid=${sid}`
         );
         setEventCart(initState(events.data));
     };
@@ -223,23 +225,6 @@ const Cart = (props) => {
         return total;
     };
 
-    // ---------此段處理「NavBar購物車跳動數字」---------------------------------------
-
-    //定義 currentPage 這個 state，預設值是 OrderList
-    // const [currentPage, setCurrentPage] = useState('OrderList');
-
-    // 待處理：Cart沒有在index.js裡面 數字就不會跳出來
-    // 購物車 顯示商品總數量
-    // const { cartNumber, setCartNumber } = props;
-
-    // if (calcTotalNumber() > 0) {
-    //     setCartNumber(calcTotalNumber());
-    //     localStorage.setItem('event_cart_num', calcTotalNumber());
-    // } else {
-    //     setCartNumber('');
-    // }
-
-    // ---------------------------------------------------------------------------
 
     return (
         <>

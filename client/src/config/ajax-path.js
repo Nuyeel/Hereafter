@@ -3,7 +3,7 @@ export const SERVER = 'http://localhost:3500';
 
 // 分享牆部分
 export const API_SHAREWALL = `${SERVER}/api/sharewall`;
-export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tags`;
+export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tagbar/tags`;
 
 // 分享牆來生形象靜態路由
 export const STATIC_SHAREWALL_AVA = `${SERVER}/uploads/images/share/ava`;
@@ -18,13 +18,13 @@ export const PLACE_CARTDATA_API = `${SERVER}/api/reborn-cart`;
 
 // 測試部分 (之後可以刪除)
 export const MEMBER_LOGIN = `${SERVER}/api/member/login`;
-export const MEMBER_REGISTER = `${SERVER}/member/register`;
-export const FORGOT_PASSWORD = `${SERVER}/member/forgot-password`;
-export const FORGOT_PASSWORD_REVISE = `${SERVER}/member/forgot-password-revise`;
-export const MEMBER_PROFILE = `${SERVER}/member/profile`;
-export const MEMBER_PROFILE_REVISE = `${SERVER}/member/profile-revise`;
-export const MEMBER_PASSWORD_REVISE = `${SERVER}/member/profile-password-revise`;
-export const MEMBER_EVENT_ORDER = `${SERVER}/member/profile-event-order`;
+export const MEMBER_REGISTER = `${SERVER}/api/member/register`;
+export const FORGOT_PASSWORD = `${SERVER}/api/member/forgot-password`;
+export const FORGOT_PASSWORD_REVISE = `${SERVER}/api/member/forgot-password-revise`;
+export const MEMBER_PROFILE = `${SERVER}/api/member/profile`;
+export const MEMBER_PROFILE_REVISE = `${SERVER}/api/member/profile-revise`;
+export const MEMBER_PASSWORD_REVISE = `${SERVER}/api/member/profile-password-revise`;
+export const MEMBER_EVENT_ORDER = `${SERVER}/api/member/profile-event-order`;
 
 // 活動列表
 export const Event_List_GET = `${SERVER}/events `;

@@ -1,14 +1,43 @@
 /* 引入自定義變數 */
 @import '../../../../styles/variables.scss';
 
-.tag-item {
-    display: inline-block;
-    color: #FFFFFF;
-    border: 1px solid #FFFFFF;
-    border-radius: 20px;
-    background-color: $primary-50p;
+.cpl-tagbar {
+    font-size: $fz-body-mobile;
+    margin-bottom: 16px;
 
-    + .tag-item {
-        margin-left: 10px;
+    .cpl-tag-item {
+        display: inline-block;
+        color: #FFFFFF;
+        border: 1px solid #FFFFFF;
+        border-radius: 20px;
+        background-color: $primary-50p;
+        padding: 8px;
+        margin-bottom: 10px;
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-tagbar {
+        font-size: $fz-body;
+        margin-bottom: 24px;
+    
+        .cpl-tag-item {
+            display: inline-block;
+            color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 20px;
+            background-color: $primary-50p;
+            margin-left: 0;
+            margin-right: 10px;
+        }
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .cpl-tagbar {
+        margin-bottom: calc(var(--vh, 1vh) * 3);
     }
 }

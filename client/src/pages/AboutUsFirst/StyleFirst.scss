@@ -1,0 +1,137 @@
+.ab-a-bg{
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 700px;
+    width: 48%;
+    border-radius: 30px;
+    padding:120px 30px 30px 30px;
+    line-height: 2rem;
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+.ab-flag{
+    position: absolute;
+    top: 25px;
+    left: -5px;
+}
+.ab-title{
+    position: absolute;
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    top:17px;
+    left: 50px;
+    letter-spacing: 3px;
+}
+.ab-a-bg p{
+    color: white;
+    font-size: 18px;
+}
+.ab-t-logo{
+    position: absolute;
+    bottom: 70px;
+    left: 85px;
+
+}
+.ab-line-1{
+    width: 1.5px;
+    height: 220px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 130px;
+    left: 165px;
+}
+.ab-c1{
+    width: 55px;
+    height: 55px;
+    color: #fff;
+    line-height: 3rem;
+    text-align: center;
+    background-color: #9587E1;
+    border: 2.5px solid white;
+    border-radius: 50%;
+    transform: translate(-27px,-50px);
+}
+.ab-line-2{
+    width: 1.5px;
+    height: 150px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 130px;
+    left: 225px;
+}
+.ab-c2{
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    line-height: 2.7rem;
+    text-align: center;
+    background-color: #E384F2;
+    border: 2.5px solid white;
+    border-radius: 50%;
+    transform: translate(-25px,-40px);
+}
+.ab-line-3{
+    width: 1.5px;
+    height: 180px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 130px;
+    left: 300px;
+}
+.ab-c3{
+    width: 55px;
+    height: 55px;
+    color: #fff;
+    line-height: 3rem;
+    text-align: center;
+    background-color: #EAAE77;
+    border: 2.5px solid white;
+    border-radius: 50%;
+    transform: translate(-27px,-40px);
+}
+.ab-line-4{
+    width: 1.5px;
+    height: 168px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 130px;
+    left: 400px;
+}
+.ab-c4{
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    line-height: 2.7rem;
+    text-align: center;
+    background-color: #81A8E0;
+    border: 2.5px solid white;
+    border-radius: 50%;
+    transform: translate(-25px,-40px);
+}
+.ab-line-5{
+    width: 1.5px;
+    height: 210px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 130px;
+    left: 500px;
+}
+.ab-c5{
+    width: 55px;
+    height: 55px;
+    color: #fff;
+    line-height: 3rem;
+    text-align: center;
+    background-color: #84D2B9;
+    border: 2.5px solid white;
+    border-radius: 50%;
+    transform: translate(-27px,-40px);
+}
+.fa-solid.fa-moon{
+    margin-right: 5px;
+    color: #fff;
+}
+.fa-solid.fa-location-dot{
+    margin-right: 5px;
+    color: #fff;
+}

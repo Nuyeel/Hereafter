@@ -6,6 +6,10 @@ import TagCheckboxArea from './TagCheckboxArea';
 import '../../_xuan_styles.scss';
 
 function FilterBar(props) {
+
+
+    
+
     const {
         // price radio
         priceRangeTypes,
@@ -96,6 +100,8 @@ function FilterBar(props) {
                     handleCheckedArea={handleCheckedArea}
                 />
             ))}
+
+            <p>checkbox測試</p>
 
             <div className="padding"></div>
         </>

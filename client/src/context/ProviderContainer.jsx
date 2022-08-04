@@ -1,16 +1,14 @@
-import ThemeContextProvider from './ThemeContext/ThemeContextProvider';
 import AuthContextProvider from './AuthContext/AuthContextProvider';
+import ThemeContextProvider from './ThemeContext/ThemeContextProvider';
 import HeaderContextProvider from './HeaderContext/HeaderContextProvider';
 
 function ProviderContainer(props) {
     return (
-        <ThemeContextProvider>
-            <AuthContextProvider>
-                <HeaderContextProvider>
-                    {props.children}
-                </HeaderContextProvider>
-            </AuthContextProvider>
-        </ThemeContextProvider>
+        <AuthContextProvider>
+            <ThemeContextProvider>
+                <HeaderContextProvider>{props.children}</HeaderContextProvider>
+            </ThemeContextProvider>
+        </AuthContextProvider>
     );
 }
 
