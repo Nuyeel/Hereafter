@@ -1,6 +1,9 @@
 /* 正式上線改用 bootstrap-grid.min.css */
 @import '~bootstrap/scss/bootstrap-grid.scss';
 
+/* 用來替換掉套件的 scss */
+@import './packages.scss';
+
 /* 引入自定義變數 */
 @import './variables.scss';
 
@@ -72,7 +75,7 @@ h3 {
         color: #FFFFFF;
         
         >.nav-inner-right {
-            font-size: 2.25rem;
+            font-size: 1.75rem;
             position: relative;
             bottom: 2px; // 修正 baseline 問題
 
