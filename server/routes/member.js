@@ -140,6 +140,7 @@ router
         // 用query方法查詢
         const sql = 'SELECT * FROM `member` WHERE account = ?';
         const [q1] = await db.query(sql, [req.body.account]);
+        // console.log(q1);
         if (q1.length > 0) {
             output.code = 405;
             output.error = '會員帳戶已存在';
@@ -154,21 +155,21 @@ router
             return res.json(output);
         }
 
-        if (!output.success) {
-            output.code = 407;
-            output.error = '註冊資料有誤';
-        } else {
-            const sql3 =
-                'INSERT INTO `member`(`account`, `email`, `password`, `create_at`) VALUES (?,?,?,Now())';
-            const salt = bcryptjs.genSaltSync(10);
-            const hash = await bcryptjs.hash(req.body.password, salt);
-            // 用execute方法執行新增資料
-            const [q3] = await db.execute(sql3, [
-                req.body.account,
-                req.body.email,
-                hash,
-            ]);
-        }
+        console.log(req.body.account, req.body.email, req.body.password);
+        const sql3 =
+            'INSERT INTO `member`(`account`, `email`, `password`, `create_at`) VALUES (?,?,?,Now())';
+        const salt = bcryptjs.genSaltSync(10);
+        const hash = await bcryptjs.hash(req.body.password, salt);
+        // 用execute方法執行新增資料
+        const [q3] = await db.execute(sql3, [
+            req.body.account,
+            req.body.email,
+            hash,
+        ]);
+
+        output.success = true;
+        output.error = '註冊成功';
+
         res.json(output);
     });
 
