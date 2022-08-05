@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import BodyData from './BodyData';
 import FaceData from './FaceData';
 import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
+import { Avatar_Update } from '../../../../config/ajax-path';
+import axios from 'axios';
 //import Bodytry from "../../../images/avatar/hereafter-imgs/body-M.png";
 
 function CenterPart(props) {
@@ -68,8 +70,8 @@ function CenterPart(props) {
                 const link = document.createElement('a');
                 link.download = 'my-image-name.png';
                 link.href = dataUrl;
-                orderData.img = 'dataUrl(假的)';
-                link.click();
+                orderData.img = dataUrl;
+                //link.click();
             })
             .catch((err) => {
                 console.log(err);
@@ -77,6 +79,8 @@ function CenterPart(props) {
 
         console.log(orderData.img);
         console.log(orderData);
+        const r = await axios.post(Avatar_Update, orderData);
+        console.log(r.data);
     }, [ref]);
 
     const Center = styled.div`
@@ -92,8 +96,8 @@ function CenterPart(props) {
         border: ${theme.bcAvatarFrame} 3px solid;
         height: 310px;
         width: 307px;
-        top: 22%;
-        left: 15.5%;
+        top: 23%;
+        left: 15.7%;
     `;
     const BGCircle = styled.div`
         position: absolute;
@@ -101,7 +105,7 @@ function CenterPart(props) {
         border-radius: 50%;
         height: 385px;
         width: 385px;
-        top: 5%;
+        top: 10%;
         left: 7%;
     `;
     //*MING:Body區
@@ -593,6 +597,8 @@ function CenterPart(props) {
     return (
         <>
             <Center>
+                <BGSquare></BGSquare>
+                <BGCircle></BGCircle>
                 <div
                     ref={ref}
                     className="pic text-center mb-4"
@@ -604,9 +610,6 @@ function CenterPart(props) {
                         opacity: `${controlChange ? '0.3' : '1'}`,
                     }}
                 >
-                    <BGSquare></BGSquare>
-                    <BGCircle></BGCircle>
-
                     <HairBack></HairBack>
                     <Ear></Ear>
                     <TopEar></TopEar>
