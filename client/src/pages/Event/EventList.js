@@ -5,15 +5,21 @@ import { Event_List_GET } from '../../config/ajax-path';
 // scss
 import './_new_eventlist.scss';
 import './_xuan_styles.scss';
+import filter_star from './imgs/filter-star.svg';
+import delete_cross from './imgs/delete-cross.svg';
 
 // 改為資料夾方式中的index.js
 import FilterBar from './components/FilterBar';
 import ProductList from './components/ProductList';
 import SearchBar from './components/SearchBar';
 import SortBar from './components/SortBar';
+import TypeCheckbox from './components/TypeCheckBox';
 
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
+
+// Loading小動畫
+import LoadingLogo from '../../components/LoadingLogo.jsx';
 
 function EventList() {
     // 活動用的資料
@@ -27,8 +33,11 @@ function EventList() {
 
     // 活動種類 -> select多選
     const [tags, setTags] = useState([]);
-
     const tagTypes = ['環境', '動保', '長照', '兒少', '身心障礙', '其他'];
+
+    // 活動形式 -> select多選
+    const [howTags, setHowTags] = useState([]);
+    const howtagsTypes = ['志工', '贊助'];
 
     // 地區種類 -> select多選
     const [areas, setAreas] = useState([]);
@@ -119,6 +128,7 @@ function EventList() {
         return newEvent;
     };
 
+    // 處理活動種類
     const handleTags = (eventRaw, tags) => {
         let newEvent = [...eventRaw];
 
@@ -134,6 +144,34 @@ function EventList() {
                 for (let i = 0; i < tags.length; i++) {
                     // includes -> Array api
                     if (event.name.includes(tags[i])) {
+                        isFound = true; // 找到設為true
+                        break; // 找到一個就可以，中斷迴圈
+                    }
+                }
+
+                return isFound;
+            });
+        }
+
+        return newEvent;
+    };
+
+    // 處理活動形式
+    const handleHowTags = (eventRaw, howTags) => {
+        let newEvent = [...eventRaw];
+
+        // 處理勾選標記
+        if (howTags.length > 0) {
+            newEvent = [...newEvent].filter((event) => {
+                let isFound = false;
+
+                // 原本資料裡的tags字串轉為陣列
+                // const eventTags = event.name.split('')
+
+                // 用目前使用者勾選的標籤用迴圈找，有找到就回傳true
+                for (let i = 0; i < howTags.length; i++) {
+                    // includes -> Array api
+                    if (event.program_type.includes(howTags[i])) {
                         isFound = true; // 找到設為true
                         break; // 找到一個就可以，中斷迴圈
                     }
@@ -218,13 +256,24 @@ function EventList() {
 
         // 處理勾選標記
         newEvent = handleTags(newEvent, tags);
+        newEvent = handleHowTags(newEvent, howTags);
         newEvent = handleAreas(newEvent, areas);
 
         // 處理價格區間選項
         newEvent = handlePriceRange(newEvent, priceRange);
 
         setDisplayEvent(newEvent);
-    }, [searchWord, eventRaw, sortBy, tags, areas, priceRange]);
+    }, [searchWord, eventRaw, sortBy, tags, howTags, areas, priceRange]);
+
+    const handleCheckedType = (e) => {
+        const value = e.target.value;
+        if (!howTags.includes(value)) return setHowTags([...howTags, value]);
+
+        if (howTags.includes(value)) {
+            const newHowTags = howTags.filter((v) => v !== value);
+            setHowTags(newHowTags);
+        }
+    };
 
     // bootstrap 的spinner
     const spinner = (
@@ -237,6 +286,8 @@ function EventList() {
         </>
     );
 
+    const [filterShow, setFilterShow] = useState('xuan-click-noshow');
+
     // 真正要呈現的資料
     return (
         <>
@@ -244,33 +295,109 @@ function EventList() {
                 <div className="row">
                     {/* 篩選欄位 */}
                     <div className="xuan-col-2 event-selector">
-                        <SearchBar
-                            searchWord={searchWord}
-                            setSearchWord={setSearchWord}
-                        />
+                        <div className="xuan-desk-searchbar">
+                            {/* 桌機版有的search bar */}
+                            <SearchBar
+                                searchWord={searchWord}
+                                setSearchWord={setSearchWord}
+                            />
+                        </div>
 
                         <SortBar sortBy={sortBy} setSortBy={setSortBy} />
 
-                        <FilterBar
-                            // price radio
-                            priceRangeTypes={priceRangeTypes}
-                            priceRange={priceRange}
-                            setPriceRange={setPriceRange}
-                            // type select
-                            tagTypes={tagTypes}
-                            tags={tags}
-                            setTags={setTags}
-                            // area select
-                            areaTypes={areaTypes}
-                            areas={areas}
-                            setAreas={setAreas}
-                        />
+
+                        
+                        {/* TODO: 方案選擇 */}
+                        <h4 className="xuan-event-type">方案選擇</h4>
+                        <div className='xuan-event-type-select'>
+                            {howtagsTypes.map((value, i) => (
+                                <TypeCheckbox
+                                    value={value}
+                                    key={i}
+                                    howTags={howTags}
+                                    handleChecked={handleCheckedType}
+                                />
+                            ))}
+                        </div>
+
+                        {/* 這一包手機版在，桌機版消失 */}
+
+                        <div className={filterShow}>
+                            {/* 關掉的叉叉 */}
+                            <div
+                                onClick={() => {
+                                    setFilterShow('xuan-click-noshow');
+                                }}
+                            >
+                                <img src={delete_cross} alt="" />
+                            </div>
+
+                            <div>
+                                <p className="xuan-title">找活動</p>
+                            </div>
+
+                            <SearchBar
+                                searchWord={searchWord}
+                                setSearchWord={setSearchWord}
+                            />
+
+                            <FilterBar
+                                // price radio
+                                priceRangeTypes={priceRangeTypes}
+                                priceRange={priceRange}
+                                setPriceRange={setPriceRange}
+                                // type select
+                                tagTypes={tagTypes}
+                                tags={tags}
+                                setTags={setTags}
+                                // area select
+                                areaTypes={areaTypes}
+                                areas={areas}
+                                setAreas={setAreas}
+                                // 活動形式 select
+                                howTags={howTags}
+                                setHowTags={setHowTags}
+                                howtagsTypes={howtagsTypes}
+                            />
+                        </div>
+
+                        {/* 桌機版有的filter bar */}
+                        <div className="xuan-desk-filter-bar">
+                            <FilterBar
+                                // price radio
+                                priceRangeTypes={priceRangeTypes}
+                                priceRange={priceRange}
+                                setPriceRange={setPriceRange}
+                                // type select
+                                tagTypes={tagTypes}
+                                tags={tags}
+                                setTags={setTags}
+                                // area select
+                                areaTypes={areaTypes}
+                                areas={areas}
+                                setAreas={setAreas}
+                                // 活動形式 select
+                                howTags={howTags}
+                                setHowTags={setHowTags}
+                                howtagsTypes={howtagsTypes}
+                            />
+                        </div>
+
+                        <div
+                            className="xuan-event-more xuan-subtitle"
+                            onClick={() => {
+                                setFilterShow('xuan-click-show');
+                            }}
+                        >
+                            更多
+                        </div>
                     </div>
 
                     <SimpleBar className="xuan-eventlist-bar">
                         <div className="xuan-col-10 event">
+                            {/* TODO: 動畫好像會來不及跑出來 */}
                             {isLoading ? (
-                                spinner
+                                <LoadingLogo />
                             ) : (
                                 <ProductList events={displayEvent} />
                             )}

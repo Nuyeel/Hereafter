@@ -7,14 +7,188 @@
 
 .event-container{
   position: relative;
-  padding-top: 80px;
+  // padding-top: 80px;
 
   >.row{
     width: 100%;
     margin: 0px;
 
     .event-selector{
-      display: none;
+      width: 95%;
+      min-height: 30px;
+      // outline: 1px solid red;
+      margin: 15px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+
+        .xuan-sortby{
+          margin-right: 10px;
+        }
+
+
+        .xuan-click-noshow{
+          display: none;
+          visibility: hidden;
+        }
+
+        .xuan-click-show{
+          display: block;
+          visibility:visible;
+          position: fixed;
+          bottom: 0px;
+          width: 100vw;
+          height: 60%;
+          background-color: white;
+          z-index: 1500;
+          border-radius: 30px 30px 0px 0px ;
+          padding-top:30px;
+
+            >div:nth-child(1){
+              z-index: 1600;
+              width: 15%;
+              margin-left: auto;
+            }
+
+            >div:nth-child(2){
+              z-index: 1600;
+              color:#3C3B67;
+              width: 100%;
+              margin: 10px auto;
+              margin-bottom: 20px;
+              text-align: center;
+            }
+
+            .xuan-search-bar {
+              text-align: center;
+              width: 60%;
+              margin: auto;
+              z-index: 1600;
+              margin-bottom: 20px;
+
+              >input{
+                width: 100%;
+                max-width: 340px;
+              }
+
+            }
+
+            // 價格 活動種類 地區
+            .xuan-filter-all-bar{
+              z-index: 1600;
+              width: 95%;
+              margin: auto;
+
+
+                .xuan-reset-filter-bar{
+                  width: 100%;
+                  text-align: center;
+
+                  button{
+                    margin: auto;
+                  }
+                }
+
+             
+
+                .xuan-price-filter{
+                  text-align: center;
+                  margin-bottom: 20px;
+                  width: 100%;
+                  color: #3C3B67;
+
+                  .d-flex{
+                    align-items: center;
+                    justify-content: center;
+                  }
+
+                  .xuan-title{
+                    margin-bottom: 10px;
+                  }
+                }
+
+                .xuan-type-filter{
+                  width: 100%;
+                  color: #3C3B67;
+                  margin-bottom: 20px;
+                
+                  
+                  h4{
+                    text-align: center;
+                  }
+
+                  >.xuan-title{
+                    margin-bottom: 10px;
+                  }
+
+                  .d-flex{
+                    align-items: baseline;
+                    justify-content:center;
+                    margin-right: 3px;
+                  }
+
+                  .xuan-label-title{
+                    font-size: 16px;
+                  }
+
+                  input{
+                    width: 16px;
+                    height: 16px;
+                  }
+
+
+
+                }
+                .xuan-area-filter{
+                  width: 100%;
+                  color: #3C3B67;
+                  margin-bottom: 20px;
+
+                  .xuan-label-title{
+                    font-size: 16px;
+                  }
+
+                  input{
+                    width: 16px;
+                    height: 16px;
+                  }
+
+
+
+                  >.xuan-title{
+                    margin-bottom: 10px;
+                  }
+
+                  h4{
+                    text-align: center;
+                  }
+
+                  .d-flex{
+                    align-items: baseline;
+                    justify-content: center;
+                    margin-right: 3px;
+                  }
+
+
+                }
+
+            }
+
+          
+
+        }
+
+        .xuan-event-more{
+          background-color: white;
+          padding: 7px 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+          border: #9587E1 2px solid;
+          color: #3C3B67;
+          height: 40px;
+        }
     }
 
     .xuan-eventlist-bar{
@@ -28,8 +202,18 @@
     }
 
 
+
+
   }
+  
 }
+
+
+
+
+
+
+
 
 
 .event-card{
@@ -82,6 +266,16 @@
     background-color: rgb(177, 177, 177);
     margin-right: 10px ;
     max-width: 140px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    >img{
+      width: 100%;
+      height: 100%;
+    }
+
   }
 
   .event-title-group{
@@ -119,6 +313,24 @@
 }
 
 
+// 手機版不會出現
+.xuan-desk-searchbar{
+  display: none;
+}
+
+.xuan-desk-filter-bar{
+  display: none;
+}
+
+// 在手機版把活動種類去掉
+.xuan-event-type{
+  display: none;
+}
+
+.xuan-event-type-select{
+  display: none;
+}
+
 
 
 // 桌機版 
@@ -134,12 +346,125 @@
     display: flex;
     margin: auto;
 
+
+
+    // 篩選區
     .event-selector{
-      display: block;
       width: 20%;
+      display: block;
+
+
+      
+      // 請選擇排序
+      .xuan-sortby{
+        // outline: 1px solid red;
+        width: 100%;
+
+        select{
+          width: 100%;
+        }
+      }
+
+      // 「更多」這個按鍵桌機版消失
+      .xuan-event-more{
+        display: none;
+      }
+
+      // 桌機版searchbar出現
+      .xuan-desk-searchbar{
+        display: block;
+        // outline: 1px solid red;
+        padding-top: 15px;
+        margin-bottom: 15px;
+
+        input{
+          width: 100%;
+        }
+      }
+      // 桌機版filterbar出現
+      .xuan-desk-filter-bar{
+        display: block;
+        //outline: 1px solid blue;
+
+          .xuan-title{
+            background-color: white;
+            border-radius: 10px;
+            color: #3C3B67;
+            text-align:left;
+            height: 35px;
+            padding: 7px 10px;
+            display: flex;
+            align-items: center;
+            // justify-content:flex-start;
+            font-size: $fz-subtitle;
+            font-family: $ff-t;
+            font-weight: 500;
+            margin-bottom: 15px;
+          }
+
+
+          // 取消不要flex
+          .xuan-price-filter{
+         
+
+              .d-flex{
+                flex-wrap: wrap;
+                margin-right: 10px;
+                margin-bottom: 10px;
+              }
+
+              .form-check{
+                padding-left: 0px;
+                padding-right: 7px;
+                margin-bottom: 5px;
+              }
+            
+          }
+
+          .xuan-type-filter{
+            .d-flex{
+              flex-wrap: wrap;
+              justify-content: flex-start;
+              margin-bottom: 10px;
+              margin-right: 10px;
+
+              input{
+                width: 14px;
+                height: 14px;
+              }
+
+            }
+          }
+
+          .xuan-area-filter{
+            .d-flex{
+              flex-wrap: wrap;
+              justify-content: flex-start;
+              margin-bottom: 10px;
+              margin-right: 10px;
+
+              input{
+                width: 14px;
+                height: 14px;
+              }
+
+            }
+
+          }
+
+          .xuan-reset-filter-bar{
+            text-align: right;
+          }
+
+
+      }
+      
     }
 
     
+
+
+
     .xuan-eventlist-bar{
       width: 80%;
       display: flex;
@@ -252,18 +577,48 @@
 }
 
 
+// 活動種類
+.xuan-event-type{
+  display: block;
+  background-color: white;
+  border-radius: 10px;
+  color: #3C3B67;
+  text-align: left;
+  height: 35px;
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-family: "Noto Sans TC";
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.xuan-event-type-select{
+  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 10px;
+  margin-bottom: 10px;
+
+  input{
+    width: 14px;
+    height: 14px;
+  }
+
+  .xuan-label-title{
+    margin-right: 7px;
+    margin-bottom: 7px;
+  }
+}
+
+
+.xuan-sortby{
+  margin-bottom: 15px;
+}
+
+
 
 
 
 }
-
-// .xuan-eventlist-bar{
-//   max-height: 450px;
-//   // width: 100%;
-//   outline: 5px solid blue;
-//   display: flex;
-//   // flex-direction: row;
-//   // flex-wrap: wrap;
-//   // align-items: flex-start;
-//   // justify-content: flex-start;
-// }

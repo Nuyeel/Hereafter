@@ -1,7 +1,7 @@
 import React from 'react';
 
-function TagCheckbox(props) {
-    const { value, handleChecked, tags } = props;
+function TypeCheckbox(props) {
+    const { value, handleChecked, howTags } = props;
     return (
         <>
             <div className="checkbox d-flex">
@@ -10,7 +10,7 @@ function TagCheckbox(props) {
                         type="checkbox"
                         className="xuan-input-checkbox icheck"
                         value={value}
-                        checked={tags.includes(value)}
+                        checked={howTags.includes(value)}
                         onChange={handleChecked}
                     />
                     {value}
@@ -20,4 +20,4 @@ function TagCheckbox(props) {
     );
 }
 
-export default TagCheckbox;
+export default TypeCheckbox;
