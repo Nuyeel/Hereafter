@@ -63,7 +63,7 @@ function ForgotPasswordForm() {
         <>
             {authorized ? (
                 <>
-                    <div>已經登入了欸</div>
+                    {/* <div>已經登入了欸</div>
                     <br />
                     <button
                         type="button"
@@ -71,7 +71,7 @@ function ForgotPasswordForm() {
                         onClick={userLogout}
                     >
                         Logout
-                    </button>
+                    </button> */}
                 </>
             ) : (
                 <div

@@ -1,5 +1,5 @@
 import './style.scss';
-import { useState, useContext, useCallback } from 'react';
+import { useState, useContext, useCallback, useEffect } from 'react';
 import InputIME from './components/InputIME';
 import _ from 'lodash';
 import axios from 'axios';
@@ -23,16 +23,21 @@ function RegisterForm(props) {
     const [confirmPasswordFieldType, setConfirmPasswordFieldType] =
         useState('password');
 
+    const [accountPrevious, setAccountPrevious] = useState('');
+    const [emailPrevious, setEmailPrevious] = useState('');
+    const [passwordPrevious, setPasswordPrevious] = useState('');
+    const [confirmPasswordPrevious, setConfirmPasswordPrevious] = useState('');
+
     const themeContext = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleFieldsChange = (e) => {
-        setRegisterData({
-            ...registerData,
-            [e.target.name]: e.target.value,
-        });
-    };
+    // const handleFieldsChange = (e) => {
+    //     setRegisterData({
+    //         ...registerData,
+    //         [e.target.name]: e.target.value,
+    //     });
+    // };
 
     // 欄位處理
     const [accountSearch, setAccountSearch] = useState('');
@@ -145,16 +150,19 @@ function RegisterForm(props) {
     };
 
     // 確認密碼檢查
-    const handleConfirmPasswordSearch = (searchConfirmPasswordWord) => {
+    const handleConfirmPasswordSearch = (
+        passwordPrevious,
+        searchConfirmPasswordWord
+    ) => {
         // 初始狀態設為空
         if (!searchConfirmPasswordWord) {
             setValidationCssClassname4('');
             return;
         }
         console.log(searchConfirmPasswordWord);
-        console.log(registerData.password);
+        console.log(passwordPrevious);
         // // 即時驗證欄位條件
-        if (searchConfirmPasswordWord === registerData.password) {
+        if (searchConfirmPasswordWord === passwordPrevious) {
             setValidationCssClassname4('is-valid');
         } else {
             setValidationCssClassname4('is-invalid');
@@ -171,9 +179,9 @@ function RegisterForm(props) {
         // 可控元件綁用state使用
         setConfirmPasswordSearch(e.target.value);
         // 搜尋用 - trim去除空白，toLowerCase轉小寫英文
-        const searchConfirmPasswordWord = e.target.value.trim().toLowerCase();
+        const searchConfirmPasswordWord = e.target.value.trim();
         // 傳至debounceFn中
-        debounceHandleSearch4(searchConfirmPasswordWord);
+        debounceHandleSearch4(passwordPrevious, searchConfirmPasswordWord);
     };
 
     // 送出表單的部分
@@ -201,6 +209,7 @@ function RegisterForm(props) {
         //     return;
         // }
 
+        console.log(registerData);
 
         fetch(MEMBER_REGISTER, {
             method: 'POST',
@@ -220,10 +229,30 @@ function RegisterForm(props) {
                     });
                     navigate('/login');
                 } else {
-                    alert('註冊失敗');
+                    alert(result.error);
                 }
             });
     };
+
+    useEffect(() => {
+        // console.log({
+        //     account: accountPrevious,
+        //     email: emailPrevious,
+        //     password: passwordPrevious,
+        //     confirmPassword: confirmPasswordPrevious,
+        // });
+        setRegisterData({
+            account: accountPrevious,
+            email: emailPrevious,
+            password: passwordPrevious,
+            confirmPassword: confirmPasswordPrevious,
+        });
+    }, [
+        accountPrevious,
+        emailPrevious,
+        passwordPrevious,
+        confirmPasswordPrevious,
+    ]);
 
     return (
         <>
@@ -258,6 +287,21 @@ function RegisterForm(props) {
                                                         onChange={
                                                             handleAccountChange
                                                         }
+                                                        passwordPrevious={
+                                                            passwordPrevious
+                                                        }
+                                                        setPasswordPrevious={
+                                                            setPasswordPrevious
+                                                        }
+                                                        setAccountPrevious={
+                                                            setAccountPrevious
+                                                        }
+                                                        setEmailPrevious={
+                                                            setEmailPrevious
+                                                        }
+                                                        setConfirmPasswordPrevious={
+                                                            setConfirmPasswordPrevious
+                                                        }
                                                         maxLength="10"
                                                         required
                                                     />
@@ -277,6 +321,21 @@ function RegisterForm(props) {
                                                         onChange={
                                                             handleEmailChange
                                                         }
+                                                        passwordPrevious={
+                                                            passwordPrevious
+                                                        }
+                                                        setPasswordPrevious={
+                                                            setPasswordPrevious
+                                                        }
+                                                        setAccountPrevious={
+                                                            setAccountPrevious
+                                                        }
+                                                        setEmailPrevious={
+                                                            setEmailPrevious
+                                                        }
+                                                        setConfirmPasswordPrevious={
+                                                            setConfirmPasswordPrevious
+                                                        }
                                                         required
                                                     />
                                                 </div>
@@ -294,6 +353,21 @@ function RegisterForm(props) {
                                                         placeholder="英文大小寫及數字至少七字"
                                                         onChange={
                                                             handlePasswordChange
+                                                        }
+                                                        passwordPrevious={
+                                                            passwordPrevious
+                                                        }
+                                                        setPasswordPrevious={
+                                                            setPasswordPrevious
+                                                        }
+                                                        setAccountPrevious={
+                                                            setAccountPrevious
+                                                        }
+                                                        setEmailPrevious={
+                                                            setEmailPrevious
+                                                        }
+                                                        setConfirmPasswordPrevious={
+                                                            setConfirmPasswordPrevious
                                                         }
                                                         required
                                                     />
@@ -314,6 +388,21 @@ function RegisterForm(props) {
                                                         placeholder="請再輸入一次前一欄的密碼"
                                                         onChange={
                                                             handleConfirmPasswordChange
+                                                        }
+                                                        passwordPrevious={
+                                                            passwordPrevious
+                                                        }
+                                                        setPasswordPrevious={
+                                                            setPasswordPrevious
+                                                        }
+                                                        setAccountPrevious={
+                                                            setAccountPrevious
+                                                        }
+                                                        setEmailPrevious={
+                                                            setEmailPrevious
+                                                        }
+                                                        setConfirmPasswordPrevious={
+                                                            setConfirmPasswordPrevious
                                                         }
                                                         required
                                                     />
