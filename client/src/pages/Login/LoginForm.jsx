@@ -1,5 +1,4 @@
 import './style.scss';
-import Swal from 'sweetalert2';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
@@ -55,7 +54,7 @@ function LoginForm(props) {
                     });
                     navigate('/memberprofile');
                 } else {
-                    Swal.fire('您輸入的帳戶或密碼有誤');
+                    alert('帳密錯誤');
                 }
             });
     };

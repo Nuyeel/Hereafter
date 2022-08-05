@@ -30,5 +30,3 @@ export const MEMBER_EVENT_ORDER = `${SERVER}/api/member/profile-event-order`;
 export const Event_List_GET = `${SERVER}/events `;
 // 活動購物車(增加商品)
 export const Event_Cart_ADD_POST = `${SERVER}/eventcarts/addcart `;
-
-export const Avatar_Update = `${SERVER}/avatar/update`;

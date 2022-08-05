@@ -45,7 +45,6 @@ const placeRouter = require(`${__dirname}/routes/place`);
 const rebornRouter = require(`${__dirname}/routes/reborn-cart`);
 const eventsRouter = require(`${__dirname}/routes/events`);
 const eventcartsRouter = require(`${__dirname}/routes/eventcarts`);
-const avatarRouter = require(`${__dirname}/routes/avatar`);
 
 // 設定路由比對時重視大小寫
 app.set('case sensitive routing', true);
@@ -176,9 +175,6 @@ app.use('/api/place', placeRouter);
 // 轉生購物車
 app.use('/api/reborn-cart', rebornRouter);
 
-//來生形象更新
-app.use('/avatar', avatarRouter);
-
 // 靜態路由 (Shinder: 最好不要超過三個 效能會不好)
 // 將 '/public' 簡寫為 '/'
 // 下行等同於 app.use('/', express.static(`${__dirname}/public`));
@@ -189,11 +185,6 @@ app.use('/avatar', avatarRouter);
 app.use(
     '/uploads/images/share',
     express.static(`${__dirname}/public/uploads/images/share`)
-);
-
-app.use(
-    '/uploads/images/avatar',
-    express.static(`${__dirname}/public/uploads/images/avatar`)
 );
 
 // catch 404 and forward to error handler

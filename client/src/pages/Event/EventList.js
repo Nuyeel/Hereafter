@@ -3,17 +3,15 @@ import axios from 'axios';
 import { Event_List_GET } from '../../config/ajax-path';
 
 // scss
-import './_new_eventlist.scss';
+import './_eventlist.scss';
 import './_xuan_styles.scss';
+
 
 // 改為資料夾方式中的index.js
 import FilterBar from './components/FilterBar';
 import ProductList from './components/ProductList';
 import SearchBar from './components/SearchBar';
 import SortBar from './components/SortBar';
-
-import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.min.css';
 
 function EventList() {
     // 活動用的資料
@@ -72,6 +70,7 @@ function EventList() {
         // 最後設定到狀態中
         fetchEvent();
     }, []);
+
 
     //搜尋功能 -> 文字篩選
     const handleSearch = (eventRaw, searchWord) => {
@@ -243,7 +242,7 @@ function EventList() {
             <div className="event-container">
                 <div className="row">
                     {/* 篩選欄位 */}
-                    <div className="xuan-col-2 event-selector">
+                    <div className="col col-2 event-selector">
                         <SearchBar
                             searchWord={searchWord}
                             setSearchWord={setSearchWord}
@@ -267,16 +266,15 @@ function EventList() {
                         />
                     </div>
 
-                    <SimpleBar className="xuan-eventlist-bar">
-                        <div className="xuan-col-10 event">
-                            {isLoading ? (
-                                spinner
-                            ) : (
-                                <ProductList events={displayEvent} />
-                            )}
-                        </div>
-                    </SimpleBar>
+                    <div className="col col-10 event">
+                        {isLoading ? (
+                            spinner
+                        ) : (
+                            <ProductList events={displayEvent} />
+                        )}
+                    </div>
                 </div>
+
             </div>
         </>
     );

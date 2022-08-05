@@ -1,17 +1,8 @@
 import { useRef, useState, forwardRef } from 'react';
 
 function InputIME(props, ref) {
-    const {
-        onChange,
-        value,
-        passwordPrevious,
-        setAccountPrevious,
-        setEmailPrevious,
-        setPasswordPrevious,
-        setConfirmPasswordPrevious,
-        ...otherProps
-    } = props;
-    // console.log(otherProps);
+    const { onChange, value, ...otherProps } = props;
+    console.log(otherProps);
 
     // log if on composition
     const onComposition = useRef(false);
@@ -19,18 +10,6 @@ function InputIME(props, ref) {
     const [inputValue, setInputValue] = useState('');
 
     const _onChange = (event) => {
-        if (otherProps.name === 'account') {
-            setAccountPrevious(event.target.value);
-        }
-        if (otherProps.name === 'email') {
-            setEmailPrevious(event.target.value);
-        }
-        if (otherProps.name === 'password') {
-            setPasswordPrevious(event.target.value);
-        }
-        if (otherProps.name === 'confirmPassword') {
-            setConfirmPasswordPrevious(event.target.value);
-        }
         setInputValue(event.target.value);
 
         // IME method start

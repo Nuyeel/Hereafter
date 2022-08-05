@@ -58,7 +58,7 @@ function MemberProfileReviseForm() {
         <>
             {authorized ? (
                 <>
-                    {/* <div>已經登入了欸</div>
+                    <div>已經登入了欸</div>
                     <br />
                     <button
                         type="button"
@@ -67,7 +67,7 @@ function MemberProfileReviseForm() {
                         to="/login"
                     >
                         Logout
-                    </button> */}
+                    </button>
                     <div className="container">
                         <div className="row">
                             <div className="col">

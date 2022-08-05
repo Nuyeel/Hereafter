@@ -49,8 +49,7 @@ function Nav(props) {
     // Redux(活動購物車數字)
     const count = useSelector((state) => state.counter.value);
     // 會員登入登出驗證(auth)
-    const { authorized, sid, account, token, userLogout } =
-        useContext(AuthContext);
+    const { authorized, sid, account, token } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchEventCartNum = async () => {
@@ -164,31 +163,6 @@ function Nav(props) {
                             交流分享
                         </h2>
                         <h4 className="subtitle">介紹文字放這邊</h4>
-                    </div>
-
-                    <div className="nav_lightbox_list">
-                        {authorized ? (
-                            <>
-                                <button
-                                    type="button"
-                                    className="btn btn-primary"
-                                    onClick={userLogout}
-                                >
-                                    登出
-                                </button>
-                            </>
-                        ) : (
-                            <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick={() => {
-                                    navigate('/login', { replace: true });
-                                    setLightBox('nav_lightbox_hidden');
-                                }}
-                            >
-                                登入
-                            </button>
-                        )}
                     </div>
                 </div>
             </div>
