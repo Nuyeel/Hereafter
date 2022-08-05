@@ -1,4 +1,5 @@
 import './style.scss';
+import Swal from 'sweetalert2';
 import { useState, useContext, useCallback, useEffect } from 'react';
 import InputIME from './components/InputIME';
 import _ from 'lodash';
@@ -229,7 +230,7 @@ function RegisterForm(props) {
                     });
                     navigate('/login');
                 } else {
-                    alert(result.error);
+                    Swal.fire(result.error);
                 }
             });
     };
