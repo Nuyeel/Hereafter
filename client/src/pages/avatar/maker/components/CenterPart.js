@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import BodyData from './BodyData';
 import FaceData from './FaceData';
 import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
+import { Avatar_Update } from '../../../../config/ajax-path';
+import axios from 'axios';
 //import Bodytry from "../../../images/avatar/hereafter-imgs/body-M.png";
 
 function CenterPart(props) {
@@ -17,6 +19,20 @@ function CenterPart(props) {
     } = props;
     const ref = useRef(null);
     const { theme } = useContext(ThemeContext);
+    const avatarTotalPrice =
+        BodyData['hand'][conbination['body']['hand']]['price'] +
+        (conbination['body']['special']
+            ? BodyData['special'][conbination['body']['special']]['price']
+            : BodyData['foot'][conbination['body']['foot']]['price']) +
+        BodyData['tale'][conbination['body']['tale']]['price'] +
+        FaceData['eye'][conbination['face']['eye']]['price'] +
+        FaceData['nose'][conbination['face']['nose']]['price'] +
+        FaceData['lip'][conbination['face']['lip']]['price'] +
+        FaceData['hairFront'][conbination['face']['hairFront']]['price'] +
+        FaceData['hairBack'][conbination['face']['hairBack']]['price'] +
+        (conbination['face']['topEar']
+            ? FaceData['topEar'][conbination['face']['topEar']]['price']
+            : FaceData['ear'][conbination['face']['ear']]['price']);
     const conbinationText = {
         hand: BodyData['hand'][conbination['body']['hand']]['name'],
         foot: conbination['body']['special']
@@ -54,6 +70,7 @@ function CenterPart(props) {
     const orderData = { conbination: { ...conbination } };
     orderData.id = 36;
     orderData.conbinationText = conbinationText;
+    orderData.totalPrice = avatarTotalPrice;
     const onButtonClick = useCallback(async () => {
         if (ref.current === null) {
             return;
@@ -68,8 +85,8 @@ function CenterPart(props) {
                 const link = document.createElement('a');
                 link.download = 'my-image-name.png';
                 link.href = dataUrl;
-                orderData.img = 'dataUrl(假的)';
-                link.click();
+                orderData.img = dataUrl;
+                //link.click();
             })
             .catch((err) => {
                 console.log(err);
@@ -77,6 +94,8 @@ function CenterPart(props) {
 
         console.log(orderData.img);
         console.log(orderData);
+        const r = await axios.post(Avatar_Update, orderData);
+        console.log(r.data);
     }, [ref]);
 
     const Center = styled.div`
@@ -92,8 +111,8 @@ function CenterPart(props) {
         border: ${theme.bcAvatarFrame} 3px solid;
         height: 310px;
         width: 307px;
-        top: 22%;
-        left: 15.5%;
+        top: 23%;
+        left: 15.7%;
     `;
     const BGCircle = styled.div`
         position: absolute;
@@ -101,7 +120,7 @@ function CenterPart(props) {
         border-radius: 50%;
         height: 385px;
         width: 385px;
-        top: 5%;
+        top: 10%;
         left: 7%;
     `;
     //*MING:Body區
@@ -593,6 +612,8 @@ function CenterPart(props) {
     return (
         <>
             <Center>
+                <BGSquare></BGSquare>
+                <BGCircle></BGCircle>
                 <div
                     ref={ref}
                     className="pic text-center mb-4"
@@ -604,9 +625,6 @@ function CenterPart(props) {
                         opacity: `${controlChange ? '0.3' : '1'}`,
                     }}
                 >
-                    <BGSquare></BGSquare>
-                    <BGCircle></BGCircle>
-
                     <HairBack></HairBack>
                     <Ear></Ear>
                     <TopEar></TopEar>
@@ -683,7 +701,7 @@ function CenterPart(props) {
                     ></BodyControl>
                 </div>
                 <Info>
-                    <p>總計:3000</p>
+                    <p>總計:{avatarTotalPrice}</p>
                 </Info>
                 <SaveBtn>
                     <div onClick={onButtonClick}>
