@@ -155,6 +155,9 @@ router
         }
 
         if (!output.success) {
+            output.code = 407;
+            output.error = '註冊資料有誤';
+        } else {
             const sql3 =
                 'INSERT INTO `member`(`account`, `email`, `password`, `create_at`) VALUES (?,?,?,Now())';
             const salt = bcryptjs.genSaltSync(10);
@@ -165,9 +168,6 @@ router
                 req.body.email,
                 hash,
             ]);
-        } else {
-            output.code = 407;
-            output.error = '註冊資料有誤';
         }
         res.json(output);
     });
