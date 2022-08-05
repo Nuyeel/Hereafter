@@ -130,6 +130,7 @@ app.use((req, res, next) => {
             console.log(res.locals.loginUser);
         } catch (ex) {
             console.log('狀態：瀏覽者並未登入');
+            console.log(res.locals.loginUser);
         }
         // console.log(res.locals.loginUser);
     }

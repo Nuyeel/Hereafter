@@ -53,19 +53,22 @@ function TestCard(props) {
         },
     ];
     const [gooddeed, setGooddeed] = useState({
-        Q1: '',
-        Q2: '',
-        Q3: '',
-        Q4: '',
-        Q5: '',
-        Q6: '',
-        Q7: '',
-        Q8: '',
-        Q9: '',
-        Q10: '',
+        1: 'meme',
+        2: '',
+        3: '',
+        4: '',
+        5: '',
+        6: '',
+        7: '',
+        8: '',
+        9: '',
+        10: '',
     });
+
+    // const [testCard, setTestCard] = useState(-1); //預設為沒有卡片
     const handleChange = (e) => {
         console.log(e.target.type, e.target.name, e.target.value);
+
         //https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%90%8D
         setGooddeed({ ...gooddeed, [e.target.name]: e.target.value });
     };
@@ -87,17 +90,19 @@ function TestCard(props) {
                         <div className="yun-opts">
                             {opt.map((v2, i2) => {
                                 console.log(`Q${i}`);
-                                let inputName = `Q${i}`;
+                                // let inputName = `Q${i}`;
+
                                 return (
                                     <div className="yun-radio-form">
+                                        <h2>{gooddeed[i + 1]} hello</h2>
                                         <input
-                                            name={inputName}
+                                            name={i}
                                             type="radio"
                                             value={v2}
-                                            checked={gooddeed === v2}
+                                            checked={gooddeed[i + 1] === v2}
                                             onChange={handleChange}
                                         />
-                                        <label>{v2}</label>
+                                        <label for={v2}>{v2}</label>
                                     </div>
                                 );
                             })}
