@@ -19,6 +19,20 @@ function CenterPart(props) {
     } = props;
     const ref = useRef(null);
     const { theme } = useContext(ThemeContext);
+    const avatarTotalPrice =
+        BodyData['hand'][conbination['body']['hand']]['price'] +
+        (conbination['body']['special']
+            ? BodyData['special'][conbination['body']['special']]['price']
+            : BodyData['foot'][conbination['body']['foot']]['price']) +
+        BodyData['tale'][conbination['body']['tale']]['price'] +
+        FaceData['eye'][conbination['face']['eye']]['price'] +
+        FaceData['nose'][conbination['face']['nose']]['price'] +
+        FaceData['lip'][conbination['face']['lip']]['price'] +
+        FaceData['hairFront'][conbination['face']['hairFront']]['price'] +
+        FaceData['hairBack'][conbination['face']['hairBack']]['price'] +
+        (conbination['face']['topEar']
+            ? FaceData['topEar'][conbination['face']['topEar']]['price']
+            : FaceData['ear'][conbination['face']['ear']]['price']);
     const conbinationText = {
         hand: BodyData['hand'][conbination['body']['hand']]['name'],
         foot: conbination['body']['special']
@@ -56,6 +70,7 @@ function CenterPart(props) {
     const orderData = { conbination: { ...conbination } };
     orderData.id = 36;
     orderData.conbinationText = conbinationText;
+    orderData.totalPrice = avatarTotalPrice;
     const onButtonClick = useCallback(async () => {
         if (ref.current === null) {
             return;
@@ -686,7 +701,7 @@ function CenterPart(props) {
                     ></BodyControl>
                 </div>
                 <Info>
-                    <p>總計:3000</p>
+                    <p>總計:{avatarTotalPrice}</p>
                 </Info>
                 <SaveBtn>
                     <div onClick={onButtonClick}>
