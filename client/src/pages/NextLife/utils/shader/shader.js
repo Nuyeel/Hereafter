@@ -18,16 +18,16 @@ export const fragmentShader0 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y + circ_time));
             gl_FragColor = mix(color0, color1, color1.a);
         }
     `;
@@ -39,16 +39,16 @@ export const fragmentShader1 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
 
         varying vec2 vUv;
 
         uniform float none_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vUv);
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y - none_time));
+            vec4 color0 = texture2D(textureA, vUv);
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y - none_time));
             gl_FragColor = mix(color0, color1, color1.a);
         }
     `;
@@ -60,18 +60,18 @@ export const fragmentShader2 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x - circ_time, vUv.y));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y - circ_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x + circ_time, vUv.y));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x + circ_time, vUv.y));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -83,18 +83,18 @@ export const fragmentShader3 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x - circ_time, vUv.y));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y - circ_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x, vUv.y + circ_time));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -106,18 +106,18 @@ export const fragmentShader4 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x - circ_time, vUv.y + circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x + circ_time, vUv.y + circ_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x - circ_time, vUv.y - circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x - circ_time, vUv.y + circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x + circ_time, vUv.y + circ_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x - circ_time, vUv.y - circ_time));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -129,18 +129,18 @@ export const fragmentShader5 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x + circ_time, vUv.y));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x - circ_time, vUv.y));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x + circ_time, vUv.y));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x, vUv.y - circ_time));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -152,8 +152,8 @@ export const fragmentShader6 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
 
         varying vec2 vUv;
 
@@ -163,14 +163,14 @@ export const fragmentShader6 = () => {
 
         void main(void) {         
             if (animate == 1.0) {
-                vec4 color0 = texture2D(textureOne, vec2(vUv.x - circ_time, vUv.y));
-                vec4 color1 = texture2D(textureTwo, vec2(vUv.x + circ_time, vUv.y));
+                vec4 color0 = texture2D(textureA, vec2(vUv.x - circ_time, vUv.y));
+                vec4 color1 = texture2D(textureB, vec2(vUv.x + circ_time, vUv.y));
                 gl_FragColor = mix(color0, color1, color1.a);
             }
             
             if (animate == 2.0) {
-                vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - circ_time));
-                vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y + circ_time));
+                vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - circ_time));
+                vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y + circ_time));
                 gl_FragColor = mix(color0, color1, color1.a);
             }
         }
@@ -183,18 +183,18 @@ export const fragmentShader7 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
         uniform float circ_time;
 
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x + circ_time, vUv.y - circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x - circ_time, vUv.y - circ_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x + circ_time, vUv.y - circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x - circ_time, vUv.y - circ_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x, vUv.y + circ_time));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -206,18 +206,18 @@ export const fragmentShader8 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
         uniform float circ_time;
 
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x + circ_time, vUv.y));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x + circ_time, vUv.y));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x - circ_time, vUv.y));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -229,9 +229,9 @@ export const fragmentShader9 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
@@ -241,16 +241,16 @@ export const fragmentShader9 = () => {
 
         void main(void) {
             if (animate == 1.0) {
-                vec4 color0 = texture2D(textureOne, vUv);
-                vec4 color1 = texture2D(textureTwo, vec2(vUv.x - circ_time, vUv.y + (1.0 - circ_time) * 0.25));
-                vec4 color2 = texture2D(textureThree, vec2(vUv.x - circ_time, vUv.y));
+                vec4 color0 = texture2D(textureA, vUv);
+                vec4 color1 = texture2D(textureB, vec2(vUv.x - circ_time, vUv.y + (1.0 - circ_time) * 0.25));
+                vec4 color2 = texture2D(textureC, vec2(vUv.x - circ_time, vUv.y));
                 gl_FragColor = mix(mix(color0, color1, color1.a),color2, color2.a);
             }
             
             if (animate == 2.0) {
-                vec4 color0 = texture2D(textureOne, vUv);
-                vec4 color1 = texture2D(textureTwo, vec2(vUv.x - circ_time, vUv.y + circ_time * 0.25));
-                vec4 color2 = texture2D(textureThree, vec2(vUv.x - circ_time, vUv.y));
+                vec4 color0 = texture2D(textureA, vUv);
+                vec4 color1 = texture2D(textureB, vec2(vUv.x - circ_time, vUv.y + circ_time * 0.25));
+                vec4 color2 = texture2D(textureC, vec2(vUv.x - circ_time, vUv.y));
                 gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
             }
         }
@@ -263,9 +263,9 @@ export const fragmentShader10 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
@@ -274,9 +274,9 @@ export const fragmentShader10 = () => {
         uniform float power4_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x - power3_time, vUv.y));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x - power4_time, vUv.y));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x + circ_time - 0.25, vUv.y));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x - power3_time, vUv.y));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x - power4_time, vUv.y));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x + circ_time - 0.25, vUv.y));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a * sin(radians(circ_time * 180.0)));
         }
     `;
@@ -288,18 +288,18 @@ export const fragmentShader11 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y + circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x + circ_time, vUv.y));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x + circ_time, vUv.y));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x - circ_time, vUv.y));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -311,9 +311,9 @@ export const fragmentShader12 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
@@ -321,9 +321,9 @@ export const fragmentShader12 = () => {
         uniform float elastic_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y + circ_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x, vUv.y + elastic_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x, vUv.y + elastic_time));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -335,9 +335,9 @@ export const fragmentShader13 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
@@ -345,9 +345,9 @@ export const fragmentShader13 = () => {
         uniform float elastic_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y + circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y - circ_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x, vUv.y + circ_time));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -359,9 +359,9 @@ export const fragmentShader14 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
@@ -370,9 +370,9 @@ export const fragmentShader14 = () => {
         uniform float elastic_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x + power3_time, vUv.y - power3_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x + power4_time, vUv.y - power4_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x - elastic_time, vUv.y + elastic_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x + power3_time, vUv.y - power3_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x + power4_time, vUv.y - power4_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x - elastic_time, vUv.y + elastic_time));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -384,16 +384,16 @@ export const fragmentShader15 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x + circ_time, vUv.y));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x + circ_time, vUv.y));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x - circ_time, vUv.y));
             gl_FragColor = mix(color0, color1, color1.a);
         }
     `;
@@ -405,9 +405,9 @@ export const fragmentShader16 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
@@ -415,9 +415,9 @@ export const fragmentShader16 = () => {
         uniform float power3_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x + power3_time, vUv.y - power3_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x + power2_time, vUv.y - power2_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x + power2_time, vUv.y - power2_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x + power3_time, vUv.y - power3_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x + power2_time, vUv.y - power2_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x + power2_time, vUv.y - power2_time));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -429,9 +429,9 @@ export const fragmentShader17 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
@@ -439,9 +439,9 @@ export const fragmentShader17 = () => {
         uniform float power3_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - power2_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y - power3_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x + power2_time, vUv.y));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - power2_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y - power3_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x + power2_time, vUv.y));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -453,18 +453,18 @@ export const fragmentShader18 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x - circ_time, vUv.y));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x + circ_time, vUv.y));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x + circ_time, vUv.y));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x, vUv.y + circ_time));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -476,18 +476,18 @@ export const fragmentShader19 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vUv);
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x - circ_time, vUv.y));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x + circ_time - 0.25, vUv.y));
+            vec4 color0 = texture2D(textureA, vUv);
+            vec4 color1 = texture2D(textureB, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x + circ_time - 0.25, vUv.y));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a * sin(radians(circ_time * 180.0)));
         }
     `;
@@ -499,16 +499,16 @@ export const fragmentShader20 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x - circ_time * 0.5, vUv.y));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x - circ_time * 0.5, vUv.y));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y + circ_time));
             gl_FragColor = mix(color0, color1, color1.a);
         }
     `;
@@ -520,10 +520,10 @@ export const fragmentShader21 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
-        uniform sampler2D textureFour;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
+        uniform sampler2D textureD;
 
         varying vec2 vUv;
 
@@ -531,13 +531,13 @@ export const fragmentShader21 = () => {
         uniform float circ_in_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x - circ_time, vUv.y + circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x - circ_time, vUv.y - circ_time));
-            vec4 color2 = texture2D(textureThree, vUv);
+            vec4 color0 = texture2D(textureA, vec2(vUv.x - circ_time, vUv.y + circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x - circ_time, vUv.y - circ_time));
+            vec4 color2 = texture2D(textureC, vUv);
             
-            vec4 color3 = texture2D(textureFour, vec2((vUv.x / (1.0 - circ_time) - circ_time/(1.0 - circ_time)/2.0) * circ_in_time + (1.0 - circ_in_time)/2.0, (vUv.y / (1.0 - circ_time) - circ_time/(1.0 - circ_time)/2.0)) * circ_in_time + (1.0 - circ_in_time)/2.0);
+            vec4 color3 = texture2D(textureD, vec2((vUv.x / (1.0 - circ_time) - circ_time/(1.0 - circ_time)/2.0) * circ_in_time + (1.0 - circ_in_time)/2.0, (vUv.y / (1.0 - circ_time) - circ_time/(1.0 - circ_time)/2.0)) * circ_in_time + (1.0 - circ_in_time)/2.0);
             
-            // vec4 color3 = texture2D(textureFour, vec2((vUv.x / (1.0 - circ_time) - circ_time/(1.0 - circ_time)/2.0) * circ_in_time + (1.0 - circ_in_time)/2.0, (vUv.y / (1.0 - circ_time) - circ_time/(1.0 - circ_time)/2.0)) * circ_in_time + (1.0 - circ_in_time)/2.0);
+            // vec4 color3 = texture2D(textureD, vec2((vUv.x / (1.0 - circ_time) - circ_time/(1.0 - circ_time)/2.0) * circ_in_time + (1.0 - circ_in_time)/2.0, (vUv.y / (1.0 - circ_time) - circ_time/(1.0 - circ_time)/2.0)) * circ_in_time + (1.0 - circ_in_time)/2.0);
 
             gl_FragColor = mix(mix(mix(color0, color1, color1.a), color2, color2.a), color3, color3.a);
         }
@@ -550,16 +550,16 @@ export const fragmentShader22 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x - circ_time, vUv.y));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x + circ_time, vUv.y));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x + circ_time, vUv.y));
             gl_FragColor = mix(color0, color1, color1.a);
         }
     `;
@@ -571,16 +571,16 @@ export const fragmentShader23 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x - circ_time, vUv.y + circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x - circ_time, vUv.y - circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x - circ_time, vUv.y + circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x - circ_time, vUv.y - circ_time));
             gl_FragColor = mix(color0, color1, color1.a);
         }
     `;
@@ -592,10 +592,10 @@ export const fragmentShader24 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
-        uniform sampler2D textureFour;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
+        uniform sampler2D textureD;
 
         varying vec2 vUv;
 
@@ -603,11 +603,11 @@ export const fragmentShader24 = () => {
         uniform float elastic_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - power3_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x + power3_time, vUv.y - power3_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x - power3_time, vUv.y - power3_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - power3_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x + power3_time, vUv.y - power3_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x - power3_time, vUv.y - power3_time));
             
-            vec4 color3 = texture2D(textureFour, vec2(vUv.x, vUv.y - elastic_time));
+            vec4 color3 = texture2D(textureD, vec2(vUv.x, vUv.y - elastic_time));
 
             gl_FragColor = mix(mix(mix(color0, color1, color1.a), color2, color2.a), color3, color3.a);
         }
@@ -620,16 +620,16 @@ export const fragmentShader25 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
 
         varying vec2 vUv;
 
         uniform float power3_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - power3_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y + power3_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - power3_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y + power3_time));
             gl_FragColor = mix(color0, color1, color1.a);
         }
     `;
@@ -641,15 +641,15 @@ export const fragmentShader27 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x + circ_time, vUv.y + circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x + circ_time, vUv.y + circ_time));
             gl_FragColor = color0;
         }
     `;
@@ -661,18 +661,18 @@ export const fragmentShader28 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x + circ_time, vUv.y));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x + circ_time, vUv.y));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x - circ_time, vUv.y));
             gl_FragColor = mix(mix(color0, color1, color1.a),color2, color2.a);
         }
     `;
@@ -684,16 +684,16 @@ export const fragmentShader30 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y + circ_time));
             gl_FragColor = mix(color0, color1, color1.a);
         }
     `;
@@ -705,9 +705,9 @@ export const fragmentShader31 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
         
         varying vec2 vUv;
 
@@ -715,9 +715,9 @@ export const fragmentShader31 = () => {
         uniform float power3_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - power3_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y - power2_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x, vUv.y + power3_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - power3_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y - power2_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x, vUv.y + power3_time));
 
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
@@ -730,9 +730,9 @@ export const fragmentShader32 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
         
         varying vec2 vUv;
 
@@ -740,9 +740,9 @@ export const fragmentShader32 = () => {
         uniform float power3_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - power2_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y + power3_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x, vUv.y + power2_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - power2_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y + power3_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x, vUv.y + power2_time));
             gl_FragColor = mix(mix(color0, color1, color1.a), color2, color2.a);
         }
     `;
@@ -754,21 +754,21 @@ export const fragmentShader34 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
-        uniform sampler2D textureFour;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
+        uniform sampler2D textureD;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x + circ_time, vUv.y));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y - circ_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x, vUv.y + circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x + circ_time, vUv.y));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x, vUv.y + circ_time));
             
-            vec4 color3 = texture2D(textureFour, vec2(vUv.x - circ_time, vUv.y));
+            vec4 color3 = texture2D(textureD, vec2(vUv.x - circ_time, vUv.y));
 
             gl_FragColor = mix(mix(mix(color0, color1, color1.a), color2, color2.a), color3, color3.a);
         }
@@ -781,21 +781,21 @@ export const fragmentShader35 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
-        uniform sampler2D textureFour;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
+        uniform sampler2D textureD;
 
         varying vec2 vUv;
 
         uniform float circ_time;
         
         void main(void) {
-            vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - circ_time));
-            vec4 color1 = texture2D(textureTwo, vec2(vUv.x + circ_time, vUv.y - circ_time));
-            vec4 color2 = texture2D(textureThree, vec2(vUv.x + circ_time, vUv.y + circ_time));
+            vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - circ_time));
+            vec4 color1 = texture2D(textureB, vec2(vUv.x + circ_time, vUv.y - circ_time));
+            vec4 color2 = texture2D(textureC, vec2(vUv.x + circ_time, vUv.y + circ_time));
             
-            vec4 color3 = texture2D(textureFour, vec2(vUv.x + circ_time, vUv.y + circ_time));
+            vec4 color3 = texture2D(textureD, vec2(vUv.x + circ_time, vUv.y + circ_time));
 
             gl_FragColor = mix(mix(mix(color0, color1, color1.a), color2, color2.a), color3, color3.a);
         }
@@ -808,9 +808,9 @@ export const fragmentShader37 = () => {
             precision highp float;
         #endif
 
-        uniform sampler2D textureOne;
-        uniform sampler2D textureTwo;
-        uniform sampler2D textureThree;
+        uniform sampler2D textureA;
+        uniform sampler2D textureB;
+        uniform sampler2D textureC;
 
         varying vec2 vUv;
 
@@ -822,16 +822,16 @@ export const fragmentShader37 = () => {
         
         void main(void) {
             if (animate == 1.0) {
-                vec4 color0 = texture2D(textureOne, vec2(vUv.x, vUv.y - elastic_drastic_time));
-                vec4 color1 = texture2D(textureTwo, vec2(vUv.x, vUv.y - elastic_time));
-                vec4 color2 = texture2D(textureThree, vec2(vUv.x, vUv.y - elastic_drastic_time));
+                vec4 color0 = texture2D(textureA, vec2(vUv.x, vUv.y - elastic_drastic_time));
+                vec4 color1 = texture2D(textureB, vec2(vUv.x, vUv.y - elastic_time));
+                vec4 color2 = texture2D(textureC, vec2(vUv.x, vUv.y - elastic_drastic_time));
                 gl_FragColor = mix(mix(color0, color1, color1.a),color2, color2.a);
             }
             
             if (animate == 2.0) {
-                vec4 color0 = texture2D(textureOne, vec2(vUv.x - circ_time, vUv.y));
-                vec4 color1 = texture2D(textureTwo, vec2(vUv.x - circ_time, vUv.y));
-                vec4 color2 = texture2D(textureThree, vec2(vUv.x - circ_time, vUv.y));
+                vec4 color0 = texture2D(textureA, vec2(vUv.x - circ_time, vUv.y));
+                vec4 color1 = texture2D(textureB, vec2(vUv.x - circ_time, vUv.y));
+                vec4 color2 = texture2D(textureC, vec2(vUv.x - circ_time, vUv.y));
                 gl_FragColor = mix(mix(color0, color1, color1.a),color2, color2.a);
             }
         }
