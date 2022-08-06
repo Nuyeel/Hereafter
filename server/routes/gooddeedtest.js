@@ -20,6 +20,9 @@ const db = require(`${__dirname}/../modules/mysql2-connect`);
 // // 進行 bcrypt 加密用
 // const bcryptjs = require('bcryptjs');
 
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+
 // 路由管理
 // 測試: http://localhost:3500/test
 router
