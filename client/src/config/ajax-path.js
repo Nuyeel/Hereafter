@@ -31,4 +31,5 @@ export const Event_List_GET = `${SERVER}/events `;
 // 活動購物車(增加商品)
 export const Event_Cart_ADD_POST = `${SERVER}/eventcarts/addcart `;
 
+export const Showcase_Data = `${SERVER}/avatar/showcase`;
 export const Avatar_Update = `${SERVER}/avatar/update`;
