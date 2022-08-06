@@ -259,154 +259,141 @@ function RegisterForm(props) {
                             className="pb-4 justify-content-center memberBgCard rounded-5"
                             style={{ backgroundColor: theme.memberBgCard }}
                         >
-                            <div className="rounded-5">
-                                <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
-                                    <div>
-                                        <div className="tab-content">
-                                            <form
-                                                name="form1"
-                                                onSubmit={handleSubmit}
+                            <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
+                                <div className="tab-content">
+                                    <form name="form1" onSubmit={handleSubmit}>
+                                        <div className="mb-3 d-flex justify-content-center page-title">
+                                            會員註冊
+                                        </div>
+                                        <br />
+                                        <div className="mb-3 page-field">
+                                            <label
+                                                htmlFor="account"
+                                                className="form-label"
                                             >
-                                                <div className="mb-3 d-flex justify-content-center page-title">
-                                                    會員註冊
-                                                </div>
-                                                <br />
-                                                <div className="mb-3 page-field">
-                                                    <label
-                                                        htmlFor="account"
-                                                        className="form-label"
-                                                    >
-                                                        帳戶名稱
-                                                    </label>
-                                                    <InputIME
-                                                        type="text"
-                                                        className={`form-control ${validationCssClassname}`}
-                                                        name="account"
-                                                        placeholder="例：HappyCats"
-                                                        onChange={
-                                                            handleAccountChange
-                                                        }
-                                                        passwordPrevious={
-                                                            passwordPrevious
-                                                        }
-                                                        setPasswordPrevious={
-                                                            setPasswordPrevious
-                                                        }
-                                                        setAccountPrevious={
-                                                            setAccountPrevious
-                                                        }
-                                                        setEmailPrevious={
-                                                            setEmailPrevious
-                                                        }
-                                                        setConfirmPasswordPrevious={
-                                                            setConfirmPasswordPrevious
-                                                        }
-                                                        maxLength="10"
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="mb-3 page-field">
-                                                    <label
-                                                        htmlFor="email"
-                                                        className="form-label"
-                                                    >
-                                                        電子信箱
-                                                    </label>
-                                                    <InputIME
-                                                        type="email"
-                                                        className={`form-control ${validationCssClassname2}`}
-                                                        name="email"
-                                                        placeholder="請輸入一個有效的電子信箱"
-                                                        onChange={
-                                                            handleEmailChange
-                                                        }
-                                                        passwordPrevious={
-                                                            passwordPrevious
-                                                        }
-                                                        setPasswordPrevious={
-                                                            setPasswordPrevious
-                                                        }
-                                                        setAccountPrevious={
-                                                            setAccountPrevious
-                                                        }
-                                                        setEmailPrevious={
-                                                            setEmailPrevious
-                                                        }
-                                                        setConfirmPasswordPrevious={
-                                                            setConfirmPasswordPrevious
-                                                        }
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="mb-3 page-field">
-                                                    <label
-                                                        htmlFor="password"
-                                                        className="form-label"
-                                                    >
-                                                        登入密碼
-                                                    </label>
-                                                    <InputIME
-                                                        type={passwordFieldType}
-                                                        className={`form-control ${validationCssClassname3}`}
-                                                        name="password"
-                                                        placeholder="英文大小寫及數字至少七字"
-                                                        onChange={
-                                                            handlePasswordChange
-                                                        }
-                                                        passwordPrevious={
-                                                            passwordPrevious
-                                                        }
-                                                        setPasswordPrevious={
-                                                            setPasswordPrevious
-                                                        }
-                                                        setAccountPrevious={
-                                                            setAccountPrevious
-                                                        }
-                                                        setEmailPrevious={
-                                                            setEmailPrevious
-                                                        }
-                                                        setConfirmPasswordPrevious={
-                                                            setConfirmPasswordPrevious
-                                                        }
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="mb-3 page-field">
-                                                    <label
-                                                        htmlFor="confirmPassword"
-                                                        className="form-label"
-                                                    >
-                                                        重新輸入密碼
-                                                    </label>
-                                                    <InputIME
-                                                        type={
-                                                            confirmPasswordFieldType
-                                                        }
-                                                        className={`form-control ${validationCssClassname4}`}
-                                                        name="confirmPassword"
-                                                        placeholder="請再輸入一次前一欄的密碼"
-                                                        onChange={
-                                                            handleConfirmPasswordChange
-                                                        }
-                                                        passwordPrevious={
-                                                            passwordPrevious
-                                                        }
-                                                        setPasswordPrevious={
-                                                            setPasswordPrevious
-                                                        }
-                                                        setAccountPrevious={
-                                                            setAccountPrevious
-                                                        }
-                                                        setEmailPrevious={
-                                                            setEmailPrevious
-                                                        }
-                                                        setConfirmPasswordPrevious={
-                                                            setConfirmPasswordPrevious
-                                                        }
-                                                        required
-                                                    />
-                                                </div>
-                                                {/* 
+                                                帳戶名稱
+                                            </label>
+                                            <InputIME
+                                                type="text"
+                                                className={`form-control ${validationCssClassname}`}
+                                                name="account"
+                                                placeholder="例：HappyCats"
+                                                onChange={handleAccountChange}
+                                                passwordPrevious={
+                                                    passwordPrevious
+                                                }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
+                                                setAccountPrevious={
+                                                    setAccountPrevious
+                                                }
+                                                setEmailPrevious={
+                                                    setEmailPrevious
+                                                }
+                                                setConfirmPasswordPrevious={
+                                                    setConfirmPasswordPrevious
+                                                }
+                                                maxLength="10"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="mb-3 page-field">
+                                            <label
+                                                htmlFor="email"
+                                                className="form-label"
+                                            >
+                                                電子信箱
+                                            </label>
+                                            <InputIME
+                                                type="email"
+                                                className={`form-control ${validationCssClassname2}`}
+                                                name="email"
+                                                placeholder="請輸入一個有效的電子信箱"
+                                                onChange={handleEmailChange}
+                                                passwordPrevious={
+                                                    passwordPrevious
+                                                }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
+                                                setAccountPrevious={
+                                                    setAccountPrevious
+                                                }
+                                                setEmailPrevious={
+                                                    setEmailPrevious
+                                                }
+                                                setConfirmPasswordPrevious={
+                                                    setConfirmPasswordPrevious
+                                                }
+                                                required
+                                            />
+                                        </div>
+                                        <div className="mb-3 page-field">
+                                            <label
+                                                htmlFor="password"
+                                                className="form-label"
+                                            >
+                                                登入密碼
+                                            </label>
+                                            <InputIME
+                                                type={passwordFieldType}
+                                                className={`form-control ${validationCssClassname3}`}
+                                                name="password"
+                                                placeholder="英文大小寫及數字至少七字"
+                                                onChange={handlePasswordChange}
+                                                passwordPrevious={
+                                                    passwordPrevious
+                                                }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
+                                                setAccountPrevious={
+                                                    setAccountPrevious
+                                                }
+                                                setEmailPrevious={
+                                                    setEmailPrevious
+                                                }
+                                                setConfirmPasswordPrevious={
+                                                    setConfirmPasswordPrevious
+                                                }
+                                                required
+                                            />
+                                        </div>
+                                        <div className="mb-3 page-field">
+                                            <label
+                                                htmlFor="confirmPassword"
+                                                className="form-label"
+                                            >
+                                                重新輸入密碼
+                                            </label>
+                                            <InputIME
+                                                type={confirmPasswordFieldType}
+                                                className={`form-control ${validationCssClassname4}`}
+                                                name="confirmPassword"
+                                                placeholder="請再輸入一次前一欄的密碼"
+                                                onChange={
+                                                    handleConfirmPasswordChange
+                                                }
+                                                passwordPrevious={
+                                                    passwordPrevious
+                                                }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
+                                                setAccountPrevious={
+                                                    setAccountPrevious
+                                                }
+                                                setEmailPrevious={
+                                                    setEmailPrevious
+                                                }
+                                                setConfirmPasswordPrevious={
+                                                    setConfirmPasswordPrevious
+                                                }
+                                                required
+                                            />
+                                        </div>
+                                        {/* 
                                                     <div className="text-center mb-3">
                                                         <p>以其他方式註冊：</p>
                                                         <button
@@ -430,28 +417,23 @@ function RegisterForm(props) {
                                                     </div> 
                                                     */}
 
-                                                <div className="d-flex justify-content-center ">
-                                                    <button
-                                                        type="submit"
-                                                        className="btn btn-l btn-pri btn-outline-light "
-                                                    >
-                                                        確認註冊
-                                                    </button>
-                                                </div>
-                                                <br />
-                                                <div className="d-flex justify-content-center ">
-                                                    <Link
-                                                        className="link"
-                                                        to="/login"
-                                                    >
-                                                        已註冊，直接登入
-                                                    </Link>
-                                                </div>
-                                            </form>
+                                        <div className="d-flex justify-content-center ">
+                                            <button
+                                                type="submit"
+                                                className="btn btn-l btn-pri btn-outline-light "
+                                            >
+                                                確認註冊
+                                            </button>
                                         </div>
-                                    </div>
-                                </section>
-                            </div>
+                                        <br />
+                                        <div className="d-flex justify-content-center ">
+                                            <Link className="link" to="/login">
+                                                已註冊，直接登入
+                                            </Link>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
                         </section>
                     </div>
                 </div>
