@@ -2,24 +2,75 @@
 
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+import Swal from 'sweetalert2';
+import OutlineSoul from '../../../../images/sweetalert2/outline_soul.svg';
+import OutlineSoulAlert from '../../../../images/sweetalert2/outline_soul_alert.svg';
 
 import { AiOutlineHeart } from 'react-icons/ai';
-// import { AiFillHeart } from 'react-icons/ai';
+import { AiFillHeart } from 'react-icons/ai';
 
 import './SharePostCard.scss';
 
 import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../../../context/AuthContext/AuthContext';
 
-import { STATIC_SHAREWALL_AVA } from '../../../../config/ajax-path';
+import {
+    API_SHAREWALL,
+    STATIC_SHAREWALL_AVA,
+} from '../../../../config/ajax-path';
 
 function SharePostCard(props) {
-    const { postsid, avatar, memberhead, account, likes, title, text } = props;
+    const {
+        postsid,
+        avatar,
+        memberhead,
+        account,
+        likes,
+        title,
+        text,
+        isliked,
+        axiosPOST,
+        postsPage,
+    } = props;
 
     const { theme } = useContext(ThemeContext);
-    const { authorized } = useContext(AuthContext);
+    const { authorized, token } = useContext(AuthContext);
 
     const navigate = useNavigate();
+
+    const axiosSharePostLikeGET = async (postSid) => {
+        const result = await axios.get(`${API_SHAREWALL}/${postSid}/like`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        // console.log(result.data);
+
+        if (result.data.affectedRows === 1) {
+            // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
+            axiosPOST(postsPage);
+        }
+
+        return;
+    };
+
+    const axiosSharePostDislikeGET = async (postSid) => {
+        const result = await axios.get(`${API_SHAREWALL}/${postSid}/dislike`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        // console.log(result.data);
+
+        if (result.data.affectedRows === 1) {
+            // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
+            axiosPOST(postsPage);
+        }
+
+        return;
+    };
 
     return (
         <>
@@ -61,7 +112,7 @@ function SharePostCard(props) {
                         <div className="cpl-spc-info-abstract d-flex justify-content-between align-items-center">
                             <div className="cpl-spc-ib-inner-left">
                                 {/* ASK: 會員帳號最大長度為? */}
-                                {/* DONE: 確定為 12 字元 */}
+                                {/* DONE: 確定為 6 - 10 字元 */}
                                 <p>{account}</p>
                             </div>
                             <div className="cpl-spc-ib-inner-right d-flex align-items-center">
@@ -70,17 +121,80 @@ function SharePostCard(props) {
                                 </div>
                                 {/* TODO: onClick 寫入收藏表 */}
                                 {/* TODO: 根據是否收藏顯示實空心 */}
-                                <AiOutlineHeart
-                                    className="cpl-spc-heart-icon"
-                                    onClick={() => {
-                                        if (!authorized) {
-                                            alert('請先登入');
-                                        } else {
-                                            // FIXME: 完善此功能
-                                            alert('施工中');
-                                        }
-                                    }}
-                                />
+                                {isliked ? (
+                                    <AiFillHeart
+                                        className="cpl-spc-heart-icon isLiked"
+                                        onClick={() => {
+                                            // 安全上檔一下
+                                            if (!authorized) {
+                                                Swal.fire({
+                                                    title: '請先登入',
+                                                    imageUrl: OutlineSoulAlert,
+                                                    imageHeight: 50,
+                                                    imageWidth: 50,
+                                                    showConfirmButton: false,
+                                                });
+                                            } else {
+                                                Swal.fire({
+                                                    title: '您不喜歡這個形象嗎？',
+                                                    imageUrl: OutlineSoul,
+                                                    imageHeight: 50,
+                                                    imageWidth: 50,
+                                                    // ASK: 這也需要明暗配色的話要寫在這裡
+                                                    // confirmButtonColor:
+                                                    // '#DD6B55',
+                                                    confirmButtonText:
+                                                        '不喜歡了',
+                                                    showDenyButton: true,
+                                                    // ASK: 這也需要明暗配色的話要寫在這裡
+                                                    // denyButtonColor:
+                                                    // '#DD6B55',
+                                                    denyButtonText: '還是很愛',
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        axiosSharePostDislikeGET(
+                                                            postsid
+                                                        );
+                                                    } else if (
+                                                        result.isDenied
+                                                    ) {
+                                                        // console.log(
+                                                        //     'Sweetalert2: ',
+                                                        //     '一輩子...'
+                                                        // );
+                                                    }
+                                                });
+                                            }
+                                        }}
+                                    />
+                                ) : (
+                                    <AiOutlineHeart
+                                        className="cpl-spc-heart-icon"
+                                        onClick={() => {
+                                            if (!authorized) {
+                                                Swal.fire({
+                                                    title: '請先登入',
+                                                    imageUrl: OutlineSoulAlert,
+                                                    imageHeight: 50,
+                                                    imageWidth: 50,
+                                                    showConfirmButton: false,
+                                                });
+                                            } else {
+                                                Swal.fire({
+                                                    title: '這個形象...真的很讚！',
+                                                    imageUrl: OutlineSoul,
+                                                    imageHeight: 50,
+                                                    imageWidth: 50,
+                                                    showConfirmButton: false,
+                                                }).then(() => {
+                                                    axiosSharePostLikeGET(
+                                                        postsid
+                                                    );
+                                                });
+                                            }
+                                        }}
+                                    />
+                                )}
                                 {/* <AiFillHeart className="cpl-spc-heart-icon" /> */}
                             </div>
                         </div>

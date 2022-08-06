@@ -1,5 +1,70 @@
+@import '../../styles/variables.scss';
+
+// 處理 overlayscrollbars 樣式
+// 這裡處理尺寸
+.cpl-spc-c-container {
+    // outline: 1px solid green;
+
+    .os-scrollbar {
+        >.os-scrollbar-track {
+            width: 200px;
+            // FIXME: 知道怎麼控制寬度了
+            height: 10px;
+            // position: relative;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 10px;
+            >.os-scrollbar-handle {
+                background: $primary-50p;
+                // FIXME: 可以調整置中和捲動握把寬度
+                // FIXME: 上下留邊怎麼調整？
+                // width: 6px;
+                // left: 0;
+                // right: 0;
+                // margin-left: auto;
+                // margin-right: auto;
+            }
+
+            .os-scrollbar-handle.active {
+                background: $primary-50p;
+                // background: rgba(207, 27, 159, 0.7);
+            }
+        }
+    }
+
+    .os-scrollbar:hover {
+        >.os-scrollbar-track { 
+            >.os-scrollbar-handle {
+                background: $primary-50p;
+                // background: rgba(46, 149, 213, 0.55);
+            }
+        }
+    }
+}
+
+// 這裡處理淺色配色
+.cpl-spc-c-container.os-theme-light {
+    .os-scrollbar {
+        >.os-scrollbar-track {
+            background-color: $white-50p;
+        }
+    }
+}
+
+// 這裡處理深色配色
+.cpl-spc-c-container.os-theme-dark {
+    .os-scrollbar {
+        >.os-scrollbar-track {
+            background-color: $black-50p;
+        }
+    }
+}
+
+// 處理卡片區域定位
 .cpl-share-post-container {
     position: relative;
+    padding-bottom: 30px;
 }
 
 @media screen and (min-width: 992px) {

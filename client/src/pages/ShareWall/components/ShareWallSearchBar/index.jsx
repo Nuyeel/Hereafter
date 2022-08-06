@@ -1,11 +1,13 @@
 import { useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../../../context/AuthContext/AuthContext';
 
 import { FiSearch } from 'react-icons/fi';
+import OutlineSoulAlert from '../../../../images/sweetalert2/outline_soul_alert.svg';
 
 import { API_SHAREWALL } from '../../../../config/ajax-path';
 
@@ -30,7 +32,6 @@ function ShareWallSearchBar(props) {
         // FIXME: 如果進來無意義字串
         if (searchParams.trim() === '') {
             axiosTitleGET();
-            console.log('123');
             navigate('/sharewall');
             return setSearchParams(''); // 有問題再改回 return;
         }
@@ -51,7 +52,13 @@ function ShareWallSearchBar(props) {
             }
             // console.log(hashIndicesArray);
             if (hashIndicesArray.length > 3) {
-                alert('一篇文章最多只有三個標籤～');
+                Swal.fire({
+                    title: '一篇文章最多只有三個標籤～',
+                    imageUrl: OutlineSoulAlert,
+                    imageHeight: 50,
+                    imageWidth: 50,
+                    showConfirmButton: false,
+                });
             } else {
                 let searchtagString = '';
                 for (let i = 0; i < hashIndicesArray.length; i++) {
@@ -70,7 +77,14 @@ function ShareWallSearchBar(props) {
         } else {
             // console.log('搜 title', '?search=...');
             if (searchParams.indexOf('#') !== -1) {
-                alert('您搜尋的標題名稱不符規定～');
+                // FIXME: 鬼鬼可以換個顏色
+                Swal.fire({
+                    title: '您輸入的標題名稱不符規定！',
+                    imageUrl: OutlineSoulAlert,
+                    imageHeight: 50,
+                    imageWidth: 50,
+                    showConfirmButton: false,
+                });
             } else {
                 axiosTitleGET(searchParams.trim());
                 navigate(`?search=${searchParams.trim()}`, { replace: true });
@@ -85,20 +99,39 @@ function ShareWallSearchBar(props) {
                 Authorization: `Bearer ${token}`,
             },
         });
-        // console.log(result.data);
+        console.log(result.data);
+
+        if (result.data.length === 0) {
+            Swal.fire({
+                title: '找不到符合條件的貼文...',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        }
+
         setPostsData(result.data);
     };
 
     const axiosTitleGET = async (str) => {
         // 這裡做標題搜尋
         if (!str) {
-            console.log('dabu');
             const result = await axios.get(API_SHAREWALL);
             // console.log(result.data);
             setPostsData(result.data);
         } else {
             const result = await axios.get(`${API_SHAREWALL}?search=${str}`);
             // console.log(result.data);
+            if (result.data.length === 0) {
+                Swal.fire({
+                    title: '找不到符合條件的貼文...',
+                    imageUrl: OutlineSoulAlert,
+                    imageHeight: 50,
+                    imageWidth: 50,
+                    showConfirmButton: false,
+                });
+            }
             setPostsData(result.data);
         }
     };
@@ -124,7 +157,13 @@ function ShareWallSearchBar(props) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
                         if (searchParams.trim() === '') {
-                            alert('請輸入有意義的內容');
+                            Swal.fire({
+                                title: '請輸入有意義的內容～',
+                                imageUrl: OutlineSoulAlert,
+                                imageHeight: 50,
+                                imageWidth: 50,
+                                showConfirmButton: false,
+                            });
                         }
                         handleSearchParams();
                     }
@@ -140,7 +179,13 @@ function ShareWallSearchBar(props) {
                 }`}
                 onClick={() => {
                     if (searchParams.trim() === '') {
-                        alert('請輸入有意義的內容');
+                        Swal.fire({
+                            title: '請輸入有意義的內容～',
+                            imageUrl: OutlineSoulAlert,
+                            imageHeight: 50,
+                            imageWidth: 50,
+                            showConfirmButton: false,
+                        });
                     }
                     handleSearchParams();
                 }}
