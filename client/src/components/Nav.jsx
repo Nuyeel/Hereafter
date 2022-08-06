@@ -171,7 +171,7 @@ function Nav(props) {
                             <>
                                 <button
                                     type="button"
-                                    className="btn btn-primary"
+                                    className="btn btn-outline-secondary nav-btn"
                                     onClick={userLogout}
                                 >
                                     登出
@@ -180,7 +180,7 @@ function Nav(props) {
                         ) : (
                             <button
                                 type="button"
-                                className="btn btn-primary"
+                                className="btn btn-outline-secondary nav-btn"
                                 onClick={() => {
                                     navigate('/login', { replace: true });
                                     setLightBox('nav_lightbox_hidden');

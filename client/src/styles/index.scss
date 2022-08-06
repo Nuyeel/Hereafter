@@ -220,12 +220,20 @@ h3 {
     }
 }
 
+.nav-btn {
+    font-family: $ff-h, $ff-t;
+    font-size: $fz-h5;
+    font-weight: 500;
+    height: 50px;
+}
 
-
-
-
-
-
+.nav-btn:hover {
+    font-family: $ff-h, $ff-t;
+    font-size: $fz-h5;
+    font-weight: 500;
+    height: 50px;
+    border:none;
+}
 
 /* ============================================================ */
 /* MainContent */
