@@ -29,7 +29,7 @@ function RegisterForm(props) {
     const [passwordPrevious, setPasswordPrevious] = useState('');
     const [confirmPasswordPrevious, setConfirmPasswordPrevious] = useState('');
 
-    const themeContext = useContext(ThemeContext);
+    const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -190,17 +190,17 @@ function RegisterForm(props) {
         e.preventDefault();
 
         if (!registerData.account.match(accountRe)) {
-             Swal.fire('您輸入的帳戶不可含有空白格或特殊字元');
+            Swal.fire('您輸入的帳戶不可含有空白格或特殊字元');
             return;
         }
 
         if (!registerData.password.match(passwordRe)) {
-             Swal.fire('您輸入的密碼須包含字母及數字共八位數');
+            Swal.fire('您輸入的密碼須包含字母及數字共八位數');
             return;
         }
 
         if (registerData.confirmPassword !== registerData.password) {
-             Swal.fire('密碼與確認密碼需要一致');
+            Swal.fire('密碼與確認密碼需要一致');
             return;
         }
 
@@ -255,9 +255,12 @@ function RegisterForm(props) {
             <div className="container">
                 <div className="row">
                     <div className="col">
-                    <section className="pb-4 justify-content-center memberBgCard rounded-5">
-                                <div className="rounded-5">
-                                    <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
+                        <section
+                            className="pb-4 justify-content-center memberBgCard rounded-5"
+                            style={{ backgroundColor: theme.memberBgCard }}
+                        >
+                            <div className="rounded-5">
+                                <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
                                     <div>
                                         <div className="tab-content">
                                             <form
@@ -435,7 +438,6 @@ function RegisterForm(props) {
                                                         確認註冊
                                                     </button>
                                                 </div>
-                                                <br/>
                                                 <br />
                                                 <div className="d-flex justify-content-center ">
                                                     <Link

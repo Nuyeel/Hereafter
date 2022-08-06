@@ -15,7 +15,7 @@ function ForgotPasswordReviseForm() {
         password: '',
     });
 
-    const themeContext = useContext(ThemeContext);
+    const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -83,14 +83,15 @@ function ForgotPasswordReviseForm() {
                 >
                     <div className="row">
                         <div className="col">
-                        <section className="pb-4 justify-content-center memberBgCard rounded-5">
+                            <section
+                                className="pb-4 justify-content-center memberBgCard rounded-5"
+                                style={{ backgroundColor: theme.memberBgCard }}
+                            >
                                 <div className="rounded-5">
                                     <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
                                         <div>
                                             <div className="tab-content">
-                                                <form
-                                                    name="form1"
-                                                >
+                                                <form name="form1">
                                                     <div className="mb-3 d-flex justify-content-center page-title">
                                                         修改密碼
                                                     </div>
@@ -155,7 +156,7 @@ function ForgotPasswordReviseForm() {
                                                             確認修改
                                                         </button>
                                                     </div>
-                                                    <br/>
+                                                    <br />
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
                                                         <Link

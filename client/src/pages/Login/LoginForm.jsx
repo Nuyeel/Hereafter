@@ -22,6 +22,7 @@ function LoginForm(props) {
     const { pageName } = props;
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     const { setHeader } = useContext(HeaderContext);
+    const { theme, themeContext } = useContext(ThemeContext);
     const navigate = useNavigate();
 
     const handleFieldsChange = (e) => {
@@ -83,7 +84,10 @@ function LoginForm(props) {
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <section className="pb-4 justify-content-center memberBgCard rounded-5">
+                            <section
+                                className="pb-4 justify-content-center memberBgCard rounded-5"
+                                style={{ backgroundColor: theme.memberBgCard }}
+                            >
                                 <div className="rounded-5">
                                     <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
                                         <div>
@@ -149,7 +153,7 @@ function LoginForm(props) {
                                                             登入
                                                         </button>
                                                     </div>
-                                                    <br/>
+                                                    <br />
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
                                                         <Link
