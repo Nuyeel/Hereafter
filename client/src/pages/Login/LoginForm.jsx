@@ -83,9 +83,9 @@ function LoginForm(props) {
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <section className="pb-4">
-                                <div className="bg-white bg-opacity-75 rounded-5">
-                                    <section className="w-100 p-4 d-flex justify-content-center pb-4">
+                            <section className="pb-4 justify-content-center memberBgCard rounded-5">
+                                <div className="rounded-5">
+                                    <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
                                         <div>
                                             <div className="tab-content">
                                                 <form
@@ -149,6 +149,7 @@ function LoginForm(props) {
                                                             登入
                                                         </button>
                                                     </div>
+                                                    <br/>
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
                                                         <Link
@@ -167,15 +168,7 @@ function LoginForm(props) {
                                                             忘記密碼
                                                         </Link>
                                                     </div>
-                                                    <br />
                                                 </form>
-                                                <div
-                                                    id="info-bar"
-                                                    className="alert alert-success d-flex justify-content-center"
-                                                    role="alert"
-                                                >
-                                                    您已成功登入
-                                                </div>
                                             </div>
                                         </div>
                                     </section>

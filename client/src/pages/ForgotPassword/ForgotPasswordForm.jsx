@@ -83,9 +83,9 @@ function ForgotPasswordForm() {
                 >
                     <div className="row">
                         <div className="col">
-                            <section className="pb-4">
-                                <div className="bg-white bg-opacity-75 rounded-5">
-                                    <section className="w-100 p-4 d-flex justify-content-center pb-4">
+                        <section className="pb-4 justify-content-center memberBgCard rounded-5">
+                                <div className="rounded-5">
+                                    <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
                                         <div>
                                             <div className="tab-content">
                                                 <form
@@ -138,14 +138,8 @@ function ForgotPasswordForm() {
                                                             接收驗證信
                                                         </button>
                                                     </div>
-                                                    <br />
-                                                    <div
-                                                        id="info-bar"
-                                                        className="alert alert-success"
-                                                        role="alert"
-                                                    >
-                                                        驗證信已發送，請前往信箱確認
-                                                    </div>
+                                                    <br/>
+                                                    <br/>
                                                     <div className="d-flex justify-content-center">
                                                         <Link
                                                             className="link"
@@ -154,7 +148,7 @@ function ForgotPasswordForm() {
                                                             想起密碼了，直接登入
                                                         </Link>
                                                     </div>
-                                                    <br />
+                                                    <br/>
                                                     <div className="d-flex justify-content-center">
                                                         <Link
                                                             className="link"
@@ -163,7 +157,6 @@ function ForgotPasswordForm() {
                                                             重新註冊
                                                         </Link>
                                                     </div>
-                                                    <br />
                                                 </form>
                                             </div>
                                         </div>

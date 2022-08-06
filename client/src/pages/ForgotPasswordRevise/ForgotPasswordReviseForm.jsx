@@ -83,9 +83,9 @@ function ForgotPasswordReviseForm() {
                 >
                     <div className="row">
                         <div className="col">
-                            <section className="pb-4">
-                                <div className="bg-white bg-opacity-75 rounded-5">
-                                    <section className="w-100 p-4 d-flex justify-content-center pb-4">
+                        <section className="pb-4 justify-content-center memberBgCard rounded-5">
+                                <div className="rounded-5">
+                                    <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
                                         <div>
                                             <div className="tab-content">
                                                 <form
@@ -155,6 +155,7 @@ function ForgotPasswordReviseForm() {
                                                             確認修改
                                                         </button>
                                                     </div>
+                                                    <br/>
                                                     <br />
                                                     <div className="d-flex justify-content-center ">
                                                         <Link
@@ -173,7 +174,6 @@ function ForgotPasswordReviseForm() {
                                                             重新註冊
                                                         </Link>
                                                     </div>
-                                                    <br />
                                                 </form>
                                             </div>
                                         </div>
