@@ -188,27 +188,21 @@ function RegisterForm(props) {
     // 送出表單的部分
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // TODO: 欄位檢查
 
-        // if (registerData.account.length > 10) {
-        //     alert('您設定的帳戶字數過長');
-        //     return;
-        // }
+        if (!registerData.account.match(accountRe)) {
+             Swal.fire('您輸入的帳戶不可含有空白格或特殊字元');
+            return;
+        }
 
-        // if (!registerData.account.match(accountRe)) {
-        //     alert('您輸入的帳戶不可含有空白格或特殊字元');
-        //     return;
-        // }
+        if (!registerData.password.match(passwordRe)) {
+             Swal.fire('您輸入的密碼須包含字母及數字共八位數');
+            return;
+        }
 
-        // if (!registerData.password.match(passwordRe)) {
-        //     alert('您輸入的密碼須包含字母及數字共八位數');
-        //     return;
-        // }
-
-        // if (registerData.confirmPassword !== registerData.password) {
-        //     alert('密碼與確認密碼需要一致');
-        //     return;
-        // }
+        if (registerData.confirmPassword !== registerData.password) {
+             Swal.fire('密碼與確認密碼需要一致');
+            return;
+        }
 
         console.log(registerData);
 
@@ -228,7 +222,8 @@ function RegisterForm(props) {
                         ...result.data,
                         authorized: true,
                     });
-                    navigate('/login');
+                    Swal.fire(result.error);
+                    navigate('/memberprofile');
                 } else {
                     Swal.fire(result.error);
                 }
