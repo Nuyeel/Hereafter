@@ -91,9 +91,19 @@ const SqlString = require('sqlstring');
 // ASK: 會員是否收藏此貼文的處理層級 (旗幟是否實心)
 
 // FIXME: 利用中介軟體 JOIN 表單資料後再送出有喜歡資訊的版本
+// FIXME: 現在要加上會員狀態 預設 作者 或收藏
+
+// ASK: 上一頁時 怎麼保存頁面狀態
 router
     .route('/')
     .get(async (req, res) => {
+        // 檢查是不是有篩選條件
+        // if (req.query.isAuthor) {
+        //     console.log(req.query.isAuthor);
+        // } else if (req.query.isCollector) {
+        //     console.log(req.query.isCollector);
+        // }
+
         if (req.query.searchtag) {
             // 如果來的是標籤做標籤搜尋
             // console.log(req.query.searchtag);
@@ -191,15 +201,60 @@ router
                 searchPostsString += `${post_results[i].share_post_sid}`;
             }
             // console.log(searchPostsString);
-            const $sql = ` 
+
+            // TODO: 製作三態搜尋
+            let $sql = ` 
                 SELECT * 
                 FROM share_avatar_posts s 
                 JOIN member m 
                 ON s.member_sid = m.sid 
                 WHERE share_post_sid 
                 IN (${searchPostsString}) 
-                ORDER BY created_at DESC 
             `;
+
+            // 安全起見檔一下
+            if (res.locals.loginUser) {
+                if (req.query.isAuthor && req.query.isAuthor === 'true') {
+                    // console.log('作者');
+                    $sql += ` 
+                        AND m.sid = ${res.locals.loginUser.id} 
+                    `;
+                } else if (
+                    req.query.isCollector &&
+                    req.query.isCollector === 'true'
+                ) {
+                    // TODO: 這比較難 要篩選收藏文章
+                    // console.log('收集');
+                    const $collect_sql = ` 
+                        SELECT share_post_sid 
+                        FROM share_avatar_collects 
+                        WHERE member_sid = ? 
+                    `;
+
+                    const [collect_results] = await db.query($collect_sql, [
+                        res.locals.loginUser.id,
+                    ]);
+
+                    // console.log(collect_results);
+
+                    let collectString = '';
+                    for (
+                        let i = 0, strLength = collect_results.length;
+                        i < strLength;
+                        i++
+                    ) {
+                        if (i !== 0) {
+                            collectString += ', ';
+                        }
+                        collectString += collect_results[i].share_post_sid;
+                    }
+
+                    // console.log(collectString);
+                    $sql += ` AND share_post_sid IN (${collectString}) `;
+                }
+            }
+
+            $sql += ` ORDER BY created_at DESC `;
 
             // console.log($sql);
             const [results] = await db.query($sql);
@@ -208,10 +263,10 @@ router
             // DONE: 登入才需要篩選
             if (res.locals.loginUser) {
                 const $like_sql = ` 
-            SELECT * 
-            FROM share_avatar_likes 
-            WHERE member_sid = ? 
-            `;
+                    SELECT share_post_sid
+                    FROM share_avatar_likes 
+                    WHERE member_sid = ? 
+                `;
 
                 const [like_results] = await db.query($like_sql, [
                     res.locals.loginUser.id,
@@ -228,7 +283,6 @@ router
                             like_results[i].share_post_sid
                         ) {
                             cardItem.share_post_isliked = true;
-                            break;
                         }
                     }
                 });
@@ -278,10 +332,10 @@ router
             // DONE: 登入才需要篩選
             if (res.locals.loginUser) {
                 const $like_sql = ` 
-            SELECT * 
-            FROM share_avatar_likes 
-            WHERE member_sid = ? 
-            `;
+                    SELECT * 
+                    FROM share_avatar_likes 
+                    WHERE member_sid = ? 
+                `;
 
                 const [like_results] = await db.query($like_sql, [
                     res.locals.loginUser.id,
