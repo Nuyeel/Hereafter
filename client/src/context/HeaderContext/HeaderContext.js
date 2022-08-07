@@ -25,8 +25,9 @@ export const headers = {
     // TODO: 頁面名稱: {
     //     title: '來生形象', // Abby 手機版的某個頁面 不知道會不會和小銘撞名
     // },
-    test: {
-        title: '陰德值檢定',
+    gooddeed: {
+        title: '',
+        // 陰德值這邊空白
     },
     // TODO: 頁面名稱: {
     //     title: '行善積德小遊戲',

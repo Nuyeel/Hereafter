@@ -32,3 +32,6 @@ export const Event_List_GET = `${SERVER}/events `;
 export const Event_Cart_ADD_POST = `${SERVER}/eventcarts/addcart `;
 
 export const Avatar_Update = `${SERVER}/avatar/update`;
+
+// 陰德值測驗
+export const GET_GOODDEED_API = `${SERVER}/api/gooddeed`;
