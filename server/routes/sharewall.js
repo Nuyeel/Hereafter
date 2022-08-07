@@ -132,6 +132,16 @@ router
                 return res.json([]);
             }
 
+            if (
+                Array.isArray(req.query.searchtag) &&
+                tag_results.length !== req.query.searchtag.length
+            ) {
+                // 具有多個搜尋標籤而且標籤對應結果與搜尋標籤數量對不上
+                // 加一個假的項目給 tag_results
+                // 由於沒有任何標籤 sid 為 0 會自動搜不到結果
+                tag_results.push({ share_post_tag_sid: 0 });
+            }
+
             // TODO: 進行標籤搜尋
             // DONE: 標籤搜尋 OK
             let $searchtag_sql = ` SELECT t1.* FROM `;
