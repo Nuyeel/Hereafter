@@ -292,6 +292,9 @@
 }
 
 
+// 訂購人資訊
+
+
 // 桌機版放這邊
 
 
@@ -334,11 +337,13 @@
 
     // OrderList
     .xuan-orderlist-container{
+      // outline: 1px solid red;
       width: 86%;
+      margin-top: 0px;
 
 
       .xuan-all-select-delete{
-        padding-left: 26px;
+        padding-left: 25px;
       }
 
       // SimpleBar
@@ -431,7 +436,31 @@
     }
 
 
-    // Summary
+
+
+    
+    .xuan-cart-btn{
+      // outline: 1px solid red;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 18%;
+      position: fixed;
+      bottom: 13vw;
+      right:7.5vw;
+
+      button{
+        margin: 0px;
+        width: 45%;
+        min-width: 95px;
+      }
+      
+    }
+
+
+
+      // Summary
     .xuan-summary-col{
       position:relative;
       width: 25%;
@@ -492,27 +521,6 @@
 
 
     }
-
-    
-    .xuan-cart-btn{
-      // outline: 1px solid red;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 18%;
-      position: fixed;
-      bottom: 13vw;
-      right:7.5vw;
-
-      button{
-        margin: 0px;
-        width: 45%;
-        min-width: 95px;
-      }
-      
-    }
-
 
 
 

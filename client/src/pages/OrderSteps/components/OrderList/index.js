@@ -14,8 +14,8 @@ import {
 
 // scss
 import '../../../Event/_xuan_styles.scss';
-import '../../styles/_cart.scss';
-import '../styles/_orderlist.scss';
+import '../../styles/_new_cart.scss';
+// import '../styles/_orderlist.scss';
 
 import EventItem from './EventItem';
 
@@ -60,7 +60,7 @@ function OrderList(props) {
     return (
         <>
             {/* 左側購物清單 */}
-            <div className="col col-9">
+            <div className="xuan-orderlist-container">
                 {/* 勾選 + 結帳流程圖 */}
                 <div className="xuan-all-select-delete">
                     <input
@@ -97,76 +97,73 @@ function OrderList(props) {
                     <p className="caption">--志工: {volunNumber}--</p> */}
                 </div>
 
-                <SimpleBar style={{ maxHeight: 520, maxWidth: 1000 }}>
+                <SimpleBar className="cart-list-simplebar">
                     {/* 購物車條列放這邊 */}
-                    <div className="xuan-cart-list-window">
-                        <div className="xuan-cart-list-wrap">
-                            {eventCart.map((v, i) => {
-                                return (
-                                    <EventItem
-                                        eventPick={eventPick}
-                                        setEventPick={setEventPick}
-                                        key={v.sid}
-                                        {...v}
-                                        // 此段參考老師0713-1檔案
-                                        setCount={(newCount) => {
-                                            const newEventCart = eventCart.map(
-                                                (v2, i2) => {
-                                                    if (i2 === i) {
-                                                        return {
-                                                            ...v2,
-                                                            count:
-                                                                newCount < 1
-                                                                    ? 1
-                                                                    : newCount,
-                                                        }; //點到哪列，該列count才會跳，其他列不被影響
-                                                    }
-                                                    return v2;
+                    <div className="xuan-cart-list-wrap">
+                        {eventCart.map((v, i) => {
+                            return (
+                                <EventItem
+                                    eventPick={eventPick}
+                                    setEventPick={setEventPick}
+                                    key={v.sid}
+                                    {...v}
+                                    // 此段參考老師0713-1檔案
+                                    setCount={(newCount) => {
+                                        const newEventCart = eventCart.map(
+                                            (v2, i2) => {
+                                                if (i2 === i) {
+                                                    return {
+                                                        ...v2,
+                                                        count:
+                                                            newCount < 1
+                                                                ? 1
+                                                                : newCount,
+                                                    }; //點到哪列，該列count才會跳，其他列不被影響
                                                 }
-                                            );
-                                            setEventCart(newEventCart); //新array取代舊array
-                                        }}
-                                        removeItem={() => {
-                                            Swal.fire({
-                                                title: '確定要刪除此筆訂單?',
-                                                // text: "You won't be able to revert this!",
-                                                icon: 'warning',
-                                                showCancelButton: true,
-                                                confirmButtonColor: '#3085d6',
-                                                cancelButtonColor: '#d33',
-                                                cancelButtonText: '取消',
-                                                confirmButtonText: '確定刪除',
-                                            }).then((result) => {
-                                                if (result.isConfirmed) {
-                                                    Swal.fire(
-                                                        '已刪除'
-                                                        // '此筆訂單已刪除',
-                                                        // 'success'
+                                                return v2;
+                                            }
+                                        );
+                                        setEventCart(newEventCart); //新array取代舊array
+                                    }}
+                                    removeItem={() => {
+                                        Swal.fire({
+                                            title: '確定要刪除此筆訂單?',
+                                            // text: "You won't be able to revert this!",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#d33',
+                                            cancelButtonText: '取消',
+                                            confirmButtonText: '確定刪除',
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                Swal.fire(
+                                                    '已刪除'
+                                                    // '此筆訂單已刪除',
+                                                    // 'success'
+                                                );
+
+                                                const newEventCart =
+                                                    eventCart.filter(
+                                                        (v2, i2) => {
+                                                            // del_event_sid = v.sid;
+                                                            return (
+                                                                v.sid !== v2.sid
+                                                            ); //只留沒有點到的
+                                                        }
                                                     );
 
-                                                    const newEventCart =
-                                                        eventCart.filter(
-                                                            (v2, i2) => {
-                                                                // del_event_sid = v.sid;
-                                                                return (
-                                                                    v.sid !==
-                                                                    v2.sid
-                                                                ); //只留沒有點到的
-                                                            }
-                                                        );
+                                                console.log(v.sid);
 
-                                                    console.log(v.sid);
-
-                                                    fetchEventDelCart(v.sid); //同步把MySQL資料刪掉
-                                                    setEventCart(newEventCart);
-                                                    dispatch(decrement());
-                                                }
-                                            });
-                                        }}
-                                    />
-                                );
-                            })}
-                        </div>
+                                                fetchEventDelCart(v.sid); //同步把MySQL資料刪掉
+                                                setEventCart(newEventCart);
+                                                dispatch(decrement());
+                                            }
+                                        });
+                                    }}
+                                />
+                            );
+                        })}
                     </div>
                 </SimpleBar>
             </div>
