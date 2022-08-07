@@ -19,12 +19,12 @@ export const PLACE_CARTDATA_API = `${SERVER}/api/reborn-cart`;
 // 測試部分 (之後可以刪除)
 export const MEMBER_LOGIN = `${SERVER}/api/member/login`;
 export const MEMBER_REGISTER = `${SERVER}/api/member/register`;
-export const FORGOT_PASSWORD = `${SERVER}/api/member/forgot-password`;
-export const FORGOT_PASSWORD_REVISE = `${SERVER}/api/member/forgot-password-revise`;
+export const FORGOT_PASSWORD = `${SERVER}/api/member/forgotpassword`;
+export const FORGOT_PASSWORD_REVISE = `${SERVER}/api/member/forgotpasswordrevise`;
 export const MEMBER_PROFILE = `${SERVER}/api/member/profile`;
-export const MEMBER_PROFILE_REVISE = `${SERVER}/api/member/profile-revise`;
-export const MEMBER_PASSWORD_REVISE = `${SERVER}/api/member/profile-password-revise`;
-export const MEMBER_EVENT_ORDER = `${SERVER}/api/member/profile-event-order`;
+export const MEMBER_PROFILE_REVISE = `${SERVER}/api/member/profilerevise`;
+export const MEMBER_PASSWORD_REVISE = `${SERVER}/api/member/profilepasswordrevise`;
+export const MEMBER_EVENT_ORDER = `${SERVER}/api/member/profileeventorder`;
 
 // 活動列表
 export const Event_List_GET = `${SERVER}/events `;

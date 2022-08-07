@@ -1,5 +1,8 @@
 import './style.scss';
-import { useState, useContext } from 'react';
+import Swal from 'sweetalert2';
+import { useState, useContext, useCallback, useEffect } from 'react';
+import InputIME from './/components/InputIME';
+import _ from 'lodash';
 import axios from 'axios';
 
 import { MEMBER_PASSWORD_REVISE } from '../../config/ajax-path';
@@ -10,77 +13,68 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LoginForm from '../Login/LoginForm';
 
-function MemberProfileForm() {
-    const [loginData, setLoginData] = useState({
-        account: '',
+function MemberProfileForm(props) {
+    const [newPasswordName, setNewPasswordName] = useState({
+        currentpassword: '',
         password: '',
+        confirmpassword: '',
     });
+
+    const [currentPasswordFieldType, setCurrentPasswordFieldType] =
+        useState('password');
+    const [passwordFieldType, setPasswordFieldType] = useState('password');
+    const [confirmPasswordFieldType, setConfirmPasswordFieldType] =
+        useState('password');
 
     const themeContext = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleFieldsChange = (e) => {
-        const id = e.target.id;
-        const val = e.target.value;
-        // console.log({ id, val });
-        setLoginData((prevState) => ({
-            ...prevState,
-            [id]: val,
-        }));
+        setNewPasswordName({
+            ...newPasswordName,
+            [e.target.name]: e.target.value,
+        });
     };
 
-    const handleSubmit = async (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault();
-        // console.log(loginData);
+        console.log(newPasswordName);
 
-        // TODO: 欄位檢查
-
-        // 請注意 axios 和 fetch 的不同之處
-        // fetch 要多轉換一次 .then(r => r.json())
-        // fetch 的內容放在 body: fd
-        // axios 會自動轉換 JSON 但結果放在 r.data 中
-        // axios 的內容要放在 data: fd
-        const result = await axios(MEMBER_PASSWORD_REVISE, {
+        fetch(MEMBER_PASSWORD_REVISE, {
             method: 'POST',
-            data: JSON.stringify(loginData),
+            body: JSON.stringify(newPasswordName),
             headers: {
-                'Content-Type': 'Application/json',
+                'Content-Type': 'application/json',
             },
-        });
-
-        // console.log(result.data);
-
-        if (result.data.success) {
-            localStorage.setItem('auth', JSON.stringify(result.data.data));
-            setAuth({ ...result.data.data, authorized: true });
-            navigate('/');
-        } else {
-            alert('帳密錯誤～～');
-        }
+        })
+            .then((r) => r.json())
+            .then((result) => {
+                console.log(result);
+                if (result.success) {
+                    localStorage.setItem('auth', JSON.stringify(result.data));
+                    setAuth({
+                        ...result.data,
+                        authorized: true,
+                    });
+                    Swal.fire(result.error);
+                    navigate('/memberprofile');
+                } else {
+                    Swal.fire(result.error);
+                }
+            });
     };
 
     return (
         <>
             {authorized ? (
                 <>
-                    {/* <div>已經登入了欸</div>
-                    <br />
-                    <button
-                        type="button"
-                        className="btn btn-primary"
-                        onClick={userLogout}
-                        to="/login"
-                    >
-                        Logout
-                    </button> */}
                     <div className="container">
                         <div className="row">
                             <div className="col">
                                 <section className="pb-4">
                                     <div className="bg-white bg-opacity-75 rounded-5">
                                         <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                            {/* php */}
                                             <div className="card-2 d-flex">
                                                 <div className="cards">
                                                     <br />
@@ -134,58 +128,84 @@ function MemberProfileForm() {
                                                             <section className="w-100 p-4 d-flex justify-content-center pb-4">
                                                                 <div>
                                                                     <div className="tab-content">
-                                                                        <form name="form1">
+                                                                        <form
+                                                                            name="form1"
+                                                                            onSubmit={
+                                                                                handleUpdate
+                                                                            }
+                                                                        >
                                                                             <div className="mb-3 d-flex justify-content-center page-title">
                                                                                 修改登入密碼
                                                                             </div>
                                                                             <br />
                                                                             <div className="mb-3">
                                                                                 <label
-                                                                                    htmlFor="account"
+                                                                                    htmlFor="currentpassword"
                                                                                     className="form-label page-field"
                                                                                 >
-                                                                                    帳戶名稱
+                                                                                    當前密碼
                                                                                 </label>
                                                                                 <input
-                                                                                    type="text"
+                                                                                    type={
+                                                                                        currentPasswordFieldType
+                                                                                    }
                                                                                     className="form-control"
-                                                                                    id="account"
-                                                                                    name="account"
+                                                                                    id="currentpassword"
+                                                                                    name="currentpassword"
+                                                                                    value={
+                                                                                        newPasswordName.currentpassword
+                                                                                    }
+                                                                                    onChange={
+                                                                                        handleFieldsChange
+                                                                                    }
                                                                                     required
                                                                                 />
-                                                                                <div className="form-text red"></div>
                                                                             </div>
                                                                             <div className="mb-3">
                                                                                 <label
                                                                                     htmlFor="password"
                                                                                     className="form-label page-field"
                                                                                 >
-                                                                                    登入密碼
+                                                                                    新密碼
                                                                                 </label>
                                                                                 <input
-                                                                                    type="password"
+                                                                                    type={
+                                                                                        passwordFieldType
+                                                                                    }
                                                                                     className="form-control"
                                                                                     id="password"
                                                                                     name="password"
+                                                                                    value={
+                                                                                        newPasswordName.password
+                                                                                    }
+                                                                                    onChange={
+                                                                                        handleFieldsChange
+                                                                                    }
                                                                                     required
                                                                                 />
-                                                                                <div className="form-text red"></div>
                                                                             </div>
                                                                             <div className="mb-3">
                                                                                 <label
                                                                                     htmlFor="repeatpw"
                                                                                     className="form-label page-field"
                                                                                 >
-                                                                                    重新輸入密碼
+                                                                                    請再輸入一次新密碼
                                                                                 </label>
                                                                                 <input
-                                                                                    type="password"
+                                                                                    type={
+                                                                                        confirmPasswordFieldType
+                                                                                    }
                                                                                     className="form-control"
-                                                                                    id="repeatpw"
-                                                                                    name="repeatpw"
+                                                                                    id="confirmpassword"
+                                                                                    name="confirmpassword"
+                                                                                    value={
+                                                                                        newPasswordName.confirmpassword
+                                                                                    }
+                                                                                    onChange={
+                                                                                        handleFieldsChange
+                                                                                    }
                                                                                     required
                                                                                 />
-                                                                                <div className=" form-text red"></div>
                                                                             </div>
 
                                                                             <div className="d-flex justify-content-sm-evenly ">
