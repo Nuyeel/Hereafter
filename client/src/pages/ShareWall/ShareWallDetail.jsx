@@ -4,9 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import 'overlayscrollbars/css/OverlayScrollbars.css';
 
-// css
-// import 'overlayscrollbars/css/OverlayScrollbars.css';
+// scss
+import './ShareWallDetail.scss';
 
 import { CgClose } from 'react-icons/cg';
 import DeedSoul from './components/Icons/DeedSoul';
@@ -18,8 +19,11 @@ import { FaRegBookmark } from 'react-icons/fa';
 // import { BsBookmark } from 'react-icons/bs';
 // import { BsBookmarkFill } from 'react-icons/bs';
 
-import { API_SHAREWALL } from '../../config/ajax-path';
-import { STATIC_SHAREWALL_AVA } from '../../config/ajax-path';
+import { API_SHAREWALL, STATIC_SHAREWALL_AVA } from '../../config/ajax-path';
+
+import Swal from 'sweetalert2';
+import OutlineSoul from '../../images/sweetalert2/outline_soul.svg';
+import OutlineSoulAlert from '../../images/sweetalert2/outline_soul_alert.svg';
 
 // Context
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -27,8 +31,6 @@ import ThemeContext from '../../context/ThemeContext/ThemeContext';
 import HeaderContext, {
     headers,
 } from '../../context/HeaderContext/HeaderContext';
-
-import './ShareWallDetail.scss';
 
 // FIXME: 假資料
 const fakeAvatarDetail =
@@ -52,10 +54,11 @@ function ShareWallDetail(props) {
         isLoading: true,
     });
     const [sharePostComment, setsharePostComment] = useState('');
+    const [enterCounter, setEnterCounter] = useState(0);
 
     const { pageName } = props;
 
-    const { token } = useContext(AuthContext);
+    const { authorized, token } = useContext(AuthContext);
     const { theme } = useContext(ThemeContext);
     const { setHeader } = useContext(HeaderContext);
     const commentRef = useRef(null);
@@ -63,15 +66,57 @@ function ShareWallDetail(props) {
     const { sharePostID } = useParams();
     const navigate = useNavigate();
 
-    const axiosSharePostGET = async (str) => {
-        const result = await axios.get(`${API_SHAREWALL}/${str}`, {
+    const axiosSharePostGET = async (sharePostID) => {
+        const result = await axios.get(`${API_SHAREWALL}/${sharePostID}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log(result.data);
+        // console.log(result.data);
         // 在這裡將 isLoading 切換為 false 以顯示文章內容
         setSharePostDetailData({ ...result.data, isLoading: false });
+    };
+
+    const axiosSharePostActionGET = async (actionType) => {
+        const result = await axios.get(
+            `${API_SHAREWALL}/${sharePostID}/${actionType}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        // console.log(result.data);
+
+        if (result.data.affectedRows === 1) {
+            // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
+            axiosSharePostGET(sharePostID);
+        }
+
+        return;
+    };
+
+    const axiosSharePostCommentPOST = async () => {
+        const result = await axios.post(
+            `${API_SHAREWALL}/${sharePostID}/comment`,
+            {
+                data: {
+                    comment: sharePostComment,
+                },
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        console.log(result.data);
+
+        if (result.data.affectedRows === 1) {
+            axiosSharePostGET(sharePostID);
+        }
+
+        return;
     };
 
     // 設定 Header
@@ -80,12 +125,12 @@ function ShareWallDetail(props) {
     }, [pageName, setHeader]);
 
     // TODO: 取得單一貼文內容
+    // DONE: 可以考慮進一步寫成 useCallback
     useEffect(() => {
         axiosSharePostGET(sharePostID);
     }, [sharePostID]);
 
     // 在此進行解構賦值
-    // ASK: 物件中帶有陣列的話應該怎麼寫？
     // ASK: 文章雖然是限定兩百字可是如果被存一堆換行會 GGQQ 欸 QQ
     const {
         isLoading,
@@ -195,17 +240,18 @@ function ShareWallDetail(props) {
                                 </p>
                                 <div className="cpl-pcb-ita-ta-inner-tags d-flex">
                                     {/* <span
-                                key={v.share_post_tag_sid}
-                                className="cpl-pcb-ita-ta-ir-tad-item"
-                            >
-                                #{v.share_post_tag_text}
-                            </span> */}
+                                        key={v.share_post_tag_sid}
+                                        className="cpl-pcb-ita-ta-ir-tad-item"
+                                    >
+                                        #{v.share_post_tag_text}
+                                    </span> */}
+                                    {/* FIXME: 要點擊標籤搜尋嗎？ */}
                                     {postTagsResults.map((v, i) => (
                                         <span
                                             key={v.share_post_tag_sid}
                                             className="cpl-pcb-ita-ta-it-tag-item flex-shrink-0"
                                         >
-                                            {/* 測試用 標籤最大六字 */}
+                                            {/* FIXME: 測試用 標籤最大六字 */}
                                             #豬肉榮賣豬肉
                                         </span>
                                     ))}
@@ -234,14 +280,77 @@ function ShareWallDetail(props) {
                                             <AiFillHeart
                                                 className="cpl-pcb-ita-th-ir-la-AiHeart isLiked"
                                                 onClick={() => {
-                                                    alert('施工中');
+                                                    // 為登入照理來說沒機會看到
+                                                    // 但是防止有心人還是擋一下
+                                                    if (!authorized) {
+                                                        return Swal.fire({
+                                                            title: '請先登入',
+                                                            imageUrl:
+                                                                OutlineSoulAlert,
+                                                            imageHeight: 50,
+                                                            imageWidth: 50,
+                                                            showConfirmButton: false,
+                                                        });
+                                                    }
+                                                    Swal.fire({
+                                                        title: '您不喜歡這個形象嗎？',
+                                                        imageUrl: OutlineSoul,
+                                                        imageHeight: 50,
+                                                        imageWidth: 50,
+                                                        // ASK: 這也需要明暗配色的話要寫在這裡
+                                                        // confirmButtonColor:
+                                                        // '#DD6B55',
+                                                        confirmButtonText:
+                                                            '不喜歡了',
+                                                        showDenyButton: true,
+                                                        // ASK: 這也需要明暗配色的話要寫在這裡
+                                                        // denyButtonColor:
+                                                        // '#DD6B55',
+                                                        denyButtonText:
+                                                            '還是很愛',
+                                                    }).then((result) => {
+                                                        if (
+                                                            result.isConfirmed
+                                                        ) {
+                                                            axiosSharePostActionGET(
+                                                                'dislike'
+                                                            );
+                                                        } else if (
+                                                            result.isDenied
+                                                        ) {
+                                                            // console.log(
+                                                            //     'Sweetalert2: ',
+                                                            //     '一輩子...'
+                                                            // );
+                                                        }
+                                                    });
                                                 }}
                                             />
                                         ) : (
                                             <AiOutlineHeart
                                                 className="cpl-pcb-ita-th-ir-la-AiHeart"
                                                 onClick={() => {
-                                                    alert('施工中');
+                                                    if (!authorized) {
+                                                        return Swal.fire({
+                                                            title: '請先登入',
+                                                            imageUrl:
+                                                                OutlineSoulAlert,
+                                                            imageHeight: 50,
+                                                            imageWidth: 50,
+                                                            showConfirmButton: false,
+                                                        });
+                                                    }
+                                                    Swal.fire({
+                                                        title: '這個形象...真的很讚！',
+                                                        imageUrl: OutlineSoul,
+                                                        imageHeight: 50,
+                                                        imageWidth: 50,
+                                                        showConfirmButton: false,
+                                                    }).then(() => {
+                                                        axiosSharePostActionGET(
+                                                            'like'
+                                                        );
+                                                    });
                                                 }}
                                             />
                                         )}
@@ -261,14 +370,77 @@ function ShareWallDetail(props) {
                                             <FaBookmark
                                                 className="cpl-pcb-ita-th-ir-la-AiBookmark isCollected"
                                                 onClick={() => {
-                                                    alert('施工中');
+                                                    // 為登入照理來說沒機會看到
+                                                    // 但是防止有心人還是擋一下
+                                                    if (!authorized) {
+                                                        return Swal.fire({
+                                                            title: '請先登入',
+                                                            imageUrl:
+                                                                OutlineSoulAlert,
+                                                            imageHeight: 50,
+                                                            imageWidth: 50,
+                                                            showConfirmButton: false,
+                                                        });
+                                                    }
+                                                    Swal.fire({
+                                                        title: '您確定要取消收藏嗎？',
+                                                        imageUrl: OutlineSoul,
+                                                        imageHeight: 50,
+                                                        imageWidth: 50,
+                                                        // ASK: 這也需要明暗配色的話要寫在這裡
+                                                        // confirmButtonColor:
+                                                        // '#DD6B55',
+                                                        confirmButtonText:
+                                                            '不喜歡了',
+                                                        showDenyButton: true,
+                                                        // ASK: 這也需要明暗配色的話要寫在這裡
+                                                        // denyButtonColor:
+                                                        // '#DD6B55',
+                                                        denyButtonText:
+                                                            '再想一下',
+                                                    }).then((result) => {
+                                                        if (
+                                                            result.isConfirmed
+                                                        ) {
+                                                            axiosSharePostActionGET(
+                                                                'discollect'
+                                                            );
+                                                        } else if (
+                                                            result.isDenied
+                                                        ) {
+                                                            // console.log(
+                                                            //     'Sweetalert2: ',
+                                                            //     '一輩子...'
+                                                            // );
+                                                        }
+                                                    });
                                                 }}
                                             />
                                         ) : (
                                             <FaRegBookmark
                                                 className="cpl-pcb-ita-th-ir-la-AiBookmark"
                                                 onClick={() => {
-                                                    alert('施工中');
+                                                    if (!authorized) {
+                                                        return Swal.fire({
+                                                            title: '請先登入',
+                                                            imageUrl:
+                                                                OutlineSoulAlert,
+                                                            imageHeight: 50,
+                                                            imageWidth: 50,
+                                                            showConfirmButton: false,
+                                                        });
+                                                    }
+                                                    Swal.fire({
+                                                        title: '您已收藏此篇貼文！',
+                                                        imageUrl: OutlineSoul,
+                                                        imageHeight: 50,
+                                                        imageWidth: 50,
+                                                        showConfirmButton: false,
+                                                    }).then(() => {
+                                                        axiosSharePostActionGET(
+                                                            'collect'
+                                                        );
+                                                    });
                                                 }}
                                             />
                                         )}
@@ -335,6 +507,9 @@ function ShareWallDetail(props) {
                             </OverlayScrollbarsComponent>
                             <div className="cpl-pcb-ita-text-comment-area d-flex justify-content-start">
                                 <div className="cpl-pcb-ita-tca-mh-area">
+                                    {/* FIXME: 找不到圖片會報錯 */}
+                                    {/* 要有個欄位存預設形象 */}
+                                    {/* 資料表沒有的時候給預設 */}
                                     {loginID ? (
                                         <img
                                             className="cpl-pcb-ita-tca-mh-memberhead"
@@ -353,6 +528,7 @@ function ShareWallDetail(props) {
                                         }}
                                         className="form-control cpl-pcb-ita-tca-c-text"
                                         type="text"
+                                        name="comment"
                                         ref={commentRef}
                                         value={sharePostComment}
                                         placeholder={`${
@@ -363,13 +539,39 @@ function ShareWallDetail(props) {
                                         onChange={(e) => {
                                             setsharePostComment(e.target.value);
                                         }}
-                                        // FIXME: Enter 直接留言
-                                        // FIXME: 留言寫進資料表
-                                        onKeyDown={(e) => {
+                                        // DONE: Enter 直接留言
+                                        // DONE: 留言寫進資料表
+                                        // FIXME: 新增留言要跳到下面
+                                        onKeyUp={(e) => {
+                                            e.preventDefault();
+                                            if (e.key !== 'Enter') {
+                                                console.log('counter reset', 0);
+                                                setEnterCounter(0);
+                                            }
                                             if (e.key === 'Enter') {
-                                                e.preventDefault();
-                                                console.log('bbu');
-                                                alert('施工中');
+                                                const newEnterCounter =
+                                                    enterCounter + 1;
+                                                if (newEnterCounter === 2) {
+                                                    if (!authorized) {
+                                                        return Swal.fire({
+                                                            title: '請先登入',
+                                                            imageUrl:
+                                                                OutlineSoulAlert,
+                                                            imageHeight: 50,
+                                                            imageWidth: 50,
+                                                            showConfirmButton: false,
+                                                        });
+                                                    }
+                                                    axiosSharePostCommentPOST();
+                                                    setEnterCounter(0);
+                                                    return setsharePostComment(
+                                                        ''
+                                                    );
+                                                }
+                                                setEnterCounter(
+                                                    newEnterCounter
+                                                );
+                                                return;
                                             }
                                         }}
                                     />

@@ -1,12 +1,35 @@
 import testpng from '../../../images/avatar/test1.png';
 import './showcase.css';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import ThemeContext from '../../../context/ThemeContext/ThemeContext';
 import { ReactComponent as Soul } from '../../../images/Nav/nav_soul.svg';
 import styled from '@emotion/styled';
+import { Showcase_Data } from '../../../config/ajax-path';
+import axios from 'axios';
 
 function Showcase() {
     const { theme } = useContext(ThemeContext);
+    //載入Loading動畫用
+    const [isLoading, setIsLoading] = useState(false);
+    //1秒後自動關掉spinner(設定isLoading為false)
+    useEffect(() => {
+        if (isLoading) {
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 1000);
+        }
+    }, [isLoading]);
+    const getAvatarData = async () => {
+        const postData = { id: 19960409 };
+        const r = await axios.post(Showcase_Data, postData);
+        console.log(r.data);
+    };
+
+    useEffect(() => {
+        setIsLoading(true);
+
+        getAvatarData();
+    }, []);
 
     const SoulColor = styled.div`
         path {

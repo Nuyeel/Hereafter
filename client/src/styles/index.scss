@@ -220,12 +220,20 @@ h3 {
     }
 }
 
+.nav-btn {
+    font-family: $ff-h, $ff-t;
+    font-size: $fz-h5;
+    font-weight: 500;
+    height: 50px;
+}
 
-
-
-
-
-
+.nav-btn:hover {
+    font-family: $ff-h, $ff-t;
+    font-size: $fz-h5;
+    font-weight: 500;
+    height: 50px;
+    border:none;
+}
 
 /* ============================================================ */
 /* MainContent */
@@ -285,6 +293,7 @@ h3 {
 
 @media screen and (min-width: 1400px) {
     // FIXME: 先大致調整 1400px 以上的狀況
+    // TODO: Try~ top: clamp(30px, 10vw, 50px);
     .header-container {
         padding-top: calc(var(--vh, 1vh) * 3);
         margin-bottom: calc(var(--vh, 1vh) * 2);
@@ -481,19 +490,18 @@ h3 {
     @media screen and (min-width: 992px) {
         .bg-D-star-right {
             display: block;
-            // animation: star-right-flickering 10s infinite;
+            animation: star-right-flickering 10s infinite;
             // animation: star-right-sizing 10s infinite;
             // animation: star-right-rotating 10s infinite;
         }
 
         // FIXME: 右邊的星星比較大 比較搶眼 視覺上要更柔和才行
-        // @keyframes star-right-flickering {
-        //     0%   { opacity:1; }
-        //     50%  { opacity:1; }
-        //     75%  { opacity:0; }
-        //     // 85%  { opacity:1; }
-        //     100% { opacity:1; }
-        // }
+        @keyframes star-right-flickering {
+            0%   { opacity:1; }
+            50%  { opacity:1; }
+            75%  { opacity:0; }
+            100% { opacity:1; }
+        }
 
         // @keyframes star-right-sizing {
             // 0%   { transform: scale(1); }

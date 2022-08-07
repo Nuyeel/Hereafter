@@ -13,6 +13,7 @@ function AuthContextProvider(props) {
     };
 
     const localAuthStr = localStorage.getItem('auth');
+    const [lightBox, setLightBox] = useState('nav_lightbox_hidden');
 
     let localAuth = { ...unAuthState };
 
@@ -33,6 +34,7 @@ function AuthContextProvider(props) {
         localStorage.removeItem('auth');
         setAuth({ ...unAuthState });
         navigate('/');
+        setLightBox('nav_lightbox_hidden');
     };
 
     return (
