@@ -1,33 +1,72 @@
 import { useContext, useState, useEffect } from 'react';
+// 會員登入context
+import AuthContext from '../../context/AuthContext/AuthContext';
+//載入資料
+//TODO:修改資料獲取
+import axios from 'axios';
+import { GET_GOODDEED_API } from '../../config/ajax-path';
+// 標題（不會用）
 import HeaderContext, {
     headers,
 } from '../../context/HeaderContext/HeaderContext';
-import AuthContext from '../../context/AuthContext/AuthContext';
+// 子曾元件和css
 import Carousel from './Carousel';
 import './teststyle.scss';
-// import './testCard.scss';
 
-// import TestCard from './TestCard';
-
-function Test(props) {
+function Gooddeed(props) {
+    const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
     const { authorized, sid, account, token } = useContext(AuthContext);
-
-    // const [shows, setShows] = useState(['block', 'none', 'none']);
     const [shows, setShows] = useState({
         opacity: ['1', '0', '0'],
         height: ['', '0', '0'],
     });
 
-    const score = 9000 + Math.floor(Math.random() * 3000);
+    // 確定有沒有陰德值
+    // const [haveScore, setHaveScore] = useState(true);
+    const [haveScore, setHaveScore] = useState(false);
 
-    // useEffect(() => {
-    //     setHeader(headers[pageName]);
-    // }, []);
+    const randomscore = 9000 + Math.floor(Math.random() * 3000);
+    const [newscore, setNewScore] = useState(0);
 
-    return (
+    useEffect(() => {
+        setHeader(headers[pageName]);
+    }, []);
+
+    const testResult = (
         <>
-            {/* <div className="show" style={{ display: shows[0] }}> */}
+            {/* 測驗結果頁 */}
+            <div
+                className="show"
+                style={{
+                    opacity: shows.opacity[2],
+                    height: shows.height[2],
+                }}
+            >
+                <div className="yun-start">
+                    <div className="yun-start-card">
+                        <h3>你已經測驗過了！</h3>
+                        <div className="yun-ques">
+                            <div>您的陰德值為</div>
+                            <h3>{newscore}</h3>
+                        </div>
+
+                        <button>規劃我的來世</button>
+                        <p>
+                            貼心提醒：
+                            <br />
+                            陰德值可以透過右上icon點擊查看，
+                            <br />
+                            或者是到會員中心確認。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+    const testStart = (
+        <>
+            {/* 開始測驗頁 */}
             <div
                 className="show"
                 style={{
@@ -45,7 +84,7 @@ function Test(props) {
 
                         <button
                             onClick={() => {
-                                // setShows(['none', 'block', 'none']);
+                               
                                 setShows({
                                     opacity: ['0', '1', '0'],
                                     height: ['0', '', ''],
@@ -61,7 +100,7 @@ function Test(props) {
                     </div>
                 </div>
             </div>
-            {/* <div className="show" style={{ display: shows[1] }}> */}
+            {/* 題目頁面 */}
             <div
                 className="show"
                 style={{
@@ -73,7 +112,7 @@ function Test(props) {
                     <Carousel setShows={setShows} />
                 </div>
             </div>
-            {/* <div className="show" style={{ display: shows[2] }}> */}
+            {/* 測驗結果頁 */}
             <div
                 className="show"
                 style={{
@@ -86,7 +125,7 @@ function Test(props) {
                         <h3>感謝作答</h3>
                         <div className="yun-ques">
                             <div>您的陰德值為</div>
-                            <h3>{score}</h3>
+                            <h3>{randomscore}</h3>
                         </div>
 
                         <button>規劃我的來世</button>
@@ -102,6 +141,32 @@ function Test(props) {
             </div>
         </>
     );
+
+    // (authorized ? 呈現頁面 :跳轉到登入頁)
+    // authCOntext.sid 可以抓取後端資料吧？
+    // fetch 資料出來
+    // 會員sid => authContext
+    //TODO:修改資料獲取
+    // const getGooddeedData = async () => {
+    //     console.log('authContext:', authorized, sid, account, token);
+    //     const r = await fetch(`${GET_GOODDEED_API}`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'Application/json',
+    //             Authorization: token,
+
+    //         }
+    //         .then(res =>res.json())
+    //     });
+    //     const rows = await r.json();
+    //     console.log(rows);
+    //     setHaveScore(false);
+    // };
+    // useEffect(() => {
+    //     getGooddeedData();
+    // }, []);
+
+    return <>{haveScore ? testResult : testStart}</>;
 }
 
-export default Test;
+export default Gooddeed;
