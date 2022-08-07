@@ -46,7 +46,7 @@ const rebornRouter = require(`${__dirname}/routes/reborn-cart`);
 const eventsRouter = require(`${__dirname}/routes/events`);
 const eventcartsRouter = require(`${__dirname}/routes/eventcarts`);
 const avatarRouter = require(`${__dirname}/routes/avatar`);
-const gooddeedtestRouter = require(`${__dirname}/routes/gooddeedtest`);
+const gooddeedRouter = require(`${__dirname}/routes/gooddeed`);
 
 // 設定路由比對時重視大小寫
 app.set('case sensitive routing', true);
@@ -197,7 +197,7 @@ app.use(
     express.static(`${__dirname}/public/uploads/images/avatar`)
 );
 
-app.use('/gooddeedtest', gooddeedtestRouter);
+app.use('/gooddeed', gooddeedRouter);
 
 
 // catch 404 and forward to error handler
