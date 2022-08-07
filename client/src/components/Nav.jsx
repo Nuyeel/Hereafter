@@ -234,6 +234,10 @@ function Nav(props) {
                                     // DONE: 存進去 localStorage
                                     // FIXME: 如果要記憶會員 要跟資料庫連線
                                     // 而且這個資料庫的檔案順位要高於 localStorage
+                                    if (location.pathname === '/nextlife') {
+                                        // console.log('不可以換');
+                                        return;
+                                    }
                                     localStorage.setItem('theme', 'dark');
                                     setTheme(themes.dark);
                                 } else {
