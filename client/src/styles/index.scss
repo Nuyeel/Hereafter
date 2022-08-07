@@ -252,37 +252,10 @@ h3 {
 /* ============================================================ */
 /* Header */
 /* ============================================================ */
-// FIXME: 目前字體大小是吃 h2 的設定 必須要改成 RWD
-.header {
-    font-size: 2rem;
-    font-weight: 700;
-    font-family: $ff-h;
-    width: 100%;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    letter-spacing: 0.4rem;
-    // outline: 1px solid red;
-    position: relative;
-}
-
-// FIXME: Header RWD font-size
-@media screen and (min-width: 500px) {
-    .header {
-        font-size: 3rem;
-        letter-spacing: 0.6rem;
-    }
-}
-
-@media screen and (min-width: 1400px) {
-    // FIXME: 先大致調整 1400px 以上的狀況
-    .header {
-        font-size: 3.5rem;
-    }
-}
-
 .header-container {
     padding-top: 20px;
     margin-bottom: 16px;
+    position: relative;
 }
 
 @media screen and (min-width: 992px) {
@@ -300,10 +273,41 @@ h3 {
     }
 }
 
+// FIXME: 目前字體大小是吃 h2 的設定 必須要改成 RWD
+.header {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: $ff-h;
+    // width: 100%;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 0.3rem;
+    // outline: 1px solid red;
+    position: relative;
+}
+
+// FIXME: Header RWD font-size
+@media screen and (min-width: 500px) {
+    .header {
+        font-size: 3rem;
+        padding-left: 20px;
+        letter-spacing: 0.6rem;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .header {
+        font-size: 3.5rem;
+    }
+}
+
 .header-baseline-decoration {
-    width: 33vw;
+    width: 40vw;
     // FIXME: min-width 要配合字體大小 RWD
-    min-width: 280px;
+    // FIXME: 目前寬度是跟有按鈕的版本 應該要獨立出來
+    // DONE: 已經獨立
+    min-width: 220px;
     // TODO: height (%)
     height: 15px;
     position: absolute;
@@ -312,11 +316,194 @@ h3 {
     z-index: -1;
 }
 
+.header-container-sharewall-edition {
+    .header-baseline-decoration {
+        width: 70vw;
+        min-width: 320px;
+    }
+}
+
 @media screen and (min-width: 500px) {
     .header-baseline-decoration {
+        width: 40vw;
+        min-width: 350px;
         height: 25px;
         bottom: -13px;
     }
+}
+
+@media screen and (min-width: 500px) {
+    .header-container-sharewall-edition {
+        .header-baseline-decoration {
+            width: 50vw;
+            min-width: 450px;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .header-baseline-decoration {
+        width: 35vw;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .header-container-sharewall-edition {
+        .header-baseline-decoration {
+            width: 40vw;
+        }
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .header-baseline-decoration {
+        width: 30vw;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .header-container-sharewall-edition {
+        .header-baseline-decoration {
+            width: 35vw;
+        }
+    }
+}
+
+.cpl-header-sharewall-button {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: transparent;
+    filter: none !important;
+    position: absolute;
+    // FIXME: 先寫死就好
+    left: 200px;
+    top: 19px;
+    font-size: $fz-caption;
+    font-weight: 500;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+
+    &:hover {
+        filter: none !important;
+    }
+    
+    &:active {
+        // FIXME: 先寫死就好
+        left: 200px;
+        top: 17px;
+        filter: none !important;
+    }
+
+    >.cpl-hsb-button-option {
+        >.cpl-hsb-bo-icon:first-child {
+            font-size: $fz-title;
+        }
+
+        >.cpl-hsb-bo-IoCaretDown {
+            font-size: 1.125rem;
+            position: relative;
+            top: 1px;
+        }
+
+        >.cpl-hsb-bo-icon.cpl-hsb-bo-FiBookmark {
+            position: relative;
+            // top: 1px;
+        }
+
+        >.cpl-hsb-bo-title {
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+    }
+
+    >.cpl-hsb-button-option.cpl-hsb-bo-select {
+        +.cpl-hsb-bo-select {
+            margin-top: 5px;
+        }
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-header-sharewall-button {
+        font-size: $fz-body;
+        left: 290px;
+        top: 24px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left: 16px;
+        padding-right: 16px;
+        
+        &:active {
+            top: 22px;
+            left: 290px;
+        }
+
+        >.cpl-hsb-button-option {
+            >.cpl-hsb-bo-icon:first-child {
+                font-size: 1.625rem;
+            }
+    
+            >.cpl-hsb-bo-IoCaretDown {
+                font-size: $fz-subtitle;
+            }
+
+            >.cpl-hsb-bo-title {
+                padding-left: 6px;
+                padding-right: 6px;
+            }
+        }
+
+        >.cpl-hsb-button-option.cpl-hsb-bo-select {
+            +.cpl-hsb-bo-select {
+                margin-top: 8px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-header-sharewall-button {
+        top: 15px;
+
+        &:active {
+            top: 13px;
+        }
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-header-sharewall-button {
+        top: 32px;
+        left: 330px;
+        
+        &:active {
+            top: 30px;
+            left: 330px;
+        }
+    }
+}
+
+.cpl-header-sharewall-button.theme-dark {
+    border-color: $bgc-L-l;
+    color: $bgc-L-l;
+}
+
+.cpl-header-sharewall-button.theme-dark.isActive {
+    background-color: $bgc-D-70p;
+}
+
+.cpl-header-sharewall-button.theme-light {
+    border-color: $bgc-D;
+    color: $bgc-D;
+}
+
+.cpl-header-sharewall-button.theme-light.isActive {
+    background-color: $bgc-L-l-70p;
 }
 
 /* ============================================================ */
