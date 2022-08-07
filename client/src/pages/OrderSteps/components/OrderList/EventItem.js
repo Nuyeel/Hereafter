@@ -1,5 +1,5 @@
 import delete_cross from '../../imgs/delete-cross.svg';
-import '../../styles/sub-pages.scss';
+// import '../../styles/sub-pages.scss';
 import '../../../Event/_xuan_styles.scss';
 
 function EventItem(props) {
@@ -25,8 +25,9 @@ function EventItem(props) {
         program_type,
         price,
         start,
+        start_time,
         npo_name,
-        place_other,
+        place_location,
         count, //因為活動限定選一件，所以不提供+-功能
         setCount, //因為活動限定選一件，所以不提供+-功能
         removeItem,
@@ -40,7 +41,7 @@ function EventItem(props) {
             <div className="xuan-cart-list">
                 <div className="xuan-cart-check">
                     <input
-                        className='xuan-input-checkbox'
+                        className="xuan-input-checkbox"
                         type="checkbox"
                         id="cbox"
                         checked={eventPick.includes(`${sid}`)}
@@ -73,15 +74,17 @@ function EventItem(props) {
                 <div className="xuan-cart-intro">
                     <div className="xuan-cart-intro-title">
                         <span className="xuan-body">{program_type}</span>
-                        <span className="xuan-title">{act_title}</span>
+                        <span className="xuan-subtitle">{act_title}</span>
                     </div>
 
                     <div className="xuan-time-location">
-                        <p className="xuan-subtitle">{start}</p>
-                        <p className="xuan-subtitle">{place_other}</p>
+                        <p className="xuan-body">{start}</p>
+                        
+                        <p className="xuan-body">{start_time}</p>
+                        <p className="xuan-location xuan-body">{place_location}</p>
                     </div>
 
-                    <p className="xuan-subtitle">{npo_name}</p>
+                    <p className="xuan-body">{npo_name}</p>
                 </div>
 
                 {/* 活動/贊助限定1場，不提供+-功能 */}
@@ -94,7 +97,7 @@ function EventItem(props) {
                 </div>
 
                 <div className="xuan-cost">
-                    <h5 className="xuan-subtitle">NT${price}</h5>
+                    <h5 className="xuan-body">NT${price}</h5>
                 </div>
 
                 {/* 建立刪除鍵功能 */}
