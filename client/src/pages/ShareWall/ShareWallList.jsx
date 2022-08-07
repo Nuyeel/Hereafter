@@ -75,7 +75,10 @@ function ShareWallList(props) {
     return (
         <>
             <div className="container mb-3">
-                <ShareWallTagbar setSearchParams={setSearchParams} />
+                <ShareWallTagbar
+                    searchParams={searchParams}
+                    setSearchParams={setSearchParams}
+                />
                 <ShareWallSearchBar
                     searchParams={searchParams}
                     setSearchParams={setSearchParams}

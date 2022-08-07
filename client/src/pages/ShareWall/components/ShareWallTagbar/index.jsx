@@ -11,7 +11,7 @@ import './Tagbar.scss';
 // 使用組件 (Component)
 
 function Tagbar(props) {
-    const { setSearchParams } = props;
+    const { searchParams, setSearchParams } = props;
 
     const [tagList, setTagList] = useState([]);
 
@@ -36,7 +36,15 @@ function Tagbar(props) {
                         onClick={(e) => {
                             // ASK: 標籤搜尋與標題搜尋的 RESTful API 設計
                             // console.log(e.target.innerText);
-                            setSearchParams(e.target.innerText);
+                            if (
+                                searchParams.indexOf(e.target.innerText) !== -1
+                            ) {
+                                // 如果已經有此標籤 什麼事都不用做
+                            } else {
+                                const newSearchParams = `${searchParams} ${e.target.innerText}`;
+                                console.log(newSearchParams);
+                                setSearchParams(newSearchParams);
+                            }
                         }}
                     >
                         #{v.share_post_tag_text}
