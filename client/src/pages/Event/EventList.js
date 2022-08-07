@@ -305,11 +305,9 @@ function EventList() {
 
                         <SortBar sortBy={sortBy} setSortBy={setSortBy} />
 
-
-                        
                         {/* TODO: 方案選擇 */}
                         <h4 className="xuan-event-type">方案選擇</h4>
-                        <div className='xuan-event-type-select'>
+                        <div className="xuan-event-type-select">
                             {howtagsTypes.map((value, i) => (
                                 <TypeCheckbox
                                     value={value}

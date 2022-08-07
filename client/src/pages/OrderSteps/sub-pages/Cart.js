@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import axios from 'axios';
 
-import '../styles/_cart.scss';
+// scss
+import '../styles/_new_cart.scss';
 
 import OrderList from '../components/OrderList';
 import Summary from '../components/Summary';
@@ -229,7 +230,7 @@ const Cart = (props) => {
     return (
         <>
             <div className="xuan-cart-container">
-                <div className="row">
+                <div className="xuan-row">
                     <OrderList
                         eventCart={eventCart}
                         setEventCart={setEventCart}
