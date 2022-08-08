@@ -1,9 +1,10 @@
-// import Container from "react-bootstrap/Container";
 import { useContext, useEffect, useState } from 'react';
-import { Row } from 'react-bootstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ListCard from './components/ListCard';
 // import MapIcon from "./components/MapIcon";
 import { IoMap, IoList } from 'react-icons/io5';
+import filterIcon from './img/filter-icon.svg';
 
 import './place.scss';
 import SortRow from './components/SortRow';
@@ -16,18 +17,27 @@ import {
 } from '../../config/ajax-path';
 import PlaceMap from './components/PlaceMap';
 
+// 頁面標題context
 import HeaderContext, {
     headers,
 } from '../../context/HeaderContext/HeaderContext';
+// 會員登入context
+import AuthContext from '../../context/AuthContext/AuthContext';
+import PageSelect from './components/PageSelect';
+import TimeNewsRow from './components/TimeNewsRow';
 
 function Place(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
+    const { authorized, sid: userSid } = useContext(AuthContext);
 
     // place-data
     const [rawPlaceData, setRawPlaceData] = useState([]);
     const [placeDisplay, setPlaceDisplay] = useState([]);
-    // TODO: filter 如果沒有資料,
+    // 要呈現的資料陣列
+    const [displayLikedList, setDisplayLikedList] = useState([]);
+    // 收藏資料的sid
+    const [likedPlaceSidArr, setLikedPlaceSidArr] = useState([]);
 
     // country-city-data 下拉選單資料
     const [countryFilterData, setCountryFilterData] = useState({
@@ -38,14 +48,9 @@ function Place(props) {
     // filter (select)
     const [countryFilter, setCountryFilter] = useState('all');
     const [cityFilter, setCityFilter] = useState('all');
-
-    const [timeRangeFilter, setTimeRangeFilter] = useState([
-        new Date(),
-        new Date(),
-    ]);
-
-    // filter(checked勾選形式)
-    // const [checkedcity, setCheckedCity] = useState([]);
+    const [timeRangeFilter, setTimeRangeFilter] = useState([new Date()]);
+    // 篩選 RWD 燈箱開合
+    const [rwdFilterLightboxOpen, setRwdFilterLightboxOpen] = useState(false);
 
     // sort State (radio)
     const [sortBy, setSortBy] = useState('sortYearASC');
@@ -53,16 +58,8 @@ function Place(props) {
     // 地圖檢視
     const [mapView, setMapView] = useState(false);
 
-    // 現在時間
-    const [nowTime, setNowTime] = useState({
-        y: 0,
-        m: 0,
-        d: 0,
-        cDay: '',
-        hh: 0,
-        mm: 0,
-        sec: 0,
-    });
+    // 點選place的地圖icon, 顯示地圖&列表第一筆為此資料(place_sid)
+    const [viewLocationPlaceSid, setViewLocationPlaceSid] = useState('');
 
     // 要資料
     const getPlaceData = async () => {
@@ -70,16 +67,33 @@ function Place(props) {
         const obj = await r.json();
 
         const rows = obj.rows;
-        // console.log(rows);
         setRawPlaceData(rows);
         setPlaceDisplay(rows);
-        // console.log(rawPlaceData);
+        // console.log(rows);
         // console.log(placeDisplay);
+    };
+    // 如果有登入, 拿會員的收藏data
+    const getMemberLikedData = async () => {
+        const r = await fetch(`${PLACE_LIKED_API}/${userSid}`);
+        const rows = await r.json();
+        if (rows.length > 0) {
+            setDisplayLikedList(rows);
+            console.log('member:', userSid, rows);
+            //console.log(typeof rows[0].sid);  //number
+
+            const sidArr = rows.map((v) => v.sid);
+            setLikedPlaceSidArr(sidArr);
+        }
     };
 
     // didMount要資料
     useEffect(() => {
         getPlaceData();
+    }, []);
+
+    // 要收藏資料
+    useEffect(() => {
+        getMemberLikedData();
     }, []);
 
     // 設定 Header
@@ -177,16 +191,18 @@ function Place(props) {
         setPlaceDisplay(newPlaceData);
     };
 
+    // TODO: 想做成util function component
     // 收藏
     const saveLikedPlace = (e) => {
         const placeIndex = e.currentTarget
             .closest('.place-info-card')
             .getAttribute('data-placesid');
-        // TODO: 存到資料庫 place-liked
+        console.log(placeIndex);
+        console.log(userSid);
+        // 存到資料庫 place-liked
         // 1. 判斷有無登入
         // 2. 存到資料庫 place-liked
-        // 先預設登入的會員sid=10
-        const obj = { member_sid: 10, place_sid: placeIndex };
+        const obj = { member_sid: userSid, place_sid: placeIndex };
 
         fetch(PLACE_LIKED_API, {
             method: 'POST',
@@ -198,21 +214,19 @@ function Place(props) {
             .then((r) => r.json())
             .then((result) => {
                 console.log(result);
+                getMemberLikedData();
             });
     };
-    // TODO: 加入之後要讓愛心亮著嗎
-    // TODO: 要做移出收藏嗎?
 
-    // 加到轉生購物車
-    const addPlaceToCart = (e) => {
+    // 加入轉生購物車
+    function addPlaceToCart(e) {
         const placeIndex = e.currentTarget
             .closest('.place-info-card')
             .getAttribute('data-placesid');
-        console.log(placeIndex);
+        // console.log(placeIndex, userSid);
 
-        // TODO: 存到資料庫ok, 怎麼拿到member_sid~
-        // 先預設登入的會員sid=10
-        const obj = { member_sid: 10, place_sid: placeIndex };
+        // 存到資料庫
+        const obj = { member_sid: userSid, place_sid: placeIndex };
 
         fetch(PLACE_CARTDATA_API, {
             method: 'POST',
@@ -225,71 +239,74 @@ function Place(props) {
             .then((result) => {
                 console.log(result);
             });
+
+        return;
+    }
+
+    // 點選place的地圖icon, 顯示地圖&列表第一筆為此資料(place_sid)
+    const handlePlaceMapIconClicked = (e) => {
+        const placeIndex = e.currentTarget
+            .closest('.place-info-card')
+            .getAttribute('data-placesid');
+        // console.log(typeof placeIndex);
+
+        setViewLocationPlaceSid(placeIndex);
     };
 
-    // 現在時間
-    const dayList = ['日', '一', '二', '三', '四', '五', '六'];
     useEffect(() => {
-        const nowDate = setInterval(() => {
-            const now = new Date();
+        if (+viewLocationPlaceSid > 0) {
+            setMapView(true);
 
-            const y = now.getFullYear();
-            const m = now.getMonth() + 1;
-            const d = now.getDate();
-            const dIndex = now.getDay();
-            const hh = now.getHours();
-            const mm = now.getMinutes();
-            const sec = now.getSeconds();
+            const place = placeDisplay.filter((v) => {
+                return v.sid === +viewLocationPlaceSid;
+            });
+            const restPlaceArr = placeDisplay.filter((v) => {
+                return v.sid !== +viewLocationPlaceSid;
+            });
+            restPlaceArr.unshift(place[0]);
+            setPlaceDisplay(restPlaceArr);
 
-            const cDay = dayList[dIndex];
+            // TODO: 要設定ref才可以控制marker的popup開關
+        }
+    }, [viewLocationPlaceSid]);
 
-            const newNowTime = {
-                y: y,
-                m: m,
-                d: d,
-                cDay: cDay,
-                hh: hh,
-                mm: mm,
-                sec: sec,
-            };
-
-            setNowTime(newNowTime);
-            // console.log(newNowTime);
-        }, 1000);
-        return () => clearInterval(nowDate);
-    }, []);
+    // RWD 篩選燈箱開合
+    const rwdHandelFilterLighbox = () => {
+        if (rwdFilterLightboxOpen) {
+            setRwdFilterLightboxOpen(false);
+        } else {
+            setRwdFilterLightboxOpen(true);
+        }
+    };
 
     return (
         <>
             <div className="container place-container">
-                <div className="time-news-row">
-                    <div className="time-wrap dark-bg-50">
-                        <p className="tn-title">現在時間：</p>
-                        <p className="time tn">
-                            {nowTime.y}年{nowTime.m}月{nowTime.d}日(
-                            {nowTime.cDay})
-                            {`${nowTime.hh}` < 10
-                                ? ` 0${nowTime.hh}`
-                                : ` ${nowTime.hh}`}
-                            :
-                            {`${nowTime.mm}` < 10
-                                ? `0${nowTime.mm}`
-                                : `${nowTime.mm}`}
-                            :
-                            {`${nowTime.sec}` < 10
-                                ? `0${nowTime.sec}`
-                                : `${nowTime.sec}`}
-                        </p>
-                    </div>
-                    <div className="news-wrap dark-bg-50">
-                        <p className="tn-title">最新消息：</p>
-                        <p className="news tn">
-                            受氣候變遷及戰爭影響，近年全球轉生名額不斷減少。海外轉生訂單需求增加，帶動...
-                        </p>
-                    </div>
-                </div>
+                {/* 列表/收藏頁面切換 */}
+                <PageSelect page={'place-list'} />
 
-                <div className="filter-row">
+                <TimeNewsRow />
+                {window.innerWidth < 376 && (
+                    <div
+                        className="rwd-filter-btn-row my-2"
+                        onClick={rwdHandelFilterLighbox}
+                    >
+                        <img
+                            src={filterIcon}
+                            alt=""
+                            width="25px"
+                            height="25px"
+                        />
+                    </div>
+                )}
+                {/* FIXME: 只有第一次會有動畫 */}
+                <div
+                    className={
+                        rwdFilterLightboxOpen
+                            ? 'filter-row row my-2 p-0 filterRowShow'
+                            : 'filter-row row my-2 p-0 filterRowShow filterRowShow-reverse'
+                    }
+                >
                     {/* 篩選區 */}
                     <FilterSearch
                         rawPlaceData={rawPlaceData}
@@ -304,13 +321,9 @@ function Place(props) {
                         filtByTimeRange={filtByTimeRange}
                         countryFilterData={countryFilterData}
                     />
-                    <div className="liked-place-btn-wrap">
-                        <button className="likedPageBtn place-btn">
-                            我的收藏
-                        </button>
-                    </div>
                 </div>
 
+                {/* 地圖 或 列表檢視模式 */}
                 {mapView ? (
                     <>
                         {/* 地圖顯示 */}
@@ -323,11 +336,18 @@ function Place(props) {
                                                 <ListCard
                                                     key={v.sid}
                                                     value={v}
+                                                    userSid={userSid}
                                                     addPlaceToCart={
                                                         addPlaceToCart
                                                     }
                                                     saveLikedPlace={
                                                         saveLikedPlace
+                                                    }
+                                                    handlePlaceMapIconClicked={
+                                                        handlePlaceMapIconClicked
+                                                    }
+                                                    likedPlaceSidArr={
+                                                        likedPlaceSidArr
                                                     }
                                                 />
                                             ))}
@@ -344,9 +364,12 @@ function Place(props) {
                                 <div className="place-map">
                                     <PlaceMap
                                         placeDisplay={placeDisplay}
+                                        setPlaceDisplay={setPlaceDisplay}
                                         cityFilter={cityFilter}
-                                        addPlaceToCart={addPlaceToCart}
                                         saveLikedPlace={saveLikedPlace}
+                                        addPlaceToCart={addPlaceToCart}
+                                        rawPlaceData={rawPlaceData}
+                                        likedPlaceSidArr={likedPlaceSidArr}
                                     />
                                 </div>
                             </div>
@@ -359,6 +382,11 @@ function Place(props) {
                                     列表檢視
                                 </button>
                                 <div className="viewMapBtn-layer"></div>
+                                {/* <FootViewBtn
+                                    setMapView={setMapView}
+                                    icon={IoList}
+                                    text={'列表檢視'}
+                                /> */}
                             </div>
                         </div>
                     </>
@@ -382,6 +410,12 @@ function Place(props) {
                                                 value={v}
                                                 addPlaceToCart={addPlaceToCart}
                                                 saveLikedPlace={saveLikedPlace}
+                                                handlePlaceMapIconClicked={
+                                                    handlePlaceMapIconClicked
+                                                }
+                                                likedPlaceSidArr={
+                                                    likedPlaceSidArr
+                                                }
                                             />
                                         ))}
                                     </>

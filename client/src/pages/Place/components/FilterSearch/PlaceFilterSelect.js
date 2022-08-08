@@ -45,6 +45,7 @@ function PlaceFilterSelect(props) {
                     })}
                 </select>
             </div>
+
             <div className="my-place-select">
                 {/* 國家沒有選的話, 不顯示城市選單 */}
                 {countryFilter === 'all' ? (

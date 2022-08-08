@@ -54,6 +54,7 @@ function LoginForm(props) {
                         ...result.data,
                         authorized: true,
                     });
+                    Swal.fire('歡迎回到來生投放所');
                     navigate('/memberprofile');
                 } else {
                     Swal.fire('您輸入的帳戶或密碼有誤');
@@ -69,17 +70,7 @@ function LoginForm(props) {
     return (
         <>
             {authorized ? (
-                <>
-                    <div>已經登入了欸</div>
-                    <br />
-                    <button
-                        type="button"
-                        className="btn btn-primary"
-                        onClick={userLogout}
-                    >
-                        Logout
-                    </button>
-                </>
+                <></>
             ) : (
                 <div className="container">
                     <div className="row">
@@ -142,7 +133,7 @@ function LoginForm(props) {
                                             <div className="d-flex justify-content-center ">
                                                 <button
                                                     type="submit"
-                                                    className="btn btn-l btn-pri btn-outline-light "
+                                                    className="btn-member btn-member-l btn-member-pri btn-member-outline-light "
                                                 >
                                                     登入
                                                 </button>

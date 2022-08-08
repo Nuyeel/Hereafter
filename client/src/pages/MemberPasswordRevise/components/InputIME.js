@@ -5,8 +5,7 @@ function InputIME(props, ref) {
         onChange,
         value,
         passwordPrevious,
-        setAccountPrevious,
-        setEmailPrevious,
+        setCurrentPasswordPrevious,
         setPasswordPrevious,
         setConfirmPasswordPrevious,
         ...otherProps
@@ -19,11 +18,8 @@ function InputIME(props, ref) {
     const [inputValue, setInputValue] = useState('');
 
     const _onChange = (event) => {
-        if (otherProps.name === 'account') {
-            setAccountPrevious(event.target.value);
-        }
-        if (otherProps.name === 'email') {
-            setEmailPrevious(event.target.value);
+        if (otherProps.name === 'currentPassword') {
+            setCurrentPasswordPrevious(event.target.value);
         }
         if (otherProps.name === 'password') {
             setPasswordPrevious(event.target.value);
