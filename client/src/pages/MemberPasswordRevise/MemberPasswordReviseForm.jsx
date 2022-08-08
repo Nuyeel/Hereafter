@@ -27,7 +27,7 @@ function MemberProfileForm(props) {
         useState('password');
 
     const themeContext = useContext(ThemeContext);
-    const { authorized, setAuth, userLogout } = useContext(AuthContext);
+    const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleFieldsChange = (e) => {
@@ -46,6 +46,7 @@ function MemberProfileForm(props) {
             body: JSON.stringify(newPasswordName),
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
         })
             .then((r) => r.json())
