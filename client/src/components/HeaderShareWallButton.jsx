@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Swal from 'sweetalert2';
@@ -18,6 +19,8 @@ function HeaderShareWallButton() {
     const { setShareWallSearchState, setShareWallPostsData } =
         useContext(HeaderContext);
     const { authorized } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     // fixed or select
     const [shareWallButtonState, setShareWallButtonState] = useState('fixed');
@@ -141,15 +144,16 @@ function HeaderShareWallButton() {
                         showConfirmButton: false,
                     });
                 }
-                setShareWallButtonData({
-                    icon: (
-                        <FiPlus className="cpl-hsb-bo-icon cpl-hsb-bo-FiPlus" />
-                    ),
-                    title: '新增貼文',
-                    caret: (
-                        <IoCaretDown className="cpl-hsb-bo-icon cpl-hsb-bo-IoCaretDown" />
-                    ),
-                });
+                navigate('/sharewall/post');
+                // setShareWallButtonData({
+                //     icon: (
+                //         <FiPlus className="cpl-hsb-bo-icon cpl-hsb-bo-FiPlus" />
+                //     ),
+                //     title: '新增貼文',
+                //     caret: (
+                //         <IoCaretDown className="cpl-hsb-bo-icon cpl-hsb-bo-IoCaretDown" />
+                //     ),
+                // });
             },
         },
     ];
