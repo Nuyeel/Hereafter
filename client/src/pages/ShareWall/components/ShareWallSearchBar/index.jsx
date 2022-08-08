@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+import HeaderContext from '../../../../context/HeaderContext/HeaderContext';
 import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../../../context/AuthContext/AuthContext';
 
@@ -22,7 +23,9 @@ import './SearchBar.scss';
 // FIXME: 搜尋時要發 AJAX 去新增被搜尋的次數
 // TODO: Lodash/debounce
 function ShareWallSearchBar(props) {
-    const { searchParams, setSearchParams, setPostsData } = props;
+    const { searchParams, setSearchParams } = props;
+    const { shareWallSearchState, setShareWallPostsData } =
+        useContext(HeaderContext);
     const { theme } = useContext(ThemeContext);
     const { token } = useContext(AuthContext);
     const searchRef = useRef(null);
@@ -79,7 +82,7 @@ function ShareWallSearchBar(props) {
             if (searchParams.indexOf('#') !== -1) {
                 // FIXME: 鬼鬼可以換個顏色
                 Swal.fire({
-                    title: '您輸入的標題名稱不符規定！',
+                    title: '您輸入的搜尋內容不符規定！',
                     imageUrl: OutlineSoulAlert,
                     imageHeight: 50,
                     imageWidth: 50,
@@ -92,14 +95,25 @@ function ShareWallSearchBar(props) {
         }
     };
 
+    // TODO: 利用三態 'default', 'isAuthor', 'isCollector' 加上條件
     const axiosTagGET = async (str) => {
         // 這裡做標籤搜尋
-        const result = await axios.get(`${API_SHAREWALL}?searchtag=${str}`, {
+        let axiosUrl = `${API_SHAREWALL}?searchtag=${str}`;
+
+        // 加上三態條件
+        // 'default' 不用做什麼
+        if (shareWallSearchState === 'isAuthor') {
+            axiosUrl += '&isAuthor=true';
+        } else if (shareWallSearchState === 'isCollector') {
+            axiosUrl += '&isCollector=true';
+        }
+
+        const result = await axios.get(axiosUrl, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log(result.data);
+        // console.log(result.data);
 
         if (result.data.length === 0) {
             Swal.fire({
@@ -111,17 +125,37 @@ function ShareWallSearchBar(props) {
             });
         }
 
-        setPostsData(result.data);
+        setShareWallPostsData(result.data);
     };
 
     const axiosTitleGET = async (str) => {
         // 這裡做標題搜尋
         if (!str) {
-            const result = await axios.get(API_SHAREWALL);
+            let axiosUrl = `${API_SHAREWALL}`;
+
+            // 加上三態條件
+            // 'default' 不用做什麼
+            if (shareWallSearchState === 'isAuthor') {
+                axiosUrl += '?isAuthor=true';
+            } else if (shareWallSearchState === 'isCollector') {
+                axiosUrl += '?isCollector=true';
+            }
+
+            const result = await axios.get(axiosUrl);
             // console.log(result.data);
-            setPostsData(result.data);
+            setShareWallPostsData(result.data);
         } else {
-            const result = await axios.get(`${API_SHAREWALL}?search=${str}`);
+            let axiosUrl = `${API_SHAREWALL}?search=${str}`;
+
+            // 加上三態條件
+            // 'default' 不用做什麼
+            if (shareWallSearchState === 'isAuthor') {
+                axiosUrl += '&isAuthor=true';
+            } else if (shareWallSearchState === 'isCollector') {
+                axiosUrl += '&isCollector=true';
+            }
+
+            const result = await axios.get(axiosUrl);
             // console.log(result.data);
             if (result.data.length === 0) {
                 Swal.fire({
@@ -132,7 +166,7 @@ function ShareWallSearchBar(props) {
                     showConfirmButton: false,
                 });
             }
-            setPostsData(result.data);
+            setShareWallPostsData(result.data);
         }
     };
 

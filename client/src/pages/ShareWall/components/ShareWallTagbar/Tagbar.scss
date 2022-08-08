@@ -15,6 +15,18 @@
         margin-bottom: 10px;
         margin-left: 3px;
         margin-right: 3px;
+
+        &:focus {
+            filter: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        &:active {
+            filter: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
     }
 }
 
@@ -38,6 +50,6 @@
 @media screen and (min-width: 1400px) {
     // FIXME: 先大致調整 1400px 以上的狀況
     .cpl-tagbar {
-        margin-bottom: calc(var(--vh, 1vh) * 3);
+        margin-bottom: calc(var(--vh, 1vh) * 102 - 788px);
     }
 }

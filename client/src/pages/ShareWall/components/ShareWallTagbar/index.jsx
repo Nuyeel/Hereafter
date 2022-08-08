@@ -42,7 +42,7 @@ function Tagbar(props) {
                                 // 如果已經有此標籤 什麼事都不用做
                             } else {
                                 const newSearchParams = `${searchParams} ${e.target.innerText}`;
-                                console.log(newSearchParams);
+                                // console.log(newSearchParams);
                                 setSearchParams(newSearchParams);
                             }
                         }}
