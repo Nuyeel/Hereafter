@@ -196,10 +196,11 @@
 }
 
 .cpl-pcb-close-icon {
-    position: absolute;
     font-size: $fz-h4;
+    position: absolute;
     right: 5px;
     top: 5px;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 500px) {
@@ -409,7 +410,7 @@
 }
 
 .cpl-pcb-ita-ta-inner-title {
-    font-family: $ff-h;
+    font-family: $ff-t; // FIXME: $ff-h 太容易缺字
     font-size: $fz-h5;
     font-weight: 500;
     margin-bottom: 20px;

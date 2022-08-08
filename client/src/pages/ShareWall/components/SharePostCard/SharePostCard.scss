@@ -226,9 +226,13 @@
     .cpl-spc-heart-icon {
         margin-left: 5px;
         position: relative;
-        right: -10px;
+        right: -5px;
     }
 }
+
+// .cpl-spc-heart-icon.isLiked {
+//     color: $primary;
+// }
 
 .cpl-spc-ib-inner-left {
     font-size: 125%;

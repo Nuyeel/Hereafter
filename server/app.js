@@ -46,6 +46,7 @@ const rebornRouter = require(`${__dirname}/routes/reborn-cart`);
 const eventsRouter = require(`${__dirname}/routes/events`);
 const eventcartsRouter = require(`${__dirname}/routes/eventcarts`);
 const avatarRouter = require(`${__dirname}/routes/avatar`);
+const gooddeedRouter = require(`${__dirname}/routes/gooddeed`);
 
 // 設定路由比對時重視大小寫
 app.set('case sensitive routing', true);
@@ -131,6 +132,7 @@ app.use((req, res, next) => {
             console.log(res.locals.loginUser);
         } catch (ex) {
             console.log('狀態：瀏覽者並未登入');
+            console.log(res.locals.loginUser);
         }
         // console.log(res.locals.loginUser);
     }
@@ -194,6 +196,9 @@ app.use(
     '/uploads/images/avatar',
     express.static(`${__dirname}/public/uploads/images/avatar`)
 );
+
+app.use('/gooddeed', gooddeedRouter);
+
 
 // catch 404 and forward to error handler
 // Http Status Code 404: 倒數第二道防線

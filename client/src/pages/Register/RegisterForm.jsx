@@ -1,5 +1,6 @@
 import './style.scss';
-import { useState, useContext, useCallback } from 'react';
+import Swal from 'sweetalert2';
+import { useState, useContext, useCallback, useEffect } from 'react';
 import InputIME from './components/InputIME';
 import _ from 'lodash';
 import axios from 'axios';
@@ -23,16 +24,21 @@ function RegisterForm(props) {
     const [confirmPasswordFieldType, setConfirmPasswordFieldType] =
         useState('password');
 
-    const themeContext = useContext(ThemeContext);
+    const [accountPrevious, setAccountPrevious] = useState('');
+    const [emailPrevious, setEmailPrevious] = useState('');
+    const [passwordPrevious, setPasswordPrevious] = useState('');
+    const [confirmPasswordPrevious, setConfirmPasswordPrevious] = useState('');
+
+    const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleFieldsChange = (e) => {
-        setRegisterData({
-            ...registerData,
-            [e.target.name]: e.target.value,
-        });
-    };
+    // const handleFieldsChange = (e) => {
+    //     setRegisterData({
+    //         ...registerData,
+    //         [e.target.name]: e.target.value,
+    //     });
+    // };
 
     // 欄位處理
     const [accountSearch, setAccountSearch] = useState('');
@@ -145,16 +151,19 @@ function RegisterForm(props) {
     };
 
     // 確認密碼檢查
-    const handleConfirmPasswordSearch = (searchConfirmPasswordWord) => {
+    const handleConfirmPasswordSearch = (
+        passwordPrevious,
+        searchConfirmPasswordWord
+    ) => {
         // 初始狀態設為空
         if (!searchConfirmPasswordWord) {
             setValidationCssClassname4('');
             return;
         }
         console.log(searchConfirmPasswordWord);
-        console.log(registerData.password);
+        console.log(passwordPrevious);
         // // 即時驗證欄位條件
-        if (searchConfirmPasswordWord === registerData.password) {
+        if (searchConfirmPasswordWord === passwordPrevious) {
             setValidationCssClassname4('is-valid');
         } else {
             setValidationCssClassname4('is-invalid');
@@ -171,36 +180,31 @@ function RegisterForm(props) {
         // 可控元件綁用state使用
         setConfirmPasswordSearch(e.target.value);
         // 搜尋用 - trim去除空白，toLowerCase轉小寫英文
-        const searchConfirmPasswordWord = e.target.value.trim().toLowerCase();
+        const searchConfirmPasswordWord = e.target.value.trim();
         // 傳至debounceFn中
-        debounceHandleSearch4(searchConfirmPasswordWord);
+        debounceHandleSearch4(passwordPrevious, searchConfirmPasswordWord);
     };
 
     // 送出表單的部分
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // TODO: 欄位檢查
 
-        // if (registerData.account.length > 10) {
-        //     alert('您設定的帳戶字數過長');
-        //     return;
-        // }
+        if (!registerData.account.match(accountRe)) {
+            Swal.fire('您輸入的帳戶不可含有空白格或特殊字元');
+            return;
+        }
 
-        // if (!registerData.account.match(accountRe)) {
-        //     alert('您輸入的帳戶不可含有空白格或特殊字元');
-        //     return;
-        // }
+        if (!registerData.password.match(passwordRe)) {
+            Swal.fire('您輸入的密碼須包含字母及數字共八位數');
+            return;
+        }
 
-        // if (!registerData.password.match(passwordRe)) {
-        //     alert('您輸入的密碼須包含字母及數字共八位數');
-        //     return;
-        // }
+        if (registerData.confirmPassword !== registerData.password) {
+            Swal.fire('密碼與確認密碼需要一致');
+            return;
+        }
 
-        // if (registerData.confirmPassword !== registerData.password) {
-        //     alert('密碼與確認密碼需要一致');
-        //     return;
-        // }
-
+        console.log(registerData);
 
         fetch(MEMBER_REGISTER, {
             method: 'POST',
@@ -218,107 +222,178 @@ function RegisterForm(props) {
                         ...result.data,
                         authorized: true,
                     });
-                    navigate('/login');
+                    Swal.fire(result.error);
+                    navigate('/memberprofile');
                 } else {
-                    alert('註冊失敗');
+                    Swal.fire(result.error);
                 }
             });
     };
+
+    useEffect(() => {
+        // console.log({
+        //     account: accountPrevious,
+        //     email: emailPrevious,
+        //     password: passwordPrevious,
+        //     confirmPassword: confirmPasswordPrevious,
+        // });
+        setRegisterData({
+            account: accountPrevious,
+            email: emailPrevious,
+            password: passwordPrevious,
+            confirmPassword: confirmPasswordPrevious,
+        });
+    }, [
+        accountPrevious,
+        emailPrevious,
+        passwordPrevious,
+        confirmPasswordPrevious,
+    ]);
 
     return (
         <>
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <section className="pb-4">
-                            <div className="bg-white bg-opacity-75 rounded-5">
-                                <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                    <div>
-                                        <div className="tab-content">
-                                            <form
-                                                name="form1"
-                                                onSubmit={handleSubmit}
+                        <section
+                            className="pb-4 justify-content-center memberBgCard rounded-5"
+                            style={{ backgroundColor: theme.memberBgCard }}
+                        >
+                            <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
+                                <div className="tab-content">
+                                    <form name="form1" onSubmit={handleSubmit}>
+                                        <div className="mb-3 d-flex justify-content-center page-title">
+                                            會員註冊
+                                        </div>
+                                        <br />
+                                        <div className="mb-3 page-field">
+                                            <label
+                                                htmlFor="account"
+                                                className="form-label"
                                             >
-                                                <div className="mb-3 d-flex justify-content-center page-title">
-                                                    會員註冊
-                                                </div>
-                                                <br />
-                                                <div className="mb-3 page-field">
-                                                    <label
-                                                        htmlFor="account"
-                                                        className="form-label"
-                                                    >
-                                                        帳戶名稱
-                                                    </label>
-                                                    <InputIME
-                                                        type="text"
-                                                        className={`form-control ${validationCssClassname}`}
-                                                        name="account"
-                                                        placeholder="例：HappyCats"
-                                                        onChange={
-                                                            handleAccountChange
-                                                        }
-                                                        maxLength="10"
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="mb-3 page-field">
-                                                    <label
-                                                        htmlFor="email"
-                                                        className="form-label"
-                                                    >
-                                                        電子信箱
-                                                    </label>
-                                                    <InputIME
-                                                        type="email"
-                                                        className={`form-control ${validationCssClassname2}`}
-                                                        name="email"
-                                                        placeholder="請輸入一個有效的電子信箱"
-                                                        onChange={
-                                                            handleEmailChange
-                                                        }
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="mb-3 page-field">
-                                                    <label
-                                                        htmlFor="password"
-                                                        className="form-label"
-                                                    >
-                                                        登入密碼
-                                                    </label>
-                                                    <InputIME
-                                                        type={passwordFieldType}
-                                                        className={`form-control ${validationCssClassname3}`}
-                                                        name="password"
-                                                        placeholder="英文大小寫及數字至少七字"
-                                                        onChange={
-                                                            handlePasswordChange
-                                                        }
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="mb-3 page-field">
-                                                    <label
-                                                        htmlFor="confirmPassword"
-                                                        className="form-label"
-                                                    >
-                                                        重新輸入密碼
-                                                    </label>
-                                                    <InputIME
-                                                        type={
-                                                            confirmPasswordFieldType
-                                                        }
-                                                        className={`form-control ${validationCssClassname4}`}
-                                                        name="confirmPassword"
-                                                        placeholder="請再輸入一次前一欄的密碼"
-                                                        onChange={
-                                                            handleConfirmPasswordChange
-                                                        }
-                                                        required
-                                                    />
-                                                </div>
-                                                {/* 
+                                                帳戶名稱
+                                            </label>
+                                            <InputIME
+                                                type="text"
+                                                className={`form-control ${validationCssClassname}`}
+                                                name="account"
+                                                placeholder="例：HappyCats"
+                                                onChange={handleAccountChange}
+                                                passwordPrevious={
+                                                    passwordPrevious
+                                                }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
+                                                setAccountPrevious={
+                                                    setAccountPrevious
+                                                }
+                                                setEmailPrevious={
+                                                    setEmailPrevious
+                                                }
+                                                setConfirmPasswordPrevious={
+                                                    setConfirmPasswordPrevious
+                                                }
+                                                maxLength="10"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="mb-3 page-field">
+                                            <label
+                                                htmlFor="email"
+                                                className="form-label"
+                                            >
+                                                電子信箱
+                                            </label>
+                                            <InputIME
+                                                type="email"
+                                                className={`form-control ${validationCssClassname2}`}
+                                                name="email"
+                                                placeholder="請輸入一個有效的電子信箱"
+                                                onChange={handleEmailChange}
+                                                passwordPrevious={
+                                                    passwordPrevious
+                                                }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
+                                                setAccountPrevious={
+                                                    setAccountPrevious
+                                                }
+                                                setEmailPrevious={
+                                                    setEmailPrevious
+                                                }
+                                                setConfirmPasswordPrevious={
+                                                    setConfirmPasswordPrevious
+                                                }
+                                                required
+                                            />
+                                        </div>
+                                        <div className="mb-3 page-field">
+                                            <label
+                                                htmlFor="password"
+                                                className="form-label"
+                                            >
+                                                登入密碼
+                                            </label>
+                                            <InputIME
+                                                type={passwordFieldType}
+                                                className={`form-control ${validationCssClassname3}`}
+                                                name="password"
+                                                placeholder="英文大小寫及數字至少七字"
+                                                onChange={handlePasswordChange}
+                                                passwordPrevious={
+                                                    passwordPrevious
+                                                }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
+                                                setAccountPrevious={
+                                                    setAccountPrevious
+                                                }
+                                                setEmailPrevious={
+                                                    setEmailPrevious
+                                                }
+                                                setConfirmPasswordPrevious={
+                                                    setConfirmPasswordPrevious
+                                                }
+                                                required
+                                            />
+                                        </div>
+                                        <div className="mb-3 page-field">
+                                            <label
+                                                htmlFor="confirmPassword"
+                                                className="form-label"
+                                            >
+                                                重新輸入密碼
+                                            </label>
+                                            <InputIME
+                                                type={confirmPasswordFieldType}
+                                                className={`form-control ${validationCssClassname4}`}
+                                                name="confirmPassword"
+                                                placeholder="請再輸入一次前一欄的密碼"
+                                                onChange={
+                                                    handleConfirmPasswordChange
+                                                }
+                                                passwordPrevious={
+                                                    passwordPrevious
+                                                }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
+                                                setAccountPrevious={
+                                                    setAccountPrevious
+                                                }
+                                                setEmailPrevious={
+                                                    setEmailPrevious
+                                                }
+                                                setConfirmPasswordPrevious={
+                                                    setConfirmPasswordPrevious
+                                                }
+                                                required
+                                            />
+                                        </div>
+                                        {/* 
                                                     <div className="text-center mb-3">
                                                         <p>以其他方式註冊：</p>
                                                         <button
@@ -342,36 +417,23 @@ function RegisterForm(props) {
                                                     </div> 
                                                     */}
 
-                                                <div className="d-flex justify-content-center ">
-                                                    <button
-                                                        type="submit"
-                                                        className="btn btn-l btn-pri btn-outline-light "
-                                                    >
-                                                        確認註冊
-                                                    </button>
-                                                </div>
-                                                <br />
-                                                <div className="d-flex justify-content-center ">
-                                                    <Link
-                                                        className="link"
-                                                        to="/login"
-                                                    >
-                                                        已註冊，直接登入
-                                                    </Link>
-                                                </div>
-                                                <br />
-                                            </form>
-                                            {/* <div
-                                                id="info-bar"
-                                                className="alert alert-success d-flex justify-content-center"
-                                                role="alert"
+                                        <div className="d-flex justify-content-center ">
+                                            <button
+                                                type="submit"
+                                                className="btn btn-l btn-pri btn-outline-light "
                                             >
-                                                您已成功完成註冊
-                                            </div> */}
+                                                確認註冊
+                                            </button>
                                         </div>
-                                    </div>
-                                </section>
-                            </div>
+                                        <br />
+                                        <div className="d-flex justify-content-center ">
+                                            <Link className="link" to="/login">
+                                                已註冊，直接登入
+                                            </Link>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section>
                         </section>
                     </div>
                 </div>

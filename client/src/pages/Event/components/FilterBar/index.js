@@ -6,10 +6,6 @@ import TagCheckboxArea from './TagCheckboxArea';
 import '../../_xuan_styles.scss';
 
 function FilterBar(props) {
-
-
-    
-
     const {
         // price radio
         priceRangeTypes,
@@ -25,6 +21,11 @@ function FilterBar(props) {
         areaTypes,
         areas,
         setAreas,
+
+        // 活動形式 select
+        howTags,
+        setHowTags,
+        howtagsTypes,
     } = props;
 
     const handleChecked = (e) => {
@@ -36,6 +37,15 @@ function FilterBar(props) {
             setTags(newTags);
         }
     };
+    // const handleCheckedType = (e) => {
+    //     const value = e.target.value;
+    //     if (!howTags.includes(value)) return setHowTags([...howTags, value]);
+
+    //     if (howTags.includes(value)) {
+    //         const newHowTags = howTags.filter((v) => v !== value);
+    //         setHowTags(newHowTags);
+    //     }
+    // };
 
     const handleCheckedArea = (e) => {
         const value = e.target.value;
@@ -49,61 +59,67 @@ function FilterBar(props) {
 
     return (
         <>
-            {/* <h2 className="grid-title">
-        <i className="fa fa-filter"></i> 過濾
-      </h2> */}
-            {/* <hr /> */}
+            <div className="xuan-filter-all-bar">
+                {/* 重設按鈕 */}
 
-            <h4>價格</h4>
+                <div className="xuan-price-filter ">
+                    <h4 className="xuan-title">價格</h4>
 
-            {priceRangeTypes.map((value, i) => (
-                <PriceRangeRadio
-                    key={i}
-                    value={value}
-                    priceRange={priceRange}
-                    setPriceRange={setPriceRange}
-                />
-            ))}
+                    <div className="d-flex">
+                        {priceRangeTypes.map((value, i) => (
+                            <PriceRangeRadio
+                                key={i}
+                                value={value}
+                                priceRange={priceRange}
+                                setPriceRange={setPriceRange}
+                            />
+                        ))}
+                    </div>
+                </div>
 
-            <hr />
+                <div className="xuan-type-filter">
+                    <h4 className="xuan-title">活動種類</h4>
 
-            <h4>
-                標籤
-                <button
-                    className="xuan-button xuan-btn-pri xuan-btn-s"
-                    onClick={() => {
-                        setTags([]);
-                        setAreas([]);
-                    }}
-                >
-                    重設
-                </button>
-            </h4>
+                    <div className="d-flex">
+                        {tagTypes.map((value, i) => (
+                            <TagCheckbox
+                                value={value}
+                                key={i}
+                                tags={tags}
+                                handleChecked={handleChecked}
+                            />
+                        ))}
+                    </div>
+                </div>
 
-            <p>有包含勾選標籤均會顯示</p>
-            <p>活動種類</p>
-            {tagTypes.map((value, i) => (
-                <TagCheckbox
-                    value={value}
-                    key={i}
-                    tags={tags}
-                    handleChecked={handleChecked}
-                />
-            ))}
+                <div className="xuan-area-filter">
+                    <h4 className="xuan-title">地區種類</h4>
 
-            <p>地區種類</p>
-            {areaTypes.map((value, i) => (
-                <TagCheckboxArea
-                    value={value}
-                    key={i}
-                    areas={areas}
-                    handleCheckedArea={handleCheckedArea}
-                />
-            ))}
+                    <div className="d-flex">
+                        {areaTypes.map((value, i) => (
+                            <TagCheckboxArea
+                                value={value}
+                                key={i}
+                                areas={areas}
+                                handleCheckedArea={handleCheckedArea}
+                            />
+                        ))}
+                    </div>
+                </div>
 
-            <p>checkbox測試</p>
-
-            <div className="padding"></div>
+                <div className="xuan-reset-filter-bar">
+                    <button
+                        className="xuan-button xuan-btn-pri xuan-btn-s"
+                        onClick={() => {
+                            setTags([]);
+                            setAreas([]);
+                            setHowTags([]);
+                        }}
+                    >
+                        重設
+                    </button>
+                </div>
+            </div>
         </>
     );
 }

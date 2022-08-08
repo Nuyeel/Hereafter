@@ -5,208 +5,259 @@
 @import '../../styles/variables.scss';
 
 
-
 a{
   text-decoration: none;
 }
 
-/* ------------------------ */
 
+
+
+// 手機版 
 .event-container{
   width: 100%;
-  height: 85%;
-  margin: auto;
   color: black;
   list-style: none;
   position: absolute;
-  top:97px; 
-}
 
+  >.row{
+    width: 100%;
+    height: 200vh;
+    margin: auto;
 
-.event-container .row{
-  width: 85%;
-  height: 95%;
-  margin: auto;
-}
+        // 先預設選項按鈕都消失
+        >.event-selector{
+          display: none;
+        } 
 
-/* (左)下拉選單 */
-.event-selector{
-  margin-top: 38px;
-}
+        >.event{
+          width: 100vw;
+          height: 100%;
+          margin: auto;
 
-.event-container >li{
-  list-style: none;
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom:20px ;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.event-container >li:nth-child(1){
-  margin-left: auto;
-}
-
-
-/* (右)卡片列表區 */
-.event{
-  padding-left: 30px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 0px 30px 0px 30px;
-}
-
-.event-card{
-  width: 23%;
-  height: 43%;
-  background-color: white;
-  border-radius: 0px 15px 15px 15px;
-  margin-top: 40px;
-  margin-left: 20px;
-  text-align: center;
-  position: relative;
-  box-shadow: 3px 5px 5px 0px rgba(121, 121, 121, 0.25);
-}
-
-.event-card:hover{
-  transition: .2s;
-  transform: translateY(-3px);
-  box-shadow: 3px 10px 10px 2px rgba(121, 121, 121, 0.25);
-}
-
-
-
-/* 活動卡片內細節 */
-.good-cost{
-  border-radius: 10px 10px 0px 0px;
-  background-color: #E97BEE;
-  position: absolute;
-  left: 0px;
-  top:-25px;
-  color: white;
-  width: 40%;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  >img{
-    width: 18px;
-    margin-right: 5px;
+        }
+        
+        
   }
 }
 
-.event-type{
-  border-radius: 10px 10px 0px 0px;
-  background-color: #9B80DD;
-  position: absolute;
-  left: 105px;
-  top:-25px;
-  color: white;
-  width: 18%;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+// .event-card{
+//   width: 100%;
+//   height: 50px;
+//   background-color: white;
+//   border-radius: 0px 15px 15px 15px;
 
-.program-type{
-  border-radius: 10px 10px 0px 0px;
-  background-color:#9587E1;
-  position: absolute;
-  left: 155px;
-  top:-25px;
-  color: white;
-  width: 18%;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+//   // .good-cost{
+//     // background-color: red;
+//   // }
 
-.event-img{
-  width: 100%;
-  height: 47%;
-  overflow: hidden;
-  /* background-image: url(../imgs/event-photo1.svg) no-repeat ; */
-}
+// }
 
 
-.title{
-  width: 100%;
-  height: 15%;
-  background-color: #F0F8A6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 5px;
-}
 
-.npo-name{
-  margin-bottom: 8px;
-  height: 15%;
-}
 
-.event-time{
-  width: 75%;
-  background-color: #9587E1;
-  margin: 0px auto 7px auto;
-  color:white;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 7px;
-}
 
-.event-cost{
-  color: #EBA3FB;
-    
-    >span:nth-child(1){
-      margin-right:10px ;
-    
-      >img{
-        width: 15px;
+
+// 桌機版
+
+@media screen and (min-width: 992px) {
+
+      .event-container{
+        width: 100%;
+        height: 85%;
+        margin: auto;
+        color: black;
+        list-style: none;
+        position: absolute;
+        top:97px; 
       }
-    }
-}
 
 
-/* 頁籤(靈魂icon) */
-.page-soul{
-  margin-left: auto;
-  margin-top: 10px;
-  text-align: center;
-}
+      .event-container .row{
+        width: 85%;
+        height: 95%;
+        margin: auto;
+      }
 
-.page-soul>div{
-  width: 30%;
-  margin: auto;
-}
+      /* (左)下拉選單 */
+      .event-selector{
+        margin-top: 38px;
+      }
 
-.page-soul >img{
-  margin: 5px; 
-}
+      .event-container >li{
+        list-style: none;
+        background-color: white;
+        border-radius: 10px;
+        margin-bottom:20px ;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+      }
 
-.event_title, .event_npo_name{
-  color: black;
-}
+      .event-container >li:nth-child(1){
+        margin-left: auto;
+      }
 
-.event_title_bg{
-  background-color:  #F3F59F;
-  height: 15%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-}
 
-.event_npo_name{
-  margin-bottom: 7px;
+      /* (右)卡片列表區 */
+      .event{
+        padding-left: 30px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0px 30px 0px 30px;
+      }
+
+      .event-card{
+        width: 23%;
+        height: 43%;
+        background-color: white;
+        border-radius: 0px 15px 15px 15px;
+        margin-top: 40px;
+        margin-left: 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 3px 5px 5px 0px rgba(121, 121, 121, 0.25);
+      }
+
+      .event-card:hover{
+        transition: .2s;
+        transform: translateY(-3px);
+        box-shadow: 3px 10px 10px 2px rgba(121, 121, 121, 0.25);
+      }
+
+
+
+      /* 活動卡片內細節 */
+      .good-cost{
+        border-radius: 10px 10px 0px 0px;
+        background-color: #E97BEE;
+        position: absolute;
+        left: 0px;
+        top:-25px;
+        color: white;
+        width: 40%;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        >img{
+          width: 18px;
+          margin-right: 5px;
+        }
+      }
+
+      .event-type{
+        border-radius: 10px 10px 0px 0px;
+        background-color: #9B80DD;
+        position: absolute;
+        left: 105px;
+        top:-25px;
+        color: white;
+        width: 18%;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .program-type{
+        border-radius: 10px 10px 0px 0px;
+        background-color:#9587E1;
+        position: absolute;
+        left: 155px;
+        top:-25px;
+        color: white;
+        width: 18%;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .event-img{
+        width: 100%;
+        height: 47%;
+        overflow: hidden;
+        /* background-image: url(../imgs/event-photo1.svg) no-repeat ; */
+      }
+
+
+      .title{
+        width: 100%;
+        height: 15%;
+        background-color: #F0F8A6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5px;
+      }
+
+      .npo-name{
+        margin-bottom: 8px;
+        height: 15%;
+      }
+
+      .event-time{
+        width: 75%;
+        background-color: #9587E1;
+        margin: 0px auto 7px auto;
+        color:white;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 7px;
+      }
+
+      .event-cost{
+        color: #EBA3FB;
+          
+          >span:nth-child(1){
+            margin-right:10px ;
+          
+            >img{
+              width: 15px;
+            }
+          }
+      }
+
+
+      /* 頁籤(靈魂icon) */
+      .page-soul{
+        margin-left: auto;
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .page-soul>div{
+        width: 30%;
+        margin: auto;
+      }
+
+      .page-soul >img{
+        margin: 5px; 
+      }
+
+      .event_title, .event_npo_name{
+        color: black;
+      }
+
+      .event_title_bg{
+        background-color:  #F3F59F;
+        height: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+
+      .event_npo_name{
+        margin-bottom: 7px;
+      }
+
 }

@@ -7,7 +7,7 @@ function PriceRangeRadio(props) {
         <>
             <div className="form-check">
                 <input
-                    className="xuan-input-radio form-check-input"
+                    className="xuan-input-radio"
                     type="radio"
                     value={value}
                     checked={priceRange === value}
@@ -15,7 +15,7 @@ function PriceRangeRadio(props) {
                         setPriceRange(e.target.value);
                     }}
                 />
-                <label className="xuan-label form-check-label">{value}</label>
+                <label className="xuan-label-title">{value}</label>
             </div>
         </>
     );

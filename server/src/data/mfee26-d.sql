@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-08-04 12:01:35
+-- 產生時間： 2022-08-06 11:10:22
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 7.4.29
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫: `mfee26-d`
+-- 資料庫： `mfee26-d`
 --
 
 -- --------------------------------------------------------
@@ -373,84 +373,6 @@ CREATE TABLE `good_deed_games_record` (
 INSERT INTO `good_deed_games_record` (`sid`, `member_sid`, `member_account`, `member_name`, `member_birth`, `member_death`, `play_date`, `game_id`, `game_score`) VALUES
 (1, 1, 'snowvalley28', '蔣阿水', '1891-02-08', '1931-08-25', '2019-02-23 00:00:00', 1, 55),
 (2, 2, 'showgi1103', '李秀枝', '1923-11-03', NULL, '2020-05-02 00:00:00', 1, 23);
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `good_deed_score`
---
-
-CREATE TABLE `good_deed_score` (
-  `sid` int(11) NOT NULL,
-  `member_sid` int(11) DEFAULT NULL,
-  `member_account` varchar(255) DEFAULT NULL,
-  `member_password` int(255) DEFAULT NULL,
-  `member_name` int(255) DEFAULT NULL,
-  `member_birth` date DEFAULT NULL,
-  `member_death` date DEFAULT NULL,
-  `test_score` int(11) DEFAULT NULL,
-  `event_score` int(11) DEFAULT NULL,
-  `charity_score` int(11) DEFAULT NULL,
-  `game_score` int(11) DEFAULT NULL,
-  `sum_score` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `good_deed_test`
---
-
-CREATE TABLE `good_deed_test` (
-  `sid` int(11) NOT NULL,
-  `test_sid` varchar(255) DEFAULT NULL,
-  `test_content` varchar(255) DEFAULT NULL,
-  `op1_content` varchar(255) DEFAULT NULL,
-  `op1_score` int(11) DEFAULT NULL,
-  `op2_content` varchar(255) DEFAULT NULL,
-  `op2_score` int(11) DEFAULT NULL,
-  `op3_content` varchar(255) DEFAULT NULL,
-  `op3_score` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 傾印資料表的資料 `good_deed_test`
---
-
-INSERT INTO `good_deed_test` (`sid`, `test_sid`, `test_content`, `op1_content`, `op1_score`, `op2_content`, `op2_score`, `op3_content`, `op3_score`) VALUES
-(1, 'test_Q1', '你認為人性...?', '人性本善', 3, '人性本惡', 5, '有錢才會善良', 2),
-(2, 'test_Q2', '你覺得人與人之間的相處應該?', '銀貨兩訖', 3, '不求回報', 5, '自私自利', 2),
-(3, 'test_Q3', '你小時候最常玩什麼遊戲?', '閃電布丁', 3, '鬼抓人', 5, ' 躲貓貓', 4),
-(4, 'test_Q4', '傷心的時候聽?', '哀傷的歌', 3, '佛經', 5, '歡樂的歌', 2),
-(5, 'test_Q5', '你覺得人生像...?', '一場旅行', 5, '一場災難', 3, '一盒巧克力', 4);
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `good_deed_test_record`
---
-
-CREATE TABLE `good_deed_test_record` (
-  `sid` int(11) DEFAULT NULL,
-  `member_account` varchar(255) DEFAULT NULL,
-  `member_name` varchar(255) DEFAULT NULL,
-  `member_birth` date DEFAULT NULL,
-  `member_death` date DEFAULT NULL,
-  `test_Q1` int(11) DEFAULT NULL,
-  `test_Q2` int(11) DEFAULT NULL,
-  `test_Q3` int(11) DEFAULT NULL,
-  `test_Q4` int(11) DEFAULT NULL,
-  `test_Q5` int(11) DEFAULT NULL,
-  `test_score` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 傾印資料表的資料 `good_deed_test_record`
---
-
-INSERT INTO `good_deed_test_record` (`sid`, `member_account`, `member_name`, `member_birth`, `member_death`, `test_Q1`, `test_Q2`, `test_Q3`, `test_Q4`, `test_Q5`, `test_score`) VALUES
-(33, 'HappyCat32', '', NULL, NULL, 2, 3, 5, 3, 3, 1203),
-(5, 'HappyCat05', '偷尼史塔克 Tony Stark ', '1990-06-14', '2022-06-02', 3, 5, 5, 3, 3, 1417);
 
 -- --------------------------------------------------------
 
@@ -1491,23 +1413,22 @@ CREATE TABLE `showcase` (
   `avatar_id` int(11) NOT NULL,
   `member_sid` int(11) DEFAULT NULL,
   `avatar_created_at` datetime DEFAULT NULL,
-  `combination` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
+  `combination` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`combination`)),
+  `combinationText` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `img_name` mediumtext NOT NULL,
+  `price` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `showcase`
 --
 
-INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combination`) VALUES
-(15, 33, '2022-06-11 09:24:23', '{\"eyes\":\"0\",\"nose\":\"0\",\"mouth\":\"0\",\"ear\":\"0\",\"hair\":\"0\",\"eyesColor\":\"0\",\"noseColor\":\"2\",\"mouthColor\":\"5\",\"earColor\":\"4\",\"hairColor\":\"6\"}'),
-(16, 69, '2022-06-11 22:39:42', '{\"eyes\":\"2\",\"nose\":\"0\",\"mouth\":\"0\",\"ear\":\"0\",\"hair\":\"1\",\"eyesColor\":\"4\",\"noseColor\":\"0\",\"mouthColor\":\"3\",\"earColor\":\"4\",\"hairColor\":\"5\"}'),
-(17, 28, '2022-06-11 22:49:06', '{\"eyes\":\"2\",\"nose\":\"0\",\"mouth\":\"0\",\"ear\":\"0\",\"hair\":\"0\",\"eyesColor\":\"1\",\"noseColor\":\"1\",\"mouthColor\":\"0\",\"earColor\":\"0\",\"hairColor\":\"5\"}'),
-(18, 28, '2022-06-11 22:49:24', '{\"eyes\":\"3\",\"nose\":\"0\",\"mouth\":\"0\",\"ear\":\"0\",\"hair\":\"0\",\"eyesColor\":\"6\",\"noseColor\":\"5\",\"mouthColor\":\"5\",\"earColor\":\"5\",\"hairColor\":\"1\"}'),
-(19, 3, '2022-06-13 08:53:27', '{\"eyes\":\"0\",\"nose\":\"0\",\"mouth\":\"0\",\"ear\":\"0\",\"hair\":\"0\",\"eyesColor\":\"0\",\"noseColor\":\"0\",\"mouthColor\":\"0\",\"earColor\":\"0\",\"hairColor\":\"0\"}'),
-(20, 3, '2022-06-13 08:53:34', '{\"eyes\":\"1\",\"nose\":\"0\",\"mouth\":\"0\",\"ear\":\"0\",\"hair\":\"0\",\"eyesColor\":\"0\",\"noseColor\":\"0\",\"mouthColor\":\"5\",\"earColor\":\"0\",\"hairColor\":\"0\"}'),
-(21, 3, '2022-06-13 08:53:42', '{\"eyes\":\"1\",\"nose\":\"0\",\"mouth\":\"0\",\"ear\":\"1\",\"hair\":\"0\",\"eyesColor\":\"0\",\"noseColor\":\"0\",\"mouthColor\":\"4\",\"earColor\":\"0\",\"hairColor\":\"0\"}'),
-(23, 23, '2022-06-13 11:18:40', '{\"eyes\":\"1\",\"nose\":\"0\",\"mouth\":\"0\",\"ear\":\"0\",\"hair\":\"0\",\"eyesColor\":\"8\",\"noseColor\":\"0\",\"mouthColor\":\"0\",\"earColor\":\"0\",\"hairColor\":\"0\"}'),
-(24, 23, '2022-06-13 11:18:49', '{\"eyes\":\"1\",\"nose\":\"0\",\"mouth\":\"0\",\"ear\":\"0\",\"hair\":\"2\",\"eyesColor\":\"0\",\"noseColor\":\"0\",\"mouthColor\":\"4\",\"earColor\":\"0\",\"hairColor\":\"9\"}');
+INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combination`, `combinationText`, `img_name`, `price`) VALUES
+(1123, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":\"0\",\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1124, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":\"0\",\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1125, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":\"0\",\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1126, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":\"0\",\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1127, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":\"0\",\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300);
 
 -- --------------------------------------------------------
 
@@ -1658,18 +1579,6 @@ ALTER TABLE `good_deed_games`
 -- 資料表索引 `good_deed_games_record`
 --
 ALTER TABLE `good_deed_games_record`
-  ADD PRIMARY KEY (`sid`);
-
---
--- 資料表索引 `good_deed_score`
---
-ALTER TABLE `good_deed_score`
-  ADD PRIMARY KEY (`sid`);
-
---
--- 資料表索引 `good_deed_test`
---
-ALTER TABLE `good_deed_test`
   ADD PRIMARY KEY (`sid`);
 
 --
@@ -1925,18 +1834,6 @@ ALTER TABLE `good_deed_games_record`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `good_deed_score`
---
-ALTER TABLE `good_deed_score`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `good_deed_test`
---
-ALTER TABLE `good_deed_test`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- 使用資料表自動遞增(AUTO_INCREMENT) `location`
 --
 ALTER TABLE `location`
@@ -2060,7 +1957,7 @@ ALTER TABLE `share_avatar_tags`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `showcase`
 --
 ALTER TABLE `showcase`
-  MODIFY `avatar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `avatar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1128;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `tag`

@@ -15,6 +15,7 @@ export const themes = {
         bcAvatarFrame: '#FFE9F6', // bc for Border Color
         cCommentInput: '#FFFFFF99',
         bgcAvatarMaker: '#00000080',
+        memberBgCard:'#00000025'
     },
     light: {
         title: 'light',
@@ -26,6 +27,7 @@ export const themes = {
         bcAvatarFrame: '#3C3B67',
         cCommentInput: '#00000099',
         bgcAvatarMaker: '#FFFFFF66',
+        memberBgCard:'#ffffff75'
     },
 };
 

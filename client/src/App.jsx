@@ -33,7 +33,7 @@ import Event from './pages/Event';
 import EventList from './pages/Event/EventList';
 import EventDetail from './pages/EventDetail/EventDetail';
 import OrderSteps from './pages/OrderSteps';
-import Test from './pages/Test';
+import Gooddeed from './pages/Gooddeed';
 import Games from './pages/Games';
 // import Intro from './pages/Intro';
 import Place from './pages/Place';
@@ -218,8 +218,8 @@ function App() {
                                 {/* 陰德值測驗路由 */}
                                 {/* ============================== */}
                                 <Route
-                                    path="/test"
-                                    element={<Test pageName="test" />}
+                                    path="/gooddeed"
+                                    element={<Gooddeed pageName="gooddeed" />}
                                 />
                                 {/* ============================== */}
                                 {/* 陰德值遊戲路由 */}

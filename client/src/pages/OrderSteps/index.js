@@ -16,7 +16,7 @@ import AuthContext from '../../context/AuthContext/AuthContext';
 
 // scss
 import '../Event/_xuan_styles.scss';
-import './styles/_cart.scss';
+import './styles/_new_cart.scss';
 
 function OrderSteps(props) {
     // 會員登入登出驗證(auth)
@@ -214,7 +214,7 @@ function OrderSteps(props) {
     const BlockComponent = components[step - 1];
 
     // 進度條使用
-    const progressNames = ['購物車', '訂購人資訊', '付款', '報名完成'];
+    const progressNames = ['活動明細', '訂購人資訊', '付款', '交易完成'];
 
     // 上一步 下一步按鈕
     const next = () => {
@@ -260,95 +260,95 @@ function OrderSteps(props) {
 
     return (
         <>
-            {/* <h1>訂購流程</h1> */}
+            <div className="orderstep-container">
 
-            {/* 進度條 */}
-            {/* <div>
+
+                {/* 進度條 */}
                 <ProgressBar
                     maxSteps={maxSteps}
                     step={step}
                     progressNames={progressNames}
                 />
-            </div> */}
 
-            {/* 子頁面區域 */}
-            <div className="xuan-order-steps">
-                <BlockComponent
-                    shipping={shipping}
-                    setShippingData={setShippingData}
-                    eventPick={eventPick}
-                    setEventPick={setEventPick}
-                    myInfor={myInfor}
-                    setMyInfor={setMyInfor}
-                    //--------從最上層傳數值才可被保留-----------
+                {/* 子頁面區域 */}
+                <div className="xuan-order-steps">
+                    <BlockComponent
+                        shipping={shipping}
+                        setShippingData={setShippingData}
+                        eventPick={eventPick}
+                        setEventPick={setEventPick}
+                        myInfor={myInfor}
+                        setMyInfor={setMyInfor}
+                        //--------從最上層傳數值才可被保留-----------
 
-                    //下面這些變數是傳給 Summary 用
-                    calcPickNumber={calcPickNumber()} //已勾選總數量
-                    calcPickPrice={calcPickPrice()} //已勾選總金額
-                    calcPickDonateNumber={calcPickDonateNumber()} //已勾選「贊助」總數量
-                    calcPickDonateTotalPrice={calcPickDonateTotalPrice()} //已勾選「贊助」總金額
-                    calcPickVolunNumber={calcPickVolunNumber()} //已勾選「志工」總數量
-                    calcPickVolunTotalPrice={calcPickVolunTotalPrice()} //已勾選「贊助」總金額
-                    // 下面這些變數是傳給 Cart.js 的 OrderList用
-                    eventCart={eventCart}
-                    setEventCart={setEventCart}
-                    // 下面這些變數是給 Shipping.js 的 PersonForm 的 TWZipCode用
-                    countryIndex={countryIndex}
-                    setCountryIndex={setCountryIndex}
-                    townshipIndex={townshipIndex}
-                    setTownshipIndex={setTownshipIndex}
-                    //下面這些變數是傳給 Payment.js用
-                    cardInfor={cardInfor}
-                    setCardInfor={setCardInfor}
-                />
-            </div>
+                        //下面這些變數是傳給 Summary 用
+                        calcPickNumber={calcPickNumber()} //已勾選總數量
+                        calcPickPrice={calcPickPrice()} //已勾選總金額
+                        calcPickDonateNumber={calcPickDonateNumber()} //已勾選「贊助」總數量
+                        calcPickDonateTotalPrice={calcPickDonateTotalPrice()} //已勾選「贊助」總金額
+                        calcPickVolunNumber={calcPickVolunNumber()} //已勾選「志工」總數量
+                        calcPickVolunTotalPrice={calcPickVolunTotalPrice()} //已勾選「贊助」總金額
+                        // 下面這些變數是傳給 Cart.js 的 OrderList用
+                        eventCart={eventCart}
+                        setEventCart={setEventCart}
+                        // 下面這些變數是給 Shipping.js 的 PersonForm 的 TWZipCode用
+                        countryIndex={countryIndex}
+                        setCountryIndex={setCountryIndex}
+                        townshipIndex={townshipIndex}
+                        setTownshipIndex={setTownshipIndex}
+                        //下面這些變數是傳給 Payment.js用
+                        cardInfor={cardInfor}
+                        setCardInfor={setCardInfor}
+                    />
+                </div>
 
-            {/* 按鈕 */}
-            <div className="xuan-cart-btn">
-                {step === 1 ? (
-                    <button
-                        className="xuan-btn-m xuan-btn-pri"
-                        onClick={() => {
-                            navigate('/events', { replace: true });
-                        }}
-                    >
-                        繼續選購
-                    </button>
-                ) : (
-                    <button
-                        className="xuan-btn-m xuan-btn-pri"
-                        onClick={prev}
-                        disabled={step === 1}
-                    >
-                        上一步
-                    </button>
-                )}
+                {/* 按鈕 */}
+                <div className="xuan-cart-btn">
+                    {step === 1 ? (
+                        <button
+                            className="xuan-btn-m xuan-btn-pri"
+                            onClick={() => {
+                                navigate('/events', { replace: true });
+                            }}
+                        >
+                            繼續選購
+                        </button>
+                    ) : (
+                        <button
+                            className="xuan-btn-m xuan-btn-pri"
+                            onClick={prev}
+                            disabled={step === 1}
+                        >
+                            上一步
+                        </button>
+                    )}
 
-                {step === 3 ? (
-                    //填寫完付款資訊後，才會把資訊送進MySQL
-                    <button
-                        className="xuan-btn-m xuan-btn-pri"
-                        type="submit"
-                        disabled={step === maxSteps}
-                        onClick={() => {
-                            next();
-                            fetchCreateOrder(); //把勾選項目存進MySQL
-                            // TODO: 同時把勾選項目從event_cart裡移出
-                        }}
-                    >
-                        下一步
-                    </button>
-                ) : (
-                    <button
-                        className="xuan-btn-m xuan-btn-pri"
-                        disabled={step === maxSteps}
-                        onClick={() => {
-                            next();
-                        }}
-                    >
-                        下一步
-                    </button>
-                )}
+                    {step === 3 ? (
+                        //填寫完付款資訊後，才會把資訊送進MySQL
+                        <button
+                            className="xuan-btn-m xuan-btn-pri"
+                            type="submit"
+                            disabled={step === maxSteps}
+                            onClick={() => {
+                                next();
+                                fetchCreateOrder(); //把勾選項目存進MySQL
+                                // TODO: 同時把勾選項目從event_cart裡移出
+                            }}
+                        >
+                            下一步
+                        </button>
+                    ) : (
+                        <button
+                            className="xuan-btn-m xuan-btn-pri"
+                            disabled={step === maxSteps}
+                            onClick={() => {
+                                next();
+                            }}
+                        >
+                            下一步
+                        </button>
+                    )}
+                </div>
             </div>
         </>
     );

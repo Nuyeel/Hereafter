@@ -4,11 +4,11 @@ function TagCheckboxArea(props) {
     const { value, handleCheckedArea, areas } = props;
     return (
         <>
-            <div className="checkbox">
-                <label className="xuan-label">
+            <div className="checkbox d-flex">
+                <label className="xuan-label-title ">
                     <input
                         type="checkbox"
-                        className="xuan-input-checkbox icheck"
+                        className="xuan-input-checkbox"
                         value={value}
                         checked={areas.includes(value)}
                         onChange={handleCheckedArea}

@@ -69,12 +69,11 @@ button:active {
     text-decoration: none
 }
 
-.is-invalid:focus {
+.form-control.is-invalid, .was-validated .form-control:invalid, .form-control.is-invalid:focus, .was-validated:focus .form-control:invalid:focus {
     color: $alert;
     border: $alert 2px solid;
     outline: none;
 }
-
 
 .alert-success {
     color: $accent-blue;
@@ -163,4 +162,9 @@ input[type=text].error, input[type=email].error, input[type=password].error, inp
 input[type=text].error, input[type=email].error, input[type=password].error {
     border: var(--alert-l) 2px solid;
     outline: none;
+}
+
+.memberBgCard {
+    border: 0.5px rgba(255, 255, 255, 0.5) solid;
+    box-shadow: -7px -10px 7px -10px rgba(255, 255, 255, 0.3);
 }

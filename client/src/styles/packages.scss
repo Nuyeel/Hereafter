@@ -1,11 +1,27 @@
+@import './variables.scss';
+
 /* ============================================================ */
 /* sweetalert2 */
-/* node_modules/sweetalert2/dist/sweetalert2.css */
+/* 此套件會自動引入 */
+/* @import '~sweetalert2/dist/sweetalert2.css'; */
 /* ============================================================ */
+
+// FIXME: 目前 Navbar 不會被 alert 蓋掉 可以調整 swal 的 z-index
+// DONE: 先給這樣吧 大家有一定想蓋的東西的時候不要超過這數字就好
+.swal2-container {
+    z-index: 100100;
+}
 
 .swal2-popup { 
     border-radius: 20px;
+    padding-bottom: 1.875rem;
     user-select: none;
+    color: $bgc-D;
+
+    /* M PLUS Rounded 1c 太容易缺字 */
+    h2 {
+        font-family: $ff-t;
+    }
 
     .swal2-image {
         pointer-events: none;
@@ -15,4 +31,25 @@
     .swal2-styled:focus {
         box-shadow: none !important;
     }
+
+    .swal2-styled.swal2-confirm {
+        background-color: $secondary;
+    }
+
+    // .swal2-styled.swal2-confirm:focus {
+    //     box-shadow: 0 0 0 3px rgba(112, 102, 224, 0.5);
+    // }
+
+    .swal2-styled.swal2-deny {
+        background-color: $alert;
+    }
+
+    // .swal2-styled.swal2-deny:focus {
+    //     box-shadow: 0 0 0 3px rgba(220, 55, 65, 0.5);
+    // }
 }
+
+/* ============================================================ */
+/* overlayscrollbars */
+// @import '~overlayscrollbars/css/OverlayScrollbars.css';
+/* ============================================================ */

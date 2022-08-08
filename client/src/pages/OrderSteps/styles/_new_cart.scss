@@ -1,0 +1,527 @@
+/* 正式上線改用 bootstrap-grid.min.css */
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
+/* 引入自定義變數 */
+@import '../../../styles/variables.scss';
+
+// 手機版
+.orderstep-container{
+  padding-top: 25px;
+}
+
+// ---- 這邊是progress bar CSS ----
+
+.xuan-progress-container{
+  // outline: 1px solid red;
+  width: 95%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.progressbar {
+  // outline: 1px solid blue;
+  counter-reset: step;
+  width: 100%;
+  margin: auto;
+  padding-left: 10px;
+}
+
+.progressbar li {
+  list-style: none;
+  display: inline-block;
+  /* 3 steps */
+  /* width: 30.33%; */
+  /* 4 steps */
+  width: 24%; 
+  position: relative;
+  text-align: center;
+  color: #3C3B67;
+  /* cursor: pointer; */
+}
+
+.progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 25px;
+  height: 25px;
+  line-height : 25px;
+  // border: 1px solid #ddd;
+  border-radius: 100%;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  background-color: #fff;
+}
+
+.progressbar li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  top: 12px;
+  left: -50%;
+  z-index : -1;
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+
+.progressbar li.active {
+  color: #E384F2;
+}
+
+// 這邊決定圈圈長什麼樣
+.progressbar li.active:before {
+  border-color:#E384F2;
+  background-color: #E384F2;
+  color:white;
+} 
+
+.progressbar li.active + li:after {
+  background-color: #E384F2;
+}
+
+// -----------------------------------
+
+// Summary結帳明細
+.xuan-summary-col{
+  // TODO: 把背景色改回白色
+  // outline: 1px solid green;
+  background-color: white;
+  border-radius: 15px 15px 0px 0px;
+  position: fixed;
+  width: 100vw;
+  bottom: 0px;
+  margin: 0px;
+  padding: 10px 20px 30px 20px;
+
+  .xuan-cart-cost{
+    // outline: 2px solid red;
+
+    // 結帳明細這4個字手機版先消失
+    .xuan-cart-title{
+      display: none;
+    }
+
+    .xuan-cost-list{
+      width: 90%;
+      margin: auto;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom:1px solid rgb(205, 205, 205) ;
+      margin-bottom: 15px;
+
+      .xuan-donate-cost{
+        margin-right: 15px;
+
+        p{
+          color: #828282;
+          margin-right: 5px;
+        }
+      }
+
+      .xuan-volunteer-cost{
+        // margin-right: 10px;
+
+        p{
+          color: #828282;
+          margin-right: 5px;
+        }
+      }
+    }
+
+
+    .xuan-total-cost{
+      width: 85%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content:flex-start;
+      color: #3C3B67;
+
+      p{
+        color: #828282;
+        margin-right: 5px;
+      }
+    }
+
+    .xuan-donate-cost, .xuan-volunteer-cost{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3C3B67;
+    }
+
+
+
+  }
+
+
+}
+
+// OrderList頁面
+
+// 應該要95%即可 
+.xuan-orderlist-container{
+  // outline: 2px solid red;
+  width: 95%;
+  margin: auto;
+
+}
+
+.xuan-all-select-delete{
+  color: #3C3B67;
+  // outline: 2px solid blue;
+  display: flex;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  
+
+  input{
+    margin-right: 5px;
+  }
+}
+
+// .xuan-cart-list-window{
+//   outline: 10px solid green;
+// }
+
+// .cart-list-simplebar{
+//   // outline: 2px solid green;
+// }
+
+.xuan-cart-list{
+  background-color: white;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start ;
+  padding: 10px ;
+
+  .xuan-cart-check{
+    // outline: 1px solid red;
+    margin-right: 7px;
+  }
+
+  .xuan-cart-img{
+    width: 60px;
+    min-width: 60px;
+    height: 60px;
+    min-height: 60px;
+    background-color: gray;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+
+  .xuan-cart-intro{
+    color:#3C3B67;
+    min-width: 170px;
+    // outline: 1px solid red;
+    margin-right: 5px;
+
+
+    .xuan-cart-intro-title{
+
+      margin-bottom: 7px;
+
+      // TODO: 手機版先消失
+      span:nth-child(1){
+        display: none;
+        // background-color: #EDEFF7;
+        // padding: 3px;
+        // margin-right: 5px;
+        // border-radius: 5px;
+      }
+    }
+
+    .xuan-time-location{
+      display: flex;
+      margin-bottom: 5px;
+
+      *{
+        margin-right: 5px;
+      }
+
+      // TODO: 桌機版要出現地點
+      .xuan-location{
+        display: none;
+      }
+    }
+  }
+
+  .xuna-delete-cross{
+    width: 12px;
+    height: 12px;
+
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .xuan-cost{
+    color: #3C3B67;
+    min-width: 45px;
+    margin-right: 10px;
+
+    h5{
+      font-weight: 500;
+    }
+  }
+
+
+}
+
+// 處理上一步下一步按鈕
+.xuan-cart-btn{
+  // outline: 2px solid red;
+  position: fixed;
+  right: 20px;
+  bottom: 22px;
+  // transform: translate(-50%,-50%);
+
+  *{
+    margin-right: 7px;
+  }
+
+}
+
+
+// 訂購人資訊
+
+
+// 桌機版放這邊
+
+
+@media screen and (min-width: 992px) {
+
+    // 整個購物車最外框
+    .orderstep-container{
+      padding-top: 20px;
+    }
+
+    .xuan-order-steps{
+      // outline: 1px solid red;
+      width: 86%;
+      margin: auto;
+
+      .xuan-cart-container{
+        width: 100%;
+
+        .xuan-row{
+          width: 100%;
+          display: flex;
+        }
+      }
+    }
+    
+
+  
+    // ProgressBar
+    .xuan-progress-container{
+      width: 86%;
+      // outline: 1px solid red;
+
+      .progressbar{
+        // outline: 1px solid blue;
+        width: 75%;
+        margin-left:0px ;
+      }
+    }
+
+
+    // OrderList
+    .xuan-orderlist-container{
+      // outline: 1px solid red;
+      width: 86%;
+      margin-top: 0px;
+
+
+      .xuan-all-select-delete{
+        padding-left: 25px;
+      }
+
+      // SimpleBar
+      .simplebar-wrapper{
+        // outline: 1px solid green;
+        width: 100%;
+        margin-left: 0px;
+        max-height: 450px;
+
+        .xuan-cart-list-wrap{
+          width: 100%;
+          
+        }
+      }
+
+      .xuan-cart-list{
+        justify-content: space-between;
+        padding:10px 25px ;
+
+        .xuan-cart-img{
+          width: 120px;
+          height: 80px;
+        }
+
+        .xuan-cart-intro{
+          width: 62%;
+          // outline: 1px solid red;
+
+          .xuan-cart-intro-title{
+
+            display: flex;
+            justify-content:flex-start;
+            align-items: center;
+
+            span:nth-child(1){
+              display: block;
+              background-color: #EDEFF7;
+              padding: 4px;
+              margin-right: 7px;
+              border-radius: 5px;
+            }
+
+            // 把活動項目標題放大
+            span:nth-child(2){
+              font-family: $ff-t, $ff-h;
+              font-weight: 700;
+              font-size: $fz-title;
+              margin-bottom: 3px;
+            }
+          }
+
+          .xuan-time-location{
+
+            margin-bottom: 7px;
+
+            p{
+              font-size: $fz-subtitle;
+              font-family: $ff-t;
+              font-weight: 500;
+            }
+
+            .xuan-location{
+              display: block;
+            }
+          }
+
+          .xuan-body{
+            font-size: $fz-subtitle;
+            font-family: $ff-t;
+            font-weight: 500;
+          }
+
+        }
+
+        .xuan-cost{
+
+          h5{
+            font-size: $fz-subtitle;
+            font-family: $ff-t;
+            font-weight: 500;
+          }
+        }
+
+        
+      }
+
+
+
+
+    }
+
+
+
+
+    
+    .xuan-cart-btn{
+      // outline: 1px solid red;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 18%;
+      position: fixed;
+      bottom: 13vw;
+      right:7.5vw;
+
+      button{
+        margin: 0px;
+        width: 45%;
+        min-width: 95px;
+      }
+      
+    }
+
+
+
+      // Summary
+    .xuan-summary-col{
+      position:relative;
+      width: 25%;
+      margin-left: 30px;
+      margin-top: 28px;
+      border-radius: 15px;
+      min-width: 200px;
+      background-color:rgba(255, 255, 255, 0);
+      padding: 0px;
+
+      .xuan-cart-cost{
+
+        background-color: white;
+        border-radius: 15px;
+        padding-top: 30px;
+        padding-bottom: 35px;
+    
+        .xuan-cart-title{
+          display: block;
+          width: 100%;
+          text-align: center;
+        }
+
+        .xuan-cost-list{
+          // outline: 1px solid red;
+          width: 80%;
+          margin: 0px;
+          padding: 0px;
+          display: block;
+          padding-top: 50px;
+          padding-bottom: 20px;
+          // padding-left: 50px;
+          margin: auto;
+          margin-bottom: 35px;
+
+            .xuan-donate-cost{
+              margin: 0px;
+              margin-bottom: 15px;
+              justify-content:space-between;
+            }
+
+            .xuan-volunteer-cost{
+              justify-content:space-between;
+            }
+        }
+
+        .xuan-total-cost{
+          width: 80%;
+          margin: auto;
+          // outline: 1px solid blue;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+      }
+
+
+
+
+    }
+
+
+
+}

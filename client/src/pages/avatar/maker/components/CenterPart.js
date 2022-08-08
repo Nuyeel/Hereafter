@@ -68,7 +68,9 @@ function CenterPart(props) {
         lip: FaceData['lip'][conbination['face']['lip']]['name'],
     };
     const orderData = { conbination: { ...conbination } };
-    orderData.id = 36;
+    //MING:目前的假資料:會員ID,訂單編號
+    orderData.id = 19960409;
+    orderData.avatar_id = 1123;
     orderData.conbinationText = conbinationText;
     orderData.totalPrice = avatarTotalPrice;
     const onButtonClick = useCallback(async () => {
@@ -86,16 +88,19 @@ function CenterPart(props) {
                 link.download = 'my-image-name.png';
                 link.href = dataUrl;
                 orderData.img = dataUrl;
-                //link.click();
+                if (window.location.search === '') {
+                    link.click();
+                }
             })
             .catch((err) => {
                 console.log(err);
             });
-
-        console.log(orderData.img);
-        console.log(orderData);
-        const r = await axios.post(Avatar_Update, orderData);
-        console.log(r.data);
+        if (window.location.search === '') {
+            console.log('Meow 目前沒有訂單編號!');
+        } else {
+            const r = await axios.post(Avatar_Update, orderData);
+            console.log(r.data);
+        }
     }, [ref]);
 
     const Center = styled.div`
