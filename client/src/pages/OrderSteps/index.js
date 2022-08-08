@@ -17,6 +17,7 @@ import AuthContext from '../../context/AuthContext/AuthContext';
 // scss
 import '../Event/_xuan_styles.scss';
 import './styles/_new_cart.scss';
+import ReadyToBuy from './components/ReadyToBuy';
 
 function OrderSteps(props) {
     // 會員登入登出驗證(auth)
@@ -30,6 +31,9 @@ function OrderSteps(props) {
     // 此段是TWZipCode檔案需要的變數
     const [countryIndex, setCountryIndex] = useState(-1);
     const [townshipIndex, setTownshipIndex] = useState(-1);
+
+    // 切換訂單明細visible的按鈕(預設隱藏)
+    const [detailVisible, setDetailVisible] = useState('xuan-readytobuy-container-hidden');
 
     // ---------此段處理「已勾選的活動資訊統計」---------------------------------------
 
@@ -151,6 +155,7 @@ function OrderSteps(props) {
 
     // ------------------------------------------------------------------------------
 
+    // TODO: 目前改成勾選完後就存，才可以看到訂單明細
     //填寫完「付款資訊」後在MySQL建立一個新的訂單(1次付款只會有1個訂單編號))
     const fetchCreateOrder = async () => {
         fetch('http://localhost:3500/eventcarts/addorder', {
@@ -261,7 +266,14 @@ function OrderSteps(props) {
     return (
         <>
             <div className="orderstep-container">
-
+                {/* 光箱-訂單明細 */}
+                <ReadyToBuy 
+                    eventPick={eventPick} 
+                    setEventPick={setEventPick}
+                    detailVisible={detailVisible} 
+                    setDetailVisible={setDetailVisible}
+                    step={step}
+                    prev={prev} />
 
                 {/* 進度條 */}
                 <ProgressBar
@@ -299,6 +311,8 @@ function OrderSteps(props) {
                         //下面這些變數是傳給 Payment.js用
                         cardInfor={cardInfor}
                         setCardInfor={setCardInfor}
+                        detailVisible={detailVisible} 
+                        setDetailVisible={setDetailVisible}
                     />
                 </div>
 

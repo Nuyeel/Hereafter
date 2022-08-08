@@ -16,12 +16,14 @@ function Shipping(props) {
         setCountryIndex,
         townshipIndex,
         setTownshipIndex,
+        detailVisible,
+        setDetailVisible,
     } = props;
 
     return (
         <>
             <div className="xuan-personinfor-container">
-                <div className="row">
+                <div className="xuan-row">
                     <PersonForm
                         myInfor={myInfor}
                         setMyInfor={setMyInfor}
@@ -29,6 +31,8 @@ function Shipping(props) {
                         setCountryIndex={setCountryIndex}
                         townshipIndex={townshipIndex}
                         setTownshipIndex={setTownshipIndex}
+                        detailVisible={detailVisible} 
+                        setDetailVisible={setDetailVisible}
                     />
 
                     <Summary
