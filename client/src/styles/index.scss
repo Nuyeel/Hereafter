@@ -268,7 +268,8 @@ h3 {
     // FIXME: 先大致調整 1400px 以上的狀況
     // TODO: Try~ top: clamp(30px, 10vw, 50px);
     .header-container {
-        padding-top: calc(var(--vh, 1vh) * 3);
+        // FIXME: 可以固定用筆電螢幕高度作為 基準嗎 利用 padding 不可為負值的特性
+        padding-top: calc(var(--vh, 1vh) * 2 - 788px);
         margin-bottom: calc(var(--vh, 1vh) * 2);
     }
 }
