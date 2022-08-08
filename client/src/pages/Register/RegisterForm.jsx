@@ -391,19 +391,19 @@ function RegisterForm(props) {
                                                         <p>以其他方式註冊：</p>
                                                         <button
                                                             type="button"
-                                                            className="btn btn-link btn-floating mx-1"
+                                                            className="btn-member btn-member-link btn-member-floating mx-1"
                                                         >
                                                             <i className="fab fa-facebook-f"></i>
                                                         </button>
                                                         <button
                                                             type="button"
-                                                            className="btn btn-link btn-floating mx-1"
+                                                            className="btn-member btn-member-link btn-member-floating mx-1"
                                                         >
                                                             <i className="fab fa-google"></i>
                                                         </button>
                                                         <button
                                                             type="button"
-                                                            className="btn btn-link btn-floating mx-1"
+                                                            className="btn-member btn-member-link btn-member-floating mx-1"
                                                         >
                                                             <i className="fab fa-twitter"></i>
                                                         </button>
@@ -413,7 +413,7 @@ function RegisterForm(props) {
                                         <div className="d-flex justify-content-center ">
                                             <button
                                                 type="submit"
-                                                className="btn btn-l btn-pri btn-outline-light "
+                                                className="btn-member btn-member-l btn-member-pri btn-member-outline-light "
                                             >
                                                 確認註冊
                                             </button>

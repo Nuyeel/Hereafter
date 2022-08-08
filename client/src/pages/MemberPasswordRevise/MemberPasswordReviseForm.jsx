@@ -366,13 +366,13 @@ function MemberProfileForm(props) {
                                                                             <div className="d-flex justify-content-sm-evenly ">
                                                                                 <button
                                                                                     type="submit"
-                                                                                    className="btn btn-l btn-pri btn-outline-light"
+                                                                                    className="btn-member btn-member-l btn-member-pri btn-member-outline-light"
                                                                                 >
                                                                                     修改
                                                                                 </button>
                                                                                 <button
                                                                                     type="reset"
-                                                                                    className="btn btn-sec btn-l btn-outline-light"
+                                                                                    className="btn-member btn-member-sec btn-member-l btn-member-outline-light"
                                                                                 >
                                                                                     清除
                                                                                 </button>

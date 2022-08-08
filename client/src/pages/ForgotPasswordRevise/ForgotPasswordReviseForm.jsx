@@ -62,17 +62,7 @@ function ForgotPasswordReviseForm() {
     return (
         <>
             {authorized ? (
-                <>
-                    {/* <div>已經登入了欸</div>
-                    <br />
-                    <button
-                        type="button"
-                        className="btn btn-primary"
-                        onClick={userLogout}
-                    >
-                        Logout
-                    </button> */}
-                </>
+                <></>
             ) : (
                 <div className="container">
                     <div className="row">
@@ -143,7 +133,7 @@ function ForgotPasswordReviseForm() {
                                             <div className="d-flex justify-content-center">
                                                 <button
                                                     type="submit"
-                                                    className="btn btn-l btn-pri btn-outline-light "
+                                                    className="btn-member btn-member-l btn-member-pri btn-member-outline-light"
                                                 >
                                                     確認修改
                                                 </button>
