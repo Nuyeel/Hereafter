@@ -31,7 +31,7 @@ function Style(props) {
         background-image: url(${BodyData[bodyControlChange][
             combination['body'][bodyControlChange]
         ]['preview']});
-        background-color: #000;
+        background-color: #777;
         background-repeat: no-repeat;
         border-radius: 50%;
         background-size: contain;

@@ -3,9 +3,12 @@ import BodyPart from './components/BodyPart/BodyPart.js';
 import CenterPart from './components/CenterPart.js';
 import FacePart from './components/FacePart/FacePart.js';
 import FaceView from './components/FaceView.js';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import ThemeContext from '../../../context/ThemeContext/ThemeContext.js';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
+import { Avatar_GetData } from '../../../config/ajax-path';
+import axios from 'axios';
 
 const Maker = () => {
     const [combination, setCombination] = useState({
@@ -28,7 +31,19 @@ const Maker = () => {
     const [bodyControlChange, setBodyControlChange] = useState('hand');
     const [faceControlChange, setFaceControlChange] = useState('eye');
     const [colorControlSwitch, setColorControlSwitch] = useState(0);
+    const navigate = useNavigate();
 
+    const getAvatarData = async () => {
+        const member = JSON.parse(localStorage.getItem('auth'));
+        const aid = sessionStorage.getItem('avatar_id');
+        const postData = { id: member['sid'], avatar_id: aid };
+        const r = await axios.post(Avatar_GetData, postData);
+        const oldCombination = JSON.parse(r.data.data[0]['combination']);
+        setCombination(oldCombination);
+    };
+    useEffect(() => {
+        getAvatarData();
+    }, []);
     const { theme } = useContext(ThemeContext);
     const ContainerFluid = styled.div`
         margin: 0;
@@ -70,7 +85,9 @@ const Maker = () => {
             font-size: 40px;
         }
     `;
-
+    const backtoShowCase = () => {
+        navigate('/showcase', { replace: true });
+    };
     return (
         <>
             <ContainerFluid>
@@ -83,7 +100,7 @@ const Maker = () => {
                             建立時間：20220616/Thr/08:12:23
                         </p>
                     </AvatarTitle>
-                    <Back>
+                    <Back onClick={backtoShowCase}>
                         <i className="fa-solid fa-xmark"></i>
                     </Back>
                     <BasicPart

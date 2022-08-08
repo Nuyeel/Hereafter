@@ -1,7 +1,7 @@
 import './showcase.css';
 import { useContext, useState, useEffect } from 'react';
 import ThemeContext from '../../../context/ThemeContext/ThemeContext';
-import styled from '@emotion/styled';
+//import styled from '@emotion/styled';
 import { Showcase_Data } from '../../../config/ajax-path';
 import axios from 'axios';
 import AvatarCard from './AvatarCard';
@@ -20,10 +20,11 @@ function Showcase() {
         }
     }, [isLoading]);
     const getAvatarData = async () => {
-        const postData = { id: 19960409 };
+        const member = JSON.parse(localStorage.getItem('auth'));
+        const postData = { id: member['sid'] };
         const r = await axios.post(Showcase_Data, postData);
         setAvatarData(r.data.data);
-        console.log(r.data.data);
+        //console.log(JSON.parse(r.data.data[0]['combination']));
     };
 
     useEffect(() => {

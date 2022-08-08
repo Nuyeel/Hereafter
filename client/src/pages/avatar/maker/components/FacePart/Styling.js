@@ -31,7 +31,7 @@ function Style(props) {
         background-image: url(${FaceImage[faceControlChange][
             combination['face'][faceControlChange]
         ]['preview']});
-        background-color: #000;
+        background-color: #777;
         background-repeat: no-repeat;
         border-radius: 50%;
         background-size: contain;

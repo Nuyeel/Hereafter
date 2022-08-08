@@ -33,6 +33,7 @@ export const Event_List_GET = `${SERVER}/events `;
 export const Event_Cart_ADD_POST = `${SERVER}/eventcarts/addcart `;
 
 export const Showcase_Data = `${SERVER}/avatar/showcase`;
+export const Avatar_GetData = `${SERVER}/avatar/getAvatarData`;
 export const Avatar_Update = `${SERVER}/avatar/update`;
 
 // 陰德值測驗
