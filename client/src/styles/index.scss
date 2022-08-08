@@ -222,17 +222,21 @@ h3 {
 
 .nav-btn {
     font-family: $ff-h, $ff-t;
-    font-size: $fz-h5;
+    font-size: $fz-h4;
     font-weight: 500;
-    height: 50px;
+    color: #fff;
+    height: 70px;
+    text-align: center;
     background-color: $primary;
 }
 
 .nav-btn:hover {
     font-family: $ff-h, $ff-t;
-    font-size: $fz-h5;
+    font-size: $fz-h4;
     font-weight: 500;
-    height: 50px;
+    color: #fff;
+    height: 70px;
+    text-align: center;
     background-color: $secondary;
 }
 
