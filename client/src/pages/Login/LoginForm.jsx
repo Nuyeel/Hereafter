@@ -54,6 +54,7 @@ function LoginForm(props) {
                         ...result.data,
                         authorized: true,
                     });
+                    Swal.fire('歡迎回到來生投放所');
                     navigate('/memberprofile');
                 } else {
                     Swal.fire('您輸入的帳戶或密碼有誤');
