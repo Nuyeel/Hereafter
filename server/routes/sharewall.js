@@ -447,6 +447,260 @@ router
         res.json(results);
     });
 
+// TODO: 撰文
+router.route('/post').post(async (req, res) => {
+    let output = {
+        postCreateResult: false,
+        tagsCreateResult: false,
+        postsToTagsResult: false,
+    };
+
+    // console.log(req.body);
+
+    if (!res.locals.loginUser) {
+        return res.send('請先登入');
+    }
+
+    // TODO: 統一跳脫
+    const sharePostAvatarSid = SqlString.escape(req.body.sharePostAvatarSid);
+    const sharePostTitle = SqlString.escape(req.body.sharePostTitle);
+    const sharePostTag_1 = SqlString.escape(req.body.sharePostTag_1);
+    const sharePostTag_2 = SqlString.escape(req.body.sharePostTag_2);
+    const sharePostTag_3 = SqlString.escape(req.body.sharePostTag_3);
+    const sharePostTextarea = SqlString.escape(req.body.sharePostTextarea);
+
+    // if (sharePostAvatarSid.indexOf('\\') !== -1) {
+    //     console.log('sharePostAvatarSid 被跳脫了');
+    //     return res.json('跳脫');
+    // }
+
+    if (isNaN(Number(sharePostAvatarSid))) {
+        console.log('sharePostAvatarSid 不是數字');
+        return res.json('請不要想要攻擊');
+    }
+
+    if (sharePostTitle.indexOf('\\') !== -1) {
+        console.log('sharePostTitle 被跳脫了');
+        return res.json('跳脫');
+    }
+
+    if (sharePostTag_1.indexOf('\\') !== -1) {
+        console.log('sharePostTag_1 被跳脫了');
+        return res.json('跳脫');
+    }
+
+    if (sharePostTag_2.indexOf('\\') !== -1) {
+        console.log('sharePostTag_2 被跳脫了');
+        return res.json('跳脫');
+    }
+
+    if (sharePostTag_3.indexOf('\\') !== -1) {
+        console.log('sharePostTag_3 被跳脫了');
+        return res.json('跳脫');
+    }
+
+    // FIXME: 這樣英文不能有 ' 看狀況決定修不修
+    if (sharePostTextarea.indexOf('\\') !== -1) {
+        console.log('sharePostTextarea 被跳脫了');
+        return res.json('跳脫');
+    }
+
+    if (sharePostTitle.length > 6) {
+        return res.send('來生形象標題太長');
+    }
+
+    if (sharePostTag_1.length > 6) {
+        return res.send('標籤一太長');
+    }
+
+    if (sharePostTag_2.length > 6) {
+        return res.send('標籤二太長');
+    }
+
+    if (sharePostTag_3.length > 6) {
+        return res.send('標籤三太長');
+    }
+
+    if (sharePostTextarea.length === 0) {
+        return res.send('文章是空的啊');
+    }
+
+    if (sharePostTextarea.length > 200) {
+        return res.send('文章太長');
+    }
+
+    // TODO: 新增文章
+    const $post_create_sql = ` 
+        INSERT 
+        INTO share_avatar_posts ( 
+            member_sid, avatar_sid, share_post_title, share_post_text, share_post_likes, share_post_collects, created_at
+        ) VALUES (
+            ?, ?, ?, ?,
+            0, 0, NOW()
+        ) 
+    `;
+    const formatSql = SqlString.format($post_create_sql, [
+        res.locals.loginUser.id,
+        Number(req.body.sharePostAvatarSid),
+        req.body.sharePostTitle,
+        req.body.sharePostTextarea,
+    ]);
+
+    // console.log(formatSql);
+    const [post_create_results] = await db.execute(formatSql);
+    // console.log(post_create_results);
+
+    if (!post_create_results.affectedRows) {
+        return res.send('寫入文章失敗');
+    }
+
+    output.postCreateResult = true;
+
+    // DONE: 新增標籤與否
+    let tag_1_ID = 0; // 初始化
+    let tag_2_ID = 0; // 初始化
+    let tag_3_ID = 0; // 初始化
+
+    // Tag_1
+    // console.log('tag 1', sharePostTag_1);
+    if (req.body.sharePostTag_1 !== '') {
+        const $tag_1_isSet_sql = ` 
+            SELECT share_post_tag_sid 
+            FROM share_avatar_tags 
+            WHERE share_post_tag_text = ${sharePostTag_1} 
+        `;
+        const [tag_1_sid_isSet_result] = await db.query($tag_1_isSet_sql);
+
+        // console.log(tag_1_sid_isSet_result);
+        if (!tag_1_sid_isSet_result.length) {
+            // 不存在就新增
+            const $tag_create_sql = ` 
+                INSERT 
+                INTO share_avatar_tags ( 
+                    share_post_tag_text, share_post_tag_search_times
+                ) VALUES (
+                    ${sharePostTag_1}, 0
+                ) 
+            `;
+
+            const [tag_create_result] = await db.execute($tag_create_sql);
+
+            if (!tag_create_result.affectedRows) {
+                return res.send('標籤一新增失敗');
+            }
+
+            tag_1_ID = tag_create_result.insertId;
+        }
+    }
+
+    // Tag 2
+    // console.log('tag 2', sharePostTag_2);
+    if (req.body.sharePostTag_2 !== '') {
+        const $tag_2_isSet_sql = ` 
+            SELECT share_post_tag_sid 
+            FROM share_avatar_tags 
+            WHERE share_post_tag_text = ${sharePostTag_2} 
+        `;
+        const [tag_2_sid_isSet_result] = await db.query($tag_2_isSet_sql);
+
+        // console.log(tag_2_sid_isSet_result);
+        if (!tag_2_sid_isSet_result.length) {
+            // 不存在就新增
+            const $tag_create_sql = ` 
+                INSERT 
+                INTO share_avatar_tags ( 
+                    share_post_tag_text, share_post_tag_search_times
+                ) VALUES (
+                    ${sharePostTag_2}, 0
+                ) 
+            `;
+
+            const [tag_create_result] = await db.execute($tag_create_sql);
+
+            if (!tag_create_result.affectedRows) {
+                return res.send('標籤二新增失敗');
+            }
+
+            tag_2_ID = tag_create_result.insertId;
+        }
+    }
+
+    // Tag 3
+    // console.log('tag 3', sharePostTag_3);
+    if (req.body.sharePostTag_3 !== '') {
+        const $tag_3_isSet_sql = ` 
+            SELECT share_post_tag_sid 
+            FROM share_avatar_tags 
+            WHERE share_post_tag_text = ${sharePostTag_3} 
+        `;
+        const [tag_3_sid_isSet_result] = await db.query($tag_3_isSet_sql);
+
+        // console.log(tag_3_sid_isSet_result);
+        if (!tag_3_sid_isSet_result.length) {
+            // 不存在就新增
+            const $tag_create_sql = ` 
+                INSERT 
+                INTO share_avatar_tags ( 
+                    share_post_tag_text, share_post_tag_search_times
+                ) VALUES (
+                    ${sharePostTag_3}, 0
+                ) 
+            `;
+
+            const [tag_create_result] = await db.execute($tag_create_sql);
+
+            if (!tag_create_result.affectedRows) {
+                return res.send('標籤三新增失敗');
+            }
+
+            tag_3_ID = tag_create_result.insertId;
+        }
+    }
+
+    output.tagsCreateResult = true;
+
+    // TODO: 處理文章標籤對應
+    // 首先要取得剛剛新增的文章 sid
+    const postID = post_create_results.insertId;
+
+    let tagsArray = [];
+
+    if (tag_1_ID !== 0) {
+        tagsArray.push(tag_1_ID);
+    }
+
+    if (tag_2_ID !== 0) {
+        tagsArray.push(tag_2_ID);
+    }
+
+    if (tag_3_ID !== 0) {
+        tagsArray.push(tag_3_ID);
+    }
+
+    for (let i = 0; i < tagsArray.length; i++) {
+        const $posts_to_tags_create_sql = ` 
+            INSERT 
+            INTO share_avatar_posts_to_tags ( 
+                share_post_sid, share_post_tag_sid 
+            ) VALUES (
+                ${postID}, ${tagsArray[i]}
+            )  
+        `;
+
+        const [posts_to_tags_create_result] = await db.execute(
+            $posts_to_tags_create_sql
+        );
+
+        if (posts_to_tags_create_result.affectedRows !== 1) {
+            return res.json('新增標籤對應文章時出錯啦');
+        }
+    }
+
+    output.postsToTagsResult = true;
+
+    res.json(output);
+});
+
 router.route('/:sharepostID').get(async (req, res) => {
     const sharepostID = Number(req.params.sharepostID);
 
@@ -683,6 +937,22 @@ router.route('/:sharepostID/:actionType?').get(async (req, res) => {
 
         const [like_results] = await db.execute(formatSql);
         // console.log(like_results);
+
+        // DONE: 去文章資料對喜歡數 + 1
+        const $post_like_update_sql = ` 
+            UPDATE share_avatar_posts 
+            SET share_post_likes = share_post_likes + 1 
+            WHERE share_post_sid = ${sharepostID}
+        `;
+
+        const [post_like_update_results] = await db.execute(
+            $post_like_update_sql
+        );
+
+        if (post_like_update_results.affectedRows !== 1) {
+            return res.send('按讚數加一出錯');
+        }
+
         return res.json(like_results);
     }
 
@@ -701,6 +971,22 @@ router.route('/:sharepostID/:actionType?').get(async (req, res) => {
 
         const [dislike_results] = await db.execute(formatSql);
         // console.log(dislike_results);
+
+        // DONE: 去文章資料對喜歡數 - 1
+        const $post_dislike_update_sql = ` 
+            UPDATE share_avatar_posts 
+            SET share_post_likes = share_post_likes - 1 
+            WHERE share_post_sid = ${sharepostID}
+        `;
+
+        const [post_dislike_update_results] = await db.execute(
+            $post_dislike_update_sql
+        );
+
+        if (post_dislike_update_results.affectedRows !== 1) {
+            return res.send('按讚數減一出錯');
+        }
+
         return res.json(dislike_results);
     }
 
@@ -722,6 +1008,22 @@ router.route('/:sharepostID/:actionType?').get(async (req, res) => {
 
         const [collect_results] = await db.execute(formatSql);
         // console.log(collect_results);
+
+        // DONE: 去文章資料對收藏數 + 1
+        const $post_collect_update_sql = ` 
+            UPDATE share_avatar_posts 
+            SET share_post_collects = share_post_collects + 1 
+            WHERE share_post_sid = ${sharepostID}
+        `;
+
+        const [post_collect_update_results] = await db.execute(
+            $post_collect_update_sql
+        );
+
+        if (post_collect_update_results.affectedRows !== 1) {
+            return res.send('收藏數加一出錯');
+        }
+
         return res.json(collect_results);
     }
 
@@ -740,6 +1042,22 @@ router.route('/:sharepostID/:actionType?').get(async (req, res) => {
 
         const [discollect_results] = await db.execute(formatSql);
         // console.log(discollect_results);
+
+        // DONE: 去文章資料對收藏數 - 1
+        const $post_discollect_update_sql = ` 
+            UPDATE share_avatar_posts 
+            SET share_post_collects = share_post_collects - 1 
+            WHERE share_post_sid = ${sharepostID}
+        `;
+
+        const [post_discollect_update_results] = await db.execute(
+            $post_discollect_update_sql
+        );
+
+        if (post_discollect_update_results.affectedRows !== 1) {
+            return res.send('收藏數減一出錯');
+        }
+
         return res.json(discollect_results);
     }
 
