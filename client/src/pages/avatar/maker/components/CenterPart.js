@@ -6,6 +6,7 @@ import FaceData from './FaceData';
 import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
 import { Avatar_Update } from '../../../../config/ajax-path';
 import axios from 'axios';
+import { ReactComponent as Soul } from '../../../../images/Nav/nav_soul.svg';
 //import Bodytry from "../../../images/avatar/hereafter-imgs/body-M.png";
 
 function CenterPart(props) {
@@ -69,8 +70,10 @@ function CenterPart(props) {
     };
     const orderData = { combination: { ...combination } };
     //MING:目前的假資料:會員ID,訂單編號
-    orderData.id = 19960409;
-    orderData.avatar_id = 1123;
+    const aid = sessionStorage.getItem('avatar_id');
+    const member = JSON.parse(localStorage.getItem('auth'));
+    orderData.id = member['sid'];
+    orderData.avatar_id = aid;
     orderData.combinationText = combinationText;
     orderData.totalPrice = avatarTotalPrice;
     const onButtonClick = useCallback(async () => {
@@ -88,19 +91,20 @@ function CenterPart(props) {
                 link.download = 'my-image-name.png';
                 link.href = dataUrl;
                 orderData.img = dataUrl;
-                if (window.location.search === '') {
+                if (sessionStorage.getItem('avatar_id') === null) {
                     link.click();
                 }
             })
             .catch((err) => {
                 console.log(err);
             });
-        if (window.location.search === '') {
+        if (sessionStorage.getItem('avatar_id') === null) {
             console.log('Meow 目前沒有訂單編號!');
         } else {
             const r = await axios.post(Avatar_Update, orderData);
             console.log(orderData);
             console.log(r.data);
+            sessionStorage.removeItem('avatar_id');
         }
     }, [ref]);
 
@@ -118,7 +122,7 @@ function CenterPart(props) {
         height: 310px;
         width: 307px;
         top: 23%;
-        left: 15.7%;
+        left: 16.3%;
     `;
     const BGCircle = styled.div`
         position: absolute;
@@ -126,8 +130,8 @@ function CenterPart(props) {
         border-radius: 50%;
         height: 385px;
         width: 385px;
-        top: 10%;
-        left: 7%;
+        top: 10.5%;
+        left: 7.6%;
     `;
     //*MING:Body區
     const Face = styled.div`
@@ -615,6 +619,14 @@ function CenterPart(props) {
             }
         }
     `;
+    const SoulColor = styled.div`
+        path {
+            fill: ${theme.cHeader};
+        }
+        circle {
+            stroke: ${theme.cHeader};
+        }
+    `;
     return (
         <>
             <Center>
@@ -707,7 +719,12 @@ function CenterPart(props) {
                     ></BodyControl>
                 </div>
                 <Info>
-                    <p>總計:{avatarTotalPrice}</p>
+                    <SoulColor>
+                        <p>
+                            總計:{avatarTotalPrice}
+                            <Soul />
+                        </p>
+                    </SoulColor>
                 </Info>
                 <SaveBtn>
                     <div onClick={onButtonClick}>

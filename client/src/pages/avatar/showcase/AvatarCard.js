@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 import { ReactComponent as Soul } from '../../../images/Nav/nav_soul.svg';
-import testpng from '../../../images/avatar/test1.png';
+//import testpng from '../../../images/avatar/test1.png';
+import { useNavigate } from 'react-router-dom';
 
 function AvatarCard(props) {
     const { theme, avatarinfo } = props;
+    const navigate = useNavigate();
     const SoulColor = styled.div`
         path {
             fill: ${theme.cHeader};
@@ -15,6 +17,11 @@ function AvatarCard(props) {
     const time = avatarinfo.avatar_created_at;
     const combination = JSON.parse(avatarinfo.combination);
     const combinationText = JSON.parse(avatarinfo.combinationText);
+    //console.log(avatarinfo);
+    const editAvatar = () => {
+        sessionStorage.setItem('avatar_id', avatarinfo.avatar_id);
+        navigate('/maker', { replace: true });
+    };
     return (
         <>
             <div
@@ -71,7 +78,7 @@ function AvatarCard(props) {
                     </p>
                     <SoulColor>
                         <p className="avatarTotalPrice">
-                            總計價格:3000
+                            總計價格:{avatarinfo.price}
                             <Soul />
                         </p>
                     </SoulColor>
@@ -79,7 +86,10 @@ function AvatarCard(props) {
                         <div style={{ border: '1px solid' }}>
                             <p>分享</p>
                         </div>
-                        <div style={{ border: '1px solid' }}>
+                        <div
+                            style={{ border: '1px solid' }}
+                            onClick={editAvatar}
+                        >
                             <p>編輯</p>
                         </div>
                     </div>
