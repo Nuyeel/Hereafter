@@ -28,20 +28,21 @@ import SharePostCard from './components/SharePostCard';
 
 function ShareWallList(props) {
     const { pageName } = props;
-    const { authorized, token } = useContext(AuthContext);
     const { theme } = useContext(ThemeContext);
+    const { setHeader, shareWallPostsData, setShareWallPostsData } =
+        useContext(HeaderContext);
+    const { authorized, token } = useContext(AuthContext);
 
     // 當前應該顯示貼文的頁數 是一個狀態
     // TODO: 滑動 lazy load 出頁數
-    const [postsPage, setPostsPage] = useState(0);
+    const [postsPage, setPostsPage] = useState(0); // FIXME: 可能也要搬到 HeaderContext 去
     // axios POST 回來的資料
     // TABLE: {圖, 頭貼, 帳號, 讚數, 標題, 內文}
     // TABLE: {avatar, memberhead, account, likes, title, text}
-    const [postsData, setPostsData] = useState([]);
+    // const [postsData, setPostsData] = useState([]);
     // 搜尋用的標籤字串
     const [searchParams, setSearchParams] = useState('');
 
-    const { setHeader } = useContext(HeaderContext);
     const navigate = useNavigate();
 
     // TODO: 滾到特定位置就要去要資料
@@ -59,7 +60,7 @@ function ShareWallList(props) {
         });
 
         // console.log(result.data);
-        setPostsData(result.data);
+        setShareWallPostsData(result.data);
     };
 
     // 設定 Header
@@ -82,7 +83,6 @@ function ShareWallList(props) {
                 <ShareWallSearchBar
                     searchParams={searchParams}
                     setSearchParams={setSearchParams}
-                    setPostsData={setPostsData}
                 />
                 {/* <h3 style={{ color: '#FFFFFF' }}>ShareWallList.jsx</h3> */}
             </div>
@@ -135,8 +135,8 @@ function ShareWallList(props) {
                     {/* FIXME: 偷懶頭貼先用同一張 */}
                     {/* FIXME: 找不到資料的時候應該要顯示一個東西 */}
                     {/* FIXME: spinner */}
-                    {postsData &&
-                        postsData.map((v, i) => (
+                    {shareWallPostsData &&
+                        shareWallPostsData.map((v, i) => (
                             <SharePostCard
                                 key={v.share_post_sid}
                                 postsid={v.share_post_sid}
