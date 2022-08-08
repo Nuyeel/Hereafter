@@ -68,7 +68,7 @@ function MemberProfileForm() {
                     <br />
                     <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn-member btn-member-primary"
                         onClick={userLogout}
                     >
                         Logout
@@ -162,7 +162,7 @@ function MemberProfileForm() {
                                                                                     <h5 className="card-title page-field">
                                                                                         這裡說不定會放東西
                                                                                     </h5>
-                                                                                    <button className="btn btn-pri btn-m btn-outline-light">
+                                                                                    <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
                                                                                         開始預約
                                                                                     </button>
                                                                                 </div>
@@ -175,7 +175,7 @@ function MemberProfileForm() {
                                                                                     <h5 className="card-title page-field">
                                                                                         這裡說不定會放東西
                                                                                     </h5>
-                                                                                    <button className="btn btn-sec btn-m btn-outline-light">
+                                                                                    <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
                                                                                         開始創建
                                                                                     </button>
                                                                                 </div>
@@ -261,7 +261,7 @@ function MemberProfileForm() {
                                                         <div className="d-flex justify-content-center ">
                                                             <button
                                                                 type="submit"
-                                                                className="btn btn-l btn-pri btn-outline-light "
+                                                                className="btn-member btn-member-l btn-member-pri btn-member-outline-light "
                                                             >
                                                                 登入
                                                             </button>

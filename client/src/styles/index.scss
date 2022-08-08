@@ -225,6 +225,7 @@ h3 {
     font-size: $fz-h5;
     font-weight: 500;
     height: 50px;
+    background-color: $primary;
 }
 
 .nav-btn:hover {
@@ -232,7 +233,7 @@ h3 {
     font-size: $fz-h5;
     font-weight: 500;
     height: 50px;
-    border:none;
+    background-color: $secondary;
 }
 
 /* ============================================================ */
