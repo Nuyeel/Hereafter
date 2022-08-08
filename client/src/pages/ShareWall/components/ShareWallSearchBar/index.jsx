@@ -141,7 +141,11 @@ function ShareWallSearchBar(props) {
                 axiosUrl += '?isCollector=true';
             }
 
-            const result = await axios.get(axiosUrl);
+            const result = await axios.get(axiosUrl, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             // console.log(result.data);
             setShareWallPostsData(result.data);
         } else {
@@ -155,7 +159,11 @@ function ShareWallSearchBar(props) {
                 axiosUrl += '&isCollector=true';
             }
 
-            const result = await axios.get(axiosUrl);
+            const result = await axios.get(axiosUrl, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
             // console.log(result.data);
             if (result.data.length === 0) {
                 Swal.fire({

@@ -32,8 +32,7 @@ function SharePostCard(props) {
         title,
         text,
         isliked,
-        axiosPOST,
-        postsPage,
+        axiosListGET,
     } = props;
 
     const { theme } = useContext(ThemeContext);
@@ -52,7 +51,7 @@ function SharePostCard(props) {
 
         if (result.data.affectedRows === 1) {
             // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
-            axiosPOST(postsPage);
+            axiosListGET();
         }
 
         return;
@@ -68,7 +67,7 @@ function SharePostCard(props) {
 
         if (result.data.affectedRows === 1) {
             // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
-            axiosPOST(postsPage);
+            axiosListGET();
         }
 
         return;
