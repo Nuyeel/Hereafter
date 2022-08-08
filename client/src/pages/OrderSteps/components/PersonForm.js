@@ -24,6 +24,7 @@ function PersonForm(props) {
         setTownshipIndex,
         setDetailVisible,
         detailVisible,
+        next,
     } = props;
 
     // multiple State
@@ -111,7 +112,8 @@ function PersonForm(props) {
             .then((r) => r.json())
             .then((obj) => {
                 console.log('收到的res', obj);
-            });
+            })
+            .then(next()); //POST完後直接跳轉到下一頁
     };
 
     // TODO: 這一段可以把 button 改成 reset 就可以不用把inputErrors改成 ''
@@ -195,6 +197,7 @@ function PersonForm(props) {
             <div className="xuan-person-infor-window">
                 <div className="xuan-form-wrap">
                     <div className="xuan-person-infor-title">
+                    
                         <div className="xuan-infor-btn">
                             <button
                                 className="xuan-btn-m xuan-btn-pri"

@@ -18,6 +18,7 @@ function Shipping(props) {
         setTownshipIndex,
         detailVisible,
         setDetailVisible,
+        next
     } = props;
 
     return (
@@ -33,6 +34,7 @@ function Shipping(props) {
                         setTownshipIndex={setTownshipIndex}
                         detailVisible={detailVisible} 
                         setDetailVisible={setDetailVisible}
+                        next={next}
                     />
 
                     <Summary

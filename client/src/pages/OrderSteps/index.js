@@ -33,7 +33,9 @@ function OrderSteps(props) {
     const [townshipIndex, setTownshipIndex] = useState(-1);
 
     // 切換訂單明細visible的按鈕(預設隱藏)
-    const [detailVisible, setDetailVisible] = useState('xuan-readytobuy-container-hidden');
+    const [detailVisible, setDetailVisible] = useState(
+        'xuan-readytobuy-container-hidden'
+    );
 
     // ---------此段處理「已勾選的活動資訊統計」---------------------------------------
 
@@ -223,6 +225,13 @@ function OrderSteps(props) {
 
     // 上一步 下一步按鈕
     const next = () => {
+        if (step === 1) {
+            if (eventPick.length === 0) {
+                Swal.fire('您尚未選取商品');
+                return;
+            }
+        }
+
         if (step === 2) {
             //  FIXME: 希望在把送出表單功能，改放到Summary「下一步」(submit功能轉移)
 
@@ -249,7 +258,8 @@ function OrderSteps(props) {
 
             if (errors.length > 0) {
                 // alert(errors.join(','));
-                Swal.fire(errors.join('、'));
+                // Swal.fire(errors.join('、'));
+                Swal.fire('資訊未填寫完整');
                 return;
             }
         }
@@ -267,13 +277,14 @@ function OrderSteps(props) {
         <>
             <div className="orderstep-container">
                 {/* 光箱-訂單明細 */}
-                <ReadyToBuy 
-                    eventPick={eventPick} 
+                <ReadyToBuy
+                    eventPick={eventPick}
                     setEventPick={setEventPick}
-                    detailVisible={detailVisible} 
+                    detailVisible={detailVisible}
                     setDetailVisible={setDetailVisible}
                     step={step}
-                    prev={prev} />
+                    prev={prev}
+                />
 
                 {/* 進度條 */}
                 <ProgressBar
@@ -311,8 +322,9 @@ function OrderSteps(props) {
                         //下面這些變數是傳給 Payment.js用
                         cardInfor={cardInfor}
                         setCardInfor={setCardInfor}
-                        detailVisible={detailVisible} 
+                        detailVisible={detailVisible}
                         setDetailVisible={setDetailVisible}
+                        next={next}
                     />
                 </div>
 

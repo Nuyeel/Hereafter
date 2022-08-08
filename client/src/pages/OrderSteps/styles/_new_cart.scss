@@ -316,7 +316,7 @@
   padding: 20px 15px;
 
   // TODO: 為了讓最下方資訊不要被價錢蓋住
-  margin-bottom: 150px;
+  margin-bottom: 140px;
   
 
       .xuan-form-wrap{
@@ -544,19 +544,6 @@
 }
 
 
-// 處理訂單明細光箱
-
-// .xuan-personinfor-container{
-//   outline: 1px solid red;
-// }
-
-// .xuan-row{
-//   outline: 1px solid blue;
-// }
-
-// .orderstep-container{
-//   outline: 3px solid green;
-// }
 .xuan-readytobuy-container-hidden{
   visibility: hidden;
   width: 100%;
@@ -573,6 +560,11 @@
       // visibility: hidden;
       display: none;
     }
+
+    .xuan-readytobuy-simplebar{
+      display: none;
+    }
+
 }
 
 
@@ -589,8 +581,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-
 
     .xuan-center-block{
       width: 90%;
@@ -707,6 +697,68 @@
 
 
 
+
+// Payment付款資訊-----------------------------
+
+.xuan-creditcard-container{
+
+    .xuan-row{
+
+        .payment-card-window{
+          width: 95%;
+          margin: auto;
+          background-color: white;
+          border-radius: 15px;
+          padding: 20px 15px;
+          margin-bottom: 140px;
+
+            .xuan-payment-title{
+              margin-bottom: 20px;
+              color: #3C3B67;
+
+              .xuan-payment-btn{
+                width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+              }
+
+
+            }
+
+            .xuan-bill{
+              margin-bottom: 20px;
+              color:#3C3B67;
+
+                .xuan-label-title{
+                  margin-right: 7px;
+                }
+
+                input{
+                  margin-right: 3px;
+                }
+            }
+
+            .xuan-payment-way{
+              margin-bottom: 30px;
+              color:#3C3B67;
+
+                  .xuan-label-title{
+                    margin-right: 7px;
+                  }
+
+                  input{
+                    margin-right: 3px;
+                  }
+
+            }
+        }
+
+    }
+
+
+
+
+}
 
 
 
@@ -1028,6 +1080,101 @@
     .xuan-readytobuy-img{
       width: 80px;
       margin-right: 20px;
+    }
+
+
+
+
+    // 訂購人資訊-------------------------
+
+    .xuan-creditcard-container{
+
+        .xuan-row{
+          width: 100%;
+          display: flex;
+
+            .payment-card-window{
+              width: 86%;
+              margin-top: 28px;
+              padding: 30px 40px;
+              margin-bottom: 0px;
+
+            
+                  .xuan-payment-title{
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: space-between;
+                    margin-bottom: 20px;
+                    height: 43px;
+
+                          .xuan-payment-btn{
+                            width: 25%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-bottom: 0px;
+                          }
+
+                          .xuan-payment-title-word{
+                            display: flex;
+                            align-items: center;
+                          }
+                
+                  }
+
+                  .xuan-payment-way{
+                    margin-bottom: 0px;
+                  }
+
+                  .xuan-creditcard-wrap{
+                    display: flex;
+                    align-items: center;
+                    justify-content:flex-start ;
+                    // outline: 1px solid red;
+                    margin-left: 0px;
+
+                      .xuan-card-container{
+                        // margin-right: 10px;
+                        // outline: 1px solid red;
+                        margin: 0px;
+                        margin-top: 0px;
+                        min-width: 300px;
+                        max-width: 350px;
+                      }
+
+                      .xuan-credit-form{
+                        padding-left: 15px;
+                        padding-top: 30px;
+                        max-width: 300px;
+                        display: flex;
+
+                        .xuan-payment-submit-button{
+                          // outline: 1px solid red;
+                          display: block;
+                          padding-top: 150px;
+
+                            button{
+                              min-width: 80px;
+                              margin: 0px;
+                              margin-right: 0px;
+                              margin-left: 30px;
+                              margin-bottom: 30px;
+                            }
+                        }
+
+                      
+                      }
+                  }
+            
+            }
+
+            
+
+
+
+
+        }
+
     }
 
 

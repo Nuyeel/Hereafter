@@ -1,0 +1,371 @@
+.xuan-creditcard-top{
+  height: 10%;
+  width: 100%;
+}
+
+
+
+
+// -----CreditCard Component CSS-----
+
+
+// 信用卡白底填寫區
+.payment-card-container{
+
+  width: 95%;
+  height: 100%;
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  display: flex ;
+  // outline: 1px solid red;
+
+
+    .card-left, .card-right{
+      width: 100%;
+      height: 100%;
+    }
+}
+
+
+.xuan-card-container{
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    height: 200px;
+    margin: auto;
+    margin-top: 10px;
+    // outline: 1px solid red;
+    color: #3C3B67;
+    margin-bottom: 20px;
+}
+
+// 信用卡本人(正面)
+.xuan-card-container .xuan-front{
+    // outline: 1px solid blue;
+    margin: auto;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0; left: 0;
+    background-color: #449DB7;
+    border-radius: 15px;
+    backface-visibility: hidden;
+    padding:20px;
+    transform:perspective(1000px) rotateY(0deg);
+    transition:transform .4s ease-out;
+}
+
+.xuan-front{
+  .xuan-credit-notion{
+    color: white;
+    margin-bottom:10px ;
+  }
+}
+
+
+
+.xuan-card-container .xuan-front .image{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.xuan-card-container .xuan-front .image img{
+    height: 50px;
+}
+
+.xuan-card-container .xuan-front .card-number-box{
+    padding:10px 5px;
+    font-size: 22px;
+    color:#fff;
+    border-radius: 5px;
+    background-color: rgb(105,177,197);
+    margin-bottom: 10px;
+}
+
+
+.exp-month, .exp-year{
+  width: 50px;
+  margin-right: 10px;
+  padding:0px 10px;
+  font-size: 16px;
+  color:#fff;
+  border-radius: 5px;
+  background-color: rgb(105,177,197);
+  margin-bottom: 10px;
+}
+
+
+
+.card-holder-name{
+  padding:5px 5px;
+  font-size: 16px;
+  color:#fff;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+.expiration{
+  margin-bottom: 18px;
+  margin-top: 15px;
+}
+
+
+// 信用卡本人(背面)
+.xuan-card-container .back{
+    position: absolute;
+    top:0; left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #449DB7;
+    border-radius: 15px;
+    padding: 20px 0;
+    text-align: right;
+    backface-visibility: hidden;
+    transform:perspective(1000px) rotateY(180deg);
+    transition:transform .4s ease-out;
+}
+
+// 卡片背面灰色長條
+.xuan-card-container .back .stripe{
+    background: rgb(95, 95, 95);
+    width: 100%;
+    margin: 10px 0;
+    height: 30px;
+}
+
+
+.xuan-card-container .back .box .cvv-box{
+    height: 35px;
+    padding: 10px;
+    margin-top: 5px;
+    color:white;
+    background-color: rgb(105,177,197);
+    border-radius: 5px;
+    width: 80%;
+    margin: auto;
+}
+
+
+
+
+// ---表格區---0808更新---------------------
+
+.xuan-credit-form{
+  width: 100%;
+  // outline: 1px solid red;
+  color:#3C3B67;
+
+
+    input{
+      height: 35px;
+    }
+
+    select{
+      height: 35px;
+    }
+
+
+    // 信用卡卡號
+    .xuan-input-cardnumber{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+
+      p{
+        margin-right: 5px;
+        min-width: 100px;
+      }
+
+      input{
+        margin: 0px;
+      }
+    }
+
+    .xuan-payment-form-name{
+      color:#3C3B67;
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+
+        p{
+          min-width: 100px;
+          margin-right: 5px;
+        }
+
+        input{
+          margin: 0px;
+        }
+
+    }
+
+    .xuan-payment-form-date{
+
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+
+        p{
+          min-width: 90px;
+        }
+
+        select{
+          margin: 0px;
+        }
+
+        select:nth-child(2){
+          margin-right: 7px;
+          max-width: 60px;
+        }
+
+        select:nth-child(3){
+          min-width: 80px;
+        }
+    }
+
+    .xuan-payment-form-password{
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+
+        p{
+          min-width: 95px;
+          margin-right: 5px;
+        }
+
+        input{
+          margin: 0px;
+        }
+    }
+
+    .xuan-payment-submit-button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+          button{
+            margin: auto 7px;
+
+            svg{
+              margin-right: 5px;
+            }
+          }
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.xuan-display-flex{
+  display: flex;
+}
+
+
+
+.card-right-btn{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.credit-img-front{
+  width: 60px;
+}
+
+.credit-img-back{
+  width: 60px;
+  margin-top: 15px;
+  margin-left: 30px;
+  >img{
+    width: 100%;
+  }
+}
+
+.xuan-credit-bottom{
+  width: 100%;
+}
+
+.box{
+
+  .credit-img-front{
+    margin-left: 180%;
+    margin-top: 10px;
+  }
+}
+
+
+.cvv-notion{
+  color: white;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 7px;
+  letter-spacing: 0.15rem;
+}
+
+// 信用卡input寬度管理
+.xuan-input-cardholder{
+  width: 90%;
+}
+
+.xuan-input-month{
+  width: 40%;
+}
+
+.xuan-credit-form{
+
+  .xuan-label{
+    margin-bottom: 5px;
+  }
+
+  .xuan-input-text {
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+}
+
+.xuan-w-50{
+  width: 50%;
+
+  input{
+    width: 60%;
+  }
+
+  .xuan-label{
+    margin-bottom: 5px;
+  }
+}
+
+.xuan-submit-button{
+  align-items: center;
+  justify-content: center;
+}
+
+.xuan-input-cardnumber{
+    input{
+      width: 100%;
+    }
+}
+
+

@@ -11,6 +11,9 @@ function Summary(props) {
         calcPickVolunTotalPrice,
     } = props; //從Cart.js傳來的props
 
+
+    // FIXME: 結帳明細按刪除，總數量不會一起改動，只會跟select連動
+
     return (
         <>
             {/* 右側金額明細 */}
