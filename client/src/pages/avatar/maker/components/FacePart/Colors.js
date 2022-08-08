@@ -11,8 +11,8 @@ const Btns = styled.div`
 
 function Colors(props) {
     const {
-        conbination,
-        setConbination,
+        combination,
+        setCombination,
         colorControlSwitch,
         faceControlChange,
     } = props;
@@ -44,11 +44,11 @@ function Colors(props) {
                             <Circle
                                 key={i}
                                 onClick={(e) => {
-                                    const newConbination = { ...conbination };
-                                    newConbination.face_color[
+                                    const newCombination = { ...combination };
+                                    newCombination.face_color[
                                         faceControlChange
                                     ] = i;
-                                    setConbination(newConbination);
+                                    setCombination(newCombination);
                                 }}
                                 style={{
                                     backgroundColor:

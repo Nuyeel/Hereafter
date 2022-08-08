@@ -7,8 +7,8 @@ import ThemeContext from '../../../../../context/ThemeContext/ThemeContext';
 function FacePart(props) {
     const {
         controlChange,
-        setConbination,
-        conbination,
+        setCombination,
+        combination,
         colorControlSwitch,
         setColorControlSwitch,
         faceControlChange,
@@ -84,8 +84,8 @@ function FacePart(props) {
                 </FaceButton>
 
                 <Styling
-                    conbination={conbination}
-                    setConbination={setConbination}
+                    combination={combination}
+                    setCombination={setCombination}
                     faceControlChange={faceControlChange}
                 />
 
@@ -93,8 +93,8 @@ function FacePart(props) {
                     colorControlSwitch={colorControlSwitch}
                     controlChange={controlChange}
                     faceControlChange={faceControlChange}
-                    conbination={conbination}
-                    setConbination={setConbination}
+                    combination={combination}
+                    setCombination={setCombination}
                 />
             </Face>
         </>

@@ -8,7 +8,7 @@ import ThemeContext from '../../../context/ThemeContext/ThemeContext.js';
 import styled from '@emotion/styled';
 
 const Maker = () => {
-    const [conbination, setConbination] = useState({
+    const [combination, setCombination] = useState({
         basic: [1, 1, 1],
         basic_color: '0',
         body: { hand: 0, foot: 0, tale: 0, special: 0 },
@@ -88,11 +88,11 @@ const Maker = () => {
                     </Back>
                     <BasicPart
                         controlChange={controlChange}
-                        conbination={conbination}
-                        setConbination={setConbination}
+                        combination={combination}
+                        setCombination={setCombination}
                     />
                     <CenterPart
-                        conbination={conbination}
+                        combination={combination}
                         controlChange={controlChange}
                         setControlChange={setControlChange}
                         setBodyControlChange={setBodyControlChange}
@@ -100,20 +100,20 @@ const Maker = () => {
                         setColorControlSwitch={setColorControlSwitch}
                     />
                     <BodyPart
-                        conbination={conbination}
+                        combination={combination}
                         controlChange={controlChange}
                         bodyControlChange={bodyControlChange}
-                        setConbination={setConbination}
+                        setCombination={setCombination}
                         colorControlSwitch={colorControlSwitch}
                     />
                     <FaceView
-                        conbination={conbination}
+                        combination={combination}
                         controlChange={controlChange}
                     />
                     <FacePart
-                        conbination={conbination}
+                        combination={combination}
                         controlChange={controlChange}
-                        setConbination={setConbination}
+                        setCombination={setCombination}
                         colorControlSwitch={colorControlSwitch}
                         setColorControlSwitch={setColorControlSwitch}
                         faceControlChange={faceControlChange}

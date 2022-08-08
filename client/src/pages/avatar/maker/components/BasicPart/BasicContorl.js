@@ -10,7 +10,7 @@ const Btns = styled.div`
 `;
 
 function BasicContorl(props) {
-    const { title, conbination, setConbination, index } = props;
+    const { title, combination, setCombination, index } = props;
     const sizebtns = Array.from({ length: 3 }, (_, index) => index);
 
     return (
@@ -32,12 +32,12 @@ function BasicContorl(props) {
                             <Sizebtn
                                 key={i}
                                 onClick={() => {
-                                    const newConbination = { ...conbination };
-                                    newConbination['basic'][index] = i;
-                                    setConbination(newConbination);
+                                    const newCombination = { ...combination };
+                                    newCombination['basic'][index] = i;
+                                    setCombination(newCombination);
                                 }}
                                 style={
-                                    conbination['basic'][index] === i
+                                    combination['basic'][index] === i
                                         ? { backgroundColor: '#FFE9F6' }
                                         : {}
                                 }

@@ -23,7 +23,7 @@ function Showcase() {
         const postData = { id: 19960409 };
         const r = await axios.post(Showcase_Data, postData);
         setAvatarData(r.data.data);
-        console.log(r.data);
+        console.log(r.data.data);
     };
 
     useEffect(() => {

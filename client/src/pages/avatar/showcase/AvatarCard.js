@@ -13,6 +13,7 @@ function AvatarCard(props) {
         }
     `;
     const time = avatarinfo.avatar_created_at;
+    const combination = JSON.parse(avatarinfo.combination);
     const combinationText = JSON.parse(avatarinfo.combinationText);
     return (
         <>
@@ -20,10 +21,18 @@ function AvatarCard(props) {
                 className="showcaseCard"
                 style={{ backgroundColor: theme.bgcAvatarMaker }}
             >
-                <p className="showcaseCardTitle">投生形象1</p>
+                <p className="showcaseCardTitle">
+                    投生形象{avatarinfo.avatar_id}
+                </p>
                 <p className="showcaseCardTime">最後編輯時間:{time}</p>
                 <div className="showcaseCardIMG">
-                    <img src={testpng} alt=""></img>
+                    <img
+                        src={
+                            'http://localhost:3500/uploads/images/avatar/' +
+                            avatarinfo.img_name
+                        }
+                        alt=""
+                    ></img>
                 </div>
                 <div className="showcaseText">
                     <p className="avatarConbination">
@@ -31,9 +40,34 @@ function AvatarCard(props) {
                         <br />
                         手:{combinationText.hand}
                         <br />
-                        腳:{combinationText.foot}
+                        {(combination.special ? '尾:' : '腳:') +
+                            combinationText.foot}{' '}
+                        {combination.body.special
+                            ? `尾色:${combinationText.specialColor}`
+                            : null}
                         <br />
-                        腳:{combinationText.foot}
+                        眼:{combinationText.eye} 瞳色:{combinationText.eyeColor}
+                        <br />
+                        髮型:{combinationText.hair} 髮色:
+                        {combinationText.hairColor}
+                        <br />
+                        嘴巴:{combinationText.lip}
+                        <br />
+                        鼻子:{combinationText.nose} 顏色:
+                        {combinationText.noseColor}
+                        <br />
+                        耳朵:
+                        {combination.face.topEar
+                            ? combinationText.topEar
+                            : combinationText.ear}
+                        {combination.face.topEar
+                            ? `尾色:${combinationText.topearColor}`
+                            : null}
+                        <br />
+                        獸尾:{combinationText.tale}
+                        {combination.body.tale
+                            ? `尾色:${combinationText.taleColor}`
+                            : null}
                     </p>
                     <SoulColor>
                         <p className="avatarTotalPrice">

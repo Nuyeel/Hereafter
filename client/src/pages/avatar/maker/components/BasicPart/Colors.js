@@ -10,7 +10,7 @@ const Btns = styled.div`
 `;
 
 const Colors = (props) => {
-    const { conbination, setConbination } = props;
+    const { combination, setCombination } = props;
 
     return (
         <>
@@ -29,9 +29,9 @@ const Colors = (props) => {
                         <Circle
                             key={i}
                             onClick={(e) => {
-                                const newConbination = { ...conbination };
-                                newConbination.basic_color = i;
-                                setConbination(newConbination);
+                                const newCombination = { ...combination };
+                                newCombination.basic_color = i;
+                                setCombination(newCombination);
                             }}
                             style={{
                                 backgroundColor: BodyData['basicColors'][i],
