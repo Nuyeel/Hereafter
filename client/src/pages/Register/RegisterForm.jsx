@@ -33,13 +33,6 @@ function RegisterForm(props) {
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    // const handleFieldsChange = (e) => {
-    //     setRegisterData({
-    //         ...registerData,
-    //         [e.target.name]: e.target.value,
-    //     });
-    // };
-
     // 欄位處理
     const [accountSearch, setAccountSearch] = useState('');
     const [emailSearch, setEmailSearch] = useState('');
