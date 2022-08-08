@@ -5,7 +5,13 @@ import { FaHeart } from 'react-icons/fa';
 import { BsFillCartPlusFill } from 'react-icons/bs';
 
 function ListCard(props) {
-    const { value, addPlaceToCart, saveLikedPlace } = props;
+    const {
+        value,
+        addPlaceToCart,
+        saveLikedPlace,
+        likedPlaceSidArr,
+        handlePlaceMapIconClicked,
+    } = props;
     const {
         sid,
         year,
@@ -30,7 +36,13 @@ function ListCard(props) {
                     <p className="cityTitle">
                         {country} {city} {dist}
                     </p>
-                    <MapIcon fill="#DB8DB3" className="map-icon-list" />
+                    <span
+                        className="place-card-map-icon-wrap"
+                        onClick={handlePlaceMapIconClicked}
+                        title=""
+                    >
+                        <MapIcon className="place-card-map-icon" />
+                    </span>
                 </div>
 
                 <div className="remain-quant">
@@ -45,12 +57,28 @@ function ListCard(props) {
                 </div>
                 {/* TODO: 底色state變化 */}
                 <div className="place-btns-wrap">
+                    {/* TODO: 要改成checkbox? */}
                     <div
                         className="place-likeBtn hover-text"
                         onClick={saveLikedPlace}
                         data-hover="加入收藏"
                     >
-                        <FaHeart className="place-like-icon " />
+                        <input
+                            type="checkbox"
+                            name="placeLiked"
+                            value={sid}
+                            style={{ opacity: 0 }}
+                            checked={likedPlaceSidArr.includes(sid)}
+                            onChange={(e) => console.log('')}
+                        />
+                        <FaHeart
+                            // className="place-like-icon btn-checked"
+                            className={
+                                likedPlaceSidArr.includes(sid)
+                                    ? 'place-like-icon btn-checked'
+                                    : 'place-like-icon'
+                            }
+                        />
                     </div>
                     <div
                         className="place-cartBtn hover-text"

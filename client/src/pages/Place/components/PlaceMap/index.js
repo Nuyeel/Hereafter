@@ -17,7 +17,14 @@ import taiwanDdistCenterData from '../../data/city-dist-lnglat.json';
 import distCenterData from '../../data/others-dist-lnglat.json';
 
 function PlaceMap(props) {
-    const { placeDisplay, cityFilter, addPlaceToCart, saveLikedPlace } = props;
+    const {
+        placeDisplay,
+        setPlaceDisplay,
+        cityFilter,
+        addPlaceToCart,
+        saveLikedPlace,
+        rawPlaceData,
+    } = props;
 
     // 要render到地圖上的資料array
     const [renderDataWithIcon, setRenderDataWithIcon] = useState([]);
@@ -28,11 +35,11 @@ function PlaceMap(props) {
     // 篩選之後出現出現geo邊界
     const [filterGeo, setFilterGeo] = useState([]);
 
-    // marker 樣式模板
-    // const priceIcon = L.divIcon({
-    //     className: 'priceIcon',
-    //     html: `<img src='/tempImg/soul.png' />3000`,
-    // });
+    // 地圖可視範圍邊界
+    const [bounds, setBounds] = useState({});
+
+    // 搜尋可視範圍區域內資料(btn顯示)
+    const [searchByBoundsBtnShow, setSearchByBoundsBtnShow] = useState(false);
 
     const renderData = () => {
         // --- 縣市鄉鎮中心座標, 之後帶入為marker的座標geometry
@@ -102,8 +109,6 @@ function PlaceMap(props) {
         }
     };
 
-    // TODO: 點了marker之後旁邊list第一筆出現marker的資料
-
     // TODO: 篩選後, 顯示總資料比數
 
     useEffect(() => {
@@ -131,6 +136,36 @@ function PlaceMap(props) {
         }
     };
 
+    // 找bounds邊界內的markers
+    const filterBoundsMarkers = () => {
+        // console.log(bounds);
+        // console.log(typeof rawPlaceData[0].geometry[0]);
+        const northEast = {
+            lat: bounds._northEast.lat,
+            lng: bounds._northEast.lng,
+        };
+        const southWest = {
+            lat: bounds._southWest.lat,
+            lng: bounds._southWest.lng,
+        };
+        const newData = rawPlaceData.filter((place) => {
+            if (place.geometry) {
+                const placeLat = place.geometry[0];
+                const placeLng = place.geometry[1];
+
+                return (
+                    placeLat < northEast.lat &&
+                    placeLat > southWest.lat &&
+                    placeLng < northEast.lng &&
+                    placeLng > southWest.lng
+                );
+            }
+        });
+        console.log(newData);
+        setPlaceDisplay(newData);
+        setFilterGeo([]);
+    };
+
     return (
         <>
             <MapContainer
@@ -149,7 +184,25 @@ function PlaceMap(props) {
                 <MyMapComponent
                     placeDisplay={placeDisplay}
                     centerRef={centerRef}
+                    setBounds={setBounds}
+                    setSearchByBoundsBtnShow={setSearchByBoundsBtnShow}
                 />
+
+                {/* 抓動地圖後出現按鈕 */}
+                {searchByBoundsBtnShow ? (
+                    <button
+                        className="search-area-btn"
+                        onClick={() => {
+                            filterBoundsMarkers();
+                            setSearchByBoundsBtnShow(false);
+                        }}
+                    >
+                        搜尋此區域內的良辰吉地
+                    </button>
+                ) : (
+                    <></>
+                )}
+
                 {filterGeo.length > 0 ? (
                     <GeoJSON
                         // 給特定的key才可以讓geoJSON rerender
@@ -183,31 +236,34 @@ function PlaceMap(props) {
                     {/* <Marker position={[25.0339145, 121.543412]} icon={priceIcon} /> */}
                     {renderDataWithIcon.length > 0 &&
                         renderDataWithIcon.map((place) => {
-                            return (
-                                <Marker
-                                    key={place.sid}
-                                    position={
-                                        place.geometry
-                                            ? place.geometry
-                                            : [25.0339145, 121.543412]
-                                    }
-                                    icon={place.icon}
-                                    eventHandlers={{
-                                        click: () => {
-                                            const nowCenter = place.geometry;
-                                            centerRef.current = nowCenter;
-                                        },
-                                    }}
-                                >
-                                    <Popup>
-                                        <PopupPlaceCard
-                                            value={place}
-                                            addPlaceToCart={addPlaceToCart}
-                                            saveLikedPlace={saveLikedPlace}
-                                        />
-                                    </Popup>
-                                </Marker>
-                            );
+                            if (place.geometry) {
+                                return (
+                                    <Marker
+                                        key={place.sid}
+                                        position={
+                                            place.geometry
+                                                ? place.geometry
+                                                : [25.0339145, 121.543412]
+                                        }
+                                        icon={place.icon}
+                                        eventHandlers={{
+                                            click: () => {
+                                                const nowCenter =
+                                                    place.geometry;
+                                                centerRef.current = nowCenter;
+                                            },
+                                        }}
+                                    >
+                                        <Popup>
+                                            <PopupPlaceCard
+                                                value={place}
+                                                addPlaceToCart={addPlaceToCart}
+                                                saveLikedPlace={saveLikedPlace}
+                                            />
+                                        </Popup>
+                                    </Marker>
+                                );
+                            }
                         })}
                 </MarkerClusterGroup>
             </MapContainer>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // import { BsFillCaretDownFill } from "react-icons/bs";
 import PlaceFilterSelect from './PlaceFilterSelect';
@@ -42,28 +42,26 @@ function FilterSearch(props) {
 
     return (
         <>
-            <div className="filter-search">
-                <div className="filter-wrap">
-                    <div className="place-filter">
-                        <PlaceFilterSelect
-                            countryFilter={countryFilter}
-                            setCountryFilter={setCountryFilter}
-                            cityFilter={cityFilter}
-                            setCityFilter={setCityFilter}
-                            rawPlaceData={rawPlaceData}
-                            filtByCountry={filtByCountry}
-                            setPlaceDisplay={setPlaceDisplay}
-                            countryFilterData={countryFilterData}
-                        />
-                    </div>
-                </div>
-                <div className="filter-wrap">
-                    <TimeFilter
-                        timeRangeFilter={timeRangeFilter}
-                        setTimeRangeFilter={setTimeRangeFilter}
-                        filtByTimeRange={filtByTimeRange}
+            <div className="filter-wrap col-12 col-sm-2">
+                <div className="place-filter">
+                    <PlaceFilterSelect
+                        countryFilter={countryFilter}
+                        setCountryFilter={setCountryFilter}
+                        cityFilter={cityFilter}
+                        setCityFilter={setCityFilter}
+                        rawPlaceData={rawPlaceData}
+                        filtByCountry={filtByCountry}
+                        setPlaceDisplay={setPlaceDisplay}
+                        countryFilterData={countryFilterData}
                     />
                 </div>
+            </div>
+            <div className="filter-wrap col-12 col-sm-3">
+                <TimeFilter
+                    timeRangeFilter={timeRangeFilter}
+                    setTimeRangeFilter={setTimeRangeFilter}
+                    filtByTimeRange={filtByTimeRange}
+                />
             </div>
         </>
     );

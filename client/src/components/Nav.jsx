@@ -172,7 +172,10 @@ function Nav(props) {
                                 <button
                                     type="button"
                                     className="btn btn-outline-secondary nav-btn"
-                                    onClick={userLogout}
+                                    onClick={()=>{
+                                        setLightBox('nav_lightbox_hidden');
+                                        userLogout();
+                                    }}
                                 >
                                     登出
                                 </button>
