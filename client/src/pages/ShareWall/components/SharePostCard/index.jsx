@@ -20,6 +20,7 @@ import {
     API_SHAREWALL,
     STATIC_SHAREWALL_AVA,
 } from '../../../../config/ajax-path';
+import HeaderContext from '../../../../context/HeaderContext/HeaderContext';
 
 function SharePostCard(props) {
     const {
@@ -36,6 +37,7 @@ function SharePostCard(props) {
     } = props;
 
     const { theme } = useContext(ThemeContext);
+    const { setShareWallPostsData } = useContext(HeaderContext);
     const { authorized, token } = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -83,6 +85,7 @@ function SharePostCard(props) {
                     } flex-shrink-0`}
                 >
                     {/* 來生形象 */}
+                    {/* FIXME: 資料要從後端過來 網址不對 */}
                     <img
                         className="cpl-spc-avatar"
                         src={`${STATIC_SHAREWALL_AVA}${avatar}.png`}
