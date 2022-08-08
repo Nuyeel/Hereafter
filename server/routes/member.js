@@ -228,33 +228,38 @@ router
             error: '',
             code: 0,
         };
-        // 用query方法查詢
-        const sql = 'SELECT * FROM `member` WHERE account = ?';
-        const [q1] = await db.query(sql, [req.body.password]);
-        console.log(q1);
 
-        if (q1.length > 0) {
-            output.code = 407;
+        // 用query方法查詢
+
+        const sql2 = 'SELECT * FROM `member` WHERE password = ?';
+        const [q2] = await db.query(sql2, [req.body.currentPassword]);
+        // const row = q2[0];
+        // output.success = await bcryptjs.compare(
+        //     req.body.currentPassword,
+        //     row.password
+        // );
+
+        // if (!output.success) {
+        //     output.code = 403;
+        //     output.error = '當前密碼輸入錯誤';
+        //     return res.json(output);
+        // }
+
+        if (q2.length > 0) {
+            output.code = 408;
             output.error = '您的密碼未經修改';
             return res.json(output);
         }
 
-        const sql2 = 'UPDATE `member` SET `password`=? WHERE account = ?';
+        const sql4 = 'UPDATE `member` SET `password`=? WHERE sid=?';
         const salt = bcryptjs.genSaltSync(10);
         const hash = await bcryptjs.hash(req.body.password, salt);
         // 用execute方法執行新增資料
-        const [q2] = await db.execute(sql2, [hash]);
+        const [q4] = await db.execute(sql4, [hash, res.locals.loginUser.id]);
 
-        // if (!output.success) {
-        //     output.code = 408;
-        //     output.error = '密碼未成功修改';
-        // } else {
-        //     const sql2 = 'UPDATE `member` SET `password`=? WHERE `sid`=?';
-        //     const salt = bcryptjs.genSaltSync(10);
-        //     const hash = await bcryptjs.hash(req.body.password, salt);
-        //     // 用execute方法執行新增資料
-        //     const [q2] = await db.execute(sql2, [hash]);
-        // }
+        output.success = true;
+        output.error = '密碼修改成功';
+
         res.json(output);
     });
 
