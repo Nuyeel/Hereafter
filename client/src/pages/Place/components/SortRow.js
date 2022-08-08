@@ -1,3 +1,10 @@
+import {
+    FaSortAmountDownAlt,
+    FaSortAmountDown,
+    FaSortUp,
+    FaSortDown,
+} from 'react-icons/fa';
+
 function SortRow(props) {
     const { sortBy, setSortBy, handleSort } = props;
 
@@ -16,37 +23,49 @@ function SortRow(props) {
                     name="sort"
                     value="sortYearASC"
                     id="sortYearASC"
-                    checked={sortBy === "sortYearASC"}
+                    checked={sortBy === 'sortYearASC'}
                     onChange={sortChange}
                 />
-                <label htmlFor="sortYearASC">依時間 遞增&#9652;</label>
+                <label htmlFor="sortYearASC">
+                    依時間遞增
+                    <FaSortAmountDown />
+                </label>
                 <input
                     type="radio"
                     name="sort"
                     value="sortYearDESC"
                     id="sortYearDESC"
-                    checked={sortBy === "sortYearDESC"}
+                    checked={sortBy === 'sortYearDESC'}
                     onChange={sortChange}
                 />
-                <label htmlFor="sortYearDESC">依時間 遞減&#9662;</label>
+                <label htmlFor="sortYearDESC">
+                    依時間遞減
+                    <FaSortAmountDownAlt />
+                </label>
                 <input
                     type="radio"
                     name="sort"
                     value="sortPriceASC"
                     id="sortPriceASC"
-                    checked={sortBy === "sortPriceASC"}
+                    checked={sortBy === 'sortPriceASC'}
                     onChange={sortChange}
                 />
-                <label htmlFor="sortPriceASC">依陰德值 遞增&#9652;</label>
+                <label htmlFor="sortPriceASC">
+                    依陰德值遞增
+                    <FaSortUp />
+                </label>
                 <input
                     type="radio"
                     name="sort"
                     value="sortPriceDESC"
                     id="sortPriceDESC"
-                    checked={sortBy === "sortPriceDESC"}
+                    checked={sortBy === 'sortPriceDESC'}
                     onChange={sortChange}
                 />
-                <label htmlFor="sortPriceDESC">依陰德值 遞減&#9662;</label>
+                <label htmlFor="sortPriceDESC">
+                    依陰德值遞減
+                    <FaSortDown />
+                </label>
             </div>
         </>
     );

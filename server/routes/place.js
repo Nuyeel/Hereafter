@@ -92,7 +92,6 @@ router.post('/liked', async (req, res) => {
 
     const sql3 = `INSERT INTO place_liked (member_sid, place_sid) VALUES (?, ?)`;
 
-    // 假設會員編號為10
     const [r3] = await db.query(sql3, [
         req.body.member_sid,
         req.body.place_sid,
@@ -105,5 +104,16 @@ router.post('/liked', async (req, res) => {
 });
 
 // TODO: 會員刪除收藏
+router.delete('/liked', async (req, res) => {
+    // place_sid
+    const sql = `DELETE FROM place_liked WHERE place_sid=? AND member_sid=?`;
+    const [r] = await db.query(sql, [req.body.place_sid, req.body.member_sid]);
+
+    if (r.affectedRows) {
+        res.json('成功移除');
+    } else {
+        res.json('失敗');
+    }
+});
 
 module.exports = router;
