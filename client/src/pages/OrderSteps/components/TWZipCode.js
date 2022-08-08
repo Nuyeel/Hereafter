@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { countries, postcodes, townships } from '../data/townships';
-import '../styles/_cart.scss';
+import '../styles/_new_cart.scss';
 
 function TWZipCode(props) {
     // 代表目前被選中的縣市的索引值
@@ -35,7 +35,7 @@ function TWZipCode(props) {
                     setTownshipIndex(-1);
                 }}
             >
-                <option value="-1">請選擇縣市</option>
+                <option value="-1">縣市</option>
                 {countries.map((v, i) => {
                     return (
                         <option key={i} value={i}>
@@ -56,7 +56,7 @@ function TWZipCode(props) {
                     setTownshipIndex(Number(e.target.value));
                 }}
             >
-                <option value="-1">請選擇區域</option>
+                <option value="-1">區域</option>
                 {/* 當有選擇縣市(countryIndex >)時才要作map，呈現其它的區域選項 */}
                 {countryIndex > -1 &&
                     townships[countryIndex].map((v, i) => {

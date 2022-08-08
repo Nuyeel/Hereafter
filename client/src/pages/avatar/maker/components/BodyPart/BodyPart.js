@@ -6,8 +6,8 @@ function BodyPart(props) {
     const {
         controlChange,
         bodyControlChange,
-        setConbination,
-        conbination,
+        setCombination,
+        combination,
         colorControlSwitch,
     } = props;
     const title = { hand: '手', foot: '腳', tale: '尾巴', special: '特殊' };
@@ -40,14 +40,14 @@ function BodyPart(props) {
                 </Title>
                 <div className="controlarea" id="controlareaEyes">
                     <Style
-                        conbination={conbination}
+                        combination={combination}
                         bodyControlChange={bodyControlChange}
-                        setConbination={setConbination}
+                        setCombination={setCombination}
                     />
                     <Colors
-                        conbination={conbination}
+                        combination={combination}
                         bodyControlChange={bodyControlChange}
-                        setConbination={setConbination}
+                        setCombination={setCombination}
                         colorControlSwitch={colorControlSwitch}
                     />
                 </div>

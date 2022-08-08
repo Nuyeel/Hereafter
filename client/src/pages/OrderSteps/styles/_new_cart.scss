@@ -292,11 +292,439 @@
 }
 
 
-// 訂購人資訊
+// 訂購人資訊---------------------------------
+.xuan-personinfor-container{
+
+  // 必填星星
+  .xuan-must-star{
+    color:#FF52BA;
+    margin-left: 2px;
+  }
+
+  // 輸入欄位一律改成Height 35px
+  .xuan-input-text{
+    height: 35px;
+  }
+
+  // 應該要95%即可 
+  .xuan-person-infor-window{
+  // outline: 2px solid red;
+  width: 95%;
+  margin: auto;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px 15px;
+
+  // TODO: 為了讓最下方資訊不要被價錢蓋住
+  margin-bottom: 150px;
+  
+
+      .xuan-form-wrap{
+
+      
+          // 訂購人資訊  同會員資訊 查看訂單明細
+          .xuan-person-infor-title{
+            // outline: 1px solid red;
+            margin-bottom: 20px;
+            color: #3C3B67;
+
+              .xuan-infor-btn{
+                width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+              }
+
+              .xuan-title-left{
+
+                .xuan-check{
+                  margin-bottom: 7px;
+                  display: flex;
+                  align-items: center;
+
+                    span:nth-child(1){
+                      margin-right: 15px;
+                    }
+
+                    input{
+                      margin-right: 3px;
+                      width: 16px;
+                      height: 16px;
+                    }
+                }
+
+                p{
+                  line-height: 1.5rem;
+                }
+              }
+            
 
 
-// 桌機版放這邊
 
+          }
+
+
+
+          .xuan-personform{
+            // outline: 1px solid red;
+            color: #3C3B67;
+
+
+            // FORM 左邊
+              .xuan-infor-left{
+                // outline: 1px solid blue;
+
+                // 姓名DIV
+                .xuan-form-name{
+                  // outline: 1px solid green;
+                  margin-bottom: 15px;
+
+                    input{
+                      margin-bottom: 5px;
+                    }
+
+                    .xuan-error-text{
+                      color: #FF52BA;
+                      padding-left: 57px;
+            
+                    }
+                }
+
+                // 手機DIV
+                .xuan-form-mobile{
+                  // outline: 1px solid green;
+                  margin-bottom: 20px;
+
+                    .xuan-error-text{
+                      color: #FF52BA;
+                    }
+
+                    .d-flex{
+                      div:nth-child(1){
+                        padding-left: 57px;
+                      }
+                    }
+
+                    select{
+                      max-width: 105px;
+                      margin-right: 5px;
+                    }
+
+                    input{
+                        max-width: 155px;
+                        margin-bottom: 5px;
+                    } 
+
+                }
+
+                // 信箱DIV
+                .xuan-form-email{
+                  // outline: 1px solid red;
+                  margin-bottom: 20px;
+
+                    .xuan-error-text{
+                      color: #FF52BA;
+                      padding-left: 87px;
+                    }
+
+                    input{
+                      margin-bottom: 5px;
+                    }
+                }
+
+                // 性別DIV
+                .xuan-gender-group{
+                  // outline: 1px solid red;
+                  display: flex;
+                  margin-bottom: 5px;
+
+
+                    input{
+                      margin-right: 3px;
+                    }
+
+                    label{
+                      margin-right: 10px;
+                    }
+                }
+
+                .xuan-gender-error-text{
+                  color: #FF52BA;
+                  margin-bottom: 20px;
+                  padding-left: 65px;
+                }
+
+              }
+
+            // FORM 右邊
+              .xuan-infor-right{
+                  // outline: 1px solid red;
+
+                  // ID DIV
+                  .xuan-form-ID{
+                    margin-bottom: 20px;
+
+                      .xuan-error-text{
+                        color: #FF52BA;
+                      }
+
+                      .xuan-error-text{
+                        color: #FF52BA;
+                        padding-left: 107px;
+                      }
+
+                      input{
+                        margin-bottom: 5px;
+                        max-width: 215px;
+                      }
+                  }
+
+                  // 生日 DIV
+                  .xuan-form-birth{
+                    margin-bottom: 20px;
+
+                      input{
+                        margin-bottom: 5px;
+                      }
+
+                      .xuan-error-text{
+                        color: #FF52BA;
+                        padding-left: 80px;
+                      }
+                  }
+
+                  // 地址DIV{
+                  .xuan-form-address{
+                    margin-bottom: 20px;
+
+                    .xuan-error-text{
+                      color: #FF52BA;
+                    }
+
+                    select:nth-child(2){
+                      margin-right: 7px; 
+                      margin-bottom: 10px;
+                    }
+                    select:nth-child(3){
+                      margin-right: 7px; 
+                    }
+
+                    input{
+                      min-width: 320px;
+                      margin-bottom: 5px;
+                      // width: 100%;
+                    }
+                  }
+
+                  // 送出、清空按鈕
+                  .xuan-personform-btn-group{
+                    // outline: 1px solid red;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                      button{
+                        margin: auto 10px;
+
+                          svg{
+                            margin-right: 5px;
+                          }
+                      }
+                  }
+              }
+
+
+
+          }
+
+      
+      
+      }
+
+  }
+}
+
+
+// 處理訂單明細光箱
+
+// .xuan-personinfor-container{
+//   outline: 1px solid red;
+// }
+
+// .xuan-row{
+//   outline: 1px solid blue;
+// }
+
+// .orderstep-container{
+//   outline: 3px solid green;
+// }
+.xuan-readytobuy-container-hidden{
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 2000;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+    button{
+      // visibility: hidden;
+      display: none;
+    }
+}
+
+
+// 訂單明細 container
+.xuan-readytobuy-container-visible{
+  // visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.744);
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+
+    .xuan-center-block{
+      width: 90%;
+      // height: 60%;
+      margin: auto;
+      background-color: white;
+      border-radius: 15px;
+      padding: auto 10px;
+      padding-top: 15px;
+      padding-bottom: 20px;
+      max-width: 450px;
+
+
+        // X X 記號
+        .xuan-readytobuy-cross{
+          // background-color: red;
+          width: 100%;
+          height: 15px;
+          cursor: pointer;
+          // margin-left: 0px;
+          // outline: 1px solid red;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding-right: 20px;
+
+              img{
+                // width: 100%;
+                height: 100%;
+              }
+        }
+
+        p{
+          text-align:center;
+          color: #3C3B67;
+          margin-bottom: 20px;
+        }
+
+
+        
+        .xuan-readytobuy-simplebar{
+          max-height: 60vh;
+
+
+          .xuan-simple-bar{
+            padding-top: 15px;
+            width: 100%;
+            margin-bottom: 20px;
+            // outline: 1px solid red;
+  
+              .xuan-readytobuy-item{
+                width: 90%;
+                margin: auto;
+                // background-color: white;
+                border-radius: 10px;
+                outline: 3px solid #E384F2;
+                padding: 7px 10px;
+                display: flex;
+                margin-bottom: 15px;
+  
+                .xuan-readytobuy-img{
+                  background-color: gray;
+                  width: 65px;
+                  height: 65px;
+                  border-radius: 10px;
+                  margin-right: 10px;
+                }
+  
+                .xuan-readytobuy-intro{
+  
+                  .d-flex{
+                    align-items: center;
+                    // margin-bottom: 5px;
+  
+                    .xuan-readytobuy-program{
+                      background-color: #EDEFF7;
+                      padding: 5px;
+                      margin-right: 5px;
+                      border-radius: 5px;
+                    }
+  
+                  }
+  
+                
+                  p{
+                    margin-bottom: 0px;
+                    text-align: left;
+                    margin-bottom: 7px;
+                  }
+                }
+              }
+          }
+        }
+
+
+        .xuan-readytobuy-edit-btn{
+          width: 100%;
+          padding-top: 15px;
+          // outline: 1px solid red;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+            button{
+              display: block;
+            }
+
+
+        }
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 桌機版放這邊-------------------------------
 
 @media screen and (min-width: 992px) {
 
@@ -520,6 +948,86 @@
 
 
 
+    }
+
+
+    // Shipping訂購人資訊
+    .xuan-personinfor-container{
+
+      width: 100%;
+
+        .xuan-row{
+          width: 100%;
+          display: flex;
+          
+          .xuan-person-infor-window{
+            width: 86%;
+            // outline: 1px solid red;
+            margin-top: 28px;
+            padding: 30px 40px;
+
+
+
+                .xuan-person-infor-title{
+                  display: flex;
+                  // justify-content: flex-end;
+                  flex-direction: row-reverse;
+                  justify-content: space-between;
+                  margin-bottom: 50px;
+
+                    .xuan-infor-btn{
+                      width: 25%;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      margin-bottom: 0px;
+
+                        // button{
+                        //   margin: 0px;
+                        // }
+                    }
+
+                    
+                }
+
+                .xuan-personform{
+                  display: flex;
+
+                    .xuan-infor-left{
+                      width: 60%;
+                    }
+
+                    .xuan-personform-btn-group{
+                      justify-content:end;
+
+
+                          button:nth-child(2){
+                            margin-right: 10px;
+                          }
+                    }
+                }
+          }
+        }
+
+
+
+    }
+
+
+    // 訂單明細
+    .xuan-readytobuy-container-visible{
+
+      // 白底區塊
+      .xuan-center-block{
+        max-width: 500px;
+
+      }
+    }
+
+
+    .xuan-readytobuy-img{
+      width: 80px;
+      margin-right: 20px;
     }
 
 

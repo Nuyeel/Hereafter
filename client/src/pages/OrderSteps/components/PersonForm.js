@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
 import TWZipCode from './TWZipCode';
-import '../styles/_cart.scss';
-import './styles/_personform.scss';
 import Swal from 'sweetalert2'; //sweetalert2
 import { MdReplay } from 'react-icons/md';
 import { FiSend } from 'react-icons/fi';
+
+// scss
+import '../styles/_new_cart.scss';
+// import './styles/_personform.scss';
 
 // 會員登入登出驗證
 import AuthContext from '../../../context/AuthContext/AuthContext';
@@ -20,6 +22,8 @@ function PersonForm(props) {
         setCountryIndex,
         townshipIndex,
         setTownshipIndex,
+        setDetailVisible,
+        detailVisible,
     } = props;
 
     // multiple State
@@ -107,8 +111,7 @@ function PersonForm(props) {
             .then((r) => r.json())
             .then((obj) => {
                 console.log('收到的res', obj);
-            })
-
+            });
     };
 
     // TODO: 這一段可以把 button 改成 reset 就可以不用把inputErrors改成 ''
@@ -170,71 +173,92 @@ function PersonForm(props) {
             address: '',
         });
 
-        //因為type設成reset了，所以只要清myInfor的資訊就好，不用清inputErrors
+        //清inputErrors
+        setInputErrors({
+            ...inputErrors,
+            member_sid: '',
+            fullname: '',
+            mobile_city: '',
+            mobile: '',
+            email: '',
+            gender: '',
+            ID: '',
+            birthday: '',
+            add_city: '', //目前這個沒辦法清空
+            add_town: '', //目前這個沒辦法清空
+            address: '',
+        });
     };
 
     return (
         <>
-            <div className="col col-9">
-                {/* 沒有內容，對位用 */}
-                <div className="xuan-personform-top"></div>
-
-                <div className="xuan-person-infor-window">
-                    <div className="xuan-form-wrap">
-                        <div className="xuan-person-infor-title">
-                            <div className="xuan-title-left">
-                                <span className="xuan-check">
-                                    <span className="xuan-h5">
-                                        填寫參加人資訊
-                                    </span>
-
-                                    <input
-                                        className="xuan-input-checkbox"
-                                        type="checkbox"
-                                        id="cbox"
-                                    />
-                                    <span>同會員資訊</span>
-                                </span>
-
-                                <p className="xuan-caption">
-                                    報名資料將用於主辦單位安排活動，活動票券相關資訊將寄至訂購人信箱。
-                                </p>
-                            </div>
-
+            <div className="xuan-person-infor-window">
+                <div className="xuan-form-wrap">
+                    <div className="xuan-person-infor-title">
+                        <div className="xuan-infor-btn">
                             <button
                                 className="xuan-btn-m xuan-btn-pri"
-                                style={{ margin: 20 + 'px' }}
+                                onClick={() => {
+                                    setDetailVisible(
+                                        'xuan-readytobuy-container-visible'
+                                    );
+                                }}
                             >
                                 查看訂單明細
                             </button>
                         </div>
 
-                        {/* 當表單input有錯誤時，就會觸發 onInvalid 事件 */}
-                        <form
-                            onSubmit={handleSubmit}
-                            onInvalid={handleInvalid}
-                            onChange={handleFormChange}
-                            name="form1"
-                            className="xuan-personform"
-                        >
-                            {/* FIXME: type=input會被style.css汙染，目前先註解 */}
-                            <div className="xuan-infor-left">
-                                {/* 從localStorage獲得membersid，設一個隱藏欄位進fd一起送 */}
-                                <input
-                                    style={{ display: 'none' }}
-                                    className="xuan-input-text"
-                                    name="member_sid"
-                                    // type="text"
-                                    id="test-text"
-                                    defaultValue={sid}
-                                />
+                        <div className="xuan-title-left">
+                            <div className="xuan-check">
+                                <span className="xuan-title">
+                                    填寫訂購人資訊
+                                </span>
 
+                                <input
+                                    className="xuan-input-checkbox"
+                                    type="checkbox"
+                                    id="cbox"
+                                />
+                                <span>同會員</span>
+                            </div>
+
+                            <p className="xuan-caption">
+                                報名資料將用於主辦單位安排活動，活動票券相關資訊將寄至訂購人信箱。
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* 當表單input有錯誤時，就會觸發 onInvalid 事件 */}
+                    <form
+                        onSubmit={handleSubmit}
+                        onInvalid={handleInvalid}
+                        onChange={handleFormChange}
+                        name="form1"
+                        className="xuan-personform"
+                    >
+                        {/* FIXME: type=input會被style.css汙染，目前先註解 */}
+
+                        <div className="xuan-infor-left">
+                            {/* 從localStorage獲得membersid，設一個隱藏欄位進fd一起送 */}
+
+                            <input
+                                style={{ display: 'none' }}
+                                className="xuan-input-text"
+                                name="member_sid"
+                                // type="text"
+                                id="test-text"
+                                defaultValue={sid}
+                            />
+
+                            <div className="xuan-form-name">
                                 <label
                                     className="xuan-label-title"
                                     htmlFor="test-text"
                                 >
-                                    姓名：
+                                    姓名
+                                    <span className="xuan-must-star">*</span>：
                                 </label>
+
                                 <input
                                     className="xuan-input-text"
                                     name="fullname"
@@ -246,19 +270,19 @@ function PersonForm(props) {
                                     required
                                 />
 
-                                <br />
-                                <span className="xuan-error-text">
+                                <div className="xuan-error-text">
                                     {inputErrors.fullname}
-                                </span>
-                                <br />
-                                <br />
+                                </div>
+                            </div>
 
+                            <div className="xuan-form-mobile">
                                 {/* mobileOptions */}
                                 <label
                                     htmlFor="test-text"
                                     className="xuan-label-title"
                                 >
-                                    行動電話：
+                                    手機
+                                    <span className="xuan-must-star">*</span>：
                                 </label>
 
                                 <select
@@ -285,27 +309,29 @@ function PersonForm(props) {
                                     name="mobile"
                                     // type="text"
                                     id="test-text"
-                                    placeholder="0912 345 678"
+                                    placeholder="請輸入手機號碼"
                                     value={myInfor.mobile}
                                     onChange={handleChange}
                                     required
                                 />
 
-                                <br />
-                                <span className="xuan-error-text">
-                                    {inputErrors.mobile_city}
-                                </span>
-                                <span className="xuan-error-text">
-                                    {inputErrors.mobile}
-                                </span>
-                                <br />
-                                <br />
+                                <div className="d-flex">
+                                    <div className="xuan-error-text">
+                                        {inputErrors.mobile_city}
+                                    </div>
+                                    <div className="xuan-error-text">
+                                        {inputErrors.mobile}
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div className="xuan-form-email">
                                 <label
                                     htmlFor="test-text"
                                     className="xuan-label-title"
                                 >
-                                    電子信箱：
+                                    電子信箱
+                                    <span className="xuan-must-star">*</span>：
                                 </label>
 
                                 {/* FIXME: CSS待改(因為type一定要是email才能檢查，CSS預設統一是text*/}
@@ -320,79 +346,77 @@ function PersonForm(props) {
                                     required
                                 />
 
-                                <br />
-                                <span className="xuan-error-text">
+                                <div className="xuan-error-text">
                                     {inputErrors.email}
-                                </span>
-                                <br />
-                                <br />
-
-                                <div className="xuan-gender-group">
-                                    <label
-                                        htmlFor="test-text"
-                                        className="xuan-label-title"
-                                    >
-                                        性別：
-                                    </label>
-
-                                    {genderOptions.map((v, i) => {
-                                        return (
-                                            <div key={i}>
-                                                <input
-                                                    className="xuan-input-radio"
-                                                    name="gender"
-                                                    type="radio"
-                                                    checked={
-                                                        myInfor.gender === v
-                                                    }
-                                                    value={v}
-                                                    onChange={handleChange}
-                                                    required
-                                                />
-                                                <label className="xuan-label-title">
-                                                    {v}
-                                                </label>
-                                            </div>
-                                        );
-                                    })}
-
-                                    <br />
-                                    <span className="xuan-error-text">
-                                        {inputErrors.gender}
-                                    </span>
                                 </div>
                             </div>
 
-                            <div className="xuan-infor-right">
+                            <div className="xuan-gender-group">
+                                <label
+                                    htmlFor="test-text"
+                                    className="xuan-label-title"
+                                >
+                                    性別
+                                    <span className="xuan-must-star">*</span>：
+                                </label>
+
+                                {genderOptions.map((v, i) => {
+                                    return (
+                                        <div key={i}>
+                                            <input
+                                                className="xuan-input-radio"
+                                                name="gender"
+                                                type="radio"
+                                                checked={myInfor.gender === v}
+                                                value={v}
+                                                onChange={handleChange}
+                                                required
+                                            />
+                                            <label className="xuan-label-title">
+                                                {v}
+                                            </label>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            <div className="xuan-gender-error-text">
+                                {inputErrors.gender}
+                            </div>
+                        </div>
+
+                        <div className="xuan-infor-right">
+                            <div className="xuan-form-ID">
                                 <label
                                     htmlFor="test-text "
                                     className="xuan-label-title"
                                 >
-                                    身分證字號：
+                                    身分證字號
+                                    <span className="xuan-must-star">*</span>：
                                 </label>
                                 <input
                                     className="xuan-input-text"
                                     name="ID"
                                     // type="text"
                                     id="test-text"
-                                    placeholder=""
+                                    placeholder="請輸入身份證字號"
                                     value={myInfor.ID}
                                     onChange={handleChange}
                                     required
                                 />
 
-                                <br />
-                                <span className="xuan-error-text">
+                                <div className="xuan-error-text">
                                     {inputErrors.ID}
-                                </span>
-                                <br />
-                                <br />
+                                </div>
+                            </div>
 
+                            <div className="xuan-form-birth">
                                 <label
                                     htmlFor="test-text"
                                     className="xuan-label-title"
                                 >
-                                    出生日期：
+                                    出生日期
+                                    <span className="xuan-must-star">*</span>：
                                 </label>
                                 <input
                                     className="xuan-input-text"
@@ -405,18 +429,18 @@ function PersonForm(props) {
                                     required
                                 />
 
-                                <br />
-                                <span className="xuan-error-text">
+                                <div className="xuan-error-text">
                                     {inputErrors.birthday}
-                                </span>
-                                <br />
-                                <br />
+                                </div>
+                            </div>
 
+                            <div className="xuan-form-address">
                                 <label
                                     htmlFor="test-text"
                                     className="xuan-label-title"
                                 >
-                                    地址：
+                                    地址
+                                    <span className="xuan-must-star">*</span>：
                                 </label>
 
                                 <TWZipCode
@@ -428,49 +452,43 @@ function PersonForm(props) {
                                     setTownshipIndex={setTownshipIndex}
                                 />
 
-                                <br />
-
                                 <input
                                     className="xuan-input-text address-detail"
                                     name="address"
                                     // type="text"
                                     id="test-text"
-                                    placeholder="詳細地址"
+                                    placeholder="請輸入詳細地址"
                                     value={myInfor.address}
                                     onChange={handleChange}
                                     required
                                 />
 
-                                <br />
-                                <span className="xuan-error-text">
+                                <div className="xuan-error-text">
                                     {inputErrors.address}
-                                </span>
-                                <br />
-                                <br />
-
-                                {/* FIXME: 希望在把送出表單功能，改放到Summary「下一步」*/}
-
-                                <div className="xuan-personform-btn-group">
-                                    <button
-                                        className="xuan-btn-m xuan-btn-sec"
-                                        type="submit"
-                                    
-                                    >
-                                        <FiSend />
-                                        送出
-                                    </button>
-                                    <button
-                                        type="reset"
-                                        className="xuan-btn-m xuan-btn-sec"
-                                        onClick={handleClearForm}
-                                    >
-                                        <MdReplay />
-                                        清空
-                                    </button>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+
+                            {/* FIXME: 希望在把送出表單功能，改放到Summary「下一步」*/}
+
+                            <div className="xuan-personform-btn-group">
+                                <button
+                                    className="xuan-btn-m xuan-btn-sec"
+                                    type="submit"
+                                >
+                                    <FiSend />
+                                    送出
+                                </button>
+                                <button
+                                    type="reset"
+                                    className="xuan-btn-m xuan-btn-sec"
+                                    onClick={handleClearForm}
+                                >
+                                    <MdReplay />
+                                    清空
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </>

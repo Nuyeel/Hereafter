@@ -65,7 +65,7 @@ function EventList() {
         }
     }, [isLoading]);
 
-    // 跟MySQL拿活動資料(目前暫時限8筆)
+    // 跟MySQL拿活動資料
     const fetchEvent = async () => {
         const response = await axios.get(Event_List_GET);
         setDisplayEvent(response.data); //讓component進入DidUpdate階段

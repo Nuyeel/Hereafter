@@ -3,7 +3,7 @@ import Colors from './Colors';
 import styled from '@emotion/styled';
 
 function BasicPart(props) {
-    const { conbination, setConbination, controlChange } = props;
+    const { combination, setCombination, controlChange } = props;
     const Basic = styled.div`
         width: 375px;
         height: 100%;
@@ -26,8 +26,8 @@ function BasicPart(props) {
                             <BasicContorl
                                 key={i}
                                 title={v}
-                                conbination={conbination}
-                                setConbination={setConbination}
+                                combination={combination}
+                                setCombination={setCombination}
                                 index={i}
                             />
                         );
@@ -35,8 +35,8 @@ function BasicPart(props) {
                 </div>
 
                 <Colors
-                    conbination={conbination}
-                    setConbination={setConbination}
+                    combination={combination}
+                    setCombination={setCombination}
                 />
             </Basic>
         </>
