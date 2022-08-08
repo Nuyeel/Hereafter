@@ -1,7 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, Component } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2'; //sweetalert2
+
+// react carousel
+import ReactDOM from 'react-dom';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -27,6 +32,13 @@ import { BiLike } from 'react-icons/bi';
 import './_new_eventdetail.scss';
 import soul from './imgs/soul.svg';
 
+// img
+import pic01 from '../../images/Event/01.svg';
+import pic02 from '../../images/Event/02.svg';
+import pic03 from '../../images/Event/03.svg';
+// import pic01 from '../../../../images/Event/01.svg';
+
+// SimpleBar
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
@@ -135,7 +147,28 @@ const EventDetail = () => {
                                         </div>
 
                                         <div className="xuan-intro-img">
-                                            <img src="" alt="" />
+                                            <Carousel>
+                                                <div>
+                                                    <img src={pic01} />
+                                                    {/* <p className="legend">
+                                                        Legend 1
+                                                    </p> */}
+                                                </div>
+                                                <div>
+                                                    <img src={pic02} />
+                                                    {/* <p className="legend">
+                                                        Legend 2
+                                                    </p> */}
+                                                </div>
+                                                <div>
+                                                    <img src={pic03} />
+                                                    {/* <p className="legend">
+                                                        Legend 3
+                                                    </p> */}
+                                                </div>
+                                            </Carousel>
+
+                                            {/* <img src="" alt="" /> */}
                                         </div>
 
                                         <SimpleBar className="xuan-intro-bar">
@@ -373,7 +406,8 @@ const EventDetail = () => {
                                         <div className="xuan-comment-word-wrap">
                                             <span className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span><br></br>
+                                            </span>
+                                            <br></br>
                                             <FaStar />
                                             <FaStar />
                                             <FaStar />
@@ -397,7 +431,8 @@ const EventDetail = () => {
                                         <div className="xuan-comment-word-wrap">
                                             <span className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span><br></br>
+                                            </span>
+                                            <br></br>
                                             <FaStar />
                                             <FaStar />
                                             <FaStar />
@@ -421,7 +456,8 @@ const EventDetail = () => {
                                         <div className="xuan-comment-word-wrap">
                                             <span className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span><br></br>
+                                            </span>
+                                            <br></br>
                                             <FaStar />
                                             <FaStar />
                                             <FaStar />
@@ -445,7 +481,8 @@ const EventDetail = () => {
                                         <div className="xuan-comment-word-wrap">
                                             <span className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span><br></br>
+                                            </span>
+                                            <br></br>
                                             <FaStar />
                                             <FaStar />
                                             <FaStar />
@@ -469,7 +506,8 @@ const EventDetail = () => {
                                         <div className="xuan-comment-word-wrap">
                                             <span className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span><br></br>
+                                            </span>
+                                            <br></br>
                                             <FaStar />
                                             <FaStar />
                                             <FaStar />
@@ -493,7 +531,8 @@ const EventDetail = () => {
                                         <div className="xuan-comment-word-wrap">
                                             <span className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span><br></br>
+                                            </span>
+                                            <br></br>
                                             <FaStar />
                                             <FaStar />
                                             <FaStar />

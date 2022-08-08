@@ -33,6 +33,13 @@ function Payment(props) {
         detailVisible,
     } = props;
 
+    // 取得memberSid (信用卡訂單MySQL用)
+    let auth = localStorage.getItem('auth');
+    auth = JSON.parse(auth);
+    let membersid = auth.sid;
+    console.log(membersid);
+
+
     // 切換卡片正反面的 style
     const cardAF = {
         //卡片正面效果 .front
@@ -278,7 +285,7 @@ function Payment(props) {
                                             type="text"
                                             id="test-text"
                                             // FIXME: 記得一起送memberSid
-                                            // defaultValue={membersid}
+                                            defaultValue={membersid}
                                         />
 
                                         <p className="xuan-label-title">
