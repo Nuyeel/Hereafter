@@ -11,13 +11,9 @@ import './ShareWallDetail.scss';
 
 import { CgClose } from 'react-icons/cg';
 import DeedSoul from './components/Icons/DeedSoul';
-import { AiFillPlusCircle } from 'react-icons/ai';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { AiFillHeart } from 'react-icons/ai';
-import { FaBookmark } from 'react-icons/fa';
-import { FaRegBookmark } from 'react-icons/fa';
-// import { BsBookmark } from 'react-icons/bs';
-// import { BsBookmarkFill } from 'react-icons/bs';
+import { AiFillPlusCircle, AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
+// import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 
 import { API_SHAREWALL, STATIC_SHAREWALL_AVA } from '../../config/ajax-path';
 
@@ -239,20 +235,20 @@ function ShareWallDetail(props) {
                                     {share_post_title ? share_post_title : ''}
                                 </p>
                                 <div className="cpl-pcb-ita-ta-inner-tags d-flex">
+                                    {/* FIXME: 要點擊標籤搜尋嗎？ */}
+                                    {/* FIXME: 測試用 標籤最大六字 */}
                                     {/* <span
                                         key={v.share_post_tag_sid}
-                                        className="cpl-pcb-ita-ta-ir-tad-item"
+                                        className="cpl-pcb-ita-ta-it-tag-item flex-shrink-0"
                                     >
-                                        #{v.share_post_tag_text}
+                                        #豬肉榮賣豬肉
                                     </span> */}
-                                    {/* FIXME: 要點擊標籤搜尋嗎？ */}
                                     {postTagsResults.map((v, i) => (
                                         <span
                                             key={v.share_post_tag_sid}
                                             className="cpl-pcb-ita-ta-it-tag-item flex-shrink-0"
                                         >
-                                            {/* FIXME: 測試用 標籤最大六字 */}
-                                            #豬肉榮賣豬肉
+                                            #{v.share_post_tag_text}
                                         </span>
                                     ))}
                                 </div>
@@ -454,6 +450,7 @@ function ShareWallDetail(props) {
                                 </div>
                             </div>
                             <div className="cpl-pcb-ita-text-content">
+                                {/* TABLE: 文章上限改成 168 字 */}
                                 {share_post_text}
                                 {/* TODO: 視情況加入社群分享功能 */}
                             </div>
