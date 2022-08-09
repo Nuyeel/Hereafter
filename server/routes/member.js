@@ -172,6 +172,83 @@ router
         res.json(output);
     });
 
+// 測試: http://localhost:3500/api/member/forgotpassword
+// 忘記密碼頁面
+router
+    .route('/forgotpassword')
+    .get(async (req, res) => {
+        // 未登入先擋掉
+        if (res.locals.loginUser) {
+            return;
+        }
+        // const output = {
+        //     success: false,
+        //     error: '',
+        //     code: 0,
+        // };
+    })
+    .post(async (req, res) => {
+        const output = {
+            success: false,
+            error: '',
+            code: 0,
+        };
+        // 用query方法查詢
+        // const sql = 'SELECT * FROM `member` WHERE account = ?';
+        // const [q1] = await db.query(sql, [req.body.account]);
+        // console.log(q1);
+
+        // //更新登入密碼
+        // const sql2 = 'UPDATE `member` SET `password`=? WHERE sid=?';
+        // const salt = bcryptjs.genSaltSync(10);
+        // const hash = await bcryptjs.hash(req.body.password, salt);
+        // // 用execute方法執行新增資料
+        // const [q2] = await db.execute(sql2, [hash, res.locals.loginUser.id]);
+
+        // output.success = true;
+        // output.error = '密碼修改成功';
+
+        res.json(output);
+    });
+
+// 測試: http://localhost:3500/api/member/forgotpasswordrevise
+// 修改密碼頁面
+router
+    .route('/forgotpasswordrevise')
+    .get(async (req, res) => {
+        if (res.locals.loginUser) {
+            return;
+        }
+        // const output = {
+        //     success: false,
+        //     error: '',
+        //     code: 0,
+        // };
+    })
+    .post(async (req, res) => {
+        const output = {
+            success: false,
+            error: '',
+            code: 0,
+        };
+        // 用query方法查詢
+        const sql = 'SELECT * FROM `member` WHERE account = ?';
+        const [q1] = await db.query(sql, [req.body.account]);
+        console.log(q1);
+
+        //更新登入密碼
+        const sql2 = 'UPDATE `member` SET `password`=? WHERE sid=?';
+        const salt = bcryptjs.genSaltSync(10);
+        const hash = await bcryptjs.hash(req.body.password, salt);
+        // 用execute方法執行新增資料
+        const [q2] = await db.execute(sql2, [hash, res.locals.loginUser.id]);
+
+        output.success = true;
+        output.error = '密碼修改成功';
+
+        res.json(output);
+    });
+
 // 測試: http://localhost:3500/api/member/memberprofilerevise
 // 修改會員資料
 router
@@ -277,7 +354,10 @@ router
 router
     .route('/profilepasswordrevise')
     .get(async (req, res) => {
-        res.render('profilepasswordrevise');
+        if (!res.locals.loginUser) {
+            return;
+        }
+        // res.render('profilepasswordrevise');
     })
     .post(async (req, res) => {
         const output = {
@@ -285,27 +365,48 @@ router
             error: '',
             code: 0,
         };
-
         // 用query方法查詢
-        const sql2 = 'SELECT * FROM `member` WHERE sid = ?';
-        const [q2] = await db.query(sql2, [req.body.password]);
+        const sql = 'SELECT * FROM `member` WHERE sid = ?';
+        const [q1] = await db.query(sql, [res.locals.loginUser.sid]);
 
-        if (q2.length > 0) {
+        if (q1.length > 0) {
             output.code = 408;
             output.error = '您的密碼未經修改';
             return res.json(output);
         }
 
+        //這邊還在處理中 ...
+        // const sql2 = 'SELECT * FROM `member` WHERE password = ?';
+        // const [q2] = await db.query(sql2, [req.body.currentPassword]);
+        // const salt = bcryptjs.genSaltSync(10);
+        // const hash = await bcryptjs.hash(req.body.currentPassword, salt);
         // const row = q2[0];
 
-        // output.success = await bcryptjs.compare(
-        //     req.body.password,
-        //     row.password
-        // );
-        // if (!output.success) {
+        // console.log(row);
+        // console.log(hash);
+
+        // const passwordupdate = 'UPDATE `member` SET `password`=? WHERE sid=?';
+        // const passwordupdate2 = sqlstring.format(passwordupdate, [
+        //     req.body.currentPassword,
+        //     res.locals.loginUser.id,
+        // ]);
+        // const passwordupdate3 = await db.query(passwordupdate2);
+        // console.log(passwordupdate3);
+
+        // if (row.password !== hash) {
         //     output.code = 403;
-        //     output.error = '密碼錯誤';
+        //     output.error = '當前密碼輸入錯誤';
         //     return res.json(output);
+        // } else {
+        //     const sql3 = 'UPDATE `member` SET `password`=? WHERE sid=?';
+        //     // 用execute方法執行新增資料
+        //     const [q3] = await db.execute(sql3, [
+        //         hash,
+        //         res.locals.loginUser.id,
+        //     ]);
+
+        //     output.success = true;
+        //     output.error = '密碼修改成功';
         // }
 
         const sql4 = 'UPDATE `member` SET `password`=? WHERE sid=?';
