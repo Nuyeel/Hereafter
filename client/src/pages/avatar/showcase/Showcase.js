@@ -51,7 +51,8 @@ function Showcase() {
                     showStatus={false}
                     autoPlay={false}
                     centerMode={true}
-                    infiniteLoop={true}
+                    showArrows={false}
+                    emulateTouch={false}
                 >
                     {avatarData.map((v, i) => {
                         return (
