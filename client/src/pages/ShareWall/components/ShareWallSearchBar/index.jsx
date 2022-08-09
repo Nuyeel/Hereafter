@@ -22,9 +22,8 @@ import './SearchBar.scss';
 // DONE: navigate() 記得 return 終止函式
 // FIXME: 搜尋時要發 AJAX 去新增被搜尋的次數
 // TODO: Lodash/debounce
-function ShareWallSearchBar(props) {
-    const { searchParams, setSearchParams } = props;
-    const { shareWallSearchState, setShareWallPostsData } =
+function ShareWallSearchBar() {
+    const { shareWallSearchState, setShareWallPostsData, searchParams, setSearchParams } =
         useContext(HeaderContext);
     const { theme } = useContext(ThemeContext);
     const { token } = useContext(AuthContext);
@@ -194,6 +193,11 @@ function ShareWallSearchBar(props) {
                 aria-label="Search"
                 onChange={(e) => {
                     setSearchParams(e.target.value);
+                    // DONE: 清空時重新抓資料
+                    if (e.target.value === '') {
+                        navigate('/sharewall');
+                        axiosTitleGET();
+                    }
                 }}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {

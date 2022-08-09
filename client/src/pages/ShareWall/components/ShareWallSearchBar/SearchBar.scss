@@ -15,12 +15,12 @@
     border-radius: 10px !important;
     padding-left: 10px;
     margin-bottom: 8px;
+    filter: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 
     &:focus {
         background-color: transparent;
-        filter: none !important;
-        outline: none !important;
-        box-shadow: none !important;
     }
 
     &::placeholder {
@@ -44,11 +44,11 @@
         mask-size: cover;
     }
 
-    &:active {
-        filter: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-    }
+    // &:active {
+    //     filter: none !important;
+    //     outline: none !important;
+    //     box-shadow: none !important;
+    // }
 }
 
 @media screen and (min-width: 500px) {

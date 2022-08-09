@@ -1,6 +1,5 @@
 // 使用套件
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
@@ -35,7 +34,7 @@ function ShareWallList(props) {
         shareWallPostsData,
         setShareWallPostsData,
     } = useContext(HeaderContext);
-    const { authorized, token } = useContext(AuthContext);
+    const { token } = useContext(AuthContext);
 
     // 當前應該顯示貼文的頁數 是一個狀態
     // TODO: 滑動 lazy load 出頁數
@@ -45,9 +44,7 @@ function ShareWallList(props) {
     // TABLE: {avatar, memberhead, account, likes, title, text}
     // const [postsData, setPostsData] = useState([]);
     // 搜尋用的標籤字串
-    const [searchParams, setSearchParams] = useState('');
-
-    const navigate = useNavigate();
+    // const [searchParams, setSearchParams] = useState('');
 
     // TODO: 滾到特定位置就要去要資料
     // 不希望顯示在網址列中 所以要用 POST
@@ -100,14 +97,8 @@ function ShareWallList(props) {
     return (
         <>
             <div className="container mb-3">
-                <ShareWallTagbar
-                    searchParams={searchParams}
-                    setSearchParams={setSearchParams}
-                />
-                <ShareWallSearchBar
-                    searchParams={searchParams}
-                    setSearchParams={setSearchParams}
-                />
+                <ShareWallTagbar />
+                <ShareWallSearchBar />
                 {/* <h3 style={{ color: '#FFFFFF' }}>ShareWallList.jsx</h3> */}
             </div>
             {/* 目前捲到後面會沒有 margin-right */}
@@ -165,7 +156,7 @@ function ShareWallList(props) {
                                 key={v.share_post_sid}
                                 postsid={v.share_post_sid}
                                 avatar={v.avatar_sid}
-                                memberhead={v.member_sid}
+                                memberhead={v.profile_picture}
                                 account={v.account}
                                 likes={v.share_post_likes}
                                 title={v.share_post_title}
