@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -14,13 +14,39 @@ import HeaderContext from '../context/HeaderContext/HeaderContext';
 import ThemeContext from '../context/ThemeContext/ThemeContext';
 import AuthContext from '../context/AuthContext/AuthContext';
 
+import { API_SHAREWALL } from '../config/ajax-path';
+
 function HeaderShareWallButton() {
     const { theme } = useContext(ThemeContext);
-    const { setShareWallSearchState, setShareWallPostsData } =
-        useContext(HeaderContext);
-    const { authorized } = useContext(AuthContext);
+    const {
+        shareWallSearchState,
+        setShareWallSearchState,
+        setShareWallPostsData,
+    } = useContext(HeaderContext);
+    const { authorized, token } = useContext(AuthContext);
 
     const navigate = useNavigate();
+
+    // FIXME: 有空再統一放 context
+    const axiosListGET = async () => {
+        let axiosUrl = `${API_SHAREWALL}`;
+
+        // 加上三態條件
+        // 'default' 不用做什麼
+        if (shareWallSearchState === 'isAuthor') {
+            axiosUrl += '?isAuthor=true';
+        } else if (shareWallSearchState === 'isCollector') {
+            axiosUrl += '?isCollector=true';
+        }
+
+        const result = await axios.get(axiosUrl, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        // console.log(result.data);
+        setShareWallPostsData(result.data);
+    };
 
     // fixed or select
     const [shareWallButtonState, setShareWallButtonState] = useState('fixed');
@@ -32,9 +58,33 @@ function HeaderShareWallButton() {
         ),
     });
 
-    const { icon, title, caret } = shareWallButtonData;
-
-    const axiosCollectGET = () => {};
+    const shareWallButtonMapDisplayObj = {
+        default: {
+            icon: <HiHome className="cpl-hsb-bo-icon cpl-hsb-bo-HiHome" />,
+            title: '　主頁　',
+            caret: (
+                <IoCaretDown className="cpl-hsb-bo-icon cpl-hsb-bo-IoCaretDown" />
+            ),
+        },
+        isAuthor: {
+            icon: (
+                <IoPersonCircleSharp className="cpl-hsb-bo-icon cpl-hsb-bo-IoPersonCircleSharp" />
+            ),
+            title: '個人主頁',
+            caret: (
+                <IoCaretDown className="cpl-hsb-bo-icon cpl-hsb-bo-IoCaretDown" />
+            ),
+        },
+        isCollector: {
+            icon: (
+                <FiBookmark className="cpl-hsb-bo-icon cpl-hsb-bo-FiBookmark" />
+            ),
+            title: '我的收藏',
+            caret: (
+                <IoCaretDown className="cpl-hsb-bo-icon cpl-hsb-bo-IoCaretDown" />
+            ),
+        },
+    };
 
     const ShareWallButtonSelectOptionArray = [
         {
@@ -45,15 +95,6 @@ function HeaderShareWallButton() {
             ),
             onClick: (e) => {
                 e.preventDefault();
-                setShareWallButtonData({
-                    icon: (
-                        <HiHome className="cpl-hsb-bo-icon cpl-hsb-bo-HiHome" />
-                    ),
-                    title: '　主頁　',
-                    caret: (
-                        <IoCaretDown className="cpl-hsb-bo-icon cpl-hsb-bo-IoCaretDown" />
-                    ),
-                });
                 const newSWSS = 'default';
                 // console.log(newSWSS);
                 setShareWallSearchState(newSWSS);
@@ -78,15 +119,6 @@ function HeaderShareWallButton() {
                         showConfirmButton: false,
                     });
                 }
-                setShareWallButtonData({
-                    icon: (
-                        <IoPersonCircleSharp className="cpl-hsb-bo-icon cpl-hsb-bo-IoPersonCircleSharp" />
-                    ),
-                    title: '個人主頁',
-                    caret: (
-                        <IoCaretDown className="cpl-hsb-bo-icon cpl-hsb-bo-IoCaretDown" />
-                    ),
-                });
                 const newSWSS = 'isAuthor';
                 // console.log(newSWSS);
                 setShareWallSearchState(newSWSS);
@@ -111,15 +143,6 @@ function HeaderShareWallButton() {
                         showConfirmButton: false,
                     });
                 }
-                setShareWallButtonData({
-                    icon: (
-                        <FiBookmark className="cpl-hsb-bo-icon cpl-hsb-bo-FiBookmark" />
-                    ),
-                    title: '我的收藏',
-                    caret: (
-                        <IoCaretDown className="cpl-hsb-bo-icon cpl-hsb-bo-IoCaretDown" />
-                    ),
-                });
                 const newSWSS = 'isCollector';
                 // console.log(newSWSS);
                 setShareWallSearchState(newSWSS);
@@ -145,18 +168,21 @@ function HeaderShareWallButton() {
                     });
                 }
                 navigate('/sharewall/post');
-                // setShareWallButtonData({
-                //     icon: (
-                //         <FiPlus className="cpl-hsb-bo-icon cpl-hsb-bo-FiPlus" />
-                //     ),
-                //     title: '新增貼文',
-                //     caret: (
-                //         <IoCaretDown className="cpl-hsb-bo-icon cpl-hsb-bo-IoCaretDown" />
-                //     ),
-                // });
             },
         },
     ];
+
+    useEffect(() => {
+        setShareWallButtonData(
+            shareWallButtonMapDisplayObj[shareWallSearchState]
+        );;
+    }, [shareWallSearchState]);
+
+    useEffect(() => {
+        axiosListGET();
+    }, [shareWallSearchState]);
+
+    const { icon, title, caret } = shareWallButtonData;
 
     return (
         <button
