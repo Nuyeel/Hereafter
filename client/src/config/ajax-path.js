@@ -35,4 +35,4 @@ export const Showcase_Data = `${SERVER}/avatar/showcase`;
 export const Avatar_Update = `${SERVER}/avatar/update`;
 
 // 陰德值測驗
-export const GET_GOODDEED_API = `${SERVER}/api/gooddeed`;
+export const API_GOODDEED_GET = `${SERVER}/api/gooddeed`;

@@ -2,9 +2,9 @@ import { useContext, useState, useEffect } from 'react';
 // 會員登入context
 import AuthContext from '../../context/AuthContext/AuthContext';
 //載入資料
-//TODO:修改資料獲取
+//TODO:後端修改資料獲取
 import axios from 'axios';
-import { GET_GOODDEED_API } from '../../config/ajax-path';
+import { API_GOODDEED_GET } from '../../config/ajax-path';
 // 標題（不會用）
 import HeaderContext, {
     headers,
@@ -16,6 +16,7 @@ import './teststyle.scss';
 function Gooddeed(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
+    //TODO:不確定這裡是否需要會員
     const { authorized, sid, account, token } = useContext(AuthContext);
     const [shows, setShows] = useState({
         opacity: ['1', '0', '0'],
@@ -26,29 +27,54 @@ function Gooddeed(props) {
     // const [haveScore, setHaveScore] = useState(true);
     const [haveScore, setHaveScore] = useState(false);
 
-    const randomscore = 9000 + Math.floor(Math.random() * 3000);
-    const [newscore, setNewScore] = useState(0);
+    // const randomscore = 9000 + Math.floor(Math.random() * 3000);
+
+    const [randomScore, setRandomScore] = useState(0);
+
+    const [score, setScore] = useState(0);
 
     useEffect(() => {
         setHeader(headers[pageName]);
     }, []);
 
-    const testResult = (
+    useEffect(() => {
+        const getGooddeedData = async () => {
+            // console.log('authContext:', authorized, sid, account, token);
+            const r = await fetch(`${API_GOODDEED_GET}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'Application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const rows = await r.json();
+            console.log(rows[0].gooddeed_score);
+            if (rows[0].gooddeed_score) {
+                setHaveScore(true);
+                setScore(rows[0].gooddeed_score);
+            }
+        };
+
+        getGooddeedData();
+    }, []);
+
+    const TestResult = (
         <>
             {/* 測驗結果頁 */}
             <div
-                className="show"
+                className="yun-show"
                 style={{
-                    opacity: shows.opacity[2],
-                    height: shows.height[2],
+                    opacity: shows.opacity[0],
+                    height: shows.height[0],
                 }}
             >
                 <div className="yun-start">
                     <div className="yun-start-card">
-                        <h3>你已經測驗過了！</h3>
+                        <h3>{account}您已經測驗過了！</h3>
                         <div className="yun-ques">
                             <div>您的陰德值為</div>
-                            <h3>{newscore}</h3>
+                            {/*TODO:後端取得既有分數*/}
+                            {score ? <h3>{score}</h3> : ''}
                         </div>
 
                         <button>規劃我的來世</button>
@@ -64,11 +90,11 @@ function Gooddeed(props) {
             </div>
         </>
     );
-    const testStart = (
+    const TestStart = (
         <>
             {/* 開始測驗頁 */}
             <div
-                className="show"
+                className="yun-show"
                 style={{
                     opacity: shows.opacity[0],
                     height: shows.height[0],
@@ -84,7 +110,6 @@ function Gooddeed(props) {
 
                         <button
                             onClick={() => {
-                               
                                 setShows({
                                     opacity: ['0', '1', '0'],
                                     height: ['0', '', ''],
@@ -102,19 +127,19 @@ function Gooddeed(props) {
             </div>
             {/* 題目頁面 */}
             <div
-                className="show"
+                className="yun-show"
                 style={{
                     opacity: shows.opacity[1],
                     height: shows.height[1],
                 }}
             >
                 <div className="yun-test">
-                    <Carousel setShows={setShows} />
+                    <Carousel setShows={setShows} setRandomScore={setRandomScore} />
                 </div>
             </div>
             {/* 測驗結果頁 */}
             <div
-                className="show"
+                className="yun-show"
                 style={{
                     opacity: shows.opacity[2],
                     height: shows.height[2],
@@ -124,8 +149,10 @@ function Gooddeed(props) {
                     <div className="yun-start-card">
                         <h3>感謝作答</h3>
                         <div className="yun-ques">
-                            <div>您的陰德值為</div>
-                            <h3>{randomscore}</h3>
+                            {/*TODO:加入使用者的名字*/}
+                            <div>{account}您的陰德值為</div>
+                            {/*TODO:給予新的亂數分數 並且送到後端資料庫*/}
+                            <h3>{randomScore}</h3>
                         </div>
 
                         <button>規劃我的來世</button>
@@ -166,7 +193,7 @@ function Gooddeed(props) {
     //     getGooddeedData();
     // }, []);
 
-    return <>{haveScore ? testResult : testStart}</>;
+    return <>{haveScore ? TestResult : TestStart}</>;
 }
 
 export default Gooddeed;

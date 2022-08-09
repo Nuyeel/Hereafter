@@ -35,7 +35,7 @@ import EventDetail from './pages/EventDetail/EventDetail';
 import OrderSteps from './pages/OrderSteps';
 import Gooddeed from './pages/Gooddeed';
 import Games from './pages/Games';
-// import Intro from './pages/Intro';
+import Intro from './pages/Intro';
 import Place from './pages/Place';
 import RebornCart from './pages/RebornCart';
 import LoadingLogo from './components/LoadingLogo.jsx';
@@ -221,7 +221,10 @@ function App() {
                                 {/* ============================== */}
                                 {/* Intro路由 */}
                                 {/* ============================== */}
-                                {/* <Route path="/intro" element={<Intro />} /> */}
+                                <Route
+                                    path="/intro"
+                                    element={<Intro pageName="Intro" />}
+                                />
 
                                 {/* ============================== */}
                                 {/* 來生路由 */}
