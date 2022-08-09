@@ -3,7 +3,6 @@ import Swal from 'sweetalert2';
 import { useState, useContext, useCallback, useEffect } from 'react';
 import InputIME from './/components/InputIME';
 import _ from 'lodash';
-import axios from 'axios';
 
 import { MEMBER_PASSWORD_REVISE } from '../../config/ajax-path';
 
@@ -30,18 +29,16 @@ function MemberProfileForm(props) {
     const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleFieldsChange = (e) => {
-        setNewPasswordName({
-            ...newPasswordName,
-            [e.target.name]: e.target.value,
-        });
-    };
+    // const handleFieldsChange = (e) => {
+    //     setNewPasswordName({
+    //         ...newPasswordName,
+    //         [e.target.name]: e.target.value,
+    //     });
+    // };
 
     const [currentPasswordPrevious, setCurrentPasswordPrevious] = useState('');
     const [passwordPrevious, setPasswordPrevious] = useState('');
     const [confirmPasswordPrevious, setConfirmPasswordPrevious] = useState('');
-
-    const [currentPasswordSearch, setCurrentPasswordSearch] = useState('');
     const [passwordSearch, setPasswordSearch] = useState('');
     const [confrimPasswordSearch, setConfirmPasswordSearch] = useState('');
 
@@ -189,12 +186,6 @@ function MemberProfileForm(props) {
     };
 
     useEffect(() => {
-        // console.log({
-        //     account: accountPrevious,
-        //     email: emailPrevious,
-        //     password: passwordPrevious,
-        //     confirmPassword: confirmPasswordPrevious,
-        // });
         setNewPasswordName({
             currentPassword: currentPasswordPrevious,
             password: passwordPrevious,
@@ -368,14 +359,11 @@ function MemberProfileForm(props) {
                                                                                     type="submit"
                                                                                     className="btn-member btn-member-l btn-member-pri btn-member-outline-light"
                                                                                 >
-                                                                                    修改
+                                                                                    確認修改
                                                                                 </button>
-                                                                                <button
-                                                                                    type="reset"
-                                                                                    className="btn-member btn-member-sec btn-member-l btn-member-outline-light"
-                                                                                >
+                                                                                {/* <button className="btn-member btn-member-sec btn-member-l btn-member-outline-light">
                                                                                     清除
-                                                                                </button>
+                                                                                </button> */}
                                                                             </div>
                                                                         </form>
                                                                     </div>
