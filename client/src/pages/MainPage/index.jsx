@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router-dom';
 
 // scss
 import './_mainpage.scss';
+import '../Event/_xuan_styles.scss';
 
 // imgs
 import mainpagebg from './imgs/mainpage_bg_2.svg';
+import mainpagebg_usual from './imgs/mainpage-bg-usual.svg';
 import mainpage_nav from './imgs/mainpage_nav.svg';
 import mainpage_center_logo from './imgs/mainpage_center_logo.svg';
 import avatar_star from './imgs/avatar_star.svg';
@@ -18,6 +20,11 @@ import go_future from './imgs/go_future.svg';
 import time_decorate from './imgs/time_decorate.svg';
 import time_map from './imgs/time_map.svg';
 import back_to_center from './imgs/back_to_center.svg';
+import aboutus from './imgs/aboutus-star.svg';
+
+// 放進box內的圖片
+import avartar01 from './imgs/mainpage-avatar01.png';
+
 
 function MainPage(props) {
     // 原有MainPage code保留---------------------------
@@ -113,7 +120,7 @@ function MainPage(props) {
                     className="xuan-mainpage-nav"
                     onClick={() => {
                         // alert('開啟目錄');
-                        setLightBox('nav_lightbox_visible')
+                        setLightBox('nav_lightbox_visible');
                     }}
                 >
                     <img src={mainpage_nav} alt="" />
@@ -140,12 +147,39 @@ function MainPage(props) {
                         <img src={mainpage_center_logo} alt="" />
                     </div>
 
-                    {/* 背景裝飾圖 */}
+                    {/* 背景裝飾圖(中心) */}
                     <div className="xuan-mainpage-bg">
                         <img src={mainpagebg} alt="" />
                     </div>
 
-                    {/* -------- 其他方塊 ---------- */}
+                    {/* 背景裝飾上半部 */}
+                    <div className="bg-d-flex">
+                        {/* 背景裝飾圖(左上方) */}
+                        <div className="xuan-mainpage-bg-2">
+                            <img src={mainpagebg_usual} alt="" />
+                        </div>
+
+                        {/* 背景裝飾圖(右上方) */}
+                        <div className="xuan-mainpage-bg-3">
+                            <img src={mainpagebg_usual} alt="" />
+                        </div>
+                    </div>
+
+
+                    {/* 背景裝飾下半部 */}
+                    <div className="bg-bottom-d-flex">
+                        {/* 背景裝飾圖(左下方) */}
+                        <div className="xuan-mainpage-bg-bottomleft">
+                            <img src={mainpagebg_usual} alt="" />
+                        </div>
+
+                        {/* 背景裝飾圖(右下方) */}
+                        <div className="xuan-mainpage-bg-bottomright">
+                            <img src={mainpagebg_usual} alt="" />
+                        </div>
+                    </div>
+
+                    {/* ----其他方塊----- */}
 
                     {/* 轉生形象訂製 */}
                     <div
@@ -205,7 +239,7 @@ function MainPage(props) {
                         }}
                     >
                         <div>
-                            <p>良辰吉地</p>
+                            <p className="xuan-title">良辰吉地</p>
                             <img src={time_decorate} alt="" />
                         </div>
 
@@ -224,6 +258,84 @@ function MainPage(props) {
                         }}
                     >
                         <p>功德撲滿</p>
+                        <div></div>
+                    </div>
+
+                    {/* 投生形象小格1 */}
+                    <div className="xuan-box xuan-box-avatar-show1">
+                        {/* 左邊白色框 */}
+                        <div> </div>
+
+                        {/* 右側文字框 */}
+                        <div className="xuan-caption">
+                            <p>投生形象001</p>
+                            <p>眼睛x2 精靈耳x2</p>
+                            <p>膚色:粉 貓尾</p>
+                            <p>總計3400</p>
+                        </div>
+                    </div>
+
+                    {/* 投生形象小格2 */}
+                    <div className="xuan-box xuan-box-avatar-show2">
+                        {/* 左邊白色框 */}
+                        <div> </div>
+
+                        {/* 右側文字框 */}
+                        <div className="xuan-caption">
+                            <p>投生形象001</p>
+                            <p>眼睛x2 精靈耳x2</p>
+                            <p>膚色:粉 貓尾</p>
+                            <p>總計3400</p>
+                        </div>
+                    </div>
+
+                    {/* 投生形象小格3 */}
+                    <div className="xuan-box xuan-box-avatar-show3">
+                        {/* 左邊白色框 */}
+                        <div> </div>
+
+                        {/* 右側文字框 */}
+                        <div className="xuan-caption">
+                            <p>投生形象001</p>
+                            <p>眼睛x2 精靈耳x2</p>
+                            <p>膚色:粉 貓尾</p>
+                            <p>總計3400</p>
+                        </div>
+                    </div>
+
+                    {/* 遊戲小格1 */}
+                    <div className="xuan-box xuan-box-game-show1">
+                        {/* 小格標題 */}
+                        <p className="xuan-subtitle">Game.01</p>
+
+                        {/* 底下圖片區域 */}
+                        <div></div>
+                    </div>
+
+                    {/* 遊戲小格2 */}
+                    <div className="xuan-box xuan-box-game-show2">
+                        {/* 小格標題 */}
+                        <p className="xuan-subtitle">Game.02</p>
+
+                        {/* 底下圖片區域 */}
+                        <div></div>
+                    </div>
+
+                    {/* 關於我們 */}
+                    <div className="xuan-box xuan-box-aboutus">
+                        <img src={aboutus} alt="" />
+                        <p className="xuan-title">關於我們</p>
+                    </div>
+
+                    {/* 最新消息 */}
+                    <div className="xuan-box xuan-box-news">
+                        {/* 小標區域 */}
+                        <div>
+                            <img src={aboutus} alt="" />
+                            <p className="xuan-title">最新消息</p>
+                        </div>
+
+                        {/* 底下圖片區域 */}
                         <div></div>
                     </div>
                 </div>
