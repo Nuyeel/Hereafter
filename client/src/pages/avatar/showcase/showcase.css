@@ -58,11 +58,11 @@
 
 
 @media screen and (min-width: 992px) {
-    .showcase {}
+    .showcase {position: relative;}
 
     .showcaseCard {
         display: flex;
-        width: 800px;
+        width: 900px;
         position: relative;
         margin: auto;
     }
@@ -89,7 +89,7 @@
     }
 
     .showcaseCardIMG img {
-        width: 450px;
+        width: 450px !important;
 
     }
 

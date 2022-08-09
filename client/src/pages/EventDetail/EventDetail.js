@@ -166,6 +166,18 @@ const EventDetail = () => {
                                                         Legend 3
                                                     </p> */}
                                                 </div>
+                                                <div>
+                                                    <img src={pic03} />
+                                                    {/* <p className="legend">
+                                                        Legend 3
+                                                    </p> */}
+                                                </div>
+                                                <div>
+                                                    <img src={pic03} />
+                                                    {/* <p className="legend">
+                                                        Legend 3
+                                                    </p> */}
+                                                </div>
                                             </Carousel>
 
                                             {/* <img src="" alt="" /> */}

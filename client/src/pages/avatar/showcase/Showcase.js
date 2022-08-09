@@ -5,6 +5,8 @@ import ThemeContext from '../../../context/ThemeContext/ThemeContext';
 import { Showcase_Data } from '../../../config/ajax-path';
 import axios from 'axios';
 import AvatarCard from './AvatarCard';
+//import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 function Showcase() {
     const { theme } = useContext(ThemeContext);
@@ -21,10 +23,14 @@ function Showcase() {
     }, [isLoading]);
     const getAvatarData = async () => {
         const member = JSON.parse(localStorage.getItem('auth'));
-        const postData = { id: member['sid'] };
-        const r = await axios.post(Showcase_Data, postData);
-        setAvatarData(r.data.data);
-        //console.log(JSON.parse(r.data.data[0]['combination']));
+
+        if (member !== null) {
+            const postData = { id: member['sid'] };
+            const r = await axios.post(Showcase_Data, postData);
+            setAvatarData(r.data.data);
+        } else {
+            console.log('Meow 未登入');
+        }
     };
 
     useEffect(() => {
@@ -41,9 +47,18 @@ function Showcase() {
                     color: theme.cHeader,
                 }}
             >
-                {avatarData.map((v, i) => {
-                    return <AvatarCard theme={theme} key={i} avatarinfo={v} />;
-                })}
+                <Carousel
+                    showStatus={false}
+                    autoPlay={false}
+                    centerMode={true}
+                    infiniteLoop={true}
+                >
+                    {avatarData.map((v, i) => {
+                        return (
+                            <AvatarCard theme={theme} key={i} avatarinfo={v} />
+                        );
+                    })}
+                </Carousel>
             </div>
         </>
     );

@@ -40,6 +40,7 @@ const Cart = (props) => {
         fetchEventShowCart();
     }, []);
 
+
     // ---------此段處理「購物車內所有商品的資訊統計」---------------------------------------
 
     const { eventCart, setEventCart } = props;
@@ -109,6 +110,8 @@ const Cart = (props) => {
 
     //此段處理方法為: 篩選 eventPick 跟 eventCart 都有的 event_sid 出來
     const { eventPick, setEventPick } = props; //eventPick是獲得一個陣列
+
+
 
     // 計算「已勾選」總數量
     const calcPickNumber = () => {
@@ -226,7 +229,6 @@ const Cart = (props) => {
         return total;
     };
 
-
     return (
         <>
             <div className="xuan-cart-container">
@@ -239,6 +241,7 @@ const Cart = (props) => {
                         volunNumber={calcVolunNumber()}
                         eventPick={eventPick}
                         setEventPick={setEventPick}
+                        calcPickNumber={calcPickNumber()}
                     />
 
                     {/* summary改只呈現「勾選後」的統計資訊 */}
