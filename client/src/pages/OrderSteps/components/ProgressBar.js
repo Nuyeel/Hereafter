@@ -1,11 +1,12 @@
-import '../styles/_progressBar.scss';
+// import '../styles/_new_progressBar.scss';
+import '../styles/_new_cart.scss';
 
 function ProgressBar(props) {
     const { maxSteps, step, progressNames } = props;
 
     return (
         <>
-            <div className="container">
+            <div className="xuan-progress-container">
                 <ul className="progressbar">
                     {Array(maxSteps)
                         .fill(1)

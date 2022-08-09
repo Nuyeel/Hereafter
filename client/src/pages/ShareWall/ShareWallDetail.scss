@@ -17,14 +17,14 @@
 }
 
 .cpl-post-card-body {
-    // width: 100%;
+    width: 100%;
     overflow: hidden; // 用來規避 Overlay Scrollbars 有時爆版問題
     border: 2px solid $accent-blue;
     border-radius: 20px;
     backdrop-filter: blur(2px);
     position: relative;
-    top: -10px;
-    margin-bottom: 20px; // FIXME: 日後有錯誤可能是這裡來的
+    top: 20px;
+    margin-bottom: 40px; // FIXME: 日後有錯誤可能是這裡來的
     
     >.col-lg-6 {
         position: relative;
@@ -79,9 +79,8 @@
 @media screen and (min-width: 1400px) {
     .cpl-post-card-body {
         // top: -30px;
-        top: calc(var(--vh, 1vh) * -4);
+        top: calc(var(--vh, 1vh) * 100 - 788px); // FIXME: 筆電和桌電的差異 用 calc 搭配差值試試看
         // max-width: 1200px;
-        max-width: 1200px;
         max-width: calc(var(--vh, 1vh) * 144);
         max-height: calc(var(--vh, 1vh) * 84);
     }
@@ -237,6 +236,7 @@
     }
 
     .cpl-ivi-detail {
+        display: block;
         font-size: $fz-caption;
         margin-bottom: 16px;
         line-height: normal;
@@ -290,6 +290,8 @@
         .cpl-ivi-detail {
             font-size: $fz-caption;
             margin-bottom: 16px;
+            min-height: 20px; // DONE: 初步修復無內容塌陷問題
+            max-height: 20px; // DONE: 初步修復無內容塌陷問題
         }
     }
 }
@@ -444,6 +446,7 @@
 
 .cpl-pcb-ita-ta-inner-tags {
     font-size: $fz-body-mobile;
+    // outline: 1px solid red;
 
     >.cpl-pcb-ita-ta-it-tag-item {
         color: #FFFFFF;
@@ -470,6 +473,13 @@
                 margin-left: 10px;
             }
         }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-ita-ta-inner-tags {
+        min-height: 23px; // DONE: 初步修復無內容塌陷問題
+        max-height: 23px; // DONE: 初步修復無內容塌陷問題
     }
 }
 
@@ -670,11 +680,29 @@
     padding-bottom: 1rem;
     border-bottom: 2px solid $accent-blue-50p;
     margin-bottom: 12px;
+    // outline: 1px solid red;
 }
 
-@media screen and (min-width: 500px) {
-    
+@media screen and (min-width: 992px) {
+    .cpl-pcb-ita-text-content {
+        min-height: 179px; // DONE: 初步修復無內容塌陷問題
+        max-height: 179px; // DONE: 初步修復無內容塌陷問題
+    }
 }
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-ita-text-content {
+        min-height: 156px; // DONE: 初步修復無內容塌陷問題
+        max-height: 156px; // DONE: 初步修復無內容塌陷問題
+    }
+}
+
+// @media screen and (min-width: 1400px) {
+//     .cpl-pcb-ita-text-content {
+//         min-height: 156px; // DONE: 初步修復無內容塌陷問題
+//         max-height: 156px; // DONE: 初步修復無內容塌陷問題
+//     }
+// }
 
 // ============================================================
 // 分享文章留言部分

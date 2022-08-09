@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
     // };
 
     const $sql =
-        'SELECT * FROM (`npo_act` JOIN `npo_act_type` ON `npo_act`.`type_sid` = `npo_act_type`.`typesid`)  INNER JOIN `city_type` ON `npo_act`.`place_city`= `city_type`.`city_sid` LIMIT 8 ';
+        'SELECT * FROM (`npo_act` JOIN `npo_act_type` ON `npo_act`.`type_sid` = `npo_act_type`.`typesid`)  INNER JOIN `city_type` ON `npo_act`.`place_city`= `city_type`.`city_sid`  '; //原本這邊有設定LIMIT 8
+        // FIXME: 這邊先設1，debug一下
 
     // 如果只取results，會得到[[{}]]的物件，無法直接被解析。[results]可以先少一個[]
     const [results] = await db.query($sql);

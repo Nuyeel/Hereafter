@@ -1,10 +1,12 @@
+$maxWidth: 376px;
+
 .place-container {
+    width: 100%;
     .time-news-row {
-        display: flex;
         justify-content: space-between;
-        gap: 10px;
-        flex-shrink: 0;
-        flex-grow: 0;
+        align-items: center;
+        width: 100%;
+        margin: 0;
 
         p {
             margin: 0;
@@ -12,6 +14,39 @@
             word-spacing: 5px;
             font-weight: 400;
             letter-spacing: 1.5px;
+        }
+    }
+
+    @media screen and (max-width: $maxWidth) {
+        .rwd-filter-btn-row {
+            width: fit-content;
+            padding: 4px 5px;
+            background-color: rgba(197, 190, 235, 0.5);
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.4);
+            // height: 30px;
+        }
+
+        .filter-row {
+            height: 0;
+            overflow: hidden;
+        }
+
+        .filterRowShow {
+            animation: filterRowShow 1s linear forwards;
+        }
+
+        .filterRowShow-reverse {
+            animation-direction: reverse;
+        }
+
+        @keyframes filterRowShow {
+            from {
+                height: 0;
+            }
+            to {
+                height: 80px;
+            }
         }
     }
 
@@ -29,12 +64,10 @@
     }
 
     .time-wrap {
-        width: 33%;
         display: flex;
     }
 
     .news-wrap {
-        width: 67%;
         display: flex;
 
         > .news {
@@ -75,20 +108,6 @@
     }
 
     /* 篩選區 */
-
-    .filter-row {
-        display: flex;
-        margin: 10px 0;
-        justify-content: space-between;
-        flex-shrink: 0;
-        flex-grow: 0;
-    }
-
-    .filter-search {
-        display: flex;
-        gap: 5px;
-    }
-
     .filter-wrap {
         height: 40px;
     }
@@ -96,7 +115,7 @@
     .place-filter {
         display: flex;
         height: 100%;
-        width: 250px;
+        width: 100%;
     }
 
     /* Custom Select wrapper */
@@ -115,7 +134,7 @@
             box-shadow: none;
             /* Personalize */
             flex: 1;
-            padding: 0 15px;
+            padding: 0 10px;
             margin: 2px;
             color: #2c3e50;
             font-size: 14px;
@@ -133,7 +152,7 @@
                 box-shadow: none;
                 /* Personalize */
                 background-color: rgba(197, 190, 235, 0.5);
-                border-radius: 10px;
+                border-radius: 20px;
                 border: 2px solid rgba(0, 0, 0, 0.4);
             }
         }
@@ -148,7 +167,7 @@
             content: '\25BC';
             position: absolute;
             top: 50%;
-            right: 15px;
+            right: 10px;
             transform: translate(0, -54%);
             // background-color: #34495e;
             transition: 0.25s all ease;
@@ -173,6 +192,124 @@
             position: relative;
             width: 100%;
             height: 100%;
+            z-index: 99;
+
+            .react-daterange-picker__wrapper {
+                display: flex;
+                flex-grow: 1;
+                flex-shrink: 0;
+                align-items: center;
+                margin: 2px;
+                color: #2c3e50;
+                font-size: 14px;
+                font-weight: bold;
+                background-color: rgba(197, 190, 235, 0.5);
+                border-radius: 10px;
+                border: 2px solid rgba(0, 0, 0, 0.4);
+                width: 100%;
+                height: 36px;
+
+                .react-daterange-picker__button {
+                    border: 0;
+                    background: transparent;
+                    padding: 4px 6px;
+
+                    &:enabled {
+                        cursor: pointer;
+                    }
+                    &:enabled:hover .react-daterange-picker__button__icon,
+                    &:enabled:focus .react-daterange-picker__button__icon {
+                        stroke: #0078d7;
+                    }
+                    &:disabled .react-daterange-picker__button__icon {
+                        stroke: #6d6d6d;
+                    }
+                }
+
+                .react-daterange-picker__button {
+                    filter: none;
+                    transition: 0.3s;
+
+                    &:hover {
+                        svg {
+                            filter: invert(55%) sepia(100%) saturate(3)
+                                brightness(180%) contrast(80%);
+                        }
+                    }
+
+                    svg {
+                        display: inherit;
+                        stroke: #2c3e50;
+                    }
+                }
+            }
+
+            .react-daterange-picker__inputGroup {
+                // min-width: calc((4px * 3) + 0.54em * 8 + 0.217em * 2);
+                height: 100%;
+                flex-grow: 1;
+                padding: 0 2px;
+                box-sizing: content-box;
+
+                input.react-daterange-picker__inputGroup__input {
+                    height: 100%;
+                    position: relative;
+                    padding: 0 10px;
+                    border: 0;
+                    background: none;
+                    font: inherit;
+                    color: #2c3e50;
+                    box-sizing: content-box;
+                    -moz-appearance: textfield;
+                    cursor: pointer;
+
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+                    &:invalid {
+                        background: rgba(255, 0, 0, 0.1);
+                    }
+
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+                    &:invalid {
+                        background: rgba(255, 0, 0, 0.1);
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                .react-daterange-picker__inputGroup__year {
+                    width: 38px !important;
+                }
+            }
+
+            .react-daterange-picker__inputGroup__divider {
+                padding: 1px 0;
+                white-space: pre;
+            }
+
+            .react-daterange-picker__calendar {
+                width: 350px;
+                max-width: 100vw;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+            .react-daterange-picker__calendar--closed {
+                display: none;
+
+                .react-daterange-picker__calendar .react-calendar {
+                    border-width: thin;
+                }
+            }
         }
         .react-daterange-picker,
         .react-daterange-picker *,
@@ -186,103 +323,52 @@
             background-color: #f0f0f0;
             color: #6d6d6d;
         }
-        .react-daterange-picker__wrapper {
-            display: flex;
-            flex-grow: 1;
-            flex-shrink: 0;
-            align-items: center;
-            margin: 2px;
-            color: #2c3e50;
-            font-size: 14px;
-            font-weight: bold;
-            background-color: rgba(197, 190, 235, 0.5);
-            border-radius: 10px;
-            border: 2px solid rgba(0, 0, 0, 0.4);
-            width: 100%;
-            height: 36px;
-        }
-
-        .react-daterange-picker__inputGroup {
-            // min-width: calc((4px * 3) + 0.54em * 8 + 0.217em * 2);
-            height: 100%;
-            flex-grow: 1;
-            padding: 0 2px;
-            box-sizing: content-box;
-        }
-        .react-daterange-picker__inputGroup__divider {
-            padding: 1px 0;
-            white-space: pre;
-        }
-        .react-daterange-picker__inputGroup__input {
-            height: 100%;
-            position: relative;
-            padding: 0 10px;
-            border: 0;
-            background: none;
-            font: inherit;
-            box-sizing: content-box;
-            -moz-appearance: textfield;
-
-            &::-webkit-outer-spin-button,
-            &::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
-            &:invalid {
-                background: rgba(255, 0, 0, 0.1);
-            }
-
-            &::-webkit-outer-spin-button,
-            &::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
-            &:invalid {
-                background: rgba(255, 0, 0, 0.1);
-            }
-        }
-
-        .react-daterange-picker__inputGroup__year {
-            width: 38px !important;
-        }
 
         .react-daterange-picker__inputGroup__input--hasLeadingZero {
             margin-left: -0.54em;
             padding-left: calc(1px + 0.54em);
         }
-        .react-daterange-picker__button {
-            border: 0;
-            background: transparent;
-            padding: 4px 6px;
 
-            &:enabled {
-                cursor: pointer;
-            }
-            &:enabled:hover .react-daterange-picker__button__icon,
-            &:enabled:focus .react-daterange-picker__button__icon {
-                stroke: #0078d7;
-            }
-            &:disabled .react-daterange-picker__button__icon {
-                stroke: #6d6d6d;
-            }
-        }
+        .react-daterange-picker__calendar.react-daterange-picker__calendar--open {
+            width: 280px;
+            padding: 5px;
+            border-radius: 20px;
+            height: 0;
+            z-index: 99;
 
-        .react-daterange-picker__button svg {
-            display: inherit;
-        }
-        .react-daterange-picker__calendar {
-            width: 350px;
-            max-width: 100vw;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            z-index: 1;
-        }
-        .react-daterange-picker__calendar--closed {
-            display: none;
-        }
-        .react-daterange-picker__calendar .react-calendar {
-            border-width: thin;
+            .myCalendar {
+                width: 100%;
+                background-color: rgb(242, 240, 255);
+                border-radius: 10px;
+                border: 2px solid rgba(0, 0, 0, 0.4);
+                z-index: 99;
+
+                button {
+                    color: #2c3e50;
+                    font-size: 14px;
+                    padding: 15px 0;
+                    filter: none;
+                    font-weight: bold;
+                }
+
+                .react-calendar__navigation {
+                    margin-bottom: 5px;
+                    button {
+                        font-size: 16px;
+                    }
+                }
+
+                .react-calendar__year-view__months {
+                    .react-calendar__tile--hasActive,
+                    .react-calendar__tile--active {
+                        background: #f3f59f;
+                    }
+
+                    .react-calendar__tile:disabled {
+                        color: #ccc;
+                    }
+                }
+            }
         }
     }
 
@@ -300,6 +386,11 @@
         max-height: 55vh;
         height: 55vh;
         position: relative;
+    }
+
+    .place-list-wrap.liked-page {
+        max-height: 65vh;
+        height: 65vh;
     }
 
     .cm-nodata-title {
@@ -345,6 +436,21 @@
         flex-shrink: 1;
     }
 
+    .list-card.listCardDisappear {
+        // transform: translate(120%, 0);
+        position: relative;
+        top: 0;
+        animation: listCardDisappear 1s forwards;
+    }
+    @keyframes listCardDisappear {
+        from {
+            left: 0;
+        }
+        to {
+            left: 130%;
+        }
+    }
+
     .list-card {
         height: 68px;
         background-color: #fff;
@@ -371,6 +477,11 @@
             align-items: center;
             width: 48%;
             background-color: none;
+
+            > p {
+                margin-bottom: 0;
+                font-weight: bold;
+            }
         }
 
         .yeartitle {
@@ -408,17 +519,102 @@
             letter-spacing: 2px;
             color: #fff;
         }
+    }
 
-        @media (max-width: 375px) {
-            .list-card {
+    @media screen and (max-width: $maxWidth) {
+        .list-card {
+            width: 100%;
+            height: fit-content;
+            display: block;
+            padding: 0;
+            margin: 5px 0 8px;
+            position: relative;
+            cursor: pointer;
+
+            > .list-card-title {
+                display: block;
+                font-size: 18px;
                 width: 100%;
+                padding: 10px 15px 5px;
+                margin-top: 15px;
+
+                p.yeartitle {
+                    margin: 5px;
+                }
+                p.cityTitle,
+                .map-icon-list {
+                    display: inline-block;
+                    margin: 0 5px;
+                    vertical-align: bottom;
+                }
+                .map-icon-list {
+                    width: 15px;
+                }
+            }
+
+            .price-wrap {
+                color: rgba(34, 34, 34, 0);
+                margin: 0 8%;
+            }
+
+            .remain-quant {
+                padding: 8px 15px;
+                margin: 0;
+                margin-left: 8%;
+                transform: translate(0, -10%);
+            }
+
+            .remain-quant,
+            .price-wrap {
+                display: inline-block;
+                font-size: 14px;
+                width: fit-content;
+                height: fit-content;
+                vertical-align: bottom;
+
+                .price {
+                    padding: 5px 10px 5px;
+                    width: fit-content;
+
+                    svg {
+                        width: 28px;
+                        height: fit-content;
+                    }
+                    span {
+                        font-size: 18px;
+                    }
+                }
             }
         }
     }
 
-    .map-icon-list {
-        margin-left: 25px;
-        fill: #db8db3;
+    .place-card-map-icon-wrap {
+        position: relative;
+
+        &[title]:hover::after {
+            content: '查看位置';
+            position: absolute;
+            background-color: #fde1efa4;
+            border: 1px solid #d5a7efa5;
+            border-radius: 10px;
+            top: 100%;
+            left: 100%;
+            font-size: 10px;
+            width: 65px;
+            padding: 5px;
+            letter-spacing: 1px;
+        }
+        .place-card-map-icon {
+            margin-left: 25px;
+            fill: #db8db3;
+            transition: 0.3s;
+
+            &:hover {
+                width: 26px;
+                height: 26px;
+                fill: #9b60bb;
+            }
+        }
     }
 
     .remain-quant {
@@ -431,6 +627,18 @@
         width: 130px;
         height: 100%;
         display: flex;
+    }
+
+    @media screen and (max-width: $maxWidth) {
+        .place-btns-wrap {
+            width: 105%;
+            margin-top: 12px;
+            transform: translate(-5px, 5px);
+        }
+        .place-likeBtn,
+        .place-cartBtn {
+            padding: 12px;
+        }
     }
 
     .place-likeBtn {
@@ -466,6 +674,7 @@
     }
 
     .place-likeBtn:hover .place-like-icon,
+    .place-like-icon.btn-checked,
     .place-cartBtn:hover .place-cart-icon {
         color: #f3f59f;
         filter: drop-shadow(1px 0 4px #f3f59f);
@@ -480,7 +689,8 @@
         &::before {
             content: attr(data-hover);
             opacity: 0;
-            width: max-content;
+            width: 42px;
+            height: 42px;
             background-color: rgba(0, 0, 0, 0.6);
             color: #fff;
             text-align: center;
@@ -490,16 +700,11 @@
             position: absolute;
             z-index: 5;
             left: 0;
-            top: 110%;
+            // top: 110%;
         }
     }
 
-    /* .hover-text:hover::before {
-      opacity: 1;
-  } */
-
-    /* 地圖檢視 */
-
+    /* 地圖檢視按鈕 */
     .foot-view-map {
         position: absolute;
         bottom: -22px;

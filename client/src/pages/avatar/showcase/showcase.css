@@ -12,6 +12,7 @@
     text-align: center;
     border-radius: 12px;
     padding: 15px 0;
+    margin: 20px 0;
 }
 
 .showcaseCardIMG img {
@@ -29,9 +30,16 @@
     font-weight: normal;
 }
 
+.showcaseText {
+    position: relative;
+}
+
 .avatarConbination {
+    position: relative;
     font-weight: 400;
     font-size: 16px;
+    text-align: left;
+    padding-left: 42%;
 }
 
 .showcaseBtns {
@@ -50,6 +58,8 @@
 
 
 @media screen and (min-width: 992px) {
+    .showcase {}
+
     .showcaseCard {
         display: flex;
         width: 800px;
@@ -87,6 +97,10 @@
         text-align: left;
         padding-top: 110px;
         padding-left: 50px;
+    }
+
+    .avatarConbination {
+        padding-left: 0;
     }
 
     .avatarTotalPrice {

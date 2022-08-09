@@ -4,24 +4,24 @@ import { useContext } from 'react';
 import ThemeContext from '../../../../../context/ThemeContext/ThemeContext';
 
 function Style(props) {
-    const { bodyControlChange, setConbination, conbination } = props;
+    const { bodyControlChange, setCombination, combination } = props;
     const { theme } = useContext(ThemeContext);
     const plus = () => {
-        const newConbination = { ...conbination };
-        newConbination['body'][bodyControlChange] =
+        const newCombination = { ...combination };
+        newCombination['body'][bodyControlChange] =
             BodyData[bodyControlChange].length - 1 <=
-            conbination['body'][bodyControlChange]
+            combination['body'][bodyControlChange]
                 ? BodyData[bodyControlChange].length - 1
-                : conbination['body'][bodyControlChange] + 1;
-        setConbination(newConbination);
+                : combination['body'][bodyControlChange] + 1;
+        setCombination(newCombination);
     };
     const minus = () => {
-        const newConbination = { ...conbination };
-        newConbination['body'][bodyControlChange] =
-            conbination['body'][bodyControlChange] <= 0
+        const newCombination = { ...combination };
+        newCombination['body'][bodyControlChange] =
+            combination['body'][bodyControlChange] <= 0
                 ? 0
-                : conbination['body'][bodyControlChange] - 1;
-        setConbination(newConbination);
+                : combination['body'][bodyControlChange] - 1;
+        setCombination(newCombination);
     };
 
     const Circle = styled.div`
@@ -29,9 +29,9 @@ function Style(props) {
         width: 70px;
         height: 70px;
         background-image: url(${BodyData[bodyControlChange][
-            conbination['body'][bodyControlChange]
+            combination['body'][bodyControlChange]
         ]['preview']});
-        background-color: #000;
+        background-color: #777;
         background-repeat: no-repeat;
         border-radius: 50%;
         background-size: contain;
@@ -63,7 +63,7 @@ function Style(props) {
                 <div className="text-center">
                     {
                         BodyData[bodyControlChange][
-                            conbination['body'][bodyControlChange]
+                            combination['body'][bodyControlChange]
                         ]['price']
                     }
                 </div>
@@ -71,7 +71,7 @@ function Style(props) {
                     陰德值超過
                     {
                         BodyData[bodyControlChange][
-                            conbination['body'][bodyControlChange]
+                            combination['body'][bodyControlChange]
                         ]['limit']
                     }
                     才可選購

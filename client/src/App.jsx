@@ -19,6 +19,7 @@ import NextLife from './pages/NextLife';
 import ShareWall from './pages/ShareWall/ShareWall';
 import ShareWallList from './pages/ShareWall/ShareWallList';
 import ShareWallDetail from './pages/ShareWall/ShareWallDetail';
+import ShareWallPost from './pages/ShareWall/ShareWallPost';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
@@ -37,6 +38,7 @@ import Gooddeed from './pages/Gooddeed';
 import Games from './pages/Games';
 import Intro from './pages/Intro';
 import Place from './pages/Place';
+import PlaceLikedPage from './pages/Place/PlaceLikedPage.js';
 import RebornCart from './pages/RebornCart';
 import LoadingLogo from './components/LoadingLogo.jsx';
 import Maker from './pages/avatar/maker/Maker';
@@ -93,6 +95,12 @@ function App() {
                                         index
                                         element={
                                             <ShareWallList pageName="sharewall" />
+                                        }
+                                    />
+                                    <Route
+                                        path="post"
+                                        element={
+                                            <ShareWallPost pageName="default" />
                                         }
                                     />
                                     <Route
@@ -161,6 +169,12 @@ function App() {
                                 <Route
                                     path="place"
                                     element={<Place pageName="place" />}
+                                />
+                                <Route
+                                    path="place-liked"
+                                    element={
+                                        <PlaceLikedPage pageName="place" />
+                                    }
                                 />
                                 {/* ============================== */}
                                 {/* 轉生購物車路由 */}

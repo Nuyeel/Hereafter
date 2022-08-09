@@ -11,7 +11,7 @@ router.post('/showcase', async (req, res) => {
     const mid = req.body.id;
     const combinationCreate = JSON.stringify({
         basic: [1, 1, 1],
-        basic_color: '0',
+        basic_color: 0,
         body: { hand: 0, foot: 0, tale: 0, special: 0 },
         special_color: { tale: 0, special: 0 },
         face: {
@@ -43,7 +43,7 @@ router.post('/showcase', async (req, res) => {
         lip: 'kitty',
     });
     const imgCreate = 'default.png';
-    const sql = `SELECT * FROM showcase WHERE member_sid = ${mid};`;
+    const sql = `SELECT * FROM showcase WHERE member_sid = ${mid}`;
     const [r] = await db.query(sql, []);
     if (r.length === 5) {
         console.log('Meow 資料有5筆');
@@ -82,6 +82,30 @@ router.post('/showcase', async (req, res) => {
         output.msg = '初次建立資料!';
     }
 
+    res.json(output);
+});
+//MING:拉取單筆訂單詳細資料的東東還沒寫
+router.post('/getAvatarData', async (req, res) => {
+    const output = {
+        success: false,
+        error: true,
+        msg: '',
+    };
+    //MING:送進來的會員編號及形象編號
+    const mid = req.body.id;
+    const aid = req.body.avatar_id;
+    //MING:驗證機制 該訂單是否為該會員的形象
+    const sqlVerify = `SELECT * FROM showcase WHERE avatar_id = ${aid};`;
+
+    const [rVerify] = await db.query(sqlVerify, []);
+    if (rVerify[0].member_sid === mid) {
+        const sql = `SELECT * FROM showcase WHERE avatar_id =${aid}`;
+        const [r] = await db.query(sql, []);
+        output.success = true;
+        output.data = r;
+    } else {
+        output.msg = '這筆訂單不是你的';
+    }
     res.json(output);
 });
 router.post('/update', async (req, res) => {

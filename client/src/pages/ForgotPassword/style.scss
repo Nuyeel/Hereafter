@@ -14,22 +14,22 @@
     font-size: $fz-body
 }
 
-.btn {
+.btn-member {
     height: 32px;
     font:700 var(--text-font), Arial, sans-serif;
     border-radius: 10px;
 }
 
-.btn:hover {
+.btn-member:hover {
     color: #FFF;
     background-color: $primary
 }
 
-.btn-pri{
+.btn-member-pri{
     background-color: $secondary;
 }
 
-.btn-l {
+.btn-member-l {
     height: 40px;
     font:700 18px var(--text-font), Arial, sans-serif;
     border-radius: 12px;
@@ -117,20 +117,17 @@ button:active {
     color: $secondary
 }
 
-.btn-sec {
+.btn-member-sec {
     background-color: #E7ACF3;
-    border: 1px solid #fff;
 }
 
-.btn-ter {
+.btn-member-ter {
     background-color: #fff;
-    border: 1px solid $secondary;
     color: $secondary;
 }
 
-.btn-ter:hover {
+.btn-member-ter:hover {
     background-color: $secondary;
-    border: 1px solid $secondary;
     color: #fff;
 }
 

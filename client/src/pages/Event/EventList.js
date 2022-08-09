@@ -65,7 +65,7 @@ function EventList() {
         }
     }, [isLoading]);
 
-    // 跟MySQL拿活動資料(目前暫時限8筆)
+    // 跟MySQL拿活動資料
     const fetchEvent = async () => {
         const response = await axios.get(Event_List_GET);
         setDisplayEvent(response.data); //讓component進入DidUpdate階段
@@ -305,11 +305,9 @@ function EventList() {
 
                         <SortBar sortBy={sortBy} setSortBy={setSortBy} />
 
-
-                        
                         {/* TODO: 方案選擇 */}
                         <h4 className="xuan-event-type">方案選擇</h4>
-                        <div className='xuan-event-type-select'>
+                        <div className="xuan-event-type-select">
                             {howtagsTypes.map((value, i) => (
                                 <TypeCheckbox
                                     value={value}

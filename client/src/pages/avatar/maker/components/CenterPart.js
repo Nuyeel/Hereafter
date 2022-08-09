@@ -6,11 +6,12 @@ import FaceData from './FaceData';
 import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
 import { Avatar_Update } from '../../../../config/ajax-path';
 import axios from 'axios';
+import { ReactComponent as Soul } from '../../../../images/Nav/nav_soul.svg';
 //import Bodytry from "../../../images/avatar/hereafter-imgs/body-M.png";
 
 function CenterPart(props) {
     const {
-        conbination,
+        combination,
         controlChange,
         setControlChange,
         setBodyControlChange,
@@ -20,58 +21,60 @@ function CenterPart(props) {
     const ref = useRef(null);
     const { theme } = useContext(ThemeContext);
     const avatarTotalPrice =
-        BodyData['hand'][conbination['body']['hand']]['price'] +
-        (conbination['body']['special']
-            ? BodyData['special'][conbination['body']['special']]['price']
-            : BodyData['foot'][conbination['body']['foot']]['price']) +
-        BodyData['tale'][conbination['body']['tale']]['price'] +
-        FaceData['eye'][conbination['face']['eye']]['price'] +
-        FaceData['nose'][conbination['face']['nose']]['price'] +
-        FaceData['lip'][conbination['face']['lip']]['price'] +
-        FaceData['hairFront'][conbination['face']['hairFront']]['price'] +
-        FaceData['hairBack'][conbination['face']['hairBack']]['price'] +
-        (conbination['face']['topEar']
-            ? FaceData['topEar'][conbination['face']['topEar']]['price']
-            : FaceData['ear'][conbination['face']['ear']]['price']);
-    const conbinationText = {
-        hand: BodyData['hand'][conbination['body']['hand']]['name'],
-        foot: conbination['body']['special']
-            ? BodyData['special'][conbination['body']['special']]['name']
-            : BodyData['foot'][conbination['body']['foot']]['name'],
-        bodyColor: BodyData['basicColorsName'][conbination['basic_color']],
-        specialColor: conbination['body']['special']
+        BodyData['hand'][combination['body']['hand']]['price'] +
+        (combination['body']['special']
+            ? BodyData['special'][combination['body']['special']]['price']
+            : BodyData['foot'][combination['body']['foot']]['price']) +
+        BodyData['tale'][combination['body']['tale']]['price'] +
+        FaceData['eye'][combination['face']['eye']]['price'] +
+        FaceData['nose'][combination['face']['nose']]['price'] +
+        FaceData['lip'][combination['face']['lip']]['price'] +
+        FaceData['hairFront'][combination['face']['hairFront']]['price'] +
+        FaceData['hairBack'][combination['face']['hairBack']]['price'] +
+        (combination['face']['topEar']
+            ? FaceData['topEar'][combination['face']['topEar']]['price']
+            : FaceData['ear'][combination['face']['ear']]['price']);
+    const combinationText = {
+        hand: BodyData['hand'][combination['body']['hand']]['name'],
+        foot: combination['body']['special']
+            ? BodyData['special'][combination['body']['special']]['name']
+            : BodyData['foot'][combination['body']['foot']]['name'],
+        bodyColor: BodyData['basicColorsName'][combination['basic_color']],
+        specialColor: combination['body']['special']
             ? BodyData['specialColorsName'][
-                  conbination['special_color']['special']
+                  combination['special_color']['special']
               ]
             : '',
-        tale: conbination['body']['tale'] ? '有' : '無',
-        taleColor: conbination['body']['tale']
-            ? BodyData['taleColorsName'][conbination['special_color']['tale']]
+        tale: combination['body']['tale'] ? '有' : '無',
+        taleColor: combination['body']['tale']
+            ? BodyData['taleColorsName'][combination['special_color']['tale']]
             : '',
-        eye: FaceData['eye'][conbination['face']['eye']]['name'],
-        eyeColor: FaceData['eyeColorsName'][conbination['face_color']['eye']],
-        nose: FaceData['nose'][conbination['face']['nose']]['name'],
+        eye: FaceData['eye'][combination['face']['eye']]['name'],
+        eyeColor: FaceData['eyeColorsName'][combination['face_color']['eye']],
+        nose: FaceData['nose'][combination['face']['nose']]['name'],
         noseColor:
-            FaceData['noseColorsName'][conbination['face_color']['nose']],
+            FaceData['noseColorsName'][combination['face_color']['nose']],
         hair:
-            FaceData['hairFront'][conbination['face']['hairFront']]['name'] +
+            FaceData['hairFront'][combination['face']['hairFront']]['name'] +
             '+' +
-            FaceData['hairBack'][conbination['face']['hairBack']]['name'],
+            FaceData['hairBack'][combination['face']['hairBack']]['name'],
         hairColor:
-            FaceData['hairColorsName'][conbination['face_color']['hairFront']],
-        ear: conbination['face']['topEar']
-            ? FaceData['topEar'][conbination['face']['topEar']]['name']
-            : FaceData['ear'][conbination['face']['ear']]['name'],
-        topearColor: conbination['face']['topEar']
-            ? FaceData['topEarColorsName'][conbination['face_color']['topEar']]
+            FaceData['hairColorsName'][combination['face_color']['hairFront']],
+        ear: combination['face']['topEar']
+            ? FaceData['topEar'][combination['face']['topEar']]['name']
+            : FaceData['ear'][combination['face']['ear']]['name'],
+        topearColor: combination['face']['topEar']
+            ? FaceData['topEarColorsName'][combination['face_color']['topEar']]
             : '',
-        lip: FaceData['lip'][conbination['face']['lip']]['name'],
+        lip: FaceData['lip'][combination['face']['lip']]['name'],
     };
-    const orderData = { conbination: { ...conbination } };
+    const orderData = { combination: { ...combination } };
     //MING:目前的假資料:會員ID,訂單編號
-    orderData.id = 19960409;
-    orderData.avatar_id = 1123;
-    orderData.conbinationText = conbinationText;
+    const aid = sessionStorage.getItem('avatar_id');
+    const member = JSON.parse(localStorage.getItem('auth'));
+    orderData.id = member['sid'];
+    orderData.avatar_id = aid;
+    orderData.combinationText = combinationText;
     orderData.totalPrice = avatarTotalPrice;
     const onButtonClick = useCallback(async () => {
         if (ref.current === null) {
@@ -88,18 +91,20 @@ function CenterPart(props) {
                 link.download = 'my-image-name.png';
                 link.href = dataUrl;
                 orderData.img = dataUrl;
-                if (window.location.search === '') {
+                if (sessionStorage.getItem('avatar_id') === null) {
                     link.click();
                 }
             })
             .catch((err) => {
                 console.log(err);
             });
-        if (window.location.search === '') {
+        if (sessionStorage.getItem('avatar_id') === null) {
             console.log('Meow 目前沒有訂單編號!');
         } else {
             const r = await axios.post(Avatar_Update, orderData);
+            console.log(orderData);
             console.log(r.data);
+            sessionStorage.removeItem('avatar_id');
         }
     }, [ref]);
 
@@ -117,7 +122,7 @@ function CenterPart(props) {
         height: 310px;
         width: 307px;
         top: 23%;
-        left: 15.7%;
+        left: 16.3%;
     `;
     const BGCircle = styled.div`
         position: absolute;
@@ -125,8 +130,8 @@ function CenterPart(props) {
         border-radius: 50%;
         height: 385px;
         width: 385px;
-        top: 10%;
-        left: 7%;
+        top: 10.5%;
+        left: 7.6%;
     `;
     //*MING:Body區
     const Face = styled.div`
@@ -141,7 +146,7 @@ function CenterPart(props) {
         -webkit-mask-size: cover;
         mask-size: cover;
         background-color: ${BodyData['basicColors'][
-            conbination['basic_color']
+            combination['basic_color']
         ]};
     `;
     const Body = styled.div`
@@ -150,11 +155,11 @@ function CenterPart(props) {
         left: 28%;
         width: 205px;
         height: 136px;
-        mask-image: url(${BodyData['bodycenter'][conbination['basic'][0]]});
+        mask-image: url(${BodyData['bodycenter'][combination['basic'][0]]});
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${BodyData['basicColors'][
-            conbination['basic_color']
+            combination['basic_color']
         ]};
     `;
     const Arm = styled.div`
@@ -163,12 +168,12 @@ function CenterPart(props) {
         left: 1.8%;
         width: 442px;
         height: 102px;
-        mask-image: url(${BodyData['arm'][conbination['basic'][1]]});
+        mask-image: url(${BodyData['arm'][combination['basic'][1]]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${BodyData['basicColors'][
-            conbination['basic_color']
+            combination['basic_color']
         ]};
     `;
     const handLPosition = [
@@ -178,27 +183,27 @@ function CenterPart(props) {
     ];
     const HandL = styled.div`
         position: absolute;
-        top: ${handLPosition[conbination['basic'][1]]['top']};
-        left: ${handLPosition[conbination['basic'][1]]['left']};
+        top: ${handLPosition[combination['basic'][1]]['top']};
+        left: ${handLPosition[combination['basic'][1]]['left']};
         width: 102px;
         height: 102px;
-        mask-image: url(${BodyData['hand'][conbination['body']['hand']][
+        mask-image: url(${BodyData['hand'][combination['body']['hand']][
             'left'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${BodyData['basicColors'][
-            conbination['basic_color']
+            combination['basic_color']
         ]};
     `;
     const HandPalmL = styled.div`
         position: absolute;
-        top: ${handLPosition[conbination['basic'][1]]['top']};
-        left: ${handLPosition[conbination['basic'][1]]['left']};
+        top: ${handLPosition[combination['basic'][1]]['top']};
+        left: ${handLPosition[combination['basic'][1]]['left']};
         width: 102px;
         height: 102px;
-        mask-image: url(${BodyData['hand'][conbination['body']['hand']][
+        mask-image: url(${BodyData['hand'][combination['body']['hand']][
             'palmLeft'
         ]});
         -webkit-mask-repeat: no-repeat;
@@ -214,27 +219,27 @@ function CenterPart(props) {
     ];
     const HandR = styled.div`
         position: absolute;
-        top: ${handRPosition[conbination['basic'][1]]['top']};
-        left: ${handRPosition[conbination['basic'][1]]['left']};
+        top: ${handRPosition[combination['basic'][1]]['top']};
+        left: ${handRPosition[combination['basic'][1]]['left']};
         width: 102px;
         height: 102px;
-        mask-image: url(${BodyData['hand'][conbination['body']['hand']][
+        mask-image: url(${BodyData['hand'][combination['body']['hand']][
             'right'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${BodyData['basicColors'][
-            conbination['basic_color']
+            combination['basic_color']
         ]};
     `;
     const HandPalmR = styled.div`
         position: absolute;
-        top: ${handRPosition[conbination['basic'][1]]['top']};
-        left: ${handRPosition[conbination['basic'][1]]['left']};
+        top: ${handRPosition[combination['basic'][1]]['top']};
+        left: ${handRPosition[combination['basic'][1]]['left']};
         width: 102px;
         height: 102px;
-        mask-image: url(${BodyData['hand'][conbination['body']['hand']][
+        mask-image: url(${BodyData['hand'][combination['body']['hand']][
             'palmRight'
         ]});
         -webkit-mask-repeat: no-repeat;
@@ -249,15 +254,15 @@ function CenterPart(props) {
         left: 1.5%;
         width: 442px;
         height: 170px;
-        -webkit-mask-image: url(${BodyData['leg'][conbination['basic'][2]]});
-        mask-image: url(${BodyData['leg'][conbination['basic'][2]]});
+        -webkit-mask-image: url(${BodyData['leg'][combination['basic'][2]]});
+        mask-image: url(${BodyData['leg'][combination['basic'][2]]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${BodyData['basicColors'][
-            conbination['basic_color']
+            combination['basic_color']
         ]};
-        display: ${conbination['body']['special'] > 0 ? 'none' : 'block'};
+        display: ${combination['body']['special'] > 0 ? 'none' : 'block'};
     `;
     const footLPosition = [
         { top: '62%', left: '7.5%' },
@@ -266,42 +271,42 @@ function CenterPart(props) {
     ];
     const FootL = styled.div`
         position: absolute;
-        top: ${footLPosition[conbination['basic'][2]]['top']};
-        left: ${footLPosition[conbination['basic'][2]]['left']};
+        top: ${footLPosition[combination['basic'][2]]['top']};
+        left: ${footLPosition[combination['basic'][2]]['left']};
         width: 153px;
         height: 85px;
-        -webkit-mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+        -webkit-mask-image: url(${BodyData['foot'][combination['body']['foot']][
             'left'
-        ][conbination['basic'][2]]});
-        mask-image: url(${BodyData['foot'][conbination['body']['foot']]['left'][
-            conbination['basic'][2]
+        ][combination['basic'][2]]});
+        mask-image: url(${BodyData['foot'][combination['body']['foot']]['left'][
+            combination['basic'][2]
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${BodyData['basicColors'][
-            conbination['basic_color']
+            combination['basic_color']
         ]};
-        display: ${conbination['body']['special'] > 0 ? 'none' : 'block'};
+        display: ${combination['body']['special'] > 0 ? 'none' : 'block'};
     `;
     const FootPalmL = styled.div`
         position: absolute;
-        top: ${footLPosition[conbination['basic'][2]]['top']};
-        left: ${footLPosition[conbination['basic'][2]]['left']};
+        top: ${footLPosition[combination['basic'][2]]['top']};
+        left: ${footLPosition[combination['basic'][2]]['left']};
         width: 153px;
         height: 85px;
-        -webkit-mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+        -webkit-mask-image: url(${BodyData['foot'][combination['body']['foot']][
             'palmLeft'
-        ][conbination['basic'][2]]});
-        mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+        ][combination['basic'][2]]});
+        mask-image: url(${BodyData['foot'][combination['body']['foot']][
             'palmLeft'
-        ][conbination['basic'][2]]});
+        ][combination['basic'][2]]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: #555;
         opacity: 0.3;
-        display: ${conbination['body']['special'] > 0 ? 'none' : 'block'};
+        display: ${combination['body']['special'] > 0 ? 'none' : 'block'};
     `;
     const footRPosition = [
         { top: '62%', left: '59.5%' },
@@ -310,42 +315,42 @@ function CenterPart(props) {
     ];
     const FootR = styled.div`
         position: absolute;
-        top: ${footRPosition[conbination['basic'][2]]['top']};
-        left: ${footRPosition[conbination['basic'][2]]['left']};
+        top: ${footRPosition[combination['basic'][2]]['top']};
+        left: ${footRPosition[combination['basic'][2]]['left']};
         width: 153px;
         height: 85px;
-        -webkit-mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+        -webkit-mask-image: url(${BodyData['foot'][combination['body']['foot']][
             'right'
-        ][conbination['basic'][2]]});
-        mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+        ][combination['basic'][2]]});
+        mask-image: url(${BodyData['foot'][combination['body']['foot']][
             'right'
-        ][conbination['basic'][2]]});
+        ][combination['basic'][2]]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${BodyData['basicColors'][
-            conbination['basic_color']
+            combination['basic_color']
         ]};
-        display: ${conbination['body']['special'] > 0 ? 'none' : 'block'};
+        display: ${combination['body']['special'] > 0 ? 'none' : 'block'};
     `;
     const FootPalmR = styled.div`
         position: absolute;
-        top: ${footRPosition[conbination['basic'][2]]['top']};
-        left: ${footRPosition[conbination['basic'][2]]['left']};
+        top: ${footRPosition[combination['basic'][2]]['top']};
+        left: ${footRPosition[combination['basic'][2]]['left']};
         width: 153px;
         height: 85px;
-        -webkit-mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+        -webkit-mask-image: url(${BodyData['foot'][combination['body']['foot']][
             'palmRight'
-        ][conbination['basic'][2]]});
-        mask-image: url(${BodyData['foot'][conbination['body']['foot']][
+        ][combination['basic'][2]]});
+        mask-image: url(${BodyData['foot'][combination['body']['foot']][
             'palmRight'
-        ][conbination['basic'][2]]});
+        ][combination['basic'][2]]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: #555;
         opacity: 0.3;
-        display: ${conbination['body']['special'] > 0 ? 'none' : 'block'};
+        display: ${combination['body']['special'] > 0 ? 'none' : 'block'};
     `;
     //MING:Face區
     const Eye = styled.div`
@@ -354,12 +359,12 @@ function CenterPart(props) {
         left: 0%;
         width: 109px;
         height: 68px;
-        mask-image: url(${FaceData['eye'][conbination['face']['eye']]['eye']});
+        mask-image: url(${FaceData['eye'][combination['face']['eye']]['eye']});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${FaceData['eyeColors'][
-            conbination['face_color']['eye']
+            combination['face_color']['eye']
         ]};
     `;
     const EyeWhite = styled.div`
@@ -368,7 +373,7 @@ function CenterPart(props) {
         left: 0%;
         width: 109px;
         height: 68px;
-        mask-image: url(${FaceData['eye'][conbination['face']['eye']]['eyeW']});
+        mask-image: url(${FaceData['eye'][combination['face']['eye']]['eyeW']});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
@@ -380,14 +385,14 @@ function CenterPart(props) {
         left: 30%;
         width: 187px;
         height: 95px;
-        mask-image: url(${FaceData['ear'][conbination['face']['ear']]['src']});
+        mask-image: url(${FaceData['ear'][combination['face']['ear']]['src']});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${BodyData['basicColors'][
-            conbination['basic_color']
+            combination['basic_color']
         ]};
-        display: ${conbination['face']['topEar'] > 0 ? 'none' : 'block'};
+        display: ${combination['face']['topEar'] > 0 ? 'none' : 'block'};
     `;
     const TopEar = styled.div`
         position: absolute;
@@ -396,16 +401,16 @@ function CenterPart(props) {
         width: 187px;
         height: 119px;
         -webkit-mask-image: url(${FaceData['topEar'][
-            conbination['face']['topEar']
+            combination['face']['topEar']
         ]['src']});
-        mask-image: url(${FaceData['topEar'][conbination['face']['topEar']][
+        mask-image: url(${FaceData['topEar'][combination['face']['topEar']][
             'src'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${FaceData['topEarColors'][
-            conbination['face_color']['topEar']
+            combination['face_color']['topEar']
         ]};
     `;
     const Nose = styled.div`
@@ -414,17 +419,17 @@ function CenterPart(props) {
         left: 38.2%;
         width: 27px;
         height: 27px;
-        -webkit-mask-image: url(${FaceData['nose'][conbination['face']['nose']][
+        -webkit-mask-image: url(${FaceData['nose'][combination['face']['nose']][
             'src'
         ]});
-        mask-image: url(${FaceData['nose'][conbination['face']['nose']][
+        mask-image: url(${FaceData['nose'][combination['face']['nose']][
             'src'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${FaceData['noseColors'][
-            conbination['face_color']['nose']
+            combination['face_color']['nose']
         ]};
     `;
     const Lip = styled.div`
@@ -433,7 +438,7 @@ function CenterPart(props) {
         left: 27.5%;
         width: 51px;
         height: 25px;
-        background: url(${FaceData['lip'][conbination['face']['lip']]['src']});
+        background: url(${FaceData['lip'][combination['face']['lip']]['src']});
     `;
     const HairFront = styled.div`
         position: absolute;
@@ -442,16 +447,16 @@ function CenterPart(props) {
         width: 225px;
         height: 119px;
         -webkit-mask-image: url(${FaceData['hairFront'][
-            conbination['face']['hairFront']
+            combination['face']['hairFront']
         ]['hairFront']});
         mask-image: url(${FaceData['hairFront'][
-            conbination['face']['hairFront']
+            combination['face']['hairFront']
         ]['src']});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${FaceData['hairColors'][
-            conbination['face_color']['hairFront']
+            combination['face_color']['hairFront']
         ]};
     `;
     const HairBack = styled.div`
@@ -461,16 +466,16 @@ function CenterPart(props) {
         width: 302px;
         height: 207px;
         -webkit-mask-image: url(${FaceData['hairBack'][
-            conbination['face']['hairBack']
+            combination['face']['hairBack']
         ]['hairBack']});
-        mask-image: url(${FaceData['hairBack'][conbination['face']['hairBack']][
+        mask-image: url(${FaceData['hairBack'][combination['face']['hairBack']][
             'src'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${FaceData['hairColors'][
-            conbination['face_color']['hairFront']
+            combination['face_color']['hairFront']
         ]};
     `;
     //MING:特殊
@@ -480,17 +485,17 @@ function CenterPart(props) {
         left: 0%;
         width: 450px;
         height: 450px;
-        -webkit-mask-image: url(${BodyData['tale'][conbination['body']['tale']][
+        -webkit-mask-image: url(${BodyData['tale'][combination['body']['tale']][
             'src'
         ]});
-        mask-image: url(${BodyData['tale'][conbination['body']['tale']][
+        mask-image: url(${BodyData['tale'][combination['body']['tale']][
             'src'
         ]});
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: cover;
         background-color: ${BodyData['taleColors'][
-            conbination['special_color']['tale']
+            combination['special_color']['tale']
         ]};
     `;
     const Special = styled.div`
@@ -500,9 +505,9 @@ function CenterPart(props) {
         width: 450px;
         height: 450px;
         -webkit-mask-image: url(${BodyData['special'][
-            conbination['body']['special']
+            combination['body']['special']
         ]['src']});
-        mask-image: url(${BodyData['special'][conbination['body']['special']][
+        mask-image: url(${BodyData['special'][combination['body']['special']][
             'src'
         ]});
         -webkit-mask-repeat: no-repeat;
@@ -511,7 +516,7 @@ function CenterPart(props) {
         background-image: linear-gradient(
             Ivory 10%,
             ${BodyData['specialColors'][
-                conbination['special_color']['special']
+                combination['special_color']['special']
             ]}
         );
     `;
@@ -614,6 +619,14 @@ function CenterPart(props) {
             }
         }
     `;
+    const SoulColor = styled.div`
+        path {
+            fill: ${theme.cHeader};
+        }
+        circle {
+            stroke: ${theme.cHeader};
+        }
+    `;
     return (
         <>
             <Center>
@@ -706,7 +719,12 @@ function CenterPart(props) {
                     ></BodyControl>
                 </div>
                 <Info>
-                    <p>總計:{avatarTotalPrice}</p>
+                    <SoulColor>
+                        <p>
+                            總計:{avatarTotalPrice}
+                            <Soul />
+                        </p>
+                    </SoulColor>
                 </Info>
                 <SaveBtn>
                     <div onClick={onButtonClick}>

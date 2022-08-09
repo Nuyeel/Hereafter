@@ -28,38 +28,63 @@ import SharePostCard from './components/SharePostCard';
 
 function ShareWallList(props) {
     const { pageName } = props;
-    const { authorized, token } = useContext(AuthContext);
     const { theme } = useContext(ThemeContext);
+    const {
+        setHeader,
+        shareWallSearchState,
+        shareWallPostsData,
+        setShareWallPostsData,
+    } = useContext(HeaderContext);
+    const { authorized, token } = useContext(AuthContext);
 
     // 當前應該顯示貼文的頁數 是一個狀態
     // TODO: 滑動 lazy load 出頁數
-    const [postsPage, setPostsPage] = useState(0);
+    // const [postsPage, setPostsPage] = useState(0); // FIXME: 可能也要搬到 HeaderContext 去
     // axios POST 回來的資料
     // TABLE: {圖, 頭貼, 帳號, 讚數, 標題, 內文}
     // TABLE: {avatar, memberhead, account, likes, title, text}
-    const [postsData, setPostsData] = useState([]);
+    // const [postsData, setPostsData] = useState([]);
     // 搜尋用的標籤字串
     const [searchParams, setSearchParams] = useState('');
 
-    const { setHeader } = useContext(HeaderContext);
     const navigate = useNavigate();
 
     // TODO: 滾到特定位置就要去要資料
     // 不希望顯示在網址列中 所以要用 POST
     // num 後來要改成 postPage 來記憶 ++ 之類ㄉ
-    const axiosPOST = async (num) => {
-        // console.log(num);
-        const result = await axios(API_SHAREWALL, {
-            method: 'POST',
-            data: { num }, // FIXME: 參數怎麼設計？
+    // const axiosPOST = async (num) => {
+    //     // console.log(num);
+    //     const result = await axios(API_SHAREWALL, {
+    //         method: 'POST',
+    //         data: { num }, // FIXME: 參數怎麼設計？
+    //         headers: {
+    //             'Content-Type': 'Application/json',
+    //             Authorization: `Bearer ${token}`,
+    //         },
+    //     });
+
+    //     // console.log(result.data);
+    //     setShareWallPostsData(result.data);
+    // };
+
+    const axiosListGET = async () => {
+        let axiosUrl = `${API_SHAREWALL}`;
+
+        // 加上三態條件
+        // 'default' 不用做什麼
+        if (shareWallSearchState === 'isAuthor') {
+            axiosUrl += '?isAuthor=true';
+        } else if (shareWallSearchState === 'isCollector') {
+            axiosUrl += '?isCollector=true';
+        }
+
+        const result = await axios.get(axiosUrl, {
             headers: {
-                'Content-Type': 'Application/json',
                 Authorization: `Bearer ${token}`,
             },
         });
-
         // console.log(result.data);
-        setPostsData(result.data);
+        setShareWallPostsData(result.data);
     };
 
     // 設定 Header
@@ -69,8 +94,8 @@ function ShareWallList(props) {
 
     // 取得卡片內文
     useEffect(() => {
-        axiosPOST(postsPage);
-    }, []);
+        axiosListGET();
+    }, [shareWallSearchState]);
 
     return (
         <>
@@ -82,7 +107,6 @@ function ShareWallList(props) {
                 <ShareWallSearchBar
                     searchParams={searchParams}
                     setSearchParams={setSearchParams}
-                    setPostsData={setPostsData}
                 />
                 {/* <h3 style={{ color: '#FFFFFF' }}>ShareWallList.jsx</h3> */}
             </div>
@@ -135,8 +159,8 @@ function ShareWallList(props) {
                     {/* FIXME: 偷懶頭貼先用同一張 */}
                     {/* FIXME: 找不到資料的時候應該要顯示一個東西 */}
                     {/* FIXME: spinner */}
-                    {postsData &&
-                        postsData.map((v, i) => (
+                    {shareWallPostsData &&
+                        shareWallPostsData.map((v, i) => (
                             <SharePostCard
                                 key={v.share_post_sid}
                                 postsid={v.share_post_sid}
@@ -147,8 +171,7 @@ function ShareWallList(props) {
                                 title={v.share_post_title}
                                 text={v.share_post_text}
                                 isliked={v.share_post_isliked}
-                                axiosPOST={axiosPOST}
-                                postsPage={postsPage}
+                                axiosListGET={axiosListGET}
                             />
                         ))}
                 </div>

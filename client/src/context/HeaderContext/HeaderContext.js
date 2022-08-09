@@ -58,6 +58,10 @@ export const headers = {
 const HeaderContext = React.createContext({
     ...headers.default,
     setHeader: () => {},
+    shareWallPostsData: [], // 分享牆分頁按鈕使用
+    setShareWallPostsData: () => {}, // 分享牆分頁按鈕使用
+    shareWallSearchState: '', // 分享牆分頁按鈕使用
+    setShareWallSearchState: () => {}, // 分享牆分頁按鈕使用
 });
 
 export default HeaderContext;

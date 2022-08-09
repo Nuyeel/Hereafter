@@ -2,6 +2,7 @@ import { useContext } from 'react';
 
 import ThemeContext from '../context/ThemeContext/ThemeContext';
 import HeaderContext from '../context/HeaderContext/HeaderContext';
+import HeaderShareWallButton from './HeaderShareWallButton';
 
 function Header() {
     // TODO: headerList 中的 item.params 匹配時顯示 item.title
@@ -11,7 +12,13 @@ function Header() {
     return (
         <>
             {headerContext.title && (
-                <div className="container d-flex header-container">
+                <div
+                    className={`container d-flex header-container ${
+                        headerContext.title === '交流分享'
+                            ? 'header-container-sharewall-edition'
+                            : ''
+                    }`}
+                >
                     <h2
                         className="header"
                         style={{
@@ -27,7 +34,15 @@ function Header() {
                         />
                     </h2>
                     {/* TODO: 某些頁面必須要顯示分頁鈕 例如分享牆 */}
-                    {/* <button style={{ height: '30px' }}>fddsfdfds</button> */}
+                    {headerContext.title === '交流分享' ? (
+                        <HeaderShareWallButton
+                            setShareWallPostsData={
+                                headerContext.setShareWallPostsData
+                            }
+                        />
+                    ) : (
+                        ''
+                    )}
                 </div>
             )}
         </>

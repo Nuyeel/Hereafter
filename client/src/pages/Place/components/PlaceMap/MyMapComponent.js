@@ -1,22 +1,21 @@
 import { useMap, useMapEvent } from 'react-leaflet';
 import { useEffect } from 'react';
-import { BsChevronCompactLeft } from 'react-icons/bs';
 
 function MyMapComponent(props) {
-    const { placeDisplay, centerRef } = props;
+    const { placeDisplay, centerRef, setBounds, setSearchByBoundsBtnShow } =
+        props;
 
     const map = useMap();
 
-    // TODO: 想要滑動到地圖某區塊之後，可以點選搜尋這區塊然後顯marker
-    // useMapEvent('dragend', (e) => {
-    //     // const bounds = L.latLng(props.center).toBounds(props.size);
-    //     // console.log(bounds);
-    //     // myMap.locate();
-    //     console.log(e);
-    //     // const point = e.containerPoint; // x=0,y=0
-    //     // const b = map.getBounds();
-    //     // console.log(b);
-    // });
+    // 找出目前可視範圍邊界
+    useEffect(() => {
+        map.on('dragend', function () {
+            const newBounds = map.getBounds();
+            setBounds(newBounds);
+            setSearchByBoundsBtnShow(true);
+            // console.log(newBounds);
+        });
+    }, [map]);
 
     // 如果篩選後有值, 移動中心到第一個座標位置
     // 會一直被觸發!center的資料就會被蓋過 => 用useEffect監聽顯示的資料有沒有改變
@@ -26,7 +25,7 @@ function MyMapComponent(props) {
 
             centerRef.current = firstPlace;
 
-            map.setView(firstPlace, map.getZoom(), {
+            map.setView(firstPlace, map.getMaxZoom(), {
                 animate: centerRef.current || false,
             });
             // console.log('filter', centerRef.current);

@@ -20,6 +20,31 @@
         gap: 10px;
     }
 
+    @media screen and (max-width: 375px) {
+        .place-map-wrap {
+            max-height: 60vh;
+            height: 60vh;
+        }
+        .map-list-wrap {
+            flex-direction: column-reverse;
+            justify-content: start;
+
+            .place-map {
+                width: 100%;
+                height: 70%;
+            }
+            .place-sideList {
+                width: 100%;
+                height: 30%;
+            }
+
+            .place-btns-wrap {
+                margin-top: 0;
+                transform: translate(1px, -2px);
+            }
+        }
+    }
+
     // 地圖map旁列表 and 手機板?
     .place-sideList {
         max-height: 55vh;
@@ -235,5 +260,13 @@
             // background: linear-gradient(to right, #ce59e7 50%, #6247f4 50%);
             display: none;
         }
+    }
+
+    .search-area-btn {
+        position: relative;
+        background-color: #222;
+        z-index: 9999;
+        left: 200px;
+        padding: 5px;
     }
 }

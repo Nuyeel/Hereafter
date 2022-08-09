@@ -20,6 +20,7 @@ import {
     API_SHAREWALL,
     STATIC_SHAREWALL_AVA,
 } from '../../../../config/ajax-path';
+import HeaderContext from '../../../../context/HeaderContext/HeaderContext';
 
 function SharePostCard(props) {
     const {
@@ -31,11 +32,11 @@ function SharePostCard(props) {
         title,
         text,
         isliked,
-        axiosPOST,
-        postsPage,
+        axiosListGET,
     } = props;
 
     const { theme } = useContext(ThemeContext);
+    const { setShareWallPostsData } = useContext(HeaderContext);
     const { authorized, token } = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -50,7 +51,7 @@ function SharePostCard(props) {
 
         if (result.data.affectedRows === 1) {
             // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
-            axiosPOST(postsPage);
+            axiosListGET();
         }
 
         return;
@@ -66,7 +67,7 @@ function SharePostCard(props) {
 
         if (result.data.affectedRows === 1) {
             // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
-            axiosPOST(postsPage);
+            axiosListGET();
         }
 
         return;
@@ -83,6 +84,7 @@ function SharePostCard(props) {
                     } flex-shrink-0`}
                 >
                     {/* 來生形象 */}
+                    {/* FIXME: 資料要從後端過來 網址不對 */}
                     <img
                         className="cpl-spc-avatar"
                         src={`${STATIC_SHAREWALL_AVA}${avatar}.png`}

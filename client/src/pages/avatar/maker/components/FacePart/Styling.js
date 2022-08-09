@@ -4,24 +4,24 @@ import { useContext } from 'react';
 import ThemeContext from '../../../../../context/ThemeContext/ThemeContext';
 
 function Style(props) {
-    const { faceControlChange, setConbination, conbination } = props;
+    const { faceControlChange, setCombination, combination } = props;
     const { theme } = useContext(ThemeContext);
     const plus = () => {
-        const newConbination = { ...conbination };
-        newConbination['face'][faceControlChange] =
+        const newCombination = { ...combination };
+        newCombination['face'][faceControlChange] =
             FaceImage[faceControlChange].length - 1 <=
-            conbination['face'][faceControlChange]
+            combination['face'][faceControlChange]
                 ? FaceImage[faceControlChange].length - 1
-                : conbination['face'][faceControlChange] + 1;
-        setConbination(newConbination);
+                : combination['face'][faceControlChange] + 1;
+        setCombination(newCombination);
     };
     const minus = () => {
-        const newConbination = { ...conbination };
-        newConbination['face'][faceControlChange] =
-            conbination['face'][faceControlChange] <= 0
+        const newCombination = { ...combination };
+        newCombination['face'][faceControlChange] =
+            combination['face'][faceControlChange] <= 0
                 ? 0
-                : conbination['face'][faceControlChange] - 1;
-        setConbination(newConbination);
+                : combination['face'][faceControlChange] - 1;
+        setCombination(newCombination);
     };
 
     const Circle = styled.div`
@@ -29,9 +29,9 @@ function Style(props) {
         width: 70px;
         height: 70px;
         background-image: url(${FaceImage[faceControlChange][
-            conbination['face'][faceControlChange]
+            combination['face'][faceControlChange]
         ]['preview']});
-        background-color: #000;
+        background-color: #777;
         background-repeat: no-repeat;
         border-radius: 50%;
         background-size: contain;
@@ -69,7 +69,7 @@ function Style(props) {
                 <div className="text-center">
                     {
                         FaceImage[faceControlChange][
-                            conbination['face'][faceControlChange]
+                            combination['face'][faceControlChange]
                         ]['price']
                     }
                 </div>
@@ -77,7 +77,7 @@ function Style(props) {
                     陰德值超過
                     {
                         FaceImage[faceControlChange][
-                            conbination['face'][faceControlChange]
+                            combination['face'][faceControlChange]
                         ]['limit']
                     }
                     才可選購

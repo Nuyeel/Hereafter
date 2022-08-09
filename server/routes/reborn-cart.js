@@ -4,9 +4,6 @@ const router = express.Router();
 
 const SqlString = require('sqlstring');
 
-// 假會員id
-// const fake_member = 10;
-
 // place_in_cart
 const getPlaceInCart = async (member) => {
     const sql = `SELECT * FROM place_in_cart pc
@@ -66,7 +63,6 @@ router.post('/', async (req, res) => {
 
     const sql3 = `INSERT INTO place_in_cart (member_sid, place_sid) VALUES (?, ?)`;
 
-    // 假設會員編號為10
     const [r3] = await db.query(sql3, [
         req.body.member_sid,
         req.body.place_sid,
