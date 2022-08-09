@@ -39,29 +39,68 @@ function Showcase() {
         getAvatarData();
     }, []);
 
-    return (
-        <>
-            <div
-                className="container showcase"
-                style={{
-                    color: theme.cHeader,
-                }}
-            >
-                <Carousel
-                    showStatus={false}
-                    autoPlay={false}
-                    centerMode={true}
-                    showArrows={false}
-                    emulateTouch={false}
+    const [mobile, setMobile] = useState('mobile');
+
+    const handleRWD = () => {
+        if (window.innerWidth > 1200) setMobile('PC');
+        else setMobile('mobile');
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', handleRWD);
+        handleRWD();
+
+        return () => {
+            window.removeEventListener('resize', handleRWD);
+        };
+    }, []);
+    if (mobile === 'PC') {
+        return (
+            <>
+                <div
+                    className="container showcase"
+                    style={{
+                        color: theme.cHeader,
+                    }}
+                >
+                    <Carousel
+                        showStatus={false}
+                        autoPlay={false}
+                        centerMode={true}
+                        showArrows={false}
+                        emulateTouch={false}
+                        showThumbs={false}
+                    >
+                        {avatarData.map((v, i) => {
+                            return (
+                                <AvatarCard
+                                    theme={theme}
+                                    key={i}
+                                    avatarinfo={v}
+                                />
+                            );
+                        })}
+                    </Carousel>
+                </div>
+            </>
+        );
+    } else {
+        return (
+            <>
+                <div
+                    className="container showcase"
+                    style={{
+                        color: theme.cHeader,
+                    }}
                 >
                     {avatarData.map((v, i) => {
                         return (
                             <AvatarCard theme={theme} key={i} avatarinfo={v} />
                         );
                     })}
-                </Carousel>
-            </div>
-        </>
-    );
+                </div>
+            </>
+        );
+    }
 }
 export default Showcase;
