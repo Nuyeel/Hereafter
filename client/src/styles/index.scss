@@ -388,6 +388,8 @@ h3 {
     border-radius: 5px;
     background-color: transparent;
     filter: none !important;
+    outline: none !important;
+    box-shadow: none !important;
     position: absolute;
     // FIXME: 先寫死就好
     left: 200px;
@@ -397,19 +399,12 @@ h3 {
     z-index: 1;
     backdrop-filter: blur(2px);
 
-    &:hover {
-        filter: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-    }
+    // &:hover {}
     
     &:active {
         // FIXME: 先寫死就好
         left: 200px;
         top: 17px;
-        filter: none !important;
-        outline: none !important;
-        box-shadow: none !important;
     }
 
     >.cpl-hsb-button-option {
