@@ -22,6 +22,7 @@ function HeaderShareWallButton() {
         shareWallSearchState,
         setShareWallSearchState,
         setShareWallPostsData,
+        setSearchParams,
     } = useContext(HeaderContext);
     const { authorized, token } = useContext(AuthContext);
 
@@ -98,6 +99,7 @@ function HeaderShareWallButton() {
                 const newSWSS = 'default';
                 // console.log(newSWSS);
                 setShareWallSearchState(newSWSS);
+                navigate('/sharewall');
             },
         },
         {
@@ -122,6 +124,7 @@ function HeaderShareWallButton() {
                 const newSWSS = 'isAuthor';
                 // console.log(newSWSS);
                 setShareWallSearchState(newSWSS);
+                navigate('/sharewall');
             },
         },
         {
@@ -148,6 +151,7 @@ function HeaderShareWallButton() {
                 setShareWallSearchState(newSWSS);
                 // 網址列不換了 但是要顯示會員收藏的內容
                 // 發 Axios 要內容
+                navigate('/sharewall');
             },
         },
         {
@@ -175,7 +179,7 @@ function HeaderShareWallButton() {
     useEffect(() => {
         setShareWallButtonData(
             shareWallButtonMapDisplayObj[shareWallSearchState]
-        );;
+        );
     }, [shareWallSearchState]);
 
     useEffect(() => {
@@ -196,6 +200,7 @@ function HeaderShareWallButton() {
                     setShareWallButtonState('select');
                 } else {
                     setShareWallButtonState('fixed');
+                    setSearchParams('');
                 }
             }}
         >
