@@ -571,11 +571,13 @@ h3 {
 
 @media screen and (min-width: 1400px) {
     .cpl-header-sharewall-button {
-        top: 24px;
+        top: 10px;
+        // top: 24px;
         left: 330px;
 
         &:active {
-            top: 22px;
+            top: 8px;
+            // top: 22px;
             left: 330px;
         }
     }
