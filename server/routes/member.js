@@ -166,6 +166,68 @@ router
             hash,
         ]);
 
+        const search = `SELECT * FROM member WHERE account = ?`;
+        const [searchR] = await db.query(search, [req.body.account]);
+
+        const sid = searchR[0]['sid'];
+        const combinationCreate = JSON.stringify({
+            basic: [1, 1, 1],
+            basic_color: 0,
+            body: { hand: 0, foot: 0, tale: 0, special: 0 },
+            special_color: { tale: 0, special: 0 },
+            face: {
+                eye: 0,
+                ear: 0,
+                lip: 0,
+                nose: 0,
+                hairFront: 0,
+                hairBack: 0,
+                topEar: 0,
+            },
+            face_color: { eye: 0, nose: 0, hairFront: 0, topEar: 0 },
+        });
+        const combinationTextCreate = JSON.stringify({
+            hand: '饅頭',
+            foot: '饅頭',
+            bodyColor: '粉',
+            specialColor: '',
+            tale: '無',
+            taleColor: '',
+            eye: '瞇瞇眼',
+            eyeColor: '灰',
+            nose: '那個人',
+            noseColor: '白',
+            hair: '中分+不留長',
+            hairColor: '黑',
+            ear: '小饅頭',
+            topearColor: '',
+            lip: 'kitty',
+        });
+        const imgCreate = 'default.png';
+
+        const sqlcreate = `INSERT INTO showcase (member_sid, avatar_created_at, combination, combinationText, img_name, price) VALUES (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300)`;
+        const [rCreate] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
         output.success = true;
         output.error = '註冊成功';
 
