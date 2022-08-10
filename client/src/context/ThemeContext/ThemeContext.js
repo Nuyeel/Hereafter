@@ -15,7 +15,12 @@ export const themes = {
         bcAvatarFrame: '#FFE9F6', // bc for Border Color
         cCommentInput: '#FFFFFF99',
         bgcAvatarMaker: '#00000080',
-        memberBgCard:'#00000025'
+        memberBgCard: '#00000025',
+        rebornBg: '#0000004d',
+        rebornInnerBg: '#0000001a',
+        placeBg: '#00000080',
+        placeMainBg: '#00000080',
+        placeCardBorder: 'none',
     },
     light: {
         title: 'light',
@@ -27,7 +32,12 @@ export const themes = {
         bcAvatarFrame: '#3C3B67',
         cCommentInput: '#00000099',
         bgcAvatarMaker: '#FFFFFF66',
-        memberBgCard:'#ffffff75'
+        memberBgCard: '#ffffff75',
+        rebornBg: '#ffffff4d',
+        rebornInnerBg: '#ffffff',
+        placeBg: '#9587e1ee',
+        placeMainBg: '#edeff7b3',
+        placeCardBorder: '1px solid #e384f280',
     },
 };
 
