@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function TimeNewsRow() {
+function TimeNewsRow({ style }) {
     // 現在時間
     const [nowTime, setNowTime] = useState({
         y: 0,
@@ -47,7 +47,7 @@ function TimeNewsRow() {
     return (
         <div className="time-news-row row">
             <div className="col-sm-4 col-12 p-0 pe-2 my-2">
-                <div className="time-wrap dark-bg-50">
+                <div className="time-wrap dark-bg-50" style={style}>
                     <p className="tn-title">現在時間：</p>
                     <p className="time tn">
                         {nowTime.y}年{nowTime.m}月{nowTime.d}日(
@@ -67,7 +67,7 @@ function TimeNewsRow() {
                 </div>
             </div>
             <div className="col-sm-8 col-12 p-0 pe-2">
-                <div className="news-wrap dark-bg-50">
+                <div className="news-wrap dark-bg-50" style={style}>
                     <p className="tn-title">最新消息：</p>
                     <p className="news tn">
                         受氣候變遷及戰爭影響，近年全球轉生名額不斷減少。海外轉生訂單需求增加，帶動...

@@ -34,7 +34,7 @@ function PlaceLikedPage(props) {
         const rows = await r.json();
         if (rows.length > 0) {
             setDisplayLikedList(rows);
-            console.log('member:', userSid, rows);
+            // console.log('member:', userSid, rows);
             //console.log(typeof rows[0].sid);  //number
 
             const sidArr = rows.map((v) => v.sid);
@@ -151,7 +151,7 @@ function PlaceLikedPage(props) {
         return;
     }
 
-    // 點選place的地圖icon, 顯示地圖&列表第一筆為此資料(place_sid)
+    // TODO: 點選place的地圖icon, 顯示地圖&列表第一筆為此資料(place_sid)
     const handlePlaceMapIconClicked = (e) => {
         const placeIndex = e.currentTarget
             .closest('.place-info-card')

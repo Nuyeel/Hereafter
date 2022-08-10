@@ -9,7 +9,7 @@ import { Navigation } from 'swiper';
 import SoulIcon from '../../Place/components/SoulIcon';
 
 function AvatarSwiper(props) {
-    const { avatarDataList, setSelectedAvatarInd } = props;
+    const { avatarDataList, avatarData, setSelectedAvatarInd } = props;
 
     return (
         <Swiper
@@ -22,7 +22,31 @@ function AvatarSwiper(props) {
                 setSelectedAvatarInd(avaIndex);
             }}
         >
-            {avatarDataList.map((v, i) => {
+            {/* {avatarData.map((v) =>
+                console.log(`${STATIC_SHAREWALL_AVA}/${v.img_name}`)
+            )} */}
+            {avatarData.length > 0 && (
+                <>
+                    {avatarData.map((v, i) => {
+                        return (
+                            <SwiperSlide key={v.avatar_id}>
+                                <div className="ava-option">
+                                    <img
+                                        src={`http://localhost:3500/uploads/images/avatar/${v.img_name}`}
+                                        alt=""
+                                        className="ava-img"
+                                    />
+                                    <div className="price">
+                                        <SoulIcon className="soul-icon" />
+                                        <span>{v.price}</span>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        );
+                    })}
+                </>
+            )}
+            {/* {avatarDataList.map((v, i) => {
                 return (
                     <SwiperSlide key={v.sid}>
                         <div className="ava-option">
@@ -38,7 +62,7 @@ function AvatarSwiper(props) {
                         </div>
                     </SwiperSlide>
                 );
-            })}
+            })} */}
         </Swiper>
     );
 }
