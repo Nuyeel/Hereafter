@@ -3,9 +3,11 @@ export const SERVER = 'http://localhost:3500';
 
 // 分享牆部分
 export const API_SHAREWALL = `${SERVER}/api/sharewall`;
+export const API_SHAREWALL_POST = `${SERVER}/api/sharewall/post`;
 export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tagbar/tags`;
 
 // 分享牆來生形象靜態路由
+export const STATIC_SHAREWALL = `${SERVER}/uploads/images/share/`;
 export const STATIC_SHAREWALL_AVA = `${SERVER}/uploads/images/share/ava`;
 
 // 良辰吉地
@@ -32,6 +34,7 @@ export const Event_List_GET = `${SERVER}/events `;
 export const Event_Cart_ADD_POST = `${SERVER}/eventcarts/addcart `;
 
 export const Showcase_Data = `${SERVER}/avatar/showcase`;
+export const Avatar_GetData = `${SERVER}/avatar/getAvatarData`;
 export const Avatar_Update = `${SERVER}/avatar/update`;
 
 // 陰德值測驗

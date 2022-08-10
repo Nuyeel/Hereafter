@@ -157,4 +157,36 @@ router.post('/creditcard', upload.none(), async (req, res) => {
     res.json(req.body);
 });
 
+
+
+// 訂單明細(透過eventPick取得活動資料)
+// router.post('/readytobuy', async (req, res) => {
+//     const $sql = 'SELECT * FROM `npo_act` WHERE `sid` IN (?) ';
+
+//     const { readytobuy } = req.body;
+
+//     // 如果只取results，會得到[[{}]]的物件，無法直接被解析。[results]可以先少一個[]
+//     const [results] = await db.query($sql, [readytobuy]);
+
+//     console.log(results);
+//     res.json(results);
+// });
+
+
+
+// 實驗一下GET方法
+router.get('/readytobuy', async (req, res) => {
+
+
+    let detailnum = req.query.detailnum || ''; //?detailnum=22,23
+    const $sql = 'SELECT * FROM `npo_act` WHERE `sid` IN (?) ';
+
+    // 如果只取results，會得到[[{}]]的物件，無法直接被解析。[results]可以先少一個[]
+    const [results] = await db.query($sql, [detailnum]);
+
+    // console.log(results);
+    res.json(results);
+});
+
+
 module.exports = router;

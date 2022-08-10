@@ -79,9 +79,11 @@ function EventItem(props) {
 
                     <div className="xuan-time-location">
                         <p className="xuan-body">{start}</p>
-                        
+
                         <p className="xuan-body">{start_time}</p>
-                        <p className="xuan-location xuan-body">{place_location}</p>
+                        <p className="xuan-location xuan-body">
+                            {place_location}
+                        </p>
                     </div>
 
                     <p className="xuan-body">{npo_name}</p>

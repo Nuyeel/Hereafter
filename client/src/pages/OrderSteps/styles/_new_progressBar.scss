@@ -1,0 +1,69 @@
+.xuan-progress-container{
+  outline: 1px solid red;
+  width: 95%;
+  margin: auto;
+}
+
+.progressbar {
+  outline: 1px solid blue;
+  counter-reset: step;
+  width: 100%;
+  margin: auto;
+}
+
+.progressbar li {
+  list-style: none;
+  display: inline-block;
+  /* 3 steps */
+  /* width: 30.33%; */
+  /* 4 steps */
+  width: 24%; 
+  position: relative;
+  text-align: center;
+  color: #3C3B67;
+  /* cursor: pointer; */
+}
+
+.progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 25px;
+  height: 25px;
+  line-height : 25px;
+  // border: 1px solid #ddd;
+  border-radius: 100%;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  background-color: #fff;
+}
+
+.progressbar li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  top: 12px;
+  left: -50%;
+  z-index : -1;
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+
+.progressbar li.active {
+  color: #E384F2;
+}
+
+// 這邊決定圈圈長什麼樣
+.progressbar li.active:before {
+  border-color:#E384F2;
+  background-color: #E384F2;
+  color:white;
+} 
+
+.progressbar li.active + li:after {
+  background-color: #E384F2;
+}

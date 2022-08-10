@@ -11,13 +11,9 @@ import './ShareWallDetail.scss';
 
 import { CgClose } from 'react-icons/cg';
 import DeedSoul from './components/Icons/DeedSoul';
-import { AiFillPlusCircle } from 'react-icons/ai';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { AiFillHeart } from 'react-icons/ai';
-import { FaBookmark } from 'react-icons/fa';
-import { FaRegBookmark } from 'react-icons/fa';
-// import { BsBookmark } from 'react-icons/bs';
-// import { BsBookmarkFill } from 'react-icons/bs';
+import { AiFillPlusCircle, AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
+// import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 
 import { API_SHAREWALL, STATIC_SHAREWALL_AVA } from '../../config/ajax-path';
 
@@ -36,6 +32,8 @@ import HeaderContext, {
 const fakeAvatarDetail =
     '眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾 / 眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾 / 眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾 / 眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾';
 const fakePrice = 3500;
+
+// div content-editable
 
 function ShareWallDetail(props) {
     // FIXME: 詳細寫出物件鍵值對才是正確寫法
@@ -66,13 +64,47 @@ function ShareWallDetail(props) {
     const { sharePostID } = useParams();
     const navigate = useNavigate();
 
+    const TimeTranslator = (timeDataString) => {
+        const TimestampCreatedAt = Date.parse(timeDataString);
+        const TimestampDifference = Date.now() - TimestampCreatedAt;
+
+        if (TimestampDifference < 5000) {
+            // 一分鐘 60000 ms
+            return '幾秒鐘前';
+        } else if (TimestampDifference < 60000) {
+            return '一分鐘內';
+        } else if (TimestampDifference < 3600000) {
+            // 一小時 3600000 ms
+            const minuteStr = Math.floor(TimestampDifference / 60000);
+            return `${minuteStr} 分鐘`;
+        } else if (TimestampDifference < 86400000) {
+            // 一天 86400000 ms
+            const hourStr = Math.floor(TimestampDifference / 3600000);
+            return `${hourStr} 小時`;
+        } else if (TimestampDifference < 604800000) {
+            // 一週 604800000 ms
+            const dayStr = Math.floor(TimestampDifference / 86400000);
+            return `${dayStr} 天`;
+        } else if (TimestampDifference < 2629800000) {
+            // 一月一律用 30.4375 (365.25 / 12) 天 2629800000 ms
+            const weekStr = Math.floor(TimestampDifference / 604800000);
+            return `${weekStr} 週`;
+        } else if (TimestampDifference < 31557600000) {
+            // 一年一律用 365.25 天 31557600000 ms
+            const monthStr = Math.floor(TimestampDifference / 2629800000);
+            return `${monthStr} 個月`;
+        } else {
+            return '一年以上';
+        }
+    };
+
     const axiosSharePostGET = async (sharePostID) => {
         const result = await axios.get(`${API_SHAREWALL}/${sharePostID}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
-        // console.log(result.data);
+        console.log(result.data);
         // 在這裡將 isLoading 切換為 false 以顯示文章內容
         setSharePostDetailData({ ...result.data, isLoading: false });
     };
@@ -94,6 +126,19 @@ function ShareWallDetail(props) {
         }
 
         return;
+    };
+
+    const handleCommentSubmit = () => {
+        if (sharePostComment.trim() === '') {
+            return Swal.fire({
+                title: '請輸入內容！',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        }
+        axiosSharePostCommentPOST();
     };
 
     const axiosSharePostCommentPOST = async () => {
@@ -137,16 +182,18 @@ function ShareWallDetail(props) {
         postResults: {
             account,
             share_post_title,
-            member_sid,
+            // member_sid,
             share_post_likes,
             share_post_collects,
             share_post_text,
+            authorProfileID,
         },
         postTagsResults,
         postCommentsResults,
         loginUserResults: {
-            id: loginID,
+            // id: loginID,
             account: loginAccount,
+            profileID,
             isLiked,
             isCollected,
         },
@@ -170,11 +217,17 @@ function ShareWallDetail(props) {
                         style={{ backgroundColor: theme.bgcMainDiv }}
                     >
                         <div className="col-lg-6 cpl-pcb-inner-avatar-area">
+                            {/* FIXME: 改成長手長腳測試 */}
                             <img
                                 src={`${STATIC_SHAREWALL_AVA}${sharePostID}.png`}
                                 alt=""
                                 className="cpl-pcb-avatar"
                             />
+                            {/* <img
+                                src={`http://localhost:3500/uploads/images/share/test-largest.svg`}
+                                alt=""
+                                className="cpl-pcb-avatar"
+                            /> */}
                             <div
                                 className="cpl-pcb-af-round"
                                 style={{
@@ -239,20 +292,20 @@ function ShareWallDetail(props) {
                                     {share_post_title ? share_post_title : ''}
                                 </p>
                                 <div className="cpl-pcb-ita-ta-inner-tags d-flex">
+                                    {/* FIXME: 要點擊標籤搜尋嗎？ */}
+                                    {/* FIXME: 測試用 標籤最大六字 */}
                                     {/* <span
                                         key={v.share_post_tag_sid}
-                                        className="cpl-pcb-ita-ta-ir-tad-item"
+                                        className="cpl-pcb-ita-ta-it-tag-item flex-shrink-0"
                                     >
-                                        #{v.share_post_tag_text}
+                                        #豬肉榮賣豬肉
                                     </span> */}
-                                    {/* FIXME: 要點擊標籤搜尋嗎？ */}
                                     {postTagsResults.map((v, i) => (
                                         <span
                                             key={v.share_post_tag_sid}
                                             className="cpl-pcb-ita-ta-it-tag-item flex-shrink-0"
                                         >
-                                            {/* FIXME: 測試用 標籤最大六字 */}
-                                            #豬肉榮賣豬肉
+                                            #{v.share_post_tag_text}
                                         </span>
                                     ))}
                                 </div>
@@ -260,11 +313,20 @@ function ShareWallDetail(props) {
                             <div className="cpl-pcb-ita-text-heading d-flex justify-content-between align-items-center">
                                 <div className="cpl-pcb-ita-th-inner-left d-flex align-items-center">
                                     <div className="cpl-pcb-ita-th-il-mh-area">
-                                        <img
-                                            className="cpl-pcb-ita-th-il-mh-memberhead"
-                                            src={`${STATIC_SHAREWALL_AVA}${member_sid}.png`}
-                                            alt=""
-                                        />
+                                        {/* FIXME: 測試條件 Render */}
+                                        {authorProfileID ? (
+                                            <img
+                                                className="cpl-pcb-ita-th-il-mh-memberhead"
+                                                src={`${STATIC_SHAREWALL_AVA}${authorProfileID}.png`}
+                                                alt=""
+                                            />
+                                        ) : (
+                                            <img
+                                                src={`http://localhost:3500/uploads/images/share/test-largest.svg`}
+                                                alt=""
+                                                className="cpl-pcb-ita-th-il-mh-memberhead"
+                                            />
+                                        )}
                                     </div>
                                     <p className="cpl-pcb-ita-th-il-account">
                                         {account}
@@ -454,6 +516,7 @@ function ShareWallDetail(props) {
                                 </div>
                             </div>
                             <div className="cpl-pcb-ita-text-content">
+                                {/* TABLE: 文章上限改成 168 字 */}
                                 {share_post_text}
                                 {/* TODO: 視情況加入社群分享功能 */}
                             </div>
@@ -502,6 +565,60 @@ function ShareWallDetail(props) {
                                         <span className="cpl-pcb-ita-ci-text">
                                             {v.share_post_comment_text}
                                         </span>
+                                        <div className="cpl-pcb-ita-ci-edit-area d-flex justify-content-between">
+                                            {TimeTranslator(v.created_at)}
+                                            {/* FIXME: 按下跳出編輯留言 */}
+                                            {v.comment_isEditable ? (
+                                                <div className="cpl-pcb-ita-ci-ea-right">
+                                                    <span className="cpl-pcb-ita-ci-ea-r-delete">
+                                                        刪除
+                                                    </span>
+                                                    <span
+                                                        className="cpl-pcb-ita-ci-ea-r-edit"
+                                                        onClick={() => {
+                                                            Swal.fire({
+                                                                title: '修改留言',
+                                                                html: `
+                                                            <input
+                                                                type="text"
+                                                                class="swal2-input" value=${v.share_post_comment_text} 
+                                                            />
+                                                        `,
+                                                                imageUrl:
+                                                                    OutlineSoul,
+                                                                imageHeight: 50,
+                                                                imageWidth: 50,
+                                                                confirmButtonText:
+                                                                    '確定修改',
+                                                                showDenyButton: true,
+                                                                denyButtonText:
+                                                                    '還是算了',
+                                                            }).then(
+                                                                (result) => {
+                                                                    if (
+                                                                        result.isConfirmed
+                                                                    ) {
+                                                                        console.log(
+                                                                            '改了改了'
+                                                                        );
+                                                                    } else if (
+                                                                        result.isDenied
+                                                                    ) {
+                                                                        console.log(
+                                                                            '不要不要'
+                                                                        );
+                                                                    }
+                                                                }
+                                                            );
+                                                        }}
+                                                    >
+                                                        編輯
+                                                    </span>
+                                                </div>
+                                            ) : (
+                                                ''
+                                            )}
+                                        </div>
                                     </div>
                                 ))}
                             </OverlayScrollbarsComponent>
@@ -510,14 +627,18 @@ function ShareWallDetail(props) {
                                     {/* FIXME: 找不到圖片會報錯 */}
                                     {/* 要有個欄位存預設形象 */}
                                     {/* 資料表沒有的時候給預設 */}
-                                    {loginID ? (
+                                    {profileID ? (
                                         <img
                                             className="cpl-pcb-ita-tca-mh-memberhead"
-                                            src={`${STATIC_SHAREWALL_AVA}${loginID}.png`}
+                                            src={`${STATIC_SHAREWALL_AVA}${profileID}.png`}
                                             alt=""
                                         />
                                     ) : (
-                                        ''
+                                        <img
+                                            src={`http://localhost:3500/uploads/images/share/test-largest.svg`}
+                                            alt=""
+                                            className="cpl-pcb-ita-tca-mh-memberhead"
+                                        />
                                     )}
                                 </div>
                                 <div className="d-flex align-items-center cpl-pcb-ita-tca-comment-area">
@@ -562,7 +683,7 @@ function ShareWallDetail(props) {
                                                             showConfirmButton: false,
                                                         });
                                                     }
-                                                    axiosSharePostCommentPOST();
+                                                    handleCommentSubmit();
                                                     setEnterCounter(0);
                                                     return setsharePostComment(
                                                         ''

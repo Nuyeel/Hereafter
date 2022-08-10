@@ -1,10 +1,12 @@
 import './showcase.css';
 import { useContext, useState, useEffect } from 'react';
 import ThemeContext from '../../../context/ThemeContext/ThemeContext';
-import styled from '@emotion/styled';
+//import styled from '@emotion/styled';
 import { Showcase_Data } from '../../../config/ajax-path';
 import axios from 'axios';
 import AvatarCard from './AvatarCard';
+//import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 function Showcase() {
     const { theme } = useContext(ThemeContext);
@@ -20,10 +22,15 @@ function Showcase() {
         }
     }, [isLoading]);
     const getAvatarData = async () => {
-        const postData = { id: 19960409 };
-        const r = await axios.post(Showcase_Data, postData);
-        setAvatarData(r.data.data);
-        console.log(r.data);
+        const member = JSON.parse(localStorage.getItem('auth'));
+
+        if (member !== null) {
+            const postData = { id: member['sid'] };
+            const r = await axios.post(Showcase_Data, postData);
+            setAvatarData(r.data.data);
+        } else {
+            console.log('Meow 未登入');
+        }
     };
 
     useEffect(() => {
@@ -32,19 +39,68 @@ function Showcase() {
         getAvatarData();
     }, []);
 
-    return (
-        <>
-            <div
-                className="container showcase"
-                style={{
-                    color: theme.cHeader,
-                }}
-            >
-                {avatarData.map((v, i) => {
-                    return <AvatarCard theme={theme} key={i} avatarinfo={v} />;
-                })}
-            </div>
-        </>
-    );
+    const [mobile, setMobile] = useState('mobile');
+
+    const handleRWD = () => {
+        if (window.innerWidth > 1200) setMobile('PC');
+        else setMobile('mobile');
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', handleRWD);
+        handleRWD();
+
+        return () => {
+            window.removeEventListener('resize', handleRWD);
+        };
+    }, []);
+    if (mobile === 'PC') {
+        return (
+            <>
+                <div
+                    className="container showcase"
+                    style={{
+                        color: theme.cHeader,
+                    }}
+                >
+                    <Carousel
+                        showStatus={false}
+                        autoPlay={false}
+                        centerMode={true}
+                        showArrows={false}
+                        emulateTouch={false}
+                        showThumbs={false}
+                    >
+                        {avatarData.map((v, i) => {
+                            return (
+                                <AvatarCard
+                                    theme={theme}
+                                    key={i}
+                                    avatarinfo={v}
+                                />
+                            );
+                        })}
+                    </Carousel>
+                </div>
+            </>
+        );
+    } else {
+        return (
+            <>
+                <div
+                    className="container showcase"
+                    style={{
+                        color: theme.cHeader,
+                    }}
+                >
+                    {avatarData.map((v, i) => {
+                        return (
+                            <AvatarCard theme={theme} key={i} avatarinfo={v} />
+                        );
+                    })}
+                </div>
+            </>
+        );
+    }
 }
 export default Showcase;

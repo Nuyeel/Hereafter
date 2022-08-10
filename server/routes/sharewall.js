@@ -94,116 +94,106 @@ const SqlString = require('sqlstring');
 // FIXME: 現在要加上會員狀態 預設 作者 或收藏
 
 // ASK: 上一頁時 怎麼保存頁面狀態
-router
-    .route('/')
-    .get(async (req, res) => {
-        // 檢查是不是有篩選條件
-        // if (req.query.isAuthor) {
-        //     console.log(req.query.isAuthor);
-        // } else if (req.query.isCollector) {
-        //     console.log(req.query.isCollector);
-        // }
+router.route('/').get(async (req, res) => {
+    // 檢查是不是有篩選條件
+    // if (req.query.isAuthor) {
+    //     console.log(req.query.isAuthor);
+    // } else if (req.query.isCollector) {
+    //     console.log(req.query.isCollector);
+    // }
 
-        if (req.query.searchtag) {
-            // 如果來的是標籤做標籤搜尋
-            // console.log(req.query.searchtag);
+    if (req.query.searchtag) {
+        // 如果來的是標籤做標籤搜尋
+        // console.log(req.query.searchtag);
 
-            // console.log(res.locals.loginUser); // 取得 token 內容
+        // console.log(res.locals.loginUser); // 取得 token 內容
 
-            let searchtagString = '';
-            if (!Array.isArray(req.query.searchtag)) {
-                searchtagString = SqlString.escape(req.query.searchtag);
-            } else {
-                for (
-                    let i = 0, strLength = req.query.searchtag.length;
-                    i < strLength;
-                    i++
-                ) {
-                    if (i !== 0) {
-                        searchtagString += ', ';
-                    }
-                    searchtagString += SqlString.escape(req.query.searchtag[i]);
+        let searchtagString = '';
+        if (!Array.isArray(req.query.searchtag)) {
+            searchtagString = SqlString.escape(req.query.searchtag);
+        } else {
+            for (
+                let i = 0, strLength = req.query.searchtag.length;
+                i < strLength;
+                i++
+            ) {
+                if (i !== 0) {
+                    searchtagString += ', ';
                 }
+                searchtagString += SqlString.escape(req.query.searchtag[i]);
             }
-            // console.log(searchtagString);
+        }
+        // console.log(searchtagString);
 
-            const $tag_sql = ` 
+        const $tag_sql = ` 
                 SELECT share_post_tag_sid 
                 FROM share_avatar_tags 
                 WHERE share_post_tag_text 
                 IN (${searchtagString}) 
             `;
 
-            const [tag_results] = await db.query($tag_sql);
-            // console.log(tag_results);
+        const [tag_results] = await db.query($tag_sql);
+        // console.log(tag_results);
 
-            if (!tag_results.length) {
-                // 沒有匹配的標籤
-                return res.json([]);
+        if (!tag_results.length) {
+            // 沒有匹配的標籤
+            return res.json([]);
+        }
+
+        if (
+            Array.isArray(req.query.searchtag) &&
+            tag_results.length !== req.query.searchtag.length
+        ) {
+            // 具有多個搜尋標籤而且標籤對應結果與搜尋標籤數量對不上
+            // 加一個假的項目給 tag_results
+            // 由於沒有任何標籤 sid 為 0 會自動搜不到結果
+            tag_results.push({ share_post_tag_sid: 0 });
+        }
+
+        // TODO: 進行標籤搜尋
+        // DONE: 標籤搜尋 OK
+        let $searchtag_sql = ` SELECT t1.* FROM `;
+        let tableIndex = 1;
+        for (let i = 0, strLength = tag_results.length; i < strLength; i++) {
+            if (i !== 0) {
+                $searchtag_sql += ` JOIN `;
             }
-
-            if (
-                Array.isArray(req.query.searchtag) &&
-                tag_results.length !== req.query.searchtag.length
-            ) {
-                // 具有多個搜尋標籤而且標籤對應結果與搜尋標籤數量對不上
-                // 加一個假的項目給 tag_results
-                // 由於沒有任何標籤 sid 為 0 會自動搜不到結果
-                tag_results.push({ share_post_tag_sid: 0 });
-            }
-
-            // TODO: 進行標籤搜尋
-            // DONE: 標籤搜尋 OK
-            let $searchtag_sql = ` SELECT t1.* FROM `;
-            let tableIndex = 1;
-            for (
-                let i = 0, strLength = tag_results.length;
-                i < strLength;
-                i++
-            ) {
-                if (i !== 0) {
-                    $searchtag_sql += ` JOIN `;
-                }
-                $searchtag_sql += ` 
+            $searchtag_sql += ` 
                     (SELECT share_post_sid 
                     FROM share_avatar_posts_to_tags 
                     WHERE share_post_tag_sid = ${tag_results[i].share_post_tag_sid}) t${tableIndex} 
                 `;
-                if (i !== 0) {
-                    $searchtag_sql += ` 
+            if (i !== 0) {
+                $searchtag_sql += ` 
                         ON t${
                             tableIndex - 1
                         }.share_post_sid=t${tableIndex}.share_post_sid 
                     `;
-                }
-                tableIndex++;
             }
-            // console.log($searchtag_sql);
-            const [post_results] = await db.query($searchtag_sql);
-            // console.log(post_results);
+            tableIndex++;
+        }
+        // console.log($searchtag_sql);
+        const [post_results] = await db.query($searchtag_sql);
+        // console.log(post_results);
 
-            if (!post_results.length) {
-                // 沒有匹配的貼文
-                return res.json([]);
+        if (!post_results.length) {
+            // 沒有匹配的貼文
+            return res.json([]);
+        }
+
+        // TODO: 製作搜尋字串
+        // DONE: 標籤搜尋 OK
+        let searchPostsString = '';
+        for (let i = 0, strLength = post_results.length; i < strLength; i++) {
+            if (i !== 0) {
+                searchPostsString += ', ';
             }
+            searchPostsString += `${post_results[i].share_post_sid}`;
+        }
+        // console.log(searchPostsString);
 
-            // TODO: 製作搜尋字串
-            // DONE: 標籤搜尋 OK
-            let searchPostsString = '';
-            for (
-                let i = 0, strLength = post_results.length;
-                i < strLength;
-                i++
-            ) {
-                if (i !== 0) {
-                    searchPostsString += ', ';
-                }
-                searchPostsString += `${post_results[i].share_post_sid}`;
-            }
-            // console.log(searchPostsString);
-
-            // TODO: 製作三態搜尋
-            let $sql = ` 
+        // TODO: 製作三態搜尋
+        let $sql = ` 
                 SELECT * 
                 FROM share_avatar_posts s 
                 JOIN member m 
@@ -212,12 +202,109 @@ router
                 IN (${searchPostsString}) 
             `;
 
+        // 安全起見檔一下
+        if (res.locals.loginUser) {
+            if (req.query.isAuthor && req.query.isAuthor === 'true') {
+                // console.log('作者');
+                $sql += ` 
+                        AND m.sid = ${res.locals.loginUser.id} 
+                    `;
+            } else if (
+                req.query.isCollector &&
+                req.query.isCollector === 'true'
+            ) {
+                // TODO: 這比較難 要篩選收藏文章
+                // console.log('收集');
+                const $collect_sql = ` 
+                        SELECT share_post_sid 
+                        FROM share_avatar_collects 
+                        WHERE member_sid = ? 
+                    `;
+
+                const [collect_results] = await db.query($collect_sql, [
+                    res.locals.loginUser.id,
+                ]);
+
+                // console.log(collect_results);
+
+                let collectString = '';
+                for (
+                    let i = 0, strLength = collect_results.length;
+                    i < strLength;
+                    i++
+                ) {
+                    if (i !== 0) {
+                        collectString += ', ';
+                    }
+                    collectString += collect_results[i].share_post_sid;
+                }
+
+                // console.log(collectString);
+                $sql += ` AND share_post_sid IN (${collectString}) `;
+            }
+        }
+
+        $sql += ` ORDER BY created_at DESC `;
+
+        // console.log($sql);
+        const [results] = await db.query($sql);
+
+        // TODO: 篩選是否按讚
+        // DONE: 登入才需要篩選
+        if (res.locals.loginUser) {
+            const $like_sql = ` 
+                    SELECT share_post_sid
+                    FROM share_avatar_likes 
+                    WHERE member_sid = ? 
+                `;
+
+            const [like_results] = await db.query($like_sql, [
+                res.locals.loginUser.id,
+            ]);
+            // console.log(like_results);
+
+            // TODO: 加上是否喜歡的欄位
+            // DONE: 先不要花時間去想 JOIN
+            results.forEach((cardItem) => {
+                cardItem.share_post_isliked = false; // 初始化
+                for (let i = 0; i < like_results.length; i++) {
+                    if (
+                        cardItem.share_post_sid ===
+                        like_results[i].share_post_sid
+                    ) {
+                        cardItem.share_post_isliked = true;
+                    }
+                }
+            });
+        }
+        // console.log(results);
+
+        res.json(results);
+    } else {
+        // 如果來的是純文字做標題搜尋或全搜尋
+        // sql 前後多留空 多空不會錯 少空會錯
+        // FIXME: 處理跳脫
+        // DONE: 跳脫 OK
+        // TODO: 製作三態搜尋
+
+        if (req.query.search) {
+            const escapeString = SqlString.escape(req.query.search);
+            const likeString = `'%${escapeString.slice(1, -1)}%'`;
+            // console.log(likeString);
+            let $search_sql = ` 
+                    SELECT * 
+                    FROM share_avatar_posts s 
+                    JOIN member m 
+                    ON s.member_sid = m.sid 
+                    WHERE share_post_title 
+                    LIKE ${likeString} 
+                `;
+
             // 安全起見檔一下
             if (res.locals.loginUser) {
                 if (req.query.isAuthor && req.query.isAuthor === 'true') {
-                    // console.log('作者');
-                    $sql += ` 
-                        AND m.sid = ${res.locals.loginUser.id} 
+                    $search_sql += ` 
+                    AND m.sid = ${res.locals.loginUser.id} 
                     `;
                 } else if (
                     req.query.isCollector &&
@@ -226,10 +313,10 @@ router
                     // TODO: 這比較難 要篩選收藏文章
                     // console.log('收集');
                     const $collect_sql = ` 
-                        SELECT share_post_sid 
-                        FROM share_avatar_collects 
-                        WHERE member_sid = ? 
-                    `;
+                            SELECT share_post_sid 
+                            FROM share_avatar_collects 
+                            WHERE member_sid = ? 
+                        `;
 
                     const [collect_results] = await db.query($collect_sql, [
                         res.locals.loginUser.id,
@@ -250,23 +337,23 @@ router
                     }
 
                     // console.log(collectString);
-                    $sql += ` AND share_post_sid IN (${collectString}) `;
+                    $search_sql += ` AND share_post_sid IN (${collectString}) `;
                 }
             }
 
-            $sql += ` ORDER BY created_at DESC `;
+            $search_sql += ` ORDER BY created_at DESC `;
 
             // console.log($sql);
-            const [results] = await db.query($sql);
+            const [results] = await db.query($search_sql);
 
             // TODO: 篩選是否按讚
             // DONE: 登入才需要篩選
             if (res.locals.loginUser) {
                 const $like_sql = ` 
-                    SELECT share_post_sid
-                    FROM share_avatar_likes 
-                    WHERE member_sid = ? 
-                `;
+                        SELECT share_post_sid
+                        FROM share_avatar_likes 
+                        WHERE member_sid = ? 
+                    `;
 
                 const [like_results] = await db.query($like_sql, [
                     res.locals.loginUser.id,
@@ -287,55 +374,71 @@ router
                     }
                 });
             }
-            // console.log(results);
 
             res.json(results);
         } else {
-            // 如果來的是純文字做標題搜尋或全搜尋
-            // sql 前後多留空 多空不會錯 少空會錯
-            // FIXME: 處理跳脫
-            // DONE: 跳脫 OK
-            let formatSql;
-            if (req.query.search) {
-                const escapeString = SqlString.escape(req.query.search);
-                const likeString = `'%${escapeString.slice(1, -1)}%'`;
-                // console.log(likeString);
-                const $search_sql = ` 
+            let $search_sql = ` 
                     SELECT * 
                     FROM share_avatar_posts s 
                     JOIN member m 
                     ON s.member_sid = m.sid 
-                    WHERE share_post_title 
-                    LIKE ${likeString} 
-                    ORDER BY created_at DESC 
                 `;
 
-                // console.log($search_sql);
-                formatSql = $search_sql;
-            } else {
-                const $search_sql = ` 
-                    SELECT * 
-                    FROM share_avatar_posts s 
-                    JOIN member m 
-                    ON s.member_sid = m.sid 
-                    ORDER BY created_at DESC 
-                `;
+            // 安全起見檔一下
+            if (res.locals.loginUser) {
+                if (req.query.isAuthor && req.query.isAuthor === 'true') {
+                    // console.log('作者');
+                    $search_sql += ` 
+                        AND m.sid = ${res.locals.loginUser.id} 
+                    `;
+                } else if (
+                    req.query.isCollector &&
+                    req.query.isCollector === 'true'
+                ) {
+                    // TODO: 這比較難 要篩選收藏文章
+                    // console.log('收集');
+                    const $collect_sql = ` 
+                            SELECT share_post_sid 
+                            FROM share_avatar_collects 
+                            WHERE member_sid = ? 
+                        `;
 
-                // formatSql = SqlString.format($search_sql);
-                formatSql = $search_sql;
+                    const [collect_results] = await db.query($collect_sql, [
+                        res.locals.loginUser.id,
+                    ]);
+
+                    // console.log(collect_results);
+
+                    let collectString = '';
+                    for (
+                        let i = 0, strLength = collect_results.length;
+                        i < strLength;
+                        i++
+                    ) {
+                        if (i !== 0) {
+                            collectString += ', ';
+                        }
+                        collectString += collect_results[i].share_post_sid;
+                    }
+
+                    // console.log(collectString);
+                    $search_sql += ` AND share_post_sid IN (${collectString}) `;
+                }
             }
-            // console.log(formatSql);
-            const [results] = await db.query(formatSql);
-            // console.log(results);
+
+            $search_sql += ` ORDER BY created_at DESC `;
+
+            // console.log($sql);
+            const [results] = await db.query($search_sql);
 
             // TODO: 篩選是否按讚
             // DONE: 登入才需要篩選
             if (res.locals.loginUser) {
                 const $like_sql = ` 
-                    SELECT * 
-                    FROM share_avatar_likes 
-                    WHERE member_sid = ? 
-                `;
+                        SELECT share_post_sid
+                        FROM share_avatar_likes 
+                        WHERE member_sid = ? 
+                    `;
 
                 const [like_results] = await db.query($like_sql, [
                     res.locals.loginUser.id,
@@ -352,100 +455,353 @@ router
                             like_results[i].share_post_sid
                         ) {
                             cardItem.share_post_isliked = true;
-                            break;
                         }
                     }
                 });
             }
-            // console.log(results);
 
             res.json(results);
         }
-    })
-    .post(async (req, res) => {
-        // TODO: 改成 GET 要資料
-        // 之後每次捲動都必須繼承條件來要
-        // ASK: 德醬
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // FIXME: 這個改成 GET
-        // 用 POST 方法的話會取得無限捲動的文章
-        // FIXME: 先用 Postman 測試
-        // console.log(req.body.num);
-        const pageNumStart = Number(req.body.num);
-        const pageNumEnd = pageNumStart + 10; // 目前一次十筆
+    }
+});
+// .post(async (req, res) => {
+//     // TODO: 改成 GET 要資料
+//     // 之後每次捲動都必須繼承條件來要
+//     // ASK: 德醬
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // FIXME: 這個改成 GET
+//     // 用 POST 方法的話會取得無限捲動的文章
+//     // FIXME: 先用 Postman 測試
+//     // console.log(req.body.num);
+//     const pageNumStart = Number(req.body.num);
+//     const pageNumEnd = pageNumStart + 10; // 目前一次十筆
 
-        // FIXME: 只拿需要的資料 先全拿
-        // 寫法一：
-        // const $sql =
-        // ' SELECT * FROM `share_avatar_posts` s JOIN `member` m ON s.member_sid = m.sid ORDER BY created_at DESC LIMIT ?, ? ';
-        // const [results] = await db.query($sql, [pageNumStart, pageNumEnd]);
-        // res.json(results);
-        // DONE: 目前可以成功取得貼文 剩下 setState
-        // DONE: setState() 完成
+//     // FIXME: 只拿需要的資料 先全拿
+//     // 寫法一：
+//     // const $sql =
+//     // ' SELECT * FROM `share_avatar_posts` s JOIN `member` m ON s.member_sid = m.sid ORDER BY created_at DESC LIMIT ?, ? ';
+//     // const [results] = await db.query($sql, [pageNumStart, pageNumEnd]);
+//     // res.json(results);
+//     // DONE: 目前可以成功取得貼文 剩下 setState
+//     // DONE: setState() 完成
 
-        // 寫法二：
-        // 先做出 formatSql
-        const $sql = ` 
-            SELECT * 
-            FROM share_avatar_posts s 
-            JOIN member m 
-            ON s.member_sid = m.sid 
-            ORDER BY created_at DESC 
-            LIMIT ?, ? 
+//     // 寫法二：
+//     // 先做出 formatSql
+//     const $sql = `
+//         SELECT *
+//         FROM share_avatar_posts s
+//         JOIN member m
+//         ON s.member_sid = m.sid
+//         ORDER BY created_at DESC
+//         LIMIT ?, ?
+//     `;
+
+//     const formatSql = SqlString.format($sql, [pageNumStart, pageNumEnd]);
+//     // 這樣寫的好處是可以 console.log
+//     // console.log(formatSql);
+//     const [results] = await db.query(formatSql);
+//     // console.log(results);
+
+//     // TODO: 篩選是否按讚
+//     // DONE: 登入才需要篩選
+//     if (res.locals.loginUser) {
+//         const $like_sql = `
+//         SELECT *
+//         FROM share_avatar_likes
+//         WHERE member_sid = ?
+//         `;
+
+//         const [like_results] = await db.query($like_sql, [
+//             res.locals.loginUser.id,
+//         ]);
+//         // console.log(like_results);
+
+//         // TODO: 加上是否喜歡的欄位
+//         // DONE: 先不要花時間去想 JOIN
+//         results.forEach((cardItem) => {
+//             cardItem.share_post_isliked = false; // 初始化
+//             for (let i = 0; i < like_results.length; i++) {
+//                 if (
+//                     cardItem.share_post_sid ===
+//                     like_results[i].share_post_sid
+//                 ) {
+//                     cardItem.share_post_isliked = true;
+//                     break;
+//                 }
+//             }
+//         });
+//     }
+//     // console.log(results);
+
+//     res.json(results);
+// });
+
+// DONE: 撰文
+router.route('/post').post(async (req, res) => {
+    let output = {
+        postCreateResult: false,
+        tagsCreateResult: false,
+        postsToTagsResult: false,
+    };
+
+    // console.log(req.body);
+
+    if (!res.locals.loginUser) {
+        return res.send('請先登入');
+    }
+
+    // TODO: 統一跳脫
+    const sharePostAvatarSid = SqlString.escape(req.body.sharePostAvatarSid);
+    const sharePostTitle = SqlString.escape(req.body.sharePostTitle);
+    const sharePostTag_1 = SqlString.escape(req.body.sharePostTag_1);
+    const sharePostTag_2 = SqlString.escape(req.body.sharePostTag_2);
+    const sharePostTag_3 = SqlString.escape(req.body.sharePostTag_3);
+    const sharePostTextarea = SqlString.escape(req.body.sharePostTextarea);
+
+    // if (sharePostAvatarSid.indexOf('\\') !== -1) {
+    //     console.log('sharePostAvatarSid 被跳脫了');
+    //     return res.json('跳脫');
+    // }
+
+    if (isNaN(Number(sharePostAvatarSid))) {
+        console.log('sharePostAvatarSid 不是數字');
+        return res.json('請不要想要攻擊');
+    }
+
+    if (sharePostTitle.indexOf('\\') !== -1) {
+        console.log('sharePostTitle 被跳脫了');
+        return res.json('跳脫');
+    }
+
+    if (sharePostTag_1.indexOf('\\') !== -1) {
+        console.log('sharePostTag_1 被跳脫了');
+        return res.json('跳脫');
+    }
+
+    if (sharePostTag_2.indexOf('\\') !== -1) {
+        console.log('sharePostTag_2 被跳脫了');
+        return res.json('跳脫');
+    }
+
+    if (sharePostTag_3.indexOf('\\') !== -1) {
+        console.log('sharePostTag_3 被跳脫了');
+        return res.json('跳脫');
+    }
+
+    // FIXME: 這樣英文不能有 ' 看狀況決定修不修
+    if (sharePostTextarea.indexOf('\\') !== -1) {
+        console.log('sharePostTextarea 被跳脫了');
+        return res.json('跳脫');
+    }
+
+    if (sharePostTitle.length > 6) {
+        return res.send('來生形象標題太長');
+    }
+
+    if (sharePostTag_1.length > 6) {
+        return res.send('標籤一太長');
+    }
+
+    if (sharePostTag_2.length > 6) {
+        return res.send('標籤二太長');
+    }
+
+    if (sharePostTag_3.length > 6) {
+        return res.send('標籤三太長');
+    }
+
+    if (sharePostTextarea.length === 0) {
+        return res.send('文章是空的啊');
+    }
+
+    if (sharePostTextarea.length > 200) {
+        return res.send('文章太長');
+    }
+
+    // TODO: 新增文章
+    const $post_create_sql = ` 
+        INSERT 
+        INTO share_avatar_posts ( 
+            member_sid, avatar_sid, share_post_title, share_post_text, share_post_likes, share_post_collects, created_at
+        ) VALUES (
+            ?, ?, ?, ?,
+            0, 0, NOW()
+        ) 
+    `;
+    const formatSql = SqlString.format($post_create_sql, [
+        res.locals.loginUser.id,
+        Number(req.body.sharePostAvatarSid),
+        req.body.sharePostTitle,
+        req.body.sharePostTextarea,
+    ]);
+
+    // console.log(formatSql);
+    const [post_create_results] = await db.execute(formatSql);
+    // console.log(post_create_results);
+
+    if (!post_create_results.affectedRows) {
+        return res.send('寫入文章失敗');
+    }
+
+    output.postCreateResult = true;
+
+    // DONE: 新增標籤與否
+    let tag_1_ID = 0; // 初始化
+    let tag_2_ID = 0; // 初始化
+    let tag_3_ID = 0; // 初始化
+
+    // Tag_1
+    // console.log('tag 1', sharePostTag_1);
+    if (req.body.sharePostTag_1 !== '') {
+        const $tag_1_isSet_sql = ` 
+            SELECT share_post_tag_sid 
+            FROM share_avatar_tags 
+            WHERE share_post_tag_text = ${sharePostTag_1} 
         `;
+        const [tag_1_sid_isSet_result] = await db.query($tag_1_isSet_sql);
 
-        const formatSql = SqlString.format($sql, [pageNumStart, pageNumEnd]);
-        // 這樣寫的好處是可以 console.log
-        // console.log(formatSql);
-        const [results] = await db.query(formatSql);
-        // console.log(results);
-
-        // TODO: 篩選是否按讚
-        // DONE: 登入才需要篩選
-        if (res.locals.loginUser) {
-            const $like_sql = ` 
-            SELECT * 
-            FROM share_avatar_likes 
-            WHERE member_sid = ? 
+        // console.log(tag_1_sid_isSet_result);
+        if (!tag_1_sid_isSet_result.length) {
+            // 不存在就新增
+            const $tag_create_sql = ` 
+                INSERT 
+                INTO share_avatar_tags ( 
+                    share_post_tag_text, share_post_tag_search_times
+                ) VALUES (
+                    ${sharePostTag_1}, 0
+                ) 
             `;
 
-            const [like_results] = await db.query($like_sql, [
-                res.locals.loginUser.id,
-            ]);
-            // console.log(like_results);
+            const [tag_create_result] = await db.execute($tag_create_sql);
 
-            // TODO: 加上是否喜歡的欄位
-            // DONE: 先不要花時間去想 JOIN
-            results.forEach((cardItem) => {
-                cardItem.share_post_isliked = false; // 初始化
-                for (let i = 0; i < like_results.length; i++) {
-                    if (
-                        cardItem.share_post_sid ===
-                        like_results[i].share_post_sid
-                    ) {
-                        cardItem.share_post_isliked = true;
-                        break;
-                    }
-                }
-            });
+            if (!tag_create_result.affectedRows) {
+                return res.send('標籤一新增失敗');
+            }
+
+            tag_1_ID = tag_create_result.insertId;
         }
-        // console.log(results);
+    }
 
-        res.json(results);
-    });
+    // Tag 2
+    // console.log('tag 2', sharePostTag_2);
+    if (req.body.sharePostTag_2 !== '') {
+        const $tag_2_isSet_sql = ` 
+            SELECT share_post_tag_sid 
+            FROM share_avatar_tags 
+            WHERE share_post_tag_text = ${sharePostTag_2} 
+        `;
+        const [tag_2_sid_isSet_result] = await db.query($tag_2_isSet_sql);
+
+        // console.log(tag_2_sid_isSet_result);
+        if (!tag_2_sid_isSet_result.length) {
+            // 不存在就新增
+            const $tag_create_sql = ` 
+                INSERT 
+                INTO share_avatar_tags ( 
+                    share_post_tag_text, share_post_tag_search_times
+                ) VALUES (
+                    ${sharePostTag_2}, 0
+                ) 
+            `;
+
+            const [tag_create_result] = await db.execute($tag_create_sql);
+
+            if (!tag_create_result.affectedRows) {
+                return res.send('標籤二新增失敗');
+            }
+
+            tag_2_ID = tag_create_result.insertId;
+        }
+    }
+
+    // Tag 3
+    // console.log('tag 3', sharePostTag_3);
+    if (req.body.sharePostTag_3 !== '') {
+        const $tag_3_isSet_sql = ` 
+            SELECT share_post_tag_sid 
+            FROM share_avatar_tags 
+            WHERE share_post_tag_text = ${sharePostTag_3} 
+        `;
+        const [tag_3_sid_isSet_result] = await db.query($tag_3_isSet_sql);
+
+        // console.log(tag_3_sid_isSet_result);
+        if (!tag_3_sid_isSet_result.length) {
+            // 不存在就新增
+            const $tag_create_sql = ` 
+                INSERT 
+                INTO share_avatar_tags ( 
+                    share_post_tag_text, share_post_tag_search_times
+                ) VALUES (
+                    ${sharePostTag_3}, 0
+                ) 
+            `;
+
+            const [tag_create_result] = await db.execute($tag_create_sql);
+
+            if (!tag_create_result.affectedRows) {
+                return res.send('標籤三新增失敗');
+            }
+
+            tag_3_ID = tag_create_result.insertId;
+        }
+    }
+
+    output.tagsCreateResult = true;
+
+    // TODO: 處理文章標籤對應
+    // 首先要取得剛剛新增的文章 sid
+    const postID = post_create_results.insertId;
+
+    let tagsArray = [];
+
+    if (tag_1_ID !== 0) {
+        tagsArray.push(tag_1_ID);
+    }
+
+    if (tag_2_ID !== 0) {
+        tagsArray.push(tag_2_ID);
+    }
+
+    if (tag_3_ID !== 0) {
+        tagsArray.push(tag_3_ID);
+    }
+
+    for (let i = 0; i < tagsArray.length; i++) {
+        const $posts_to_tags_create_sql = ` 
+            INSERT 
+            INTO share_avatar_posts_to_tags ( 
+                share_post_sid, share_post_tag_sid 
+            ) VALUES (
+                ${postID}, ${tagsArray[i]}
+            )  
+        `;
+
+        const [posts_to_tags_create_result] = await db.execute(
+            $posts_to_tags_create_sql
+        );
+
+        if (posts_to_tags_create_result.affectedRows !== 1) {
+            return res.json('新增標籤對應文章時出錯啦');
+        }
+    }
+
+    output.postsToTagsResult = true;
+
+    res.json(output);
+});
 
 router.route('/:sharepostID').get(async (req, res) => {
     const sharepostID = Number(req.params.sharepostID);
@@ -464,6 +820,7 @@ router.route('/:sharepostID').get(async (req, res) => {
         loginUserResults: {
             id: 0, // 預設值 沒有 sid 是 0 的會員
             account: '',
+            profileID: null, // 其實 0 也可以
             isLiked: false, // 預設沒有按讚
             isCollected: false, // 預設沒有收藏
         },
@@ -480,6 +837,21 @@ router.route('/:sharepostID').get(async (req, res) => {
 
     const [[post_results]] = await db.query($post_sql, [sharepostID]);
     results.postResults = post_results;
+
+    // 取得發布此篇貼文的會員頭貼
+    const $author_profile_sql = ` 
+        SELECT profile_picture 
+        FROM member 
+        WHERE sid = ?
+    `;
+
+    // 解構賦值同時改名
+    const [[{ profile_picture: author_profile_result }]] = await db.query(
+        $author_profile_sql,
+        [post_results.sid]
+    );
+
+    results.postResults.authorProfileID = author_profile_result;
 
     // 藉由文章編號取得內含所有標籤中文陣列
     const $post_tags_sql = ` 
@@ -498,7 +870,7 @@ router.route('/:sharepostID').get(async (req, res) => {
     // 取得評論內容並按照留言時間排序
     // FIXME: 如果有編輯過要多顯示已編輯？
     const $post_comments_sql = ` 
-        SELECT * 
+        SELECT sac.*, m.account 
         FROM share_avatar_comments sac
         JOIN member m
         ON sac.member_sid = m.sid
@@ -509,6 +881,19 @@ router.route('/:sharepostID').get(async (req, res) => {
     const [post_comments_results] = await db.query($post_comments_sql, [
         sharepostID,
     ]);
+
+    if (res.locals.loginUser) {
+        // 加上是否可刪除的屬性 有登入才給
+        post_comments_results.forEach((commentItem) => {
+            commentItem.comment_isEditable = false; // 初始化
+            for (let i = 0; i < post_comments_results.length; i++) {
+                if (commentItem.member_sid === res.locals.loginUser.id) {
+                    commentItem.comment_isEditable = true;
+                }
+            }
+        });
+    }
+    // console.log(post_comments_results);
     results.postCommentsResults = post_comments_results;
 
     // 取得現在登入會員相關狀態 是否收藏 是否按讚 以及頭像 為登入要有預設圖示
@@ -518,6 +903,22 @@ router.route('/:sharepostID').get(async (req, res) => {
         // console.log(res.locals.loginUser);
         results.loginUserResults.id = res.locals.loginUser.id;
         results.loginUserResults.account = res.locals.loginUser.account;
+
+        // 取得此時登入會員的大頭貼 SID
+        const $member_profile_sql = ` 
+            SELECT profile_picture 
+            FROM member 
+            WHERE sid = ?
+        `;
+
+        // 解構賦值同時改名
+        const [[{ profile_picture: member_profile_result }]] = await db.query(
+            $member_profile_sql,
+            [res.locals.loginUser.id]
+        );
+
+        // console.log(member_profile_result);
+        results.loginUserResults.profileID = member_profile_result;
 
         // 進行是否按讚確認
         const $post_isliked_sql = ` 
@@ -683,6 +1084,22 @@ router.route('/:sharepostID/:actionType?').get(async (req, res) => {
 
         const [like_results] = await db.execute(formatSql);
         // console.log(like_results);
+
+        // DONE: 去文章資料對喜歡數 + 1
+        const $post_like_update_sql = ` 
+            UPDATE share_avatar_posts 
+            SET share_post_likes = share_post_likes + 1 
+            WHERE share_post_sid = ${sharepostID}
+        `;
+
+        const [post_like_update_results] = await db.execute(
+            $post_like_update_sql
+        );
+
+        if (post_like_update_results.affectedRows !== 1) {
+            return res.send('按讚數加一出錯');
+        }
+
         return res.json(like_results);
     }
 
@@ -701,6 +1118,22 @@ router.route('/:sharepostID/:actionType?').get(async (req, res) => {
 
         const [dislike_results] = await db.execute(formatSql);
         // console.log(dislike_results);
+
+        // DONE: 去文章資料對喜歡數 - 1
+        const $post_dislike_update_sql = ` 
+            UPDATE share_avatar_posts 
+            SET share_post_likes = share_post_likes - 1 
+            WHERE share_post_sid = ${sharepostID}
+        `;
+
+        const [post_dislike_update_results] = await db.execute(
+            $post_dislike_update_sql
+        );
+
+        if (post_dislike_update_results.affectedRows !== 1) {
+            return res.send('按讚數減一出錯');
+        }
+
         return res.json(dislike_results);
     }
 
@@ -722,17 +1155,33 @@ router.route('/:sharepostID/:actionType?').get(async (req, res) => {
 
         const [collect_results] = await db.execute(formatSql);
         // console.log(collect_results);
+
+        // DONE: 去文章資料對收藏數 + 1
+        const $post_collect_update_sql = ` 
+            UPDATE share_avatar_posts 
+            SET share_post_collects = share_post_collects + 1 
+            WHERE share_post_sid = ${sharepostID}
+        `;
+
+        const [post_collect_update_results] = await db.execute(
+            $post_collect_update_sql
+        );
+
+        if (post_collect_update_results.affectedRows !== 1) {
+            return res.send('收藏數加一出錯');
+        }
+
         return res.json(collect_results);
     }
 
     // DONE: DISCOLLECT
     if (req.params.actionType === 'discollect') {
         const $discollect_sql = ` 
-        DELETE 
-        FROM share_avatar_collects 
-        WHERE share_post_sid = ? 
-        AND member_sid = ? 
-    `;
+            DELETE 
+            FROM share_avatar_collects 
+            WHERE share_post_sid = ? 
+            AND member_sid = ? 
+        `;
         const formatSql = SqlString.format($discollect_sql, [
             sharepostID,
             res.locals.loginUser.id,
@@ -740,8 +1189,48 @@ router.route('/:sharepostID/:actionType?').get(async (req, res) => {
 
         const [discollect_results] = await db.execute(formatSql);
         // console.log(discollect_results);
+
+        // DONE: 去文章資料對收藏數 - 1
+        const $post_discollect_update_sql = ` 
+            UPDATE share_avatar_posts 
+            SET share_post_collects = share_post_collects - 1 
+            WHERE share_post_sid = ${sharepostID}
+        `;
+
+        const [post_discollect_update_results] = await db.execute(
+            $post_discollect_update_sql
+        );
+
+        if (post_discollect_update_results.affectedRows !== 1) {
+            return res.send('收藏數減一出錯');
+        }
+
         return res.json(discollect_results);
     }
+
+    // TODO: 修改留言
+    if (req.params.actionType === 'comment_revise') {
+        const $comment_revise_sql = ` 
+            DELETE 
+            FROM share_avatar_collects 
+            WHERE share_post_sid = ? 
+            AND member_sid = ? 
+        `;
+        const formatSql = SqlString.format($discollect_sql, [
+            sharepostID,
+            res.locals.loginUser.id,
+        ]);
+
+        const [discollect_results] = await db.execute(formatSql);
+        // console.log(discollect_results);
+
+        if (post_discollect_update_results.affectedRows !== 1) {
+            return res.send('收藏數減一出錯');
+        }
+
+        return res.json(discollect_results);
+    }
+
 
     return res.send('其他的請求都不接受喔～');
 });

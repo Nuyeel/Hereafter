@@ -6,7 +6,7 @@
 
 
 a{
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 
@@ -46,10 +46,15 @@ a{
           >.xuan-intro-img{
             width: 92%;
             margin: auto;
-            background-color: gray;
+            // background-color: gray;
             border-radius: 15px;
-            height: 300px;
+            height: 350px;
             margin-bottom: 15px;
+            overflow: hidden;
+
+              .carousel-status{
+                visibility: hidden !important;
+              }
           }
 
           >.xuan-intro-bar{
@@ -275,7 +280,7 @@ a{
         }
 
         .xuan-intro-bar{
-          max-height: 250px;
+          max-height: 235px;
         }
 
 
@@ -291,7 +296,7 @@ a{
 }
 
 .xuan-intro-img{
-  max-height: 33.5vh;
+  max-height: 37.5vh;
 }
 
 .xuan-intro-box-title {

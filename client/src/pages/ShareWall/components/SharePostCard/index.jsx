@@ -20,6 +20,7 @@ import {
     API_SHAREWALL,
     STATIC_SHAREWALL_AVA,
 } from '../../../../config/ajax-path';
+// import HeaderContext from '../../../../context/HeaderContext/HeaderContext';
 
 function SharePostCard(props) {
     const {
@@ -31,11 +32,11 @@ function SharePostCard(props) {
         title,
         text,
         isliked,
-        axiosPOST,
-        postsPage,
+        axiosListGET,
     } = props;
 
     const { theme } = useContext(ThemeContext);
+    // const { setShareWallPostsData } = useContext(HeaderContext);
     const { authorized, token } = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -50,7 +51,7 @@ function SharePostCard(props) {
 
         if (result.data.affectedRows === 1) {
             // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
-            axiosPOST(postsPage);
+            axiosListGET();
         }
 
         return;
@@ -66,7 +67,7 @@ function SharePostCard(props) {
 
         if (result.data.affectedRows === 1) {
             // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
-            axiosPOST(postsPage);
+            axiosListGET();
         }
 
         return;
@@ -83,11 +84,18 @@ function SharePostCard(props) {
                     } flex-shrink-0`}
                 >
                     {/* 來生形象 */}
+                    {/* FIXME: 資料要從後端過來 網址不對 */}
+                    {/* FIXME: 改成長手長腳測試 */}
                     <img
                         className="cpl-spc-avatar"
                         src={`${STATIC_SHAREWALL_AVA}${avatar}.png`}
                         alt=""
                     />
+                    {/* <img
+                        className="cpl-spc-avatar"
+                        src={`http://localhost:3500/uploads/images/share/test-largest.svg`}
+                        alt=""
+                    /> */}
                     <div
                         className="cpl-spc-af-round"
                         style={{
@@ -102,12 +110,21 @@ function SharePostCard(props) {
                     />
                     {/* 會員頭貼 */}
                     <div className="cpl-spc-info-area px-3">
+                        {/* FIXME: 先嘗試製作條件 Render */}
                         <div className="cpl-spc-mh-area">
-                            <img
-                                className="cpl-spc-memberhead"
-                                src={`${STATIC_SHAREWALL_AVA}${memberhead}.png`}
-                                alt=""
-                            />
+                            {memberhead ? (
+                                <img
+                                    className="cpl-spc-memberhead"
+                                    src={`${STATIC_SHAREWALL_AVA}${memberhead}.png`}
+                                    alt=""
+                                />
+                            ) : (
+                                <img
+                                    src={`http://localhost:3500/uploads/images/share/test-largest.svg`}
+                                    alt=""
+                                    className="cpl-spc-memberhead"
+                                />
+                            )}
                         </div>
                         <div className="cpl-spc-info-abstract d-flex justify-content-between align-items-center">
                             <div className="cpl-spc-ib-inner-left">
@@ -121,6 +138,7 @@ function SharePostCard(props) {
                                 </div>
                                 {/* TODO: onClick 寫入收藏表 */}
                                 {/* TODO: 根據是否收藏顯示實空心 */}
+                                {/* DONE: */}
                                 {isliked ? (
                                     <AiFillHeart
                                         className="cpl-spc-heart-icon isLiked"

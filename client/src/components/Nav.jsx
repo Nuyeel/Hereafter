@@ -165,34 +165,33 @@ function Nav(props) {
                         </h2>
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
-
-                    <div className="nav_lightbox_list">
-                        {authorized ? (
-                            <>
-                                <button
-                                    type="button"
-                                    className="btn btn-outline-secondary nav-btn"
-                                    onClick={()=>{
-                                        setLightBox('nav_lightbox_hidden');
-                                        userLogout();
-                                    }}
-                                >
-                                    登出
-                                </button>
-                            </>
-                        ) : (
+                    {/* <div className="nav_lightbox_list"> */}
+                    {authorized ? (
+                        <>
                             <button
                                 type="button"
                                 className="btn btn-outline-secondary nav-btn"
                                 onClick={() => {
-                                    navigate('/login', { replace: true });
                                     setLightBox('nav_lightbox_hidden');
+                                    userLogout();
                                 }}
                             >
-                                登入
+                                登出
                             </button>
-                        )}
-                    </div>
+                        </>
+                    ) : (
+                        <button
+                            type="button"
+                            className="btn btn-outline-secondary nav-btn"
+                            onClick={() => {
+                                navigate('/login', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                            }}
+                        >
+                            登入
+                        </button>
+                    )}
+                    {/* </div> */}
                 </div>
             </div>
 

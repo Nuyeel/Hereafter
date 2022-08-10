@@ -11,6 +11,9 @@ function Summary(props) {
         calcPickVolunTotalPrice,
     } = props; //從Cart.js傳來的props
 
+
+    // FIXME: 結帳明細按刪除，總數量不會一起改動，只會跟select連動
+
     return (
         <>
             {/* 右側金額明細 */}
@@ -18,6 +21,7 @@ function Summary(props) {
                 <div className="xuan-cart-cost">
                     <div className="xuan-cart-title">
                         <h5 className="xuan-title">
+                        {/* FIXME: 這個數字不會跟著刪除鍵跳 */}
                             結帳明細（共{calcPickNumber}項）
                         </h5>
                     </div>

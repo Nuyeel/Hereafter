@@ -10,9 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 function ForgotPasswordForm() {
-    const [loginData, setLoginData] = useState({
+    const [forgotPasswordData, setforgotPasswordData] = useState({
         account: '',
-        password: '',
+        email: '',
     });
 
     const { theme, themeContext } = useContext(ThemeContext);
@@ -23,7 +23,7 @@ function ForgotPasswordForm() {
         const id = e.target.id;
         const val = e.target.value;
         // console.log({ id, val });
-        setLoginData((prevState) => ({
+        setforgotPasswordData((prevState) => ({
             ...prevState,
             [id]: val,
         }));
@@ -31,18 +31,10 @@ function ForgotPasswordForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log(loginData);
 
-        // TODO: 欄位檢查
-
-        // 請注意 axios 和 fetch 的不同之處
-        // fetch 要多轉換一次 .then(r => r.json())
-        // fetch 的內容放在 body: fd
-        // axios 會自動轉換 JSON 但結果放在 r.data 中
-        // axios 的內容要放在 data: fd
         const result = await axios(FORGOT_PASSWORD, {
             method: 'POST',
-            data: JSON.stringify(loginData),
+            data: JSON.stringify(forgotPasswordData),
             headers: {
                 'Content-Type': 'Application/json',
             },
@@ -62,17 +54,7 @@ function ForgotPasswordForm() {
     return (
         <>
             {authorized ? (
-                <>
-                    {/* <div>已經登入了欸</div>
-                    <br />
-                    <button
-                        type="button"
-                        className="btn btn-primary"
-                        onClick={userLogout}
-                    >
-                        Logout
-                    </button> */}
-                </>
+                <></>
             ) : (
                 <div
                     className="container"
@@ -132,7 +114,7 @@ function ForgotPasswordForm() {
                                             <div className="d-flex justify-content-center">
                                                 <button
                                                     type="submit"
-                                                    className="btn btn-l btn-pri btn-outline-light "
+                                                    className="btn-member btn-member-l btn-member-pri btn-member-outline-light "
                                                 >
                                                     接收驗證信
                                                 </button>

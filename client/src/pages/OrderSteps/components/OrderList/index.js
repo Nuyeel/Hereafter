@@ -15,7 +15,6 @@ import {
 // scss
 import '../../../Event/_xuan_styles.scss';
 import '../../styles/_new_cart.scss';
-// import '../styles/_orderlist.scss';
 
 import EventItem from './EventItem';
 
@@ -157,6 +156,7 @@ function OrderList(props) {
 
                                                 fetchEventDelCart(v.sid); //同步把MySQL資料刪掉
                                                 setEventCart(newEventCart);
+                                                // 再呼叫一次重新計算一次
                                                 dispatch(decrement());
                                             }
                                         });

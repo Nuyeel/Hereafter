@@ -10,11 +10,14 @@
     max-width: 400px;
     margin-right: 0;
     height: 40px;
-    background-color: transparent;
-    border: 2px solid $secondary;
-    border-radius: 10px;
+    background-color: transparent !important;
+    border: 2px solid $secondary !important;
+    border-radius: 10px !important;
     padding-left: 10px;
     margin-bottom: 8px;
+    filter: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 
     &:focus {
         background-color: transparent;
@@ -40,6 +43,12 @@
         -webkit-mask-size: cover;
         mask-size: cover;
     }
+
+    // &:active {
+    //     filter: none !important;
+    //     outline: none !important;
+    //     box-shadow: none !important;
+    // }
 }
 
 @media screen and (min-width: 500px) {
@@ -64,48 +73,49 @@
 @media screen and (min-width: 1400px) {
     // FIXME: 先大致調整 1400px 以上的狀況
     .cpl-searchbar {
-        margin-bottom: calc(var(--vh, 1vh) * 3);
+        margin-bottom: calc(var(--vh, 1vh) * 2);
+        // outline: 1px solid red !important;
     }
 }
 
 
 .cpl-searchbar-light {
-    color: $bgc-D; // TODO: 這是在設定平時的顏色
+    color: $bgc-D !important; // TODO: 這是在設定平時的顏色
 
     &:focus {
-        color: $bgc-D; // TODO: 這是在設定 focus 時的
+        color: $bgc-D !important; // TODO: 這是在設定 focus 時的
     }
 
     &:active {
-        color: $bgc-D; // TODO: 保險或玩花樣可以設定 因為按 x 會觸發
+        color: $bgc-D !important; // TODO: 保險或玩花樣可以設定 因為按 x 會觸發
     }
 
     &::placeholder {
-        color: $bgc-D;
+        color: $bgc-D !important;
     }
 
     &::-webkit-search-cancel-button {
-        background-color: $bgc-D;       
+        background-color: $bgc-D !important;    
     }
 }
 
 .cpl-searchbar-dark {
-    color: $bgc-L-l; // TODO: 這是在設定平時的顏色
+    color: $bgc-L-l !important; // TODO: 這是在設定平時的顏色
 
     &:focus {
-        color: $bgc-L-l; // TODO: 這是在設定 focus 時的
+        color: $bgc-L-l !important; // TODO: 這是在設定 focus 時的
     }
 
     &:active {
-        color: $bgc-L-l; // TODO: 保險或玩花樣可以設定 因為按 x 會觸發
+        color: $bgc-L-l !important; // TODO: 保險或玩花樣可以設定 因為按 x 會觸發
     }
 
     &::placeholder {
-        color: $bgc-L-l;
+        color: $bgc-L-l !important;
     }
 
     &::-webkit-search-cancel-button {
-        background-color: $bgc-L-l;       
+        background-color: $bgc-L-l !important;       
     }
 }
 

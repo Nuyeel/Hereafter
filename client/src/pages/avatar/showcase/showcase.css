@@ -30,9 +30,16 @@
     font-weight: normal;
 }
 
+.showcaseText {
+    position: relative;
+}
+
 .avatarConbination {
+    position: relative;
     font-weight: 400;
     font-size: 16px;
+    text-align: left;
+    padding-left: 42%;
 }
 
 .showcaseBtns {
@@ -50,12 +57,12 @@
 }
 
 
-@media screen and (min-width: 992px) {
-    .showcase {}
+@media screen and (min-width: 1200px) {
+    .showcase {position: relative;}
 
     .showcaseCard {
         display: flex;
-        width: 800px;
+        width: 850px;
         position: relative;
         margin: auto;
     }
@@ -82,7 +89,7 @@
     }
 
     .showcaseCardIMG img {
-        width: 450px;
+        width: 450px !important;
 
     }
 
@@ -90,6 +97,10 @@
         text-align: left;
         padding-top: 110px;
         padding-left: 50px;
+    }
+
+    .avatarConbination {
+        padding-left: 0;
     }
 
     .avatarTotalPrice {

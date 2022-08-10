@@ -202,6 +202,7 @@ position: relative;
 
     }
 
+  // 背景裝飾(中心)
   .xuan-mainpage-bg{
     width: 100vw;
     transform: translate(-50%, -50%);
@@ -210,6 +211,69 @@ position: relative;
         height: 100%;
       }
   }
+
+  // 背景裝飾上半部-----------------
+  // 背景裝飾(左上方)
+  .xuan-mainpage-bg-2{
+    // outline: 1px solid red;
+    width: 100%;
+    // margin-left: 50px;
+  //   transform: translate(-50%, -100%);
+      >img{
+        width: 100%;
+        height: 100%;
+        // outline: 1px solid white;
+      }
+  }
+  // 背景裝飾(右上方)
+  .xuan-mainpage-bg-3{
+    // outline: 1px solid red;
+    width: 100%;
+    // margin-left: 90vw;
+      >img{
+        width: 100%;
+        height: 100%;
+        // outline: 1px solid white;
+      }
+  }
+
+  .bg-d-flex{
+    display: flex;
+  }
+
+
+  // 背景裝飾下半部-----------------
+
+  // 背景裝飾(左下方)
+  .xuan-mainpage-bg-bottomleft{
+    // outline: 1px solid red;
+    width: 100%;
+      >img{
+        width: 100%;
+        height: 100%;
+        // outline: 1px solid white;
+      }
+  }
+  // 背景裝飾(右下方)
+  .xuan-mainpage-bg-bottomright{
+    // outline: 1px solid red;
+    width: 100%;
+      >img{
+        width: 100%;
+        height: 100%;
+        // outline: 1px solid white;
+      }
+  }
+
+  .bg-bottom-d-flex{
+    display: flex;
+    margin-top: 100vh;
+  }
+
+
+
+
+
   
   // 轉生形象box
   .xuan-box-avatar{
@@ -228,7 +292,7 @@ position: relative;
         width: 100%;
         margin-top: 10px;
         text-align: center;
-        font-size: $fz-h2;
+        font-size: $fz-h4;
         font-family: $ff-t, $ff-h;
         font-weight: 500;
         line-height: 50px;
@@ -285,7 +349,7 @@ position: relative;
             >p{
               width: 70%;
               text-align: center;
-              font-size: $fz-h2;
+              font-size: $fz-h4;
               font-family: $ff-t, $ff-h;
               font-weight: 500;
             }
@@ -341,7 +405,7 @@ position: relative;
         >p{
           // width: 70%;
           text-align: center;
-          font-size: $fz-h2;
+          font-size: $fz-h4;
           font-family: $ff-t, $ff-h;
           font-weight: 500;
           margin-bottom: 15px;
@@ -378,7 +442,7 @@ position: relative;
         width: 100%;
         margin-top: 10px;
         text-align: center;
-        font-size: $fz-h2;
+        font-size: $fz-h4;
         font-family: $ff-t, $ff-h;
         font-weight: 500;
         line-height: 71px;
@@ -392,6 +456,227 @@ position: relative;
       border-radius: 10px;
     }
 
+  }
+
+  // 投胎形象小格1
+  .xuan-box-avatar-show1{
+    background-color: #E384F2;
+    border-radius: 20px;
+    width: 5.5%;
+    height: 3.6%;
+    position:absolute;
+    top: 44.5%;
+    left: 36.7%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+        // 左側白色圖片
+        div:nth-child(1){
+          width: 40%;
+          height: 100%;
+          background-color: white;
+          border-radius: 10px;
+          margin-right: 7px;
+        }
+
+        // 右側文字DIV
+        div:nth-child(2){
+          width: 60%;
+          height: 100%;
+
+          p{
+            margin-bottom: 7px;
+            // letter-spacing: 0.1rem;
+          }
+        }
+  }
+  // 投胎形象小格2
+  .xuan-box-avatar-show2{
+    background-color: #E384F2;
+    border-radius: 20px;
+    width: 5.5%;
+    height: 3.6%;
+    position:absolute;
+    top: 40.2%;
+    left: 38.7%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+        // 左側白色圖片
+        div:nth-child(1){
+          width: 40%;
+          height: 100%;
+          background-color: white;
+          border-radius: 10px;
+          margin-right: 7px;
+        }
+
+        // 右側文字DIV
+        div:nth-child(2){
+          width: 60%;
+          height: 100%;
+
+          p{
+            margin-bottom: 7px;
+          }
+        }
+  }
+  // 投胎形象小格3
+  .xuan-box-avatar-show3{
+    background-color: #E384F2;
+    border-radius: 20px;
+    width: 5.5%;
+    height: 3.6%;
+    position:absolute;
+    top: 62.7%;
+    left: 30.5%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+        // 左側白色圖片
+        div:nth-child(1){
+          width: 40%;
+          height: 100%;
+          background-color: white;
+          border-radius: 10px;
+          margin-right: 7px;
+        }
+
+        // 右側文字DIV
+        div:nth-child(2){
+          width: 60%;
+          height: 100%;
+
+          p{
+            margin-bottom: 7px;
+          }
+        }
+  }
+
+  // 遊戲小格1
+  .xuan-box-game-show1{
+    background-color: #9587E1;
+    border-radius: 20px;
+    width: 6.8%;
+    height: 5.5%;
+    position:absolute;
+    top: 40%;
+    left: 45.4%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+    padding: 15px;
+
+      p{
+        margin-bottom: 7px;
+      }
+
+      div{
+        width: 100%;
+        height: 80%;
+        border-radius: 10px;
+        background-color: white;
+      }
+
+  }
+
+  // 遊戲小格2
+  .xuan-box-game-show2{
+    background-color: #9587E1;
+    border-radius: 20px;
+    width: 6.8%;
+    height: 5.5%;
+    position:absolute;
+    top: 37.2%;
+    left: 52.7%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+    padding: 15px;
+
+      p{
+        margin-bottom: 7px;
+      }
+
+      div{
+        width: 100%;
+        height: 80%;
+        border-radius: 10px;
+        background-color: white;
+      }
+
+  }
+
+  // 關於我們
+  .xuan-box-aboutus{
+    background-color: #E384F2;
+    border-radius: 20px;
+    width: 8%;
+    height: 5.5%;
+    position:absolute;
+    top: 53.2%;
+    left: 63.5%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+      *{
+        margin: 5px;
+      }
+  }
+
+  // 最新消息
+  .xuan-box-news{
+    background-color: #81A8E0;
+    border-radius: 20px;
+    width: 8%;
+    height: 7.8%;
+    position:absolute;
+    top: 46%;
+    left: 67%;
+    transform: translate(-50%, -50%);
+    z-index: 300;
+    color: white;
+    padding: 20px;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+
+        div:nth-child(1){
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 15px;
+        }
+
+        div:nth-child(2){
+          background-color: white;
+          border-radius: 10px;
+          width: 100%;
+          height: 80%;
+        }
+
+    
   }
 
 }
@@ -440,7 +725,7 @@ position: relative;
         width: 100%;
         margin-top: 10px;
         text-align: center;
-        font-size: $fz-h3;
+        font-size: $fz-h5;
         font-family: $ff-t, $ff-h;
         font-weight: 500;
         margin: 15px auto;
@@ -476,7 +761,7 @@ position: relative;
             >p{
               width: 70%;
               text-align: center;
-              font-size: $fz-h3;
+              font-size: $fz-h5;
               font-family: $ff-t, $ff-h;
               font-weight: 500;
             }
@@ -534,7 +819,7 @@ position: relative;
         >p{
           // width: 70%;
           text-align: center;
-          font-size: $fz-h3;
+          font-size: $fz-h5;
           font-family: $ff-t, $ff-h;
           font-weight: 500;
           margin-bottom: 15px;
@@ -572,7 +857,7 @@ position: relative;
         width: 100%;
         margin-top: 10px;
         text-align: center;
-        font-size: $fz-h2;
+        font-size: $fz-h4;
         font-family: $ff-t, $ff-h;
         font-weight: 500;
         line-height: 71px;
@@ -762,7 +1047,7 @@ position: relative;
         width: 100%;
         margin-top: 15px;
         text-align: center;
-        font-size: $fz-h3;
+        font-size: $fz-h5;
         font-family: $ff-t, $ff-h;
         font-weight: 500;
         margin-bottom: 20px;

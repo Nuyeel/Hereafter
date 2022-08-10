@@ -1,0 +1,211 @@
+@import '../../styles/variables.scss';
+
+.cpl-pcb-ita-title-area.isPost {
+    position: relative;
+    top: -10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-ita-title-area.isPost {
+        top: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-ita-title-area.isPost {
+        margin-bottom: 0;
+    }
+}
+
+.cpl-pcb-ita-ta-avatar-title-input {
+    width: 70%;
+    min-width: 240px;
+    background-color: transparent;
+    border: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    font-family: $ff-t; // FIXME: $ff-h 太容易缺字
+    font-size: $fz-h5;
+    font-weight: 500;
+    padding-bottom: 4px;
+    // outline: 1px solid red;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-ita-ta-avatar-title-input {
+        width: 75%;
+        font-size: $fz-h4;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .cpl-pcb-ita-ta-avatar-title-input {
+        width: 60%;
+        font-size: $fz-h3;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-ita-ta-avatar-title-input {
+        width: 70%;
+        font-size: $fz-h4;
+        margin-bottom: 12px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-ita-ta-avatar-title-input {
+        width: 70%;
+        margin-bottom: 20px;
+    }
+}
+
+// 處理互動樣式
+.cpl-pcb-ita-ta-avatar-title-input {
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        outline: none;
+    }
+}
+
+// 處理明暗配色
+.cpl-pcb-ita-ta-avatar-title-input.theme-light {
+    &::placeholder {
+        color: $bgc-D-70p;
+    }
+}
+
+.cpl-pcb-ita-ta-avatar-title-input.theme-dark {
+    &::placeholder {
+        color: $bgc-L-l-70p;
+    }
+}
+
+.cpl-pcb-ita-text-heading {
+    // outline: 1px solid red;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-ita-text-heading {
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-pcb-ita-text-heading {
+        margin-bottom: 20px;
+    }
+}
+
+.cpl-pcb-ita-text-content-area {
+    border-width: 1px;
+    border-style: solid;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.cpl-pcb-ita-ta-inner-tags.isPost {
+    margin-bottom: 15px;
+}
+
+// 初始化
+.cpl-pcb-ita-text-content.isPost {
+    border: none;
+    margin-bottom: 0;
+    padding: 0;
+    min-height: 222px;
+    max-height: 222px;
+}
+
+.cpl-pcb-ita-ta-it-tag-item.isPost {
+    width: 78px;
+    border: none;
+    color: #FFFFFF;
+
+    &::placeholder {
+        color: #FFFFFF;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        outline: none;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-pcb-ita-ta-it-tag-item.isPost {
+        width: 100px;
+    }
+}
+
+.cpl-pcb-ita-tc-isPost-textarea {
+    resize: none;
+    border: none;
+    width: 100%;
+    height: 216px;
+    background-color: transparent;
+
+    &:focus {
+        outline: none;
+    }
+    
+    &:active {
+        outline: none;
+    }
+
+    &.theme-light {
+        color: $bgc-D-70p;
+    }
+    
+    &.theme-dark {
+        color: $bgc-L-l-70p;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-pcb-ita-text-content.isPost {
+        min-height: 272px;
+        max-height: 272px;
+    }
+
+    .cpl-pcb-ita-tc-isPost-textarea {
+        height: 266px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-ita-text-content.isPost {
+        min-height: 302px;
+        max-height: 302px;
+    }
+
+    .cpl-pcb-ita-tc-isPost-textarea {
+        height: 296px;
+    }
+}
+
+.cpl-pcb-ita-save-button-area {
+    margin-bottom: 20px;
+    .cpl-pcb-ita-sba-save-button {
+        background-color: $primary-50p;
+        border-radius: 20px;
+        filter: none !important;
+
+        // &:hover {
+        //     filter: none !important;
+        // }
+
+        // &:active {
+        //     filter: none !important;
+        // }
+    }
+}

@@ -19,6 +19,7 @@ import NextLife from './pages/NextLife';
 import ShareWall from './pages/ShareWall/ShareWall';
 import ShareWallList from './pages/ShareWall/ShareWallList';
 import ShareWallDetail from './pages/ShareWall/ShareWallDetail';
+import ShareWallPost from './pages/ShareWall/ShareWallPost';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
@@ -94,6 +95,12 @@ function App() {
                                         index
                                         element={
                                             <ShareWallList pageName="sharewall" />
+                                        }
+                                    />
+                                    <Route
+                                        path="post"
+                                        element={
+                                            <ShareWallPost pageName="default" />
                                         }
                                     />
                                     <Route
