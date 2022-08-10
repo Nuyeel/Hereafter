@@ -15,12 +15,12 @@
     border-radius: 10px !important;
     padding-left: 10px;
     margin-bottom: 8px;
+    filter: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 
     &:focus {
         background-color: transparent;
-        filter: none !important;
-        outline: none !important;
-        box-shadow: none !important;
     }
 
     &::placeholder {
@@ -44,11 +44,11 @@
         mask-size: cover;
     }
 
-    &:active {
-        filter: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-    }
+    // &:active {
+    //     filter: none !important;
+    //     outline: none !important;
+    //     box-shadow: none !important;
+    // }
 }
 
 @media screen and (min-width: 500px) {
@@ -73,7 +73,8 @@
 @media screen and (min-width: 1400px) {
     // FIXME: 先大致調整 1400px 以上的狀況
     .cpl-searchbar {
-        margin-bottom: calc(var(--vh, 1vh) * 102 - 788px);
+        margin-bottom: calc(var(--vh, 1vh) * 2);
+        // outline: 1px solid red !important;
     }
 }
 

@@ -58,6 +58,12 @@ function App() {
     // 讓setLightBox方法 <MainPage><Nav>可共用
     const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
+    // 會員陰德值
+    const [userGooddeed, setUserGooddeed] = useState({
+        show: false,
+        gooddeed: 0,
+    });
+
     return (
         <BrowserRouter>
             <Provider store={store}>
@@ -66,7 +72,12 @@ function App() {
                     {/* TODO: 一般頁面的 navbar 是一種 */}
                     {/* TODO: 點擊變成全頁面的 navbar 是一種 */}
                     {/* TODO: 用 props 做條件 render */}
-                    <Nav lightBox={lightBox} setLightBox={setLightBox} />
+                    <Nav
+                        lightBox={lightBox}
+                        setLightBox={setLightBox}
+                        userGooddeed={userGooddeed}
+                        setUserGooddeed={setUserGooddeed}
+                    />
                     <MainContent>
                         {/* ScrollToTop 會在切換分頁時讓頁面回到最上方 */}
                         <ScrolltoTop>

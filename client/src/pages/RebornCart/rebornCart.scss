@@ -6,7 +6,7 @@ $widthMax: 768px;
         height: 50vh;
         max-height: 50vh;
         border-radius: 16px;
-        background: rgba(0, 0, 0, 0.3);
+        background: #0000004d;
         margin-top: 15px;
         display: flex;
         padding: 25px 0 10px;
@@ -101,6 +101,7 @@ $widthMax: 768px;
     .swiper-button-next,
     .swiper-button-prev {
         color: #fff !important;
+        filter: drop-shadow(1px 1px 2px #3c3b67b3);
     }
 
     .soul-icon {
@@ -119,7 +120,7 @@ $widthMax: 768px;
     /* 良辰吉地 */
 
     .place-wrap {
-        padding: 25px;
+        padding: 20px 25px;
         height: 90%;
         width: 100%;
     }
@@ -147,7 +148,7 @@ $widthMax: 768px;
     .place-option-flex {
         display: flex;
         align-items: center;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         height: 50px;
     }
 
@@ -200,7 +201,7 @@ $widthMax: 768px;
         color: rgba(255, 255, 255, 0.4);
         transition: 0.3s;
         width: 93%;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
 
         &:hover {
             color: rgba(255, 255, 255, 1);
@@ -269,7 +270,7 @@ $widthMax: 768px;
 
         .place-option-title {
             font-size: 18px;
-            color: #444;
+            color: #3c3b67;
             margin-bottom: 0;
             font-weight: 500;
         }
@@ -280,7 +281,7 @@ $widthMax: 768px;
     }
 
     .place-option-del-btn {
-        color: rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.6);
         font-size: 38px;
         position: relative;
         right: -5px;
@@ -298,14 +299,33 @@ $widthMax: 768px;
         height: 22vh;
         min-height: 20vh;
         border-radius: 16px;
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: #3c3b67b3;
         margin: 10px 0;
         display: flex;
         justify-content: space-around;
         padding: 15px;
     }
 
+    .rwdBtn {
+        display: none;
+    }
+
     @media screen and (max-width: $widthMax) {
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #fff;
+            border-radius: 10px;
+
+            /* border: 3px solid #ffffff; */
+        }
+
         .reborn-order-wrap {
             max-width: 90%;
             flex-direction: column;
@@ -323,7 +343,7 @@ $widthMax: 768px;
             .reborn-order-card {
                 flex-direction: column;
                 width: 100%;
-                color: #222;
+                color: #3c3b67;
 
                 .reborn-order-card-title {
                     padding: 10px;
@@ -351,7 +371,7 @@ $widthMax: 768px;
                     width: 80%;
                     tfoot {
                         td {
-                            border-top: 1px solid #222;
+                            border-top: 1px solid #3c3b67;
                         }
                     }
                 }
@@ -388,6 +408,7 @@ $widthMax: 768px;
 
             // 開合按鈕
             .rwdBtn {
+                display: block;
                 width: 40px;
                 height: 40px;
                 background-color: #f3f59f;
@@ -423,9 +444,10 @@ $widthMax: 768px;
     .my-deed-wrap {
         border-radius: 16px;
         border: 1px solid #b9ded2;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: #ffffff1a;
         width: 15%;
         overflow: hidden;
+        color: #3c3b67;
     }
 
     .my-deed-wrap-title {
@@ -449,6 +471,7 @@ $widthMax: 768px;
         background-color: rgba(255, 255, 255, 0.1);
         width: 15%;
         overflow: hidden;
+        color: #3c3b67;
     }
 
     .deed-enough-wrap-title {
@@ -485,7 +508,7 @@ $widthMax: 768px;
         padding: 0 15px;
         background-color: #f3f59f;
         font: 600 20px 'M PLUS Rounded 1c', sans-serif;
-        color: #222;
+        color: #3c3b67;
         letter-spacing: 6px;
         height: 100%;
     }
@@ -519,7 +542,7 @@ $widthMax: 768px;
 
             td {
                 border-collapse: collapse;
-                font-weight: 400;
+                font-weight: 500;
             }
         }
 
@@ -534,9 +557,8 @@ $widthMax: 768px;
         }
 
         tfoot {
-            td {
-                border-top: 1px solid #fff;
-            }
+            border-top: 1px solid;
+            border-color: #fff;
         }
     }
 

@@ -183,12 +183,12 @@ function RegisterForm(props) {
         e.preventDefault();
 
         if (!registerData.account.match(accountRe)) {
-            Swal.fire('您輸入的帳戶不可含有空白格或特殊字元');
+            Swal.fire('帳戶不可含有空白格或特殊字元');
             return;
         }
 
         if (!registerData.password.match(passwordRe)) {
-            Swal.fire('您輸入的密碼須包含字母及數字共八位數');
+            Swal.fire('密碼須包含字母及數字共八位數');
             return;
         }
 
@@ -210,13 +210,14 @@ function RegisterForm(props) {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    localStorage.setItem('auth', JSON.stringify(result.data));
+                    // localStorage.setItem('auth', JSON.stringify(result.data));
+                    localStorage.removeItem('auth');
                     setAuth({
                         ...result.data,
-                        authorized: true,
+                        // authorized: true,
                     });
                     Swal.fire(result.error);
-                    navigate('/memberprofile');
+                    navigate('/login');
                 } else {
                     Swal.fire(result.error);
                 }

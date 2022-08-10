@@ -69,12 +69,6 @@ button:active {
     text-decoration: none
 }
 
-.form-control.is-invalid, .was-validated .form-control:invalid, .form-control.is-invalid:focus, .was-validated:focus .form-control:invalid:focus {
-    color: $alert;
-    border: $alert 2px solid;
-    outline: none;
-}
-
 .alert-success {
     color: $accent-blue;
     background-color: $highlight;
@@ -131,16 +125,22 @@ button:active {
     color: #fff;
 }
 
+.input-2[type=text] {
+    font: 400 16px var(--text-font), Arial, sans-serif;
+    color: #3C3B6775;
+    // height: 40px;
+    border-radius: 10px;
+}
+
 input[type=text], input[type=email], input[type=password], [type=date] {
     font: 400 16px var(--text-font), Arial, sans-serif;
-    outline: none;
-    height: 40px;
+    color: $bgc-D;
+    // height: 40px;
     border-radius: 10px;
 }
 
 input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, [type=date]:focus {
-    border: $secondary 2px solid;
-    outline: none;
+    outline: $secondary 2px solid;
 }
 
 input[type=text]::placeholder, input[type=email]::placeholder, input[type=password]::placeholder, [type=date]::placeholder{
@@ -152,16 +152,19 @@ input[type=text]:focus::placeholder, input[type=email]:focus::placeholder, input
 }
 
 input[type=text].error, input[type=email].error, input[type=password].error, input[type=date].error {
-    border: var(--alert-l) 2px solid;
-    outline: none;
+    outline: var(--alert-l) 2px solid;
 }
 
 input[type=text].error, input[type=email].error, input[type=password].error {
-    border: var(--alert-l) 2px solid;
-    outline: none;
+    outline: var(--alert-l) 2px solid;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid, .form-control.is-invalid:focus, .was-validated:focus .form-control:invalid:focus {
+    color: $alert;
+    outline: $alert 2px solid;
 }
 
 .memberBgCard {
-    border: 0.5px rgba(255, 255, 255, 0.5) solid;
+    outline: rgba(255, 255, 255, 0.5) 0.5px solid;
     box-shadow: -7px -10px 7px -10px rgba(255, 255, 255, 0.3);
 }

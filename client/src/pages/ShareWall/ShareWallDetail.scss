@@ -61,6 +61,7 @@
 @media screen and (min-width: 992px) {
     .cpl-post-card-body {
         max-height: 560px;
+        top: calc(var(--vh, 1vh) * 38 - 250px);
         // max-width: calc(var(--vh, 1vh) * 120);
         // max-height: calc(var(--vh, 1vh) * 70);
         // aspect-ratio: 12/7;
@@ -69,7 +70,7 @@
 
 @media screen and (min-width: 1200px) {
     .cpl-post-card-body {
-        top: 5px;
+        top: calc(var(--vh, 1vh) * 38 - 280px);
         max-width: 1080px;
         max-height: 630px;
         aspect-ratio: 12/7;
@@ -78,8 +79,9 @@
 
 @media screen and (min-width: 1400px) {
     .cpl-post-card-body {
-        // top: -30px;
-        top: calc(var(--vh, 1vh) * 100 - 788px); // FIXME: 筆電和桌電的差異 用 calc 搭配差值試試看
+        top: calc(var(--vh, 1vh) * 15 - 115px);
+        // top: clamp(10px, 10px, 10px); // FIXME: 筆電和桌電的差異 用 calc 搭配差值試試看
+        // top: calc(var(--vh, 1vh) * 87 - 788px); // FIXME: 筆電和桌電的差異 用 calc 搭配差值試試看
         // max-width: 1200px;
         max-width: calc(var(--vh, 1vh) * 144);
         max-height: calc(var(--vh, 1vh) * 84);
@@ -773,8 +775,8 @@
     .cpl-pcb-ita-comments-container {
         // FIXME: 桌機版要想辦法定住高度
         // min-height max-height 夾著應該可以
-        min-height: calc(var(--vh, 1vh) * 20);
-        max-height: calc(var(--vh, 1vh) * 20);
+        min-height: calc(79% - 325px);
+        max-height: calc(79% - 325px);
         margin-bottom: 18px;
     }
 }
@@ -794,6 +796,23 @@
         line-height: 20px;
         // outline: 1px solid red;
     }
+
+    .cpl-pcb-ita-ci-edit-area {
+        padding-top: 4px;
+        font-weight: 100;
+        font-size: $fz-caption;
+        
+        .cpl-pcb-ita-ci-ea-right {
+            .cpl-pcb-ita-ci-ea-r-delete, .cpl-pcb-ita-ci-ea-r-edit {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+            
+            .cpl-pcb-ita-ci-ea-r-edit {
+                padding-left: 5px;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 500px) {
@@ -811,6 +830,10 @@
             font-weight: 100;
             // line-height: normal;
             // outline: 1px solid red;
+        }
+
+        .cpl-pcb-ita-ci-edit {
+        
         }
     }
 }
@@ -859,7 +882,7 @@
 
     .cpl-pcb-ita-tca-c-text {
         // width: 220%;
-        background-color: transparent;
+        background-color: transparent !important;
         border: 1px solid $white-60p;
         border-radius: 20px;
 

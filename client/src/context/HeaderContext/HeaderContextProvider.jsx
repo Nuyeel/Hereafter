@@ -10,6 +10,9 @@ function HeaderContextProvider(props) {
 
     const [shareWallSearchState, setShareWallSearchState] = useState('default');
 
+    // 搜尋字串 會給 tagbar 和 searchbar 用
+    const [searchParams, setSearchParams] = useState('');
+
     return (
         <HeaderContext.Provider
             value={{
@@ -19,6 +22,8 @@ function HeaderContextProvider(props) {
                 setShareWallPostsData,
                 shareWallSearchState,
                 setShareWallSearchState,
+                searchParams,
+                setSearchParams,
             }}
         >
             {props.children}

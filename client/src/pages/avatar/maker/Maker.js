@@ -32,17 +32,19 @@ const Maker = () => {
     const [faceControlChange, setFaceControlChange] = useState('eye');
     const [colorControlSwitch, setColorControlSwitch] = useState(0);
     const navigate = useNavigate();
+    const member = JSON.parse(localStorage.getItem('auth'));
+    const aid = sessionStorage.getItem('avatar_id');
 
     const getAvatarData = async () => {
-        const member = JSON.parse(localStorage.getItem('auth'));
-        const aid = sessionStorage.getItem('avatar_id');
         const postData = { id: member['sid'], avatar_id: aid };
         const r = await axios.post(Avatar_GetData, postData);
         const oldCombination = JSON.parse(r.data.data[0]['combination']);
         setCombination(oldCombination);
     };
     useEffect(() => {
-        getAvatarData();
+        if (member !== null) {
+            getAvatarData();
+        }
     }, []);
     const { theme } = useContext(ThemeContext);
     const ContainerFluid = styled.div`
@@ -55,7 +57,12 @@ const Maker = () => {
     const AvatarMaker = styled.div`
         width: 1200px;
         height: 610px;
-        background-color: ${theme.bgcAvatarMaker};
+        background: radial-gradient(
+            47.11% 47.11% at 50% 50%,
+            ${theme.bgcAvatarMaker2} 0%,
+            ${theme.bgcAvatarMaker} 100%
+        );
+        backdrop-filter: blur(5px);
         border-radius: 16px;
         position: relative;
         display: flex;

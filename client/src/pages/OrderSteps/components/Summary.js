@@ -21,6 +21,7 @@ function Summary(props) {
                 <div className="xuan-cart-cost">
                     <div className="xuan-cart-title">
                         <h5 className="xuan-title">
+                        {/* FIXME: 這個數字不會跟著刪除鍵跳 */}
                             結帳明細（共{calcPickNumber}項）
                         </h5>
                     </div>

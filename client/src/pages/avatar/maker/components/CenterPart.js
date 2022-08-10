@@ -69,10 +69,11 @@ function CenterPart(props) {
         lip: FaceData['lip'][combination['face']['lip']]['name'],
     };
     const orderData = { combination: { ...combination } };
-    //MING:目前的假資料:會員ID,訂單編號
     const aid = sessionStorage.getItem('avatar_id');
     const member = JSON.parse(localStorage.getItem('auth'));
-    orderData.id = member['sid'];
+    if (member !== null) {
+        orderData.id = member['sid'];
+    }
     orderData.avatar_id = aid;
     orderData.combinationText = combinationText;
     orderData.totalPrice = avatarTotalPrice;

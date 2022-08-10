@@ -17,7 +17,14 @@ import { FiSend } from 'react-icons/fi';
 // 會員登入登出驗證
 import AuthContext from '../../../context/AuthContext/AuthContext';
 
+// Redux
+import { useSelector, useDispatch } from 'react-redux';
+import { decrementByAmount } from '../../../features/counter/counterSlice';
+
 function Payment(props) {
+    // Redux
+    const dispatch = useDispatch();
+
     // 會員登入登出驗證(auth)
     const { authorized, sid, account, token } = useContext(AuthContext);
     const {
@@ -31,6 +38,9 @@ function Payment(props) {
         setCardInfor,
         setDetailVisible,
         detailVisible,
+        fetchCreateOrder,
+        eventPick,
+        next,
     } = props;
 
     // 取得memberSid (信用卡訂單MySQL用)
@@ -38,7 +48,6 @@ function Payment(props) {
     auth = JSON.parse(auth);
     let membersid = auth.sid;
     console.log(membersid);
-
 
     // 切換卡片正反面的 style
     const cardAF = {
@@ -65,6 +74,32 @@ function Payment(props) {
     // 預設是卡片正面效果
     const [cardTransformFront, setCardTransformFront] = useState(cardAF);
     const [cardTransformBack, setCardTransformBack] = useState(cardAB);
+
+    // 這邊處理 把已結帳商品從購物車移除的過程-----------------------
+    let alreadypay = '';
+
+    // 先把eventPick跑迴圈，再塞進body裡面fetch
+    if (eventPick.length !== 0) {
+        eventPick.map((v, i) => {
+            alreadypay += `&alreadypay=${v}`;
+        });
+
+        console.log('alreadypay', alreadypay);
+    }
+
+    const fetchAlreadyPay = async () => {
+        console.log('alreadypay', alreadypay);
+        fetch(
+            `http://localhost:3500/eventcarts/alreadypay?membersid=${membersid}${alreadypay}`,
+            {
+                method: 'GET',
+            }
+        )
+            .then((r) => r.json())
+            .then((obj) => {
+                console.log('已經刪除', obj);
+            });
+    };
 
     // ------------這段處理資料傳進 MySQL 過程-------------------
 
@@ -104,6 +139,16 @@ function Payment(props) {
             .then((r) => r.json())
             .then((obj) => {
                 console.log('收到的res', obj);
+            })
+            // 當按下確認的時候，把資料送進MySQL
+            .then(() => {
+                fetchCreateOrder(); //送進MySQL
+                next(); //進到下一頁
+            })
+            .then(() => {
+                fetchAlreadyPay();
+                console.log('已刪除購物車內容');
+                dispatch(decrementByAmount(eventPick.length));
             });
     };
 
@@ -284,7 +329,6 @@ function Payment(props) {
                                             name="member_sid"
                                             type="text"
                                             id="test-text"
-                                            // FIXME: 記得一起送memberSid
                                             defaultValue={membersid}
                                         />
 

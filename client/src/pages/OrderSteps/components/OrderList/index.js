@@ -15,7 +15,6 @@ import {
 // scss
 import '../../../Event/_xuan_styles.scss';
 import '../../styles/_new_cart.scss';
-// import '../styles/_orderlist.scss';
 
 import EventItem from './EventItem';
 
@@ -57,6 +56,17 @@ function OrderList(props) {
             });
     };
 
+    // 此段處理: 當購物車沒有內容時，全選不能勾起來的Bug
+    const ratherAllPick = () => {
+        if (eventCart.length === 0) {
+            return false;
+        }
+
+        if (eventPick.length === eventCart.length) {
+            return true;
+        }
+    };
+
     return (
         <>
             {/* 左側購物清單 */}
@@ -67,7 +77,8 @@ function OrderList(props) {
                         className="xuan-input-checkbox"
                         type="checkbox"
                         id="cbox"
-                        checked={eventPick.length === eventCart.length}
+                        // checked={eventPick.length === eventCart.length}
+                        checked={ratherAllPick()}
                         onChange={async (e) => {
                             if (e.target.checked) {
                                 // 按第一次 -> 全勾
@@ -157,6 +168,7 @@ function OrderList(props) {
 
                                                 fetchEventDelCart(v.sid); //同步把MySQL資料刪掉
                                                 setEventCart(newEventCart);
+                                                // 再呼叫一次重新計算一次
                                                 dispatch(decrement());
                                             }
                                         });

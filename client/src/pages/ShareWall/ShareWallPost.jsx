@@ -8,7 +8,7 @@ import OutlineSoulAlert from '../../images/sweetalert2/outline_soul_alert.svg';
 
 import { CgClose } from 'react-icons/cg';
 import DeedSoul from './components/Icons/DeedSoul';
-import { AiFillPlusCircle, AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { AiFillPlusCircle } from 'react-icons/ai';
 
 import {
     API_SHAREWALL_POST,
@@ -145,6 +145,8 @@ function ShareWallPost(props) {
                 >
                     <div className="col-lg-6 cpl-pcb-inner-avatar-area">
                         {/* FIXME: 圖片看要怎麼來 從客製化過來的 */}
+                        {/* TODO: 在 sweetAlert2 中放 swiper??? */}
+                        {/* 不然進來不會有圖 */}
                         <img
                             src={`${STATIC_SHAREWALL_AVA}${sid}.png`}
                             alt=""

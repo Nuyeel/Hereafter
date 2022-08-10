@@ -3,14 +3,17 @@ import SoulIcon from './SoulIcon';
 // import LikeIcon from "./LikeIcon";
 import { FaHeart } from 'react-icons/fa';
 import { BsFillCartPlusFill } from 'react-icons/bs';
+import AddPlaceToCart from './util/addPlaceToCart';
 
 function ListCard(props) {
     const {
         value,
-        addPlaceToCart,
+        // addPlaceToCart,
+        userSid,
         saveLikedPlace,
         likedPlaceSidArr,
         handlePlaceMapIconClicked,
+        style,
     } = props;
     const {
         sid,
@@ -28,7 +31,11 @@ function ListCard(props) {
 
     return (
         <>
-            <div className="list-card place-info-card" data-placesid={sid}>
+            <div
+                className="list-card place-info-card"
+                data-placesid={sid}
+                style={style}
+            >
                 <div className="list-card-title">
                     <p className="yeartitle">
                         {year}年 {+month < 10 ? `0${month}` : `${month}`}月
@@ -67,7 +74,7 @@ function ListCard(props) {
                             type="checkbox"
                             name="placeLiked"
                             value={sid}
-                            style={{ opacity: 0 }}
+                            style={{ display: 'none' }}
                             checked={likedPlaceSidArr.includes(sid)}
                             onChange={(e) => console.log('')}
                         />
@@ -82,7 +89,7 @@ function ListCard(props) {
                     </div>
                     <div
                         className="place-cartBtn hover-text"
-                        onClick={addPlaceToCart}
+                        onClick={(e) => AddPlaceToCart(e, userSid)}
                         data-hover="加入轉生購物車"
                     >
                         <BsFillCartPlusFill className="place-cart-icon" />

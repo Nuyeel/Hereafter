@@ -1,19 +1,20 @@
-import styled from '@emotion/styled';
-import { ReactComponent as Soul } from '../../../images/Nav/nav_soul.svg';
+//import styled from '@emotion/styled';
+// import { ReactComponent as Soul } from '../../../images/Nav/nav_soul.svg';
+import Soul from '../components/Soul';
 //import testpng from '../../../images/avatar/test1.png';
 import { useNavigate } from 'react-router-dom';
 
 function AvatarCard(props) {
     const { theme, avatarinfo } = props;
     const navigate = useNavigate();
-    const SoulColor = styled.div`
-        path {
-            fill: ${theme.cHeader};
-        }
-        circle {
-            stroke: ${theme.cHeader};
-        }
-    `;
+    // const SoulColor = styled.div`
+    //     path {
+    //         fill: ${theme.cHeader};
+    //     }
+    //     circle {
+    //         stroke: ${theme.cHeader};
+    //     }
+    // `;
     const time = avatarinfo.avatar_created_at;
     const combination = JSON.parse(avatarinfo.combination);
     const combinationText = JSON.parse(avatarinfo.combinationText);
@@ -76,12 +77,12 @@ function AvatarCard(props) {
                             ? `尾色:${combinationText.taleColor}`
                             : null}
                     </p>
-                    <SoulColor>
-                        <p className="avatarTotalPrice">
-                            總計價格:{avatarinfo.price}
-                            <Soul />
-                        </p>
-                    </SoulColor>
+
+                    <p className="avatarTotalPrice">
+                        總計價格:{avatarinfo.price}
+                        <Soul />
+                    </p>
+
                     <div className="showcaseBtns">
                         <div style={{ border: '1px solid' }}>
                             <p>分享</p>

@@ -1,5 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2'; //sweetalert2
+import { useNavigate } from 'react-router-dom';
 
 // scss
 import '../styles/_new_cart.scss';
@@ -22,7 +24,32 @@ const initState = (eventArray) => {
 };
 
 const Cart = (props) => {
+
+    const navigate = useNavigate();
+
     // ---------此段用於「取得該會員購物車有什麼」的資訊--------------------------------------
+
+
+    // 此Function處理:當User什麼都沒選直接按購物車ICON時，跳通知。
+    const sweetAlertCartNum = (num) => {
+        if (num === 0) {
+            console.log('這是num', num);
+
+            Swal.fire({
+                title: '哎呀！看來你的購物車是空的喔！',
+                text: '立刻前往「功德撲滿」賺取陰德值吧',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '來去逛逛',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/events', { replace: true });
+                }
+            });
+        }
+    };
 
     // 會員登入登出驗證(auth)
     const { authorized, sid, account, token } = useContext(AuthContext);
@@ -32,7 +59,9 @@ const Cart = (props) => {
         const events = await axios.get(
             `http://localhost:3500/eventcarts/showcart?member_sid=${sid}`
         );
-        setEventCart(initState(events.data));
+        await setEventCart(initState(events.data));
+        // 此行處理:當User什麼都沒選直接按購物車ICON時，跳通知
+        await sweetAlertCartNum(initState(events.data).length);
     };
 
     // 避免無窮迴圈(DidMount)
@@ -226,7 +255,6 @@ const Cart = (props) => {
         return total;
     };
 
-
     return (
         <>
             <div className="xuan-cart-container">
@@ -239,6 +267,7 @@ const Cart = (props) => {
                         volunNumber={calcVolunNumber()}
                         eventPick={eventPick}
                         setEventPick={setEventPick}
+                        calcPickNumber={calcPickNumber()}
                     />
 
                     {/* summary改只呈現「勾選後」的統計資訊 */}

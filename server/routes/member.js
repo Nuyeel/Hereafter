@@ -13,16 +13,18 @@ const jwt = require('jsonwebtoken');
 // 進行 bcrypt 加密用
 const bcryptjs = require('bcryptjs');
 
+const sqlstring = require('sqlstring');
+
+// 進行寄發驗證信
+const nodemailer = require('nodemailer');
 // 傳送 AJAX 用
 // const axios = require('axios');
 
-// FIXME: 實際路由設計可以自己決定
 // 測試: http://localhost:3500/api/member
 // router.route('/').get(async (req, res) => {
 //     // 進行某動作...
 // });
 
-// FIXME: 實際路由設計可以自己決定
 // 測試: http://localhost:3500/api/member/login
 // 登入
 router
@@ -123,7 +125,6 @@ router
         res.json(output);
     });
 
-// FIXME: 實際路由設計可以自己決定
 // 測試: http://localhost:3500/api/member/register
 // 註冊
 router
@@ -167,60 +168,88 @@ router
             hash,
         ]);
 
+        const search = `SELECT * FROM member WHERE account = ?`;
+        const [searchR] = await db.query(search, [req.body.account]);
+
+        const sid = searchR[0]['sid'];
+        const combinationCreate = JSON.stringify({
+            basic: [1, 1, 1],
+            basic_color: 0,
+            body: { hand: 0, foot: 0, tale: 0, special: 0 },
+            special_color: { tale: 0, special: 0 },
+            face: {
+                eye: 0,
+                ear: 0,
+                lip: 0,
+                nose: 0,
+                hairFront: 0,
+                hairBack: 0,
+                topEar: 0,
+            },
+            face_color: { eye: 0, nose: 0, hairFront: 0, topEar: 0 },
+        });
+        const combinationTextCreate = JSON.stringify({
+            hand: '饅頭',
+            foot: '饅頭',
+            bodyColor: '粉',
+            specialColor: '',
+            tale: '無',
+            taleColor: '',
+            eye: '瞇瞇眼',
+            eyeColor: '灰',
+            nose: '那個人',
+            noseColor: '白',
+            hair: '中分+不留長',
+            hairColor: '黑',
+            ear: '小饅頭',
+            topearColor: '',
+            lip: 'kitty',
+        });
+        const imgCreate = 'default.png';
+
+        const sqlcreate = `INSERT INTO showcase (member_sid, avatar_created_at, combination, combinationText, img_name, price) VALUES (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300)`;
+        const [rCreate] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
         output.success = true;
         output.error = '註冊成功';
 
         res.json(output);
     });
 
-// FIXME: 實際路由設計可以自己決定
-// 測試: http://localhost:3500/api/member/memberprofilerevise
-// 修改會員資料
-// router
-//     .route('/profilerevise')
-//     .get(async (req, res) => {
-//         res.render('profilerevise');
-//     })
-//     .post(async (req, res) => {
-//         const output = {
-//             success: false,
-//             error: '',
-//             code: 0,
-//         };
-//         // 用query方法查詢
-//         const sql =
-//             '"UPDATE `member` SET `name`=?, `birthdate`=?, `deathdate`=?, `mobile`=?, `email`=? WHERE `sid`=${sid}"';
-//         const [q1] = await db.query(sql, [req.body.account]);
-//         if (q1.length > 0) {
-//             output.code = 405;
-//             output.error = '會員帳戶已存在';
-//             return res.json(output);
-//         }
-
-//         if (!output.success) {
-//             output.code = 407;
-//             output.error = '註冊資料有誤';
-//         } else {
-//             const sql3 =
-//                 'INSERT INTO `member`(`account`, `email`, `password`, `create_at`) VALUES (?,?,?,Now())';
-//             const salt = bcryptjs.genSaltSync(10);
-//             const hash = await bcryptjs.hash(req.body.password, salt);
-//             // 用execute方法執行新增資料
-//             const [q3] = await db.execute(sql3, [
-//                 req.body.account,
-//                 req.body.email,
-//                 hash,
-//             ]);
-//         }
-//         res.json(output);
-//     });
-
-// 測試: http://localhost:3500/api/member/memberpasswordrevise
-// 修改會員頁內的密碼
+// 測試: http://localhost:3500/api/member/forgotpassword
+// 忘記密碼頁面
 router
-    .route('/profilepasswordrevise')
+    .route('/forgotpassword')
     .get(async (req, res) => {
-        res.render('profilepasswordrevise');
+        // 登入先擋掉
+        if (res.locals.loginUser) {
+            return;
+        }
+        // const output = {
+        //     success: false,
+        //     error: '',
+        //     code: 0,
+        // };
     })
     .post(async (req, res) => {
         const output = {
@@ -229,36 +258,284 @@ router
             code: 0,
         };
 
+        const sql = 'SELECT * FROM `member` WHERE account = ?';
+        const [[q1]] = await db.query(sql, [req.body.account]);
+        console.log(q1.account);
+        console.log(req.body.account);
+
+        const sql2 = 'SELECT * FROM `member` WHERE email = ?';
+        const [[q2]] = await db.query(sql2, [req.body.email]);
+        console.log(q2.email);
+        console.log(req.body.email);
+
+        if (q1.account !== req.body.account) {
+            output.code = 406;
+            output.error = '帳戶不存在';
+            return res.json(output);
+        }
+        if (q2.email !== req.body.email) {
+            output.code = 406;
+            output.error = '電子信箱不存在';
+            return res.json(output);
+        }
+        // 寄發驗證信的部分走這裡
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            auth: {
+                user: ' ',
+                pass: ' ',
+                // ！！測試寄信用的金鑰先不上傳（測試可問 Yu）！！
+            },
+        });
+        transporter
+            .sendMail({
+                from: '來生投放所 <service@nextlife.com.tw>',
+                to: `${q2.email}`,
+                subject: '《來生投放所》修改密碼通知信',
+                html: `
+                <a href="http://localhost:3000/forgotpasswordrevise">
+                <img src="https://i.imgur.com/ICrQRRJ.png" width="800" />
+                </a>
+            `,
+                // http://localhost:3000/forgotpasswordrevise
+                // http://192.168.24.173:3000/forgotpasswordrevise
+            })
+            .then((info) => {
+                console.log({ info });
+            })
+            .catch(console.error);
+
+        output.success = true;
+        output.error = '驗證信件寄發成功';
+
+        res.json(output);
+    });
+
+// 測試: http://localhost:3500/api/member/forgotpasswordrevise
+// 修改密碼頁面
+router
+    .route('/forgotpasswordrevise')
+    .get(async (req, res) => {
+        if (res.locals.loginUser) {
+            return;
+        }
+        // const output = {
+        //     success: false,
+        //     error: '',
+        //     code: 0,
+        // };
+    })
+    .post(async (req, res) => {
+        const output = {
+            success: false,
+            error: '',
+            code: 0,
+        };
         // 用query方法查詢
+        // const sql = 'SELECT * FROM `member` WHERE account = ?';
+        // const [q1] = await db.query(sql, [req.body.account]);
+        // console.log(q1);
 
-        const sql2 = 'SELECT * FROM `member` WHERE password = ?';
-        const [q2] = await db.query(sql2, [req.body.currentPassword]);
-        // const row = q2[0];
-        // output.success = await bcryptjs.compare(
-        //     req.body.currentPassword,
-        //     row.password
-        // );
+        // //更新登入密碼
+        // const sql2 = 'UPDATE `member` SET `password`=? WHERE sid=?';
+        // const salt = bcryptjs.genSaltSync(10);
+        // const hash = await bcryptjs.hash(req.body.password, salt);
+        // // 用execute方法執行新增資料
+        // const [q2] = await db.execute(sql2, [hash, res.locals.loginUser.id]);
 
-        // if (!output.success) {
-        //     output.code = 403;
-        //     output.error = '當前密碼輸入錯誤';
+        // output.success = true;
+        // output.error = '密碼修改成功';
+
+        // res.json(output);
+    });
+
+// 測試: http://localhost:3500/api/member/memberprofilerevise
+// 修改會員資料
+router
+    .route('/profilerevise')
+    .get(async (req, res) => {
+        // 未登入先擋掉
+        if (!res.locals.loginUser) {
+            return;
+        }
+        const output = {
+            success: false,
+            error: '',
+            code: 0,
+            data: {},
+        };
+        const sql = 'SELECT * FROM `member` WHERE sid = ?';
+        const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
+        // console.log(q1);
+
+        q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
+        q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
+
+        output.success = true;
+        output.data = q1;
+        output.error = '成功取得資料';
+
+        res.json(output);
+    })
+    .post(async (req, res) => {
+        const output = {
+            success: false,
+            error: '',
+            code: 0,
+        };
+        // 用query方法查詢
+        const sql = 'SELECT * FROM `member` WHERE account = ?';
+        const [q1] = await db.query(sql, [req.body.account]);
+
+        // const sql2 = 'SELECT * FROM `member` WHERE name = ?';
+        // const [q2] = await db.query(sql2, [req.body.name]);
+        // if (q2.length > 0) {
+        //     output.code = 406;
+        //     output.error = '會員名稱尚未修改';
         //     return res.json(output);
         // }
 
-        if (q2.length > 0) {
-            output.code = 408;
-            output.error = '您的密碼未經修改';
-            return res.json(output);
-        }
+        // const sql3 = 'SELECT * FROM `member` WHERE birthdate = ?';
+        // const [q3] = await db.query(sql3, [req.body.birthdate]);
+        // if (q3.length > 0) {
+        //     output.code = 406;
+        //     output.error = '您的出生日尚未修改';
+        //     return res.json(output);
+        // }
 
-        const sql4 = 'UPDATE `member` SET `password`=? WHERE sid=?';
-        const salt = bcryptjs.genSaltSync(10);
-        const hash = await bcryptjs.hash(req.body.password, salt);
-        // 用execute方法執行新增資料
-        const [q4] = await db.execute(sql4, [hash, res.locals.loginUser.id]);
+        // const sql4 = 'SELECT * FROM `member` WHERE deathdate = ?';
+        // const [q4] = await db.query(sql4, [req.body.deathdate]);
+        // if (q4.length > 0) {
+        //     output.code = 406;
+        //     output.error = '您的死亡日尚未修改';
+        //     return res.json(output);
+        // }
+
+        // const sql5 = 'SELECT * FROM `member` WHERE email = ?';
+        // const [q5] = await db.query(sql5, [req.body.email]);
+        // if (q5.length > 0) {
+        //     output.code = 406;
+        //     output.error = '電子信箱尚未修改';
+        //     return res.json(output);
+        // }
+
+        //更新會員名稱
+        const nameupdate = 'UPDATE `member` SET `name`=? WHERE sid=?';
+        const nameupdate2 = sqlstring.format(nameupdate, [
+            req.body.name,
+            res.locals.loginUser.id,
+        ]);
+        const nameupdate3 = await db.query(nameupdate2);
+        // console.log(nameupdate3);
+
+        //更新出生日
+        const birthdateupdate = 'UPDATE `member` SET `birthdate`=? WHERE sid=?';
+        const birthdateupdate2 = sqlstring.format(birthdateupdate, [
+            req.body.birthdate,
+            res.locals.loginUser.id,
+        ]);
+        const birthdateupdate3 = await db.query(birthdateupdate2);
+        // console.log(birthdateupdate3);
+
+        //更新死亡日
+        const deathdateupdate = 'UPDATE `member` SET `deathdate`=? WHERE sid=?';
+        const deathdateupdate2 = sqlstring.format(deathdateupdate, [
+            req.body.deathdate,
+            res.locals.loginUser.id,
+        ]);
+        const deathdateupdate3 = await db.query(deathdateupdate2);
+        // console.log(deathdateupdate3);
+
+        //更新電子信箱
+        const emailupdate = 'UPDATE `member` SET `email`=? WHERE sid=?';
+        const emailupdate2 = sqlstring.format(emailupdate, [
+            req.body.email,
+            res.locals.loginUser.id,
+        ]);
+        const emailupdate3 = await db.query(emailupdate2);
+        // console.log(emailupdate3);
 
         output.success = true;
-        output.error = '密碼修改成功';
+        output.error = '修改成功';
+
+        res.json(output);
+    });
+
+// 測試: http://localhost:3500/api/member/memberpasswordrevise
+// 修改會員頁內的密碼
+router
+    .route('/profilepasswordrevise')
+    .get(async (req, res) => {
+        if (!res.locals.loginUser) {
+            return;
+        }
+        // res.render('profilepasswordrevise');
+    })
+    .post(async (req, res) => {
+        // console.log(res.locals.loginUser);
+        // console.log(req.body.currentPassword);
+        const output = {
+            success: false,
+            error: '',
+            code: 0,
+        };
+        // 用query方法查詢
+        const sql = 'SELECT * FROM `member` WHERE sid = ?';
+        const [q1] = await db.query(sql, [res.locals.loginUser.id]);
+
+        output.success = await bcryptjs.compare(
+            req.body.currentPassword,
+            q1[0].password
+        );
+        if (!output.success) {
+            output.code = 408;
+            output.error = '您的密碼輸入錯誤';
+            return res.json(output);
+        }
+        //這邊還在處理中 ...
+        // const sql2 = 'SELECT * FROM `member` WHERE password = ?';
+        // const [q2] = await db.query(sql2, [req.body.currentPassword]);
+        // const salt = bcryptjs.genSaltSync(10);
+        // const hash = await bcryptjs.hash(req.body.currentPassword, salt);
+        // const row = q2[0];
+
+        // console.log(row);
+        // console.log(hash);
+
+        // const passwordupdate = 'UPDATE `member` SET `password`=? WHERE sid=?';
+        // const passwordupdate2 = sqlstring.format(passwordupdate, [
+        //     req.body.currentPassword,
+        //     res.locals.loginUser.id,
+        // ]);
+        // const passwordupdate3 = await db.query(passwordupdate2);
+        // console.log(passwordupdate3);
+
+        // if (row.password !== hash) {
+        //     output.code = 403;
+        //     output.error = '當前密碼輸入錯誤';
+        //     return res.json(output);
+        // } else {
+        //     const sql3 = 'UPDATE `member` SET `password`=? WHERE sid=?';
+        //     // 用execute方法執行新增資料
+        //     const [q3] = await db.execute(sql3, [
+        //         hash,
+        //         res.locals.loginUser.id,
+        //     ]);
+
+        //     output.success = true;
+        //     output.error = '密碼修改成功';
+        // }
+
+        // const sql4 = 'UPDATE `member` SET `password`=? WHERE sid=?';
+        // const salt = bcryptjs.genSaltSync(10);
+        // const hash = await bcryptjs.hash(req.body.password, salt);
+
+        // // 用execute方法執行新增資料
+        // const [q4] = await db.execute(sql4, [hash, res.locals.loginUser.id]);
+
+        // output.success = true;
+        // output.error = '密碼修改成功';
 
         res.json(output);
     });

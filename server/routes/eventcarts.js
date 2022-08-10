@@ -89,11 +89,6 @@ router.get('/showcart', async (req, res) => {
     res.json(await getUserCart(req.query.member_sid)); //回傳格式為JSON
 });
 
-// 修改購物車內容(修改數量)
-router.put('/', async (req, res) => {
-    //商品sid 會員sid NOW()
-});
-
 // 在購物車按下"X",MySQL購物車資料同步刪除
 // DELETE FROM `event_cart` WHERE event_sid = 106 AND member_sid = 100;
 router.delete('/deletecart', async (req, res) => {
@@ -157,8 +152,6 @@ router.post('/creditcard', upload.none(), async (req, res) => {
     res.json(req.body);
 });
 
-
-
 // 訂單明細(透過eventPick取得活動資料)
 // router.post('/readytobuy', async (req, res) => {
 //     const $sql = 'SELECT * FROM `npo_act` WHERE `sid` IN (?) ';
@@ -172,12 +165,8 @@ router.post('/creditcard', upload.none(), async (req, res) => {
 //     res.json(results);
 // });
 
-
-
-// 實驗一下GET方法
+// 訂單明細：實驗一下GET方法
 router.get('/readytobuy', async (req, res) => {
-
-
     let detailnum = req.query.detailnum || ''; //?detailnum=22,23
     const $sql = 'SELECT * FROM `npo_act` WHERE `sid` IN (?) ';
 
@@ -188,5 +177,31 @@ router.get('/readytobuy', async (req, res) => {
     res.json(results);
 });
 
+// TODO: 當送出信用卡資料時，把event sid連帶從MySQL刪掉
+
+// 有辦法用POST方法嗎？
+// router.delete('/alreadypay', async (req, res) => {
+//     const sql =
+//         'DELETE FROM `event_cart` WHERE member_sid = ? AND  event_sid IN (?) ';
+//         // DELETE FROM `event_cart` WHERE `member_sid` = 4 AND `event_sid` IN (28,30)
+
+//     await db.query(sql, [req.body.member_sid, req.body.event_sid]);
+
+//     res.json(await req.body.event_sid);
+// });
+
+// FIXME: 目前成功的只有GET方法 Q ___ Q
+// FIXME: 我好像不會寫DELETE方法......==
+router.get('/alreadypay', async (req, res) => {
+    let membersid = req.query.membersid || ''; //?membersid=4
+    let alreadypay = req.query.alreadypay || ''; //?alreadypay=22,23
+    const $sql =
+        'DELETE FROM `event_cart` WHERE member_sid = ? AND  event_sid IN (?) ';
+
+    // 如果只取results，會得到[[{}]]的物件，無法直接被解析。[results]可以先少一個[]
+    const [results] = await db.query($sql, [membersid, alreadypay]);
+
+    res.json('已從購物車刪除');
+});
 
 module.exports = router;

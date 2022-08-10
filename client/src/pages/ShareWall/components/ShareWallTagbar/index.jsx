@@ -1,19 +1,21 @@
 // 使用套件 (package)
-import { useEffect, useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 // 使用設定 (config)
 import { API_SHAREWALL_TAGS } from '../../../../config/ajax-path';
+
+import HeaderContext from '../../../../context/HeaderContext/HeaderContext';
 
 // 使用樣式 (scss)
 import './Tagbar.scss';
 
 // 使用組件 (Component)
 
-function Tagbar(props) {
-    const { searchParams, setSearchParams } = props;
-
+function Tagbar() {
     const [tagList, setTagList] = useState([]);
+
+    const { searchParams, setSearchParams } = useContext(HeaderContext);
 
     const axiosGET = async () => {
         const result = await axios.get(`${API_SHAREWALL_TAGS}`);
