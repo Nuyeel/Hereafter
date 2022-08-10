@@ -57,7 +57,12 @@ const Maker = () => {
     const AvatarMaker = styled.div`
         width: 1200px;
         height: 610px;
-        background-color: ${theme.bgcAvatarMaker};
+        background: radial-gradient(
+            47.11% 47.11% at 50% 50%,
+            ${theme.bgcAvatarMaker2} 0%,
+            ${theme.bgcAvatarMaker} 100%
+        );
+        backdrop-filter: blur(5px);
         border-radius: 16px;
         position: relative;
         display: flex;
