@@ -12,16 +12,21 @@ import HeaderContext, {
 // 子曾元件和css
 import Carousel from './Carousel';
 import './teststyle.scss';
+import { useNavigate } from 'react-router-dom';
 
 function Gooddeed(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
-    //TODO:不確定這裡是否需要會員
+    const navigate = useNavigate();
+    const backtoAbout = () => {
+        navigate('/AboutUsThird', { replace: true });
+    };
     const { authorized, sid, account, token } = useContext(AuthContext);
     const [shows, setShows] = useState({
         opacity: ['1', '0', '0'],
         height: ['', '0', '0'],
     });
+
 
     // 確定有沒有陰德值
     // const [haveScore, setHaveScore] = useState(true);
@@ -77,7 +82,7 @@ function Gooddeed(props) {
                             {score ? <h3>{score}</h3> : ''}
                         </div>
 
-                        <button>規劃我的來世</button>
+                        <button onClick={backtoAbout}>規劃我的來世</button>
                         <p>
                             貼心提醒：
                             <br />
@@ -155,7 +160,7 @@ function Gooddeed(props) {
                             <h3>{randomScore}</h3>
                         </div>
 
-                        <button>規劃我的來世</button>
+                        <button onClick={backtoAbout}>規劃我的來世</button>
                         <p>
                             貼心提醒：
                             <br />
