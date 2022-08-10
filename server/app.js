@@ -197,6 +197,12 @@ app.use(
     express.static(`${__dirname}/public/uploads/images/avatar`)
 );
 
+// 活動圖片
+app.use(
+    '/event/eventlist',
+    express.static(`${__dirname}/public/event/eventlist`)
+);
+
 app.use('/api/gooddeed', gooddeedRouter);
 
 // catch 404 and forward to error handler

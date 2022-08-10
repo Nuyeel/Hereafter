@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'; //sweetalert2
 
 // react carousel
 import ReactDOM from 'react-dom';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
 // Redux
@@ -33,9 +33,9 @@ import './_new_eventdetail.scss';
 import soul from './imgs/soul.svg';
 
 // img
-import pic01 from '../../images/Event/01.svg';
-import pic02 from '../../images/Event/02.svg';
-import pic03 from '../../images/Event/03.svg';
+// import pic01 from '../../images/Event/01.svg';
+// import pic02 from '../../images/Event/02.svg';
+// import pic03 from '../../images/Event/03.svg';
 // import pic01 from '../../../../images/Event/01.svg';
 
 // SimpleBar
@@ -149,31 +149,40 @@ const EventDetail = () => {
                                         <div className="xuan-intro-img">
                                             <Carousel>
                                                 <div>
-                                                    <img src={pic01} />
+                                                    <img
+                                                        src={
+                                                            'http://localhost:3500/event/eventlist/' +
+                                                            v.img
+                                                        }
+                                                        alt=""
+                                                    />
+
                                                     {/* <p className="legend">
                                                         Legend 1
                                                     </p> */}
                                                 </div>
                                                 <div>
-                                                    <img src={pic02} />
+                                                    <img
+                                                        src={
+                                                            'http://localhost:3500/event/eventlist/' +
+                                                            v.img
+                                                        }
+                                                        alt=""
+                                                    />
+
                                                     {/* <p className="legend">
                                                         Legend 2
                                                     </p> */}
                                                 </div>
                                                 <div>
-                                                    <img src={pic03} />
-                                                    {/* <p className="legend">
-                                                        Legend 3
-                                                    </p> */}
-                                                </div>
-                                                <div>
-                                                    <img src={pic03} />
-                                                    {/* <p className="legend">
-                                                        Legend 3
-                                                    </p> */}
-                                                </div>
-                                                <div>
-                                                    <img src={pic03} />
+                                                    <img
+                                                        src={
+                                                            'http://localhost:3500/event/eventlist/' +
+                                                            v.img
+                                                        }
+                                                        alt=""
+                                                    />
+
                                                     {/* <p className="legend">
                                                         Legend 3
                                                     </p> */}

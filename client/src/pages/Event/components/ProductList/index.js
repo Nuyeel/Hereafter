@@ -6,7 +6,7 @@ import '../../_new_eventlist.scss';
 import soul from '../../imgs/soul.svg';
 
 // 活動圖片
-import pic01 from '../../../../images/Event/01.svg';
+// import pic01 from '../../../../images/Event/01.svg';
 
 function ProductList(props) {
     const { events } = props;
@@ -35,7 +35,14 @@ function ProductList(props) {
                             </div>
 
                             <div className="event-img">
-                                <img src={pic01} alt="" />
+                                {/* <img src={pic01} alt="" /> */}
+                                <img
+                                    src={
+                                        'http://localhost:3500/event/eventlist/' +
+                                        v.img
+                                    }
+                                    alt=""
+                                />
                             </div>
 
                             <div className="event-title-group">
