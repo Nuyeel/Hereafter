@@ -35,9 +35,17 @@ function MemberProfileReviseForm() {
         }));
     };
 
+    const emailRe =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(memberProfileData);
+
+        if (!memberProfileData.email.match(emailRe)) {
+            Swal.fire('電子信箱格式有誤');
+            return;
+        }
 
         fetch(MEMBER_PROFILE_REVISE, {
             method: 'POST',
@@ -165,7 +173,7 @@ function MemberProfileReviseForm() {
                                                                                 </label>
                                                                                 <InputIME
                                                                                     type="text"
-                                                                                    className="form-control"
+                                                                                    className="form-control input-2"
                                                                                     id="account"
                                                                                     name="account"
                                                                                     value={

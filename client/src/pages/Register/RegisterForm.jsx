@@ -183,12 +183,12 @@ function RegisterForm(props) {
         e.preventDefault();
 
         if (!registerData.account.match(accountRe)) {
-            Swal.fire('您輸入的帳戶不可含有空白格或特殊字元');
+            Swal.fire('帳戶不可含有空白格或特殊字元');
             return;
         }
 
         if (!registerData.password.match(passwordRe)) {
-            Swal.fire('您輸入的密碼須包含字母及數字共八位數');
+            Swal.fire('密碼須包含字母及數字共八位數');
             return;
         }
 

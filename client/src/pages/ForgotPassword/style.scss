@@ -69,11 +69,6 @@ button:active {
     text-decoration: none
 }
 
-.form-control.is-invalid, .was-validated .form-control:invalid, .form-control.is-invalid:focus, .was-validated:focus .form-control:invalid:focus {
-    color: $alert;
-    outline: $alert 2px solid;
-}
-
 .alert-success {
     color: $accent-blue;
     background-color: $highlight;
@@ -130,10 +125,17 @@ button:active {
     color: #fff;
 }
 
+.input-2[type=text] {
+    font: 400 16px var(--text-font), Arial, sans-serif;
+    color: #3C3B6775;
+    // height: 40px;
+    border-radius: 10px;
+}
+
 input[type=text], input[type=email], input[type=password], [type=date] {
     font: 400 16px var(--text-font), Arial, sans-serif;
     color: $bgc-D;
-    height: 40px;
+    // height: 40px;
     border-radius: 10px;
 }
 
@@ -155,6 +157,11 @@ input[type=text].error, input[type=email].error, input[type=password].error, inp
 
 input[type=text].error, input[type=email].error, input[type=password].error {
     outline: var(--alert-l) 2px solid;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid, .form-control.is-invalid:focus, .was-validated:focus .form-control:invalid:focus {
+    color: $alert;
+    outline: $alert 2px solid;
 }
 
 .memberBgCard {
