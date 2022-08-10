@@ -21,13 +21,6 @@ function MemberProfileReviseForm() {
         email: '',
     });
 
-    console.log(memberProfileData);
-
-    // const [namePrevious, setNamePrevious] = useState('');
-    // const [birthdatePrevious, setBirthdatePrevious] = useState('');
-    // const [deathdatePrevious, setDeathdatePrevious] = useState('');
-    // const [emailPrevious, setEmailPrevious] = useState('');
-
     const themeContext = useContext(ThemeContext);
     const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -42,7 +35,7 @@ function MemberProfileReviseForm() {
         }));
     };
 
-    const handleUpdate = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(memberProfileData);
 
@@ -71,20 +64,24 @@ function MemberProfileReviseForm() {
             });
     };
 
-    // useEffect(() => {
-    //     // console.log({
-    //     //     account: accountPrevious,
-    //     //     email: emailPrevious,
-    //     //     password: passwordPrevious,
-    //     //     confirmPassword: confirmPasswordPrevious,
-    //     // });
-    //     setMemberProfileData({
-    //         name: namePrevious,
-    //         birthdate: birthdatePrevious,
-    //         deathdate: deathdatePrevious,
-    //         email: emailPrevious,
-    //     });
-    // }, [namePrevious, birthdatePrevious, deathdatePrevious, emailPrevious]);
+    const fetchMemberData = async () => {
+        console.log('fetch start');
+        const r = await fetch(MEMBER_PROFILE_REVISE, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        const result = await r.json();
+        console.log(result);
+
+        setMemberProfileData(result.data);
+    };
+
+    useEffect(() => {
+        fetchMemberData();
+    }, []);
 
     return (
         <>
@@ -152,7 +149,7 @@ function MemberProfileReviseForm() {
                                                                         <form
                                                                             name="form1"
                                                                             onSubmit={
-                                                                                handleUpdate
+                                                                                handleSubmit
                                                                             }
                                                                         >
                                                                             <div className="mb-3 d-flex justify-content-center page-title">
@@ -171,7 +168,6 @@ function MemberProfileReviseForm() {
                                                                                     className="form-control"
                                                                                     id="account"
                                                                                     name="account"
-                                                                                    placeholder="例：HappyGhost"
                                                                                     value={
                                                                                         memberProfileData.account
                                                                                     }
