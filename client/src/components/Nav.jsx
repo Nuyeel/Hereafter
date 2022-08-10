@@ -24,9 +24,6 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaBars } from 'react-icons/fa';
 
-// 「德」缺字SVG
-import missingword from '../images/Nav/missing_word.svg';
-
 // Redux(活動購物車數字)
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -34,8 +31,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import AuthContext from '../context/AuthContext/AuthContext';
 import { eventCartNum } from '../features/counter/counterSlice';
 
+// 拿資料庫會員的陰德值
+import { PLACE_CARTDATA_API } from '../config/ajax-path';
+
 function Nav(props) {
-    const { lightBox, setLightBox } = props; //從App.jsx傳入
+    const { lightBox, setLightBox, userGooddeed, setUserGooddeed } = props; //從App.jsx傳入
     // const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
     const { theme, setTheme } = useContext(ThemeContext);
@@ -79,6 +79,17 @@ function Nav(props) {
         fetchEventCartNum();
     }, [sid]);
 
+    const getUserGooddeedData = async () => {
+        const r = await fetch(`${PLACE_CARTDATA_API}/${sid}`);
+        const output = await r.json();
+        const newGooddeed = output.goodDeed;
+        setUserGooddeed({ ...userGooddeed, gooddeed: newGooddeed });
+    };
+
+    useEffect(() => {
+        getUserGooddeedData();
+    }, [sid]);
+
     // -------------------------------------------
     // FIXME: 我先簡單的讓首頁的 nav 消失方便二路施工
     // FIXME: 之後要做成條件渲染 首頁的 Nav 是小框框
@@ -116,28 +127,17 @@ function Nav(props) {
                         <h4 className="subtitle">最新最即時的投胎資訊都在這</h4>
                     </div>
 
-                    <div className="nav_lightbox_list eventlist-title">
-                        <img
-                            src={missingword}
-                            alt=""
-                            className='eventlist-title-img'
-                            onClick={() => {
-                                navigate('/events', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        />
-
-                        {/* <h2
+                    <div className="nav_lightbox_list">
+                        <h2
                             className="nav_link"
                             onClick={() => {
                                 navigate('/events', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
                             }}
-                        > */}
-                        {/* FIXME: 德 缺字 */}
-                        {/* 功德撲滿 */}
-
-                        {/* </h2> */}
+                        >
+                            {/* FIXME: 德 缺字 */}
+                            功德撲滿
+                        </h2>
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
 
@@ -164,7 +164,9 @@ function Nav(props) {
                         >
                             良辰吉地
                         </h2>
-                        <h4 className="subtitle">介紹文字放這邊</h4>
+                        <h4 className="subtitle">
+                            何時何地，轉世降生~由你自己來決定！
+                        </h4>
                     </div>
 
                     <div className="nav_lightbox_list">
@@ -280,42 +282,75 @@ function Nav(props) {
                             我要投胎
                         </div>
                         <div className="nav-inner-right">
-                            <NavSoul className="nir-NavSoul" />
-
-                            {authorized ? (
-                                <FaShoppingCart
-                                    className="nir-FaShoppingCart"
-                                    style={{
-                                        cursor: 'pointer',
-                                    }}
-                                    onClick={() => {
-                                        navigate('/ordersteps', {
-                                            replace: true,
+                            {/* <NavSoul className="nir-NavSoul" /> */}
+                            <span
+                                className={
+                                    userGooddeed.show
+                                        ? 'nir-NavSoul soul-gooddeed-box show-gooddeed'
+                                        : 'nir-NavSoul soul-gooddeed-box'
+                                }
+                                onClick={() => {
+                                    if (userGooddeed.show) {
+                                        setUserGooddeed({
+                                            ...userGooddeed,
+                                            show: false,
                                         });
-                                        setLightBox('nav_lightbox_hidden');
-                                    }}
-                                />
-                            ) : (
-                                <FaShoppingCart
-                                    className="nir-FaShoppingCart"
-                                    style={{
-                                        cursor: 'pointer',
-                                    }}
-                                    onClick={() => {
-                                        Swal.fire('請先登入會員');
-                                        navigate('/login', { replace: true });
-                                        setLightBox('nav_lightbox_hidden');
-                                    }}
-                                />
-                            )}
+                                    } else {
+                                        setUserGooddeed({
+                                            ...userGooddeed,
+                                            show: true,
+                                        });
+                                    }
+                                }}
+                            >
+                                <NavSoul />
+                                <p
+                                    className={
+                                        userGooddeed.show
+                                            ? 'gooddeed-text show'
+                                            : 'gooddeed-text'
+                                    }
+                                >
+                                    {userGooddeed.gooddeed}
+                                </p>
+                            </span>
 
-                            {count === 0 ? (
-                                ''
-                            ) : (
-                                <span className="nav-xuan-event-cartnum xuan-notion">
-                                    {count}
-                                </span>
-                            )}
+                            <span className="nir-FaShoppingCart">
+                                {authorized ? (
+                                    <FaShoppingCart
+                                        style={{
+                                            cursor: 'pointer',
+                                        }}
+                                        onClick={() => {
+                                            navigate('/ordersteps', {
+                                                replace: true,
+                                            });
+                                            setLightBox('nav_lightbox_hidden');
+                                        }}
+                                    />
+                                ) : (
+                                    <FaShoppingCart
+                                        style={{
+                                            cursor: 'pointer',
+                                        }}
+                                        onClick={() => {
+                                            Swal.fire('請先登入會員');
+                                            navigate('/login', {
+                                                replace: true,
+                                            });
+                                            setLightBox('nav_lightbox_hidden');
+                                        }}
+                                    />
+                                )}
+
+                                {count === 0 ? (
+                                    ''
+                                ) : (
+                                    <span className="nav-xuan-event-cartnum xuan-notion">
+                                        {count}
+                                    </span>
+                                )}
+                            </span>
 
                             {authorized ? (
                                 <BsFillPersonFill
