@@ -161,7 +161,7 @@ h3 {
     }
 }
 
-// --------Nav光箱目錄--------------
+// --------Nav光箱目錄(手機版)--------------
 
 .nav_lightbox_hidden {
     background-color: #000000CC;
@@ -197,11 +197,14 @@ h3 {
         
         > h2 {
             color: #FFFFFF;
-            line-height: 6rem;
+            line-height: 5rem;
+            // line-height: 4rem;
             margin-right: 25px;
         }
 
         > h4 {
+            // 手機版介紹文字不出現
+            display: none;
             color: #FFFFFF;
             line-height: 6rem;
             letter-spacing: 0.2rem;
@@ -216,6 +219,11 @@ h3 {
     .nav_lightbox_list:hover {
         > h2, h4 {
             color: $bgc-D;
+        }
+
+        // 「功德撲滿」SVG變色
+        img{
+            filter: invert(75%) sepia(60%) saturate(493%) hue-rotate(202deg) brightness(85%) contrast(100%);
         }
     }
 }
@@ -240,6 +248,53 @@ h3 {
     text-align: center;
     background-color: $secondary;
     border-radius: 10px;
+}
+
+// 功德撲滿缺字處理
+.nav_lightbox_list{
+
+    img{
+        width: 48%;
+        margin-top: 12px;
+        margin-bottom: 10px;
+        margin-right: 25px;
+    }
+
+}
+
+
+@media screen and (min-width: 992px) {
+
+    .nav_lightbox_wrap {
+        width: 80%;
+    
+        > .nav_lightbox_list {
+            display: flex;
+            
+            > h2 {
+                line-height: 6rem;
+                margin-right: 25px;
+            }
+    
+            > h4 {
+                display: block;
+            }
+        }
+    }
+
+    // 功德撲滿缺字處理
+    .nav_lightbox_list{
+
+        img{
+            width: 12%;
+            margin-top: 14px;
+            margin-bottom: 14px;
+            margin-right: 25px;
+        }
+
+    }
+
+    
 }
 
 /* ============================================================ */

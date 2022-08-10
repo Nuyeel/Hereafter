@@ -24,6 +24,9 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaBars } from 'react-icons/fa';
 
+// 「德」缺字SVG
+import missingword from '../images/Nav/missing_word.svg';
+
 // Redux(活動購物車數字)
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -113,17 +116,28 @@ function Nav(props) {
                         <h4 className="subtitle">最新最即時的投胎資訊都在這</h4>
                     </div>
 
-                    <div className="nav_lightbox_list">
-                        <h2
+                    <div className="nav_lightbox_list eventlist-title">
+                        <img
+                            src={missingword}
+                            alt=""
+                            className='eventlist-title-img'
+                            onClick={() => {
+                                navigate('/events', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                            }}
+                        />
+
+                        {/* <h2
                             className="nav_link"
                             onClick={() => {
                                 navigate('/events', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
                             }}
-                        >
-                            {/* FIXME: 德 缺字 */}
-                            功德撲滿
-                        </h2>
+                        > */}
+                        {/* FIXME: 德 缺字 */}
+                        {/* 功德撲滿 */}
+
+                        {/* </h2> */}
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
 
