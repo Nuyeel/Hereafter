@@ -41,6 +41,7 @@
         "react-responsive-carousel": "^3.2.23",
         "react-router-dom": "^6.3.0",
         "react-scripts": "5.0.1",
+        "react-scroll-motion": "^0.3.0",
         "sass": "^1.53.0",
         "simplebar-react": "^2.4.1",
         "sweetalert2": "^11.4.24",
