@@ -1,13 +1,6 @@
-import { useContext } from 'react';
-
 import { PLACE_CARTDATA_API } from '../../../../config/ajax-path';
-// 會員登入context
-import AuthContext from '../../../../context/AuthContext/AuthContext';
 
-function AddPlaceToCart(e) {
-    console.log(e);
-    const { authorized, sid: userSid } = useContext(AuthContext);
-
+function AddPlaceToCart(e, userSid) {
     const placeIndex = e.currentTarget
         .closest('.place-info-card')
         .getAttribute('data-placesid');

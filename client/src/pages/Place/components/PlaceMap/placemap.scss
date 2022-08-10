@@ -264,9 +264,18 @@
 
     .search-area-btn {
         position: relative;
-        background-color: #222;
+        background-color: #6289bf;
         z-index: 9999;
-        left: 200px;
+        left: 40%;
+        top: 5px;
         padding: 5px;
+        border-radius: 10px;
+        opacity: 0.8;
+        transition: 0.3s;
+        filter: none;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 }

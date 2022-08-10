@@ -15,6 +15,8 @@ const bcryptjs = require('bcryptjs');
 
 const sqlstring = require('sqlstring');
 
+// 進行寄發驗證信
+const nodemailer = require('nodemailer');
 // 傳送 AJAX 用
 // const axios = require('axios');
 
@@ -239,10 +241,85 @@ router
 router
     .route('/forgotpassword')
     .get(async (req, res) => {
-        // 未登入先擋掉
-        // if (res.locals.loginUser) {
-        //     return;
-        // }
+        // 登入先擋掉
+        if (res.locals.loginUser) {
+            return;
+        }
+        // const output = {
+        //     success: false,
+        //     error: '',
+        //     code: 0,
+        // };
+    })
+    .post(async (req, res) => {
+        const output = {
+            success: false,
+            error: '',
+            code: 0,
+        };
+
+        const sql = 'SELECT * FROM `member` WHERE account = ?';
+        const [[q1]] = await db.query(sql, [req.body.account]);
+        console.log(q1.account);
+        console.log(req.body.account);
+
+        const sql2 = 'SELECT * FROM `member` WHERE email = ?';
+        const [[q2]] = await db.query(sql2, [req.body.email]);
+        console.log(q2.email);
+        console.log(req.body.email);
+
+        if (q1.account !== req.body.account) {
+            output.code = 406;
+            output.error = '帳戶不存在';
+            return res.json(output);
+        }
+        if (q2.email !== req.body.email) {
+            output.code = 406;
+            output.error = '電子信箱不存在';
+            return res.json(output);
+        }
+        // 寄發驗證信的部分走這裡
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            auth: {
+                user: ' ',
+                pass: ' ',
+                // ！！測試寄信用的金鑰先不上傳（測試可問 Yu）！！
+            },
+        });
+        transporter
+            .sendMail({
+                from: '來生投放所 <service@nextlife.com.tw>',
+                to: `${q2.email}`,
+                subject: '《來生投放所》修改密碼通知信',
+                html: `
+                <a href="http://localhost:3000/forgotpasswordrevise">
+                <img src="https://i.imgur.com/ICrQRRJ.png" width="800" />
+                </a>
+            `,
+                // http://localhost:3000/forgotpasswordrevise
+                // http://192.168.24.173:3000/forgotpasswordrevise
+            })
+            .then((info) => {
+                console.log({ info });
+            })
+            .catch(console.error);
+
+        output.success = true;
+        output.error = '驗證信件寄發成功';
+
+        res.json(output);
+    });
+
+// 測試: http://localhost:3500/api/member/forgotpasswordrevise
+// 修改密碼頁面
+router
+    .route('/forgotpasswordrevise')
+    .get(async (req, res) => {
+        if (res.locals.loginUser) {
+            return;
+        }
         // const output = {
         //     success: false,
         //     error: '',
@@ -270,45 +347,7 @@ router
         // output.success = true;
         // output.error = '密碼修改成功';
 
-        res.json(output);
-    });
-
-// 測試: http://localhost:3500/api/member/forgotpasswordrevise
-// 修改密碼頁面
-router
-    .route('/forgotpasswordrevise')
-    .get(async (req, res) => {
-        if (res.locals.loginUser) {
-            return;
-        }
-        // const output = {
-        //     success: false,
-        //     error: '',
-        //     code: 0,
-        // };
-    })
-    .post(async (req, res) => {
-        const output = {
-            success: false,
-            error: '',
-            code: 0,
-        };
-        // 用query方法查詢
-        const sql = 'SELECT * FROM `member` WHERE account = ?';
-        const [q1] = await db.query(sql, [req.body.account]);
-        console.log(q1);
-
-        //更新登入密碼
-        const sql2 = 'UPDATE `member` SET `password`=? WHERE sid=?';
-        const salt = bcryptjs.genSaltSync(10);
-        const hash = await bcryptjs.hash(req.body.password, salt);
-        // 用execute方法執行新增資料
-        const [q2] = await db.execute(sql2, [hash, res.locals.loginUser.id]);
-
-        output.success = true;
-        output.error = '密碼修改成功';
-
-        res.json(output);
+        // res.json(output);
     });
 
 // 測試: http://localhost:3500/api/member/memberprofilerevise
@@ -328,7 +367,7 @@ router
         };
         const sql = 'SELECT * FROM `member` WHERE sid = ?';
         const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
-        console.log(q1);
+        // console.log(q1);
 
         q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
         q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
@@ -348,7 +387,6 @@ router
         // 用query方法查詢
         const sql = 'SELECT * FROM `member` WHERE account = ?';
         const [q1] = await db.query(sql, [req.body.account]);
-        console.log(q1);
 
         // const sql2 = 'SELECT * FROM `member` WHERE name = ?';
         // const [q2] = await db.query(sql2, [req.body.name]);
@@ -389,7 +427,7 @@ router
             res.locals.loginUser.id,
         ]);
         const nameupdate3 = await db.query(nameupdate2);
-        console.log(nameupdate3);
+        // console.log(nameupdate3);
 
         //更新出生日
         const birthdateupdate = 'UPDATE `member` SET `birthdate`=? WHERE sid=?';
@@ -398,7 +436,7 @@ router
             res.locals.loginUser.id,
         ]);
         const birthdateupdate3 = await db.query(birthdateupdate2);
-        console.log(birthdateupdate3);
+        // console.log(birthdateupdate3);
 
         //更新死亡日
         const deathdateupdate = 'UPDATE `member` SET `deathdate`=? WHERE sid=?';
@@ -407,7 +445,7 @@ router
             res.locals.loginUser.id,
         ]);
         const deathdateupdate3 = await db.query(deathdateupdate2);
-        console.log(deathdateupdate3);
+        // console.log(deathdateupdate3);
 
         //更新電子信箱
         const emailupdate = 'UPDATE `member` SET `email`=? WHERE sid=?';
@@ -416,7 +454,7 @@ router
             res.locals.loginUser.id,
         ]);
         const emailupdate3 = await db.query(emailupdate2);
-        console.log(emailupdate3);
+        // console.log(emailupdate3);
 
         output.success = true;
         output.error = '修改成功';
