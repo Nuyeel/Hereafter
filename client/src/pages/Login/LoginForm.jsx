@@ -1,7 +1,6 @@
 import './style.scss';
 import Swal from 'sweetalert2';
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 
 import { MEMBER_LOGIN } from '../../config/ajax-path';
 

@@ -1,6 +1,6 @@
 import './style.scss';
+import Swal from 'sweetalert2';
 import { useState, useContext } from 'react';
-import axios from 'axios';
 
 import { FORGOT_PASSWORD } from '../../config/ajax-path';
 
@@ -17,12 +17,11 @@ function ForgotPasswordForm() {
 
     const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleFieldsChange = (e) => {
         const id = e.target.id;
         const val = e.target.value;
-        // console.log({ id, val });
         setforgotPasswordData((prevState) => ({
             ...prevState,
             [id]: val,
@@ -32,23 +31,27 @@ function ForgotPasswordForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const result = await axios(FORGOT_PASSWORD, {
+        fetch(FORGOT_PASSWORD, {
             method: 'POST',
-            data: JSON.stringify(forgotPasswordData),
+            body: JSON.stringify(forgotPasswordData),
             headers: {
-                'Content-Type': 'Application/json',
+                'Content-Type': 'application/json',
             },
-        });
-
-        // console.log(result.data);
-
-        if (result.data.success) {
-            localStorage.setItem('auth', JSON.stringify(result.data.data));
-            setAuth({ ...result.data.data, authorized: true });
-            navigate('/');
-        } else {
-            alert('帳密錯誤～～');
-        }
+        })
+            .then((r) => r.json())
+            .then((result) => {
+                console.log(result);
+                if (result.success) {
+                    // localStorage.setItem('auth', JSON.stringify(result.data));
+                    // setAuth({
+                    //     ...result.data,
+                    //     authorized: true,
+                    // });
+                    Swal.fire('請前往信箱接收驗證信');
+                } else {
+                    Swal.fire('帳戶或電子信箱有誤');
+                }
+            });
     };
 
     return (
@@ -71,7 +74,10 @@ function ForgotPasswordForm() {
                             >
                                 <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
                                     <div className="tab-content">
-                                        <form name="form1">
+                                        <form
+                                            name="form1"
+                                            onSubmit={handleSubmit}
+                                        >
                                             <div className="mb-3 d-flex justify-content-center page-title ">
                                                 忘記密碼
                                             </div>
@@ -89,6 +95,12 @@ function ForgotPasswordForm() {
                                                     id="account"
                                                     name="account"
                                                     placeholder="請輸入您註冊過的帳戶"
+                                                    value={
+                                                        forgotPasswordData.account
+                                                    }
+                                                    onChange={
+                                                        handleFieldsChange
+                                                    }
                                                     required
                                                 />
                                                 <div className="form-text red"></div>
@@ -106,6 +118,12 @@ function ForgotPasswordForm() {
                                                     id="email"
                                                     name="email"
                                                     placeholder="請輸入您註冊過的信箱"
+                                                    value={
+                                                        forgotPasswordData.email
+                                                    }
+                                                    onChange={
+                                                        handleFieldsChange
+                                                    }
                                                     required
                                                 />
                                                 <div className="form-text red"></div>
