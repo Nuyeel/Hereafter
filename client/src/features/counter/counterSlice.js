@@ -1,7 +1,6 @@
 // Redux - 處理活動購物車Nav數字
 import { createSlice } from '@reduxjs/toolkit';
 
-
 export const counterSlice = createSlice({
     name: 'counter',
     initialState: {
@@ -17,6 +16,9 @@ export const counterSlice = createSlice({
         incrementByAmount: (state, action) => {
             state.value += action.payload;
         },
+        decrementByAmount: (state, action) => {
+            state.value -= action.payload;
+        },
         // 活動購物車數字用
         eventCartNum: (state, action) => {
             state.value = action.payload;
@@ -24,7 +26,12 @@ export const counterSlice = createSlice({
     },
 });
 
-export const { increment, decrement, incrementByAmount, eventCartNum } =
-    counterSlice.actions;
+export const {
+    increment,
+    decrement,
+    incrementByAmount,
+    decrementByAmount,
+    eventCartNum,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
