@@ -1,6 +1,8 @@
-// import { useRef } from 'react';
-// import React, { useState } from 'react';
-// import './testCard.scss';
+import { useContext } from 'react';
+// 會員登入context
+import AuthContext from '../../context/AuthContext/AuthContext';
+
+import { API_GOODDEED_GET } from '../../config/ajax-path';
 
 function Card(props) {
     const {
@@ -14,8 +16,11 @@ function Card(props) {
         active,
         setActive,
         setShows,
+        setRandomScore,
         ...otherProps
     } = props;
+
+    const { token } = useContext(AuthContext);
     // const ref = [];
     // const qRef_0 = useRef(null);
     // ref.push(qRef_0);
@@ -26,6 +31,19 @@ function Card(props) {
     const MAX_VISIBILITY = 3;
     // const [active, setActive] = useState(1);
     console.log(otherProps);
+
+    const fetchRandomScore = async () => {
+        const r = await fetch(`${API_GOODDEED_GET}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        const result = await r.json();
+        setRandomScore(result.randomScore);
+    };
+
     return (
         <div
             className="yun-card-container"
@@ -62,6 +80,7 @@ function Card(props) {
                                     <label
                                         htmlFor={v2}
                                         onClick={() => {
+                                            console.log('按了按鈕');
                                             setActive((Id) => Id + 1);
                                             if (questionID === 12) {
                                                 // setShows([
@@ -69,6 +88,8 @@ function Card(props) {
                                                 //     'none',
                                                 //     'block',
                                                 // ]);
+                                                fetchRandomScore();
+
                                                 setShows({
                                                     opacity: ['0', '0', '1'],
                                                     height: ['0', '0', ''],

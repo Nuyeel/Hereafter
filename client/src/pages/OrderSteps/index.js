@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; //sweetalert2
 
@@ -157,7 +157,6 @@ function OrderSteps(props) {
 
     // ------------------------------------------------------------------------------
 
-    // TODO: 目前改成勾選完後就存，才可以看到訂單明細
     //填寫完「付款資訊」後在MySQL建立一個新的訂單(1次付款只會有1個訂單編號))
     const fetchCreateOrder = async () => {
         fetch('http://localhost:3500/eventcarts/addorder', {
@@ -172,10 +171,10 @@ function OrderSteps(props) {
             .then((r) => r.json())
             .then((obj) => {
                 console.log(obj);
+                console.log(eventPick);
             });
     };
 
-    // 當step===3時(送出匯款資訊)時，把對應的活動從event_cart裡刪除(要送memberSid跟eventSid)
 
     // multiple State  填寫報名活動資訊變數(放最上層，按上下頁時資料才會保留)
     const [myInfor, setMyInfor] = useState({
@@ -226,14 +225,33 @@ function OrderSteps(props) {
     // 上一步 下一步按鈕
     const next = () => {
         if (step === 1) {
+            if (eventCart.length === 0) {
+                Swal.fire({
+                    title: '哎呀！看來你的購物車是空的喔！',
+                    text: '立刻前往「功德撲滿」賺取陰德值吧',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '來去逛逛',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate('/events', { replace: true });
+                    }
+                });
+                return;
+            }
+
             if (eventPick.length === 0) {
-                Swal.fire('您尚未選取商品');
+                Swal.fire('您尚未選取結帳商品');
                 return;
             }
         }
 
         if (step === 2) {
-            //  FIXME: 希望在把送出表單功能，改放到Summary「下一步」(submit功能轉移)
+            // TODO: 當step是2的時候，
+            // 1. 下一步按鈕變色 + disabled
+            // 2. 當「送出」真的被fetch之後，連帶啟動next()
 
             // 個人資訊要填完整才可以進到下一頁
             const {
@@ -272,6 +290,13 @@ function OrderSteps(props) {
     const prev = () => {
         if (step > 1) setStep(step - 1);
     };
+
+    // 此段處理: 上一部下一步按鈕條件式顏色轉換----------------------------------------------------
+
+    // Step2沒有按送出前Disabled且變色
+    const btnBgColor = { Default: '#E384F2', Disabled: '#EDEFF7' };
+
+    // Step3沒有按確認前Disabled且變色
 
     return (
         <>
@@ -325,6 +350,8 @@ function OrderSteps(props) {
                         detailVisible={detailVisible}
                         setDetailVisible={setDetailVisible}
                         next={next}
+                        fetchCreateOrder={fetchCreateOrder} //PersonForm用
+                        // fetchAlreadyPay={fetchAlreadyPay} //Payment 用
                     />
                 </div>
 
@@ -349,17 +376,23 @@ function OrderSteps(props) {
                         </button>
                     )}
 
-                    {step === 3 ? (
+                    {/* 如果是填寫個人資訊那一PART */}
+                    {step === 2 ? (
+                        <button
+                            className="xuan-btn-m xuan-btn-pri"
+                            disabled
+                            style={{ backgroundColor: btnBgColor.Disabled }}
+                        >
+                            下一步
+                        </button>
+                    ) : step === 3 ? (
                         //填寫完付款資訊後，才會把資訊送進MySQL
                         <button
                             className="xuan-btn-m xuan-btn-pri"
-                            type="submit"
-                            disabled={step === maxSteps}
-                            onClick={() => {
-                                next();
-                                fetchCreateOrder(); //把勾選項目存進MySQL
-                                // TODO: 同時把勾選項目從event_cart裡移出
-                            }}
+                            // type="submit"
+                            // 當step是3時，也預設Disabled
+                            disabled
+                            style={{ backgroundColor: btnBgColor.Disabled }}
                         >
                             下一步
                         </button>

@@ -197,7 +197,7 @@ app.use(
     express.static(`${__dirname}/public/uploads/images/avatar`)
 );
 
-app.use('/gooddeed', gooddeedRouter);
+app.use('/api/gooddeed', gooddeedRouter);
 
 // catch 404 and forward to error handler
 // Http Status Code 404: 倒數第二道防線

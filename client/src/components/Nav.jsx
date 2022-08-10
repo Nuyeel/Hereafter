@@ -33,6 +33,7 @@ import { eventCartNum } from '../features/counter/counterSlice';
 
 // 拿資料庫會員的陰德值
 import { PLACE_CARTDATA_API } from '../config/ajax-path';
+import { IoLogoClosedCaptioning } from 'react-icons/io5';
 
 function Nav(props) {
     const { lightBox, setLightBox, userGooddeed, setUserGooddeed } = props; //從App.jsx傳入
@@ -42,7 +43,7 @@ function Nav(props) {
     const navigate = useNavigate(); //跳轉頁面用
     const location = useLocation();
 
-    // console.log(location.pathname);
+    console.log(location.pathname);
 
     // -------------此段處理Redux活動購物車數字-------------------------
 
@@ -89,6 +90,18 @@ function Nav(props) {
     useEffect(() => {
         getUserGooddeedData();
     }, [sid]);
+
+    useEffect(() => {
+        if (location.pathname === '/intro') {
+            const bodyDOM = document.querySelector('body');
+            bodyDOM.classList.add('isIntro');
+        } else {
+            const bodyDOM = document.querySelector('body');
+            if (bodyDOM.classList.contains('isIntro')) {
+                bodyDOM.classList.remove('isIntro');
+            }
+        }
+    }, []);
 
     // -------------------------------------------
     // FIXME: 我先簡單的讓首頁的 nav 消失方便二路施工
@@ -211,7 +224,7 @@ function Nav(props) {
                 </div>
             </div>
 
-            {location.pathname !== '/' ? (
+            {location.pathname !== '/' && location.pathname !== '/intro' ? (
                 <div
                     // p-0 (如果 container 左右比較寬的話是 padding)
                     // TODO: useContext Theme.Provider
