@@ -166,6 +166,68 @@ router
             hash,
         ]);
 
+        const search = `SELECT * FROM member WHERE account = ?`;
+        const [searchR] = await db.query(search, [req.body.account]);
+
+        const sid = searchR[0]['sid'];
+        const combinationCreate = JSON.stringify({
+            basic: [1, 1, 1],
+            basic_color: 0,
+            body: { hand: 0, foot: 0, tale: 0, special: 0 },
+            special_color: { tale: 0, special: 0 },
+            face: {
+                eye: 0,
+                ear: 0,
+                lip: 0,
+                nose: 0,
+                hairFront: 0,
+                hairBack: 0,
+                topEar: 0,
+            },
+            face_color: { eye: 0, nose: 0, hairFront: 0, topEar: 0 },
+        });
+        const combinationTextCreate = JSON.stringify({
+            hand: '饅頭',
+            foot: '饅頭',
+            bodyColor: '粉',
+            specialColor: '',
+            tale: '無',
+            taleColor: '',
+            eye: '瞇瞇眼',
+            eyeColor: '灰',
+            nose: '那個人',
+            noseColor: '白',
+            hair: '中分+不留長',
+            hairColor: '黑',
+            ear: '小饅頭',
+            topearColor: '',
+            lip: 'kitty',
+        });
+        const imgCreate = 'default.png';
+
+        const sqlcreate = `INSERT INTO showcase (member_sid, avatar_created_at, combination, combinationText, img_name, price) VALUES (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300)`;
+        const [rCreate] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
         output.success = true;
         output.error = '註冊成功';
 
@@ -178,9 +240,9 @@ router
     .route('/forgotpassword')
     .get(async (req, res) => {
         // 未登入先擋掉
-        if (res.locals.loginUser) {
-            return;
-        }
+        // if (res.locals.loginUser) {
+        //     return;
+        // }
         // const output = {
         //     success: false,
         //     error: '',
@@ -262,7 +324,20 @@ router
             success: false,
             error: '',
             code: 0,
+            data: {},
         };
+        const sql = 'SELECT * FROM `member` WHERE sid = ?';
+        const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
+        console.log(q1);
+
+        q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
+        q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
+
+        output.success = true;
+        output.data = q1;
+        output.error = '成功取得資料';
+
+        res.json(output);
     })
     .post(async (req, res) => {
         const output = {
@@ -360,6 +435,8 @@ router
         // res.render('profilepasswordrevise');
     })
     .post(async (req, res) => {
+        // console.log(res.locals.loginUser);
+        // console.log(req.body.currentPassword);
         const output = {
             success: false,
             error: '',
@@ -367,14 +444,17 @@ router
         };
         // 用query方法查詢
         const sql = 'SELECT * FROM `member` WHERE sid = ?';
-        const [q1] = await db.query(sql, [res.locals.loginUser.sid]);
+        const [q1] = await db.query(sql, [res.locals.loginUser.id]);
 
-        if (q1.length > 0) {
+        output.success = await bcryptjs.compare(
+            req.body.currentPassword,
+            q1[0].password
+        );
+        if (!output.success) {
             output.code = 408;
-            output.error = '您的密碼未經修改';
+            output.error = '您的密碼輸入錯誤';
             return res.json(output);
         }
-
         //這邊還在處理中 ...
         // const sql2 = 'SELECT * FROM `member` WHERE password = ?';
         // const [q2] = await db.query(sql2, [req.body.currentPassword]);
@@ -409,14 +489,15 @@ router
         //     output.error = '密碼修改成功';
         // }
 
-        const sql4 = 'UPDATE `member` SET `password`=? WHERE sid=?';
-        const salt = bcryptjs.genSaltSync(10);
-        const hash = await bcryptjs.hash(req.body.password, salt);
-        // 用execute方法執行新增資料
-        const [q4] = await db.execute(sql4, [hash, res.locals.loginUser.id]);
+        // const sql4 = 'UPDATE `member` SET `password`=? WHERE sid=?';
+        // const salt = bcryptjs.genSaltSync(10);
+        // const hash = await bcryptjs.hash(req.body.password, salt);
 
-        output.success = true;
-        output.error = '密碼修改成功';
+        // // 用execute方法執行新增資料
+        // const [q4] = await db.execute(sql4, [hash, res.locals.loginUser.id]);
+
+        // output.success = true;
+        // output.error = '密碼修改成功';
 
         res.json(output);
     });

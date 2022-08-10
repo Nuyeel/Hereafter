@@ -210,13 +210,14 @@ function RegisterForm(props) {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    localStorage.setItem('auth', JSON.stringify(result.data));
+                    // localStorage.setItem('auth', JSON.stringify(result.data));
+                    localStorage.removeItem('auth');
                     setAuth({
                         ...result.data,
-                        authorized: true,
+                        // authorized: true,
                     });
                     Swal.fire(result.error);
-                    navigate('/memberprofile');
+                    navigate('/login');
                 } else {
                     Swal.fire(result.error);
                 }

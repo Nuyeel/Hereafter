@@ -73,7 +73,8 @@
 @media screen and (min-width: 1400px) {
     // FIXME: 先大致調整 1400px 以上的狀況
     .cpl-searchbar {
-        margin-bottom: calc(var(--vh, 1vh) * 102 - 788px);
+        margin-bottom: calc(var(--vh, 1vh) * 2);
+        // outline: 1px solid red !important;
     }
 }
 

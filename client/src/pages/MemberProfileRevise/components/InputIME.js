@@ -1,4 +1,4 @@
-import { useRef, useState, forwardRef } from 'react';
+import { useRef, useState, forwardRef, useEffect } from 'react';
 
 function InputIME(props, ref) {
     const {
@@ -52,6 +52,12 @@ function InputIME(props, ref) {
             onChange(event);
         }
     };
+
+    useEffect(() => {
+        setInputValue(value)
+    }, [value]);
+
+    console.log(value);
 
     return (
         <input

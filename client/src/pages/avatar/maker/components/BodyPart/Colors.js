@@ -35,6 +35,10 @@ function Colors(props) {
                             margin-left: 10px;
                             margin-right: 10px;
                             border-radius: 50%;
+                            &:hover {
+                                box-shadow: 0px 0px 5px 5px
+                                    rgba(204, 204, 204, 0.6);
+                            }
                         `;
                         return (
                             <Circle

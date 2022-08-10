@@ -76,7 +76,22 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/:memberSid', async (req, res) => {
-    res.json(await getPlaceInCart(req.params.memberSid));
+    let output = {
+        rows: [],
+        goodDeed: 0,
+    };
+
+    const r = await getPlaceInCart(req.params.memberSid);
+    output.rows = r;
+
+    // 會員表的陰德值
+    const sql = `SELECT gooddeed_score FROM member WHERE sid=?`;
+    const [[{ gooddeed_score }]] = await db.query(sql, req.params.memberSid);
+    if (gooddeed_score) {
+        output.goodDeed = gooddeed_score;
+    }
+
+    res.json(output);
 });
 
 // 會員將資料移出購物車

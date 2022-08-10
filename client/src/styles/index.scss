@@ -332,8 +332,9 @@ h3 {
     // TODO: Try~ top: clamp(30px, 10vw, 50px);
     .header-container {
         // FIXME: 可以固定用筆電螢幕高度作為 基準嗎 或利用 padding 不可為負值的特性
-        padding-top: calc(var(--vh, 1vh) * 100 - 788px);
+        padding-top: calc(var(--vh, 1vh) * 87 - 788px);
         margin-bottom: calc(var(--vh, 1vh) * 2);
+        // outline: 1px solid red;
     }
 }
 
@@ -415,6 +416,7 @@ h3 {
     .header-container-sharewall-edition {
         .header-baseline-decoration {
             width: 40vw;
+            min-width: 480px;
         }
     }
 }
@@ -428,7 +430,8 @@ h3 {
 @media screen and (min-width: 1400px) {
     .header-container-sharewall-edition {
         .header-baseline-decoration {
-            width: 35vw;
+            width: 30vw;
+            min-width: 520px;
         }
     }
 }
@@ -541,11 +544,11 @@ h3 {
 
 @media screen and (min-width: 1400px) {
     .cpl-header-sharewall-button {
-        top: 10px;
+        top: 24px;
         left: 330px;
         
         &:active {
-            top: 8px;
+            top: 22px;
             left: 330px;
         }
     }
