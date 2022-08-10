@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card';
+
 import {
     Animator,
     ScrollContainer,
@@ -32,6 +33,7 @@ function intro() {
             <div className="intro-container">
                 <div className="yun-fix-scroll">scroll down</div>
                 <div className="yun-intro-skip"> skip</div>
+
                 <ScrollContainer>
                     <ScrollPage>
                         <div className="otherStars">
