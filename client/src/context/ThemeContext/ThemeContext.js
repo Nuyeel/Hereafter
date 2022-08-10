@@ -21,6 +21,7 @@ export const themes = {
         placeBg: '#00000080',
         placeMainBg: '#00000080',
         placeCardBorder: 'none',
+        bgcAvatarMaker2: '#00000080',
     },
     light: {
         title: 'light',
@@ -38,6 +39,7 @@ export const themes = {
         placeBg: '#9587e1ee',
         placeMainBg: '#edeff7b3',
         placeCardBorder: '1px solid #e384f280',
+        bgcAvatarMaker2: 'rgba(129, 7, 225, 0.2)',
     },
 };
 
