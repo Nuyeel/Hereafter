@@ -6,66 +6,80 @@ import {
 } from 'react-icons/fa';
 
 function SortRow(props) {
-    const { sortBy, setSortBy, handleSort } = props;
+    const { sortBy, setSortBy, handleSort, displayTotalRows, style } = props;
 
-    const sortChange = (e) => {
-        const nowSort = e.target.value;
+    const sortChange = (nowSort) => {
         setSortBy(nowSort);
         handleSort(nowSort);
     };
 
     return (
         <>
-            <div className="sort-row">
+            <div className="sort-row" style={style}>
                 <label>排序：</label>
                 <input
                     type="radio"
                     name="sort"
-                    value="sortYearASC"
+                    value={sortBy}
                     id="sortYearASC"
-                    checked={sortBy === 'sortYearASC'}
-                    onChange={sortChange}
+                    checked={
+                        sortBy === 'sortYearASC' || sortBy === 'sortYearDESC'
+                    }
+                    onChange={() => {}}
+                    onClick={(e) => {
+                        let sort = e.currentTarget.value;
+                        if (
+                            sortBy === 'sortPriceASC' ||
+                            sortBy === 'sortPriceDESC'
+                        ) {
+                            sort = 'sortYearASC';
+                        }
+                        if (sort === 'sortYearASC') {
+                            setSortBy('sortYearDESC');
+                            handleSort('sortYearDESC');
+                        } else if (sort === 'sortYearDESC') {
+                            setSortBy('sortYearASC');
+                            handleSort('sortYearASC');
+                        }
+                    }}
                 />
                 <label htmlFor="sortYearASC">
-                    依時間遞增
-                    <FaSortAmountDown />
+                    依時間{' '}
+                    {sortBy === 'sortYearDESC' ? <FaSortDown /> : <FaSortUp />}
                 </label>
                 <input
                     type="radio"
                     name="sort"
-                    value="sortYearDESC"
-                    id="sortYearDESC"
-                    checked={sortBy === 'sortYearDESC'}
-                    onChange={sortChange}
-                />
-                <label htmlFor="sortYearDESC">
-                    依時間遞減
-                    <FaSortAmountDownAlt />
-                </label>
-                <input
-                    type="radio"
-                    name="sort"
-                    value="sortPriceASC"
+                    value={sortBy}
                     id="sortPriceASC"
-                    checked={sortBy === 'sortPriceASC'}
-                    onChange={sortChange}
+                    checked={
+                        sortBy === 'sortPriceASC' || sortBy === 'sortPriceDESC'
+                    }
+                    onChange={() => {}}
+                    onClick={(e) => {
+                        let sort = e.currentTarget.value;
+                        if (
+                            sortBy === 'sortYearASC' ||
+                            sortBy === 'sortYearDESC'
+                        ) {
+                            sort = 'sortPriceASC';
+                        }
+
+                        if (sort === 'sortPriceASC') {
+                            setSortBy('sortPriceDESC');
+                            handleSort('sortPriceDESC');
+                        } else if (sort === 'sortPriceDESC') {
+                            setSortBy('sortPriceASC');
+                            handleSort('sortPriceASC');
+                        }
+                    }}
                 />
                 <label htmlFor="sortPriceASC">
-                    依陰德值遞增
-                    <FaSortUp />
+                    依陰德值{' '}
+                    {sortBy === 'sortPriceDESC' ? <FaSortDown /> : <FaSortUp />}
                 </label>
-                <input
-                    type="radio"
-                    name="sort"
-                    value="sortPriceDESC"
-                    id="sortPriceDESC"
-                    checked={sortBy === 'sortPriceDESC'}
-                    onChange={sortChange}
-                />
-                <label htmlFor="sortPriceDESC">
-                    依陰德值遞減
-                    <FaSortDown />
-                </label>
+
+                <p>總資料筆數：{displayTotalRows}</p>
             </div>
         </>
     );

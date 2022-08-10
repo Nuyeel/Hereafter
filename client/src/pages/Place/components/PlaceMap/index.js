@@ -16,14 +16,20 @@ import taiwanGeoData from '../../data/taiwan-city-geojson.json';
 import taiwanDdistCenterData from '../../data/city-dist-lnglat.json';
 import distCenterData from '../../data/others-dist-lnglat.json';
 
+import AddPlaceToCart from '../util/addPlaceToCart';
+
 function PlaceMap(props) {
     const {
         placeDisplay,
         setPlaceDisplay,
         cityFilter,
-        addPlaceToCart,
+        // addPlaceToCart,
+        userSid,
         saveLikedPlace,
         rawPlaceData,
+        markerRef,
+        markersArr,
+        setMarkersArr,
     } = props;
 
     // 要render到地圖上的資料array
@@ -240,6 +246,8 @@ function PlaceMap(props) {
                                 return (
                                     <Marker
                                         key={place.sid}
+                                        markerID={place.sid}
+                                        // ref={markerRef}
                                         position={
                                             place.geometry
                                                 ? place.geometry
@@ -247,7 +255,7 @@ function PlaceMap(props) {
                                         }
                                         icon={place.icon}
                                         eventHandlers={{
-                                            click: () => {
+                                            click: (e) => {
                                                 const nowCenter =
                                                     place.geometry;
                                                 centerRef.current = nowCenter;
@@ -257,7 +265,8 @@ function PlaceMap(props) {
                                         <Popup>
                                             <PopupPlaceCard
                                                 value={place}
-                                                addPlaceToCart={addPlaceToCart}
+                                                userSid={userSid}
+                                                AddPlaceToCart={AddPlaceToCart}
                                                 saveLikedPlace={saveLikedPlace}
                                             />
                                         </Popup>

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React from 'react';
 import SoulIcon from '../../Place/components/SoulIcon';
 import { TiDelete } from 'react-icons/ti';
 

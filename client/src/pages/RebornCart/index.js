@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
 import { BsExclamation, BsPatchPlusFill, BsPatchPlus } from 'react-icons/bs';
 import { HiChevronDoubleUp, HiChevronDoubleDown } from 'react-icons/hi';
@@ -12,7 +13,7 @@ import soulPng from '../Place/img/soul.png';
 import PlaceOption from './components/PlaceOption';
 import avatarDataList from './data/avatarDataList.json';
 
-import { PLACE_CARTDATA_API } from '../../config/ajax-path';
+import { PLACE_CARTDATA_API, Showcase_Data } from '../../config/ajax-path';
 import './rebornCart.scss';
 
 // 頁面標題context
@@ -21,15 +22,24 @@ import HeaderContext, {
 } from '../../context/HeaderContext/HeaderContext';
 // 會員登入context
 import AuthContext from '../../context/AuthContext/AuthContext';
+// 變換主色
+import ThemeContext from '../../context/ThemeContext/ThemeContext';
 
 function RebornCart(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
     const { authorized, sid, account, token } = useContext(AuthContext);
+    const { theme } = useContext(ThemeContext);
 
     // 用戶購物車的良辰吉地選項
     const [cartPlaceList, setCartPlaceList] = useState([]);
     const [cartPlaceListLength, setCarPlaceListLength] = useState(0);
+
+    // 用戶的陰德值 gooddeed
+    const [memberGooddeed, setMemberGooddeed] = useState(0);
+
+    // 用戶的形象資料
+    const [avatarData, setAvatarData] = useState([]);
 
     // place option State 選到的良辰吉地
     const [selectedPlace, setSelectedPlace] = useState(-1);
@@ -43,24 +53,38 @@ function RebornCart(props) {
 
     const navigate = useNavigate();
 
-    // 用 fetch 撈資料出來, 資料表 place_in_cart
+    // 用 fetch 撈會員資料出來, 資料表 place_in_cart & 會員表的gooddeed
     // 會員sid => authContext
     const getMemberCartData = async () => {
-        // console.log('authContext:', authorized, sid, account, token);
         const r = await fetch(`${PLACE_CARTDATA_API}/${sid}`);
-        const rows = await r.json();
-        if (rows.length > 0) {
-            setCartPlaceList(rows);
+        const output = await r.json();
+        if (output.rows.length > 0) {
+            setCartPlaceList(output.rows);
 
             // place選擇預設第一個
-            const defaultFirst = rows[0].sid;
+            const defaultFirst = output.rows[0].sid;
             // console.log(typeof defaultFirst);
             setSelectedPlace(defaultFirst);
-            setCarPlaceListLength(rows.length);
+            setCarPlaceListLength(output.rows.length);
         }
+        const newGooddeed = output.goodDeed;
+        setMemberGooddeed(newGooddeed);
     };
+
+    // 會員的形象資料
+    const getAvatarData = async () => {
+        const postData = { id: 19960409 };
+        const r = await axios.post(Showcase_Data, postData);
+        setAvatarData(r.data.data);
+        console.log(r.data.data);
+    };
+
     useEffect(() => {
         getMemberCartData();
+    }, []);
+
+    useEffect(() => {
+        getAvatarData();
     }, []);
 
     // 選擇地點後於訂單顯示
@@ -175,17 +199,33 @@ function RebornCart(props) {
     return (
         <>
             <div className="container reborn-cart-container">
-                <div className="select-row">
-                    <div className="select-ava">
+                <div
+                    className="select-row"
+                    style={{
+                        backgroundColor: theme.rebornBg,
+                    }}
+                >
+                    <div
+                        className="select-ava"
+                        style={{
+                            color: theme.cHeader,
+                        }}
+                    >
                         <h4 className="reborn-cart-main-title">轉生形象</h4>
                         <div className="ava-wrap">
                             <AvatarSwiper
                                 avatarDataList={avatarDataList}
+                                avatarData={avatarData}
                                 setSelectedAvatarInd={setSelectedAvatarInd}
                             />
                         </div>
                     </div>
-                    <div className="select-place">
+                    <div
+                        className="select-place"
+                        style={{
+                            color: theme.cHeader,
+                        }}
+                    >
                         <h4 className="reborn-cart-main-title">良辰吉地</h4>
                         <div className="place-wrap">
                             {/* place option */}
@@ -244,8 +284,18 @@ function RebornCart(props) {
                                                     >
                                                         {/* 想要hover的時候換圖 */}
                                                         <div className="add-btn-icon-wrap">
-                                                            <BsPatchPlusFill className="add-btn-icon add-btn-fill" />
-                                                            <BsPatchPlus className="add-btn-icon add-btn-normal" />
+                                                            <BsPatchPlusFill
+                                                                className="add-btn-icon add-btn-fill"
+                                                                style={{
+                                                                    color: theme.cHeader,
+                                                                }}
+                                                            />
+                                                            <BsPatchPlus
+                                                                className="add-btn-icon add-btn-normal"
+                                                                style={{
+                                                                    color: theme.cHeader,
+                                                                }}
+                                                            />
                                                         </div>
                                                     </div>
                                                 );
@@ -262,16 +312,50 @@ function RebornCart(props) {
                             ? 'reborn-order-wrap box-show-ani'
                             : 'reborn-order-wrap box-show-ani animate-reverse'
                     }
+                    style={{
+                        backgroundColor: theme.rebornBg,
+                    }}
                 >
-                    <div className="my-deed-wrap">
+                    <div
+                        className="my-deed-wrap"
+                        style={{
+                            backgroundColor: theme.rebornInnerBg,
+                        }}
+                    >
                         <div className="my-deed-wrap-title">我目前的陰德值</div>
-                        <div className="my-deed-wrap-text">4000</div>
+                        <div className="my-deed-wrap-text">
+                            {memberGooddeed}
+                        </div>
                     </div>
-                    <div className="deed-enough-wrap">
-                        <div className="deed-enough-wrap-title">陰德值不足</div>
-                        <div className="deed-enough-wrap-text">2000</div>
+                    <div
+                        className="deed-enough-wrap"
+                        style={{
+                            backgroundColor: theme.rebornInnerBg,
+                        }}
+                    >
+                        <div className="deed-enough-wrap-title">
+                            {selectedPlaceInfo.length > 0 &&
+                            memberGooddeed -
+                                avatarData[selectedAvatarInd].price -
+                                Number(selectedPlaceInfo[0].place_price) >
+                                0
+                                ? '陰德值剩餘'
+                                : '陰德值不足！'}
+                        </div>
+                        <div className="deed-enough-wrap-text">
+                            {selectedPlaceInfo.length > 0 &&
+                                memberGooddeed -
+                                    avatarData[selectedAvatarInd].price -
+                                    Number(selectedPlaceInfo[0].place_price)}
+                        </div>
                     </div>
-                    <div className="reborn-order-card">
+                    <div
+                        className="reborn-order-card"
+                        style={{
+                            color: theme.cHeader,
+                            backgroundColor: theme.rebornInnerBg,
+                        }}
+                    >
                         <div
                             className="reborn-order-card-title"
                             onClick={() => {
@@ -290,10 +374,18 @@ function RebornCart(props) {
                             轉生訂單
                         </div>
                         <div className="reborn-order-card-ava">
-                            <img
+                            {avatarData.length > 0 && (
+                                <>
+                                    <img
+                                        src={`http://localhost:3500/uploads/images/avatar/${avatarData[selectedAvatarInd].img_name}`}
+                                        alt=""
+                                    />
+                                    {/* <img
                                 src={`images/${avatarDataList[selectedAvatarInd].img}`}
                                 alt=""
-                            />
+                            /> */}
+                                </>
+                            )}
                         </div>
                         <div className="reborn-order-card-place">
                             {/* 帶入選到的place, 預設第一筆 */}
@@ -322,11 +414,15 @@ function RebornCart(props) {
                                     <tr>
                                         <td>轉生形象</td>
                                         <td>
-                                            {
-                                                avatarDataList[
-                                                    selectedAvatarInd
-                                                ].price
-                                            }
+                                            {avatarData.length > 0 && (
+                                                <>
+                                                    {
+                                                        avatarData[
+                                                            selectedAvatarInd
+                                                        ].price
+                                                    }
+                                                </>
+                                            )}
                                         </td>
                                     </tr>
                                     <tr>
@@ -339,14 +435,18 @@ function RebornCart(props) {
                                         </td>
                                     </tr>
                                 </tbody>
-                                <tfoot>
+                                <tfoot
+                                    style={{
+                                        borderColor: theme.cHeader,
+                                    }}
+                                >
                                     <tr>
                                         <td className="totalTD">總計：</td>
                                         <td className="reborn-order-total-price">
                                             <SoulIcon className={'soul-icon'} />
                                             <span>
                                                 {selectedPlaceInfo.length > 0
-                                                    ? avatarDataList[
+                                                    ? avatarData[
                                                           selectedAvatarInd
                                                       ].price +
                                                       Number(
