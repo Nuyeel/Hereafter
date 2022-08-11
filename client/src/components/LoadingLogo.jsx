@@ -1,8 +1,8 @@
 import '../styles/loading.scss';
 
-function LoadingLogo() {
+function LoadingLogo({ style }) {
     return (
-        <div className="loading-background">
+        <div className="loading-background" style={style}>
             <svg
                 className="loading-logo"
                 width="100"
