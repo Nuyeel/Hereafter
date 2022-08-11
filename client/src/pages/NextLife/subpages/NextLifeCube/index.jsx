@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useMemo, Suspense, createRef } from 'react
 import { Canvas, useLoader, useFrame } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 
-import Scene from './Scene05';
+import Scene from './Scene';
 import './NextLifeCube.scss';
 
 function NextLifeCube(props) {
