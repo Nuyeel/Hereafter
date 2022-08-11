@@ -42,7 +42,6 @@
     background-color: rgb(255, 255, 255);
     border-radius: 0 10px 10px 10px;
     position: relative;
-    margin-bottom: 50px;
 
   }
   .ab-news-img-wrap {
@@ -89,7 +88,8 @@
   }
 
   .ab-card-tag-wrap{
-    margin: 0px 15px;
+    margin: 20px 15px 50px 15px;
+
   }
   .ab-news-tag p {
     color: white;
@@ -192,6 +192,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    cursor: pointer;
   }
 
   .ab-pop-content{
