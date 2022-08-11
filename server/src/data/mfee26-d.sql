@@ -426,6 +426,7 @@ CREATE TABLE `member` (
   `password` varchar(255) DEFAULT NULL,
   `gooddeed_score` int(11) DEFAULT NULL,
   `profile_picture` int(11) DEFAULT NULL,
+  `passcode` varchar(255) DEFAULT NULL,
   `create_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
