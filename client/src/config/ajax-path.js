@@ -9,7 +9,7 @@ export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tagbar/tags`;
 // 分享牆來生形象靜態路由
 export const STATIC_SHAREWALL = `${SERVER}/uploads/images/share/`;
 export const STATIC_SHAREWALL_AVA = `${SERVER}/uploads/images/share/ava`;
-export const STATIC_SHAREWALL_AVATAR = `${SERVER}/uploads/images/avatar`;
+export const STATIC_SHAREWALL_AVATAR = `${SERVER}/uploads/images/avatar/`;
 
 // 良辰吉地
 export const PLACE_GETDATA_API = `${SERVER}/api/place`;
