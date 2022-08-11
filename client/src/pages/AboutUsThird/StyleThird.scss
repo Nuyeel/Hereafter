@@ -1,8 +1,12 @@
+// .ab-third-wrap{
+// height: 650px;
+// }
+
 .ab-bg{
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
-    height: 600px;
-    border-radius: 30px;
+    height: 550px;
+    border-radius: 20px;
     padding-top: 50px;
     position: relative;
 
@@ -116,6 +120,7 @@
 }
 .ab-c-btn{
     width: 40%;
+    color: #000;
     height: 11%;
     background-color: #F3F59F;
     margin-left: auto;
@@ -125,6 +130,13 @@
     font-weight: 500;
     line-height: 2.5rem;
 }
+
+.ab-c-btn:hover{
+    color: #fff;
+    background-color: #2b2b2b;
+    transition: .5s;
+}
+
 .ab-c-text.ab-g{
     color: #B9DED2;
 }

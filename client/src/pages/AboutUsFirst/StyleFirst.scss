@@ -1,8 +1,8 @@
 .ab-a-bg{
     background-color: rgba(0, 0, 0, 0.2);
-    height: 700px;
+    height: 680px;
     width: 48%;
-    border-radius: 30px;
+    border-radius: 20px;
     padding:120px 30px 30px 30px;
     line-height: 2rem;
     backdrop-filter: blur(5px);
@@ -134,4 +134,18 @@
 .fa-solid.fa-location-dot{
     margin-right: 5px;
     color: #fff;
+}
+
+.ab-page-arrow{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+
+}
+
+.ab-a-bg-wrap{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 }
