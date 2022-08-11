@@ -10,8 +10,14 @@ export const headers = {
     mainpage: {
         title: '',
     },
-    about: {
-        title: '關於我們',
+    aboutusfirst: {
+        title: '投放所介紹',
+    },
+    aboutussecond: {
+        title: '投放所服務員',
+    },
+    aboutusthird: {
+        title: '轉生3步驟',
     },
     genies: {
         title: '轉生小精靈', // TODO: '來生服務員' 二選一

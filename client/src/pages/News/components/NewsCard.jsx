@@ -2,9 +2,9 @@ function NewsCard(props) {
     return (
         <div
             className="ab-card-tag-wrap d-flex"
-            onClick={() => {
-                props.handleClickChild(props.card.sid);
-            }}
+            // onClick={() => {
+            //     props.handleClickChild(props.card.sid);
+            // }}
         >
             <div className="ab-news-card">
                 <div className="ab-news-title">{props.card.topic}</div>

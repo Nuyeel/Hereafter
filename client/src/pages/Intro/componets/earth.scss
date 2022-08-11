@@ -1,0 +1,272 @@
+$blue: #4FC1E9;
+$green: #A0D468;
+$white: #fff;
+$background: #F5F7FA;
+$header-font: #434A54;
+$mask-color: #000;
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700);
+
+.earthbody{
+  width: 600px;
+  height: 400px;
+
+  padding:20px;
+  // background: $background;
+  font-family: "Source Sans Pro";
+}
+// h1{
+//   text-align:center;
+//   margin-bottom:50px;
+//   font-size:3em;
+//   color:$header-font;
+// }
+@keyframes earth-rotate {
+  0%   { left: -400px; }
+  100% { left: 200px; }
+}
+@keyframes earth-rotate-end {
+  0%   { left:  0px; }
+  34%  { left: 200px; }
+  34.1%  { left: -400px;}
+  100% { left:  0px; }
+}
+@keyframes cloud-rotate-end {
+  0%   { left:  0px; }
+  32%  { left: 200px; }
+  32.1%  { left: -400px;}
+  100% { left:  0px; }
+}
+#earth{
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  margin:0 auto;
+  background:$blue;
+  overflow:hidden;
+}
+#earth-surface{
+  width:400px;
+  height:200px;
+  float:left;
+  left: -300px;
+  position:relative;
+  animation: earth-rotate 8s infinite;
+  animation-timing-function: linear;
+}
+#earth-cloud{
+  width:400px;
+  height:200px;
+  float:left;
+  top:-400px;
+  left: -300px;
+  position:relative;
+  animation: earth-rotate 13s infinite;
+  animation-timing-function: linear;
+}
+#earth-surface-end{
+  width:205px;
+  height:200px;
+  left: 110px;
+  top:-200px;
+  float:left;
+  position:relative;
+  animation: earth-rotate-end 8s infinite;
+  animation-timing-function: linear;
+}
+#earth-cloud-end{
+  width:205px;
+  height:200px;
+  left: 110px;
+  top:-600px;
+  float:left;
+  position:relative;
+ animation: cloud-rotate-end 13s infinite;
+  animation-timing-function: linear;
+}
+.surface{
+  border-radius:20px;
+  background-color:$green;
+  position:relative;
+}
+#surface-1{
+  width:160px;
+  height:40px;
+  top:60px;
+  left:0px;
+  border-radius:0 20px 20px 0;
+}
+#surface-2{
+  width:50px;
+  height:26px;
+  top:60px;
+  left:350px;
+  border-radius:20px 0 0 20px;
+}
+#surface-3{
+  width:150px;
+  height:32px;
+  top:-35px;
+  left:250px;
+  border-radius:20px 0 0 20px;
+}
+#surface-4{
+  width:180px;
+  height:20px;
+  top:40px;
+  left:120px;
+}
+#surface-5{
+  width:60px;
+  height:40px;
+  top:-30px;
+  left:240px;
+}
+#surface-6{
+  width:90px;
+  height:20px;
+  top:-33px;
+  left:130px;
+}
+#surface-7{
+  width:60px;
+  height:20px;
+  top:-128px;
+  left:280px;
+}
+#surface-8{
+  width:30px;
+  height:10px;
+  top:-168px;
+  left:150px;
+}
+#surface-end-1{
+  width:40px;
+  height:40px;
+  top:60px;
+  left:165px;
+  border-radius:20px 0 0 20px;
+}
+#surface-end-2{
+  width:50px;
+  height:26px;
+  top:60px;
+  left:0px;
+  border-radius:0 20px 20px 0;
+}
+#surface-end-3{
+  width:15px;
+  height:32px;
+  top:-35px;
+  left:0px;
+  border-radius:0 20px 20px 0;
+}
+#surface-end-4{
+  width:75px;
+  height:29px;
+  top:-55px;
+  left:47px;
+}
+#surface-end-5{
+  width:95px;
+  height:49px;
+  top:5px;
+  left:67px;
+}
+#surface-end-6{
+  width:95px;
+  height:35px;
+  top:-35px;
+  left:37px;
+}
+#surface-end-7{
+  width:25px;
+  height:15px;
+  top:-115px;
+  left:87px;
+}
+#surface-end-8{
+  width:95px;
+  height:15px;
+  top:-188px;
+  left:38px;
+}
+.cloud{
+  border-radius:20px;
+  background-color:$white;
+  position:relative;
+}
+#cloud-1{
+  width:60px;
+  height:20px;
+  top:30px;
+  left:0px;
+  border-radius:0 20px 20px 0;
+}
+#cloud-2{
+  width:20px;
+  height:25px;
+  top:60px;
+  left:0px;
+  border-radius:0 20px 20px 0;
+}
+#cloud-3{
+  width:60px;
+  height:10px;
+  top:60px;
+  left:200px;
+}
+#cloud-4{
+  width:100px;
+  height:15px;
+  top:-35px;
+  left:130px;
+}
+#cloud-5{
+  width:50px;
+  height:11px;
+  top:-5px;
+  left:70px;
+}
+#cloud-6{
+  width:80px;
+  height:9px;
+  top:-35px;
+  left:260px;
+}
+#cloud-end-1{
+  width:30px;
+  height:20px;
+  top:30px;
+  left:170px;
+  border-radius:20px 0 0 20px;
+}
+#cloud-end-2{
+  width:90px;
+  height:25px;
+  top:60px;
+  left:110px;
+  border-radius:20px 0 0 20px;
+}
+#cloud-end-3{
+  width:60px;
+  height:15px;
+  top:28px;
+  left:130px;
+}
+#cloud-end-4{
+  width:40px;
+  height:10px;
+  top:70px;
+  left:20px;
+}
+#mask{
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  border:50px solid $mask-color;
+  opacity:0.3;
+  position:relative;
+  left:-70px;
+  top:-50px;
+}

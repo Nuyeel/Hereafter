@@ -1,7 +1,9 @@
 // import { React, useEffect } from 'react';
 import React from 'react';
 
-import Card from './Card';
+import Clock from './componets/Clock';
+import Earth from './componets/Earth';
+
 import { useNavigate } from 'react-router-dom';
 import {
     Animator,
@@ -43,7 +45,7 @@ function Intro() {
                 // When just before this page appear, `p` will be 0
                 // When this page filled your screen, `p` will be 1
                 transform: (p) => `rotate(${-(10 + p * 50)}deg)`,
-                transformOrigin: 'top ',
+                transformOrigin: 'top center  ',
             },
         },
         out: {
@@ -54,7 +56,7 @@ function Intro() {
                 // transform: (p) => `rotate(${(50 + p * 40)}deg)`,
                 transform: `rotate (40deg)`,
 
-                transformOrigin: 'top 30px ',
+                transformOrigin: 'top center  ',
             },
         },
     });
@@ -181,7 +183,7 @@ function Intro() {
                     <ScrollPage>
                         <Animator
                             animation={batch(
-                                Pos(50, 50, -27, -15),
+                                Pos(50, 50, -25, -17),
                                 Push(),
                                 MoveIn()
                             )}
@@ -205,22 +207,26 @@ function Intro() {
                         </Animator>
                     </ScrollPage>{' '}
                     <Animator
-                        animation={batch(Sticky(50, 50), Fade(), MoveOut())}
+                        animation={batch(Pos(60, 30, 0, 0), Fade(), MoveOut())}
                     >
-                        <Card></Card>
+                        <Clock />
                     </Animator>
+                    <Animator
+                        animation={batch(Pos(8, 80, 0, 0), Fade(), MoveOut())}
+                    >
+                        <h2>也許覺得自己生不逢時？</h2>
+                    </Animator>
+                    {/* <ScrollPage></ScrollPage> */}
                     <ScrollPage>
                         <Animator
                             animation={batch(
-                                Pos(8, 80, 0, 0),
+                                Pos(60, 30, 0, 0),
                                 Fade(),
                                 MoveOut()
                             )}
                         >
-                            <h2>也許覺得自己生不逢時？</h2>
+                            <Earth />
                         </Animator>
-                    </ScrollPage>
-                    <ScrollPage>
                         <Animator
                             animation={batch(
                                 Pos(8, 80, 0, 0),
@@ -232,6 +238,27 @@ function Intro() {
                         </Animator>
                     </ScrollPage>
                     <ScrollPage>
+                        <Animator>
+                            <div className="intro-box"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(60, 30, 0, 0),
+                                Fade(),
+                                MoveOut()
+                            )}
+                        >
+                            <div className="Mirror2"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(60, 30, 0, 0),
+                                Fade(),
+                                MoveOut()
+                            )}
+                        >
+                            <div className="Mirror1"></div>
+                        </Animator>
                         <Animator
                             animation={batch(
                                 Pos(8, 80, 0, 0),
@@ -242,24 +269,21 @@ function Intro() {
                             <h2>又或者是不滿意自己與生俱來的樣子？</h2>
                         </Animator>
                     </ScrollPage>
+                    {/* <ScrollPage></ScrollPage> */}
                     <ScrollPage>
-                        <Animator animation={batch(Pos(8, 80, 0, 0), FadeIn())}>
+                        <Animator
+                            animation={batch(Pos(60, 30, 0, 0), FadeIn())}
+                        >
+                            <div className="intro-final-lo"></div>
+                        </Animator>
+                        <Animator animation={batch(Pos(8, 70, 0, 0), FadeIn())}>
                             <h2>那麼即刻開始打造下一段人生吧</h2>
                             <h2>你此生的遺憾，將於來生圓滿</h2>
                             <h2>歡迎光臨 來生投放所</h2>
                         </Animator>
                     </ScrollPage>
                     <ScrollPage>
-                        <Animator animation={batch(Pos(8, 80, 0, 0))}>
-                            <h2>那麼即刻開始打造下一段人生吧</h2>
-                            <h2>你此生的遺憾，將於來生圓滿</h2>
-                            <h2>歡迎光臨 來生投放所</h2>
-                        </Animator>
-                    </ScrollPage>
-                    <ScrollPage>
-                        <h2>那麼即刻開始打造下一段人生吧</h2>
-                        <h2>你此生的遺憾，將於來生圓滿</h2>
-                        <h2>歡迎光臨 來生投放所</h2>
+                        <div>END</div>
                     </ScrollPage>
                 </ScrollContainer>
             </div>
