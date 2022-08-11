@@ -73,18 +73,23 @@ function RebornCart(props) {
 
     // 會員的形象資料
     const getAvatarData = async () => {
-        const postData = { id: 19960409 };
+        const postData = { id: sid };
         const r = await axios.post(Showcase_Data, postData);
         setAvatarData(r.data.data);
         console.log(r.data.data);
     };
 
+    // 有登入才拿資料
     useEffect(() => {
-        getMemberCartData();
+        if (authorized === true && sid) {
+            getMemberCartData();
+        }
     }, []);
 
     useEffect(() => {
-        getAvatarData();
+        if (authorized === true && sid) {
+            getAvatarData();
+        }
     }, []);
 
     // 選擇地點後於訂單顯示
@@ -310,17 +315,21 @@ function RebornCart(props) {
                     className={
                         rebornBoxOpen
                             ? 'reborn-order-wrap box-show-ani'
-                            : 'reborn-order-wrap box-show-ani animate-reverse'
+                            : 'reborn-order-wrap'
                     }
-                    style={{
-                        backgroundColor: theme.rebornBg,
-                    }}
+                    style={
+                        window.innerWidth > 375
+                            ? { backgroundColor: theme.rebornBg }
+                            : { backgroundColor: theme.rebornRwdBg }
+                    }
                 >
                     <div
                         className="my-deed-wrap"
-                        style={{
-                            backgroundColor: theme.rebornInnerBg,
-                        }}
+                        style={
+                            window.innerWidth > 375
+                                ? { backgroundColor: theme.rebornInnerBg }
+                                : { backgroundColor: theme.rebornRwdBg }
+                        }
                     >
                         <div className="my-deed-wrap-title">我目前的陰德值</div>
                         <div className="my-deed-wrap-text">
@@ -329,9 +338,11 @@ function RebornCart(props) {
                     </div>
                     <div
                         className="deed-enough-wrap"
-                        style={{
-                            backgroundColor: theme.rebornInnerBg,
-                        }}
+                        style={
+                            window.innerWidth > 375
+                                ? { backgroundColor: theme.rebornInnerBg }
+                                : { backgroundColor: theme.rebornRwdBg }
+                        }
                     >
                         <div className="deed-enough-wrap-title">
                             {selectedPlaceInfo.length > 0 &&
@@ -351,10 +362,17 @@ function RebornCart(props) {
                     </div>
                     <div
                         className="reborn-order-card"
-                        style={{
-                            color: theme.cHeader,
-                            backgroundColor: theme.rebornInnerBg,
-                        }}
+                        style={
+                            window.innerWidth > 375
+                                ? {
+                                      color: theme.cHeader,
+                                      backgroundColor: theme.rebornInnerBg,
+                                  }
+                                : {
+                                      color: '#3C3B67',
+                                      backgroundColor: theme.rebornRwdBg,
+                                  }
+                        }
                     >
                         <div
                             className="reborn-order-card-title"
