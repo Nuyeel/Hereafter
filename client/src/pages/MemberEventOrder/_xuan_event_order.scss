@@ -1,0 +1,89 @@
+/* 正式上線改用 bootstrap-grid.min.css */
+@import '~bootstrap/scss/bootstrap-grid.scss';
+
+/* 引入自定義變數 */
+@import '../../styles/variables.scss';
+
+
+.xuan-event-history-container{
+    outline: 1px solid red;
+    padding: 10px;
+    padding-top: 20px;
+
+    // FIXME: 目前先寫死寬度
+    width: 300px;
+    height: 100%;
+    // margin-bottom: 0px;
+
+      .xuan-event-history-item{
+        // background-color: rgb(139, 139, 139);
+        border-radius: 10px;
+        outline: 1px solid blue;
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 20px;
+
+        >div{
+          margin-bottom: 10px;
+          align-items: center;
+          // justify-content: center;
+
+            p:nth-child(1){
+              margin-right: 5px;
+            }
+        }
+
+        .xuan-event-history-list{
+
+              .xuan-member-event-detail{
+                  outline: 1px solid red;
+                  padding: 10px;
+                  display: flex;
+                  align-items: center;
+                  justify-content:flex-start;
+
+
+                  
+                    div:nth-child(1){
+                      width: 70px;
+                      height: 60px;
+                      margin-right: 5px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      overflow: hidden;
+                      border-radius: 5px;
+
+                          img{
+                            // width: 100%;
+                            height: 100%;
+                          }
+                    }
+
+
+                  .xuan-member-event-main{
+                    
+                    .xuan-member-event-title{
+
+                      margin-right: 10px;
+
+                        p:nth-child(1){
+                          background-color: #EDEFF7;
+                          padding: 3px;
+                          border-radius: 5px;
+                        }
+                    }
+  
+                    p{
+                      margin-bottom: 10px;
+                    }
+                  }
+
+          
+              }
+        }
+
+      }
+
+
+}
