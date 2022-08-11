@@ -5,7 +5,7 @@ import { BsFillCartPlusFill } from 'react-icons/bs';
 import AddPlaceToCart from '../util/addPlaceToCart';
 
 function PopupPlaceCard(props) {
-    const { saveLikedPlace, userSid } = props;
+    const { saveLikedPlace, userSid, isDead } = props;
     const {
         sid,
         year,
@@ -51,13 +51,17 @@ function PopupPlaceCard(props) {
                     >
                         <FaHeart className="place-like-icon " />
                     </div>
-                    <div
-                        className="place-cartBtn hover-text"
-                        onClick={(e) => AddPlaceToCart(e, userSid)}
-                        data-hover="加入轉生購物車"
-                    >
-                        <BsFillCartPlusFill className="place-cart-icon" />
-                    </div>
+
+                    {/* 死了才顯示加入轉生購物車按鈕 */}
+                    {isDead && (
+                        <div
+                            className="place-cartBtn hover-text"
+                            onClick={(e) => AddPlaceToCart(e, userSid)}
+                            data-hover="加入轉生購物車"
+                        >
+                            <BsFillCartPlusFill className="place-cart-icon" />
+                        </div>
+                    )}
                 </div>
             </div>
         </>

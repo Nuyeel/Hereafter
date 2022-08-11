@@ -8,13 +8,15 @@ import AddPlaceToCart from './util/addPlaceToCart';
 function ListCard(props) {
     const {
         value,
-        // addPlaceToCart,
         userSid,
+        isDead,
+        gotoLoginLighbox,
         saveLikedPlace,
         likedPlaceSidArr,
         handlePlaceMapIconClicked,
         style,
     } = props;
+
     const {
         sid,
         year,
@@ -62,9 +64,8 @@ function ListCard(props) {
                         <span>{place_price}</span>
                     </div>
                 </div>
-                {/* TODO: 底色state變化 */}
+
                 <div className="place-btns-wrap">
-                    {/* TODO: 要改成checkbox? */}
                     <div
                         className="place-likeBtn hover-text"
                         onClick={saveLikedPlace}
@@ -79,7 +80,6 @@ function ListCard(props) {
                             onChange={(e) => console.log('')}
                         />
                         <FaHeart
-                            // className="place-like-icon btn-checked"
                             className={
                                 likedPlaceSidArr.includes(sid)
                                     ? 'place-like-icon btn-checked'
@@ -87,13 +87,23 @@ function ListCard(props) {
                             }
                         />
                     </div>
-                    <div
-                        className="place-cartBtn hover-text"
-                        onClick={(e) => AddPlaceToCart(e, userSid)}
-                        data-hover="加入轉生購物車"
-                    >
-                        <BsFillCartPlusFill className="place-cart-icon" />
-                    </div>
+                    {/* 死了才顯示加入轉生購物車按鈕 */}
+                    {isDead && (
+                        <div
+                            className="place-cartBtn hover-text"
+                            onClick={(e) =>
+                                AddPlaceToCart(
+                                    e,
+                                    userSid,
+                                    isDead,
+                                    gotoLoginLighbox
+                                )
+                            }
+                            data-hover="加入轉生購物車"
+                        >
+                            <BsFillCartPlusFill className="place-cart-icon" />
+                        </div>
+                    )}
                 </div>
             </div>
         </>
