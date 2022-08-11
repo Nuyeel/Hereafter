@@ -42,7 +42,7 @@ function Payment(props) {
         eventPick,
         next,
         setStep,
-        step
+        step,
     } = props;
 
     // 取得memberSid (信用卡訂單MySQL用)
@@ -130,7 +130,7 @@ function Payment(props) {
 
         // 作更多驗証
 
-        const fd = new FormData(document.creditform); //建立一個formdata
+        const fd = new FormData(document.creditformxuan); //建立一個formdata
 
         // 如果Router已有upload功能，可直接用formdata
         // 送到伺服器(fetch/ajax)
@@ -205,6 +205,9 @@ function Payment(props) {
                                 className="xuan-input-radio"
                                 name="bill"
                                 type="radio"
+                                checked={cardInfor.bill === '二聯式'}
+                                value="二聯式"
+                                onChange={handleChange}
                             />
 
                             <label className="xuan-label-title  ">三聯式</label>
@@ -212,7 +215,10 @@ function Payment(props) {
                             <input
                                 className="xuan-input-radio"
                                 name="bill"
-                                type="radio"
+                                type="radio" 
+                                checked={cardInfor.bill === '三聯式'}
+                                value="三聯式"
+                                onChange={handleChange}
                             />
 
                             <label className="xuan-label-title  ">
@@ -224,6 +230,9 @@ function Payment(props) {
                             <label
                                 className="xuan-label-title "
                                 htmlFor="test-text"
+                                checked={cardInfor.bill === '實體發票'}
+                                value="實體發票"
+                                onChange={handleChange}
                             >
                                 付款方式：
                             </label>
@@ -234,6 +243,9 @@ function Payment(props) {
                                 name="payway"
                                 type="radio"
                                 selected={true}
+                                checked={cardInfor.payway === '信用卡'}
+                                value="信用卡"
+                                onChange={handleChange}
                             />
 
                             <label className="xuan-label-title ">信用卡</label>
@@ -241,6 +253,9 @@ function Payment(props) {
                                 className="xuan-input-radio"
                                 name="payway"
                                 type="radio"
+                                checked={cardInfor.payway === 'LINEPAY'}
+                                value="LINEPAY"
+                                onChange={handleChange}
                             />
                             <label className="xuan-label-title ">
                                 LINE Pay
@@ -324,7 +339,7 @@ function Payment(props) {
                             </div>
 
                             <form
-                                name="creditform"
+                                name="creditformxuan"
                                 onSubmit={handleSubmit}
                                 onInvalid={handleInvalid}
                                 className="xuan-credit-form"
