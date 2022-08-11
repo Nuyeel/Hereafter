@@ -103,12 +103,37 @@ router.delete('/', async (req, res) => {
     res.json(await getPlaceInCart(req.body.member_sid));
 });
 
-// TODO: 送出轉生訂單
-// 1. 燈箱確認 || 跳轉到訂單確認頁面
-// 2. 送出後存入資料庫(限定一筆)、plce booked+1
-// 3. 跳轉到希望方塊頁面
+// 送出轉生訂單
 router.post('/reborn-order', async (req, res) => {
-    // place_sid, member_sid, avatar_sid
+    // place_sid, member_sid, avatar_id
+    const output = {
+        success: false,
+        error: '',
+    };
+
+    // 判斷是否已有訂單
+    const sqlCheck = `SELECT COUNT(1) num FROM reborn_order WHERE member_sid=?`;
+    const [[{ num }]] = await db.query(sqlCheck, [req.body.member_sid]);
+    if (num > 0) {
+        output.error = '已有轉生訂單';
+        return res.json(output);
+    }
+
+    const sql = `INSERT INTO reborn_order (
+        member_sid, avatar_id, place_sid
+        ) VALUES (
+            ?,?,?)`;
+    const [r] = await db.query(sql, [
+        req.body.member_sid,
+        req.body.avatar_id,
+        req.body.place_sid,
+    ]);
+
+    if (r.affectedRows) {
+        output.success = true;
+    }
+
+    res.json(output);
 });
 
 module.exports = router;
