@@ -41,6 +41,8 @@ function Payment(props) {
         fetchCreateOrder,
         eventPick,
         next,
+        setStep,
+        step
     } = props;
 
     // 取得memberSid (信用卡訂單MySQL用)
@@ -150,6 +152,11 @@ function Payment(props) {
                 console.log('已刪除購物車內容');
                 dispatch(decrementByAmount(eventPick.length));
             });
+    };
+
+    // 單純阻止原生報錯訊息
+    const handleInvalid = (e) => {
+        e.preventDefault(); //阻擋HTML5原生錯誤訊息
     };
 
     return (
@@ -319,6 +326,7 @@ function Payment(props) {
                             <form
                                 name="creditform"
                                 onSubmit={handleSubmit}
+                                onInvalid={handleInvalid}
                                 className="xuan-credit-form"
                             >
                                 <div>

@@ -16,8 +16,15 @@ import delete_cross from '../imgs/delete-cross.svg';
 function ReadyToBuy(props) {
     const navigate = useNavigate(); //跳轉頁面用
     // eventPick存有勾選項目的清單
-    const { eventPick, setEventPick, detailVisible, setDetailVisible, prev } =
-        props;
+    const {
+        eventPick,
+        setEventPick,
+        detailVisible,
+        setDetailVisible,
+        prev,
+        step,
+        setStep,
+    } = props;
 
     let fetchbody = '';
 
@@ -83,7 +90,13 @@ function ReadyToBuy(props) {
                                         key={v.sid}
                                     >
                                         <div className="xuan-readytobuy-img">
-                                            <img src="" alt="" />
+                                            <img
+                                                src={
+                                                    'http://localhost:3500/event/eventlist/' +
+                                                    v.img
+                                                }
+                                                alt=""
+                                            />
                                         </div>
 
                                         <div className="xuan-readytobuy-intro">
@@ -109,14 +122,14 @@ function ReadyToBuy(props) {
                     </SimpleBar>
 
                     <div className="xuan-readytobuy-edit-btn">
+                        {/* 統一回step1 */}
                         <button
                             className="xuan-btn-m xuan-btn-pri"
                             onClick={() => {
-                                prev();
+                                setStep(1);
                                 setDetailVisible(
                                     'xuan-readytobuy-container-hidden'
                                 );
-                                navigate('/ordersteps', { replace: true });
                             }}
                         >
                             修改訂單
