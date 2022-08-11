@@ -53,7 +53,7 @@ function Nav(props) {
     // Redux(活動購物車數字)
     const count = useSelector((state) => state.counter.value);
     // 會員登入登出驗證(auth)
-    const { authorized, sid, account, token, userLogout } =
+    const { authorized, sid, account, isDead, token, userLogout } =
         useContext(AuthContext);
 
     useEffect(() => {
@@ -307,7 +307,9 @@ function Nav(props) {
                                         : 'nir-NavSoul soul-gooddeed-box'
                                 }
                                 onClick={() => {
-                                    if (userGooddeed.show) {
+                                    if (!authorized) {
+                                        return;
+                                    } else if (userGooddeed.show) {
                                         setUserGooddeed({
                                             ...userGooddeed,
                                             show: false,
@@ -334,17 +336,35 @@ function Nav(props) {
 
                             <span className="nir-FaShoppingCart">
                                 {authorized ? (
-                                    <FaShoppingCart
-                                        style={{
-                                            cursor: 'pointer',
-                                        }}
-                                        onClick={() => {
-                                            navigate('/ordersteps', {
-                                                replace: true,
-                                            });
-                                            setLightBox('nav_lightbox_hidden');
-                                        }}
-                                    />
+                                    !isDead ? (
+                                        <FaShoppingCart
+                                            style={{
+                                                cursor: 'pointer',
+                                            }}
+                                            onClick={() => {
+                                                navigate('/ordersteps', {
+                                                    replace: true,
+                                                });
+                                                setLightBox(
+                                                    'nav_lightbox_hidden'
+                                                );
+                                            }}
+                                        />
+                                    ) : (
+                                        <FaShoppingCart
+                                            style={{
+                                                cursor: 'pointer',
+                                            }}
+                                            onClick={() => {
+                                                navigate('/reborn-cart', {
+                                                    replace: true,
+                                                });
+                                                setLightBox(
+                                                    'nav_lightbox_hidden'
+                                                );
+                                            }}
+                                        />
+                                    )
                                 ) : (
                                     <FaShoppingCart
                                         style={{
@@ -360,7 +380,7 @@ function Nav(props) {
                                     />
                                 )}
 
-                                {count === 0 ? (
+                                {isDead && count === 0 ? (
                                     ''
                                 ) : (
                                     <span className="nav-xuan-event-cartnum xuan-notion">

@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 
 function ForgotPasswordReviseForm(props) {
     const [forgotPasswordReviseData, setForgotPasswordReviseData] = useState({
-        account: '',
+        passcode: '',
         password: '',
         confirmPassword: '',
     });
@@ -26,19 +26,49 @@ function ForgotPasswordReviseForm(props) {
     const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const [accountPrevious, setAccountPrevious] = useState('');
+    const [passcodePrevious, setPasscodePrevious] = useState('');
     const [passwordPrevious, setPasswordPrevious] = useState('');
     const [confirmPasswordPrevious, setConfirmPasswordPrevious] = useState('');
 
-    // const [accountSearch, setAccountSearch] = useState('');
+    const [passcodeSearch, setPasscodeSearch] = useState('');
     const [passwordSearch, setPasswordSearch] = useState('');
     const [confrimPasswordSearch, setConfirmPasswordSearch] = useState('');
 
-    // const [validationCssClassname, setValidationCssClassname] = useState('');
+    const [validationCssClassname, setValidationCssClassname] = useState('');
     const [validationCssClassname2, setValidationCssClassname2] = useState('');
     const [validationCssClassname3, setValidationCssClassname3] = useState('');
 
     const passwordRe = /^[a-zA-Z0-9_]\w*.{6,}$/;
+
+    // 驗證碼
+    const handlePasscodeSearch = (searchPasscodeWord) => {
+        // 初始狀態設為空
+        if (!searchPasscodeWord) {
+            setValidationCssClassname('');
+            return;
+        }
+        // // 即時驗證欄位條件
+        // if (searchPasscodeWord.match(passwordRe)) {
+        //     setValidationCssClassname2('is-valid');
+        // } else {
+        //     setValidationCssClassname2('is-invalid');
+        // }
+    };
+
+    // 設定300毫秒後做欄位檢查
+    const debounceHandleSearch = useCallback(
+        _.debounce(handlePasscodeSearch, 300),
+        []
+    );
+
+    const handlePasscodeChange = (e) => {
+        // 可控元件綁用state使用
+        setPasscodeSearch(e.target.value);
+        // 搜尋用 - trim去除空白，toLowerCase轉小寫英文
+        const searchPasscodeWord = e.target.value.trim().toLowerCase();
+        // 傳至debounceFn中
+        debounceHandleSearch(searchPasscodeWord);
+    };
 
     // 密碼檢查
     const handlePasswordSearch = (searchPasswordWord) => {
@@ -89,7 +119,7 @@ function ForgotPasswordReviseForm(props) {
     };
 
     // 設定300毫秒後做欄位檢查
-    const debounceHandleSearch = useCallback(
+    const debounceHandleSearch4 = useCallback(
         _.debounce(handleConfirmPasswordSearch, 300),
         []
     );
@@ -100,18 +130,17 @@ function ForgotPasswordReviseForm(props) {
         // 搜尋用 - trim去除空白，toLowerCase轉小寫英文
         const searchConfirmPasswordWord = e.target.value.trim();
         // 傳至debounceFn中
-        debounceHandleSearch(passwordPrevious, searchConfirmPasswordWord);
+        debounceHandleSearch4(passwordPrevious, searchConfirmPasswordWord);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log(forgotPasswordReviseData);
+        console.log(forgotPasswordReviseData);
 
         if (!forgotPasswordReviseData.password.match(passwordRe)) {
             Swal.fire('您輸入的密碼須包含字母及數字共八位數');
             return;
         }
-
         if (
             forgotPasswordReviseData.confirmPassword !==
             forgotPasswordReviseData.password
@@ -131,29 +160,25 @@ function ForgotPasswordReviseForm(props) {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    localStorage.setItem('auth', JSON.stringify(result.data));
-                    setAuth({
-                        ...result.data,
-                        authorized: true,
-                    });
+                    // localStorage.setItem('auth', JSON.stringify(result.data));
+                    // setAuth({
+                    //     ...result.data,
+                    //     authorized: true,
+                    // });
                     Swal.fire(result.error);
                 } else {
                     Swal.fire(result.error);
                 }
             });
     };
+
     useEffect(() => {
-        // console.log({
-        //     account: accountPrevious,
-        //     password: passwordPrevious,
-        //     confirmPassword: confirmPasswordPrevious,
-        // });
         setForgotPasswordReviseData({
-            account: accountPrevious,
+            passcode: passcodePrevious,
             password: passwordPrevious,
             confirmPassword: confirmPasswordPrevious,
         });
-    }, [accountPrevious, passwordPrevious, confirmPasswordPrevious]);
+    }, [passcodePrevious, passwordPrevious, confirmPasswordPrevious]);
 
     return (
         <>
@@ -179,25 +204,24 @@ function ForgotPasswordReviseForm(props) {
                                             <br />
                                             <div className="mb-3 page-field">
                                                 <label
-                                                    htmlFor="account"
+                                                    htmlFor="passcode"
                                                     className="form-label"
                                                 >
-                                                    帳戶名稱
+                                                    驗證碼
                                                 </label>
                                                 <InputIME
                                                     type="text"
-                                                    className="form-control"
-                                                    id="account"
-                                                    name="account"
-                                                    placeholder="請輸入您註冊過的帳戶"
+                                                    className={`form-control ${validationCssClassname}`}
+                                                    name="passcode"
+                                                    placeholder="輸入收到的驗證碼"
                                                     onChange={
-                                                        handlePasswordChange
+                                                        handlePasscodeChange
                                                     }
                                                     passwordPrevious={
                                                         passwordPrevious
                                                     }
-                                                    setAccountPrevious={
-                                                        setAccountPrevious
+                                                    setPasscodePrevious={
+                                                        setPasscodePrevious
                                                     }
                                                     setPasswordPrevious={
                                                         setPasswordPrevious
@@ -219,15 +243,15 @@ function ForgotPasswordReviseForm(props) {
                                                     type={passwordFieldType}
                                                     className={`form-control ${validationCssClassname2}`}
                                                     name="password"
-                                                    placeholder="請輸入您的新密碼"
+                                                    placeholder="輸入您的新密碼"
                                                     onChange={
                                                         handlePasswordChange
                                                     }
                                                     passwordPrevious={
                                                         passwordPrevious
                                                     }
-                                                    setAccountPrevious={
-                                                        setAccountPrevious
+                                                    setPasscodePrevious={
+                                                        setPasscodePrevious
                                                     }
                                                     setPasswordPrevious={
                                                         setPasswordPrevious
@@ -240,7 +264,7 @@ function ForgotPasswordReviseForm(props) {
                                             </div>
                                             <div className="mb-3 page-field">
                                                 <label
-                                                    htmlFor="password"
+                                                    htmlFor="confirmPassword"
                                                     className="form-label"
                                                 >
                                                     確認新密碼
@@ -250,17 +274,16 @@ function ForgotPasswordReviseForm(props) {
                                                         confirmPasswordFieldType
                                                     }
                                                     className={`form-control ${validationCssClassname3}`}
-                                                    id="password"
-                                                    name="password"
-                                                    placeholder="請再輸入一次您的新密碼"
+                                                    name="confirmPassword"
+                                                    placeholder="再輸入一次新密碼"
                                                     onChange={
-                                                        handlePasswordChange
+                                                        handleConfirmPasswordChange
                                                     }
                                                     passwordPrevious={
                                                         passwordPrevious
                                                     }
-                                                    setAccountPrevious={
-                                                        setAccountPrevious
+                                                    setPasscodePrevious={
+                                                        setPasscodePrevious
                                                     }
                                                     setPasswordPrevious={
                                                         setPasswordPrevious

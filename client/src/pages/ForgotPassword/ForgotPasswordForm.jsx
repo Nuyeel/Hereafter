@@ -107,7 +107,7 @@ function ForgotPasswordForm() {
                                             </div>
                                             <div className="mb-3 page-field">
                                                 <label
-                                                    For="email"
+                                                    htmlFor="email"
                                                     className="form-label"
                                                 >
                                                     電子信箱

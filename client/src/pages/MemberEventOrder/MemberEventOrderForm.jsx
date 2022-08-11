@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LoginForm from '../Login/LoginForm';
 
+import EventHistory from './EventHistory';
+
 function MemberProfileForm() {
     const [loginData, setLoginData] = useState({
         account: '',
@@ -135,6 +137,9 @@ function MemberProfileForm() {
                                                                         <div className="mb-3 d-flex justify-content-center page-title">
                                                                             法喜充滿訂單
                                                                         </div>
+
+                                                                        {/* 這段是 二路測試用 */}
+                                                                        <EventHistory />
                                                                     </div>
                                                                 </div>
                                                             </section>

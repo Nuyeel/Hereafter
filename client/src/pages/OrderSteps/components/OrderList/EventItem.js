@@ -27,6 +27,7 @@ function EventItem(props) {
         start,
         start_time,
         npo_name,
+        img,
         place_location,
         count, //因為活動限定選一件，所以不提供+-功能
         setCount, //因為活動限定選一件，所以不提供+-功能
@@ -69,7 +70,12 @@ function EventItem(props) {
                     />
                 </div>
 
-                <div className="xuan-cart-img"></div>
+                <div className="xuan-cart-img">
+                    <img
+                        src={'http://localhost:3500/event/eventlist/' + img}
+                        alt=""
+                    />
+                </div>
 
                 <div className="xuan-cart-intro">
                     <div className="xuan-cart-intro-title">
