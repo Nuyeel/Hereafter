@@ -1,0 +1,29 @@
+@import '../../../../styles/variables.scss';
+
+.cpl-nextlife-magic-cube-container {
+    position: absolute; // FIXME: 手機版應該不能滑動 沒問題
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.cpl-nmc-c-info-area {
+    color: $bgc-D;
+    background-color: $white-60p;
+    width: 80%;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 20px;
+    padding: 20px;
+
+    .cpl-nmc-c-ia-explanation {
+        >.cpl-nmc-c-ia-e-span {
+            color:  $primary;
+        }
+    }
+}

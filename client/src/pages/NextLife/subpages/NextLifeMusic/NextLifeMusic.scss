@@ -1,0 +1,137 @@
+@import '../../../../styles/variables.scss';
+
+.cpl-nextlife-music-lightbox {
+    background-color: $white-20p;
+    color: $bgc-D;
+    width: 90%;
+    aspect-ratio: 35/19;
+    font-family: $ff-h;
+    font-size: $fz-subtitle;
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+    >.cpl-nlm-l-title-area {
+        font-weight: 500;
+        margin-bottom: 24px;
+        >.cpl-nlm-l-ta-title {
+            text-align: center;
+        }
+    }
+    
+    .cpl-nlm-l-button-area {
+        >.cpl-nlm-l-ba-button {
+            margin-left: 8px;
+            margin-right: 8px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 14px;
+            padding-right: 14px;
+            font-size: $fz-body;
+            background-color: $primary;
+            border-radius: 5px;
+            border: 2px solid #FFFFFF;
+            // filter: none !important;
+            outline: none !important;
+            // box-shadow: none !important;
+        }
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-nextlife-music-lightbox {
+        width: 80%;
+        min-width: 440px;
+        font-size: $fz-title;
+        
+        >.cpl-nlm-l-title-area {
+            margin-bottom: 30px;
+        }
+        
+        .cpl-nlm-l-button-area {
+            >.cpl-nlm-l-ba-button {
+                margin-left: 12px;
+                margin-right: 12px;
+                font-size: $fz-subtitle;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .cpl-nextlife-music-lightbox {
+        width: 70%;
+        font-size: 1.75rem;
+        
+        .cpl-nlm-l-button-area {
+            >.cpl-nlm-l-ba-button {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .cpl-nextlife-music-lightbox {
+        width: 60%;
+        min-width: 520px;
+        font-size: $fz-h5;
+        
+        >.cpl-nlm-l-title-area {
+            margin-bottom: 42px;
+        }
+        
+        .cpl-nlm-l-button-area {
+            >.cpl-nlm-l-ba-button {
+                margin-left: 12px;
+                margin-right: 12px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 18px;
+                padding-right: 18px;
+                font-size: $fz-subtitle;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-nextlife-music-lightbox {
+        width: 680px;
+
+        >.cpl-nlm-l-title-area {
+            margin-bottom: 48px;
+        }
+        
+        .cpl-nlm-l-button-area {
+            >.cpl-nlm-l-ba-button {
+                margin-left: 18px;
+                margin-right: 18px;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+    }
+}
+
+.cpl-nextlife-music-lightbox.isAnimation {
+    animation: cpl-nextlife-music-lightbox-animation 2s forwards;
+}
+
+@keyframes cpl-nextlife-music-lightbox-animation {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
