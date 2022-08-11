@@ -89,27 +89,6 @@
     animation: star-shine ease-in 2s infinite alternate-reverse;
 }
 
-// @media screen and (max-width:768px) {
-//     .star{
-//         width: 12vw;
- 
-//         height: 14vh;
-    
-
-//     }
-//     .starmask{
-//         width: 11vw;
-//         height: 18vh;  
-//     background-color: rgb(31, 35, 87);
-//     // background-color: rgba(31, 35, 87, 0.273);
-
-
-    
-
-//     }
-// }
-
-
 .mainstar{
     // border: 1px solid red;
     width: 50px;
@@ -218,16 +197,18 @@ h2{
     background-size: contain;
     animation-duration: 2.5s;
 }
+.god-hand{
+    border:1px solid red;
+    
+    width: 60px;
+    height: 180px;
+    background: url(./introImg/god/god-hand.svg)center center no-repeat;
+    background-size: contain;
+}
 .god{
    
     width: 280px;
     height: 320px;
     background: url(./introImg/god/god.svg)center center no-repeat;
-    background-size: contain;
-}
-.god-hand{
-    width: 200px;
-    height: 300px;
-    background: url(./introImg/god/god-hand.svg)center center no-repeat;
     background-size: contain;
 }
