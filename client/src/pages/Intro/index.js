@@ -205,18 +205,28 @@ function Intro() {
                         >
                             <h2>此刻卻懷疑自己是一個帶著瑕疵的作品</h2>
                         </Animator>
-                    </ScrollPage>{' '}
-                    <Animator
-                        animation={batch(Pos(60, 30, 0, 0), Fade(), MoveOut())}
-                    >
-                        <Clock />
-                    </Animator>
-                    <Animator
-                        animation={batch(Pos(8, 80, 0, 0), Fade(), MoveOut())}
-                    >
-                        <h2>也許覺得自己生不逢時？</h2>
-                    </Animator>
-                    {/* <ScrollPage></ScrollPage> */}
+                    </ScrollPage>
+                    <ScrollPage>
+                        <Animator
+                            animation={batch(
+                                Pos(60, 30, 0, 0),
+                                Fade(),
+                                MoveOut()
+                            )}
+                        >
+                            <Clock />
+                        </Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(8, 80, 0, 0),
+                                Fade(),
+                                MoveOut()
+                            )}
+                        >
+                            <h2>也許覺得自己生不逢時？</h2>
+                        </Animator>
+                    </ScrollPage>
+
                     <ScrollPage>
                         <Animator
                             animation={batch(
@@ -238,7 +248,13 @@ function Intro() {
                         </Animator>
                     </ScrollPage>
                     <ScrollPage>
-                        <Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(55, 15, 0, 0),
+                                Fade(),
+                                MoveOut()
+                            )}
+                        >
                             <div className="intro-box"></div>
                         </Animator>
                         <Animator
@@ -266,17 +282,20 @@ function Intro() {
                                 MoveOut()
                             )}
                         >
-                            <h2>又或者是不滿意自己與生俱來的樣子？</h2>
+                            <h2>又或是不滿意</h2>
+                            <h2>自己與生俱來的樣子？</h2>
                         </Animator>
                     </ScrollPage>
                     {/* <ScrollPage></ScrollPage> */}
                     <ScrollPage>
                         <Animator
-                            animation={batch(Pos(60, 30, 0, 0), FadeIn())}
+                            animation={batch(Pos(20, 30, 0, 0), FadeIn())}
                         >
-                            <div className="intro-final-lo"></div>
+                            <div className="intro-final-logo"></div>
                         </Animator>
-                        <Animator animation={batch(Pos(8, 70, 0, 0), FadeIn())}>
+                        <Animator
+                            animation={batch(Pos(50, 40, 0, 0), FadeIn())}
+                        >
                             <h2>那麼即刻開始打造下一段人生吧</h2>
                             <h2>你此生的遺憾，將於來生圓滿</h2>
                             <h2>歡迎光臨 來生投放所</h2>
