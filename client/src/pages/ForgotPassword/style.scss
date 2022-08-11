@@ -128,31 +128,17 @@ button:active {
 .input-2[type=text] {
     font: 400 16px var(--text-font), Arial, sans-serif;
     color: #3C3B6775;
-    // height: 40px;
     border-radius: 10px;
 }
 
 input[type=text], input[type=email], input[type=password], [type=date] {
     font: 400 16px var(--text-font), Arial, sans-serif;
     color: $bgc-D;
-    // height: 40px;
     border-radius: 10px;
-}
-
-input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, [type=date]:focus {
-    outline: $secondary 2px solid;
 }
 
 input[type=text]::placeholder, input[type=email]::placeholder, input[type=password]::placeholder, [type=date]::placeholder{
     color:#BDBDBD;
-}
-
-input[type=text]:focus::placeholder, input[type=email]:focus::placeholder, input[type=password]:focus::placeholder, [type=date]:focus::placeholder {
-    color: transparent;
-}
-
-input[type=text].error, input[type=email].error, input[type=password].error, input[type=date].error {
-    outline: var(--alert-l) 2px solid;
 }
 
 input[type=text].error, input[type=email].error, input[type=password].error {
