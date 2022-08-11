@@ -17,6 +17,7 @@ function CenterPart(props) {
         setBodyControlChange,
         setColorControlSwitch,
         setFaceControlChange,
+        backtoShowCase,
     } = props;
     const ref = useRef(null);
 
@@ -123,13 +124,14 @@ function CenterPart(props) {
                     Swal.fire({
                         title: 'Meow 檔案存進去了',
                         confirmButtonText: `<p onClick={}>YA</p>`,
-                    }).then((res) => {
-                        if (res.isConfirmed) {
+                    }).then((result) => {
+                        if (result.isConfirmed) {
                             console.log('訂單ID已清除');
+                            sessionStorage.removeItem('avatar_id');
+                            backtoShowCase();
                         }
                     });
                 }, 1000);
-                sessionStorage.removeItem('avatar_id');
             }
         }
     }, [ref]);
