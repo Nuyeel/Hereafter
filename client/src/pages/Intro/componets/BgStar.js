@@ -1,5 +1,5 @@
 import React from 'react';
-import '../introstyle.scss';
+import './bgstar.scss';
 
 function BgStar() {
     return (
