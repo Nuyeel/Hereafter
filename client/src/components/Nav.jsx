@@ -43,7 +43,7 @@ function Nav(props) {
     const navigate = useNavigate(); //跳轉頁面用
     const location = useLocation();
 
-    console.log(location.pathname);
+    // console.log(location.pathname);
 
     // -------------此段處理Redux活動購物車數字-------------------------
 
@@ -84,7 +84,11 @@ function Nav(props) {
         const r = await fetch(`${PLACE_CARTDATA_API}/${sid}`);
         const output = await r.json();
         const newGooddeed = output.goodDeed;
-        setUserGooddeed({ ...userGooddeed, gooddeed: newGooddeed });
+        setUserGooddeed({
+            ...userGooddeed,
+            show: false,
+            gooddeed: newGooddeed,
+        });
     };
 
     useEffect(() => {
@@ -308,6 +312,7 @@ function Nav(props) {
                                 }
                                 onClick={() => {
                                     if (!authorized) {
+                                        // TODO: 登入提示: 登入才可以查看陰德值哦
                                         return;
                                     } else if (userGooddeed.show) {
                                         setUserGooddeed({
