@@ -201,7 +201,74 @@ router.get('/alreadypay', async (req, res) => {
     // 如果只取results，會得到[[{}]]的物件，無法直接被解析。[results]可以先少一個[]
     const [results] = await db.query($sql, [membersid, alreadypay]);
 
+    // TODO: 需要回傳更多資訊，以免crash時無法debug
     res.json('已從購物車刪除');
+});
+
+
+// 會員中心-活動訂單
+router.get('/testevent/:membersid', async (req, res) => {
+    let output = {
+        eventHistoryResult: [],
+        eventOrderDetailResult: [],
+    };
+
+    let memberSid = req.params.membersid || '';
+    const $sql1 = 'SELECT * FROM `event_order_detail` WHERE `member_sid` = ? ';
+
+    const [results1] = await db.query($sql1, [memberSid]);
+
+    results1.forEach((value) => {
+        const mo = dayjs(value.order_created_at).format('YYYY-MM-DD');
+        value.start = mo;
+    });
+
+    results1.forEach((item) => {
+        item.event_order_detail = item.event_order_detail.split(',');
+        item['eventdetail'] = [];
+    });
+
+    function test() {
+        return new Promise((resolve, reject) => {
+            results1.forEach((item, index) => {
+                item.event_order_detail.forEach(async (sid) => {
+                    const sql =
+                        'SELECT * FROM (`npo_act` JOIN `npo_act_type` ON `npo_act`.`type_sid` = `npo_act_type`.`typesid`)  INNER JOIN `city_type` ON `npo_act`.`place_city`= `city_type`.`city_sid` WHERE `sid`= ? ';
+                    const [[results]] = await db.query(sql, [sid]);
+
+                    // Day.js日期轉換法
+                    [results].forEach((value) => {
+                        const mo = dayjs(value.start).format('YYYY-MM-DD');
+                        value.start = mo;
+                    });
+
+                    // console.log(index);
+                    console.log(results);
+                    results1[index]['eventdetail'].push(results);
+                    console.log(results1[index]['eventdetail']);
+
+                    if (index === results1.length - 1) {
+                        resolve();
+                    }
+                });
+            });
+        });
+    }
+
+    test().then(() => {
+        console.log(results1);
+        return res.json(results1);
+    });
+});
+
+// 會員中心有辦法調出會員歷屆活動報名紀錄
+router.get('/memberevent/:membersid?', async (req, res) => {
+    let memberSid = req.params.membersid || '';
+    console.log(memberSid);
+    const $sql = 'SELECT * FROM `event_order_detail` WHERE `member_sid` = ? ';
+
+    const [results] = await db.query($sql, [memberSid]);
+    res.json(results); //會獲得一個JSON包
 });
 
 module.exports = router;

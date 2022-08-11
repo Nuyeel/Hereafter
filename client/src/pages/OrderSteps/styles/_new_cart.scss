@@ -216,6 +216,14 @@
     background-color: gray;
     border-radius: 10px;
     margin-right: 10px;
+    display: flex;
+    align-items:center ;
+    justify-content: center;
+    overflow: hidden;
+
+          img{
+            height: 100%;
+          }
   }
 
   .xuan-cart-intro{
@@ -653,6 +661,14 @@
                   height: 65px;
                   border-radius: 10px;
                   margin-right: 10px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  overflow: hidden;
+
+                      img{
+                        height: 100%;
+                      }
                 }
   
                 .xuan-readytobuy-intro{
@@ -852,6 +868,7 @@
         .xuan-cart-img{
           width: 120px;
           height: 80px;
+             
         }
 
         .xuan-cart-intro{

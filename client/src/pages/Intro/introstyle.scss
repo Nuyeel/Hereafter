@@ -2,20 +2,18 @@
 *{
     font-family: $ff-t;
 }
+
 .intro-container{ 
     position: relative;
     top: -50px;
-    // padding-bottom:50px;
     background-color: rgb(31, 35, 87);
-   
+    margin-bottom: -50px;
 }
 
 @media screen and (min-width:768px) {
     .intro-container{
-
         top: -96px;
-    // padding-bottom:96px;
-
+        margin-bottom: -96px;
     }
 }
 
@@ -26,7 +24,10 @@
     100% {background-color: green;}
   }
 
-
+  h2{ font-size: $fz-h4;
+    font-family: $ff-t;
+    color: rgb(223, 122, 122);
+}
 
 .yun-fix-scroll{
     
@@ -98,10 +99,7 @@
     background-size: cover;
     opacity: 1;
 }
-h2{ 
-    font-family: $ff-t;
-    color: rgb(223, 122, 122);
-}
+
 
 @media screen and (max-width:768px) {
     h2{
@@ -115,90 +113,8 @@ h2{
     100%   { opacity:0.5 ;}
 } 
 
-.otherStars{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-}  
-.otherStar{
-    position: relative;
-  
-    
-    animation: star-sparkle ease-in infinite alternate-reverse;
-}
-.otherStar:nth-child(1){
-    
-    width: 10px;
-    height: 10px;
-    background: url(./introImg/otherStar/otherStar1.svg)center center no-repeat;
-    background-size: contain;
-    top: 10%;
-    left: 60%;
-    animation-duration: 3s;
-}
-.otherStar:nth-child(2){
-    
-    width: 10px;
-    height: 10px;
-    background: url(./introImg/otherStar/otherStar1.svg)center center no-repeat;
-    background-size: contain;
-    animation-duration: 4s;
-    top: 60%;
-    left: 23%;
-}
-.otherStar:nth-child(3){ 
-    
-    width: 20px;
-    height: 20px;
-    background: url(./introImg/otherStar/otherStar2.svg)center center no-repeat;
-    background-size: contain;
-    animation-duration: 1s;
-    top: 40%;
-    left: 90%;}
-.otherStar:nth-child(4){
-    
-    width: 20px;
-    height: 20px;
-    background: url(./introImg/otherStar/otherStar3.svg)center center no-repeat;
-    background-size: contain;
-    animation-duration: 5s;
-    top: 20%;
-    left: 10%;
-}
-.otherStar:nth-child(5){
-    
-    width: 14px;
-    height: 14px;
-    background: url(./introImg/otherStar/otherStar4.svg)center center no-repeat;
-    top: 10%;
-    left: 30%;
-    background-size: contain;
-    animation-duration: 3s;
-
-}
-.otherStar:nth-child(6){
-    
-    width: 20px;
-    height: 20px;
-    background: url(./introImg/otherStar/otherStar5.svg)center center no-repeat;
-    top: 55%;
-    left: 70%;
-    background-size: contain;
-    animation-duration: 1.5s;
-
-}
-.otherStar:nth-child(7){
-    
-    width: 10px;
-    height: 10px;
-    background: url(./introImg/otherStar/otherStar3.svg)center center no-repeat;
-    top: 75%;
-    left: 80%;
-    background-size: contain;
-    animation-duration: 2.5s;
-}
 .god-hand{
-    border:1px solid red;
+    // border:1px solid red;
     
     width: 60px;
     height: 180px;
@@ -211,4 +127,30 @@ h2{
     height: 320px;
     background: url(./introImg/god/god.svg)center center no-repeat;
     background-size: contain;
+}
+.intro-box{
+    width: 350px;
+    height: 500px;
+    background-color: #fff;
+}
+.Mirror1{
+
+    width: 250px;
+    height: 280px;
+    background: url(./introImg/mirrorman/Mirror1.svg)center center no-repeat;
+    background-size: contain;
+}
+.Mirror2{
+
+    width: 250px;
+    height: 280px;
+    background: url(./introImg/mirrorman/Mirror2.svg)center center no-repeat;
+    background-size: contain;
+}
+.intro-final-logo{
+    width: 280px;
+    height: 320px;
+    background: url(./introImg/logo.svg)center center no-repeat;
+    background-size: contain;
+
 }

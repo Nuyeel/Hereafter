@@ -7,7 +7,7 @@ import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
 import { Avatar_Update } from '../../../../config/ajax-path';
 import axios from 'axios';
 import { ReactComponent as Soul } from '../../../../images/Nav/nav_soul.svg';
-//import Bodytry from "../../../images/avatar/hereafter-imgs/body-M.png";
+import Swal from 'sweetalert2';
 
 function CenterPart(props) {
     const {
@@ -17,8 +17,10 @@ function CenterPart(props) {
         setBodyControlChange,
         setColorControlSwitch,
         setFaceControlChange,
+        backtoShowCase,
     } = props;
     const ref = useRef(null);
+
     const { theme } = useContext(ThemeContext);
     const avatarTotalPrice =
         BodyData['hand'][combination['body']['hand']]['price'] +
@@ -78,6 +80,18 @@ function CenterPart(props) {
     orderData.combinationText = combinationText;
     orderData.totalPrice = avatarTotalPrice;
     const onButtonClick = useCallback(async () => {
+        Swal.fire({
+            title: '形象準備中',
+            didOpen: () => {
+                setTimeout(
+                    Swal.update({
+                        confirmButtonText:
+                            '<i class="fa fa-thumbs-up"></i> 我知道了',
+                    }),
+                    2000
+                );
+            },
+        });
         if (ref.current === null) {
             return;
         }
@@ -105,7 +119,20 @@ function CenterPart(props) {
             const r = await axios.post(Avatar_Update, orderData);
             console.log(orderData);
             console.log(r.data);
-            sessionStorage.removeItem('avatar_id');
+            if (r.data.success) {
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'Meow 檔案存進去了',
+                        confirmButtonText: `<p onClick={}>YA</p>`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            console.log('訂單ID已清除');
+                            sessionStorage.removeItem('avatar_id');
+                            backtoShowCase();
+                        }
+                    });
+                }, 1000);
+            }
         }
     }, [ref]);
 
