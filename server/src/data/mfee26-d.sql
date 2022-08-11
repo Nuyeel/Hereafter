@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- 主機： 127.0.0.1
--- 產生時間： 2022-08-11 08:51:22
--- 伺服器版本： 10.4.24-MariaDB
+-- 主機： localhost
+-- 產生時間： 2022 年 08 月 11 日 15:19
+-- 伺服器版本： 10.4.21-MariaDB
 -- PHP 版本： 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫: `mfee26-d`
+-- 資料庫： `mfee26-d`
 --
 
 -- --------------------------------------------------------
@@ -40,12 +40,18 @@ CREATE TABLE `admin_test_jwt` (
 --
 
 INSERT INTO `admin_test_jwt` (`sid`, `member_sid`, `token`, `expires`, `payload`) VALUES
-(20, 9, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWNjb3VudCI6IkhhcHB5Q2F0MDkiLCJpYXQiOjE2NTkzNjAzOTJ9.L119afkYgJLyMgJmAAyuHr148_H5IfmrrbuonXcQDtw', '1659361592683', '{\"id\":9,\"account\":\"HappyCat09\"}'),
-(21, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudCI6IkhhcHB5Q2F0MDEiLCJpYXQiOjE2NTk0MTAyNDR9.FnevyouQqRWfOOYzPpPIO87-hqFWTVowIJvNoIeb7Sc', '1659411444353', '{\"id\":1,\"account\":\"HappyCat01\"}'),
-(23, 10, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImFjY291bnQiOiJIYXBweUNhdDEwIiwiaWF0IjoxNjU5NDE0NjE3fQ.AsUBiqvKtd3BRIq28RONs3DWGGLrdoPtplH9a7tvj7U', '1659415817214', '{\"id\":10,\"account\":\"HappyCat10\"}'),
 (24, 12, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImFjY291bnQiOiJIYXBweUNhdDEyIiwiaWF0IjoxNjU5NDE1NDA2fQ.Sdb-iHJV936lBgaBaOGWESS78NIvV7QmCAxDBcBjkaA', '1659416606039', '{\"id\":12,\"account\":\"HappyCat12\"}'),
-(25, 7, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWNjb3VudCI6IkhhcHB5Q2F0MDciLCJpYXQiOjE2NTk0NDY1NDJ9.6hkhSxjE-gUvR0E4caVThp9BqehT2T6z_OFDiNbH6Nc', '1659447742919', '{\"id\":7,\"account\":\"HappyCat07\"}'),
-(26, 2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiYWNjb3VudCI6IkhhcHB5Q2F0MDIiLCJpYXQiOjE2NTk0NDcyMTd9.kazSs15TlCgcy0ssLiwxwoXl-lAa7ICzAz26GB3WXGM', '1659448417609', '{\"id\":2,\"account\":\"HappyCat02\"}');
+(34, 14, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImFjY291bnQiOiJIYXBweUNhdDEzIiwiaWF0IjoxNjYwMTk1OTIxfQ.7AuVe-073GZ5UxaQ2WU8vJZdxmpcT7qqWhP_LnyYbrk', '1660197121154', '{\"id\":14,\"account\":\"HappyCat13\"}'),
+(36, 2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiYWNjb3VudCI6IkhhcHB5Q2F0MDIiLCJpYXQiOjE2NjAxOTkzMDZ9.PZGVsKbMoq0-_BRBXyRXaMO9EtHSkLI-8xNEzdhKlCM', '1660200506991', '{\"id\":2,\"account\":\"HappyCat02\"}'),
+(37, 3, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiYWNjb3VudCI6IkhhcHB5Q2F0MDMiLCJpYXQiOjE2NjAxOTkzNTN9.x1q966wCwdOntAPL00xjDMkHLS3r44nI-dNGDR2PC_Q', '1660200553956', '{\"id\":3,\"account\":\"HappyCat03\"}'),
+(38, 4, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiYWNjb3VudCI6IkhhcHB5Q2F0MDQiLCJpYXQiOjE2NjAxOTk1MzF9.YUchDrtTK5WHvovnoA5Y8z6JnYG4Y76EwwZQ6aPD27k', '1660200731674', '{\"id\":4,\"account\":\"HappyCat04\"}'),
+(39, 5, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWNjb3VudCI6IkhhcHB5Q2F0MDUiLCJpYXQiOjE2NjAxOTk2ODR9.hj75Bz1NW7KZ0myTaOyMnlsLgR3IC_FfwHQqgEKOCzc', '1660200884866', '{\"id\":5,\"account\":\"HappyCat05\"}'),
+(40, 6, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiYWNjb3VudCI6IkhhcHB5Q2F0MDYiLCJpYXQiOjE2NjAxOTk5NDl9.0MI-idsN8fPAY54H0CqxsW58-RQV96sPqK95o893zv8', '1660201149110', '{\"id\":6,\"account\":\"HappyCat06\"}'),
+(42, 8, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiYWNjb3VudCI6IkhhcHB5Q2F0MDgiLCJpYXQiOjE2NjAyMDA0ODN9.05_15kKe7KnaWFkCJi0IWdcWhyPKwFQPgh5UjM6036w', '1660201683986', '{\"id\":8,\"account\":\"HappyCat08\"}'),
+(43, 9, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWNjb3VudCI6IkhhcHB5Q2F0MDkiLCJpYXQiOjE2NjAyMDA5MTV9.JtA00T9XhwIrOU8Vtl_APiFW7V5GeJbYUZ_gxu75nEo', '1660202115546', '{\"id\":9,\"account\":\"HappyCat09\"}'),
+(44, 10, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImFjY291bnQiOiJIYXBweUNhdDEwIiwiaWF0IjoxNjYwMjAxMTcxfQ.Bn4PW8JVnyeB6E7uo822qZtuHuwDxi0jSC210zgEhl8', '1660202371909', '{\"id\":10,\"account\":\"HappyCat10\"}'),
+(46, 7, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWNjb3VudCI6IkhhcHB5Q2F0MDciLCJpYXQiOjE2NjAyMDUxNjZ9.Ku59z0MLr_HFDsRU0i0RNPc3vVuF1R6syEQrRQuaDoI', '1660206366499', '{\"id\":7,\"account\":\"HappyCat07\"}'),
+(47, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudCI6IkhhcHB5Q2F0MDEiLCJpYXQiOjE2NjAyMjM1NzB9.rnCAUdyQ-0taMeFObscpFB5m20ZF94Jogdenb-RDHOU', '1660224770331', '{\"id\":1,\"account\":\"HappyCat01\"}');
 
 -- --------------------------------------------------------
 
@@ -309,7 +315,7 @@ CREATE TABLE `event_order_detail` (
   `event_order_sid` int(11) NOT NULL,
   `member_sid` int(11) DEFAULT NULL,
   `event_order_detail` varchar(255) DEFAULT NULL,
-  `order_created_at` date DEFAULT NULL
+  `order_created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -317,15 +323,15 @@ CREATE TABLE `event_order_detail` (
 --
 
 INSERT INTO `event_order_detail` (`event_order_sid`, `member_sid`, `event_order_detail`, `order_created_at`) VALUES
-(8, 100, '22,107', '2022-07-27'),
-(9, 100, '22,107', '2022-07-27'),
-(10, 100, '22,107,103', '2022-07-27'),
-(11, 100, '22,107,103', '2022-07-27'),
-(15, 100, '22,23,24,75', '2022-07-28'),
-(16, 100, '22,23,24,75', '2022-07-28'),
-(17, 100, '22,23,24,75', '2022-07-28'),
-(19, 100, '22,23,24,75,24', '2022-07-28'),
-(50, 100, '23,28', '2022-07-28');
+(8, 100, '22,107', '2022-07-27 00:35:13'),
+(9, 100, '22,107', '2022-07-27 00:40:04'),
+(10, 100, '22,107,103', '2022-07-27 00:48:19'),
+(11, 100, '22,107,103', '2022-07-27 00:55:03'),
+(15, 100, '22,23,24,75', '2022-07-28 09:42:16'),
+(16, 100, '22,23,24,75', '2022-07-28 09:42:58'),
+(17, 100, '22,23,24,75', '2022-07-28 09:43:12'),
+(19, 100, '22,23,24,75,24', '2022-07-28 11:54:47'),
+(50, 100, '23,28', '2022-07-28 16:44:07');
 
 -- --------------------------------------------------------
 
@@ -426,7 +432,6 @@ CREATE TABLE `member` (
   `password` varchar(255) DEFAULT NULL,
   `gooddeed_score` int(11) DEFAULT NULL,
   `profile_picture` int(11) DEFAULT NULL,
-  `passcode` varchar(255) DEFAULT NULL,
   `create_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -435,16 +440,16 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`sid`, `name`, `birthdate`, `deathdate`, `isdead`, `mobile`, `email`, `account`, `password`, `gooddeed_score`, `profile_picture`, `create_at`) VALUES
-(1, 'the first cat', NULL, NULL, 'false', '', 'HappyCat01@gmail.com', 'HappyCat01', '$2a$10$.Xh/TQA3aVJ.orVOX1JRZO8K3hB9rdoe7RydbkYih97T1msjAzpKq', NULL, NULL, '2022-06-09 05:52:24'),
-(2, '貓貓貓', NULL, NULL, 'false', '', 'HappyCat02@gmail.com', 'HappyCat02', '$2y$10$NYuxH3UUfyHRr8yjeDo0Ou/zw83PT/hjbaAwWQ6u.MVlwhS2KMct6', NULL, NULL, '2022-06-09 05:52:51'),
-(3, '九天玄女不在這', NULL, NULL, 'false', '', 'HappyCat03@gmail.com', 'HappyCat03', '$2y$10$QCyABgd5IjBYYmQhnK0bpeBjSOKzSjiPbyI8fFPpV.cBoclFe8f1.', NULL, NULL, '2022-06-09 05:53:34'),
-(4, 'Bible Thumb', NULL, NULL, 'false', '', 'HappyCat04@gmail.com', 'HappyCat04', '$2y$10$xyN7xDkGJ5SustZEWCDyIuA/7RdTp0Y3yg4MhtFPFyzmnmayB9EZC', NULL, NULL, '2022-06-09 05:54:15'),
-(5, '偷尼史塔克 Tony Stark ', '1990-06-14', '2022-06-02', 'false', '0977101050', 'HappyCat05@gmail.com', 'HappyCat05', '$2y$10$sFaM2bucSZ9h0bRb9vXYJuwSy1.YS7eHOutpxih.qfOieXQX1b6ze', NULL, NULL, '2022-06-09 05:54:42'),
-(6, '怎一直下雨', '1990-03-05', '2022-05-31', 'false', '', 'HappyCat06@gmail.com', 'HappyCat06', '$2y$10$KQFhzDlfZFdk.stmlCA7U.il3fDWO2z0kkVzrHuF9SJPIgNXWKAp.', NULL, NULL, '2022-06-09 05:55:06'),
-(7, '趕著投胎', NULL, NULL, 'false', '', 'HappyCat07@gmail.com', 'HappyCat07', '$2y$10$Wy1j.2RcH0cA565y0kP2I.yIGvH8rdoEFXhWRokuDHgOerj1NNG9u', NULL, NULL, '2022-06-09 05:55:27'),
-(8, '咖啡因成癮重症患者', NULL, NULL, 'false', '', 'HappyCat08@gmail.com', 'HappyCat08', '$2y$10$hfdvXtFq2/leKrM2jLXxf.L1YiKAr5wMCq7.rp69fiSgoG3pnJlsK', NULL, NULL, '2022-06-09 05:55:47'),
-(9, '陳怡君', NULL, NULL, 'false', '', 'HappyCat09@gmail.com', 'HappyCat09', '$2y$10$7zyt3mR2ghfGKn9xkEWgdeXlmxoRy4rm3DmrP/3kDFMXoIPPEj/wy', NULL, NULL, '2022-06-09 05:56:28'),
-(10, '總有幾隻貓的', NULL, NULL, 'false', '', 'HappyCat10@gmail.com', 'HappyCat10', '$2y$10$n3p/32p42bi1QqX/U0KjBe4Yb0WdAI.8UaoZH3tiRR8NbBaxHGcOK', NULL, NULL, '2022-06-09 05:56:51'),
+(1, 'the first cat', NULL, NULL, 'false', '', 'HappyCat01@gmail.com', 'HappyCat01', '$2a$10$.Xh/TQA3aVJ.orVOX1JRZO8K3hB9rdoe7RydbkYih97T1msjAzpKq', NULL, 1143, '2022-06-09 05:52:24'),
+(2, '貓貓貓', NULL, NULL, 'false', '', 'HappyCat02@gmail.com', 'HappyCat02', '$2y$10$NYuxH3UUfyHRr8yjeDo0Ou/zw83PT/hjbaAwWQ6u.MVlwhS2KMct6', NULL, 1133, '2022-06-09 05:52:51'),
+(3, '九天玄女不在這', NULL, NULL, 'false', '', 'HappyCat03@gmail.com', 'HappyCat03', '$2y$10$QCyABgd5IjBYYmQhnK0bpeBjSOKzSjiPbyI8fFPpV.cBoclFe8f1.', NULL, 1148, '2022-06-09 05:53:34'),
+(4, 'Bible Thumb', NULL, NULL, 'false', '', 'HappyCat04@gmail.com', 'HappyCat04', '$2y$10$xyN7xDkGJ5SustZEWCDyIuA/7RdTp0Y3yg4MhtFPFyzmnmayB9EZC', NULL, 1153, '2022-06-09 05:54:15'),
+(5, '偷尼史塔克 Tony Stark ', '1990-06-14', '2022-06-02', 'false', '0977101050', 'HappyCat05@gmail.com', 'HappyCat05', '$2y$10$sFaM2bucSZ9h0bRb9vXYJuwSy1.YS7eHOutpxih.qfOieXQX1b6ze', NULL, 1158, '2022-06-09 05:54:42'),
+(6, '怎一直下雨', '1990-03-05', '2022-05-31', 'false', '', 'HappyCat06@gmail.com', 'HappyCat06', '$2y$10$KQFhzDlfZFdk.stmlCA7U.il3fDWO2z0kkVzrHuF9SJPIgNXWKAp.', NULL, 1163, '2022-06-09 05:55:06'),
+(7, '趕著投胎', NULL, NULL, 'true', '', 'HappyCat07@gmail.com', 'HappyCat07', '$2y$10$Wy1j.2RcH0cA565y0kP2I.yIGvH8rdoEFXhWRokuDHgOerj1NNG9u', NULL, 1128, '2022-06-09 05:55:27'),
+(8, '咖啡因成癮重症患者', NULL, NULL, 'false', '', 'HappyCat08@gmail.com', 'HappyCat08', '$2y$10$hfdvXtFq2/leKrM2jLXxf.L1YiKAr5wMCq7.rp69fiSgoG3pnJlsK', NULL, 1168, '2022-06-09 05:55:47'),
+(9, '陳怡君', NULL, NULL, 'false', '', 'HappyCat09@gmail.com', 'HappyCat09', '$2y$10$7zyt3mR2ghfGKn9xkEWgdeXlmxoRy4rm3DmrP/3kDFMXoIPPEj/wy', NULL, 1173, '2022-06-09 05:56:28'),
+(10, '總有幾隻貓的', NULL, NULL, 'false', '', 'HappyCat10@gmail.com', 'HappyCat10', '$2y$10$n3p/32p42bi1QqX/U0KjBe4Yb0WdAI.8UaoZH3tiRR8NbBaxHGcOK', NULL, 1178, '2022-06-09 05:56:51'),
 (11, 'unhappy cat', NULL, NULL, 'true', '', 'HappyCat11@gmail.com', 'HappyCat11', '$2y$10$JG.LjNM0flM7vAV8zkh6PO3Hb2bgA3c8xKW83W2qbgJgns/n/Hdoa', NULL, NULL, '2022-06-09 05:57:16'),
 (12, '靈魂急轉彎', '1990-06-15', '2022-06-07', 'false', '', 'HappyCat12@gmail.com', 'HappyCat12', '$2y$10$7.aum6zzCAAX1XsrQyhOf.U8r5MrG586P2fdGiW27WfBOztqK4IHa', NULL, NULL, '2022-06-09 05:57:37'),
 (13, '', NULL, NULL, 'false', '', 'admin@gmail.com', 'Admin', '$2y$10$0DADDxhf55DPxOKcyISJt.L0uHOkeiSh7J/lTqQ73jMYj1qhLBrBW', NULL, NULL, '2022-06-09 17:51:04'),
@@ -708,16 +713,16 @@ CREATE TABLE `npo_act` (
 --
 
 INSERT INTO `npo_act` (`sid`, `img`, `type_sid`, `program_type`, `comment_star`, `price`, `value`, `start`, `start_time`, `end`, `end_time`, `npo_name`, `act_title`, `place_city`, `place_other`, `place_location`, `limit_num`, `intro`) VALUES
-(22, '01.svg', 3, '贊助', '4.2', 100, 50, '2022-07-14', '19:00:00', '2022-07-22', '22:00:00', '華山基金會', '「疫」起助老-愛心義賣', 16, '中正路420號7樓', '里民活動中心', 3, '※因現場人員需處理照護動物工作，場地/導覽人員人力有限，本會將視天候狀況及人力狀況審核是否同意志工服務，若天候不佳或是已有團體預約，就需要另擇他日喔!'),
-(23, '02.svg', 3, '志工', '4.5', 100, 50, '2022-06-11', '09:00:00', '2022-07-22', '12:00:00', '華山基金會', '家庭照顧者支持計畫', 2, '文山區萬和街6號4樓', '里民活動中心', 15, '1. 以弱勢社區及服務據點所提出的需求提供服務，並體驗當地生活和文化。\r\n2. 協助當地教學、活動帶領等為主，服務內容依實際狀況調整。'),
-(24, '03.svg', 3, '贊助', '3.5', 200, 50, '2022-07-22', '12:00:00', '2022-07-21', '13:00:00', '中華長照協會', '食物銀行送愛', 2, '中華路一段', '里民活動中心', 10, '服務內容：\r\n1.關懷服務：電話問安、送餐服務及社區關懷活動。\r\n2.陪伴服務：陪同就醫、讀報、陪伴運動及陪伴至社區或據點參與活動等服務。'),
-(28, '04.svg', 5, '志工', '3.3', 50, 50, '2022-07-13', '13:00:00', '2022-06-22', '15:00:00', '愛盲基金會', '「看不見，我努力」', 4, '大溪老街', '里民活動中心', 4, '今年度，中心想透過志工協同領導的模式，由一位志工搭配 4 名身障者組成小隊，活動期間陪伴身障者於大溪老街中完成任務，中心期待透過此模式，增加身障者與一般民眾的接觸，雙方能夠進行良性互動，進而提升一般民眾對於身障者的認知，亦透過數位遊戲作為媒介，促使身心障礙者能活用網路科技、學習團隊合作、培養社會參與意識。'),
-(30, '05.svg', 6, '贊助', '2.8', 50, 50, '2022-06-29', '15:00:00', '2022-06-18', '16:00:00', '寶貝潛能發展中心', '伴弱勢癌友翻轉抗癌路', 2, '大安區敦化南路一段233巷28號B1台北愛樂文教基金會', '里民活動中心', 40, 'TICF18台北國際合唱音樂節規模龐大，涵蓋20餘場大小音樂會、4項合唱專業課程及首屆台北國際合唱大賽。行政團隊計畫培養節慶活動之幕後籌備人才，歡迎熱愛藝文活動的你/妳，加入我們一起來完成今夏亞洲最具規模的合唱盛事！'),
-(75, '06.svg', 2, '志工', '2.1', 50, 50, '2022-06-22', '12:00:00', '2022-07-15', '14:00:00', '荒野保護協會', '一起手護台灣', 16, '國聖燈塔', '里民活動中心', 100, '會提供手套和垃圾袋，保險自理、自行攜帶飲用水 (盡量避免保特瓶或手搖飲)\r\nP.S我們民眾自發性舉辦的活動，故無法提供志工時數或感謝狀唷'),
-(102, '07.svg', 6, '贊助', '3.7', 200, 50, '2022-06-22', '18:00:00', '2022-06-22', '15:00:00', '台灣圖書室文化協會', '中部地區電話協談志工', 15, '中正路420號7樓', '里民活動中心', 30, NULL),
-(103, '08.svg', 1, '志工', '4.5', 100, 250, '2022-06-30', '18:00:00', '2022-07-07', '16:00:00', '荒野保護協會', '淨灘一起GO', 9, '濱海公路', '里民活動中心', 100, NULL),
-(104, '09.svg', 1, '贊助', '4.4', 150, 200, '2022-06-29', '08:00:00', '2022-06-30', '20:00:00', '荒野保護協會', '海好有你，守護海洋', 18, '三仙台遊憩區', '里民活動中心', 100, NULL),
-(105, '10.svg', 4, '志工', '4.6', 100, 100, '2022-06-28', '09:00:00', '2022-06-28', '15:00:00', '兒少安置機構聯盟', '兒童權利教育志工', 21, '中正路694巷1弄3號', '里民活動中心', 5, NULL);
+(22, 'e1c47a4f835af1a4a8588a048692bf3e.jpg', 3, '贊助', '4.2', 100, 50, '2022-07-14', '19:00:00', '2022-07-22', '22:00:00', '華山基金會', '「疫」起助老-愛心義賣', 16, '中正路420號7樓', '里民活動中心', 3, '※因現場人員需處理照護動物工作，場地/導覽人員人力有限，本會將視天候狀況及人力狀況審核是否同意志工服務，若天候不佳或是已有團體預約，就需要另擇他日喔!'),
+(23, 'bbaaff96e911967b5cbba0f7bcaf5bec.jpg', 3, '志工', '4.5', 100, 50, '2022-06-11', '09:00:00', '2022-07-22', '12:00:00', '華山基金會', '家庭照顧者支持計畫', 2, '文山區萬和街6號4樓', '里民活動中心', 15, '1. 以弱勢社區及服務據點所提出的需求提供服務，並體驗當地生活和文化。\r\n2. 協助當地教學、活動帶領等為主，服務內容依實際狀況調整。'),
+(24, '5006073f5e1f9384b0f52ba001a41e7d.jpg', 3, '贊助', '3.5', 200, 50, '2022-07-22', '12:00:00', '2022-07-21', '13:00:00', '中華長照協會', '食物銀行送愛', 2, '中華路一段', '里民活動中心', 10, '服務內容：\r\n1.關懷服務：電話問安、送餐服務及社區關懷活動。\r\n2.陪伴服務：陪同就醫、讀報、陪伴運動及陪伴至社區或據點參與活動等服務。'),
+(28, 'fbed9f64033cae7b8231c51e3cb1f383.png', 5, '志工', '3.3', 50, 50, '2022-07-13', '13:00:00', '2022-06-22', '15:00:00', '愛盲基金會', '「看不見，我努力」', 4, '大溪老街', '里民活動中心', 4, '今年度，中心想透過志工協同領導的模式，由一位志工搭配 4 名身障者組成小隊，活動期間陪伴身障者於大溪老街中完成任務，中心期待透過此模式，增加身障者與一般民眾的接觸，雙方能夠進行良性互動，進而提升一般民眾對於身障者的認知，亦透過數位遊戲作為媒介，促使身心障礙者能活用網路科技、學習團隊合作、培養社會參與意識。'),
+(30, '321935d2d13d2d0bd2802b2e814a99a3.jpg', 6, '贊助', '2.8', 50, 50, '2022-06-29', '15:00:00', '2022-06-18', '16:00:00', '寶貝潛能發展中心', '伴弱勢癌友翻轉抗癌路', 2, '大安區敦化南路一段233巷28號B1台北愛樂文教基金會', '里民活動中心', 40, 'TICF18台北國際合唱音樂節規模龐大，涵蓋20餘場大小音樂會、4項合唱專業課程及首屆台北國際合唱大賽。行政團隊計畫培養節慶活動之幕後籌備人才，歡迎熱愛藝文活動的你/妳，加入我們一起來完成今夏亞洲最具規模的合唱盛事！'),
+(75, '052b5b84c830e59e7d4afadc2069f676.jpg', 2, '志工', '2.1', 50, 50, '2022-06-22', '12:00:00', '2022-07-15', '14:00:00', '荒野保護協會', '一起手護台灣', 16, '國聖燈塔', '里民活動中心', 100, '會提供手套和垃圾袋，保險自理、自行攜帶飲用水 (盡量避免保特瓶或手搖飲)\r\nP.S我們民眾自發性舉辦的活動，故無法提供志工時數或感謝狀唷'),
+(102, 'ac669e5a675d1792f7af5b619fc6670c.jpg', 6, '贊助', '3.7', 200, 50, '2022-06-22', '18:00:00', '2022-06-22', '15:00:00', '台灣圖書室文化協會', '中部地區電話協談志工', 15, '中正路420號7樓', '里民活動中心', 30, NULL),
+(103, '1a52ae873b4110a331d26c170544dc5b.jpg', 1, '志工', '4.5', 100, 250, '2022-06-30', '18:00:00', '2022-07-07', '16:00:00', '荒野保護協會', '淨灘一起GO', 9, '濱海公路', '里民活動中心', 100, NULL),
+(104, '15f6e95a3287913a5eccfad23daf8d60.jpg', 1, '贊助', '4.4', 150, 200, '2022-06-29', '08:00:00', '2022-06-30', '20:00:00', '荒野保護協會', '海好有你，守護海洋', 18, '三仙台遊憩區', '里民活動中心', 100, NULL),
+(105, '9568610dfbc0a7584e24aaa79d325b2e.jpg', 4, '志工', '4.6', 100, 100, '2022-06-28', '09:00:00', '2022-06-28', '15:00:00', '兒少安置機構聯盟', '兒童權利教育志工', 21, '中正路694巷1弄3號', '里民活動中心', 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -1041,7 +1046,9 @@ INSERT INTO `place_in_cart` (`sid`, `member_sid`, `place_sid`, `created_at`) VAL
 (22, 10, 67, '2022-08-02 17:48:12'),
 (26, 100, 67, '2022-08-02 18:37:31'),
 (31, 100, 68, '2022-08-02 18:47:37'),
-(33, 100, 13, '2022-08-02 19:01:55');
+(33, 100, 13, '2022-08-02 19:01:55'),
+(35, 7, 15, '2022-08-10 12:24:26'),
+(36, 7, 67, '2022-08-10 12:25:12');
 
 -- --------------------------------------------------------
 
@@ -1076,7 +1083,8 @@ INSERT INTO `place_liked` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUE
 (13, 10, 68, '2022-07-31 13:46:01'),
 (14, 10, 87, '2022-07-31 13:59:21'),
 (15, 10, 67, '2022-07-31 13:59:28'),
-(16, 10, 29, '2022-07-31 14:49:58');
+(16, 10, 29, '2022-07-31 14:49:58'),
+(17, 7, 67, '2022-08-10 12:25:11');
 
 -- --------------------------------------------------------
 
@@ -1250,7 +1258,10 @@ INSERT INTO `share_avatar_comments` (`share_post_comment_sid`, `share_post_sid`,
 (32, 8, 3, '感覺是看待世界的方式會改變的身高', '2022-07-22 23:45:05', NULL),
 (33, 8, 2, '我也要改成這個！', '2022-07-22 23:45:38', NULL),
 (34, 9, 4, '芝麻眼睛好酷～', '2022-07-22 23:45:48', NULL),
-(35, 2, 2, '我怎麼會知道喔喔喔喔', '2022-07-22 23:45:56', NULL);
+(35, 2, 2, '我怎麼會知道喔喔喔喔', '2022-07-22 23:45:56', NULL),
+(36, 8, 7, '還敢綠野仙蹤R', '2022-08-09 14:28:39', NULL),
+(37, 7, 7, '豁囉囉🐎', '2022-08-09 14:52:34', '2022-08-10 09:16:46'),
+(38, 7, 7, '這已經不是馬啦s', '2022-08-09 15:40:01', '2022-08-10 09:57:51');
 
 -- --------------------------------------------------------
 
@@ -1320,16 +1331,16 @@ CREATE TABLE `share_avatar_posts` (
 --
 
 INSERT INTO `share_avatar_posts` (`share_post_sid`, `member_sid`, `avatar_sid`, `share_post_title`, `share_post_text`, `share_post_likes`, `share_post_collects`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '海豚灣戀人', '我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號', 11, 12, '2022-07-22 22:36:40', '2022-07-22 22:48:17'),
-(2, 2, 2, '周杰倫半獸人', '我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號', 22, 23, '2022-07-22 22:38:42', NULL),
-(3, 3, 3, '綠色史瑞克人', '我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號', 33, 34, '2022-07-22 22:39:04', NULL),
-(4, 4, 4, '青色馬尾人', '我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號', 44, 45, '2022-07-22 22:39:35', '2022-07-22 23:31:59'),
-(5, 5, 5, '粉紫色大肚人', '我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號', 55, 56, '2022-07-22 22:39:55', NULL),
-(6, 6, 6, '白海豚轉彎人', '我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號', 66, 67, '2022-07-22 22:43:20', NULL),
-(7, 7, 7, '我是什麼人', '我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號', 77, 78, '2022-07-22 22:46:34', '2022-07-22 23:43:46'),
-(8, 8, 8, '綠野仙蹤矮人', '我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號', 88, 89, '2022-07-22 22:46:48', NULL),
-(9, 9, 9, '藍色小精靈', '我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號', 99, 100, '2022-07-22 22:47:04', NULL),
-(10, 10, 10, '三眼姆哈哈', '我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號', 1010, 1011, '2022-07-22 22:47:17', NULL);
+(1, 1, 1143, '海豚灣戀人', '我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號我是文章一號', 11, 12, '2022-07-22 22:36:40', '2022-07-22 22:48:17'),
+(2, 2, 1133, '周杰倫半獸人', '我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號我是文章二號', 22, 23, '2022-07-22 22:38:42', NULL),
+(3, 3, 1148, '綠色史瑞克人', '我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號我是文章三號', 33, 34, '2022-07-22 22:39:04', NULL),
+(4, 4, 1153, '青色馬尾人', '我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號我是文章四號', 44, 45, '2022-07-22 22:39:35', '2022-07-22 23:31:59'),
+(5, 5, 1158, '粉紫色大肚人', '我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號我是文章五號', 55, 56, '2022-07-22 22:39:55', NULL),
+(6, 6, 1163, '白海豚轉彎人', '我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號我是文章六號', 66, 67, '2022-07-22 22:43:20', NULL),
+(7, 7, 1128, '我是什麼人', '我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號我是文章七號', 77, 78, '2022-07-22 22:46:34', '2022-07-22 23:43:46'),
+(8, 8, 1168, '綠野仙蹤矮人', '我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號我是文章八號', 88, 89, '2022-07-22 22:46:48', NULL),
+(9, 9, 1173, '藍色小精靈', '我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號我是文章九號', 99, 100, '2022-07-22 22:47:04', NULL),
+(10, 10, 1178, '三眼姆哈哈', '我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號我是文章十號', 1010, 1011, '2022-07-22 22:47:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -1369,7 +1380,8 @@ INSERT INTO `share_avatar_posts_to_tags` (`share_p_to_t_sid`, `share_post_sid`, 
 (19, 9, 11),
 (20, 10, 12),
 (21, 10, 16),
-(22, 10, 17);
+(22, 10, 17),
+(23, 11, 18);
 
 -- --------------------------------------------------------
 
@@ -1404,7 +1416,8 @@ INSERT INTO `share_avatar_tags` (`share_post_tag_sid`, `share_post_tag_text`, `s
 (14, '三角鼻', 2355),
 (15, '喵喵嘴', 674),
 (16, '大肚腩', 323),
-(17, '粉紫色', 21);
+(17, '粉紫色', 21),
+(18, 'hjin', 0);
 
 -- --------------------------------------------------------
 
@@ -1432,11 +1445,61 @@ INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combina
 (1125, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":\"0\",\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1126, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":\"0\",\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1127, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":\"0\",\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
-(1128, 7, '2022-08-09 09:23:04', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1128, 7, '2022-08-11 14:47:31', '{\"basic\":[2,0,0],\"basic_color\":0,\"body\":{\"hand\":2,\"foot\":3,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":2},\"face\":{\"eye\":0,\"ear\":1,\"lip\":1,\"nose\":3,\"hairFront\":2,\"hairBack\":3,\"topEar\":4},\"face_color\":{\"eye\":0,\"nose\":1,\"hairFront\":3,\"topEar\":4}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"大鼻子\",\"noseColor\":\"粉\",\"hair\":\"飛機+飄逸長\",\"hairColor\":\"鮭魚\",\"ear\":\"饅頭\",\"topearColor\":\"粉\",\"lip\":\"上門牙\"}', 'a0366223-66bc-45f0-98c1-a02bbad680e5.png', 900),
 (1129, 7, '2022-08-09 09:23:04', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1130, 7, '2022-08-09 09:23:04', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1131, 7, '2022-08-09 09:23:04', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
-(1132, 7, '2022-08-09 09:23:04', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300);
+(1132, 7, '2022-08-09 09:23:04', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1133, 2, '2022-08-11 14:28:48', '{\"basic\":[2,0,2],\"basic_color\":3,\"body\":{\"hand\":2,\"foot\":3,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":1,\"lip\":1,\"nose\":4,\"hairFront\":2,\"hairBack\":4,\"topEar\":3},\"face_color\":{\"eye\":0,\"nose\":6,\"hairFront\":1,\"topEar\":7}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"灰\",\"nose\":\"圓圓\",\"noseColor\":\"紅\",\"hair\":\"飛機+學生妹\",\"hairColor\":\"棕\",\"ear\":\"饅頭\",\"topearColor\":\"鐵灰\",\"lip\":\"上門牙\"}', '82b86883-0b0e-4563-ba28-b346b5acb933.png', 900),
+(1134, 2, '2022-08-11 09:17:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1135, 2, '2022-08-11 09:17:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1136, 2, '2022-08-11 09:17:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1137, 2, '2022-08-11 09:17:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1138, 14, '2022-08-11 13:32:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1139, 14, '2022-08-11 13:32:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1140, 14, '2022-08-11 13:32:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1141, 14, '2022-08-11 13:32:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1142, 14, '2022-08-11 13:32:40', '{\"basic\":[1,2,2],\"basic_color\":2,\"body\":{\"hand\":1,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', '24cf7307-16a6-43db-8a49-909a8895c928.png', 400),
+(1143, 1, '2022-08-11 14:27:31', '{\"basic\":[0,0,0],\"basic_color\":1,\"body\":{\"hand\":2,\"foot\":3,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":4,\"lip\":4,\"nose\":1,\"hairFront\":3,\"hairBack\":5,\"topEar\":2},\"face_color\":{\"eye\":2,\"nose\":6,\"hairFront\":1,\"topEar\":7}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"午夜藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"阿嬤+捲捲\",\"hairColor\":\"棕\",\"ear\":\"饅頭\",\"topearColor\":\"鐵灰\",\"lip\":\"不開心\"}', 'a9e44740-1699-4742-a25f-472043408e8c.png', 900),
+(1144, 1, '2022-08-11 14:25:29', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1145, 1, '2022-08-11 14:25:29', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1146, 1, '2022-08-11 14:25:29', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1147, 1, '2022-08-11 14:25:29', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1148, 3, '2022-08-11 14:31:34', '{\"basic\":[2,2,2],\"basic_color\":7,\"body\":{\"hand\":3,\"foot\":4,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":7},\"face\":{\"eye\":4,\"ear\":3,\"lip\":1,\"nose\":5,\"hairFront\":0,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":6,\"hairFront\":2,\"topEar\":3}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"藍綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"水藍\",\"nose\":\"小豬\",\"noseColor\":\"紅\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"天藍\",\"ear\":\"蠑螈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '02257926-6b3f-4b2c-97ff-f2723ed8f82e.png', 1400),
+(1149, 3, '2022-08-11 14:29:28', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1150, 3, '2022-08-11 14:29:28', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1151, 3, '2022-08-11 14:29:28', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1152, 3, '2022-08-11 14:29:28', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1153, 4, '2022-08-11 14:34:19', '{\"basic\":[0,2,0],\"basic_color\":7,\"body\":{\"hand\":0,\"foot\":4,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"魚尾\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"天藍\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', '910682e9-ba92-4977-b880-f8f955c04177.png', 800),
+(1154, 4, '2022-08-11 14:32:15', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1155, 4, '2022-08-11 14:32:15', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1156, 4, '2022-08-11 14:32:15', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1157, 4, '2022-08-11 14:32:15', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1158, 5, '2022-08-11 14:38:37', '{\"basic\":[2,0,0],\"basic_color\":5,\"body\":{\"hand\":2,\"foot\":4,\"tale\":0,\"special\":2},\"special_color\":{\"tale\":0,\"special\":1},\"face\":{\"eye\":2,\"ear\":4,\"lip\":1,\"nose\":4,\"hairFront\":1,\"hairBack\":3,\"topEar\":6},\"face_color\":{\"eye\":6,\"nose\":6,\"hairFront\":7,\"topEar\":4}}', '{\"hand\":\"貓掌\",\"foot\":\"章魚腳\",\"bodyColor\":\"中毒紫\",\"specialColor\":\"石板藍\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"外星人\",\"eyeColor\":\"紅\",\"nose\":\"圓圓\",\"noseColor\":\"紅\",\"hair\":\"捲捲+飄逸長\",\"hairColor\":\"雪\",\"ear\":\"饅頭\",\"topearColor\":\"粉\",\"lip\":\"上門牙\"}', '04dddcaf-44cc-4377-b291-edb6cf6d4b78.png', 1300),
+(1159, 5, '2022-08-11 14:34:50', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1160, 5, '2022-08-11 14:34:50', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1161, 5, '2022-08-11 14:34:50', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1162, 5, '2022-08-11 14:34:50', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1163, 6, '2022-08-11 14:42:55', '{\"basic\":[1,2,2],\"basic_color\":6,\"body\":{\"hand\":1,\"foot\":3,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":1,\"lip\":5,\"nose\":1,\"hairFront\":0,\"hairBack\":2,\"topEar\":3},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":5}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"紅\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"白\",\"hair\":\"中分+俐落短\",\"hairColor\":\"黑\",\"ear\":\"饅頭\",\"topearColor\":\"棕\",\"lip\":\"笑笑\"}', '8a22abb3-e4b1-43d1-b41d-8d075170e8ab.png', 900),
+(1164, 6, '2022-08-11 14:39:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1165, 6, '2022-08-11 14:39:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1166, 6, '2022-08-11 14:39:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1167, 6, '2022-08-11 14:39:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1168, 8, '2022-08-11 14:54:45', '{\"basic\":[0,0,2],\"basic_color\":8,\"body\":{\"hand\":1,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":4,\"lip\":2,\"nose\":5,\"hairFront\":2,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":2,\"hairFront\":4,\"topEar\":6}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"藍\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"紫\",\"nose\":\"小豬\",\"noseColor\":\"灰\",\"hair\":\"飛機+俐落短\",\"hairColor\":\"金\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"下門牙\"}', 'b04ce2a3-efcc-43ea-8f2a-ee43cfa81913.png', 1000),
+(1169, 8, '2022-08-11 14:48:14', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1170, 8, '2022-08-11 14:48:14', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1171, 8, '2022-08-11 14:48:14', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1172, 8, '2022-08-11 14:48:14', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1173, 9, '2022-08-11 14:58:58', '{\"basic\":[2,0,0],\"basic_color\":5,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":4,\"lip\":1,\"nose\":5,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"中毒紫\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '695f3365-7c2a-444c-bc9d-e2411de1ee1c.png', 800),
+(1174, 9, '2022-08-11 14:55:38', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1175, 9, '2022-08-11 14:55:38', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1176, 9, '2022-08-11 14:55:38', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1177, 9, '2022-08-11 14:55:38', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1178, 10, '2022-08-11 15:02:56', '{\"basic\":[0,2,0],\"basic_color\":2,\"body\":{\"hand\":2,\"foot\":3,\"tale\":1,\"special\":0},\"special_color\":{\"tale\":1,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":6},\"face_color\":{\"eye\":0,\"nose\":1,\"hairFront\":7,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"有\",\"taleColor\":\"綠\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"雪\",\"ear\":\"饅頭\",\"topearColor\":\"白\",\"lip\":\"kitty\"}', '0cbf9db8-645e-4edc-b0c5-00c2c3de3be1.png', 1200),
+(1179, 10, '2022-08-11 14:59:39', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1180, 10, '2022-08-11 14:59:39', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1181, 10, '2022-08-11 14:59:39', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1182, 10, '2022-08-11 14:59:39', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300);
 
 -- --------------------------------------------------------
 
@@ -1773,7 +1836,7 @@ ALTER TABLE `type`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `admin_test_jwt`
 --
 ALTER TABLE `admin_test_jwt`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `body_parts`
@@ -1905,13 +1968,13 @@ ALTER TABLE `place_country_list`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `place_in_cart`
 --
 ALTER TABLE `place_in_cart`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `place_liked`
 --
 ALTER TABLE `place_liked`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `reborn_order`
@@ -1929,43 +1992,43 @@ ALTER TABLE `reincarnation_order`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_collects`
 --
 ALTER TABLE `share_avatar_collects`
-  MODIFY `share_post_collect_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `share_post_collect_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_comments`
 --
 ALTER TABLE `share_avatar_comments`
-  MODIFY `share_post_comment_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `share_post_comment_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_likes`
 --
 ALTER TABLE `share_avatar_likes`
-  MODIFY `share_post_like_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `share_post_like_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_posts`
 --
 ALTER TABLE `share_avatar_posts`
-  MODIFY `share_post_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `share_post_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_posts_to_tags`
 --
 ALTER TABLE `share_avatar_posts_to_tags`
-  MODIFY `share_p_to_t_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `share_p_to_t_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_tags`
 --
 ALTER TABLE `share_avatar_tags`
-  MODIFY `share_post_tag_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `share_post_tag_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `showcase`
 --
 ALTER TABLE `showcase`
-  MODIFY `avatar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1133;
+  MODIFY `avatar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1183;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `tag`
