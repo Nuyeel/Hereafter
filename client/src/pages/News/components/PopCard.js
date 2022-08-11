@@ -7,7 +7,12 @@ function PopCard(props) {
                 style={{ display: props.popShow ? 'block' : 'none' }}
             >
                 <div className="ab-pop-card">
-                    <Close className="ab-pop-close" />
+                    <Close
+                        className="ab-pop-close"
+                        onClick={() => {
+                            props.setShow(false);
+                        }}
+                    />
                     <div className="ab-pop-tag-wrap d-flex">
                         {/* {props.popData.tag.map((v, i) => {
                             return (

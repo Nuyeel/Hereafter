@@ -1,7 +1,9 @@
 // import { React, useEffect } from 'react';
 import React from 'react';
 
-import Card from './Card';
+import Clock from './componets/Clock';
+import Earth from './componets/Earth';
+
 import { useNavigate } from 'react-router-dom';
 import {
     Animator,
@@ -43,7 +45,7 @@ function Intro() {
                 // When just before this page appear, `p` will be 0
                 // When this page filled your screen, `p` will be 1
                 transform: (p) => `rotate(${-(10 + p * 50)}deg)`,
-                transformOrigin: 'top ',
+                transformOrigin: 'top center  ',
             },
         },
         out: {
@@ -54,7 +56,7 @@ function Intro() {
                 // transform: (p) => `rotate(${(50 + p * 40)}deg)`,
                 transform: `rotate (40deg)`,
 
-                transformOrigin: 'top 30px ',
+                transformOrigin: 'top center  ',
             },
         },
     });
@@ -181,7 +183,7 @@ function Intro() {
                     <ScrollPage>
                         <Animator
                             animation={batch(
-                                Pos(50, 50, -27, -15),
+                                Pos(50, 50, -25, -17),
                                 Push(),
                                 MoveIn()
                             )}
@@ -203,13 +205,17 @@ function Intro() {
                         >
                             <h2>此刻卻懷疑自己是一個帶著瑕疵的作品</h2>
                         </Animator>
-                    </ScrollPage>{' '}
-                    <Animator
-                        animation={batch(Sticky(50, 50), Fade(), MoveOut())}
-                    >
-                        <Card></Card>
-                    </Animator>
+                    </ScrollPage>
                     <ScrollPage>
+                        <Animator
+                            animation={batch(
+                                Pos(60, 30, 0, 0),
+                                Fade(),
+                                MoveOut()
+                            )}
+                        >
+                            <Clock />
+                        </Animator>
                         <Animator
                             animation={batch(
                                 Pos(8, 80, 0, 0),
@@ -220,7 +226,17 @@ function Intro() {
                             <h2>也許覺得自己生不逢時？</h2>
                         </Animator>
                     </ScrollPage>
+
                     <ScrollPage>
+                        <Animator
+                            animation={batch(
+                                Pos(60, 30, 0, 0),
+                                Fade(),
+                                MoveOut()
+                            )}
+                        >
+                            <Earth />
+                        </Animator>
                         <Animator
                             animation={batch(
                                 Pos(8, 80, 0, 0),
@@ -234,32 +250,59 @@ function Intro() {
                     <ScrollPage>
                         <Animator
                             animation={batch(
+                                Pos(55, 15, 0, 0),
+                                Fade(),
+                                MoveOut()
+                            )}
+                        >
+                            <div className="intro-box"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(60, 30, 0, 0),
+                                Fade(),
+                                MoveOut()
+                            )}
+                        >
+                            <div className="Mirror2"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(60, 30, 0, 0),
+                                Fade(),
+                                MoveOut()
+                            )}
+                        >
+                            <div className="Mirror1"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(
                                 Pos(8, 80, 0, 0),
                                 Fade(),
                                 MoveOut()
                             )}
                         >
-                            <h2>又或者是不滿意自己與生俱來的樣子？</h2>
+                            <h2>又或是不滿意</h2>
+                            <h2>自己與生俱來的樣子？</h2>
                         </Animator>
                     </ScrollPage>
+                    {/* <ScrollPage></ScrollPage> */}
                     <ScrollPage>
-                        <Animator animation={batch(Pos(8, 80, 0, 0), FadeIn())}>
+                        <Animator
+                            animation={batch(Pos(20, 30, 0, 0), FadeIn())}
+                        >
+                            <div className="intro-final-logo"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(Pos(50, 40, 0, 0), FadeIn())}
+                        >
                             <h2>那麼即刻開始打造下一段人生吧</h2>
                             <h2>你此生的遺憾，將於來生圓滿</h2>
                             <h2>歡迎光臨 來生投放所</h2>
                         </Animator>
                     </ScrollPage>
                     <ScrollPage>
-                        <Animator animation={batch(Pos(8, 80, 0, 0))}>
-                            <h2>那麼即刻開始打造下一段人生吧</h2>
-                            <h2>你此生的遺憾，將於來生圓滿</h2>
-                            <h2>歡迎光臨 來生投放所</h2>
-                        </Animator>
-                    </ScrollPage>
-                    <ScrollPage>
-                        <h2>那麼即刻開始打造下一段人生吧</h2>
-                        <h2>你此生的遺憾，將於來生圓滿</h2>
-                        <h2>歡迎光臨 來生投放所</h2>
+                        <div>END</div>
                     </ScrollPage>
                 </ScrollContainer>
             </div>

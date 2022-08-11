@@ -1,13 +1,22 @@
-import { useState } from 'react';
+import { useContext, useEffect,useState } from 'react';
+import HeaderContext, {
+    headers,
+} from '../../context/HeaderContext/HeaderContext';
 import NewsCard from './components/NewsCard';
 import './StyleNews.scss';
 import newsData from './data/newsData.json';
 import PopCard from './components/PopCard';
 
-function News() {
+function News(props) {
     // const [newsData, setNewsData] = useState([]);
     const [popData, setPopData] = useState({});
     const [popShow, setShow] = useState(false);
+    const { pageName } = props;
+    const { setHeader } = useContext(HeaderContext);
+
+    useEffect(() => {
+        setHeader(headers[pageName]);
+    }, []);
 
     // useEffect(() => {
     //     //axios
@@ -25,7 +34,6 @@ function News() {
     return (
         <>
             <div className="container">
-                <div className="header">最新消息</div>
                 <div className="ab-bg-wrap">
                     <PopCard
                         popData={popData}

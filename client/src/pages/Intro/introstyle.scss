@@ -2,10 +2,11 @@
 *{
     font-family: $ff-t;
 }
+
 .intro-container{ 
     position: relative;
     top: -50px;
-    // padding-bottom:50px;
+    padding-bottom:100px;
     background-color: rgb(31, 35, 87);
    
 }
@@ -14,7 +15,7 @@
     .intro-container{
 
         top: -96px;
-    // padding-bottom:96px;
+    padding-bottom:96px;
 
     }
 }
@@ -26,7 +27,10 @@
     100% {background-color: green;}
   }
 
-
+  h2{ font-size: $fz-h4;
+    font-family: $ff-t;
+    color: rgb(223, 122, 122);
+}
 
 .yun-fix-scroll{
     
@@ -98,10 +102,7 @@
     background-size: cover;
     opacity: 1;
 }
-h2{ 
-    font-family: $ff-t;
-    color: rgb(223, 122, 122);
-}
+
 
 @media screen and (max-width:768px) {
     h2{
@@ -198,7 +199,7 @@ h2{
     animation-duration: 2.5s;
 }
 .god-hand{
-    border:1px solid red;
+    // border:1px solid red;
     
     width: 60px;
     height: 180px;
@@ -211,4 +212,30 @@ h2{
     height: 320px;
     background: url(./introImg/god/god.svg)center center no-repeat;
     background-size: contain;
+}
+.intro-box{
+    width: 350px;
+    height: 500px;
+    background-color: #fff;
+}
+.Mirror1{
+
+    width: 250px;
+    height: 280px;
+    background: url(./introImg/mirrorman/Mirror1.svg)center center no-repeat;
+    background-size: contain;
+}
+.Mirror2{
+
+    width: 250px;
+    height: 280px;
+    background: url(./introImg/mirrorman/Mirror2.svg)center center no-repeat;
+    background-size: contain;
+}
+.intro-final-logo{
+    width: 280px;
+    height: 320px;
+    background: url(./introImg/logo.svg)center center no-repeat;
+    background-size: contain;
+
 }
