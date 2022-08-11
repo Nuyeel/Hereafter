@@ -18,7 +18,7 @@ export const PLACE_LIKED_API = `${SERVER}/api/place/liked`;
 // 轉生購物車
 export const PLACE_CARTDATA_API = `${SERVER}/api/reborn-cart`;
 
-// 測試部分 (之後可以刪除)
+// 會員部分
 export const MEMBER_LOGIN = `${SERVER}/api/member/login`;
 export const MEMBER_REGISTER = `${SERVER}/api/member/register`;
 export const FORGOT_PASSWORD = `${SERVER}/api/member/forgotpassword`;
