@@ -1,5 +1,6 @@
 // import { React, useEffect } from 'react';
 import React from 'react';
+import './introstyle.scss';
 
 import Clock from './componets/Clock';
 import Earth from './componets/Earth';
@@ -26,7 +27,6 @@ import {
 // import Clock from './components/Clock';
 // import Earth from './components/Earth';
 // import Heros from './heroes/HeroesDemo';
-import './introstyle.scss';
 var utils_1 = require('../../../node_modules/react-scroll-motion/dist/utils');
 
 function Intro() {
