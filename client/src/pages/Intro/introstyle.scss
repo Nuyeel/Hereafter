@@ -70,9 +70,9 @@
 .star{
     // border: solid 1px red;
    
-    width: 11vw;
+    width: 145px;
  
-    height: 20vh;
+    height: 165px;
     border-radius: 50%;
     background-color: #fff;
     
@@ -82,33 +82,12 @@
 .starmask{
     // border: solid 1px red;
    
-    width: 10.5vw;
-    height: 22vh;  
-    background-color: rgba(31, 35, 87);
+    width: 160px;
+    height: 165px;  
+    background-color: rgb(31, 35, 87);
     border-radius: 100%; 
     animation: star-shine ease-in 2s infinite alternate-reverse;
 }
-
-@media screen and (max-width:768px) {
-    .star{
-        width: 12vw;
- 
-        height: 14vh;
-    
-
-    }
-    .starmask{
-        width: 11vw;
-        height: 18vh;  
-    background-color: rgb(31, 35, 87);
-    // background-color: rgba(31, 35, 87, 0.273);
-
-
-    
-
-    }
-}
-
 
 .mainstar{
     // border: 1px solid red;
@@ -218,11 +197,18 @@ h2{
     background-size: contain;
     animation-duration: 2.5s;
 }
+.god-hand{
+    border:1px solid red;
+    
+    width: 60px;
+    height: 180px;
+    background: url(./introImg/god/god-hand.svg)center center no-repeat;
+    background-size: contain;
+}
 .god{
-    width: 300px;
-    height: 300px;
+   
+    width: 280px;
+    height: 320px;
     background: url(./introImg/god/god.svg)center center no-repeat;
     background-size: contain;
-
-
 }

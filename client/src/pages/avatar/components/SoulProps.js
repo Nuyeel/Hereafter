@@ -1,10 +1,8 @@
 import { ReactComponent as SoulSVG } from '../../../images/avatar/soul_circle.svg';
 import styled from '@emotion/styled';
-import { useContext } from 'react';
-import ThemeContext from '../../../context/ThemeContext/ThemeContext';
 
-function Soul() {
-    const { theme } = useContext(ThemeContext);
+function SoulProps(props) {
+    const { theme } = props;
     const Soulcolor = styled.i`
         path {
             fill: ${theme.cHeader};
@@ -22,4 +20,4 @@ function Soul() {
     );
 }
 
-export default Soul;
+export default SoulProps;

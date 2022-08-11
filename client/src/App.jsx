@@ -50,6 +50,8 @@ import AboutUsThird from './pages/AboutUsThird/AboutUsThird';
 
 // 讓setLightBox方法 <MainPage><Nav>可共用
 import { useState } from 'react';
+import ShareWallPosting from './pages/ShareWall/ShareWallPosting.jsx';
+import ShareWallPostRevise from './pages/ShareWall/ShareWallPostRevise.jsx';
 
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
@@ -58,7 +60,7 @@ function App() {
     // 讓setLightBox方法 <MainPage><Nav>可共用
     const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
-    // 會員陰德值
+    // navbar顯示會員陰德值
     const [userGooddeed, setUserGooddeed] = useState({
         show: false,
         gooddeed: 0,
@@ -116,10 +118,21 @@ function App() {
                                     />
                                     <Route
                                         path=":sharePostID"
-                                        element={
-                                            <ShareWallDetail pageName="default" />
-                                        }
-                                    />
+                                        element={<ShareWallPosting />}
+                                    >
+                                        <Route
+                                            index
+                                            element={
+                                                <ShareWallDetail pageName="default" />
+                                            }
+                                        />
+                                        <Route
+                                            path="revise"
+                                            element={
+                                                <ShareWallPostRevise pageName="default" />
+                                            }
+                                        />
+                                    </Route>
                                 </Route>
                                 {/* ============================== */}
                                 {/* 登入路由 */}

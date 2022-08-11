@@ -1,6 +1,6 @@
 //import styled from '@emotion/styled';
 // import { ReactComponent as Soul } from '../../../images/Nav/nav_soul.svg';
-import Soul from '../components/Soul';
+import SoulProps from '../components/SoulProps';
 //import testpng from '../../../images/avatar/test1.png';
 import { useNavigate } from 'react-router-dom';
 
@@ -80,7 +80,7 @@ function AvatarCard(props) {
 
                     <p className="avatarTotalPrice">
                         總計價格:{avatarinfo.price}
-                        <Soul />
+                        <SoulProps theme={theme} />
                     </p>
 
                     <div className="showcaseBtns">

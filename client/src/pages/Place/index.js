@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListCard from './components/ListCard';
 // import MapIcon from "./components/MapIcon";
 import { IoMap, IoList } from 'react-icons/io5';
 import filterIcon from './img/filter-icon.svg';
+import LoadingLogo from '../../components/LoadingLogo';
+import Swal from 'sweetalert2';
+import soulIconAlert from '../../images/sweetalert2/outline_soul_alert.svg';
 
 import './place.scss';
 import SortRow from './components/SortRow';
@@ -32,8 +36,13 @@ import TimeNewsRow from './components/TimeNewsRow';
 function Place(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
-    const { authorized, sid: userSid } = useContext(AuthContext);
+    const { authorized, sid: userSid, isDead } = useContext(AuthContext);
     const { theme } = useContext(ThemeContext);
+
+    const navigate = useNavigate();
+
+    // loading畫面
+    const [isLoading, setIsLoading] = useState(false);
 
     // place-data
     const [rawPlaceData, setRawPlaceData] = useState([]);
@@ -89,6 +98,7 @@ function Place(props) {
         // console.log(rows);
         // console.log(placeDisplay);
     };
+
     // 如果有登入, 拿會員的收藏data
     const getMemberLikedData = async () => {
         const r = await fetch(`${PLACE_LIKED_API}/${userSid}`);
@@ -103,21 +113,26 @@ function Place(props) {
         }
     };
 
-    // didMount要資料
-    useEffect(() => {
-        getPlaceData();
-    }, []);
-
-    // 要收藏資料
-    useEffect(() => {
-        getMemberLikedData();
-    }, []);
-
     // 設定 Header
     useEffect(() => {
         setHeader(headers[pageName]);
     }, []);
 
+    // didMount + loading載入畫面
+    useEffect(() => {
+        setIsLoading(true);
+
+        getPlaceData();
+        if (authorized === true && userSid) {
+            getMemberLikedData();
+        }
+
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+    }, []);
+
+    // TODO: 同時篩選地點和時間區間*
     // 篩選 country-city filter
     // 下拉選單資料
     const getOptionData = async () => {
@@ -222,31 +237,53 @@ function Place(props) {
         setPlaceDisplay(newPlaceData);
     };
 
-    // TODO: 想做成util function component
+    // 提醒登入燈箱
+    const gotoLoginLighbox = (text) => {
+        Swal.fire({
+            title: `登入才能使用${text}功能哦！`,
+            imageUrl: soulIconAlert,
+            imageHeight: 50,
+            imageWidth: 50,
+            confirmButtonText: '立刻去登入',
+            showDenyButton: true,
+            denyButtonText: '再等一下',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                navigate('/login', { state: true });
+            } else if (result.isDenied) {
+                return;
+            }
+        });
+    };
+
     // 收藏
-    const saveLikedPlace = (e) => {
+    const saveLikedPlace = async (e) => {
         const placeIndex = e.currentTarget
             .closest('.place-info-card')
             .getAttribute('data-placesid');
-        console.log(placeIndex);
-        console.log(userSid);
+
         // 存到資料庫 place-liked
         // 1. 判斷有無登入
-        // 2. 存到資料庫 place-liked
-        const obj = { member_sid: userSid, place_sid: placeIndex };
+        if (authorized === true && userSid) {
+            // 2. 存到資料庫 place-liked
+            const obj = { member_sid: userSid, place_sid: placeIndex };
 
-        fetch(PLACE_LIKED_API, {
-            method: 'POST',
-            body: JSON.stringify(obj),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((r) => r.json())
-            .then((result) => {
-                console.log(result);
-                getMemberLikedData();
-            });
+            fetch(PLACE_LIKED_API, {
+                method: 'POST',
+                body: JSON.stringify(obj),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then((r) => r.json())
+                .then((result) => {
+                    console.log(result);
+                    getMemberLikedData();
+                });
+        } else {
+            // 去登入光箱
+            gotoLoginLighbox('收藏');
+        }
     };
 
     // 點選place的地圖icon, 顯示地圖&列表第一筆為此資料(place_sid)
@@ -257,9 +294,6 @@ function Place(props) {
         // console.log(typeof placeIndex);
 
         setViewLocationPlaceSid(placeIndex);
-
-        // const marker = markersArr.filter((v) => v.markerID === placeIndex);
-        // console.log(marker);
     };
 
     // TODO: 顯示marker的popup
@@ -323,12 +357,11 @@ function Place(props) {
                         />
                     </div>
                 )}
-                {/* FIXME: 只有第一次會有動畫 */}
                 <div
                     className={
                         rwdFilterLightboxOpen
                             ? 'filter-row row my-2 p-0 filterRowShow'
-                            : 'filter-row row my-2 p-0 filterRowShow filterRowShow-reverse'
+                            : 'filter-row row my-2 p-0'
                     }
                 >
                     {/* 篩選區 */}
@@ -361,9 +394,7 @@ function Place(props) {
                                                     key={v.sid}
                                                     value={v}
                                                     userSid={userSid}
-                                                    // addPlaceToCart={()=>
-                                                    //     addPlaceToCart
-                                                    // }
+                                                    isDead={isDead}
                                                     saveLikedPlace={
                                                         saveLikedPlace
                                                     }
@@ -392,7 +423,7 @@ function Place(props) {
                                         cityFilter={cityFilter}
                                         saveLikedPlace={saveLikedPlace}
                                         userSid={userSid}
-                                        // addPlaceToCart={addPlaceToCart}
+                                        isDead={isDead}
                                         rawPlaceData={rawPlaceData}
                                         likedPlaceSidArr={likedPlaceSidArr}
                                         markerRef={markerRef}
@@ -410,11 +441,6 @@ function Place(props) {
                                     列表檢視
                                 </button>
                                 <div className="viewMapBtn-layer"></div>
-                                {/* <FootViewBtn
-                                    setMapView={setMapView}
-                                    icon={IoList}
-                                    text={'列表檢視'}
-                                /> */}
                             </div>
                         </div>
                     </>
@@ -426,60 +452,69 @@ function Place(props) {
                                 backgroundColor: theme.placeMainBg,
                             }}
                         >
-                            {/* 排序區 */}
-                            <SortRow
-                                sortBy={sortBy}
-                                setSortBy={setSortBy}
-                                handleSort={handleSort}
-                                displayTotalRows={displayTotalRows}
-                                style={{
-                                    color: theme.cHeader,
-                                }}
-                            />
-
-                            <div className="place-list">
-                                {/* 列表區 */}
-                                {placeDisplay.length > 0 ? (
-                                    <>
-                                        {placeDisplay.map((v, i) => (
-                                            <ListCard
-                                                key={v.sid}
-                                                value={v}
-                                                userSid={userSid}
-                                                //addPlaceToCart={addPlaceToCart}
-                                                saveLikedPlace={saveLikedPlace}
-                                                handlePlaceMapIconClicked={
-                                                    handlePlaceMapIconClicked
-                                                }
-                                                likedPlaceSidArr={
-                                                    likedPlaceSidArr
-                                                }
-                                                style={{
-                                                    border: theme.placeCardBorder,
-                                                }}
-                                            />
-                                        ))}
-                                    </>
-                                ) : (
-                                    <>
-                                        {/* 如果沒有可顯示的資料 */}
-                                        <h4 className="cm-nodata-title">
-                                            沒有可顯示的資料
-                                        </h4>
-                                    </>
-                                )}
-                            </div>
-                            <div className="foot-view-map">
-                                <div
-                                    className="viewMapBtn place-btn"
-                                    onClick={() => setMapView(true)}
-                                >
-                                    {/* <MapIcon className="map-icon-view" /> */}
-                                    <IoMap />
-                                    地圖檢視
-                                </div>
-                                <div className="viewMapBtn-layer"></div>
-                            </div>
+                            {isLoading ? (
+                                <LoadingLogo
+                                    style={{ backgroundColor: '#ffffff00' }}
+                                />
+                            ) : (
+                                <>
+                                    {/* 排序區 */}
+                                    <SortRow
+                                        sortBy={sortBy}
+                                        setSortBy={setSortBy}
+                                        handleSort={handleSort}
+                                        displayTotalRows={displayTotalRows}
+                                        style={{
+                                            color: theme.cHeader,
+                                        }}
+                                    />
+                                    <div className="place-list">
+                                        {/* 列表區 */}
+                                        {placeDisplay.length > 0 ? (
+                                            <>
+                                                {placeDisplay.map((v, i) => (
+                                                    <ListCard
+                                                        key={v.sid}
+                                                        value={v}
+                                                        userSid={userSid}
+                                                        isDead={isDead}
+                                                        saveLikedPlace={
+                                                            saveLikedPlace
+                                                        }
+                                                        handlePlaceMapIconClicked={
+                                                            handlePlaceMapIconClicked
+                                                        }
+                                                        likedPlaceSidArr={
+                                                            likedPlaceSidArr
+                                                        }
+                                                        style={{
+                                                            border: theme.placeCardBorder,
+                                                        }}
+                                                    />
+                                                ))}
+                                            </>
+                                        ) : (
+                                            <>
+                                                {/* 如果沒有可顯示的資料 */}
+                                                <h4 className="cm-nodata-title">
+                                                    沒有可顯示的資料
+                                                </h4>
+                                            </>
+                                        )}
+                                    </div>
+                                    <div className="foot-view-map">
+                                        <div
+                                            className="viewMapBtn place-btn"
+                                            onClick={() => setMapView(true)}
+                                        >
+                                            {/* <MapIcon className="map-icon-view" /> */}
+                                            <IoMap />
+                                            地圖檢視
+                                        </div>
+                                        <div className="viewMapBtn-layer"></div>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </>
                 )}

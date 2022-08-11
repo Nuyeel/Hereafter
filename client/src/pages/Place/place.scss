@@ -18,35 +18,25 @@ $maxWidth: 376px;
     }
 
     @media screen and (max-width: $maxWidth) {
+        .time-news-row {
+            font-size: 14px;
+        }
         .rwd-filter-btn-row {
             width: fit-content;
             padding: 4px 5px;
             background-color: rgba(197, 190, 235, 0.5);
             border-radius: 10px;
             border: 2px solid rgba(0, 0, 0, 0.4);
-            // height: 30px;
         }
 
         .filter-row {
             height: 0;
             overflow: hidden;
+            transition: height 1s;
         }
 
-        .filterRowShow {
-            animation: filterRowShow 1s linear forwards;
-        }
-
-        .filterRowShow-reverse {
-            animation-direction: reverse;
-        }
-
-        @keyframes filterRowShow {
-            from {
-                height: 0;
-            }
-            to {
-                height: 80px;
-            }
+        .filter-row.filterRowShow {
+            height: 78px;
         }
     }
 
@@ -436,6 +426,14 @@ $maxWidth: 376px;
         }
     }
 
+    @media screen and (max-width: $maxWidth) {
+        .sort-row {
+            p {
+                display: none;
+            }
+        }
+    }
+
     .place-list {
         padding: 5px 10px 5px 0;
         overflow-y: scroll;
@@ -632,20 +630,23 @@ $maxWidth: 376px;
     }
 
     .place-btns-wrap {
-        width: 130px;
+        width: 100%;
         height: 100%;
         display: flex;
+        max-width: 140px;
     }
 
     @media screen and (max-width: $maxWidth) {
         .place-btns-wrap {
             width: 105%;
+            max-width: 105%;
             margin-top: 12px;
             transform: translate(-5px, 5px);
         }
         .place-likeBtn,
         .place-cartBtn {
             padding: 12px;
+            flex-grow: 1;
         }
     }
 
@@ -658,7 +659,7 @@ $maxWidth: 376px;
         /* margin-left: 10px; */
         transform: translateX(2px);
         height: 100%;
-        width: 50%;
+        flex-grow: 1;
     }
 
     .place-cartBtn {
@@ -670,7 +671,7 @@ $maxWidth: 376px;
         /* margin-left: 10px; */
         transform: translateX(2px);
         height: 100%;
-        width: 50%;
+        flex-grow: 1;
         background-color: #6247f4;
     }
 
