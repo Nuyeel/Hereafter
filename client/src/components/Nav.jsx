@@ -88,7 +88,9 @@ function Nav(props) {
     };
 
     useEffect(() => {
-        getUserGooddeedData();
+        if (authorized === true) {
+            getUserGooddeedData();
+        }
     }, [sid]);
 
     useEffect(() => {
