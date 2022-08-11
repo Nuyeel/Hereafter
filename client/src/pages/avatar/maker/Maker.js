@@ -122,6 +122,7 @@ const Maker = () => {
                         setBodyControlChange={setBodyControlChange}
                         setFaceControlChange={setFaceControlChange}
                         setColorControlSwitch={setColorControlSwitch}
+                        backtoShowCase={backtoShowCase}
                     />
                     <BodyPart
                         combination={combination}

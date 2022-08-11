@@ -1,12 +1,27 @@
+import { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import HeaderContext, {
+    headers,
+} from '../../context/HeaderContext/HeaderContext';
 import { ReactComponent as Flag } from './imgs/flag.svg';
 import { ReactComponent as Taiwan } from './imgs/taiwan.svg';
+import { ReactComponent as Pagearrow } from './imgs/pagearrow.svg';
 import './StyleFirst.scss';
-function AboutUsFirst() {
+function AboutUsFirst(props) {
+    const { pageName } = props;
+    const { setHeader } = useContext(HeaderContext);
+
+    useEffect(() => {
+        setHeader(headers[pageName]);
+    }, []);
+
     return (
         <>
             <div className="container">
-                <div className="header">投放所介紹</div>
-                <div className="bg-wrap d-flex justify-content-between">
+                <div className="ab-a-bg-wrap">
+                    <Link to="/aboutussecond">
+                        <Pagearrow className="ab-page-arrow" />
+                    </Link>
                     <div className="ab-a-bg">
                         <div className="ab-flag">
                             <Flag />
