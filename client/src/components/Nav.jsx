@@ -90,6 +90,8 @@ function Nav(props) {
     useEffect(() => {
         if (authorized === true) {
             getUserGooddeedData();
+        } else {
+            console.log('沒有登入無法顯示陰德值');
         }
     }, [sid]);
 
