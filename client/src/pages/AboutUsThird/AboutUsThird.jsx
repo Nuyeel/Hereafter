@@ -21,7 +21,7 @@ function AboutUsThird(props) {
             <div class="container">
                 <div className="ab-third-wrap">
                     <div class="ab-hint-wrap">
-                        <Link class="ab-hint-l-wrap" to="#/">
+                        <Link class="ab-hint-l-wrap" to="/news">
                             <div className="ab-hint-l">
                                 <i class="fa-solid fa-star"></i>
                                 查看轉生最新消息與活動
@@ -29,12 +29,12 @@ function AboutUsThird(props) {
                             <div class="ab-hint-arrow"></div>
                         </Link>
 
-                        <Link class="ab-hint-m" to="#/">
+                        <Link class="ab-hint-m" to="/memberprofile">
                             <i class="fa-solid fa-star"></i>
                             查看前世紀錄與陰德值
                         </Link>
 
-                        <Link class="ab-hint-r" to="#/">
+                        <Link class="ab-hint-r" to="/games">
                             <i class="fa-solid fa-star"></i>
                             陰德值不夠嗎？
                         </Link>

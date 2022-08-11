@@ -30,9 +30,6 @@ function News(props) {
         setPopData(tempData);
         setShow(true);
     };
-    // const handleClickClose = () =>{
-    //     setShow(false);
-    // }
 
     return (
         <>
