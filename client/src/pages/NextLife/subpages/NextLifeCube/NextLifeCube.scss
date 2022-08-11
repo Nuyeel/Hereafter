@@ -1,19 +1,10 @@
 @import '../../../../styles/variables.scss';
 
-.cpl-nextlife-magic-cube-container {
-    // background-color: #22448833;
-    // opacity: 0.5;
-    position: absolute; // FIXME: 手機版應該不能滑動 沒問題
-    left: 0;
-    right: 0;
-    top: $height-nav-mobile;
-    bottom: 0;
-    outline: 1px solid red;
-    z-index: -1;
-}
-
-@media screen and (min-width: 768px) {
-    .cpl-nextlife-magic-cube-container {
-        top: $height-nav;
-    }
-}
+// .cpl-nextlife-magic-cube-container {
+//     position: absolute; // FIXME: 手機版應該不能滑動 沒問題
+//     left: 0;
+//     right: 0;
+//     top: 0;
+//     bottom: 0;
+//     z-index: -1;
+// }

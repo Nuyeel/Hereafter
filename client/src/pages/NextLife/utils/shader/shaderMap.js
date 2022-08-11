@@ -4,6 +4,7 @@ import * as Shader from './shader';
 
 const shaderMap = {
     v: Shader.vertexShader(),
+    t: Shader.fragmentShaderTop(),
     f0: Shader.fragmentShader0(),
     f1: Shader.fragmentShader1(),
     f2: Shader.fragmentShader2(),

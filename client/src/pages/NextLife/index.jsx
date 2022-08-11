@@ -1,14 +1,23 @@
-import { useState, useEffect, useContext, useRef } from 'react';
+import { useState, useEffect, useContext, useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { useNavigate } from 'react-router-dom';
 
 import AuthContext from '../../context/AuthContext/AuthContext';
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import HeaderContext, {
     headers,
 } from '../../context/HeaderContext/HeaderContext';
+
+import NextLifeMusic from './subpages/NextLifeMusic/index.jsx';
+import NextLifeSample from './subpages/NextLifeSample';
 import NextLifeCube from './subpages/NextLifeCube';
 
-// import '../../styles/NextLife.scss';
+import myTextureLoader from './utils/texture/myTextureLoader';
+import myMaterialLoader from './utils/material/myMaterialLoader';
+import boxMap from './utils/box/boxMap';
+
+import './NextLife.scss';
+
 // TODO: 來生頁面會強制轉換為生者配色
 // DONE: 如果要記得會員的選擇 這功能也可以改成在 Background.jsx 做
 // FIXME: 強制鎖住配色 可以做在 Nav 也可以做在 useLayoutEffect()
@@ -21,6 +30,25 @@ function NextLife(props) {
     const { isDead } = useContext(AuthContext);
     const { setTheme } = useContext(ThemeContext);
     const { setHeader } = useContext(HeaderContext);
+    const navigate = useNavigate();
+
+    // FIXME: 測試時調這邊
+    const [nextLifeStage, setNextLifeStage] = useState(1);
+    const [cubeAnimationState, setCubeAnimationState] = useState(false);
+
+    const meshesData = useMemo(() => {
+        const texturesData = myTextureLoader();
+
+        let materialsData = [];
+
+        boxMap.forEach((item, index) => {
+            materialsData.push(myMaterialLoader(item.ID, texturesData[index]));
+        });
+
+        return { texturesData, materialsData };
+    }, []);
+
+    // console.log(meshesData);
 
     // 設定 Header
     useEffect(() => {
@@ -33,14 +61,52 @@ function NextLife(props) {
         setTheme(themes.light);
     }, []);
 
+    // TODO: 還活著就跳轉
+    // 沒登入 isDead 也是 false 所以統一判斷即可
+    useEffect(() => {
+        if (!isDead) {
+            navigate('/', { replace: true });
+        }
+    }, []);
+
+    // TODO: 如果條件渲染的時間點 是在條件吻合時才回初次運作
+    // 則應該一開始就讀入最重要的 component 以達成預載
+
+    // FIXME: 至寧醬：先把其中的條件渲染拿掉 阻擋做在連結處就好
+
     return (
         <>
-            <div className="container">
-                <h1>NextLife.jsx</h1>
-                {/* DONE: 條件 Render 成功 */}
-                <h2>{isDead ? '我涼了ㄛ' : '我還活著(預設)'}</h2>
+            <div className="container-fluid cpl-nextlife-container-fluid p-0">
+                <div className="container cpl-ncf-container">
+                    {nextLifeStage === 0 ? (
+                        <NextLifeMusic setNextLifeStage={setNextLifeStage} />
+                    ) : (
+                        ''
+                    )}
+                </div>
+                {nextLifeStage === 1 ? (
+                    <NextLifeSample
+                        nextLifeStage={nextLifeStage}
+                        setNextLifeStage={setNextLifeStage}
+                        meshesData={meshesData}
+                        cubeAnimationState={cubeAnimationState}
+                        setCubeAnimationState={setCubeAnimationState}
+                    />
+                ) : (
+                    ''
+                )}
+                {nextLifeStage === 2 ? (
+                    <NextLifeCube
+                        nextLifeStage={nextLifeStage}
+                        setNextLifeStage={setNextLifeStage}
+                        meshesData={meshesData}
+                        cubeAnimationState={cubeAnimationState}
+                        setCubeAnimationState={setCubeAnimationState}
+                    />
+                ) : (
+                    ''
+                )}
             </div>
-            {isDead ? <NextLifeCube /> : ''}
         </>
     );
 }
