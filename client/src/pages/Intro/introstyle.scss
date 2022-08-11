@@ -1,10 +1,13 @@
-
-
+@import '../../styles/variables.scss';
+*{
+    font-family: $ff-t;
+}
 .intro-container{ 
     position: relative;
     top: -50px;
     // padding-bottom:50px;
     background-color: rgb(31, 35, 87);
+   
 }
 
 @media screen and (min-width:768px) {
@@ -37,6 +40,8 @@
     animation-iteration-count: infinite;
 }
 .yun-intro-skip{
+    z-index: 10000;
+    cursor: pointer;
     width: 200px;
     height: 20px;
     background-color: yellow;
@@ -60,28 +65,52 @@
   } 
 
 
+
+
 .star{
-    border: solid 1px red;
-    width: 150px;
-    height: 150px;
+    // border: solid 1px red;
+   
+    width: 11vw;
+ 
+    height: 20vh;
     border-radius: 50%;
     background-color: #fff;
-    // overflow: hidden;
+    
 
 
 }
 .starmask{
-
-    width: 150px;
-    height: 165px;  
-    background-color: rgb(31, 35, 87);
+    // border: solid 1px red;
+   
+    width: 10.5vw;
+    height: 22vh;  
+    background-color: rgba(31, 35, 87);
     border-radius: 100%; 
     animation: star-shine ease-in 2s infinite alternate-reverse;
 }
 
+@media screen and (max-width:768px) {
+    .star{
+        width: 12vw;
+ 
+        height: 14vh;
+    
+
+    }
+    .starmask{
+        width: 11vw;
+        height: 18vh;  
+    background-color: rgb(31, 35, 87);
+    // background-color: rgba(31, 35, 87, 0.273);
+
+
+    
+
+    }
+}
+
+
 .mainstar{
-  
-   
     // border: 1px solid red;
     width: 50px;
     height: 50px;
@@ -90,17 +119,22 @@
     background-size: cover;
     opacity: 1;
 }
-h2{
-    color: #fff;
+h2{ 
+    font-family: $ff-t;
+    color: rgb(223, 122, 122);
 }
 
-
+@media screen and (max-width:768px) {
+    h2{
+        font-size: 20px;
+    }
+}
 @keyframes star-sparkle{
     0%   { opacity: 1;}
     33%{opacity: 0.5;}
     66%{opacity: 1;}
     100%   { opacity:0.5 ;}
-  } 
+} 
 
 .otherStars{
     position: absolute;

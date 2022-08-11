@@ -1,6 +1,8 @@
+// import { React, useEffect } from 'react';
 import React from 'react';
-import Card from './Card';
 
+import Card from './Card';
+import { useNavigate } from 'react-router-dom';
 import {
     Animator,
     ScrollContainer,
@@ -24,15 +26,27 @@ import {
 // import Heros from './heroes/HeroesDemo';
 import './introstyle.scss';
 
-function intro() {
+function Intro() {
+    const navigate = useNavigate();
     const ZoomInScrollOut = batch(MoveIn(0, 200));
     const FadeUp = batch(Fade(), Move(), Sticky());
+    const backtoMainpage = () => {
+        console.log('click skip');
+        navigate('/', { replace: true });
+    };
+    // useEffect(() => {
+    //     const starMask = document.querySelector('.starmask');
+    //     starMask.style.transform = 'translate(0,0)';
+    // }, []);
 
     return (
         <>
             <div className="intro-container">
                 <div className="yun-fix-scroll">scroll down</div>
-                <div className="yun-intro-skip"> skip</div>
+                <div className="yun-intro-skip" onClick={backtoMainpage}>
+                    {' '}
+                    skip
+                </div>
 
                 <ScrollContainer>
                     <ScrollPage>
@@ -45,12 +59,25 @@ function intro() {
                             <div className="otherStar"></div>
                             <div className="otherStar"></div>
                         </div>
-
-                        <Animator
-                            animation={batch(Sticky(25, 85), Fade(), MoveOut())}
+                        <div
+                            className="intro-text"
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'flex-start',
+                                alignItems: 'center',
+                                height: '100%',
+                            }}
                         >
-                            <h2>曾以為自己是萬中選一的璀璨星星</h2>
-                        </Animator>
+                            <Animator
+                                animation={batch(
+                                    Sticky(35, 85),
+                                    Fade(),
+                                    MoveOut()
+                                )}
+                            >
+                                <h2>曾以為自己是萬中選一的璀璨星星</h2>
+                            </Animator>
+                        </div>
                         <Animator animation={batch(Sticky(50, 50))}>
                             <div className="star"></div>
                         </Animator>
@@ -134,10 +161,22 @@ function intro() {
                             <h2>歡迎光臨 來生投放所</h2>
                         </Animator>
                     </ScrollPage>
+                    <ScrollPage>
+                        <Animator animation={batch(Sticky(50, 50))}>
+                            <h2>那麼即刻開始打造下一段人生吧</h2>
+                            <h2>你此生的遺憾，將於來生圓滿</h2>
+                            <h2>歡迎光臨 來生投放所</h2>
+                        </Animator>
+                    </ScrollPage>
+                    <ScrollPage>
+                        <h2>那麼即刻開始打造下一段人生吧</h2>
+                        <h2>你此生的遺憾，將於來生圓滿</h2>
+                        <h2>歡迎光臨 來生投放所</h2>
+                    </ScrollPage>
                 </ScrollContainer>
             </div>
         </>
     );
 }
 
-export default intro;
+export default Intro;
