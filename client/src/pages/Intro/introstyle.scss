@@ -27,7 +27,10 @@
     100% {background-color: green;}
   }
 
-
+  h2{ font-size: $fz-h4;
+    font-family: $ff-t;
+    color: rgb(223, 122, 122);
+}
 
 .yun-fix-scroll{
     
@@ -99,10 +102,7 @@
     background-size: cover;
     opacity: 1;
 }
-h2{ 
-    font-family: $ff-t;
-    color: rgb(223, 122, 122);
-}
+
 
 @media screen and (max-width:768px) {
     h2{
@@ -214,28 +214,28 @@ h2{
     background-size: contain;
 }
 .intro-box{
-    width: 400px;
-    height: 750px;
+    width: 350px;
+    height: 500px;
     background-color: #fff;
 }
 .Mirror1{
 
-    width: 280px;
-    height: 320px;
+    width: 250px;
+    height: 280px;
     background: url(./introImg/mirrorman/Mirror1.svg)center center no-repeat;
     background-size: contain;
 }
 .Mirror2{
 
-    width: 280px;
-    height: 320px;
+    width: 250px;
+    height: 280px;
     background: url(./introImg/mirrorman/Mirror2.svg)center center no-repeat;
     background-size: contain;
 }
 .intro-final-logo{
     width: 280px;
     height: 320px;
-    background: url(./introImg/mirrorman/Mirror2.svg)center center no-repeat;
+    background: url(./introImg/logo.svg)center center no-repeat;
     background-size: contain;
 
 }
