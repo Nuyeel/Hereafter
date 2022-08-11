@@ -1,6 +1,8 @@
+// import { React, useEffect } from 'react';
 import React from 'react';
-import Card from './Card';
 
+import Card from './Card';
+import { useNavigate } from 'react-router-dom';
 import {
     Animator,
     ScrollContainer,
@@ -23,16 +25,90 @@ import {
 // import Earth from './components/Earth';
 // import Heros from './heroes/HeroesDemo';
 import './introstyle.scss';
+var utils_1 = require('../../../node_modules/react-scroll-motion/dist/utils');
 
-function intro() {
+function Intro() {
+    const navigate = useNavigate();
     const ZoomInScrollOut = batch(MoveIn(0, 200));
     const FadeUp = batch(Fade(), Move(), Sticky());
+    const backtoMainpage = () => {
+        console.log('click skip');
+        navigate('/', { replace: true });
+    };
 
+    const Push = (cycle) => ({
+        in: {
+            style: {
+                // `p` is number (0~1)
+                // When just before this page appear, `p` will be 0
+                // When this page filled your screen, `p` will be 1
+                transform: (p) => `rotate(${p * -40}deg)`,
+            },
+        },
+        out: {
+            style: {
+                // `p` is number (0~1)
+                // When this page filled your screen, `p` will be 0
+                // When just after this page disappear, `p` will be 1
+                transform: (p) => `rotate(${p * -40}deg)`,
+            },
+        },
+    });
+    const StarMask = (left, top, x, y) => {
+        if (left === void 0) {
+            left = 50;
+        }
+        if (top === void 0) {
+            top = 50;
+        }
+        return {
+            in: {
+                style: {
+                    left: function () {
+                        return ''.concat(
+                            (left * utils_1.environment.width) / 100,
+                            'px'
+                        );
+                    },
+                    top: function () {
+                        return ''.concat(
+                            (top * utils_1.environment.height) / 100,
+                            'px'
+                        );
+                    },
+                    transform: `translate(${x}%, ${y}%)`,
+                    position: 'fixed',
+                },
+            },
+            out: {
+                style: {
+                    left: function () {
+                        return ''.concat(
+                            (left * utils_1.environment.width) / 100,
+                            'px'
+                        );
+                    },
+                    top: function () {
+                        return ''.concat(
+                            (top * utils_1.environment.height) / 100,
+                            'px'
+                        );
+                    },
+                    transform: `translate(${x}%, ${y}%)`,
+
+                    position: 'fixed',
+                },
+            },
+        };
+    };
     return (
         <>
             <div className="intro-container">
                 <div className="yun-fix-scroll">scroll down</div>
-                <div className="yun-intro-skip"> skip</div>
+                <div className="yun-intro-skip" onClick={backtoMainpage}>
+                    {' '}
+                    skip
+                </div>
 
                 <ScrollContainer>
                     <ScrollPage>
@@ -45,33 +121,49 @@ function intro() {
                             <div className="otherStar"></div>
                             <div className="otherStar"></div>
                         </div>
-
-                        <Animator
-                            animation={batch(Sticky(25, 85), Fade(), MoveOut())}
-                        >
-                            <h2>曾以為自己是萬中選一的璀璨星星</h2>
-                        </Animator>
+                        <div
+                            className="intro-text"
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'flex-start',
+                                alignItems: 'center',
+                                height: '100%',
+                                border: '1px solid red',
+                            }}
+                        ></div>
                         <Animator animation={batch(Sticky(50, 50))}>
                             <div className="star"></div>
                         </Animator>
 
                         <Animator
-                            animation={batch(Sticky(45, 40), ZoomOut(1, 1.3))}
+                            animation={batch(
+                                StarMask(50, 50, -99, -96),
+                                ZoomOut(1, 1.3)
+                            )}
                         >
                             <div className="starmask"></div>
                         </Animator>
                         <Animator
-                            animation={batch(Sticky(55, 40), ZoomOut(1, 1.3))}
+                            animation={batch(
+                                StarMask(50, 50, -99, -4),
+                                ZoomOut(1, 1.3)
+                            )}
                         >
                             <div className="starmask"></div>
                         </Animator>
                         <Animator
-                            animation={batch(Sticky(45, 60), ZoomOut(1, 1.3))}
+                            animation={batch(
+                                StarMask(50, 50, -1, -96),
+                                ZoomOut(1, 1.3)
+                            )}
                         >
                             <div className="starmask"></div>
                         </Animator>
                         <Animator
-                            animation={batch(Sticky(55, 60), ZoomOut(1, 1.3))}
+                            animation={batch(
+                                StarMask(50, 50, -1, -4),
+                                ZoomOut(1, 1.3)
+                            )}
                         >
                             <div className="starmask"></div>
                         </Animator>
@@ -80,15 +172,21 @@ function intro() {
                         >
                             <div className="mainstar"></div>
                         </Animator>
-
-                        {/* </Animator> */}
-                    </ScrollPage>
-                    <ScrollPage>
-                        <Animator animation={batch(Sticky(50, 50))}>
-                            {/* <div className="god"></div> */}
+                        <Animator
+                            animation={batch(Sticky(35, 85), Fade(), MoveOut())}
+                        >
+                            <h2>曾以為自己是萬中選一的璀璨星星</h2>
                         </Animator>
-                        <Animator animation={batch(Sticky(50, 50))}>
+                    </ScrollPage>
+                    <ScrollPage></ScrollPage>
+                    <ScrollPage>
+                        <Animator
+                            animation={batch(Sticky(55, 50), Push(), MoveIn())}
+                        >
                             <div className="god-hand"></div>
+                        </Animator>
+                        <Animator animation={batch(Sticky(50, 50), MoveIn())}>
+                            <div className="god"></div>
                         </Animator>
                         <Animator animation={batch(Move(50, 50))}>
                             <div className="god-work"></div>
@@ -96,9 +194,7 @@ function intro() {
                         <Animator
                             animation={batch(Sticky(35, 85), Fade(), MoveOut())}
                         >
-                            <h2>
-                                此刻卻懷疑自己是此刻卻懷疑自己是一個帶著瑕疵的作品
-                            </h2>
+                            <h2>此刻卻懷疑自己是一個帶著瑕疵的作品</h2>
                         </Animator>
                     </ScrollPage>{' '}
                     <Animator
@@ -134,10 +230,22 @@ function intro() {
                             <h2>歡迎光臨 來生投放所</h2>
                         </Animator>
                     </ScrollPage>
+                    <ScrollPage>
+                        <Animator animation={batch(Sticky(50, 50))}>
+                            <h2>那麼即刻開始打造下一段人生吧</h2>
+                            <h2>你此生的遺憾，將於來生圓滿</h2>
+                            <h2>歡迎光臨 來生投放所</h2>
+                        </Animator>
+                    </ScrollPage>
+                    <ScrollPage>
+                        <h2>那麼即刻開始打造下一段人生吧</h2>
+                        <h2>你此生的遺憾，將於來生圓滿</h2>
+                        <h2>歡迎光臨 來生投放所</h2>
+                    </ScrollPage>
                 </ScrollContainer>
             </div>
         </>
     );
 }
 
-export default intro;
+export default Intro;
