@@ -23,8 +23,8 @@ function PlaceMap(props) {
         placeDisplay,
         setPlaceDisplay,
         cityFilter,
-        // addPlaceToCart,
         userSid,
+        isDead,
         saveLikedPlace,
         rawPlaceData,
         markerRef,
@@ -266,6 +266,7 @@ function PlaceMap(props) {
                                             <PopupPlaceCard
                                                 value={place}
                                                 userSid={userSid}
+                                                isDead={isDead}
                                                 AddPlaceToCart={AddPlaceToCart}
                                                 saveLikedPlace={saveLikedPlace}
                                             />

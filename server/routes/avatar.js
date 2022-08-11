@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router(); //建立 router 物件
 const db = require(__dirname + '/../modules/mysql2-connect');
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 function isNum(v) {
     return !isNaN(v);
 }
@@ -130,7 +131,7 @@ router.post('/update', async (req, res) => {
     const aid = req.body.avatar_id;
     const combination = JSON.stringify(req.body.combination);
     const combinationText = JSON.stringify(req.body.combinationText);
-    const imgName = `avatar${aid}.png`;
+    const imgName = `${uuidv4()}.png`;
     const totalPrice = req.body.totalPrice;
 
     //MING:驗證機制 該訂單是否為該會員的形象
