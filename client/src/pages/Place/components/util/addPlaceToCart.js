@@ -1,4 +1,6 @@
+import Swal from 'sweetalert2';
 import { PLACE_CARTDATA_API } from '../../../../config/ajax-path';
+import soulIconAlert from '../../../../images/sweetalert2/outline_soul_alert.svg';
 
 function AddPlaceToCart(e, userSid) {
     const placeIndex = e.currentTarget
@@ -19,6 +21,14 @@ function AddPlaceToCart(e, userSid) {
         .then((r) => r.json())
         .then((result) => {
             console.log(result);
+            if (result.success === false) {
+                Swal.fire({
+                    title: result.error,
+                    imageUrl: soulIconAlert,
+                    imageHeight: 50,
+                    imageWidth: 50,
+                });
+            }
         });
 
     return;

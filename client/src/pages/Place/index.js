@@ -66,7 +66,7 @@ function Place(props) {
     const [cityFilter, setCityFilter] = useState('all');
     const [timeRangeFilter, setTimeRangeFilter] = useState([
         `${new Date()}`,
-        null,
+        '',
     ]);
 
     // 篩選 RWD 燈箱開合

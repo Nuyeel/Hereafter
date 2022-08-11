@@ -142,7 +142,7 @@ function PlaceMap(props) {
         }
     };
 
-    // 找bounds邊界內的markers
+    // 重新搜尋bounds邊界內的markers
     const filterBoundsMarkers = () => {
         // console.log(bounds);
         // console.log(typeof rawPlaceData[0].geometry[0]);

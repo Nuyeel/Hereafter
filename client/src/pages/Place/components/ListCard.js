@@ -10,7 +10,6 @@ function ListCard(props) {
         value,
         userSid,
         isDead,
-        gotoLoginLighbox,
         saveLikedPlace,
         likedPlaceSidArr,
         handlePlaceMapIconClicked,
@@ -91,14 +90,9 @@ function ListCard(props) {
                     {isDead && (
                         <div
                             className="place-cartBtn hover-text"
-                            onClick={(e) =>
-                                AddPlaceToCart(
-                                    e,
-                                    userSid,
-                                    isDead,
-                                    gotoLoginLighbox
-                                )
-                            }
+                            onClick={(e) => {
+                                AddPlaceToCart(e, userSid);
+                            }}
                             data-hover="加入轉生購物車"
                         >
                             <BsFillCartPlusFill className="place-cart-icon" />

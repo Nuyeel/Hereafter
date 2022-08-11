@@ -21,7 +21,7 @@ import AuthContext from '../../context/AuthContext/AuthContext';
 function PlaceLikedPage(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
-    const { authorized, sid: userSid } = useContext(AuthContext);
+    const { authorized, sid: userSid, isDead } = useContext(AuthContext);
 
     // 要呈現的資料陣列
     const [displayLikedList, setDisplayLikedList] = useState([]);
@@ -118,6 +118,10 @@ function PlaceLikedPage(props) {
                 delEle.classList.add('listCardDisappear');
 
                 setTimeout(() => {
+                    Swal.fire({
+                        title: '成功移除',
+                        timer: 1200,
+                    });
                     getMemberLikedData();
                 }, 800);
             } else if (result.isDenied) {
@@ -125,31 +129,6 @@ function PlaceLikedPage(props) {
             }
         });
     };
-
-    // 加入轉生購物車
-    function addPlaceToCart(e) {
-        const placeIndex = e.currentTarget
-            .closest('.place-info-card')
-            .getAttribute('data-placesid');
-        // console.log(placeIndex, userSid);
-
-        // 存到資料庫
-        const obj = { member_sid: userSid, place_sid: placeIndex };
-
-        fetch(PLACE_CARTDATA_API, {
-            method: 'POST',
-            body: JSON.stringify(obj),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((r) => r.json())
-            .then((result) => {
-                console.log(result);
-            });
-
-        return;
-    }
 
     // TODO: 點選place的地圖icon, 顯示地圖&列表第一筆為此資料(place_sid)
     const handlePlaceMapIconClicked = (e) => {
@@ -191,7 +170,8 @@ function PlaceLikedPage(props) {
                                             <ListCard
                                                 key={v.sid}
                                                 value={v}
-                                                addPlaceToCart={addPlaceToCart}
+                                                userSid={userSid}
+                                                isDead={isDead}
                                                 saveLikedPlace={saveLikedPlace}
                                                 likedPlaceSidArr={
                                                     likedPlaceSidArr
