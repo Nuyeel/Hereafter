@@ -156,6 +156,8 @@ function RebornCart(props) {
 
     // TODO: 送出轉生訂單
     const submitRebornOrder = () => {
+        // TODO: 確認陰德值足夠
+
         // 1. 燈箱確認 || 跳轉到訂單確認頁面
         // 2. 送出後存入資料庫(限定一筆), 跳轉到希望方塊頁面
         Swal.fire({

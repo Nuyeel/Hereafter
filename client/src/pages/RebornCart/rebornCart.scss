@@ -21,6 +21,8 @@ $widthMax: 768px;
             font-size: 22px;
             margin: 0;
             margin-bottom: 10px;
+            font-family: 'M PLUS Rounded 1c', Arial, 'Helvetica Neue', Helvetica,
+                sans-serif;
         }
     }
 
@@ -132,7 +134,7 @@ $widthMax: 768px;
 
             // 改成可以scroll
             .place-options-box {
-                width: 95%;
+                width: 90%;
                 height: 190px;
                 padding-right: 15px;
                 overflow-y: scroll;
@@ -154,9 +156,8 @@ $widthMax: 768px;
 
     .place-options-box.while-no-options {
         padding: 100px 0;
-        align-items: center;
-        justify-content: center;
-        width: 36%;
+        width: fit-content;
+        margin: auto;
 
         h4,
         .reborn-link {
@@ -178,6 +179,15 @@ $widthMax: 768px;
             &:hover {
                 color: #e97bee;
                 cursor: pointer;
+            }
+        }
+    }
+
+    @media screen and (max-width: $widthMax) {
+        .place-wrap {
+            .place-options-box.while-no-options {
+                padding: 20px 0;
+                width: 100%;
             }
         }
     }
@@ -338,7 +348,8 @@ $widthMax: 768px;
             border: 2px solid #f3f59f;
             padding: 0;
             padding-bottom: 25px;
-            animation: boxShowFromBottom;
+            // animation: boxShowFromBottom;
+            transition: bottom 1s;
 
             .reborn-order-card {
                 flex-direction: column;
@@ -425,7 +436,8 @@ $widthMax: 768px;
             }
         }
         .box-show-ani {
-            animation: boxShowFromBottom 3s linear forwards;
+            // animation: boxShowFromBottom 3s linear forwards;
+            bottom: -25px;
         }
         .animate-reverse {
             animation-direction: reverse;
@@ -493,7 +505,7 @@ $widthMax: 768px;
         width: 65%;
         border-radius: 16px;
         border: 1px solid #f3f59f;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.8);
         overflow: hidden;
         display: flex;
         justify-content: space-between;

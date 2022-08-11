@@ -1,3 +1,5 @@
+$maxWidth: 376px;
+
 .place-container {
     /* 地圖顯示區 */
     .place-map-wrap {
@@ -20,7 +22,7 @@
         gap: 10px;
     }
 
-    @media screen and (max-width: 375px) {
+    @media screen and (max-width: $maxWidth) {
         .place-map-wrap {
             max-height: 60vh;
             height: 60vh;
@@ -245,6 +247,7 @@
                 .place-btns-wrap {
                     margin: 0;
                     width: 100%;
+                    max-width: 100%;
                     transform: translate(-2px, 0);
 
                     > div {
