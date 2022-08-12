@@ -48,11 +48,6 @@ function ForgotPasswordForm() {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    // localStorage.setItem('auth', JSON.stringify(result.data));
-                    // setAuth({
-                    //     ...result.data,
-                    //     authorized: true,
-                    // });
                     setBtnCssClassname(
                         'btn-member btn-member-l btn-member-outline-light btn-member-sent'
                     );
@@ -66,7 +61,6 @@ function ForgotPasswordForm() {
                 }
             });
     };
-
     return (
         <>
             {authorized ? (
