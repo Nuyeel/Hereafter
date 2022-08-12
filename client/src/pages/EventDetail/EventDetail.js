@@ -32,12 +32,6 @@ import { BiLike } from 'react-icons/bi';
 import './_new_eventdetail.scss';
 import soul from './imgs/soul.svg';
 
-// img
-// import pic01 from '../../images/Event/01.svg';
-// import pic02 from '../../images/Event/02.svg';
-// import pic03 from '../../images/Event/03.svg';
-// import pic01 from '../../../../images/Event/01.svg';
-
 // SimpleBar
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
@@ -124,18 +118,7 @@ const EventDetail = () => {
                 <div className="row">
                     {/* 左方活動內容 */}
 
-                    {/* FIXME: 原本這裡是col-8 */}
                     <div className="xuan-col-8">
-                        {/* 考慮不放麵包屑 */}
-                        {/* <button
-                            className="xuan-intro-bread"
-                            onClick={() => {
-                                navigate('/events', { replace: true });
-                            }}
-                        >
-                            返回上一頁
-                        </button> */}
-
                         {eventDetail.map((v, i) => {
                             return (
                                 <>
@@ -156,10 +139,6 @@ const EventDetail = () => {
                                                         }
                                                         alt=""
                                                     />
-
-                                                    {/* <p className="legend">
-                                                        Legend 1
-                                                    </p> */}
                                                 </div>
                                                 <div>
                                                     <img
@@ -169,10 +148,6 @@ const EventDetail = () => {
                                                         }
                                                         alt=""
                                                     />
-
-                                                    {/* <p className="legend">
-                                                        Legend 2
-                                                    </p> */}
                                                 </div>
                                                 <div>
                                                     <img
@@ -182,14 +157,8 @@ const EventDetail = () => {
                                                         }
                                                         alt=""
                                                     />
-
-                                                    {/* <p className="legend">
-                                                        Legend 3
-                                                    </p> */}
                                                 </div>
                                             </Carousel>
-
-                                            {/* <img src="" alt="" /> */}
                                         </div>
 
                                         <SimpleBar className="xuan-intro-bar">
@@ -228,13 +197,9 @@ const EventDetail = () => {
                                                 <div className="d-flex ">
                                                     <span className=" xuan-intro-word  xuan-subtitle ">
                                                         <HiOutlineLocationMarker />
-                                                        {/* {v.place_location}  */}
                                                         {v.city} {v.place_other}
                                                     </span>
 
-                                                    {/* <span className="xuan-intro-word  xuan-body">
-                                                        {v.city} {v.place_other}
-                                                    </span> */}
                                                     <a href="#/">
                                                         <TiLocationArrowOutline />
                                                         查看地圖
@@ -324,7 +289,7 @@ const EventDetail = () => {
                                         <button
                                             // TODO: 每次進來頁面都要核對一次是否已被加進購物車
                                             disabled={cartBtn}
-                                            className="xuan-btn-m xuan-btn-pri"
+                                            className="xuan-btn-l xuan-btn-pri"
                                             onClick={() => {
                                                 fetchEventAddCart();
                                                 Swal.fire('商品已加入購物車');
@@ -339,7 +304,7 @@ const EventDetail = () => {
                                         </button>
                                     ) : (
                                         <button
-                                            className="xuan-btn-m xuan-btn-pri"
+                                            className="xuan-btn-l xuan-btn-pri"
                                             onClick={() => {
                                                 // alert('請先登入會員');
                                                 Swal.fire('請先登入會員');
@@ -357,7 +322,7 @@ const EventDetail = () => {
 
                                     {authorized ? (
                                         <button
-                                            className="xuan-btn-m xuan-btn-pri"
+                                            className="xuan-btn-l xuan-btn-pri"
                                             onClick={() => {
                                                 if (
                                                     cartBtnWord === '加入購物車'
@@ -384,7 +349,7 @@ const EventDetail = () => {
                                         </button>
                                     ) : (
                                         <button
-                                            className="xuan-btn-m xuan-btn-pri"
+                                            className="xuan-btn-l xuan-btn-pri"
                                             onClick={() => {
                                                 Swal.fire('請先登入會員');
                                                 navigate('/login', {
@@ -399,7 +364,7 @@ const EventDetail = () => {
                                     <br />
 
                                     <button
-                                        className="xuan-btn-m xuan-btn-pri"
+                                        className="xuan-btn-l xuan-btn-pri"
                                         onClick={() => {
                                             navigate('/events', {
                                                 replace: true,
@@ -416,7 +381,7 @@ const EventDetail = () => {
                                 <span className="xuan-h5">精選評論</span>
                                 <TiLocationArrowOutline />
                                 <a href="#/">查看共1000則評價</a>
-                                <span className="xuan-subtitle">+撰寫評論</span>
+                                {/* <span className="xuan-subtitle">+撰寫評論</span> */}
                             </div>
 
                             <div className="xuan-comment-group">
@@ -425,20 +390,25 @@ const EventDetail = () => {
                                         <div className="xuan-comment-avatar"></div>
 
                                         <div className="xuan-comment-word-wrap">
-                                            <span className="xuan-subtitle">
+                                            <div className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span>
-                                            <br></br>
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <span className="xuan-body ">
-                                                2022年7月9日
-                                                <BiLike />
-                                            </span>
-                                            <br />
+                                            </div>
+
+                                            <div className="d-flex">
+                                                <div className="xuan-comment-star-wrap">
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                </div>
+
+                                                <span className="xuan-body ">
+                                                    2022年7月9日
+                                                    <BiLike />
+                                                </span>
+                                            </div>
+
                                             <span>
                                                 真的非常充實、非常喜歡這個活動，之後一定會再來參加。
                                             </span>
@@ -450,20 +420,25 @@ const EventDetail = () => {
                                         <div className="xuan-comment-avatar"></div>
 
                                         <div className="xuan-comment-word-wrap">
-                                            <span className="xuan-subtitle">
+                                            <div className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span>
-                                            <br></br>
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <span className="xuan-body">
-                                                2022年7月9日
-                                                <BiLike />
-                                            </span>
-                                            <br />
+                                            </div>
+
+                                            <div className="d-flex">
+                                                <div className="xuan-comment-star-wrap">
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                </div>
+
+                                                <span className="xuan-body ">
+                                                    2022年7月9日
+                                                    <BiLike />
+                                                </span>
+                                            </div>
+
                                             <span>
                                                 真的非常充實、非常喜歡這個活動，之後一定會再來參加。
                                             </span>
@@ -475,20 +450,25 @@ const EventDetail = () => {
                                         <div className="xuan-comment-avatar"></div>
 
                                         <div className="xuan-comment-word-wrap">
-                                            <span className="xuan-subtitle">
+                                            <div className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span>
-                                            <br></br>
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <span className="xuan-body">
-                                                2022年7月9日
-                                                <BiLike />
-                                            </span>
-                                            <br />
+                                            </div>
+
+                                            <div className="d-flex">
+                                                <div className="xuan-comment-star-wrap">
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                </div>
+
+                                                <span className="xuan-body ">
+                                                    2022年7月9日
+                                                    <BiLike />
+                                                </span>
+                                            </div>
+
                                             <span>
                                                 真的非常充實、非常喜歡這個活動，之後一定會再來參加。
                                             </span>
@@ -500,20 +480,25 @@ const EventDetail = () => {
                                         <div className="xuan-comment-avatar"></div>
 
                                         <div className="xuan-comment-word-wrap">
-                                            <span className="xuan-subtitle">
+                                            <div className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span>
-                                            <br></br>
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <span className="xuan-body">
-                                                2022年7月9日
-                                                <BiLike />
-                                            </span>
-                                            <br />
+                                            </div>
+
+                                            <div className="d-flex">
+                                                <div className="xuan-comment-star-wrap">
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                </div>
+
+                                                <span className="xuan-body ">
+                                                    2022年7月9日
+                                                    <BiLike />
+                                                </span>
+                                            </div>
+
                                             <span>
                                                 真的非常充實、非常喜歡這個活動，之後一定會再來參加。
                                             </span>
@@ -525,20 +510,25 @@ const EventDetail = () => {
                                         <div className="xuan-comment-avatar"></div>
 
                                         <div className="xuan-comment-word-wrap">
-                                            <span className="xuan-subtitle">
+                                            <div className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span>
-                                            <br></br>
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <span className="xuan-body">
-                                                2022年7月9日
-                                                <BiLike />
-                                            </span>
-                                            <br />
+                                            </div>
+
+                                            <div className="d-flex">
+                                                <div className="xuan-comment-star-wrap">
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                </div>
+
+                                                <span className="xuan-body ">
+                                                    2022年7月9日
+                                                    <BiLike />
+                                                </span>
+                                            </div>
+
                                             <span>
                                                 真的非常充實、非常喜歡這個活動，之後一定會再來參加。
                                             </span>
@@ -550,20 +540,25 @@ const EventDetail = () => {
                                         <div className="xuan-comment-avatar"></div>
 
                                         <div className="xuan-comment-word-wrap">
-                                            <span className="xuan-subtitle">
+                                            <div className="xuan-subtitle">
                                                 RONG XUAN CHANG
-                                            </span>
-                                            <br></br>
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <FaStar />
-                                            <span className="xuan-body">
-                                                2022年7月9日
-                                                <BiLike />
-                                            </span>
-                                            <br />
+                                            </div>
+
+                                            <div className="d-flex">
+                                                <div className="xuan-comment-star-wrap">
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                    <FaStar />
+                                                </div>
+
+                                                <span className="xuan-body ">
+                                                    2022年7月9日
+                                                    <BiLike />
+                                                </span>
+                                            </div>
+
                                             <span>
                                                 真的非常充實、非常喜歡這個活動，之後一定會再來參加。
                                             </span>

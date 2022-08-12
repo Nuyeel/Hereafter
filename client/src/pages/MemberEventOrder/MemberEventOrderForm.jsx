@@ -121,7 +121,7 @@ function MemberProfileForm() {
                                                                 to="/membereventorder"
                                                                 className="breadcrumb-item-link"
                                                             >
-                                                                法喜充滿訂單
+                                                                功德撲滿訂單
                                                             </Link>
                                                         </li>
                                                     </ol>
@@ -132,7 +132,7 @@ function MemberProfileForm() {
                                                                 <div>
                                                                     <div className="tab-content">
                                                                         <div className="mb-3 d-flex justify-content-center member-page-title">
-                                                                            法喜充滿訂單
+                                                                            功德撲滿訂單
                                                                         </div>
 
                                                                         {/* 這段是 二路測試用 */}

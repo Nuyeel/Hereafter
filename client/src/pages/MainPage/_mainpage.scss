@@ -7,11 +7,9 @@ position: relative;
 }
 
 .xuan-parent{
-  // background-color: black;
-  // outline: 5px solid red;
+  outline: 1px solid blue;
   width:100%;
   height: 100vh;
-  /* outline:5px solid red; */
   overflow-x: hidden; 
   overflow-y: hidden;
   float:left;
@@ -21,14 +19,20 @@ position: relative;
 }
 
 .xuan-child{
+  outline: 1px solid red;
   // background-color:rgb(255, 210, 75);
-  width:200%;
-  height: 300%;
+  width:130%;
+  // width:200%; 原本的寬度
+  height: 150%;
+  //height:300%; 原本的高度
   float:left;
   font-size:15px;
   font-family:arial;
   padding:10px;
-  position: relative;
+  // position: relative;
+  position: absolute;
+  top:0%;
+  left: 0%;
 }
 
 .xuan-mainpage-nav{
@@ -105,6 +109,7 @@ position: relative;
     border-radius: 20px;
     width: 330px;
     height: 320px;
+
     background-color: #9587E1;
     position:absolute;
     top: 50%;
@@ -125,9 +130,11 @@ position: relative;
 // 背景素材圖
 .xuan-mainpage-bg{
   position:absolute;
+  // outline: 1px solid red;
   top: 50%;
   left: 50%;
-  height: 100vh;
+  width: 180vw;
+  // height: 100vh;
   transform: translate(-50%, -50%);
     /* 禁止元素被反藍選取 */
     user-select: none; 
@@ -191,15 +198,14 @@ position: relative;
 @media screen and (min-width: 1900px) {
   
   .xuan-child-center{
-    width: 10%;
-    height: 12%;
+    width: 20%;
+    height: 32%;
     transform: translate(-52%, -46%);
 
       >img{
         width: 80%;
         height: 80%;
       }
-
     }
 
   // 背景裝飾(中心)
@@ -278,12 +284,12 @@ position: relative;
   // 轉生形象box
   .xuan-box-avatar{
     border-radius: 20px;
-    width: 7%;
-    height: 12.5%;
+    width: 15%;
+    height: 32%;
     background-color: #E384F2;
     position:absolute;
-    top: 57.5%;
-    left: 40.3%;
+    top: 70%;
+    left: 31%;
     transform: translate(-50%, -50%);
     z-index: 300;
     color: white;
@@ -324,12 +330,12 @@ position: relative;
   // 會員中心box
   .xuan-box-member{
     border-radius: 20px;
-    width: 6.5%;
-    height: 12%;
+    width: 13%;
+    height: 22%;
     background-color: #81A8E0;
     position:absolute;
-    top: 66%;
-    left: 48%;
+    top: 87%;
+    left: 46%;
     transform: translate(-50%, -50%);
     color: white;
 
@@ -369,12 +375,12 @@ position: relative;
   
   // 投胎去！
   .xuan-go-future{
-    width: 2.5%;
+    width: 6%;
     border-radius: 50%;
     background-color: #9587E1;
     position:absolute;
-    top: 44%;
-    left: 57%;
+    top: 34%;
+    left: 64%;
     transform: translate(-50%, -50%);
 
     >img{
@@ -384,13 +390,13 @@ position: relative;
 
   // 良辰吉地
   .xuan-time{
-    width: 13.5%;
-    height: 4.3%;
+    width: 25%;
+    height: 12%;
     background-color: #9587E1;
     border-radius: 20px;
     position:absolute;
-    top: 59.2%;
-    left: 62%;
+    top: 74%;
+    left: 74%;
     transform: translate(-50%, -50%);
     color: white;
     display: flex;
@@ -426,14 +432,15 @@ position: relative;
       }
   }
 
+  // 功德撲滿
   .xuan-box-event{
     background-color: #81A8E0;
     border-radius: 20px;
-    width: 7%;
-    height: 13.5%;
+    width: 13%;
+    height: 25%;
     position:absolute;
-    top: 53.5%;
-    left: 32%;
+    top: 57%;
+    left: 15.5%;
     transform: translate(-50%, -50%);
     z-index: 300;
     color: white;
@@ -462,11 +469,11 @@ position: relative;
   .xuan-box-avatar-show1{
     background-color: #E384F2;
     border-radius: 20px;
-    width: 5.5%;
-    height: 3.6%;
+    width: 15%;
+    height: 11%;
     position:absolute;
-    top: 44.5%;
-    left: 36.7%;
+    top: 24%;
+    left: 29%;
     transform: translate(-50%, -50%);
     z-index: 300;
     color: white;
@@ -499,11 +506,11 @@ position: relative;
   .xuan-box-avatar-show2{
     background-color: #E384F2;
     border-radius: 20px;
-    width: 5.5%;
-    height: 3.6%;
+    width: 15%;
+    height: 11%;
     position:absolute;
-    top: 40.2%;
-    left: 38.7%;
+    top: 37%;
+    left: 20%;
     transform: translate(-50%, -50%);
     z-index: 300;
     color: white;
@@ -535,11 +542,11 @@ position: relative;
   .xuan-box-avatar-show3{
     background-color: #E384F2;
     border-radius: 20px;
-    width: 5.5%;
-    height: 3.6%;
+    width: 15%;
+    height: 11%;
     position:absolute;
-    top: 62.7%;
-    left: 30.5%;
+    top: 77%;
+    left: 12%;
     transform: translate(-50%, -50%);
     z-index: 300;
     color: white;
@@ -572,11 +579,11 @@ position: relative;
   .xuan-box-game-show1{
     background-color: #9587E1;
     border-radius: 20px;
-    width: 6.8%;
-    height: 5.5%;
+    width: 12%;
+    height: 14%;
     position:absolute;
-    top: 40%;
-    left: 45.4%;
+    top: 17%;
+    left: 44%;
     transform: translate(-50%, -50%);
     z-index: 300;
     color: white;
@@ -599,11 +606,11 @@ position: relative;
   .xuan-box-game-show2{
     background-color: #9587E1;
     border-radius: 20px;
-    width: 6.8%;
-    height: 5.5%;
+    width: 12%;
+    height: 14%;
     position:absolute;
-    top: 37.2%;
-    left: 52.7%;
+    top: 10%;
+    left: 57%;
     transform: translate(-50%, -50%);
     z-index: 300;
     color: white;
@@ -626,11 +633,11 @@ position: relative;
   .xuan-box-aboutus{
     background-color: #E384F2;
     border-radius: 20px;
-    width: 8%;
-    height: 5.5%;
+    width: 22%;
+    height: 12%;
     position:absolute;
-    top: 53.2%;
-    left: 63.5%;
+    top: 60%;
+    left: 81%;
     transform: translate(-50%, -50%);
     z-index: 300;
     color: white;
@@ -648,11 +655,11 @@ position: relative;
   .xuan-box-news{
     background-color: #81A8E0;
     border-radius: 20px;
-    width: 8%;
-    height: 7.8%;
+    width: 13%;
+    height: 22%;
     position:absolute;
-    top: 46%;
-    left: 67%;
+    top: 41%;
+    left: 83%;
     transform: translate(-50%, -50%);
     z-index: 300;
     color: white;
@@ -678,6 +685,18 @@ position: relative;
 
     
   }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

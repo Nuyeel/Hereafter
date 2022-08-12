@@ -147,6 +147,20 @@
     }
 }
 
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-ita-ta-it-tag-item.isPost {
+        width: 120px;
+        padding-left: 8px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+
+        + .cpl-pcb-ita-ta-it-tag-item.isPost {
+            margin-left: 12px;
+        }
+    }
+}
+
 .cpl-pcb-ita-tc-isPost-textarea {
     resize: none;
     border: none;
@@ -193,12 +207,32 @@
     }
 }
 
+@media screen and (min-width: 1600px) {
+    .cpl-pcb-ita-text-content.isPost {
+        min-height: calc(var(--vh, 1vh) * 83 - 365px);
+        max-height: calc(var(--vh, 1vh) * 83 - 365px);
+    }
+
+    .cpl-pcb-ita-tc-isPost-textarea {
+        height: 296px;
+    }
+}
+
 .cpl-pcb-ita-save-button-area {
     margin-bottom: 20px;
     .cpl-pcb-ita-sba-save-button {
+        border: none;
+        font-size: $fz-caption;
         background-color: $primary-50p;
+        color: $bgc-L-l !important;
         border-radius: 20px;
         filter: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 4px;
+        padding-bottom: 5px;
 
         // &:hover {
         //     filter: none !important;

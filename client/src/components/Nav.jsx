@@ -159,7 +159,7 @@ function Nav(props) {
                             {/* FIXME: 德 缺字 */}
                             功德撲滿
                         </h2>
-                        <h4 className="subtitle">介紹文字放這邊</h4>
+                        <h4 className="subtitle">天下沒有白吃的來生</h4>
                     </div>
 
                     <div className="nav_lightbox_list">
@@ -199,6 +199,18 @@ function Nav(props) {
                             }}
                         >
                             交流分享
+                        </h2>
+                        <h4 className="subtitle">介紹文字放這邊</h4>
+                    </div>
+                    <div className="nav_lightbox_list">
+                        <h2
+                            className="nav_link"
+                            onClick={() => {
+                                navigate('/memberprofile', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                            }}
+                        >
+                            會員中心
                         </h2>
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>

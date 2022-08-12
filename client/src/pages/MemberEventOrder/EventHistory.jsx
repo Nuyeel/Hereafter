@@ -45,7 +45,7 @@ function EventHistory() {
                                 <div className="xuan-event-history-item">
                                     {/* 放該筆訂單的編號、時間 */}
                                     <div className="d-flex">
-                                        <p className="xuan-subtitle">
+                                        <p className="xuan-subtitle xuan-member-num">
                                             No.
                                             {v.event_order_sid}
                                         </p>
@@ -55,14 +55,15 @@ function EventHistory() {
                                         </p>
                                     </div>
 
+                                    {/* 每筆訂單的詳細內容放這邊 */}
                                     <div className="xuan-event-history-list">
                                         {v.eventdetail.map((v, i) => {
                                             return (
                                                 <div
                                                     key={v.start}
-                                                    className="xuan-member-event-detail d-flex"
+                                                    className="xuan-member-event-detail"
                                                 >
-                                                    <div>
+                                                    <div className="xuan-member-event-detai-img">
                                                         <img
                                                             src={
                                                                 'http://localhost:3500/event/eventlist/' +
@@ -73,17 +74,19 @@ function EventHistory() {
                                                     </div>
 
                                                     <div className="xuan-member-event-main ">
-                                                        <div className="d-flex xuan-member-event-title">
+                                                        <div className=" xuan-member-event-title">
                                                             <p>
                                                                 {v.program_type}
                                                             </p>
-                                                            <p className="xuan-subtitle">
+                                                            <p className="xuan-body">
                                                                 {v.act_title}
                                                             </p>
                                                         </div>
 
                                                         <div className="d-flex">
-                                                            <p>{v.start}</p>
+                                                            <p className="xuan-day">
+                                                                {v.start}
+                                                            </p>
                                                             <p>
                                                                 {v.start_time}
                                                             </p>

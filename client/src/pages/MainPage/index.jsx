@@ -21,10 +21,10 @@ import time_decorate from './imgs/time_decorate.svg';
 import time_map from './imgs/time_map.svg';
 import back_to_center from './imgs/back_to_center.svg';
 import aboutus from './imgs/aboutus-star.svg';
+import mainpage_test from './imgs/mainpage_test.svg';
 
 // 放進box內的圖片
 import avartar01 from './imgs/mainpage-avatar01.png';
-
 
 function MainPage(props) {
     // 原有MainPage code保留---------------------------
@@ -81,6 +81,7 @@ function MainPage(props) {
         slider.scrollTop = scrollTop - scrolly;
     };
 
+    // 回到中心點 function
     let backToCenter = function () {
         const element = document.getElementById('xuan-btn');
         element.scrollIntoView({
@@ -90,7 +91,7 @@ function MainPage(props) {
         });
     };
 
-    // 回到中心點 function
+    // 一進頁面就在中心點 function
     const startAtCenter = function () {
         const element = document.getElementById('xuan-btn');
         element.scrollIntoView({
@@ -149,35 +150,34 @@ function MainPage(props) {
 
                     {/* 背景裝飾圖(中心) */}
                     <div className="xuan-mainpage-bg">
-                        <img src={mainpagebg} alt="" />
+                        <img src={mainpage_test} alt="" />
                     </div>
 
                     {/* 背景裝飾上半部 */}
-                    <div className="bg-d-flex">
+                    {/* <div className="bg-d-flex"> */}
                         {/* 背景裝飾圖(左上方) */}
-                        <div className="xuan-mainpage-bg-2">
+                        {/* <div className="xuan-mainpage-bg-2">
                             <img src={mainpagebg_usual} alt="" />
-                        </div>
+                        </div> */}
 
                         {/* 背景裝飾圖(右上方) */}
-                        <div className="xuan-mainpage-bg-3">
+                        {/* <div className="xuan-mainpage-bg-3">
                             <img src={mainpagebg_usual} alt="" />
                         </div>
-                    </div>
-
+                    </div> */}
 
                     {/* 背景裝飾下半部 */}
-                    <div className="bg-bottom-d-flex">
+                    {/* <div className="bg-bottom-d-flex">
                         {/* 背景裝飾圖(左下方) */}
-                        <div className="xuan-mainpage-bg-bottomleft">
+                        {/* <div className="xuan-mainpage-bg-bottomleft">
                             <img src={mainpagebg_usual} alt="" />
-                        </div>
+                        </div> */}
 
                         {/* 背景裝飾圖(右下方) */}
-                        <div className="xuan-mainpage-bg-bottomright">
+                        {/* <div className="xuan-mainpage-bg-bottomright">
                             <img src={mainpagebg_usual} alt="" />
                         </div>
-                    </div>
+                    </div>  */}
 
                     {/* ----其他方塊----- */}
 
@@ -282,7 +282,7 @@ function MainPage(props) {
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
-                            <p>投生形象001</p>
+                            <p>投生形象002</p>
                             <p>眼睛x2 精靈耳x2</p>
                             <p>膚色:粉 貓尾</p>
                             <p>總計3400</p>
@@ -296,7 +296,7 @@ function MainPage(props) {
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
-                            <p>投生形象001</p>
+                            <p>投生形象003</p>
                             <p>眼睛x2 精靈耳x2</p>
                             <p>膚色:粉 貓尾</p>
                             <p>總計3400</p>
@@ -338,6 +338,13 @@ function MainPage(props) {
                         {/* 底下圖片區域 */}
                         <div></div>
                     </div>
+
+                    {/* ------- 左上區域 BOX ------- */}
+                    <div className='xuan-box xuan-lefttop-1'>
+
+                    </div>
+
+
                 </div>
             </div>
         </>

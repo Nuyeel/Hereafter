@@ -53,22 +53,24 @@ function ProductList(props) {
                                 </div>
 
                                 <div className="event_npo_name">
-                                    <span className="xuan-subtitle">
+                                    <span className="xuan-body">
                                         {v.npo_name}
                                     </span>
                                 </div>
 
-                                <p className="event-time xuan-subtitle">
+                                <p className="event-time xuan-body">
                                     活動時間：{v.start}
                                 </p>
                             </div>
 
                             <div className="event-cost  xuan-subtitle">
                                 {/* TODO: 手機版先消失 */}
-                                <span className="xuan-event-city">
+                                <span className="xuan-event-city xuan-body">
                                     {v.city}
                                 </span>
-                                <span>${v.price}</span>
+                                <span className="xuan-body xuan-eventcard-price">
+                                    ${v.price}
+                                </span>
                             </div>
                         </div>
                     </Link>

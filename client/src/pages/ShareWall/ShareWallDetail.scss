@@ -488,6 +488,18 @@
     }
 }
 
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-ita-ta-inner-tags {
+        font-size: $fz-body;
+
+        >.cpl-pcb-ita-ta-it-tag-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
 .cpl-pcb-ita-text-heading {
     margin-bottom: 16px;
 
@@ -679,32 +691,51 @@
 }
 
 // FIXME: 1400px up RWD
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-ita-text-heading {
+        >.cpl-pcb-ita-th-inner-left {
+            >.cpl-pcb-ita-th-il-account {
+                font-size: 1.75rem;
+            }
+        }
+
+        >.cpl-pcb-ita-th-inner-right {
+            font-size: $fz-title;
+        }
+    }
+}
 
 .cpl-pcb-ita-text-content {
     line-height: normal;
-    padding-bottom: 1rem;
+    // padding-bottom: 1rem;
     border-bottom: 2px solid $accent-blue-50p;
     margin-bottom: 12px;
     // outline: 1px solid red;
-
+    
     // FIXME: 好不好看見仁見智 可以最後調整
     .cpl-pcb-ita-text-content-paragraph {
         text-align: justify;
+        // outline: 1px solid red;
+        margin-bottom: 1rem;
     }
 
     .cpl-pcb-ita-tc-isAuthor-button-area {
         font-size: $fz-caption;
         // outline: 1px solid red;
         position: relative;
-        bottom: -7px;
+        bottom: 7px;
     }
 
     .cpl-pcb-ita-tc-isAuthor-button {
+        border: none;
         background-color: $primary-50p;
+        color: $bgc-L-l !important;
         border-radius: 20px;
         filter: none !important;
+        outline: none !important;
         padding-left: 10px;
         padding-right: 10px;
+        padding-bottom: 2px;
         // width: 100px !important;
     }
 }
@@ -713,10 +744,11 @@
     .cpl-pcb-ita-text-content {
         min-height: 179px; // DONE: 初步修復無內容塌陷問題
         max-height: 179px; // DONE: 初步修復無內容塌陷問題
+        // outline: 1px solid green;
         
         // FIXME: 先稍微處理按鈕問題
         .cpl-pcb-ita-tc-isAuthor-button-area {
-            bottom: 15px !important;
+            bottom: 12px;
         }
     }
 }
@@ -725,15 +757,34 @@
     .cpl-pcb-ita-text-content {
         min-height: 156px; // DONE: 初步修復無內容塌陷問題
         max-height: 156px; // DONE: 初步修復無內容塌陷問題
+
+        // FIXME: 先稍微處理按鈕問題
+        .cpl-pcb-ita-tc-isAuthor-button-area {
+            bottom: 11px;
+        }
     }
 }
 
-// @media screen and (min-width: 1400px) {
-//     .cpl-pcb-ita-text-content {
-//         min-height: 156px; // DONE: 初步修復無內容塌陷問題
-//         max-height: 156px; // DONE: 初步修復無內容塌陷問題
-//     }
-// }
+@media screen and (min-width: 1400px) {
+    .cpl-pcb-ita-text-content {
+        min-height: 218px; // DONE: 初步修復無內容塌陷問題
+        max-height: 218px; // DONE: 初步修復無內容塌陷問題
+        font-size: $fz-subtitle;
+
+        // FIXME: 先稍微處理按鈕問題
+        .cpl-pcb-ita-tc-isAuthor-button-area {
+            bottom: 9px;
+        }
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .cpl-pcb-ita-text-content {
+        min-height: 256px; // DONE: 初步修復無內容塌陷問題
+        max-height: 256px; // DONE: 初步修復無內容塌陷問題
+        font-size: 1.375rem;
+    }
+}
 
 // ============================================================
 // 分享文章留言部分
@@ -804,8 +855,18 @@
     .cpl-pcb-ita-comments-container {
         // FIXME: 桌機版要想辦法定住高度
         // min-height max-height 夾著應該可以
-        min-height: calc(79% - 325px);
-        max-height: calc(79% - 325px);
+        min-height: calc(79% - 385px);
+        max-height: calc(79% - 385px);
+        margin-bottom: 18px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .cpl-pcb-ita-comments-container {
+        // FIXME: 桌機版要想辦法定住高度
+        // min-height max-height 夾著應該可以
+        min-height: calc(79% - 425px);
+        max-height: calc(79% - 425px);
         margin-bottom: 18px;
     }
 }
@@ -917,6 +978,9 @@
         background-color: transparent !important;
         border: 1px solid $white-60p;
         border-radius: 20px;
+        filter: none !important;
+        outline: none !important;
+        box-shadow: none !important;
 
         &::placeholder {
             position: relative;

@@ -1,5 +1,5 @@
 import { useCallback, useRef, useContext } from 'react';
-import { toPng } from 'html-to-image';
+import { toPng, toSvg } from 'html-to-image';
 import styled from '@emotion/styled';
 import BodyData from './BodyData';
 import FaceData from './FaceData';
@@ -273,8 +273,8 @@ function CenterPart(props) {
         await toPng(ref.current, {
             cacheBust: true,
             pixelRatio: 1.2,
-            canvasWidth: 535,
-            canvasHeight: 535,
+            canvasWidth: 900,
+            canvasHeight: 900,
         })
             .then((dataUrl) => {
                 const link = document.createElement('a');
@@ -561,6 +561,7 @@ function CenterPart(props) {
         width: 450px;
         display: ${controlChange ? 'block' : 'none'};
         cursor: pointer;
+        z-index: 20;
     `;
     const Info = styled.div`
         position: relative;
@@ -596,7 +597,19 @@ function CenterPart(props) {
     return (
         <>
             <Center>
-                <div style={{ opacity: `${controlChange ? '0.3' : '1'}` }}>
+                <div
+                    style={{
+                        opacity: `${controlChange ? '0.3' : '1'}`,
+                        position: 'relative',
+                    }}
+                >
+                <BodyControl
+                        onClick={() => {
+                            setControlChange(0);
+                            setBodyControlChange('hand');
+                            setColorControlSwitch(0);
+                        }}
+                    ></BodyControl>
                     <BGSquare></BGSquare>
                     <BGCircle></BGCircle>
                     <div
@@ -646,57 +659,51 @@ function CenterPart(props) {
                                 ]
                             }
                         </Foot>
-                        <FaceControl
-                            onClick={() => {
-                                setControlChange(1);
-                                setColorControlSwitch(1);
-                                setFaceControlChange('eye');
-                            }}
-                        ></FaceControl>
-                        <HandRControl
-                            onClick={() => {
-                                setBodyControlChange('hand');
-                                setColorControlSwitch(0);
-                            }}
-                        ></HandRControl>
-                        <HandLControl
-                            onClick={() => {
-                                setBodyControlChange('hand');
-                                setColorControlSwitch(0);
-                            }}
-                        ></HandLControl>
-                        <FootRControl
-                            onClick={() => {
-                                setBodyControlChange('foot');
-                                setColorControlSwitch(0);
-                            }}
-                        ></FootRControl>
-                        <FootLControl
-                            onClick={() => {
-                                setBodyControlChange('foot');
-                                setColorControlSwitch(0);
-                            }}
-                        ></FootLControl>
-                        <SpecialControl
-                            onClick={() => {
-                                setBodyControlChange('special');
-                                setColorControlSwitch(1);
-                            }}
-                        ></SpecialControl>
-                        <TaleControl
-                            onClick={() => {
-                                setBodyControlChange('tale');
-                                setColorControlSwitch(1);
-                            }}
-                        ></TaleControl>
-                        <BodyControl
-                            onClick={() => {
-                                setControlChange(0);
-                                setBodyControlChange('hand');
-                                setColorControlSwitch(0);
-                            }}
-                        ></BodyControl>
                     </div>
+                    <FaceControl
+                        onClick={() => {
+                            setControlChange(1);
+                            setColorControlSwitch(1);
+                            setFaceControlChange('eye');
+                        }}
+                    ></FaceControl>
+                    <HandRControl
+                        onClick={() => {
+                            setBodyControlChange('hand');
+                            setColorControlSwitch(0);
+                        }}
+                    ></HandRControl>
+                    <HandLControl
+                        onClick={() => {
+                            setBodyControlChange('hand');
+                            setColorControlSwitch(0);
+                        }}
+                    ></HandLControl>
+                    <FootRControl
+                        onClick={() => {
+                            setBodyControlChange('foot');
+                            setColorControlSwitch(0);
+                        }}
+                    ></FootRControl>
+                    <FootLControl
+                        onClick={() => {
+                            setBodyControlChange('foot');
+                            setColorControlSwitch(0);
+                        }}
+                    ></FootLControl>
+                    <SpecialControl
+                        onClick={() => {
+                            setBodyControlChange('special');
+                            setColorControlSwitch(1);
+                        }}
+                    ></SpecialControl>
+                    <TaleControl
+                        onClick={() => {
+                            setBodyControlChange('tale');
+                            setColorControlSwitch(1);
+                        }}
+                    ></TaleControl>
+                    
                 </div>
 
                 <Info>
