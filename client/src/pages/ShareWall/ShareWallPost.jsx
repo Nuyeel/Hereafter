@@ -417,7 +417,6 @@ function ShareWallPost(props) {
                         <div className="cpl-pcb-ita-text-heading d-flex justify-content-between align-items-center">
                             <div className="cpl-pcb-ita-th-inner-left d-flex align-items-center">
                                 <div className="cpl-pcb-ita-th-il-mh-area">
-                                    {/* FIXME: 這圖是啥 */}
                                     {userProfile ? (
                                         <img
                                             className="cpl-pcb-ita-th-il-mh-memberhead"
