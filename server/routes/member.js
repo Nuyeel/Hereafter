@@ -257,25 +257,20 @@ router
             error: '',
             code: 0,
         };
-
         const sql = 'SELECT * FROM `member` WHERE account = ?';
-        const [[q1]] = await db.query(sql, [req.body.account]);
-        console.log(q1.account);
+        const [q1] = await db.query(sql, [req.body.account]);
+        console.log(q1);
         console.log(req.body.account);
 
-        const sql2 = 'SELECT * FROM `member` WHERE email = ?';
-        const [[q2]] = await db.query(sql2, [req.body.email]);
-        console.log(q2.email);
-        console.log(req.body.email);
-
-        if (q1.account !== req.body.account) {
-            output.code = 406;
+        if (!q1.length) {
+            output.code = 405;
             output.error = '帳戶不存在';
             return res.json(output);
         }
-        if (q2.email !== req.body.email) {
-            output.code = 406;
-            output.error = '電子信箱不存在';
+
+        if (q1[0].email !== req.body.email) {
+            output.code = 407;
+            output.error = '電子信箱錯誤';
             return res.json(output);
         }
 
@@ -300,13 +295,13 @@ router
             auth: {
                 user: process.env.SMTP_EMAIL,
                 pass: process.env.SMTP_PASS,
-                // ！！測試寄信用的金鑰先不上傳（測試可問 Yu）！！
+                // ！！測試寄信用的金鑰先不上傳！！
             },
         });
         transporter
             .sendMail({
                 from: '來生投放所 <service@nextlife.com.tw>',
-                to: `${q2.email}`,
+                to: `${q1[0].email}`,
                 subject: '《來生投放所》修改密碼通知信',
                 html: `
                 <h2>您的驗證碼為：${verifyNum}</h2>
@@ -327,7 +322,6 @@ router
 
         res.json(output);
     });
-
 // 測試: http://localhost:3500/api/member/forgotpasswordrevise
 // 修改密碼頁面
 router
@@ -366,7 +360,6 @@ router
 
         res.json(output);
     });
-
 // 測試: http://localhost:3500/api/member/memberprofilerevise
 // 修改會員資料
 router
@@ -385,10 +378,8 @@ router
         const sql = 'SELECT * FROM `member` WHERE sid = ?';
         const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
         // console.log(q1);
-
         q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
         q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
-
         output.success = true;
         output.data = q1;
         output.error = '成功取得資料';
