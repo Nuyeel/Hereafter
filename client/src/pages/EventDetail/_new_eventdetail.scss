@@ -12,9 +12,10 @@ a{
 
 // 手機版
 .xuan-eventdetail-container{
+  // outline: 1px solid red;
   position: relative;
   top:0px;
-  padding-top: 50px;
+  padding-top: 70px;
 
   >.row{
     margin: 0px;
@@ -36,19 +37,24 @@ a{
           >.xuan-intro-box-title{
             background-color:  #9587E1;
             border-radius: 20px 50px 50px 0px;
-            padding: 10px 40px 10px 10px;
+            padding: 10px 40px 10px 20px;
             position: absolute;
             left: 0px;
             top: -30px;
             color: white;
+
+                .xuan-h4{
+                  font-family: $ff-t, $ff-h ;
+                  font-weight: 700;
+                  font-size: $fz-title;
+                }
           }
 
           >.xuan-intro-img{
             width: 92%;
             margin: auto;
-            // background-color: gray;
             border-radius: 15px;
-            height: 350px;
+            height: 220px;
             margin-bottom: 15px;
             overflow: hidden;
 
@@ -62,6 +68,8 @@ a{
             margin: auto;
             margin-bottom: 20px;
             color: #3C3B67;
+
+
 
               .d-flex{
                 align-items: center;
@@ -80,7 +88,7 @@ a{
 
               .xuan-tag-group{
                 display: flex;
-                margin-bottom: 10px;
+                margin-bottom: 15px;
 
                 div{
                   margin: auto 5px;
@@ -90,7 +98,12 @@ a{
                   background-color: rgba(227, 132, 242, 0.5);
                   border-radius: 7px;
                   color: #3C3B67;
-                  padding: 5px;
+                  padding: 7px;
+                  font-size: $fz-caption ;
+
+                        svg{
+                          margin-right: 5px;
+                        }
                 }
 
                 .xuan-intro-tag-2{
@@ -98,14 +111,19 @@ a{
                   background-color: #F3F59F;
                   border-radius: 7px;
                   color: #3C3B67;
-                  padding: 5px;
+                  padding: 10px;
+                  font-size: $fz-caption ;
                 }
               }
 
 
               .xuan-intro-word  {
-                margin-bottom: 7px;
+                margin-bottom: 15px;
                 letter-spacing: 0.1rem;
+                font-size: $fz-body;
+                font-family: $ff-t, $ff-h ;
+                font-weight: 400 ;
+
 
                 svg:nth-child(1){
                   margin: 3px;
@@ -120,12 +138,29 @@ a{
                 }
 
                 span:nth-child(5){
-                  margin-right: 3px;
+                  margin-right: 10px;
                 }
+
+              
+
+
+              }
+
+
+              .d-flex{
+
+                  span{
+                    margin-right: 10px;
+                  }
+
+                  a{
+                    margin-bottom: 15px;
+                  }
               }
 
               .xuan-intro-text{
-                line-height: 2rem;
+                line-height: 1.6rem;
+                margin-bottom: 5px;
               }
 
           }
@@ -151,7 +186,7 @@ a{
     >.xuan-buy-btn{
       width: 100%;
       background-color: black;
-      padding: 20px 30px 10px 30px;
+      padding: 30px 20px 10px 30px;
       border-radius: 20px;
       opacity: .7;
       color: white;
@@ -160,11 +195,16 @@ a{
 
         >.xuan-cost-price{
           width: 50%;
+          margin-right: 10px;
+
+          span:nth-child(1){
+            margin-bottom: 18px;
+          }
 
           h2:nth-child(2){
             color: #F3F59F;
             line-height: 60px;
-            margin-bottom: 5px;
+            margin-bottom: 25px;
           }
 
           img{
@@ -176,9 +216,10 @@ a{
 
         >.xuan-btn-group{
           width: 50%;
+          padding-top: 15px;
 
           >button{
-            margin-bottom: 20px;
+            margin-bottom: 25px;
 
           }
         }
@@ -193,6 +234,15 @@ a{
 .xuan-comment-chart{
   margin-bottom: 15px;
   color: #3C3B67;
+
+  .xuan-h5{
+    font-family: $ff-t, $ff-h ;
+    font-weight: 700;
+    font-size: $fz-title;
+    margin-left: 10px;
+    margin-right: 20px;
+  }
+
 
   span, a{
     margin-right: 10px;
@@ -216,14 +266,14 @@ a{
       padding: 10px;
     
           .xuan-comment-avatar{
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background-color: gray;
           }
     
           .xuan-comment-word-wrap{
-            width: 60%;
+            width: 80%;
             height: 100%;
             margin:auto  10px;
             
@@ -234,6 +284,7 @@ a{
     
               .xuan-subtitle{
                   margin-right: 10px;
+                  margin-bottom: 6px;
               }
     
               .xuan-body{
@@ -245,9 +296,9 @@ a{
                 margin-bottom: 10px;
               }
 
-              // .xuan-detail-date{
-              //   margin-right: 10px;
-              // }
+        
+
+          
 
 
           }
@@ -255,8 +306,6 @@ a{
 
 
   }
-
-
   
 }
 
@@ -264,24 +313,73 @@ a{
 @media screen and (min-width: 992px) {
   .xuan-eventdetail-container{
 
-    padding-top: 30px;
+    padding-top: 70px;
 
     >.row{
-      width: 90%;
+      max-width: 1300px;
+      width: 87%;
+      // outline: 1px solid blue;
       margin: auto;
       display: flex;
 
         .xuan-col-8{
           width: 60%;
+
+          .xuan-intro-box{
+            margin: auto 0px;
+            padding-top: 40px;
+
+              .xuan-intro-box-title{
+
+                padding: 10px 50px 10px 40px;
+
+                .xuan-h4{
+                  font-size: $fz-h4;
+                  font-family: $ff-t, $ff-h ;
+                  font-weight: 500 ;
+                }
+              }
+
+              .xuan-intro-bar{
+                min-height: 380px;
+              }
+
+              .xuan-intro-img{
+                // outline: 1px solid red;
+                height: 300px;
+                
+              }
+
+
+
+
+          }
+
         }
 
         .xuan-col-4{
           width: 40%;
+
+              .xuan-btn-group{
+                padding-top: 10px;
+              }
+
+              button{
+                font-size: $fz-subtitle;
+                font-family: $ff-t ;
+                font-weight: 500 ;
+              }
+
+              .xuan-buy-btn{
+                margin-bottom: 30px;
+                padding-left: 70px;
+                padding-bottom: 10px;
+              }
+
+
         }
 
-        .xuan-intro-bar{
-          max-height: 235px;
-        }
+      
 
 
     }
@@ -304,5 +402,5 @@ a{
 }
 
 .xuan-comment-bar{
-  max-height: 300px;
+  max-height: 420px;
 }

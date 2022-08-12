@@ -8,7 +8,7 @@ function TypeCheckbox(props) {
                 <label className="xuan-label-title">
                     <input
                         type="checkbox"
-                        className="xuan-input-checkbox icheck"
+                        className="xuan-input-checkbox "
                         value={value}
                         checked={howTags.includes(value)}
                         onChange={handleChecked}

@@ -13,246 +13,272 @@
 // -----文字-----------------
 
 .xuan-h2{  
-  font-size: $fz-h2;
-  font-family: $ff-t, $ff-h;
-  font-weight: 500;
+  font-size: $fz-h2 ;
+  font-family: $ff-t, $ff-h ;
+  font-weight: 500 ;
   line-height: 71px;
 }
 .xuan-h3{
   font-size: $fz-h3;
-  font-family: $ff-t, $ff-h;
-  font-weight: 500;
+  font-family: $ff-t, $ff-h ;
+  font-weight: 500 ;
 }
 .xuan-h4{
   font-size: $fz-h4;
-  font-family: $ff-t, $ff-h;
-  font-weight: 500;
+  font-family: $ff-t, $ff-h ;
+  font-weight: 500 ;
 }
 .xuan-h5{
-  font-size: $fz-h5;
-  font-family: $ff-t, $ff-h;
-  font-weight: 500;
+  font-size: $fz-h5 ;
+  font-family: $ff-t, $ff-h ;
+  font-weight: 500 ;
 }
 
 // ------------------------
 
 .xuan-title {
-  font-family: $ff-t, $ff-h;
+  font-family: $ff-t, $ff-h ;
   font-weight: 700;
   font-size: $fz-title;
 }
 .xuan-subtitle {
   font-size: $fz-subtitle;
-  font-family: $ff-t;
-  font-weight: 500;
+  font-family: $ff-t ;
+  font-weight: 500 ;
 }
 .xuan-body{
   font-size: $fz-body;
-  font-family: $ff-t, $ff-h;
-  font-weight: 400;
+  font-family: $ff-t, $ff-h ;
+  font-weight: 400 ;
 
 }
 .xuan-caption {
-  font-size: $fz-caption;
-  font-family: $ff-t, $ff-h;
-  font-weight: 400;
+  font-size: $fz-caption ;
+  font-family: $ff-t, $ff-h ;
+  font-weight: 400 ;
 }
 
 // -----按鈕-----------------
 
 .xuan-button{
-  position: relative;
-  transition: .3s;
-  border-color: transparent;
-  color: #fff;
-  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25));
+  position: relative  !important;
+  transition: .3s  !important;
+  border-color: transparent  !important;
+  color: #fff  !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25))  !important;
 }
 .xuan-button:hover {
-  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5))  !important;
 }
 .xuan-button:active {
-  left: 1px;
-  top: 1px;
-  filter: drop-shadow(2px 2px 0px transparent);
+  left: 1px  !important;
+  top: 1px  !important;
+  filter: drop-shadow(2px 2px 0px transparent)  !important;
 }
 
 // ------------------------
 
 .xuan-btn-pri{
-  background-color: #CE59E7;
+  background-color: #CE59E7  !important;
+  color:white  !important ;
+  position: relative !important;
+  transition: .3s !important;
+  border-color: transparent !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25)) !important;
 }
 .xuan-btn-sec{
-  background-color: #E7ACF3;
-  border: 1px solid #fff;
+  background-color: #E7ACF3  !important;
+  color: #fff  !important;
+  position: relative !important;
+  transition: .3s !important;
+  border-color: transparent !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25)) !important;
+  
 }
 .xuan-btn-ter{
-  background-color: #fff;
-  border: 1px solid #CE59E7;
-  color: #CE59E7;
+  background-color: #fff  !important;
+  color: #fff  !important;
+  position: relative !important;
+  transition: .3s !important;
+  border-color: transparent !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25)) !important;
 }
 .xuan-btn-dis{
-  background: #EAE7F9;
-  color: #fff;
-  filter: drop-shadow(2px 2px 0px transparent);
+  background: #EAE7F9  !important;
+  color: #fff  !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25))  !important;
+  position: relative !important;
+  transition: .3s !important;
+  border-color: transparent !important;
+
 }
 .xuan-btn-dis:hover, .btn-dis:active{
-  left: 0px;
-  top: 0px;
-  filter: drop-shadow(2px 2px 0px transparent);
+  left: 0px  !important;
+  top: 0px  !important;
+  color: #fff  !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
 }
 .xuan-btn-danger{
-  background-color: var(--alert-l);
-  color: #fff;
+  background-color: var(--alert-l)  !important;
+  color: #fff  !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25))  !important;
+  
 }
 .xuan-btn-l {
-  height: 40px;
-  font:700 18px $ff-t, Arial, sans-serif;
-  border-radius: 12px;
+  height: 40px  !important;
+  font:700 18px $ff-t, Arial, sans-serif  !important;
+  border-radius: 12px  !important;
+  color: #fff  !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25))  !important;
 }
 .xuan-btn-m {
-  height: 32px;
-  font:700 16px $ff-t, Arial, sans-serif;
-  border-radius: 10px;
+  height: 32px  !important;
+  font:700 16px $ff-t, Arial, sans-serif  !important;
+  border-radius: 10px  !important;
+  color: #fff  !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25))  !important;
 }
 .xuan-btn-s {
-  height: 24px;
-  font:400 14px $ff-t, Arial, sans-serif;
-  border-radius: 8px;
+  height: 24px  !important;
+  font:400 14px $ff-t, Arial, sans-serif  !important;
+  border-radius: 8px  !important;
+  color: #fff  !important;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25))  !important;
 }
 
 // -----表單-----------------
 
 .xuan-label{
-  position: relative;
+  position: relative ;
 }
 
 .xuan-label-title{
-  position: relative;
-  font-size: 16px;
+  position: relative ;
+  font-size: 16px ;
 }
 
 
 .xuan-input-text {
   font: 400 16px $ff-t, Arial, sans-serif;
-  border: #9587E1 2px solid;
-  height: 40px;
-  border-radius: 10px;
-  outline: none;
+  border: #9587E1 2px solid ;
+  height: 40px ;
+  border-radius: 10px  ;
+  outline: none  ;
 }
 
 .xuan-input-text::placeholder{
-  color:#BDBDBD;
+  color:#BDBDBD  ;
 }
 
 .xuan-input-text:focus{
-  border: #9587E1 2px solid;
-  outline: none;
+  border: #9587E1 2px solid ;
+  outline: none ;
 }
 
 .xuan-input-text:focus::placeholder{
-  color: transparent;
+  color: transparent ;
 }
 
 
 .xuan-input-text.error {
-  border: var(--alert-l) 2px solid;
+  border: var(--alert-l) 2px solid  ;
   outline: none;
 }
 
 .xuan-input-checkbox{
-  transition: .1s;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  background: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%23828282' %3E%3C!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --%3E%3Cpath d='M384 32C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H384zM384 80H64C55.16 80 48 87.16 48 96V416C48 424.8 55.16 432 64 432H384C392.8 432 400 424.8 400 416V96C400 87.16 392.8 80 384 80z'/%3E%3C/svg%3E") no-repeat;
-  background-position: .5px;
-  outline: none;
+  transition: .1s ;
+  appearance: none  ;
+  width: 18px  ;
+  height: 18px ;
+  background: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%23828282' %3E%3C!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --%3E%3Cpath d='M384 32C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H384zM384 80H64C55.16 80 48 87.16 48 96V416C48 424.8 55.16 432 64 432H384C392.8 432 400 424.8 400 416V96C400 87.16 392.8 80 384 80z'/%3E%3C/svg%3E") no-repeat  ;
+  background-position: .5px ;
+  outline: none  ;
 }
 
 .xuan-input-checkbox:focus,
 .xuan-input-checkbox:active{
   background: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%23E384F2' %3E%3C!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --%3E%3Cpath d='M384 32C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H384zM384 80H64C55.16 80 48 87.16 48 96V416C48 424.8 55.16 432 64 432H384C392.8 432 400 424.8 400 416V96C400 87.16 392.8 80 384 80z'/%3E%3C/svg%3E") no-repeat;
-  background-position: .5px;
+  background-position: .5px ;
 }
 
 .xuan-input-checkbox:checked{
   background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%23E384F2'%3E%3C!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --%3E%3Cpath d='M211.8 339.8C200.9 350.7 183.1 350.7 172.2 339.8L108.2 275.8C97.27 264.9 97.27 247.1 108.2 236.2C119.1 225.3 136.9 225.3 147.8 236.2L192 280.4L300.2 172.2C311.1 161.3 328.9 161.3 339.8 172.2C350.7 183.1 350.7 200.9 339.8 211.8L211.8 339.8zM0 96C0 60.65 28.65 32 64 32H384C419.3 32 448 60.65 448 96V416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V96zM48 96V416C48 424.8 55.16 432 64 432H384C392.8 432 400 424.8 400 416V96C400 87.16 392.8 80 384 80H64C55.16 80 48 87.16 48 96z'/%3E%3C/svg%3E");
-  background-position: .5px;
+  background-position: .5px  ;
 }
 .xuan-input-radio{
-  appearance: none;
-  position: relative;
-  top: 2px;
-  width: 16px;
-  height: 16px;
-  border: #828282 2px solid;
-  border-radius: 50%;
-  outline: none;
+  appearance: none ;
+  position: relative  t;
+  top: 2px ;
+  width: 16px ;
+  height: 16px  ;
+  border: #828282 2px solid ;
+  border-radius: 50% ;
+  outline: none ;
 }
 
 .xuan-input-radio:focus{
-  border: #E384F2 2px solid;
-  box-shadow: 0px 0px 5px #E384F2 ;
+  border: #E384F2 2px solid ;
+  box-shadow: 0px 0px 5px #E384F2  ;
 }
 
 .xuan-input-radio:focus::before{
-  content: "";
-  display: block;
-  position: relative;
-  top: 2px;
-  left: 2px;
-  width: 8px;
-  height: 8px;
-  background: #E384F2;
-  border-radius: 50%;
+  content: "" ;
+  display: block  ;
+  position: relative  ;
+  top: 2px ;
+  left: 2px ;
+  width: 8px  ;
+  height: 8px ;
+  background: #E384F2 ;
+  border-radius: 50% ;
 }
 .xuan-input-radio:checked{
-  border: #E384F2 2px solid;
+  border: #E384F2 2px solid ;
 }
 
 .xuan-input-radio:checked::before{
-  content: "";
-  display: block;
-  position: relative;
-  top: 2px;
-  left: 2px;
-  width: 8px;
-  height: 8px;
-  background: #E384F2;
-  border-radius: 50%;
+  content: ""  ;
+  display: block ;
+  position: relative ;
+  top: 2px ;
+  left: 2px  ;
+  width: 8px  ;
+  height: 8px ;
+  background: #E384F2 ;
+  border-radius: 50% ;
 }
 
 .xuan-input-checkbox.switch{
-  transition: .1s;
-  appearance: none;
-  background: #333333;
-  width: 45px;
-  height: 24px;
-  border: #E0ABFA 2px solid;
-  border-radius: 50px;
-  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+  transition: .1s ;
+  appearance: none ;
+  background: #333333  ;
+  width: 45px ;
+  height: 24px  ;
+  border: #E0ABFA 2px solid  ;
+  border-radius: 50px ;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25) ;
 }
 
 .xuan-input-checkbox.switch::before{
-  content: "";
-  transition: .2s;
-  display: block;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background-color: #fff;
-  position: relative;
-  top: 1px;
-  left: 1px;
+  content: "" ;
+  transition: .2s  ;
+  display: block ;
+  width: 18px ;
+  height: 18px  ;
+  border-radius: 50% ;
+  background-color: #fff ; 
+  position: relative ;
+  top: 1px  ;
+  left: 1px ;
 }
 
 .xuan-input-checkbox:checked.switch{
-  background: #D87AEC;
-  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+  background: #D87AEC  ;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25 );
 }
 
 .xuan-input-checkbox:checked.switch::before{
-  top: 1px;
-  left: 22px;
+  top: 1px ;
+  left: 22px ;
 }
 
