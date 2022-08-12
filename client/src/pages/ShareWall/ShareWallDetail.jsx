@@ -205,6 +205,11 @@ function ShareWallDetail(props) {
             },
         });
         // console.log(result.data);
+
+        if (result.data === '才...才沒有這篇文章呢！') {
+            return navigate('/sharewall');
+        }
+
         // 在這裡將 isLoading 切換為 false 以顯示文章內容
         setSharePostDetailData({ ...result.data, isLoading: false });
     };
@@ -442,14 +447,20 @@ function ShareWallDetail(props) {
                                     >
                                         #豬肉榮賣豬肉
                                     </span> */}
-                                    {postTagsResults.map((v, i) => (
-                                        <span
-                                            key={v.share_post_tag_sid}
-                                            className="cpl-pcb-ita-ta-it-tag-item flex-shrink-0"
-                                        >
-                                            #{v.share_post_tag_text}
+                                    {postTagsResults.length ? (
+                                        postTagsResults.map((v, i) => (
+                                            <span
+                                                key={v.share_post_tag_sid}
+                                                className="cpl-pcb-ita-ta-it-tag-item flex-shrink-0"
+                                            >
+                                                #{v.share_post_tag_text}
+                                            </span>
+                                        ))
+                                    ) : (
+                                        <span className="cpl-pcb-ita-ta-it-tag-item flex-shrink-0">
+                                            #尚無標籤
                                         </span>
-                                    ))}
+                                    )}
                                 </div>
                             </div>
                             <div className="cpl-pcb-ita-text-heading d-flex justify-content-between align-items-center">
@@ -464,7 +475,7 @@ function ShareWallDetail(props) {
                                             />
                                         ) : (
                                             <img
-                                                src={`http://localhost:3500/uploads/images/share/default.svg`}
+                                                src={`http://localhost:3500/uploads/images/avatar/default.png`}
                                                 alt=""
                                                 className="cpl-pcb-ita-th-il-mh-memberhead"
                                             />
@@ -657,9 +668,9 @@ function ShareWallDetail(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="cpl-pcb-ita-text-content">
-                                {/* TABLE: 文章上限改成 168 字 */}
-                                <p className="cpl-pcb-ita-text-content-paragraph">
+                            <div className="cpl-pcb-ita-text-content d-flex flex-column justify-content-between">
+                                {/* TABLE: 文章上限改成 150 字 */}
+                                <p className="cpl-pcb-ita-text-content-paragraph flex-grow-1">
                                     {share_post_text}
                                 </p>
                                 {/* <p>內容超少der adawdw wdawdwda daw</p> */}
@@ -667,7 +678,7 @@ function ShareWallDetail(props) {
                                 <div className="cpl-pcb-ita-tc-isAuthor-button-area d-flex justify-content-end">
                                     {member_sid === sid ? (
                                         <button
-                                            className="cpl-pcb-ita-tc-isAuthor-button"
+                                            className="cpl-pcb-ita-tc-isAuthor-button d-flex justify-content-center align-items-center"
                                             onClick={() => {
                                                 navigate('revise');
                                             }}
