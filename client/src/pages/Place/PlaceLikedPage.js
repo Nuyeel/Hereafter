@@ -7,6 +7,7 @@ import PageSelect from './components/PageSelect';
 import TimeNewsRow from './components/TimeNewsRow';
 import Swal from 'sweetalert2';
 import soulPng from '../Place/img/soul.png';
+import soulIconAlert from '../../images/sweetalert2/outline_soul_alert.svg';
 
 import './place.scss';
 import { PLACE_LIKED_API, PLACE_CARTDATA_API } from '../../config/ajax-path';
@@ -22,11 +23,27 @@ function PlaceLikedPage(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
     const { authorized, sid: userSid, isDead } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     // 要呈現的資料陣列
     const [displayLikedList, setDisplayLikedList] = useState([]);
     // 收藏資料的sid
     const [likedPlaceSidArr, setLikedPlaceSidArr] = useState([]);
+
+    // 沒登入跳轉光箱
+    const gotoLogin = () => {
+        Swal.fire({
+            title: `還沒有登入唷`,
+            imageUrl: soulIconAlert,
+            imageHeight: 50,
+            imageWidth: 50,
+            showDenyButton: false,
+            timer: 3000,
+        });
+        setTimeout(() => {
+            navigate('/login', { replace: true });
+        }, 1000);
+    };
 
     // 如果有登入, 拿會員的收藏data
     const getMemberLikedData = async () => {
@@ -156,9 +173,6 @@ function PlaceLikedPage(props) {
                 {/* 如果沒有登入, 跳轉到登入頁面 */}
                 {authorized ? (
                     <>
-                        {/* 列表/收藏頁面切換 */}
-                        <PageSelect page={'liked-place'} />
-
                         {/* 會員收藏列表 */}
                         <TimeNewsRow />
                         <div className="place-list-wrap liked-page">
@@ -194,7 +208,7 @@ function PlaceLikedPage(props) {
                         </div>
                     </>
                 ) : (
-                    <>{/* alert + 跳轉 */}</>
+                    <>{gotoLogin()}</>
                 )}
             </div>
         </>

@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import ThemeContext from '../context/ThemeContext/ThemeContext';
 import HeaderContext from '../context/HeaderContext/HeaderContext';
 import HeaderShareWallButton from './HeaderShareWallButton';
+import HeaderPlaceButton from './HeaderPlaceButton';
 
 function Header() {
     // TODO: headerList 中的 item.params 匹配時顯示 item.title
@@ -36,6 +37,15 @@ function Header() {
                     {/* TODO: 某些頁面必須要顯示分頁鈕 例如分享牆 */}
                     {headerContext.title === '交流分享' ? (
                         <HeaderShareWallButton
+                            setShareWallPostsData={
+                                headerContext.setShareWallPostsData
+                            }
+                        />
+                    ) : (
+                        ''
+                    )}
+                    {headerContext.title === '良辰吉地' ? (
+                        <HeaderPlaceButton
                             setShareWallPostsData={
                                 headerContext.setShareWallPostsData
                             }
