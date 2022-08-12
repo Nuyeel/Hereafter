@@ -85,7 +85,15 @@ function AvatarCard(props) {
 
                     <div className="showcaseBtns">
                         <div style={{ border: '1px solid' }}>
-                            <p>分享</p>
+                            <p
+                                onClick={() => {
+                                    navigate(
+                                        `/sharewall/post/${avatarinfo.avatar_id}`
+                                    );
+                                }}
+                            >
+                                分享
+                            </p>
                         </div>
                         <div
                             style={{ border: '1px solid' }}
