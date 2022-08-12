@@ -564,10 +564,13 @@ function CenterPart(props) {
     `;
     const Info = styled.div`
         position: relative;
-        top: -10%;
+        top: -5%;
         left: 40%;
     `;
     const SaveBtn = styled.div`
+        position: relative;
+        top: -3%;
+        left: 2%;
         display: ${controlChange ? 'none' : 'flex'};
         justify-content: center;
         div {
@@ -593,108 +596,109 @@ function CenterPart(props) {
     return (
         <>
             <Center>
-                <BGSquare></BGSquare>
-                <BGCircle></BGCircle>
-                <div
-                    ref={ref}
-                    className="pic text-center mb-4"
-                    style={{
-                        width: '450px',
-                        height: '450px',
-                        position: 'relative',
-                        boxSizing: 'border-box',
-                        outline: '1px solid',
-                        opacity: `${controlChange ? '0.3' : '1'}`,
-                    }}
-                >
-                    <HairBack>
-                        {HairBackArray[combination['face']['hairBack']]}
-                    </HairBack>
-                    <Ear>{EarArray[combination['face']['ear']]}</Ear>
-                    <TopEar>
-                        {TopEarArray[combination['face']['topEar']]}
-                    </TopEar>
-                    <Face>
-                        <HeadSVG />
-                    </Face>
-                    <Eye>{EyeArray[combination['face']['eye']]}</Eye>
-                    <Lip>{LipArray[combination['face']['lip']]}</Lip>
-                    <Nose>{NoseArray[combination['face']['nose']]}</Nose>
-                    <HairFront>
-                        {HairFrontArray[combination['face']['hairFront']]}
-                    </HairFront>
-                    <Tale>{TaleArray[combination['body']['tale']]}</Tale>
-                    <Special>
-                        {SpecialArray[combination['body']['special']]}
-                    </Special>
-                    <Body>{BodyArray[combination['basic'][0]]}</Body>
-                    <Arm>{ArmArray[combination['basic'][1]]}</Arm>
-                    <Hand>
-                        {
-                            HandArray[combination['body']['hand']][
-                                combination['basic'][1]
-                            ]
-                        }
-                    </Hand>
-                    <Leg>{LegArray[combination['basic'][2]]}</Leg>
-                    <Foot>
-                        {
-                            FootArray[combination['body']['foot']][
-                                combination['basic'][2]
-                            ]
-                        }
-                    </Foot>
-                    <FaceControl
-                        onClick={() => {
-                            setControlChange(1);
-                            setColorControlSwitch(1);
-                            setFaceControlChange('eye');
+                <div style={{ opacity: `${controlChange ? '0.3' : '1'}` }}>
+                    <BGSquare></BGSquare>
+                    <BGCircle></BGCircle>
+                    <div
+                        ref={ref}
+                        className="pic text-center mb-4"
+                        style={{
+                            width: '450px',
+                            height: '450px',
+                            position: 'relative',
+                            boxSizing: 'border-box',
                         }}
-                    ></FaceControl>
-                    <HandRControl
-                        onClick={() => {
-                            setBodyControlChange('hand');
-                            setColorControlSwitch(0);
-                        }}
-                    ></HandRControl>
-                    <HandLControl
-                        onClick={() => {
-                            setBodyControlChange('hand');
-                            setColorControlSwitch(0);
-                        }}
-                    ></HandLControl>
-                    <FootRControl
-                        onClick={() => {
-                            setBodyControlChange('foot');
-                            setColorControlSwitch(0);
-                        }}
-                    ></FootRControl>
-                    <FootLControl
-                        onClick={() => {
-                            setBodyControlChange('foot');
-                            setColorControlSwitch(0);
-                        }}
-                    ></FootLControl>
-                    <SpecialControl
-                        onClick={() => {
-                            setBodyControlChange('special');
-                            setColorControlSwitch(1);
-                        }}
-                    ></SpecialControl>
-                    <TaleControl
-                        onClick={() => {
-                            setBodyControlChange('tale');
-                            setColorControlSwitch(1);
-                        }}
-                    ></TaleControl>
-                    <BodyControl
-                        onClick={() => {
-                            setControlChange(0);
-                            setBodyControlChange('hand');
-                            setColorControlSwitch(0);
-                        }}
-                    ></BodyControl>
+                    >
+                        <HairBack>
+                            {HairBackArray[combination['face']['hairBack']]}
+                        </HairBack>
+                        <Ear>{EarArray[combination['face']['ear']]}</Ear>
+                        <TopEar>
+                            {TopEarArray[combination['face']['topEar']]}
+                        </TopEar>
+                        <Face>
+                            <HeadSVG />
+                        </Face>
+                        <Eye>{EyeArray[combination['face']['eye']]}</Eye>
+                        <Lip>{LipArray[combination['face']['lip']]}</Lip>
+                        <Nose>{NoseArray[combination['face']['nose']]}</Nose>
+                        <HairFront>
+                            {HairFrontArray[combination['face']['hairFront']]}
+                        </HairFront>
+                        <Tale>{TaleArray[combination['body']['tale']]}</Tale>
+                        <Special>
+                            {SpecialArray[combination['body']['special']]}
+                        </Special>
+                        <Body>{BodyArray[combination['basic'][0]]}</Body>
+                        <Arm>{ArmArray[combination['basic'][1]]}</Arm>
+                        <Hand>
+                            {
+                                HandArray[combination['body']['hand']][
+                                    combination['basic'][1]
+                                ]
+                            }
+                        </Hand>
+                        <Leg>{LegArray[combination['basic'][2]]}</Leg>
+                        <Foot>
+                            {
+                                FootArray[combination['body']['foot']][
+                                    combination['basic'][2]
+                                ]
+                            }
+                        </Foot>
+                        <FaceControl
+                            onClick={() => {
+                                setControlChange(1);
+                                setColorControlSwitch(1);
+                                setFaceControlChange('eye');
+                            }}
+                        ></FaceControl>
+                        <HandRControl
+                            onClick={() => {
+                                setBodyControlChange('hand');
+                                setColorControlSwitch(0);
+                            }}
+                        ></HandRControl>
+                        <HandLControl
+                            onClick={() => {
+                                setBodyControlChange('hand');
+                                setColorControlSwitch(0);
+                            }}
+                        ></HandLControl>
+                        <FootRControl
+                            onClick={() => {
+                                setBodyControlChange('foot');
+                                setColorControlSwitch(0);
+                            }}
+                        ></FootRControl>
+                        <FootLControl
+                            onClick={() => {
+                                setBodyControlChange('foot');
+                                setColorControlSwitch(0);
+                            }}
+                        ></FootLControl>
+                        <SpecialControl
+                            onClick={() => {
+                                setBodyControlChange('special');
+                                setColorControlSwitch(1);
+                            }}
+                        ></SpecialControl>
+                        <TaleControl
+                            onClick={() => {
+                                setBodyControlChange('tale');
+                                setColorControlSwitch(1);
+                            }}
+                        ></TaleControl>
+                        <BodyControl
+                            onClick={() => {
+                                setControlChange(0);
+                                setBodyControlChange('hand');
+                                setColorControlSwitch(0);
+                            }}
+                        ></BodyControl>
+                    </div>
                 </div>
+
                 <Info>
                     <SoulColor>
                         <p>
