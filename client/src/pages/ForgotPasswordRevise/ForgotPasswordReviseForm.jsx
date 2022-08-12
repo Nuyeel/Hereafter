@@ -198,11 +198,11 @@ function ForgotPasswordReviseForm(props) {
                                             name="form1"
                                             onSubmit={handleSubmit}
                                         >
-                                            <div className="mb-3 d-flex justify-content-center page-title">
+                                            <div className="mb-3 d-flex justify-content-center member-page-title">
                                                 修改密碼
                                             </div>
                                             <br />
-                                            <div className="mb-3 page-field">
+                                            <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="passcode"
                                                     className="form-label"
@@ -232,7 +232,7 @@ function ForgotPasswordReviseForm(props) {
                                                     required
                                                 />
                                             </div>
-                                            <div className="mb-3 page-field">
+                                            <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="password"
                                                     className="form-label"
@@ -262,7 +262,7 @@ function ForgotPasswordReviseForm(props) {
                                                     required
                                                 />
                                             </div>
-                                            <div className="mb-3 page-field">
+                                            <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="confirmPassword"
                                                     className="form-label"
@@ -307,7 +307,7 @@ function ForgotPasswordReviseForm(props) {
                                             <br />
                                             <div className="d-flex justify-content-center ">
                                                 <Link
-                                                    className="link"
+                                                    className="member-link"
                                                     to="/login"
                                                 >
                                                     想起密碼了，直接登入
@@ -316,7 +316,7 @@ function ForgotPasswordReviseForm(props) {
                                             <br />
                                             <div className="d-flex justify-content-center ">
                                                 <Link
-                                                    className="link"
+                                                    className="member-link"
                                                     to="/register"
                                                 >
                                                     重新註冊

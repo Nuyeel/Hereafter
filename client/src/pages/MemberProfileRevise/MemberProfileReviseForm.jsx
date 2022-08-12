@@ -160,11 +160,11 @@ function MemberProfileReviseForm() {
                                                                                 handleSubmit
                                                                             }
                                                                         >
-                                                                            <div className="mb-3 d-flex justify-content-center page-title">
+                                                                            <div className="mb-3 d-flex justify-content-center member-page-title">
                                                                                 修改會員資料
                                                                             </div>
                                                                             <br />
-                                                                            <div className="mb-3 page-field">
+                                                                            <div className="mb-3 member-page-field">
                                                                                 <label
                                                                                     htmlFor="account"
                                                                                     className="form-label"
@@ -185,7 +185,7 @@ function MemberProfileReviseForm() {
                                                                                     disabled="disabled"
                                                                                 />
                                                                             </div>
-                                                                            <div className="mb-3 page-field">
+                                                                            <div className="mb-3 member-page-field">
                                                                                 <label
                                                                                     htmlFor="name"
                                                                                     className="form-label"
@@ -206,7 +206,7 @@ function MemberProfileReviseForm() {
                                                                                     }
                                                                                 />
                                                                             </div>
-                                                                            <div className="mb-3 page-field">
+                                                                            <div className="mb-3 member-page-field">
                                                                                 <label
                                                                                     htmlFor="birthdate"
                                                                                     className="form-label"
@@ -226,7 +226,7 @@ function MemberProfileReviseForm() {
                                                                                     }
                                                                                 />
                                                                             </div>
-                                                                            <div className="mb-3 page-field">
+                                                                            <div className="mb-3 member-page-field">
                                                                                 <label
                                                                                     htmlFor="deathdate"
                                                                                     className="form-label"
@@ -246,7 +246,7 @@ function MemberProfileReviseForm() {
                                                                                     }
                                                                                 />
                                                                             </div>
-                                                                            <div className="mb-3 page-field">
+                                                                            <div className="mb-3 member-page-field">
                                                                                 <label
                                                                                     htmlFor="email"
                                                                                     className="form-label"

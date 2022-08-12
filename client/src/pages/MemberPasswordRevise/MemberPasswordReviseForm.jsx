@@ -262,14 +262,14 @@ function MemberProfileForm(props) {
                                                                                 handleUpdate
                                                                             }
                                                                         >
-                                                                            <div className="mb-3 d-flex justify-content-center page-title">
+                                                                            <div className="mb-3 d-flex justify-content-center member-page-title">
                                                                                 修改登入密碼
                                                                             </div>
                                                                             <br />
                                                                             <div className="mb-3">
                                                                                 <label
                                                                                     htmlFor="currentPassword"
-                                                                                    className="form-label page-field"
+                                                                                    className="form-label member-page-field"
                                                                                 >
                                                                                     當前密碼
                                                                                 </label>
@@ -298,7 +298,7 @@ function MemberProfileForm(props) {
                                                                             <div className="mb-3">
                                                                                 <label
                                                                                     htmlFor="password"
-                                                                                    className="form-label page-field"
+                                                                                    className="form-label member-page-field"
                                                                                 >
                                                                                     新密碼
                                                                                 </label>
@@ -327,7 +327,7 @@ function MemberProfileForm(props) {
                                                                             <div className="mb-3">
                                                                                 <label
                                                                                     htmlFor="confirmPassword"
-                                                                                    className="form-label page-field"
+                                                                                    className="form-label member-page-field"
                                                                                 >
                                                                                     確認新密碼
                                                                                 </label>
