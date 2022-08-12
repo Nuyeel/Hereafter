@@ -111,7 +111,7 @@ function App() {
                                         }
                                     />
                                     <Route
-                                        path="post"
+                                        path="post/:avatarID"
                                         element={
                                             <ShareWallPost pageName="default" />
                                         }
