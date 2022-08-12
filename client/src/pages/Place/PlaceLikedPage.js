@@ -105,7 +105,7 @@ function PlaceLikedPage(props) {
         Swal.fire({
             title: '確認移除收藏',
             html: `<h5>是否將 <span style="color:#FF52BA">${delPlace.year}年 ${delPlace.month}月 於 ${delPlace.country} </span>轉生<br/>的良辰吉地移出您的收藏？<h5>`,
-            imageUrl: soulPng,
+            imageUrl: soulIconAlert,
             imageHeight: 50,
             imageWidth: 50,
             confirmButtonText: '確認移除',

@@ -6,7 +6,8 @@ function AddPlaceToCart(e, userSid) {
     const placeIndex = e.currentTarget
         .closest('.place-info-card')
         .getAttribute('data-placesid');
-    console.log(placeIndex, userSid);
+    const cartBtn = e.currentTarget;
+    // console.log(placeIndex, userSid);
 
     // 存到資料庫
     const obj = { member_sid: userSid, place_sid: placeIndex };
@@ -27,7 +28,13 @@ function AddPlaceToCart(e, userSid) {
                     imageUrl: soulIconAlert,
                     imageHeight: 50,
                     imageWidth: 50,
+                    timer: 3000,
                 });
+            } else {
+                cartBtn.classList.add('likedBtnCartBtnAnimation-add');
+                setTimeout(() => {
+                    cartBtn.classList.remove('likedBtnCartBtnAnimation-add');
+                }, 500);
             }
         });
 

@@ -657,11 +657,34 @@ $maxWidth: 376px;
         display: flex;
         justify-content: center;
         align-items: center;
-
-        /* margin-left: 10px; */
         transform: translateX(2px);
         height: 100%;
         flex-grow: 1;
+        position: relative;
+
+        &:hover {
+            // FIXME: 會被切掉
+            &[title]::before {
+                content: '加入收藏';
+                position: absolute;
+                background-color: #fde1efa4;
+                border: 1px solid #d5a7efa5;
+                border-radius: 10px;
+                top: 40px;
+                left: 40px;
+                font-size: 10px;
+                width: 65px;
+                padding: 5px;
+                letter-spacing: 1px;
+                z-index: 999;
+            }
+
+            .place-like-icon {
+                color: #f3f59f;
+                filter: drop-shadow(1px 0 4px #f3f59f);
+                cursor: pointer;
+            }
+        }
     }
 
     .place-cartBtn {
@@ -669,8 +692,6 @@ $maxWidth: 376px;
         display: flex;
         justify-content: center;
         align-items: center;
-
-        /* margin-left: 10px; */
         transform: translateX(2px);
         height: 100%;
         flex-grow: 1;
@@ -684,36 +705,50 @@ $maxWidth: 376px;
         font-size: 22px;
     }
 
-    .place-likeBtn:hover .place-like-icon,
-    .place-like-icon.btn-checked,
-    .place-cartBtn:hover .place-cart-icon {
+    .place-cartBtn:hover .place-cart-icon,
+    .place-like-icon.btn-checked {
         color: #f3f59f;
         filter: drop-shadow(1px 0 4px #f3f59f);
         cursor: pointer;
     }
 
-    /* hover提示 */
+    .likedBtnCartBtnAnimation-add {
+        animation: likedBtnCartBtnAnimation 0.3s linear forwards;
+    }
 
-    .hover-text {
-        position: relative;
-
-        &::before {
-            content: attr(data-hover);
-            opacity: 0;
-            width: 42px;
-            height: 42px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px 0;
-            transition: 0.3s;
-            position: absolute;
-            z-index: 5;
-            left: 0;
-            // top: 110%;
+    @keyframes likedBtnCartBtnAnimation {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
         }
     }
+
+    /* hover提示 */
+    // .hover-text {
+    //     position: relative;
+
+    //     &::before {
+    //         content: attr(data-hover);
+    //         opacity: 0;
+    //         width: fit-content;
+    //         height: fit-content;
+    //         background-color: rgba(0, 0, 0, 0.6);
+    //         color: #fff;
+    //         text-align: center;
+    //         border-radius: 5px;
+    //         padding: 5px 0;
+    //         transition: 0.3s;
+    //         position: absolute;
+    //         z-index: 5;
+    //         left: 0;
+    //         // top: 110%;
+    //     }
+    // }
 
     /* 地圖檢視按鈕 */
     .foot-view-map {
@@ -725,6 +760,7 @@ $maxWidth: 376px;
         border-radius: 15px;
         z-index: 99;
         width: fit-content;
+        cursor: pointer;
     }
 
     .viewMapBtn {
@@ -765,6 +801,37 @@ $maxWidth: 376px;
         .viewMapBtn {
             color: #fff;
             background-color: rgba(255, 255, 255, 0);
+        }
+    }
+
+    input[type='radio'] {
+        appearance: none;
+        background-color: rgba(255, 255, 255, 0);
+        margin: 0;
+        width: 1em;
+        height: 1em;
+        border: 0.15em solid rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        display: grid;
+        place-content: center;
+
+        &:checked {
+            border-color: #ce59e7;
+            box-shadow: 1em 1em 1em #efbbfbc1;
+        }
+
+        &::before {
+            content: '';
+            width: 0.4em;
+            height: 0.4em;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em #ce59e7;
+        }
+
+        &:checked::before {
+            transform: scale(1);
         }
     }
 }

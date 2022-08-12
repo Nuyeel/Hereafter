@@ -103,7 +103,7 @@ router.post('/liked', async (req, res) => {
     res.json(output);
 });
 
-// TODO: 會員刪除收藏
+// 會員刪除收藏
 router.delete('/liked', async (req, res) => {
     // place_sid
     const sql = `DELETE FROM place_liked WHERE place_sid=? AND member_sid=?`;

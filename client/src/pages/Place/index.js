@@ -256,7 +256,7 @@ function Place(props) {
         });
     };
 
-    // 收藏
+    // 收藏(存&刪)
     const saveLikedPlace = async (e) => {
         const placeIndex = e.currentTarget
             .closest('.place-info-card')
@@ -265,21 +265,75 @@ function Place(props) {
         // 存到資料庫 place-liked
         // 1. 判斷有無登入
         if (authorized === true && userSid) {
-            // 2. 存到資料庫 place-liked
             const obj = { member_sid: userSid, place_sid: placeIndex };
+            const delEle = e.currentTarget;
+            if (!likedPlaceSidArr.includes(+placeIndex)) {
+                // 2. 存到資料庫 place-liked
+                delEle.classList.add('likedBtnCartBtnAnimation-add');
 
-            fetch(PLACE_LIKED_API, {
-                method: 'POST',
-                body: JSON.stringify(obj),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-                .then((r) => r.json())
-                .then((result) => {
-                    console.log(result);
-                    getMemberLikedData();
+                fetch(PLACE_LIKED_API, {
+                    method: 'POST',
+                    body: JSON.stringify(obj),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then((r) => r.json())
+                    .then((result) => {
+                        console.log(result);
+                        getMemberLikedData();
+                    });
+
+                setTimeout(() => {
+                    delEle.classList.remove('likedBtnCartBtnAnimation-add');
+                }, 500);
+            } else {
+                // 存收藏清單移除
+                const [delPlace] = displayLikedList.filter(
+                    (v) => v.sid === Number(placeIndex)
+                );
+                Swal.fire({
+                    title: '確認移除收藏',
+                    html: `<h5>是否將 <span style="color:#FF52BA">${delPlace.year}年 ${delPlace.month}月 於 ${delPlace.country} </span>轉生<br/>的良辰吉地移出您的收藏？<h5>`,
+                    imageUrl: soulIconAlert,
+                    imageHeight: 50,
+                    imageWidth: 50,
+                    confirmButtonText: '確認移除',
+                    showDenyButton: true,
+                    denyButtonText: '再等一下',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(PLACE_LIKED_API, {
+                            method: 'DELETE',
+                            body: JSON.stringify(obj),
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        })
+                            .then((r) => r.json())
+                            .then((result) => {
+                                console.log(result);
+                            });
+
+                        // 修改收藏的資料sid陣列
+                        const newSidArr = [...likedPlaceSidArr].filter(
+                            (v) => v !== +placeIndex
+                        );
+                        setLikedPlaceSidArr(newSidArr);
+
+                        // TODO: 愛心消除動畫
+                        delEle.classList.add('likedBtnCartBtnAnimation-add');
+
+                        setTimeout(() => {
+                            delEle.classList.remove(
+                                'likedBtnCartBtnAnimation-add'
+                            );
+                        }, 500);
+                    } else if (result.isDenied) {
+                        console.log('Nooooooo!');
+                    }
                 });
+            }
         } else {
             // 去登入光箱
             gotoLoginLighbox('收藏');
@@ -292,7 +346,7 @@ function Place(props) {
             .closest('.place-info-card')
             .getAttribute('data-placesid');
         // console.log(typeof placeIndex);
-
+        // TODO: 做閃爍動畫 || 提醒提示
         setViewLocationPlaceSid(placeIndex);
     };
 
