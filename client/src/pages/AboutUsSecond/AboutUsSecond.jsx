@@ -4,9 +4,11 @@ import HeaderContext, {
 } from '../../context/HeaderContext/HeaderContext';
 import { Link } from 'react-router-dom';
 import NameCard from './components/NameCard';
-import info from './data/info.json';
 import './StyleSecond.scss';
+//svg
 import { ReactComponent as Pagearrow } from './imgs/pagearrow.svg';
+//data
+import info from './data/info.json';
 
 // import ChatTwo from '../../components/Chat/ChatTwo';
 function AboutUsSecond(props) {
