@@ -195,6 +195,16 @@ const BodyData = {
         'Chocolate',
         'CadetBlue',
     ],
+    specialColorsid: [
+        'url(#paint0_linear_0)',
+        'url(#paint0_linear_1)',
+        'url(#paint0_linear_2)',
+        'url(#paint0_linear_3)',
+        'url(#paint0_linear_4)',
+        'url(#paint0_linear_5)',
+        'url(#paint0_linear_6)',
+        'url(#paint0_linear_7)',
+    ],
     specialColorsName: [
         '天藍',
         '石板藍',

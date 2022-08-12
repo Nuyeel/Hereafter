@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
+import './pageSelect.scss';
 
 function PageSelect(props) {
     const { page } = props;
@@ -25,19 +27,45 @@ function PageSelect(props) {
     };
 
     return (
-        <select
-            style={{
-                color: '#222',
-                position: 'fixed',
-                top: '130px',
-                left: '400px',
-            }}
-            value={pageSelect}
-            onChange={(e) => handlePageSelect(e)}
-        >
-            <option value={'place-list'}>列表</option>
-            <option value={'liked-place'}>我的收藏</option>
-        </select>
+        <>
+            <select
+                style={{
+                    color: '#222',
+                    position: 'fixed',
+                    top: '130px',
+                    left: '400px',
+                }}
+                value={pageSelect}
+                onChange={(e) => handlePageSelect(e)}
+            >
+                <option value={'place-list'}>列表</option>
+                <option value={'liked-place'}>我的收藏</option>
+            </select>
+
+            <div className="place-page-select">
+                <li className="show-page">
+                    <Link to="" className="page-select-link">
+                        列表
+                    </Link>
+
+                    <ul>
+                        <li className="page-option">
+                            <Link to="/place" className="page-select-link">
+                                列表
+                            </Link>
+                        </li>
+                        <li className="page-option">
+                            <Link
+                                to="/place-liked"
+                                className="page-select-link"
+                            >
+                                我的收藏
+                            </Link>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </>
     );
 }
 

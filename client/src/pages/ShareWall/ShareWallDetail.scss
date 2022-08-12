@@ -682,29 +682,35 @@
 
 .cpl-pcb-ita-text-content {
     line-height: normal;
-    padding-bottom: 1rem;
+    // padding-bottom: 1rem;
     border-bottom: 2px solid $accent-blue-50p;
     margin-bottom: 12px;
     // outline: 1px solid red;
-
+    
     // FIXME: 好不好看見仁見智 可以最後調整
     .cpl-pcb-ita-text-content-paragraph {
         text-align: justify;
+        // outline: 1px solid red;
+        margin-bottom: 1rem;
     }
 
     .cpl-pcb-ita-tc-isAuthor-button-area {
         font-size: $fz-caption;
         // outline: 1px solid red;
         position: relative;
-        bottom: -7px;
+        bottom: 7px;
     }
 
     .cpl-pcb-ita-tc-isAuthor-button {
+        border: none;
         background-color: $primary-50p;
+        color: $bgc-L-l !important;
         border-radius: 20px;
         filter: none !important;
+        outline: none !important;
         padding-left: 10px;
         padding-right: 10px;
+        padding-bottom: 2px;
         // width: 100px !important;
     }
 }
@@ -713,10 +719,11 @@
     .cpl-pcb-ita-text-content {
         min-height: 179px; // DONE: 初步修復無內容塌陷問題
         max-height: 179px; // DONE: 初步修復無內容塌陷問題
+        // outline: 1px solid green;
         
         // FIXME: 先稍微處理按鈕問題
         .cpl-pcb-ita-tc-isAuthor-button-area {
-            bottom: 15px !important;
+            bottom: 7px !important;
         }
     }
 }
@@ -917,6 +924,9 @@
         background-color: transparent !important;
         border: 1px solid $white-60p;
         border-radius: 20px;
+        filter: none !important;
+        outline: none !important;
+        box-shadow: none !important;
 
         &::placeholder {
             position: relative;

@@ -104,11 +104,11 @@ app.use(cors(corsOptions));
 
 // 解析 JSON
 // 驗證 (Content-Type: application/json) 才處理
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // body-parser
 // 驗證 (Content-Type: application/x-www-form-urlencoded) 才處理
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 app.use(cookieParser());
 
 // 處理 JWT

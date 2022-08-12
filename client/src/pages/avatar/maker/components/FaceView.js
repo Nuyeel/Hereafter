@@ -1,9 +1,146 @@
 import styled from '@emotion/styled';
 import FaceData from './FaceData';
 import BodyData from './BodyData';
+//MING: Basic引入
+import { ReactComponent as HeadSVG } from '../../../../images/avatar/basic/face.svg';
+import { ReactComponent as BodyLSVG } from '../../../../images/avatar/basic/body-l.svg';
+import { ReactComponent as BodyMSVG } from '../../../../images/avatar/basic/body-m.svg';
+import { ReactComponent as BodySSVG } from '../../../../images/avatar/basic/body-s.svg';
+import { ReactComponent as ArmLSVG } from '../../../../images/avatar/basic/arm-l.svg';
+import { ReactComponent as ArmMSVG } from '../../../../images/avatar/basic/arm-m.svg';
+import { ReactComponent as ArmSSVG } from '../../../../images/avatar/basic/arm-s.svg';
+import { ReactComponent as HandSVG } from '../../../../images/avatar/basic/hand-l.svg';
+import { ReactComponent as HandMSVG } from '../../../../images/avatar/basic/hand-m.svg';
+import { ReactComponent as HandSSVG } from '../../../../images/avatar/basic/hand-s.svg';
+
+//MING:可選身體元件引入
+//MING:手
+import { ReactComponent as HandSVGA } from '../../../../images/avatar/hand/hand-l-a.svg';
+import { ReactComponent as HandMSVGA } from '../../../../images/avatar/hand/hand-m-a.svg';
+import { ReactComponent as HandSSVGA } from '../../../../images/avatar/hand/hand-s-a.svg';
+import { ReactComponent as HandSVGB } from '../../../../images/avatar/hand/hand-l-b.svg';
+import { ReactComponent as HandMSVGB } from '../../../../images/avatar/hand/hand-m-b.svg';
+import { ReactComponent as HandSSVGB } from '../../../../images/avatar/hand/hand-s-b.svg';
+import { ReactComponent as HandSVGC } from '../../../../images/avatar/hand/hand-l-c.svg';
+import { ReactComponent as HandMSVGC } from '../../../../images/avatar/hand/hand-m-c.svg';
+import { ReactComponent as HandSSVGC } from '../../../../images/avatar/hand/hand-s-c.svg';
+import { ReactComponent as HandSVGD } from '../../../../images/avatar/hand/hand-l-d.svg';
+import { ReactComponent as HandMSVGD } from '../../../../images/avatar/hand/hand-m-d.svg';
+import { ReactComponent as HandSSVGD } from '../../../../images/avatar/hand/hand-s-d.svg';
+
+//MING:臉
+//MING:頭髮
+//MING:前髮
+import { ReactComponent as HairFrontSVGA } from '../../../../images/avatar/hair/front-hair-a.svg';
+import { ReactComponent as HairFrontSVGB } from '../../../../images/avatar/hair/front-hair-b.svg';
+import { ReactComponent as HairFrontSVGC } from '../../../../images/avatar/hair/front-hair-c.svg';
+import { ReactComponent as HairFrontSVGD } from '../../../../images/avatar/hair/front-hair-d.svg';
+import { ReactComponent as HairFrontSVGE } from '../../../../images/avatar/hair/front-hair-e.svg';
+
+//MING:後髮
+import { ReactComponent as HairBackSVGA } from '../../../../images/avatar/hair/back-hair-a.svg';
+import { ReactComponent as HairBackSVGB } from '../../../../images/avatar/hair/back-hair-b.svg';
+import { ReactComponent as HairBackSVGC } from '../../../../images/avatar/hair/back-hair-c.svg';
+import { ReactComponent as HairBackSVGD } from '../../../../images/avatar/hair/back-hair-d.svg';
+import { ReactComponent as HairBackSVGE } from '../../../../images/avatar/hair/back-hair-e.svg';
+
+//MING:耳朵
+import { ReactComponent as EarSVGA } from '../../../../images/avatar/ear/ear-a.svg';
+import { ReactComponent as EarSVGB } from '../../../../images/avatar/ear/ear-b.svg';
+import { ReactComponent as EarSVGC } from '../../../../images/avatar/ear/ear-c.svg';
+import { ReactComponent as EarSVGD } from '../../../../images/avatar/ear/ear-d.svg';
+import { ReactComponent as EarSVG } from '../../../../images/avatar/ear/ear-default.svg';
+//MING:獸耳
+import { ReactComponent as TopEarSVGA } from '../../../../images/avatar/topear/topear-a.svg';
+import { ReactComponent as TopEarSVGB } from '../../../../images/avatar/topear/topear-b.svg';
+import { ReactComponent as TopEarSVGC } from '../../../../images/avatar/topear/topear-c.svg';
+import { ReactComponent as TopEarSVGD } from '../../../../images/avatar/topear/topear-d.svg';
+import { ReactComponent as TopEarSVGE } from '../../../../images/avatar/topear/topear-e.svg';
+import { ReactComponent as TopEarSVGF } from '../../../../images/avatar/topear/topear-f.svg';
+//MING:眼睛
+import { ReactComponent as EyeSVGA } from '../../../../images/avatar/eye/eye-a.svg';
+import { ReactComponent as EyeSVGB } from '../../../../images/avatar/eye/eye-b.svg';
+import { ReactComponent as EyeSVGC } from '../../../../images/avatar/eye/eye-c.svg';
+import { ReactComponent as EyeSVGD } from '../../../../images/avatar/eye/eye-d.svg';
+import { ReactComponent as EyeSVGE } from '../../../../images/avatar/eye/eye-e.svg';
+//MING:鼻子
+import { ReactComponent as NoseSVGA } from '../../../../images/avatar/nose/nose-a.svg';
+import { ReactComponent as NoseSVGB } from '../../../../images/avatar/nose/nose-b.svg';
+import { ReactComponent as NoseSVGC } from '../../../../images/avatar/nose/nose-c.svg';
+import { ReactComponent as NoseSVGD } from '../../../../images/avatar/nose/nose-d.svg';
+import { ReactComponent as NoseSVGE } from '../../../../images/avatar/nose/nose-e.svg';
+//MING:嘴巴
+import { ReactComponent as LipSVGA } from '../../../../images/avatar/lip/lip-a.svg';
+import { ReactComponent as LipSVGB } from '../../../../images/avatar/lip/lip-b.svg';
+import { ReactComponent as LipSVGC } from '../../../../images/avatar/lip/lip-c.svg';
+import { ReactComponent as LipSVGD } from '../../../../images/avatar/lip/lip-d.svg';
+import { ReactComponent as LipSVGE } from '../../../../images/avatar/lip/lip-e.svg';
 
 function FaceView(props) {
     const { controlChange, combination } = props;
+    const BodyArray = [<BodySSVG />, <BodyMSVG />, <BodyLSVG />];
+    const ArmArray = [<ArmSSVG />, <ArmMSVG />, <ArmLSVG />];
+    const HandArray = [
+        [<HandSSVG />, <HandMSVG />, <HandSVG />],
+        [<HandSSVGA />, <HandMSVGA />, <HandSVGA />],
+        [<HandSSVGB />, <HandMSVGB />, <HandSVGB />],
+        [<HandSSVGC />, <HandMSVGC />, <HandSVGC />],
+        [<HandSSVGD />, <HandMSVGD />, <HandSVGD />],
+    ];
+    const HairFrontArray = [
+        <HairFrontSVGA />,
+        <HairFrontSVGB />,
+        <HairFrontSVGC />,
+        <HairFrontSVGD />,
+        <HairFrontSVGE />,
+    ];
+    const HairBackArray = [
+        '',
+        <HairBackSVGA />,
+        <HairBackSVGB />,
+        <HairBackSVGC />,
+        <HairBackSVGD />,
+        <HairBackSVGE />,
+    ];
+    const EarArray = [
+        <EarSVG />,
+        <EarSVGA />,
+        <EarSVGB />,
+        <EarSVGC />,
+        <EarSVGD />,
+    ];
+    const TopEarArray = [
+        '',
+        <TopEarSVGA />,
+        <TopEarSVGB />,
+        <TopEarSVGC />,
+        <TopEarSVGD />,
+        <TopEarSVGE />,
+        <TopEarSVGF />,
+    ];
+    const EyeArray = [
+        <EyeSVGA />,
+        <EyeSVGB />,
+        <EyeSVGC />,
+        <EyeSVGD />,
+        <EyeSVGE />,
+    ];
+    const NoseArray = [
+        '',
+        <NoseSVGA />,
+        <NoseSVGB />,
+        <NoseSVGC />,
+        <NoseSVGD />,
+        <NoseSVGE />,
+    ];
+    const LipArray = [
+        '',
+        <LipSVGA />,
+        <LipSVGB />,
+        <LipSVGC />,
+        <LipSVGD />,
+        <LipSVGE />,
+    ];
     const FaceView = styled.div`
         position: relative;
         top: 23%;
@@ -16,263 +153,167 @@ function FaceView(props) {
     `;
     const Body = styled.div`
         position: absolute;
-        top: 74%;
-        left: -3%;
-        width: 246px;
-        height: 147.6px;
-        mask-image: url(${BodyData['bodycenter'][combination['basic'][0]]});
-        -webkit-mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+        }
     `;
     const Arm = styled.div`
         position: absolute;
-        top: 47%;
-        left: -65%;
-        width: 530.4px;
-        height: 122.4px;
-        mask-image: url(${BodyData['arm'][combination['basic'][1]]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+        }
     `;
-    const handLPosition = [
-        { top: '38%', left: '-42%' },
-        { top: '100%', left: '7.2%' },
-        { top: '100%', left: '3%' },
-    ];
-    const HandL = styled.div`
+    const Hand = styled.div`
         position: absolute;
-        top: ${handLPosition[combination['basic'][1]]['top']};
-        left: ${handLPosition[combination['basic'][1]]['left']};
-        width: 122.4px;
-        height: 122.4px;
-        mask-image: url(${BodyData['hand'][combination['body']['hand']][
-            'left'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+            path.palm {
+                fill: #555555;
+                fill-opacity: 0.3;
+            }
+        }
     `;
-    const HandPalmL = styled.div`
-        position: absolute;
-        top: ${handLPosition[combination['basic'][1]]['top']};
-        left: ${handLPosition[combination['basic'][1]]['left']};
-        width: 122.4px;
-        height: 122.4px;
-        mask-image: url(${BodyData['hand'][combination['body']['hand']][
-            'palmLeft'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: #555;
-        opacity: 0.3;
-    `;
-    const handRPosition = [
-        { top: '38%', left: '88%' },
-        { top: '100%', left: '71%' },
-        { top: '100%', left: '75.5%' },
-    ];
-    const HandR = styled.div`
-        position: absolute;
-        top: ${handRPosition[combination['basic'][1]]['top']};
-        left: ${handRPosition[combination['basic'][1]]['left']};
-        width: 122.4px;
-        height: 122.4px;
-        mask-image: url(${BodyData['hand'][combination['body']['hand']][
-            'right'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
-    `;
-    const HandPalmR = styled.div`
-        position: absolute;
-        top: ${handRPosition[combination['basic'][1]]['top']};
-        left: ${handRPosition[combination['basic'][1]]['left']};
-        width: 102px;
-        height: 102px;
-        mask-image: url(${BodyData['hand'][combination['body']['hand']][
-            'palmRight'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: #555;
-        opacity: 0.3;
-    `;
+
     const Face = styled.div`
         position: absolute;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        left: 50%;
-        width: 130.8px;
-        height: 114px;
-        mask-image: url(${BodyData['head'][0]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+        }
     `;
     const Eye = styled.div`
         position: absolute;
-        top: 3%;
-        left: 0%;
-        width: 130.8px;
-        height: 81.6px;
-        mask-image: url(${FaceData['eye'][combination['face']['eye']]['eye']});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${FaceData['eyeColors'][
-            combination['face_color']['eye']
-        ]};
-    `;
-    const EyeWhite = styled.div`
-        position: absolute;
-        top: 3%;
-        left: 0%;
-        width: 130.8px;
-        height: 81.6px;
-        mask-image: url(${FaceData['eye'][combination['face']['eye']]['eyeW']});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: #fff;
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+            path {
+                fill: #ffffff;
+            }
+            path.pupil {
+                fill: ${FaceData['eyeColors'][
+                    combination['face_color']['eye']
+                ]};
+            }
+        }
     `;
     const Ear = styled.div`
         position: absolute;
-        top: 28%;
-        left: 1%;
-        width: 224.4px;
-        height: 114px;
-        mask-image: url(${FaceData['ear'][combination['face']['ear']]['src']});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+        }
         display: ${combination['face']['topEar'] > 0 ? 'none' : 'block'};
     `;
     const TopEar = styled.div`
         position: absolute;
-        top: -0.8%;
-        left: 2%;
-        width: 224.4px;
-        height: 142.8px;
-        -webkit-mask-image: url(${FaceData['topEar'][
-            combination['face']['topEar']
-        ]['src']});
-        mask-image: url(${FaceData['topEar'][combination['face']['topEar']][
-            'src'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${FaceData['topEarColors'][
-            combination['face_color']['topEar']
-        ]};
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+            path {
+                fill: ${FaceData['topEarColors'][
+                    combination['face_color']['topEar']
+                ]};
+            }
+        }
     `;
     const Nose = styled.div`
         position: absolute;
-        top: 55.5%;
-        left: 38%;
-        width: 32.4px;
-        height: 32.4px;
-        -webkit-mask-image: url(${FaceData['nose'][combination['face']['nose']][
-            'nose'
-        ]});
-        mask-image: url(${FaceData['nose'][combination['face']['nose']][
-            'src'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${FaceData['noseColors'][
-            combination['face_color']['nose']
-        ]};
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+            path {
+                fill: ${FaceData['noseColors'][
+                    combination['face_color']['nose']
+                ]};
+            }
+        }
     `;
     const Lip = styled.div`
         position: absolute;
-        top: 76%;
-        left: 31%;
-        width: 61.2px;
-        height: 30px;
-        background: url(${FaceData['lip'][combination['face']['lip']]['src']});
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+        }
     `;
     const HairFront = styled.div`
         position: absolute;
-        top: -0.5%;
-        left: -16%;
-        width: 270px;
-        height: 142.8px;
-        -webkit-mask-image: url(${FaceData['hairFront'][
-            combination['face']['hairFront']
-        ]['src']});
-        mask-image: url(${FaceData['hairFront'][
-            combination['face']['hairFront']
-        ]['src']});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${FaceData['hairColors'][
-            combination['face_color']['hairFront']
-        ]};
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+            path {
+                fill: ${FaceData['hairColors'][
+                    combination['face_color']['hairFront']
+                ]};
+            }
+        }
     `;
     const HairBack = styled.div`
         position: absolute;
-        top: 6%;
-        left: -29.9%;
-        width: 362.4px;
-        height: 248.4px;
-        -webkit-mask-image: url(${FaceData['hairBack'][
-            combination['face']['hairBack']
-        ]['src']});
-        mask-image: url(${FaceData['hairBack'][combination['face']['hairBack']][
-            'src'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${FaceData['hairColors'][
-            combination['face_color']['hairFront']
-        ]};
+        left: -68%;
+        svg {
+            width: 550px;
+            height: 550px;
+            path {
+                fill: ${FaceData['hairColors'][
+                    combination['face_color']['hairFront']
+                ]};
+            }
+        }
     `;
     return (
         <>
             <FaceView>
-                <HairBack></HairBack>
-                <Ear></Ear>
-                <TopEar></TopEar>
+                <HairBack>
+                    {HairBackArray[combination['face']['hairBack']]}
+                </HairBack>
+                <Ear>{EarArray[combination['face']['ear']]}</Ear>
+                <TopEar>{TopEarArray[combination['face']['topEar']]}</TopEar>
                 <Face>
-                    <EyeWhite></EyeWhite>
-                    <Eye></Eye>
-                    <Nose></Nose>
-                    <Lip></Lip>
+                    <HeadSVG />
                 </Face>
-                <HairFront></HairFront>
-                <Body></Body>
-                <Arm></Arm>
-                <HandL></HandL>
-                <HandPalmL></HandPalmL>
-                <HandR></HandR>
-                <HandPalmR></HandPalmR>
+                <Eye>{EyeArray[combination['face']['eye']]}</Eye>
+                <Lip>{LipArray[combination['face']['lip']]}</Lip>
+                <Nose>{NoseArray[combination['face']['nose']]}</Nose>
+                <HairFront>
+                    {HairFrontArray[combination['face']['hairFront']]}
+                </HairFront>
+                <Body>{BodyArray[combination['basic'][0]]}</Body>
+                <Arm>{ArmArray[combination['basic'][1]]}</Arm>
+                <Hand>
+                    {
+                        HandArray[combination['body']['hand']][
+                            combination['basic'][1]
+                        ]
+                    }
+                </Hand>
             </FaceView>
         </>
     );

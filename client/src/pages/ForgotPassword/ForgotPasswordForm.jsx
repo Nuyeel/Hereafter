@@ -19,6 +19,12 @@ function ForgotPasswordForm() {
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     // const navigate = useNavigate();
 
+    const [btnCssClassname, setBtnCssClassname] = useState(
+        'btn-member btn-member-l btn-member-pri btn-member-outline-light'
+    );
+
+    const [btnName, setBtnName] = useState('接收驗證信');
+
     const handleFieldsChange = (e) => {
         const id = e.target.id;
         const val = e.target.value;
@@ -42,18 +48,19 @@ function ForgotPasswordForm() {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    // localStorage.setItem('auth', JSON.stringify(result.data));
-                    // setAuth({
-                    //     ...result.data,
-                    //     authorized: true,
-                    // });
+                    setBtnCssClassname(
+                        'btn-member btn-member-l btn-member-outline-light btn-member-sent'
+                    );
+                    setBtnName('已發送');
                     Swal.fire('請前往信箱接收驗證信');
                 } else {
                     Swal.fire('帳戶或電子信箱有誤');
+                    setBtnCssClassname(
+                        'btn-member btn-member-l btn-member-outline-light btn-member-pri'
+                    );
                 }
             });
     };
-
     return (
         <>
             {authorized ? (
@@ -130,9 +137,9 @@ function ForgotPasswordForm() {
                                             <div className="d-flex justify-content-center">
                                                 <button
                                                     type="submit"
-                                                    className="btn-member btn-member-l btn-member-pri btn-member-outline-light "
+                                                    className={btnCssClassname}
                                                 >
-                                                    接收驗證信
+                                                    {btnName}
                                                 </button>
                                             </div>
                                             <br />

@@ -1,13 +1,113 @@
 import { useCallback, useRef, useContext } from 'react';
-import { toPng } from 'html-to-image';
+import { toPng, toSvg } from 'html-to-image';
 import styled from '@emotion/styled';
 import BodyData from './BodyData';
 import FaceData from './FaceData';
 import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
 import { Avatar_Update } from '../../../../config/ajax-path';
 import axios from 'axios';
-import { ReactComponent as Soul } from '../../../../images/Nav/nav_soul.svg';
+import Soul from '../../components/Soul.js';
 import Swal from 'sweetalert2';
+
+//MING: Basic引入
+import { ReactComponent as HeadSVG } from '../../../../images/avatar/basic/face.svg';
+import { ReactComponent as BodyLSVG } from '../../../../images/avatar/basic/body-l.svg';
+import { ReactComponent as BodyMSVG } from '../../../../images/avatar/basic/body-m.svg';
+import { ReactComponent as BodySSVG } from '../../../../images/avatar/basic/body-s.svg';
+import { ReactComponent as ArmLSVG } from '../../../../images/avatar/basic/arm-l.svg';
+import { ReactComponent as ArmMSVG } from '../../../../images/avatar/basic/arm-m.svg';
+import { ReactComponent as ArmSSVG } from '../../../../images/avatar/basic/arm-s.svg';
+import { ReactComponent as LegLSVG } from '../../../../images/avatar/basic/leg-l.svg';
+import { ReactComponent as LegMSVG } from '../../../../images/avatar/basic/leg-m.svg';
+import { ReactComponent as LegSSVG } from '../../../../images/avatar/basic/leg-s.svg';
+import { ReactComponent as HandLSVG } from '../../../../images/avatar/basic/hand-l.svg';
+import { ReactComponent as HandMSVG } from '../../../../images/avatar/basic/hand-m.svg';
+import { ReactComponent as HandSSVG } from '../../../../images/avatar/basic/hand-s.svg';
+import { ReactComponent as FootSSVG } from '../../../../images/avatar/basic/foot-s.svg';
+import { ReactComponent as FootMSVG } from '../../../../images/avatar/basic/foot-m.svg';
+import { ReactComponent as FootLSVG } from '../../../../images/avatar/basic/foot-l.svg';
+
+//MING:可選身體元件引入
+//MING:手
+import { ReactComponent as HandLSVGA } from '../../../../images/avatar/hand/hand-l-a.svg';
+import { ReactComponent as HandMSVGA } from '../../../../images/avatar/hand/hand-m-a.svg';
+import { ReactComponent as HandSSVGA } from '../../../../images/avatar/hand/hand-s-a.svg';
+import { ReactComponent as HandLSVGB } from '../../../../images/avatar/hand/hand-l-b.svg';
+import { ReactComponent as HandMSVGB } from '../../../../images/avatar/hand/hand-m-b.svg';
+import { ReactComponent as HandSSVGB } from '../../../../images/avatar/hand/hand-s-b.svg';
+import { ReactComponent as HandLSVGC } from '../../../../images/avatar/hand/hand-l-c.svg';
+import { ReactComponent as HandMSVGC } from '../../../../images/avatar/hand/hand-m-c.svg';
+import { ReactComponent as HandSSVGC } from '../../../../images/avatar/hand/hand-s-c.svg';
+import { ReactComponent as HandLSVGD } from '../../../../images/avatar/hand/hand-l-d.svg';
+import { ReactComponent as HandMSVGD } from '../../../../images/avatar/hand/hand-m-d.svg';
+import { ReactComponent as HandSSVGD } from '../../../../images/avatar/hand/hand-s-d.svg';
+
+//MING:腳
+import { ReactComponent as FootLSVGA } from '../../../../images/avatar/foot/foot-l-a.svg';
+import { ReactComponent as FootMSVGA } from '../../../../images/avatar/foot/foot-m-a.svg';
+import { ReactComponent as FootSSVGA } from '../../../../images/avatar/foot/foot-s-a.svg';
+import { ReactComponent as FootLSVGB } from '../../../../images/avatar/foot/foot-l-b.svg';
+import { ReactComponent as FootMSVGB } from '../../../../images/avatar/foot/foot-m-b.svg';
+import { ReactComponent as FootSSVGB } from '../../../../images/avatar/foot/foot-s-b.svg';
+import { ReactComponent as FootLSVGC } from '../../../../images/avatar/foot/foot-l-c.svg';
+import { ReactComponent as FootMSVGC } from '../../../../images/avatar/foot/foot-m-c.svg';
+import { ReactComponent as FootSSVGC } from '../../../../images/avatar/foot/foot-s-c.svg';
+import { ReactComponent as FootLSVGD } from '../../../../images/avatar/foot/foot-l-d.svg';
+import { ReactComponent as FootMSVGD } from '../../../../images/avatar/foot/foot-m-d.svg';
+import { ReactComponent as FootSSVGD } from '../../../../images/avatar/foot/foot-s-d.svg';
+
+//MING:特殊
+import { ReactComponent as TaleSVG } from '../../../../images/avatar/tale/tail-a.svg';
+import { ReactComponent as SpecialSVGA } from '../../../../images/avatar/special/tail-special-a.svg';
+import { ReactComponent as SpecialSVGB } from '../../../../images/avatar/special/tail-special-b.svg';
+
+//MING:臉
+//MING:頭髮
+//MING:前髮
+import { ReactComponent as HairFrontSVGA } from '../../../../images/avatar/hair/front-hair-a.svg';
+import { ReactComponent as HairFrontSVGB } from '../../../../images/avatar/hair/front-hair-b.svg';
+import { ReactComponent as HairFrontSVGC } from '../../../../images/avatar/hair/front-hair-c.svg';
+import { ReactComponent as HairFrontSVGD } from '../../../../images/avatar/hair/front-hair-d.svg';
+import { ReactComponent as HairFrontSVGE } from '../../../../images/avatar/hair/front-hair-e.svg';
+
+//MING:後髮
+import { ReactComponent as HairBackSVGA } from '../../../../images/avatar/hair/back-hair-a.svg';
+import { ReactComponent as HairBackSVGB } from '../../../../images/avatar/hair/back-hair-b.svg';
+import { ReactComponent as HairBackSVGC } from '../../../../images/avatar/hair/back-hair-c.svg';
+import { ReactComponent as HairBackSVGD } from '../../../../images/avatar/hair/back-hair-d.svg';
+import { ReactComponent as HairBackSVGE } from '../../../../images/avatar/hair/back-hair-e.svg';
+
+//MING:耳朵
+import { ReactComponent as EarSVGA } from '../../../../images/avatar/ear/ear-a.svg';
+import { ReactComponent as EarSVGB } from '../../../../images/avatar/ear/ear-b.svg';
+import { ReactComponent as EarSVGC } from '../../../../images/avatar/ear/ear-c.svg';
+import { ReactComponent as EarSVGD } from '../../../../images/avatar/ear/ear-d.svg';
+import { ReactComponent as EarSVG } from '../../../../images/avatar/ear/ear-default.svg';
+//MING:獸耳
+import { ReactComponent as TopEarSVGA } from '../../../../images/avatar/topear/topear-a.svg';
+import { ReactComponent as TopEarSVGB } from '../../../../images/avatar/topear/topear-b.svg';
+import { ReactComponent as TopEarSVGC } from '../../../../images/avatar/topear/topear-c.svg';
+import { ReactComponent as TopEarSVGD } from '../../../../images/avatar/topear/topear-d.svg';
+import { ReactComponent as TopEarSVGE } from '../../../../images/avatar/topear/topear-e.svg';
+import { ReactComponent as TopEarSVGF } from '../../../../images/avatar/topear/topear-f.svg';
+//MING:眼睛
+import { ReactComponent as EyeSVGA } from '../../../../images/avatar/eye/eye-a.svg';
+import { ReactComponent as EyeSVGB } from '../../../../images/avatar/eye/eye-b.svg';
+import { ReactComponent as EyeSVGC } from '../../../../images/avatar/eye/eye-c.svg';
+import { ReactComponent as EyeSVGD } from '../../../../images/avatar/eye/eye-d.svg';
+import { ReactComponent as EyeSVGE } from '../../../../images/avatar/eye/eye-e.svg';
+//MING:鼻子
+import { ReactComponent as NoseSVGA } from '../../../../images/avatar/nose/nose-a.svg';
+import { ReactComponent as NoseSVGB } from '../../../../images/avatar/nose/nose-b.svg';
+import { ReactComponent as NoseSVGC } from '../../../../images/avatar/nose/nose-c.svg';
+import { ReactComponent as NoseSVGD } from '../../../../images/avatar/nose/nose-d.svg';
+import { ReactComponent as NoseSVGE } from '../../../../images/avatar/nose/nose-e.svg';
+//MING:嘴巴
+import { ReactComponent as LipSVGA } from '../../../../images/avatar/lip/lip-a.svg';
+import { ReactComponent as LipSVGB } from '../../../../images/avatar/lip/lip-b.svg';
+import { ReactComponent as LipSVGC } from '../../../../images/avatar/lip/lip-c.svg';
+import { ReactComponent as LipSVGD } from '../../../../images/avatar/lip/lip-d.svg';
+import { ReactComponent as LipSVGE } from '../../../../images/avatar/lip/lip-e.svg';
 
 function CenterPart(props) {
     const {
@@ -20,8 +120,83 @@ function CenterPart(props) {
         backtoShowCase,
     } = props;
     const ref = useRef(null);
-
     const { theme } = useContext(ThemeContext);
+
+    //MING:素材陣列
+    const BodyArray = [<BodySSVG />, <BodyMSVG />, <BodyLSVG />];
+    const ArmArray = [<ArmSSVG />, <ArmMSVG />, <ArmLSVG />];
+    const LegArray = [<LegSSVG />, <LegMSVG />, <LegLSVG />];
+    const HandArray = [
+        [<HandSSVG />, <HandMSVG />, <HandLSVG />],
+        [<HandSSVGA />, <HandMSVGA />, <HandLSVGA />],
+        [<HandSSVGB />, <HandMSVGB />, <HandLSVGB />],
+        [<HandSSVGC />, <HandMSVGC />, <HandLSVGC />],
+        [<HandSSVGD />, <HandMSVGD />, <HandLSVGD />],
+    ];
+    const FootArray = [
+        [<FootSSVG />, <FootMSVG />, <FootLSVG />],
+        [<FootSSVGA />, <FootMSVGA />, <FootLSVGA />],
+        [<FootSSVGB />, <FootMSVGB />, <FootLSVGB />],
+        [<FootSSVGC />, <FootMSVGC />, <FootLSVGC />],
+        [<FootSSVGD />, <FootMSVGD />, <FootLSVGD />],
+    ];
+    const TaleArray = ['', <TaleSVG />];
+    const SpecialArray = ['', <SpecialSVGA />, <SpecialSVGB />];
+    const HairFrontArray = [
+        <HairFrontSVGA />,
+        <HairFrontSVGB />,
+        <HairFrontSVGC />,
+        <HairFrontSVGD />,
+        <HairFrontSVGE />,
+    ];
+    const HairBackArray = [
+        '',
+        <HairBackSVGA />,
+        <HairBackSVGB />,
+        <HairBackSVGC />,
+        <HairBackSVGD />,
+        <HairBackSVGE />,
+    ];
+    const EarArray = [
+        <EarSVG />,
+        <EarSVGA />,
+        <EarSVGB />,
+        <EarSVGC />,
+        <EarSVGD />,
+    ];
+    const TopEarArray = [
+        '',
+        <TopEarSVGA />,
+        <TopEarSVGB />,
+        <TopEarSVGC />,
+        <TopEarSVGD />,
+        <TopEarSVGE />,
+        <TopEarSVGF />,
+    ];
+    const EyeArray = [
+        <EyeSVGA />,
+        <EyeSVGB />,
+        <EyeSVGC />,
+        <EyeSVGD />,
+        <EyeSVGE />,
+    ];
+    const NoseArray = [
+        '',
+        <NoseSVGA />,
+        <NoseSVGB />,
+        <NoseSVGC />,
+        <NoseSVGD />,
+        <NoseSVGE />,
+    ];
+    const LipArray = [
+        '',
+        <LipSVGA />,
+        <LipSVGB />,
+        <LipSVGC />,
+        <LipSVGD />,
+        <LipSVGE />,
+    ];
+    //MING:總價計算
     const avatarTotalPrice =
         BodyData['hand'][combination['body']['hand']]['price'] +
         (combination['body']['special']
@@ -98,8 +273,8 @@ function CenterPart(props) {
         await toPng(ref.current, {
             cacheBust: true,
             pixelRatio: 1.2,
-            canvasWidth: 535,
-            canvasHeight: 535,
+            canvasWidth: 900,
+            canvasHeight: 900,
         })
             .then((dataUrl) => {
                 const link = document.createElement('a');
@@ -164,389 +339,150 @@ function CenterPart(props) {
     //*MING:Body區
     const Face = styled.div`
         position: absolute;
-        top: 15.2%;
-        left: 38.6%;
-        width: 109px;
-        height: 95px;
-        mask-image: url(${BodyData['head'][0]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        svg {
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+        }
     `;
     const Body = styled.div`
         position: absolute;
-        top: 35.8%;
-        left: 28%;
-        width: 205px;
-        height: 136px;
-        mask-image: url(${BodyData['bodycenter'][combination['basic'][0]]});
-        -webkit-mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        svg {
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+        }
     `;
     const Arm = styled.div`
         position: absolute;
-        top: 24%;
-        left: 1.8%;
-        width: 442px;
-        height: 102px;
-        mask-image: url(${BodyData['arm'][combination['basic'][1]]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        svg {
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+        }
     `;
-    const handLPosition = [
-        { top: '20.5%', left: '12%' },
-        { top: '15%', left: '7.2%' },
-        { top: '11.5%', left: '3%' },
-    ];
-    const HandL = styled.div`
+    const Hand = styled.div`
         position: absolute;
-        top: ${handLPosition[combination['basic'][1]]['top']};
-        left: ${handLPosition[combination['basic'][1]]['left']};
-        width: 102px;
-        height: 102px;
-        mask-image: url(${BodyData['hand'][combination['body']['hand']][
-            'left'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
-    `;
-    const HandPalmL = styled.div`
-        position: absolute;
-        top: ${handLPosition[combination['basic'][1]]['top']};
-        left: ${handLPosition[combination['basic'][1]]['left']};
-        width: 102px;
-        height: 102px;
-        mask-image: url(${BodyData['hand'][combination['body']['hand']][
-            'palmLeft'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: #555;
-        opacity: 0.3;
-    `;
-    const handRPosition = [
-        { top: '20.5%', left: '66.5%' },
-        { top: '15%', left: '71%' },
-        { top: '11.5%', left: '75.5%' },
-    ];
-    const HandR = styled.div`
-        position: absolute;
-        top: ${handRPosition[combination['basic'][1]]['top']};
-        left: ${handRPosition[combination['basic'][1]]['left']};
-        width: 102px;
-        height: 102px;
-        mask-image: url(${BodyData['hand'][combination['body']['hand']][
-            'right'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
-    `;
-    const HandPalmR = styled.div`
-        position: absolute;
-        top: ${handRPosition[combination['basic'][1]]['top']};
-        left: ${handRPosition[combination['basic'][1]]['left']};
-        width: 102px;
-        height: 102px;
-        mask-image: url(${BodyData['hand'][combination['body']['hand']][
-            'palmRight'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: #555;
-        opacity: 0.3;
+        svg {
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+            path.palm {
+                fill: #555555;
+                fill-opacity: 0.3;
+            }
+        }
     `;
     const Leg = styled.div`
         position: absolute;
-        top: 54%;
-        left: 1.5%;
-        width: 442px;
-        height: 170px;
-        -webkit-mask-image: url(${BodyData['leg'][combination['basic'][2]]});
-        mask-image: url(${BodyData['leg'][combination['basic'][2]]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        svg {
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+        }
         display: ${combination['body']['special'] > 0 ? 'none' : 'block'};
     `;
-    const footLPosition = [
-        { top: '62%', left: '7.5%' },
-        { top: '67.5%', left: '5%' },
-        { top: '79%', left: '2.5%' },
-    ];
-    const FootL = styled.div`
+    const Foot = styled.div`
         position: absolute;
-        top: ${footLPosition[combination['basic'][2]]['top']};
-        left: ${footLPosition[combination['basic'][2]]['left']};
-        width: 153px;
-        height: 85px;
-        -webkit-mask-image: url(${BodyData['foot'][combination['body']['foot']][
-            'left'
-        ][combination['basic'][2]]});
-        mask-image: url(${BodyData['foot'][combination['body']['foot']]['left'][
-            combination['basic'][2]
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        svg {
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+            path.palm {
+                fill: #555555;
+                fill-opacity: 0.3;
+            }
+        }
         display: ${combination['body']['special'] > 0 ? 'none' : 'block'};
     `;
-    const FootPalmL = styled.div`
-        position: absolute;
-        top: ${footLPosition[combination['basic'][2]]['top']};
-        left: ${footLPosition[combination['basic'][2]]['left']};
-        width: 153px;
-        height: 85px;
-        -webkit-mask-image: url(${BodyData['foot'][combination['body']['foot']][
-            'palmLeft'
-        ][combination['basic'][2]]});
-        mask-image: url(${BodyData['foot'][combination['body']['foot']][
-            'palmLeft'
-        ][combination['basic'][2]]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: #555;
-        opacity: 0.3;
-        display: ${combination['body']['special'] > 0 ? 'none' : 'block'};
-    `;
-    const footRPosition = [
-        { top: '62%', left: '59.5%' },
-        { top: '67.5%', left: '62.2%' },
-        { top: '79%', left: '64.5%' },
-    ];
-    const FootR = styled.div`
-        position: absolute;
-        top: ${footRPosition[combination['basic'][2]]['top']};
-        left: ${footRPosition[combination['basic'][2]]['left']};
-        width: 153px;
-        height: 85px;
-        -webkit-mask-image: url(${BodyData['foot'][combination['body']['foot']][
-            'right'
-        ][combination['basic'][2]]});
-        mask-image: url(${BodyData['foot'][combination['body']['foot']][
-            'right'
-        ][combination['basic'][2]]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
-        display: ${combination['body']['special'] > 0 ? 'none' : 'block'};
-    `;
-    const FootPalmR = styled.div`
-        position: absolute;
-        top: ${footRPosition[combination['basic'][2]]['top']};
-        left: ${footRPosition[combination['basic'][2]]['left']};
-        width: 153px;
-        height: 85px;
-        -webkit-mask-image: url(${BodyData['foot'][combination['body']['foot']][
-            'palmRight'
-        ][combination['basic'][2]]});
-        mask-image: url(${BodyData['foot'][combination['body']['foot']][
-            'palmRight'
-        ][combination['basic'][2]]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: #555;
-        opacity: 0.3;
-        display: ${combination['body']['special'] > 0 ? 'none' : 'block'};
-    `;
-    //MING:Face區
+    //MING:臉區
     const Eye = styled.div`
         position: absolute;
-        top: 0%;
-        left: 0%;
-        width: 109px;
-        height: 68px;
-        mask-image: url(${FaceData['eye'][combination['face']['eye']]['eye']});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${FaceData['eyeColors'][
-            combination['face_color']['eye']
-        ]};
-    `;
-    const EyeWhite = styled.div`
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        width: 109px;
-        height: 68px;
-        mask-image: url(${FaceData['eye'][combination['face']['eye']]['eyeW']});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: #fff;
+        svg {
+            path {
+                fill: #ffffff;
+            }
+            path.pupil {
+                fill: ${FaceData['eyeColors'][
+                    combination['face_color']['eye']
+                ]};
+            }
+        }
     `;
     const Ear = styled.div`
         position: absolute;
-        top: 15.5%;
-        left: 30%;
-        width: 187px;
-        height: 95px;
-        mask-image: url(${FaceData['ear'][combination['face']['ear']]['src']});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['basicColors'][
-            combination['basic_color']
-        ]};
+        svg {
+            path {
+                fill: ${BodyData['basicColors'][combination['basic_color']]};
+            }
+        }
         display: ${combination['face']['topEar'] > 0 ? 'none' : 'block'};
     `;
     const TopEar = styled.div`
         position: absolute;
-        top: 3%;
-        left: 30%;
-        width: 187px;
-        height: 119px;
-        -webkit-mask-image: url(${FaceData['topEar'][
-            combination['face']['topEar']
-        ]['src']});
-        mask-image: url(${FaceData['topEar'][combination['face']['topEar']][
-            'src'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${FaceData['topEarColors'][
-            combination['face_color']['topEar']
-        ]};
+        svg {
+            path {
+                fill: ${FaceData['topEarColors'][
+                    combination['face_color']['topEar']
+                ]};
+            }
+        }
     `;
     const Nose = styled.div`
         position: absolute;
-        top: 53.5%;
-        left: 38.2%;
-        width: 27px;
-        height: 27px;
-        -webkit-mask-image: url(${FaceData['nose'][combination['face']['nose']][
-            'src'
-        ]});
-        mask-image: url(${FaceData['nose'][combination['face']['nose']][
-            'src'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${FaceData['noseColors'][
-            combination['face_color']['nose']
-        ]};
+        svg {
+            path {
+                fill: ${FaceData['noseColors'][
+                    combination['face_color']['nose']
+                ]};
+            }
+        }
     `;
     const Lip = styled.div`
         position: absolute;
-        top: 73%;
-        left: 27.5%;
-        width: 51px;
-        height: 25px;
-        background: url(${FaceData['lip'][combination['face']['lip']]['src']});
     `;
     const HairFront = styled.div`
         position: absolute;
-        top: 3.2%;
-        left: 22.4%;
-        width: 225px;
-        height: 119px;
-        -webkit-mask-image: url(${FaceData['hairFront'][
-            combination['face']['hairFront']
-        ]['hairFront']});
-        mask-image: url(${FaceData['hairFront'][
-            combination['face']['hairFront']
-        ]['src']});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${FaceData['hairColors'][
-            combination['face_color']['hairFront']
-        ]};
+        svg {
+            path {
+                fill: ${FaceData['hairColors'][
+                    combination['face_color']['hairFront']
+                ]};
+            }
+        }
     `;
     const HairBack = styled.div`
         position: absolute;
-        top: 6%;
-        left: 16.4%;
-        width: 302px;
-        height: 207px;
-        -webkit-mask-image: url(${FaceData['hairBack'][
-            combination['face']['hairBack']
-        ]['hairBack']});
-        mask-image: url(${FaceData['hairBack'][combination['face']['hairBack']][
-            'src'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${FaceData['hairColors'][
-            combination['face_color']['hairFront']
-        ]};
+        svg {
+            path {
+                fill: ${FaceData['hairColors'][
+                    combination['face_color']['hairFront']
+                ]};
+            }
+        }
     `;
     //MING:特殊
     const Tale = styled.div`
         position: absolute;
-        top: 0%;
-        left: 0%;
-        width: 450px;
-        height: 450px;
-        -webkit-mask-image: url(${BodyData['tale'][combination['body']['tale']][
-            'src'
-        ]});
-        mask-image: url(${BodyData['tale'][combination['body']['tale']][
-            'src'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-color: ${BodyData['taleColors'][
-            combination['special_color']['tale']
-        ]};
+        svg {
+            path {
+                fill: ${BodyData['taleColors'][
+                    combination['special_color']['tale']
+                ]};
+            }
+        }
     `;
     const Special = styled.div`
         position: absolute;
         top: 0%;
         left: 0%;
-        width: 450px;
-        height: 450px;
-        -webkit-mask-image: url(${BodyData['special'][
-            combination['body']['special']
-        ]['src']});
-        mask-image: url(${BodyData['special'][combination['body']['special']][
-            'src'
-        ]});
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: cover;
-        background-image: linear-gradient(
-            Ivory 10%,
-            ${BodyData['specialColors'][
-                combination['special_color']['special']
-            ]}
-        );
+        svg {
+            path {
+                fill: ${BodyData['specialColorsid'][
+                    combination['special_color']['special']
+                ]};
+            }
+        }
     `;
 
     //MING:控制面板
@@ -612,7 +548,6 @@ function CenterPart(props) {
     `;
     const SpecialControl = styled.div`
         position: absolute;
-        ${'' /* border: #cff 5px dotted; */}
         height: 60px;
         width: 150px;
         border-radius: 50%;
@@ -626,13 +561,17 @@ function CenterPart(props) {
         width: 450px;
         display: ${controlChange ? 'block' : 'none'};
         cursor: pointer;
+        z-index: 20;
     `;
     const Info = styled.div`
         position: relative;
-        top: -10%;
+        top: -5%;
         left: 40%;
     `;
     const SaveBtn = styled.div`
+        position: relative;
+        top: -3%;
+        left: 2%;
         display: ${controlChange ? 'none' : 'flex'};
         justify-content: center;
         div {
@@ -658,43 +597,69 @@ function CenterPart(props) {
     return (
         <>
             <Center>
-                <BGSquare></BGSquare>
-                <BGCircle></BGCircle>
                 <div
-                    ref={ref}
-                    className="pic text-center mb-4"
                     style={{
-                        width: '450px',
-                        height: '450px',
-                        position: 'relative',
-                        boxSizing: 'border-box',
                         opacity: `${controlChange ? '0.3' : '1'}`,
+                        position: 'relative',
                     }}
                 >
-                    <HairBack></HairBack>
-                    <Ear></Ear>
-                    <TopEar></TopEar>
-                    <Face>
-                        <EyeWhite></EyeWhite>
-                        <Eye></Eye>
-                        <Nose></Nose>
-                        <Lip></Lip>
-                    </Face>
-                    <HairFront></HairFront>
-                    <Tale></Tale>
-                    <Special></Special>
-                    <Body></Body>
-
-                    <Arm></Arm>
-                    <HandL></HandL>
-                    <HandPalmL></HandPalmL>
-                    <HandR></HandR>
-                    <HandPalmR></HandPalmR>
-                    <Leg></Leg>
-                    <FootL></FootL>
-                    <FootPalmL></FootPalmL>
-                    <FootR></FootR>
-                    <FootPalmR></FootPalmR>
+                <BodyControl
+                        onClick={() => {
+                            setControlChange(0);
+                            setBodyControlChange('hand');
+                            setColorControlSwitch(0);
+                        }}
+                    ></BodyControl>
+                    <BGSquare></BGSquare>
+                    <BGCircle></BGCircle>
+                    <div
+                        ref={ref}
+                        className="pic text-center mb-4"
+                        style={{
+                            width: '450px',
+                            height: '450px',
+                            position: 'relative',
+                            boxSizing: 'border-box',
+                        }}
+                    >
+                        <HairBack>
+                            {HairBackArray[combination['face']['hairBack']]}
+                        </HairBack>
+                        <Ear>{EarArray[combination['face']['ear']]}</Ear>
+                        <TopEar>
+                            {TopEarArray[combination['face']['topEar']]}
+                        </TopEar>
+                        <Face>
+                            <HeadSVG />
+                        </Face>
+                        <Eye>{EyeArray[combination['face']['eye']]}</Eye>
+                        <Lip>{LipArray[combination['face']['lip']]}</Lip>
+                        <Nose>{NoseArray[combination['face']['nose']]}</Nose>
+                        <HairFront>
+                            {HairFrontArray[combination['face']['hairFront']]}
+                        </HairFront>
+                        <Tale>{TaleArray[combination['body']['tale']]}</Tale>
+                        <Special>
+                            {SpecialArray[combination['body']['special']]}
+                        </Special>
+                        <Body>{BodyArray[combination['basic'][0]]}</Body>
+                        <Arm>{ArmArray[combination['basic'][1]]}</Arm>
+                        <Hand>
+                            {
+                                HandArray[combination['body']['hand']][
+                                    combination['basic'][1]
+                                ]
+                            }
+                        </Hand>
+                        <Leg>{LegArray[combination['basic'][2]]}</Leg>
+                        <Foot>
+                            {
+                                FootArray[combination['body']['foot']][
+                                    combination['basic'][2]
+                                ]
+                            }
+                        </Foot>
+                    </div>
                     <FaceControl
                         onClick={() => {
                             setControlChange(1);
@@ -738,14 +703,9 @@ function CenterPart(props) {
                             setColorControlSwitch(1);
                         }}
                     ></TaleControl>
-                    <BodyControl
-                        onClick={() => {
-                            setControlChange(0);
-                            setBodyControlChange('hand');
-                            setColorControlSwitch(0);
-                        }}
-                    ></BodyControl>
+                    
                 </div>
+
                 <Info>
                     <SoulColor>
                         <p>

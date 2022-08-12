@@ -172,13 +172,7 @@ function MemberProfileForm(props) {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    localStorage.setItem('auth', JSON.stringify(result.data));
-                    setAuth({
-                        ...result.data,
-                        authorized: true,
-                    });
                     Swal.fire(result.error);
-                    navigate('/memberprofile');
                 } else {
                     Swal.fire(result.error);
                 }

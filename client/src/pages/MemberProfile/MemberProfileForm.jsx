@@ -52,9 +52,9 @@ function MemberProfileForm() {
         // console.log(result.data);
 
         if (result.data.success) {
-            localStorage.setItem('auth', JSON.stringify(result.data.data));
-            setAuth({ ...result.data.data, authorized: true });
-            navigate('/');
+            // localStorage.setItem('auth', JSON.stringify(result.data.data));
+            // setAuth({ ...result.data.data, authorized: true });
+            // navigate('/');
         } else {
             alert('帳密錯誤～～');
         }
