@@ -282,7 +282,7 @@
 
 @media screen and (min-width: 992px) {
     .cpl-pcb-inner-avatar-info{
-        padding-top: 91%;
+        padding-top: 92%;
 
         .cpl-ivi-title {
             font-size: $fz-body;
@@ -336,6 +336,9 @@
     font-size: 1.875rem;
     position: relative;
     top: -2px;
+    // outline: 1px solid red;
+    width: 84px;
+    text-align: center;
 }
 
 .cpl-pcb-ivi-ia-AiFillPlusCircle {
@@ -500,7 +503,7 @@
             >.cpl-pcb-ita-th-il-mh-memberhead {
                 width: 400%;
                 position: relative;
-                left: -150%; /* 200% - 50% */
+                left: -153%; /* 200% - 50% */
                 top: -45%; /* - 50% + 5% 規避頸部 */
             }
         }
@@ -683,12 +686,38 @@
     border-bottom: 2px solid $accent-blue-50p;
     margin-bottom: 12px;
     // outline: 1px solid red;
+
+    // FIXME: 好不好看見仁見智 可以最後調整
+    .cpl-pcb-ita-text-content-paragraph {
+        text-align: justify;
+    }
+
+    .cpl-pcb-ita-tc-isAuthor-button-area {
+        font-size: $fz-caption;
+        // outline: 1px solid red;
+        position: relative;
+        bottom: -7px;
+    }
+
+    .cpl-pcb-ita-tc-isAuthor-button {
+        background-color: $primary-50p;
+        border-radius: 20px;
+        filter: none !important;
+        padding-left: 10px;
+        padding-right: 10px;
+        // width: 100px !important;
+    }
 }
 
 @media screen and (min-width: 992px) {
     .cpl-pcb-ita-text-content {
         min-height: 179px; // DONE: 初步修復無內容塌陷問題
         max-height: 179px; // DONE: 初步修復無內容塌陷問題
+        
+        // FIXME: 先稍微處理按鈕問題
+        .cpl-pcb-ita-tc-isAuthor-button-area {
+            bottom: 15px !important;
+        }
     }
 }
 
@@ -804,8 +833,11 @@
         
         .cpl-pcb-ita-ci-ea-right {
             .cpl-pcb-ita-ci-ea-r-delete, .cpl-pcb-ita-ci-ea-r-edit {
-                text-decoration: underline;
                 cursor: pointer;
+            }
+
+            .cpl-pcb-ita-ci-ea-r-delete:hover, .cpl-pcb-ita-ci-ea-r-edit:hover {
+                text-decoration: underline;
             }
             
             .cpl-pcb-ita-ci-ea-r-edit {
@@ -832,9 +864,9 @@
             // outline: 1px solid red;
         }
 
-        .cpl-pcb-ita-ci-edit {
+        // .cpl-pcb-ita-ci-edit {
         
-        }
+        // }
     }
 }
 
@@ -870,7 +902,7 @@
         >.cpl-pcb-ita-tca-mh-memberhead {
             width: 400%;
             position: relative;
-            left: -150%; /* 200% - 50% */
+            left: -153%; /* 200% - 50% */
             top: -45%; /* - 50% + 5% 規避頸部 */
         }
     }

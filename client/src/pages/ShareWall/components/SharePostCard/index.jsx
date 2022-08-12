@@ -18,21 +18,21 @@ import AuthContext from '../../../../context/AuthContext/AuthContext';
 
 import {
     API_SHAREWALL,
-    STATIC_SHAREWALL_AVA,
+    STATIC_SHAREWALL_AVATAR,
 } from '../../../../config/ajax-path';
 // import HeaderContext from '../../../../context/HeaderContext/HeaderContext';
 
 function SharePostCard(props) {
     const {
         postsid,
-        avatar,
+        imgName,
         memberhead,
         account,
         likes,
         title,
         text,
         isliked,
-        axiosListGET,
+        handleSearchParams,
     } = props;
 
     const { theme } = useContext(ThemeContext);
@@ -51,7 +51,7 @@ function SharePostCard(props) {
 
         if (result.data.affectedRows === 1) {
             // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
-            axiosListGET();
+            handleSearchParams();
         }
 
         return;
@@ -67,7 +67,7 @@ function SharePostCard(props) {
 
         if (result.data.affectedRows === 1) {
             // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
-            axiosListGET();
+            handleSearchParams();
         }
 
         return;
@@ -86,14 +86,18 @@ function SharePostCard(props) {
                     {/* 來生形象 */}
                     {/* FIXME: 資料要從後端過來 網址不對 */}
                     {/* FIXME: 改成長手長腳測試 */}
-                    <img
-                        className="cpl-spc-avatar"
-                        src={`${STATIC_SHAREWALL_AVA}${avatar}.png`}
-                        alt=""
-                    />
+                    {imgName ? (
+                        <img
+                            className="cpl-spc-avatar"
+                            src={`${STATIC_SHAREWALL_AVATAR}${imgName}`}
+                            alt=""
+                        />
+                    ) : (
+                        ''
+                    )}
                     {/* <img
                         className="cpl-spc-avatar"
-                        src={`http://localhost:3500/uploads/images/share/test-largest.svg`}
+                        src={`http://localhost:3500/uploads/images/share/default.svg`}
                         alt=""
                     /> */}
                     <div
@@ -115,12 +119,12 @@ function SharePostCard(props) {
                             {memberhead ? (
                                 <img
                                     className="cpl-spc-memberhead"
-                                    src={`${STATIC_SHAREWALL_AVA}${memberhead}.png`}
+                                    src={`${STATIC_SHAREWALL_AVATAR}${memberhead}`}
                                     alt=""
                                 />
                             ) : (
                                 <img
-                                    src={`http://localhost:3500/uploads/images/share/test-largest.svg`}
+                                    src={`${STATIC_SHAREWALL_AVATAR}default.png`}
                                     alt=""
                                     className="cpl-spc-memberhead"
                                 />

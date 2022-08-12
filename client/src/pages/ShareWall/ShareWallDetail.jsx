@@ -15,7 +15,7 @@ import { AiFillPlusCircle, AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 // import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 
-import { API_SHAREWALL, STATIC_SHAREWALL_AVA } from '../../config/ajax-path';
+import { API_SHAREWALL, STATIC_SHAREWALL_AVATAR } from '../../config/ajax-path';
 
 import Swal from 'sweetalert2';
 import OutlineSoul from '../../images/sweetalert2/outline_soul.svg';
@@ -27,11 +27,6 @@ import ThemeContext from '../../context/ThemeContext/ThemeContext';
 import HeaderContext, {
     headers,
 } from '../../context/HeaderContext/HeaderContext';
-
-// FIXME: 假資料
-const fakeAvatarDetail =
-    '眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾 / 眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾 / 眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾 / 眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾';
-const fakePrice = 3500;
 
 // div content-editable
 
@@ -56,13 +51,118 @@ function ShareWallDetail(props) {
 
     const { pageName } = props;
 
-    const { authorized, token } = useContext(AuthContext);
+    const { authorized, sid, token } = useContext(AuthContext);
     const { theme } = useContext(ThemeContext);
     const { setHeader } = useContext(HeaderContext);
     const commentRef = useRef(null);
+    const commentOverlayComponentRef = useRef(null);
 
     const { sharePostID } = useParams();
     const navigate = useNavigate();
+
+    const AvatarDetailHTMLTranslator = (avatarCombinationString) => {
+        const parseData = JSON.parse(avatarCombinationString);
+        // console.log(parseData);
+
+        const combinationMap = {
+            hand: '手',
+            foot: '腳',
+            bodyColor: '膚色',
+            specialColor: '幻肢色',
+            tale: '尾',
+            taleColor: '尾色',
+            eye: '眼',
+            eyeColor: '瞳色',
+            nose: '鼻',
+            noseColor: '鼻色',
+            hair: '髮',
+            hairColor: '髮色',
+            ear: '耳',
+            topearColor: '獸耳色',
+            lip: '嘴',
+        };
+
+        let translatedHTMLStr = '';
+
+        for (let key in parseData) {
+            if (parseData[key] !== '') {
+                translatedHTMLStr += '<p>';
+                translatedHTMLStr += combinationMap[key];
+                translatedHTMLStr += '：';
+                translatedHTMLStr += parseData[key];
+                translatedHTMLStr += '</p>';
+            }
+        }
+
+        return translatedHTMLStr;
+    };
+
+    const AvatarDetailTranslator = (avatarCombinationString) => {
+        const parseData = JSON.parse(avatarCombinationString);
+        // console.log(parseData);
+
+        const combinationMap = {
+            hand: '手',
+            foot: '腳',
+            bodyColor: '膚色',
+            specialColor: '幻肢色',
+            tale: '尾',
+            taleColor: '尾色',
+            eye: '眼',
+            eyeColor: '瞳色',
+            nose: '鼻',
+            noseColor: '鼻色',
+            hair: '髮',
+            hairColor: '髮色',
+            ear: '耳',
+            topearColor: '獸耳色',
+            lip: '嘴',
+        };
+
+        let translatedStr = '';
+
+        let translatedCount = 0;
+
+        for (let key in parseData) {
+            if (parseData[key] !== '') {
+                if (translatedCount !== 0) {
+                    translatedStr += ' / ';
+                }
+                translatedStr += combinationMap[key];
+                translatedStr += '：';
+                translatedStr += parseData[key];
+                translatedCount++;
+            }
+        }
+
+        if (translatedStr.length >= 32) {
+            const WithMoreJSX = (
+                <>
+                    {translatedStr.slice(0, 32)}{' '}
+                    <span
+                        className="cpl-ivi-d-more"
+                        onClick={() => {
+                            Swal.fire({
+                                title: '形象詳情',
+                                html: AvatarDetailHTMLTranslator(
+                                    combinationText
+                                ),
+                                imageUrl: OutlineSoul,
+                                imageHeight: 50,
+                                imageWidth: 50,
+                                showConfirmButton: false,
+                            });
+                        }}
+                    >
+                        ...更多
+                    </span>
+                </>
+            );
+            return WithMoreJSX;
+        } else {
+            return translatedStr;
+        }
+    };
 
     const TimeTranslator = (timeDataString) => {
         const TimestampCreatedAt = Date.parse(timeDataString);
@@ -104,7 +204,7 @@ function ShareWallDetail(props) {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log(result.data);
+        // console.log(result.data);
         // 在這裡將 isLoading 切換為 false 以顯示文章內容
         setSharePostDetailData({ ...result.data, isLoading: false });
     };
@@ -141,6 +241,55 @@ function ShareWallDetail(props) {
         axiosSharePostCommentPOST();
     };
 
+    const handleCommentDelete = async (commentSid) => {
+        const result = await axios.delete(
+            `${API_SHAREWALL}/${sharePostID}/comment_delete`,
+            {
+                data: {
+                    commentSid,
+                },
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        // console.log(result.data);
+
+        if (result.data.affectedRows === 1) {
+            // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
+            axiosSharePostGET(sharePostID);
+        }
+
+        return;
+    };
+
+    const handleCommentRevise = async (commentSid, commentReviseStr) => {
+        const result = await axios.put(
+            `${API_SHAREWALL}/${sharePostID}/comment_revise`,
+            {
+                data: {
+                    commentSid,
+                    commentReviseStr,
+                },
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        // console.log(result.data);
+
+        if (result.data.affectedRows === 1) {
+            // ASK: 已經按讚 需要動畫 但又要 setState() 該怎麼做？
+            axiosSharePostGET(sharePostID);
+        }
+
+        return;
+    };
+
     const axiosSharePostCommentPOST = async () => {
         const result = await axios.post(
             `${API_SHAREWALL}/${sharePostID}/comment`,
@@ -155,7 +304,7 @@ function ShareWallDetail(props) {
                 },
             }
         );
-        console.log(result.data);
+        // console.log(result.data);
 
         if (result.data.affectedRows === 1) {
             axiosSharePostGET(sharePostID);
@@ -182,18 +331,21 @@ function ShareWallDetail(props) {
         postResults: {
             account,
             share_post_title,
-            // member_sid,
+            member_sid,
             share_post_likes,
             share_post_collects,
             share_post_text,
-            authorProfileID,
+            img_name,
+            price,
+            authorProfile,
+            combinationText,
         },
         postTagsResults,
         postCommentsResults,
         loginUserResults: {
             // id: loginID,
             account: loginAccount,
-            profileID,
+            profile,
             isLiked,
             isCollected,
         },
@@ -218,13 +370,17 @@ function ShareWallDetail(props) {
                     >
                         <div className="col-lg-6 cpl-pcb-inner-avatar-area">
                             {/* FIXME: 改成長手長腳測試 */}
-                            <img
-                                src={`${STATIC_SHAREWALL_AVA}${sharePostID}.png`}
-                                alt=""
-                                className="cpl-pcb-avatar"
-                            />
+                            {img_name ? (
+                                <img
+                                    src={`${STATIC_SHAREWALL_AVATAR}${img_name}`}
+                                    alt=""
+                                    className="cpl-pcb-avatar"
+                                />
+                            ) : (
+                                ''
+                            )}
                             {/* <img
-                                src={`http://localhost:3500/uploads/images/share/test-largest.svg`}
+                                src={`http://localhost:3500/uploads/images/share/default.svg`}
                                 alt=""
                                 className="cpl-pcb-avatar"
                             /> */}
@@ -245,21 +401,7 @@ function ShareWallDetail(props) {
                                 <p className="cpl-ivi-title">形象詳情</p>
                                 {/* FIXME: onClick 要跳出東西 */}
                                 <p className="cpl-ivi-detail">
-                                    {fakeAvatarDetail.length >= 35 ? (
-                                        <>
-                                            {fakeAvatarDetail.slice(0, 35)}{' '}
-                                            <span
-                                                className="cpl-ivi-d-more"
-                                                onClick={() => {
-                                                    alert('施工中');
-                                                }}
-                                            >
-                                                ...更多
-                                            </span>
-                                        </>
-                                    ) : (
-                                        fakeAvatarDetail
-                                    )}
+                                    {AvatarDetailTranslator(combinationText)}
                                 </p>
                                 <div className="cpl-pcb-ivi-interaction-area d-flex justify-content-center align-items-center">
                                     {/* TODO: 怎麼換顏色？ */}
@@ -269,7 +411,7 @@ function ShareWallDetail(props) {
                                         strokeColor={theme.cHeader}
                                     />
                                     <p className="cpl-pcb-ivi-ia-price px-2">
-                                        {fakePrice}
+                                        {price ? price : ''}
                                     </p>
                                     <AiFillPlusCircle
                                         className="cpl-pcb-ivi-ia-AiFillPlusCircle"
@@ -314,15 +456,15 @@ function ShareWallDetail(props) {
                                 <div className="cpl-pcb-ita-th-inner-left d-flex align-items-center">
                                     <div className="cpl-pcb-ita-th-il-mh-area">
                                         {/* FIXME: 測試條件 Render */}
-                                        {authorProfileID ? (
+                                        {authorProfile ? (
                                             <img
                                                 className="cpl-pcb-ita-th-il-mh-memberhead"
-                                                src={`${STATIC_SHAREWALL_AVA}${authorProfileID}.png`}
+                                                src={`${STATIC_SHAREWALL_AVATAR}${authorProfile.img_name}`}
                                                 alt=""
                                             />
                                         ) : (
                                             <img
-                                                src={`http://localhost:3500/uploads/images/share/test-largest.svg`}
+                                                src={`http://localhost:3500/uploads/images/share/default.svg`}
                                                 alt=""
                                                 className="cpl-pcb-ita-th-il-mh-memberhead"
                                             />
@@ -517,8 +659,25 @@ function ShareWallDetail(props) {
                             </div>
                             <div className="cpl-pcb-ita-text-content">
                                 {/* TABLE: 文章上限改成 168 字 */}
-                                {share_post_text}
+                                <p className="cpl-pcb-ita-text-content-paragraph">
+                                    {share_post_text}
+                                </p>
+                                {/* <p>內容超少der adawdw wdawdwda daw</p> */}
                                 {/* TODO: 視情況加入社群分享功能 */}
+                                <div className="cpl-pcb-ita-tc-isAuthor-button-area d-flex justify-content-end">
+                                    {member_sid === sid ? (
+                                        <button
+                                            className="cpl-pcb-ita-tc-isAuthor-button"
+                                            onClick={() => {
+                                                navigate('revise');
+                                            }}
+                                        >
+                                            編輯
+                                        </button>
+                                    ) : (
+                                        ''
+                                    )}
+                                </div>
                             </div>
                             <OverlayScrollbarsComponent
                                 options={{
@@ -535,107 +694,203 @@ function ShareWallDetail(props) {
                                     //     autoHide: 'scroll',
                                     //     autoHideDelay: 500,
                                     // },
+                                    callbacks: {
+                                        onOverflowAmountChanged: () => {
+                                            if (
+                                                commentOverlayComponentRef.current
+                                            ) {
+                                                commentOverlayComponentRef.current._osInstance.scroll(
+                                                    {
+                                                        el: document.querySelector(
+                                                            '.cpl-pcb-ita-comment-item:last-child'
+                                                        ),
+                                                        scroll: {
+                                                            x: 'never',
+                                                            y: '100%',
+                                                        },
+                                                    },
+                                                    500
+                                                );
+                                            }
+                                        },
+                                    },
                                 }}
                                 extensions={{}}
+                                ref={commentOverlayComponentRef}
                             >
                                 {/* TODO: 如果想要顯示時間 IG 只會顯示 */}
                                 {/* X 小時 / X 天 / XXX 週 */}
                                 {/* FIXME: 這是測試用的假留言 */}
-                                <div className="cpl-pcb-ita-comment-item">
-                                    <span className="cpl-pcb-ita-ci-account">
-                                        FakeBoy
-                                    </span>
-                                    {/* FIXME: 如果沒有抓到留言要有一些東西 */}
-                                    <span className="cpl-pcb-ita-ci-text">
-                                        {Array(10)
-                                            .fill()
-                                            .map(() => {
-                                                return '我是假ㄉ';
-                                            })}
-                                    </span>
-                                </div>
-                                {postCommentsResults.map((v, i) => (
-                                    <div
-                                        key={v.share_post_comment_sid}
-                                        className="cpl-pcb-ita-comment-item"
-                                    >
-                                        <span className="cpl-pcb-ita-ci-account">
-                                            {v.account}
-                                        </span>
+                                {postCommentsResults.length === 0 ? (
+                                    <div className="cpl-pcb-ita-comment-item">
+                                        {/* FIXME: 如果沒有抓到留言要有一些東西 */}
+                                        {/* DONE: */}
                                         <span className="cpl-pcb-ita-ci-text">
-                                            {v.share_post_comment_text}
+                                            尚無留言，快來聊天吧！
                                         </span>
-                                        <div className="cpl-pcb-ita-ci-edit-area d-flex justify-content-between">
-                                            {TimeTranslator(v.created_at)}
-                                            {/* FIXME: 按下跳出編輯留言 */}
-                                            {v.comment_isEditable ? (
-                                                <div className="cpl-pcb-ita-ci-ea-right">
-                                                    <span className="cpl-pcb-ita-ci-ea-r-delete">
-                                                        刪除
-                                                    </span>
-                                                    <span
-                                                        className="cpl-pcb-ita-ci-ea-r-edit"
-                                                        onClick={() => {
-                                                            Swal.fire({
-                                                                title: '修改留言',
-                                                                html: `
+                                    </div>
+                                ) : (
+                                    postCommentsResults.map((v, i) => (
+                                        <div
+                                            key={v.share_post_comment_sid}
+                                            className="cpl-pcb-ita-comment-item"
+                                        >
+                                            <span className="cpl-pcb-ita-ci-account">
+                                                {v.account}
+                                            </span>
+                                            <span className="cpl-pcb-ita-ci-text">
+                                                {v.share_post_comment_text}
+                                            </span>
+                                            <div className="cpl-pcb-ita-ci-edit-area d-flex justify-content-between">
+                                                {TimeTranslator(v.created_at)}
+                                                {/* FIXME: 按下跳出編輯留言 */}
+                                                {v.comment_isEditable ? (
+                                                    <div className="cpl-pcb-ita-ci-ea-right">
+                                                        <span
+                                                            className="cpl-pcb-ita-ci-ea-r-delete"
+                                                            onClick={() => {
+                                                                Swal.fire({
+                                                                    title: '你確定要刪除留言嗎？',
+                                                                    imageUrl:
+                                                                        OutlineSoul,
+                                                                    imageHeight: 50,
+                                                                    imageWidth: 50,
+                                                                    confirmButtonText:
+                                                                        '確定刪除',
+                                                                    showDenyButton: true,
+                                                                    denyButtonText:
+                                                                        '捨不得欸',
+                                                                }).then(
+                                                                    (
+                                                                        result
+                                                                    ) => {
+                                                                        if (
+                                                                            result.isConfirmed
+                                                                        ) {
+                                                                            handleCommentDelete(
+                                                                                v.share_post_comment_sid
+                                                                            );
+                                                                        } else if (
+                                                                            result.isDenied
+                                                                        ) {
+                                                                            // console.log(
+                                                                            //     '一言既出駟馬難追...'
+                                                                            // );
+                                                                        }
+                                                                    }
+                                                                );
+                                                            }}
+                                                        >
+                                                            刪除
+                                                        </span>
+                                                        <span
+                                                            className="cpl-pcb-ita-ci-ea-r-edit"
+                                                            onClick={() => {
+                                                                Swal.fire({
+                                                                    title: '修改留言',
+                                                                    html: `
                                                             <input
                                                                 type="text"
-                                                                class="swal2-input" value=${v.share_post_comment_text} 
+                                                                class="swal2-input" value=${v.share_post_comment_text}
+                                                                id="commentReviseInput"
                                                             />
                                                         `,
-                                                                imageUrl:
-                                                                    OutlineSoul,
-                                                                imageHeight: 50,
-                                                                imageWidth: 50,
-                                                                confirmButtonText:
-                                                                    '確定修改',
-                                                                showDenyButton: true,
-                                                                denyButtonText:
-                                                                    '還是算了',
-                                                            }).then(
-                                                                (result) => {
-                                                                    if (
-                                                                        result.isConfirmed
-                                                                    ) {
-                                                                        console.log(
-                                                                            '改了改了'
-                                                                        );
-                                                                    } else if (
-                                                                        result.isDenied
-                                                                    ) {
-                                                                        console.log(
-                                                                            '不要不要'
-                                                                        );
+                                                                    imageUrl:
+                                                                        OutlineSoul,
+                                                                    imageHeight: 50,
+                                                                    imageWidth: 50,
+                                                                    confirmButtonText:
+                                                                        '確定修改',
+                                                                    showDenyButton: true,
+                                                                    denyButtonText:
+                                                                        '還是算了',
+                                                                    preConfirm:
+                                                                        () => ({
+                                                                            commentReviseData:
+                                                                                document.querySelector(
+                                                                                    '#commentReviseInput'
+                                                                                )
+                                                                                    .value,
+                                                                        }),
+                                                                }).then(
+                                                                    (
+                                                                        result
+                                                                    ) => {
+                                                                        if (
+                                                                            result.isConfirmed
+                                                                        ) {
+                                                                            if (
+                                                                                result.value.commentReviseData.trim() ===
+                                                                                ''
+                                                                            ) {
+                                                                                return Swal.fire(
+                                                                                    {
+                                                                                        title: '修改內容意義不明',
+                                                                                        imageUrl:
+                                                                                            OutlineSoulAlert,
+                                                                                        imageHeight: 50,
+                                                                                        imageWidth: 50,
+                                                                                        showConfirmButton: false,
+                                                                                    }
+                                                                                );
+                                                                            }
+                                                                            if (
+                                                                                result.value.commentReviseData.trim() ===
+                                                                                v.share_post_comment_text
+                                                                            ) {
+                                                                                return Swal.fire(
+                                                                                    {
+                                                                                        title: '請確實修改內容',
+                                                                                        imageUrl:
+                                                                                            OutlineSoulAlert,
+                                                                                        imageHeight: 50,
+                                                                                        imageWidth: 50,
+                                                                                        showConfirmButton: false,
+                                                                                    }
+                                                                                );
+                                                                            }
+                                                                            handleCommentRevise(
+                                                                                v.share_post_comment_sid,
+                                                                                result
+                                                                                    .value
+                                                                                    .commentReviseData
+                                                                            );
+                                                                        } else if (
+                                                                            result.isDenied
+                                                                        ) {
+                                                                            // console.log(
+                                                                            //     '終生不改...'
+                                                                            // );
+                                                                        }
                                                                     }
-                                                                }
-                                                            );
-                                                        }}
-                                                    >
-                                                        編輯
-                                                    </span>
-                                                </div>
-                                            ) : (
-                                                ''
-                                            )}
+                                                                );
+                                                            }}
+                                                        >
+                                                            編輯
+                                                        </span>
+                                                    </div>
+                                                ) : (
+                                                    ''
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))
+                                )}
                             </OverlayScrollbarsComponent>
                             <div className="cpl-pcb-ita-text-comment-area d-flex justify-content-start">
                                 <div className="cpl-pcb-ita-tca-mh-area">
                                     {/* FIXME: 找不到圖片會報錯 */}
                                     {/* 要有個欄位存預設形象 */}
                                     {/* 資料表沒有的時候給預設 */}
-                                    {profileID ? (
+                                    {profile ? (
                                         <img
                                             className="cpl-pcb-ita-tca-mh-memberhead"
-                                            src={`${STATIC_SHAREWALL_AVA}${profileID}.png`}
+                                            src={`${STATIC_SHAREWALL_AVATAR}${profile.img_name}`}
                                             alt=""
                                         />
                                     ) : (
                                         <img
-                                            src={`http://localhost:3500/uploads/images/share/test-largest.svg`}
+                                            src={`${STATIC_SHAREWALL_AVATAR}default.png`}
                                             alt=""
                                             className="cpl-pcb-ita-tca-mh-memberhead"
                                         />
@@ -666,7 +921,7 @@ function ShareWallDetail(props) {
                                         onKeyUp={(e) => {
                                             e.preventDefault();
                                             if (e.key !== 'Enter') {
-                                                console.log('counter reset', 0);
+                                                // console.log('counter reset', 0);
                                                 setEnterCounter(0);
                                             }
                                             if (e.key === 'Enter') {

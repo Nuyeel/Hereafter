@@ -147,6 +147,7 @@ function ShareWallPost(props) {
                         {/* FIXME: 圖片看要怎麼來 從客製化過來的 */}
                         {/* TODO: 在 sweetAlert2 中放 swiper??? */}
                         {/* 不然進來不會有圖 */}
+                        {/* 目前拉的是會員 sid 那張 */}
                         <img
                             src={`${STATIC_SHAREWALL_AVA}${sid}.png`}
                             alt=""
