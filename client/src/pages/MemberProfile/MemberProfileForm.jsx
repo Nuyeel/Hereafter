@@ -132,13 +132,13 @@ function MemberProfileForm() {
                                                             <section className="w-100 p-4 d-flex justify-content-center pb-4">
                                                                 <div>
                                                                     <div className="tab-content">
-                                                                        <div className="mb-3 d-flex justify-content-center page-title">
+                                                                        <div className="mb-3 d-flex justify-content-center member-page-title">
                                                                             會員中心主頁
                                                                         </div>
                                                                         <br />
                                                                         <div className="card">
                                                                             <div className="card-body d-flex align-items-center">
-                                                                                <div className="col-md-9 mb-md-0 p-md-4 page-field">
+                                                                                <div className="col-md-9 mb-md-0 p-md-4 member-page-field">
                                                                                     <h5 className="card-title">
                                                                                         歡迎回來，
                                                                                         <p className="card-text ">
@@ -159,7 +159,7 @@ function MemberProfileForm() {
                                                                                     <i className="fa-solid fa-earth-asia"></i>
                                                                                 </div>
                                                                                 <div className="card-body d-flex flex-column">
-                                                                                    <h5 className="card-title page-field">
+                                                                                    <h5 className="card-title member-page-field">
                                                                                         這裡說不定會放東西
                                                                                     </h5>
                                                                                     <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
@@ -172,7 +172,7 @@ function MemberProfileForm() {
                                                                                     <i className="fa-solid fa-wand-magic-sparkles"></i>
                                                                                 </div>
                                                                                 <div className="card-body d-flex flex-column">
-                                                                                    <h5 className="card-title page-field">
+                                                                                    <h5 className="card-title member-page-field">
                                                                                         這裡說不定會放東西
                                                                                     </h5>
                                                                                     <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
@@ -209,11 +209,11 @@ function MemberProfileForm() {
                                                         name="form1"
                                                         onSubmit={handleSubmit}
                                                     >
-                                                        <div className="mb-3 d-flex justify-content-center page-title">
+                                                        <div className="mb-3 d-flex justify-content-center member-page-title">
                                                             會員登入
                                                         </div>
                                                         <br />
-                                                        <div className="mb-3 page-field">
+                                                        <div className="mb-3 member-page-field">
                                                             <label
                                                                 htmlFor="account"
                                                                 className="form-label"
@@ -235,7 +235,7 @@ function MemberProfileForm() {
                                                             />
                                                             <div className="form-text red"></div>
                                                         </div>
-                                                        <div className="mb-3 page-field">
+                                                        <div className="mb-3 member-page-field">
                                                             <label
                                                                 htmlFor="password"
                                                                 className="form-label"

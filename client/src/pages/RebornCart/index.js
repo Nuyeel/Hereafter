@@ -7,8 +7,9 @@ import { HiChevronDoubleUp, HiChevronDoubleDown } from 'react-icons/hi';
 import Swal from 'sweetalert2';
 import AvatarSwiper from './components/AvatarSwiper';
 
+import soulIconAlert from '../../images/sweetalert2/outline_soul_alert.svg';
+import soulIconSweetalert from '../../images/sweetalert2/outline_soul.svg';
 import SoulIcon from '../Place/components/SoulIcon';
-import soulPng from '../Place/img/soul.png';
 
 import PlaceOption from './components/PlaceOption';
 import avatarDataList from './data/avatarDataList.json';
@@ -28,7 +29,7 @@ import ThemeContext from '../../context/ThemeContext/ThemeContext';
 function RebornCart(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
-    const { authorized, sid, account, token } = useContext(AuthContext);
+    const { authorized, sid, isDead } = useContext(AuthContext);
     const { theme } = useContext(ThemeContext);
 
     // 用戶購物車的良辰吉地選項
@@ -81,16 +82,27 @@ function RebornCart(props) {
 
     // 有登入才拿資料
     useEffect(() => {
-        if (authorized === true && sid) {
+        if (authorized === true && sid && isDead) {
             getMemberCartData();
-        }
-    }, []);
-
-    useEffect(() => {
-        if (authorized === true && sid) {
             getAvatarData();
         }
     }, []);
+
+    // 沒登入跳轉光箱
+    const gotoLogin = () => {
+        Swal.fire({
+            title: `您還沒有進入轉生購物車的資格`,
+            imageUrl: soulIconAlert,
+            imageHeight: 50,
+            imageWidth: 50,
+            confirmButtonText: '先去登入',
+            showDenyButton: false,
+            timer: 3000,
+        });
+        setTimeout(() => {
+            navigate('/login', { replace: true });
+        }, 1000);
+    };
 
     // 選擇地點後於訂單顯示
     const handlePlaceSelect = () => {
@@ -112,8 +124,8 @@ function RebornCart(props) {
         // 確認是否要刪除 confirm popup
         Swal.fire({
             title: '移出轉生購物車',
-            html: `<h5>是否確認將 ${delPlace.year}年 ${delPlace.month}月 於 ${delPlace.country}轉生的選項移出購物車？<h5>`,
-            imageUrl: soulPng,
+            html: `<h5>是否確認將 <span style='color: #FF52BA'>${delPlace.year}年 ${delPlace.month}月 於 ${delPlace.country}</span> 轉生的選項移出購物車？<h5>`,
+            imageUrl: soulIconAlert,
             imageHeight: 50,
             imageWidth: 50,
             confirmButtonText: '確認移除',
@@ -122,6 +134,10 @@ function RebornCart(props) {
         }).then((result) => {
             if (result.isConfirmed) {
                 removePlaceFromCartDatabase(placeIndex);
+                Swal.fire({
+                    title: '成功移除',
+                    timer: 1000,
+                });
             } else if (result.isDenied) {
                 console.log('Nooooooo!');
             }
@@ -154,32 +170,90 @@ function RebornCart(props) {
         await getMemberCartData();
     };
 
+    // 轉生訂單存入資料庫
+    const confirmRebornOrder = () => {
+        const obj = {
+            member_sid: sid,
+            place_sid: selectedPlace,
+            avatar_id: avatarData[selectedAvatarInd].avatar_id,
+        };
+        // console.log(obj);
+
+        fetch(`${PLACE_CARTDATA_API}/reborn-order`, {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((r) => r.json())
+            .then((result) => {
+                console.log(result);
+                if (result.success === false) {
+                    Swal.fire({
+                        title: result.error,
+                        imageUrl: soulIconAlert,
+                        imageHeight: 50,
+                        imageWidth: 50,
+                    });
+                }
+                if (result.success === true) {
+                    Swal.fire({
+                        title: '轉生訂單已成立',
+                        imageUrl: soulIconAlert,
+                        imageHeight: 50,
+                        imageWidth: 50,
+                        timer: 3000,
+                    });
+                    // TODO: setTimeout 跳轉希望方塊
+                    setTimeout(() => {
+                        navigate('/', { replace: true });
+                    }, 3000);
+                }
+            });
+    };
+
     // TODO: 送出轉生訂單
     const submitRebornOrder = () => {
+        const remainGooddeed =
+            memberGooddeed -
+            avatarData[selectedAvatarInd].price -
+            Number(selectedPlaceInfo[0].place_price);
         // TODO: 確認陰德值足夠
-
-        // 1. 燈箱確認 || 跳轉到訂單確認頁面
-        // 2. 送出後存入資料庫(限定一筆), 跳轉到希望方塊頁面
-        Swal.fire({
-            title: '確認轉生訂單',
-            // TODO: 放整個轉生訂單進來嗎(包含css)
-            html: `<h5>您預定於${selectedPlaceInfo[0].year}年 ${selectedPlaceInfo[0].month}月 <br/>
+        if (remainGooddeed > 0) {
+            // 1. 燈箱確認 || 跳轉到訂單確認頁面
+            // 2. 送出後存入資料庫(限定一筆), 跳轉到希望方塊頁面
+            Swal.fire({
+                title: '確認轉生訂單',
+                // TODO: 放整個轉生訂單進來嗎(包含css)
+                html: `<h5>您預定於${selectedPlaceInfo[0].year}年 ${selectedPlaceInfo[0].month}月 <br/>
             於 ${selectedPlaceInfo[0].country} ${selectedPlaceInfo[0].city} ${selectedPlaceInfo[0].dist} 投胎轉世<h5>`,
-            // icon: 'error',
-            imageUrl: soulPng,
-            imageHeight: 50,
-            imageWidth: 50,
-            confirmButtonText: '確認訂單，轉生去!',
-            showDenyButton: true,
-            denyButtonText: '再想想><',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                console.log('轉生gogo');
-                // 存入資料庫 -> 跳轉頁面
-            } else if (result.isDenied) {
-                console.log('Waiiiiiiiiit~');
-            }
-        });
+                imageUrl: soulIconSweetalert,
+                imageHeight: 50,
+                imageWidth: 50,
+                confirmButtonText: '確認訂單，轉生去!',
+                showDenyButton: true,
+                denyButtonText: '再想想><',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // console.log('轉生gogo');
+                    // 存入資料庫 -> 跳轉頁面
+                    confirmRebornOrder();
+                } else if (result.isDenied) {
+                    console.log('Waiiiiiiiiit~');
+                }
+            });
+        } else {
+            // 陰德值不足的提醒
+            Swal.fire({
+                title: '陰德值不足！',
+                html: `<h5>您的陰德值不足<span style='color:#FF52BA'> ${-remainGooddeed}</span><br/>無法以此筆訂單轉世投胎，請另擇方案<h5>`,
+                imageUrl: soulIconAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                timer: 10000,
+            });
+        }
     };
 
     // RWD手機板: 轉生訂單框開合
@@ -205,291 +279,304 @@ function RebornCart(props) {
 
     return (
         <>
-            <div className="container reborn-cart-container">
-                <div
-                    className="select-row"
-                    style={{
-                        backgroundColor: theme.rebornBg,
-                    }}
-                >
+            {!authorized ? (
+                <>{gotoLogin()}</>
+            ) : (
+                <div className="container reborn-cart-container">
                     <div
-                        className="select-ava"
+                        className="select-row"
                         style={{
-                            color: theme.cHeader,
+                            backgroundColor: theme.rebornBg,
                         }}
                     >
-                        <h4 className="reborn-cart-main-title">轉生形象</h4>
-                        <div className="ava-wrap">
-                            <AvatarSwiper
-                                avatarDataList={avatarDataList}
-                                avatarData={avatarData}
-                                setSelectedAvatarInd={setSelectedAvatarInd}
-                            />
+                        <div
+                            className="select-ava"
+                            style={{
+                                color: theme.cHeader,
+                            }}
+                        >
+                            <h4 className="reborn-cart-main-title">轉生形象</h4>
+                            <div className="ava-wrap">
+                                <AvatarSwiper
+                                    avatarDataList={avatarDataList}
+                                    avatarData={avatarData}
+                                    setSelectedAvatarInd={setSelectedAvatarInd}
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div
-                        className="select-place"
-                        style={{
-                            color: theme.cHeader,
-                        }}
-                    >
-                        <h4 className="reborn-cart-main-title">良辰吉地</h4>
-                        <div className="place-wrap">
-                            {/* place option */}
-                            {/* 如果還沒有任何加進購物車的選項 */}
-                            {selectedPlace < 0 ? (
-                                <>
-                                    <div className="place-options-box while-no-options">
-                                        <h4>還沒有任何選項</h4>
-                                        <h4>
-                                            請至{' '}
-                                            <Link
-                                                to="/place"
-                                                className="reborn-link"
-                                            >
-                                                <span>
-                                                    良辰吉地列表或收藏區
-                                                </span>
-                                            </Link>{' '}
-                                            加入
-                                        </h4>
-                                    </div>
-                                </>
-                            ) : (
-                                <>
-                                    {/* 呈現購物車內資料 */}
-                                    <div className="place-options-box">
-                                        {cartPlaceList.map((v, i) => (
-                                            <PlaceOption
-                                                key={v.sid}
-                                                value={v}
-                                                selectedPlace={selectedPlace}
-                                                setSelectedPlace={
-                                                    setSelectedPlace
-                                                }
-                                                removePlaceFromCart={
-                                                    removePlaceFromCart
-                                                }
-                                            />
-                                        ))}
-                                        {/* 上限5 - 陣列長度 => render新增按鈕 */}
-                                        {Array(5 - cartPlaceListLength)
-                                            .fill(1)
-                                            .map((v, i) => {
-                                                return (
-                                                    <div
-                                                        key={i}
-                                                        className="to-liked-page-add-btn"
-                                                        onClick={() => {
-                                                            navigate(
-                                                                '../Place',
-                                                                {
-                                                                    state: true,
-                                                                }
-                                                            );
-                                                        }}
-                                                    >
-                                                        {/* 想要hover的時候換圖 */}
-                                                        <div className="add-btn-icon-wrap">
-                                                            <BsPatchPlusFill
-                                                                className="add-btn-icon add-btn-fill"
-                                                                style={{
-                                                                    color: theme.cHeader,
-                                                                }}
-                                                            />
-                                                            <BsPatchPlus
-                                                                className="add-btn-icon add-btn-normal"
-                                                                style={{
-                                                                    color: theme.cHeader,
-                                                                }}
-                                                            />
+                        <div
+                            className="select-place"
+                            style={{
+                                color: theme.cHeader,
+                            }}
+                        >
+                            <h4 className="reborn-cart-main-title">良辰吉地</h4>
+                            <div className="place-wrap">
+                                {/* place option */}
+                                {/* 如果還沒有任何加進購物車的選項 */}
+                                {selectedPlace < 0 ? (
+                                    <>
+                                        <div className="place-options-box while-no-options">
+                                            <h4>還沒有任何選項</h4>
+                                            <h4>
+                                                請至{' '}
+                                                <Link
+                                                    to="/place"
+                                                    className="reborn-link"
+                                                >
+                                                    <span>
+                                                        良辰吉地列表或收藏區
+                                                    </span>
+                                                </Link>{' '}
+                                                加入
+                                            </h4>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        {/* 呈現購物車內資料 */}
+                                        <div className="place-options-box">
+                                            {cartPlaceList.map((v, i) => (
+                                                <PlaceOption
+                                                    key={v.sid}
+                                                    value={v}
+                                                    selectedPlace={
+                                                        selectedPlace
+                                                    }
+                                                    setSelectedPlace={
+                                                        setSelectedPlace
+                                                    }
+                                                    removePlaceFromCart={
+                                                        removePlaceFromCart
+                                                    }
+                                                />
+                                            ))}
+                                            {/* 上限5 - 陣列長度 => render新增按鈕 */}
+                                            {Array(5 - cartPlaceListLength)
+                                                .fill(1)
+                                                .map((v, i) => {
+                                                    return (
+                                                        <div
+                                                            key={i}
+                                                            className="to-liked-page-add-btn"
+                                                            onClick={() => {
+                                                                navigate(
+                                                                    '../Place',
+                                                                    {
+                                                                        state: true,
+                                                                    }
+                                                                );
+                                                            }}
+                                                        >
+                                                            {/* 想要hover的時候換圖 */}
+                                                            <div className="add-btn-icon-wrap">
+                                                                <BsPatchPlusFill
+                                                                    className="add-btn-icon add-btn-fill"
+                                                                    style={{
+                                                                        color: theme.cHeader,
+                                                                    }}
+                                                                />
+                                                                <BsPatchPlus
+                                                                    className="add-btn-icon add-btn-normal"
+                                                                    style={{
+                                                                        color: theme.cHeader,
+                                                                    }}
+                                                                />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                );
-                                            })}
-                                    </div>
-                                </>
-                            )}
+                                                    );
+                                                })}
+                                        </div>
+                                    </>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div
-                    className={
-                        rebornBoxOpen
-                            ? 'reborn-order-wrap box-show-ani'
-                            : 'reborn-order-wrap'
-                    }
-                    style={
-                        window.innerWidth > 375
-                            ? { backgroundColor: theme.rebornBg }
-                            : { backgroundColor: theme.rebornRwdBg }
-                    }
-                >
                     <div
-                        className="my-deed-wrap"
-                        style={
-                            window.innerWidth > 375
-                                ? { backgroundColor: theme.rebornInnerBg }
-                                : { backgroundColor: theme.rebornRwdBg }
+                        className={
+                            rebornBoxOpen
+                                ? 'reborn-order-wrap box-show-ani'
+                                : 'reborn-order-wrap'
                         }
-                    >
-                        <div className="my-deed-wrap-title">我目前的陰德值</div>
-                        <div className="my-deed-wrap-text">
-                            {memberGooddeed}
-                        </div>
-                    </div>
-                    <div
-                        className="deed-enough-wrap"
                         style={
                             window.innerWidth > 375
-                                ? { backgroundColor: theme.rebornInnerBg }
+                                ? { backgroundColor: theme.rebornBg }
                                 : { backgroundColor: theme.rebornRwdBg }
-                        }
-                    >
-                        <div className="deed-enough-wrap-title">
-                            {selectedPlaceInfo.length > 0 &&
-                            memberGooddeed -
-                                avatarData[selectedAvatarInd].price -
-                                Number(selectedPlaceInfo[0].place_price) >
-                                0
-                                ? '陰德值剩餘'
-                                : '陰德值不足！'}
-                        </div>
-                        <div className="deed-enough-wrap-text">
-                            {selectedPlaceInfo.length > 0 &&
-                                memberGooddeed -
-                                    avatarData[selectedAvatarInd].price -
-                                    Number(selectedPlaceInfo[0].place_price)}
-                        </div>
-                    </div>
-                    <div
-                        className="reborn-order-card"
-                        style={
-                            window.innerWidth > 375
-                                ? {
-                                      color: theme.cHeader,
-                                      backgroundColor: theme.rebornInnerBg,
-                                  }
-                                : {
-                                      color: '#3C3B67',
-                                      backgroundColor: theme.rebornRwdBg,
-                                  }
                         }
                     >
                         <div
-                            className="reborn-order-card-title"
-                            onClick={() => {
-                                if (window.innerWidth < 768) {
-                                    rwdHandleRebornBox();
-                                }
-                            }}
+                            className="my-deed-wrap"
+                            style={
+                                window.innerWidth > 375
+                                    ? { backgroundColor: theme.rebornInnerBg }
+                                    : { backgroundColor: theme.rebornRwdBg }
+                            }
                         >
-                            <span className="rwdBtn">
-                                {rebornBoxOpen ? (
-                                    <HiChevronDoubleDown />
-                                ) : (
-                                    <HiChevronDoubleUp />
-                                )}
-                            </span>
-                            轉生訂單
+                            <div className="my-deed-wrap-title">
+                                我目前的陰德值
+                            </div>
+                            <div className="my-deed-wrap-text">
+                                {memberGooddeed}
+                            </div>
                         </div>
-                        <div className="reborn-order-card-ava">
-                            {avatarData.length > 0 && (
-                                <>
-                                    <img
-                                        src={`http://localhost:3500/uploads/images/avatar/${avatarData[selectedAvatarInd].img_name}`}
-                                        alt=""
-                                    />
-                                    {/* <img
+                        <div
+                            className="deed-enough-wrap"
+                            style={
+                                window.innerWidth > 375
+                                    ? { backgroundColor: theme.rebornInnerBg }
+                                    : { backgroundColor: theme.rebornRwdBg }
+                            }
+                        >
+                            <div className="deed-enough-wrap-title">
+                                {selectedPlaceInfo.length > 0 &&
+                                memberGooddeed -
+                                    avatarData[selectedAvatarInd].price -
+                                    Number(selectedPlaceInfo[0].place_price) >
+                                    0
+                                    ? '陰德值剩餘'
+                                    : '陰德值不足！'}
+                            </div>
+                            <div className="deed-enough-wrap-text">
+                                {selectedPlaceInfo.length > 0 &&
+                                    memberGooddeed -
+                                        avatarData[selectedAvatarInd].price -
+                                        Number(
+                                            selectedPlaceInfo[0].place_price
+                                        )}
+                            </div>
+                        </div>
+                        <div
+                            className="reborn-order-card"
+                            style={
+                                window.innerWidth > 375
+                                    ? {
+                                          color: theme.cHeader,
+                                          backgroundColor: theme.rebornInnerBg,
+                                      }
+                                    : {
+                                          color: '#3C3B67',
+                                          backgroundColor: theme.rebornRwdBg,
+                                      }
+                            }
+                        >
+                            <div
+                                className="reborn-order-card-title"
+                                onClick={() => {
+                                    if (window.innerWidth < 768) {
+                                        rwdHandleRebornBox();
+                                    }
+                                }}
+                            >
+                                <span className="rwdBtn">
+                                    {rebornBoxOpen ? (
+                                        <HiChevronDoubleDown />
+                                    ) : (
+                                        <HiChevronDoubleUp />
+                                    )}
+                                </span>
+                                轉生訂單
+                            </div>
+                            <div className="reborn-order-card-ava">
+                                {avatarData.length > 0 && (
+                                    <>
+                                        <img
+                                            src={`http://localhost:3500/uploads/images/avatar/${avatarData[selectedAvatarInd].img_name}`}
+                                            alt=""
+                                        />
+                                        {/* <img
                                 src={`images/${avatarDataList[selectedAvatarInd].img}`}
                                 alt=""
                             /> */}
-                                </>
-                            )}
-                        </div>
-                        <div className="reborn-order-card-place">
-                            {/* 帶入選到的place, 預設第一筆 */}
-                            {selectedPlaceInfo.length > 0 ? (
-                                <>
-                                    <h4>
-                                        {selectedPlaceInfo[0].year}年
-                                        {selectedPlaceInfo[0].month}月
-                                    </h4>
-                                    <h4>
-                                        {selectedPlaceInfo[0].country}{' '}
-                                        {selectedPlaceInfo[0].city}{' '}
-                                        {selectedPlaceInfo[0].dist}
-                                    </h4>
-                                </>
-                            ) : (
-                                <>
-                                    <h4>--年 --月</h4>
-                                    <h4>-- -- --</h4>
-                                </>
-                            )}
-                        </div>
-                        <div className="reborn-order-card-summary">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>轉生形象</td>
-                                        <td>
-                                            {avatarData.length > 0 && (
-                                                <>
-                                                    {
-                                                        avatarData[
-                                                            selectedAvatarInd
-                                                        ].price
-                                                    }
-                                                </>
-                                            )}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>良辰吉地</td>
-                                        <td>
-                                            {selectedPlaceInfo.length > 0
-                                                ? selectedPlaceInfo[0]
-                                                      .place_price
-                                                : ''}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot
-                                    style={{
-                                        borderColor: theme.cHeader,
-                                    }}
-                                >
-                                    <tr>
-                                        <td className="totalTD">總計：</td>
-                                        <td className="reborn-order-total-price">
-                                            <SoulIcon className={'soul-icon'} />
-                                            <span>
+                                    </>
+                                )}
+                            </div>
+                            <div className="reborn-order-card-place">
+                                {/* 帶入選到的place, 預設第一筆 */}
+                                {selectedPlaceInfo.length > 0 ? (
+                                    <>
+                                        <h4>
+                                            {selectedPlaceInfo[0].year}年
+                                            {selectedPlaceInfo[0].month}月
+                                        </h4>
+                                        <h4>
+                                            {selectedPlaceInfo[0].country}{' '}
+                                            {selectedPlaceInfo[0].city}{' '}
+                                            {selectedPlaceInfo[0].dist}
+                                        </h4>
+                                    </>
+                                ) : (
+                                    <>
+                                        <h4>--年 --月</h4>
+                                        <h4>-- -- --</h4>
+                                    </>
+                                )}
+                            </div>
+                            <div className="reborn-order-card-summary">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>轉生形象</td>
+                                            <td>
+                                                {avatarData.length > 0 && (
+                                                    <>
+                                                        {
+                                                            avatarData[
+                                                                selectedAvatarInd
+                                                            ].price
+                                                        }
+                                                    </>
+                                                )}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>良辰吉地</td>
+                                            <td>
                                                 {selectedPlaceInfo.length > 0
-                                                    ? avatarData[
-                                                          selectedAvatarInd
-                                                      ].price +
-                                                      Number(
-                                                          selectedPlaceInfo[0]
-                                                              .place_price
-                                                      )
+                                                    ? selectedPlaceInfo[0]
+                                                          .place_price
                                                     : ''}
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot
+                                        style={{
+                                            borderColor: theme.cHeader,
+                                        }}
+                                    >
+                                        <tr>
+                                            <td className="totalTD">總計：</td>
+                                            <td className="reborn-order-total-price">
+                                                <SoulIcon
+                                                    className={'soul-icon'}
+                                                />
+                                                <span>
+                                                    {selectedPlaceInfo.length >
+                                                    0
+                                                        ? avatarData[
+                                                              selectedAvatarInd
+                                                          ].price +
+                                                          Number(
+                                                              selectedPlaceInfo[0]
+                                                                  .place_price
+                                                          )
+                                                        : ''}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <button
+                                className="reborn-order-card-btn"
+                                onClick={submitRebornOrder}
+                            >
+                                <p>轉生去</p>
+                                <BsExclamation className="exclamation-mark" />
+                            </button>
                         </div>
-                        <button
-                            className="reborn-order-card-btn"
-                            onClick={submitRebornOrder}
-                        >
-                            <p>轉生去</p>
-                            <BsExclamation className="exclamation-mark" />
-                        </button>
                     </div>
                 </div>
-            </div>
+            )}
         </>
     );
 }

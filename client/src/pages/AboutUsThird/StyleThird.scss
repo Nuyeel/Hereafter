@@ -155,31 +155,66 @@
     margin-right: 5px;
     // margin-bottom: 18px;
 }
+.ab-ghost{
+    width: 100%;
+    position: absolute;
+    top: -42px;
+    background-color: #4D8CE7;
+}
+
 .ab-ghost-l1{
     position: absolute;
-    top: -42px;
-    left: 83px;
+    left: 80px;
+
 }
+
+.ab-bg:hover .ab-ghost-l1{
+    animation: g1 4s ease;
+}
+
+.ab-bg:hover .ab-ghost-l2{
+    animation: g2 4s ease;
+}
+
+.ab-bg:hover .ab-ghost-l3{
+    animation: g3 4s ease;
+}
+
 .ab-ghost-l2{
     position: absolute;
-    top: -32px;
-    left: 50px;
+    left: 45px;
+    top: 10px;
 }
+
 .ab-ghost-l3{
     position: absolute;
-    top: -30px;
-    left: 25px;
+    left: 15px;
+    top: 12px;
 }
-.ab-ghost-r1{
-    position: absolute;
-    top: -42px;
-    right: 30px;
-    transform: scaleX(-1);
-}
-.ab-ghost-r2{
-    position: absolute;
-    top: -70px;
-    right: 43px;
-    transform: scaleX(-1);
 
+@keyframes g1{
+    0%{left: 80px;}
+    30%{left: 150px;transform:scaleX(1);}
+    35%{left: 150px;transform:scaleX(-1);}
+    42%{left: 150px;transform:scaleX(-1);}
+    65%{left: 80px;transform:scaleX(-1);}
+    70%{left: 80px;transform:scaleX(1);}
+    100%{left: 80px;transform:scaleX(1);}
+
+}
+
+@keyframes g2{
+    0%{left: 45px;}
+    35%{left: 205px;transform:scaleX(1);}
+    40%{left: 205px;transform:scaleX(-1);}
+    80%{left: 45px;;transform:scaleX(-1);}
+    85%{left: 45px;;transform:scaleX(1);}
+}
+
+@keyframes g3{
+    0%{left: 15px;}
+    40%{left: 235px;transform:scaleX(1);}
+    43%{left: 235px;transform:scaleX(-1);}
+    90%{left: 15px;;transform:scaleX(-1);}
+    93%{left: 15px;;transform:scaleX(1);}
 }

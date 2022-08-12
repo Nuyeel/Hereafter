@@ -197,7 +197,9 @@ router.route('/').get(async (req, res) => {
                 SELECT * 
                 FROM share_avatar_posts s 
                 JOIN member m 
-                ON s.member_sid = m.sid 
+                ON s.member_sid = m.sid
+                JOIN showcase sc
+                ON sc.avatar_id = m.profile_picture
                 WHERE share_post_sid 
                 IN (${searchPostsString}) 
             `;
@@ -295,7 +297,9 @@ router.route('/').get(async (req, res) => {
                     SELECT * 
                     FROM share_avatar_posts s 
                     JOIN member m 
-                    ON s.member_sid = m.sid 
+                    ON s.member_sid = m.sid
+                    JOIN showcase sc
+                    ON sc.avatar_id = m.profile_picture
                     WHERE share_post_title 
                     LIKE ${likeString} 
                 `;
@@ -382,6 +386,8 @@ router.route('/').get(async (req, res) => {
                     FROM share_avatar_posts s 
                     JOIN member m 
                     ON s.member_sid = m.sid 
+                    JOIN showcase sc
+                    ON sc.avatar_id = m.profile_picture
                 `;
 
             // 安全起見檔一下
@@ -820,7 +826,7 @@ router.route('/:sharepostID').get(async (req, res) => {
         loginUserResults: {
             id: 0, // 預設值 沒有 sid 是 0 的會員
             account: '',
-            profileID: null, // 其實 0 也可以
+            profile: null, // 其實 0 也可以
             isLiked: false, // 預設沒有按讚
             isCollected: false, // 預設沒有收藏
         },
@@ -832,6 +838,8 @@ router.route('/:sharepostID').get(async (req, res) => {
         FROM share_avatar_posts s
         JOIN member m 
         ON s.member_sid = m.sid 
+        JOIN showcase sc
+        ON sc.avatar_id = s.avatar_sid
         WHERE share_post_sid = ? 
     `;
 
@@ -840,18 +848,20 @@ router.route('/:sharepostID').get(async (req, res) => {
 
     // 取得發布此篇貼文的會員頭貼
     const $author_profile_sql = ` 
-        SELECT profile_picture 
-        FROM member 
+        SELECT s.*
+        FROM member m
+        JOIN showcase s
+        ON s.avatar_id = m.profile_picture
         WHERE sid = ?
     `;
 
-    // 解構賦值同時改名
-    const [[{ profile_picture: author_profile_result }]] = await db.query(
-        $author_profile_sql,
-        [post_results.sid]
-    );
+    const [[author_profile_result]] = await db.query($author_profile_sql, [
+        post_results.sid,
+    ]);
 
-    results.postResults.authorProfileID = author_profile_result;
+    console.log(author_profile_result);
+
+    results.postResults.authorProfile = author_profile_result;
 
     // 藉由文章編號取得內含所有標籤中文陣列
     const $post_tags_sql = ` 
@@ -906,19 +916,20 @@ router.route('/:sharepostID').get(async (req, res) => {
 
         // 取得此時登入會員的大頭貼 SID
         const $member_profile_sql = ` 
-            SELECT profile_picture 
-            FROM member 
+            SELECT s.*
+            FROM member m
+            JOIN showcase s
+            ON s.avatar_id = m.profile_picture
             WHERE sid = ?
         `;
 
         // 解構賦值同時改名
-        const [[{ profile_picture: member_profile_result }]] = await db.query(
-            $member_profile_sql,
-            [res.locals.loginUser.id]
-        );
+        const [[member_profile_result]] = await db.query($member_profile_sql, [
+            res.locals.loginUser.id,
+        ]);
 
         // console.log(member_profile_result);
-        results.loginUserResults.profileID = member_profile_result;
+        results.loginUserResults.profile = member_profile_result;
 
         // 進行是否按讚確認
         const $post_isliked_sql = ` 
@@ -1208,29 +1219,75 @@ router.route('/:sharepostID/:actionType?').get(async (req, res) => {
         return res.json(discollect_results);
     }
 
-    // TODO: 修改留言
+    return res.send('其他的請求都不接受喔～');
+});
+
+// 整理格式稍微討 M 所以分開來寫
+router.route('/:sharepostID/:actionType?').put(async (req, res) => {
+    // DONE: REVISE COMMENT
     if (req.params.actionType === 'comment_revise') {
+        // TODO: 照理來說要處理跳脫啦...
+        const commentReviseStrEscaped = SqlString.escape(
+            req.body.data.commentReviseStr
+        );
+
+        if (commentReviseStrEscaped.indexOf('\\') !== -1) {
+            console.log('commentReviseStr 被跳脫了');
+            return res.json('跳脫');
+        }
+
         const $comment_revise_sql = ` 
+            UPDATE share_avatar_comments 
+            SET share_post_comment_text = ?, updated_at = NOW() 
+            WHERE share_post_comment_sid = ?
+        `;
+        const formatSql = SqlString.format($comment_revise_sql, [
+            req.body.data.commentReviseStr,
+            req.body.data.commentSid,
+        ]);
+
+        const [comment_revise_results] = await db.execute(formatSql);
+        // console.log(comment_revise_results);
+
+        if (comment_revise_results.affectedRows !== 1) {
+            return res.send('評論修改出錯');
+        }
+
+        return res.json(comment_revise_results);
+    }
+
+    return res.send('其他的請求都不接受喔～');
+});
+
+router.route('/:sharepostID/:actionType?').delete(async (req, res) => {
+    // DONE: DELETE COMMENT
+    if (req.params.actionType === 'comment_delete') {
+        // 稍微保護一下 不要隨便被亂刪資料
+        console.log(res.locals.loginUser);
+        if (!res.locals.loginUser) {
+            return res.send('請勿攻擊');
+        }
+
+        const $comment_delete_sql = ` 
             DELETE 
-            FROM share_avatar_collects 
-            WHERE share_post_sid = ? 
+            FROM share_avatar_comments 
+            WHERE share_post_comment_sid = ? 
             AND member_sid = ? 
         `;
-        const formatSql = SqlString.format($discollect_sql, [
-            sharepostID,
+        const formatSql = SqlString.format($comment_delete_sql, [
+            req.body.commentSid,
             res.locals.loginUser.id,
         ]);
 
-        const [discollect_results] = await db.execute(formatSql);
-        // console.log(discollect_results);
+        const [comment_delete_results] = await db.execute(formatSql);
+        // console.log(comment_delete_results);
 
-        if (post_discollect_update_results.affectedRows !== 1) {
-            return res.send('收藏數減一出錯');
+        if (comment_delete_results.affectedRows !== 1) {
+            return res.send('評論刪除出錯');
         }
 
-        return res.json(discollect_results);
+        return res.json(comment_delete_results);
     }
-
 
     return res.send('其他的請求都不接受喔～');
 });

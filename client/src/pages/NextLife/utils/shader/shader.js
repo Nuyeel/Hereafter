@@ -12,6 +12,25 @@ export const vertexShader = () => {
     `;
 };
 
+export const fragmentShaderTop = () => {
+    return `
+        #ifdef GL_ES
+            precision highp float;
+        #endif
+
+        uniform sampler2D textureT;
+        uniform sampler2D textureText;
+
+        varying vec2 vUv;
+
+        void main(void) {
+            vec4 color0 = texture2D(textureT, vUv);
+            vec4 color1 = texture2D(textureText, vUv);
+            gl_FragColor = mix(color0, color1, color1.a);
+        }
+    `;
+};
+
 export const fragmentShader0 = () => {
     return `
         #ifdef GL_ES

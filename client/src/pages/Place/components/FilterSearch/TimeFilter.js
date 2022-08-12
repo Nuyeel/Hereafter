@@ -16,7 +16,7 @@ function TimeFilter(props) {
                         const nowValue = v;
                         if (nowValue === null) {
                             // 清空時間區間 => 呈現所有資料,不篩選
-                            setTimeRangeFilter([new Date('2022-8'), null]);
+                            setTimeRangeFilter([new Date('2022-8'), '']);
                         } else {
                             setTimeRangeFilter([
                                 `${nowValue[0]}`,
