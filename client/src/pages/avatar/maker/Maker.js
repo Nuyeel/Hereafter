@@ -4,6 +4,7 @@ import CenterPart from './components/CenterPart.js';
 import FacePart from './components/FacePart/FacePart.js';
 import FaceView from './components/FaceView.js';
 import { useState, useContext, useEffect } from 'react';
+import AuthContext from '../../../context/AuthContext/AuthContext';
 import ThemeContext from '../../../context/ThemeContext/ThemeContext.js';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
@@ -32,11 +33,12 @@ const Maker = () => {
     const [faceControlChange, setFaceControlChange] = useState('eye');
     const [colorControlSwitch, setColorControlSwitch] = useState(0);
     const navigate = useNavigate();
+    const { authorized, sid, isDead } = useContext(AuthContext);
     const member = JSON.parse(localStorage.getItem('auth'));
     const aid = sessionStorage.getItem('avatar_id');
 
     const getAvatarData = async () => {
-        const postData = { id: member['sid'], avatar_id: aid };
+        const postData = { id: sid, avatar_id: aid };
         const r = await axios.post(Avatar_GetData, postData);
         const oldCombination = JSON.parse(r.data.data[0]['combination']);
         setCombination(oldCombination);
