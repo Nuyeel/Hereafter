@@ -298,8 +298,8 @@ router
             host: 'smtp.gmail.com',
             port: 465,
             auth: {
-                user: ' ',
-                pass: ' ',
+                user: process.env.SMTP_EMAIL,
+                pass: process.env.SMTP_PASS,
                 // ！！測試寄信用的金鑰先不上傳（測試可問 Yu）！！
             },
         });
