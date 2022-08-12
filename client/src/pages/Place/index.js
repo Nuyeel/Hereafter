@@ -337,7 +337,7 @@ function Place(props) {
         <>
             <div className="container place-container">
                 {/* 列表/收藏頁面切換 */}
-                <PageSelect page={'place-list'} />
+                {/* <PageSelect page={'place-list'} /> */}
 
                 <TimeNewsRow
                     style={{
