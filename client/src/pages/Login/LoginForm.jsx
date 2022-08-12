@@ -128,7 +128,7 @@ function LoginForm(props) {
                                                 />
                                                 <div className="form-text red"></div>
                                             </div>
-
+                                            <br />
                                             <div className="d-flex justify-content-center ">
                                                 <button
                                                     type="submit"
@@ -137,7 +137,6 @@ function LoginForm(props) {
                                                     登入
                                                 </button>
                                             </div>
-                                            <br />
                                             <br />
                                             <div className="d-flex justify-content-center ">
                                                 <Link

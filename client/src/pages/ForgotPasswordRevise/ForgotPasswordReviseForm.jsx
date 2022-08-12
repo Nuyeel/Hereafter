@@ -294,7 +294,7 @@ function ForgotPasswordReviseForm(props) {
                                                     required
                                                 />
                                             </div>
-
+                                            <br />
                                             <div className="d-flex justify-content-center">
                                                 <button
                                                     type="submit"
@@ -303,7 +303,6 @@ function ForgotPasswordReviseForm(props) {
                                                     確認修改
                                                 </button>
                                             </div>
-                                            <br />
                                             <br />
                                             <div className="d-flex justify-content-center ">
                                                 <Link

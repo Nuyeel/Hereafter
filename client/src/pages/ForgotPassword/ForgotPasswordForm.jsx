@@ -103,7 +103,6 @@ function ForgotPasswordForm() {
                                                     }
                                                     required
                                                 />
-                                                <div className="form-text red"></div>
                                             </div>
                                             <div className="mb-3 member-page-field">
                                                 <label
@@ -126,9 +125,8 @@ function ForgotPasswordForm() {
                                                     }
                                                     required
                                                 />
-                                                <div className="form-text red"></div>
                                             </div>
-                                            <div className="text-center mb-3"></div>
+                                            <br />
                                             <div className="d-flex justify-content-center">
                                                 <button
                                                     type="submit"
@@ -137,7 +135,6 @@ function ForgotPasswordForm() {
                                                     接收驗證信
                                                 </button>
                                             </div>
-                                            <br />
                                             <br />
                                             <div className="d-flex justify-content-center">
                                                 <Link

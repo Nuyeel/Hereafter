@@ -410,7 +410,7 @@ function RegisterForm(props) {
                                                         </button>
                                                     </div> 
                                                     */}
-
+                                        <br />
                                         <div className="d-flex justify-content-center ">
                                             <button
                                                 type="submit"
@@ -421,7 +421,10 @@ function RegisterForm(props) {
                                         </div>
                                         <br />
                                         <div className="d-flex justify-content-center ">
-                                            <Link className="member-link" to="/login">
+                                            <Link
+                                                className="member-link"
+                                                to="/login"
+                                            >
                                                 已註冊，直接登入
                                             </Link>
                                         </div>
