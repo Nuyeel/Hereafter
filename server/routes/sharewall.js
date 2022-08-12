@@ -194,22 +194,29 @@ router.route('/').get(async (req, res) => {
 
         // TODO: 製作三態搜尋
         let $sql = ` 
-                SELECT * 
+            SELECT t1.*, t2.*
+            FROM (
+                SELECT s.*, m.*, 
+                sc.combinationText, sc.img_name, sc.price 
                 FROM share_avatar_posts s 
                 JOIN member m 
                 ON s.member_sid = m.sid
                 JOIN showcase sc
-                ON sc.avatar_id = m.profile_picture
-                WHERE share_post_sid 
-                IN (${searchPostsString}) 
-            `;
+                ON sc.avatar_id = s.avatar_sid) t1
+            JOIN (
+                SELECT avatar_id, img_name as author_profile 
+                FROM showcase) t2
+            ON t1.profile_picture = t2.avatar_id
+            WHERE t1.share_post_sid 
+            IN (${searchPostsString}) 
+        `;
 
         // 安全起見檔一下
         if (res.locals.loginUser) {
             if (req.query.isAuthor && req.query.isAuthor === 'true') {
                 // console.log('作者');
                 $sql += ` 
-                        AND m.sid = ${res.locals.loginUser.id} 
+                        AND t1.sid = ${res.locals.loginUser.id} 
                     `;
             } else if (
                 req.query.isCollector &&
@@ -242,7 +249,7 @@ router.route('/').get(async (req, res) => {
                 }
 
                 // console.log(collectString);
-                $sql += ` AND share_post_sid IN (${collectString}) `;
+                $sql += ` AND t1.share_post_sid IN (${collectString}) `;
             }
         }
 
@@ -288,27 +295,33 @@ router.route('/').get(async (req, res) => {
         // FIXME: 處理跳脫
         // DONE: 跳脫 OK
         // TODO: 製作三態搜尋
-
         if (req.query.search) {
             const escapeString = SqlString.escape(req.query.search);
             const likeString = `'%${escapeString.slice(1, -1)}%'`;
             // console.log(likeString);
             let $search_sql = ` 
-                    SELECT * 
+                SELECT t1.*, t2.*
+                FROM (
+                    SELECT s.*, m.*, 
+                    sc.combinationText, sc.img_name, sc.price 
                     FROM share_avatar_posts s 
                     JOIN member m 
                     ON s.member_sid = m.sid
                     JOIN showcase sc
-                    ON sc.avatar_id = m.profile_picture
-                    WHERE share_post_title 
-                    LIKE ${likeString} 
+                    ON sc.avatar_id = s.avatar_sid) t1
+                JOIN (
+                    SELECT avatar_id, img_name as author_profile 
+                    FROM showcase) t2
+                ON t1.profile_picture = t2.avatar_id
+                WHERE t1.share_post_title 
+                LIKE ${likeString} 
                 `;
 
             // 安全起見檔一下
             if (res.locals.loginUser) {
                 if (req.query.isAuthor && req.query.isAuthor === 'true') {
                     $search_sql += ` 
-                    AND m.sid = ${res.locals.loginUser.id} 
+                    AND t1.sid = ${res.locals.loginUser.id} 
                     `;
                 } else if (
                     req.query.isCollector &&
@@ -341,7 +354,7 @@ router.route('/').get(async (req, res) => {
                     }
 
                     // console.log(collectString);
-                    $search_sql += ` AND share_post_sid IN (${collectString}) `;
+                    $search_sql += ` AND t1.share_post_sid IN (${collectString}) `;
                 }
             }
 
@@ -382,20 +395,27 @@ router.route('/').get(async (req, res) => {
             res.json(results);
         } else {
             let $search_sql = ` 
-                    SELECT * 
+                SELECT t1.*, t2.*
+                FROM (
+                    SELECT s.*, m.*, 
+                    sc.combinationText, sc.img_name, sc.price 
                     FROM share_avatar_posts s 
                     JOIN member m 
-                    ON s.member_sid = m.sid 
+                    ON s.member_sid = m.sid
                     JOIN showcase sc
-                    ON sc.avatar_id = m.profile_picture
-                `;
+                    ON sc.avatar_id = s.avatar_sid) t1
+                JOIN (
+                    SELECT avatar_id, img_name as author_profile 
+                    FROM showcase) t2
+                ON t1.profile_picture = t2.avatar_id
+            `;
 
             // 安全起見檔一下
             if (res.locals.loginUser) {
                 if (req.query.isAuthor && req.query.isAuthor === 'true') {
                     // console.log('作者');
                     $search_sql += ` 
-                        AND m.sid = ${res.locals.loginUser.id} 
+                        AND t1.sid = ${res.locals.loginUser.id} 
                     `;
                 } else if (
                     req.query.isCollector &&
@@ -428,7 +448,7 @@ router.route('/').get(async (req, res) => {
                     }
 
                     // console.log(collectString);
-                    $search_sql += ` AND share_post_sid IN (${collectString}) `;
+                    $search_sql += ` AND t1.share_post_sid IN (${collectString}) `;
                 }
             }
 
@@ -613,27 +633,27 @@ router.route('/post').post(async (req, res) => {
         return res.json('跳脫');
     }
 
-    if (sharePostTitle.length > 6) {
+    if (req.body.sharePostTitle.length > 6) {
         return res.send('來生形象標題太長');
     }
 
-    if (sharePostTag_1.length > 6) {
+    if (req.body.sharePostTag_1.length > 6) {
         return res.send('標籤一太長');
     }
 
-    if (sharePostTag_2.length > 6) {
+    if (req.body.sharePostTag_2.length > 6) {
         return res.send('標籤二太長');
     }
 
-    if (sharePostTag_3.length > 6) {
+    if (req.body.sharePostTag_3.length > 6) {
         return res.send('標籤三太長');
     }
 
-    if (sharePostTextarea.length === 0) {
+    if (req.body.sharePostTextarea.length === 0) {
         return res.send('文章是空的啊');
     }
 
-    if (sharePostTextarea.length > 200) {
+    if (req.body.sharePostTextarea.length > 168) {
         return res.send('文章太長');
     }
 
@@ -859,7 +879,7 @@ router.route('/:sharepostID').get(async (req, res) => {
         post_results.sid,
     ]);
 
-    console.log(author_profile_result);
+    // console.log(author_profile_result);
 
     results.postResults.authorProfile = author_profile_result;
 
@@ -1256,6 +1276,261 @@ router.route('/:sharepostID/:actionType?').put(async (req, res) => {
         return res.json(comment_revise_results);
     }
 
+    // TODO: REVISE POST
+    if (req.params.actionType === 'post_revise') {
+        let output = {
+            postUpdateResult: false,
+            tagsCreateResult: false,
+            postsToTagsResult: false,
+        };
+
+        console.log(req.body);
+
+        if (!res.locals.loginUser) {
+            return res.send('請先登入');
+        }
+
+        // DONE: 統一跳脫
+        const sharePostSid = SqlString.escape(req.body.sharePostSid);
+        const sharePostTitle = SqlString.escape(req.body.sharePostTitle);
+        const sharePostTag_1 = SqlString.escape(req.body.sharePostTag_1);
+        const sharePostTag_2 = SqlString.escape(req.body.sharePostTag_2);
+        const sharePostTag_3 = SqlString.escape(req.body.sharePostTag_3);
+        const sharePostTextarea = SqlString.escape(req.body.sharePostTextarea);
+
+        if (isNaN(Number(sharePostSid))) {
+            console.log('sharePostAvatarSid 不是數字');
+            return res.json('請不要想要攻擊');
+        }
+
+        if (sharePostTitle.indexOf('\\') !== -1) {
+            console.log('sharePostTitle 被跳脫了');
+            return res.json('跳脫');
+        }
+
+        if (sharePostTag_1.indexOf('\\') !== -1) {
+            console.log('sharePostTag_1 被跳脫了');
+            return res.json('跳脫');
+        }
+
+        if (sharePostTag_2.indexOf('\\') !== -1) {
+            console.log('sharePostTag_2 被跳脫了');
+            return res.json('跳脫');
+        }
+
+        if (sharePostTag_3.indexOf('\\') !== -1) {
+            console.log('sharePostTag_3 被跳脫了');
+            return res.json('跳脫');
+        }
+
+        // FIXME: 這樣英文不能有 ' 看狀況決定修不修
+        if (sharePostTextarea.indexOf('\\') !== -1) {
+            console.log('sharePostTextarea 被跳脫了');
+            return res.json('跳脫');
+        }
+
+        if (req.body.sharePostTitle.length > 6) {
+            return res.send('來生形象標題太長');
+        }
+
+        if (req.body.sharePostTag_1.length > 6) {
+            return res.send('標籤一太長');
+        }
+
+        if (req.body.sharePostTag_2.length > 6) {
+            return res.send('標籤二太長');
+        }
+
+        if (req.body.sharePostTag_3.length > 6) {
+            return res.send('標籤三太長');
+        }
+
+        if (req.body.sharePostTextarea.length === 0) {
+            return res.send('文章是空的啊');
+        }
+
+        if (req.body.sharePostTextarea.length > 168) {
+            return res.send('文章太長');
+        }
+
+        // DONE: 修改文章
+        const $post_update_sql = ` 
+            UPDATE share_avatar_posts 
+            SET share_post_text = ?, updated_at = NOW() 
+            WHERE share_post_sid = ? 
+        `;
+        const formatSql = SqlString.format($post_update_sql, [
+            req.body.sharePostTextarea,
+            req.body.sharePostSid,
+        ]);
+
+        // console.log(formatSql);
+        const [post_update_results] = await db.execute(formatSql);
+        // console.log(post_update_results);
+
+        if (!post_update_results.affectedRows) {
+            return res.send('更新文章失敗');
+        }
+
+        output.postUpdateResult = true;
+
+        // DONE: 新增標籤與否
+        let tag_1_ID = 0; // 初始化
+        let tag_2_ID = 0; // 初始化
+        let tag_3_ID = 0; // 初始化
+
+        // Tag_1
+        // console.log('tag 1', sharePostTag_1);
+        if (req.body.sharePostTag_1 !== '') {
+            const $tag_1_isSet_sql = `
+                SELECT share_post_tag_sid
+                FROM share_avatar_tags
+                WHERE share_post_tag_text = ${sharePostTag_1}
+            `;
+            const [tag_1_sid_isSet_result] = await db.query($tag_1_isSet_sql);
+
+            // console.log(tag_1_sid_isSet_result);
+            if (!tag_1_sid_isSet_result.length) {
+                // 不存在就新增
+                const $tag_create_sql = `
+                    INSERT
+                    INTO share_avatar_tags (
+                        share_post_tag_text, share_post_tag_search_times
+                    ) VALUES (
+                        ${sharePostTag_1}, 0
+                    )
+                `;
+
+                const [tag_create_result] = await db.execute($tag_create_sql);
+
+                if (!tag_create_result.affectedRows) {
+                    return res.send('標籤一新增失敗');
+                }
+
+                tag_1_ID = tag_create_result.insertId;
+            }
+        }
+
+        // Tag 2
+        // console.log('tag 2', sharePostTag_2);
+        if (req.body.sharePostTag_2 !== '') {
+            const $tag_2_isSet_sql = `
+                SELECT share_post_tag_sid
+                FROM share_avatar_tags
+                WHERE share_post_tag_text = ${sharePostTag_2}
+            `;
+            const [tag_2_sid_isSet_result] = await db.query($tag_2_isSet_sql);
+
+            // console.log(tag_2_sid_isSet_result);
+            if (!tag_2_sid_isSet_result.length) {
+                // 不存在就新增
+                const $tag_create_sql = `
+                    INSERT
+                    INTO share_avatar_tags (
+                        share_post_tag_text, share_post_tag_search_times
+                    ) VALUES (
+                        ${sharePostTag_2}, 0
+                    )
+                `;
+
+                const [tag_create_result] = await db.execute($tag_create_sql);
+
+                if (!tag_create_result.affectedRows) {
+                    return res.send('標籤二新增失敗');
+                }
+
+                tag_2_ID = tag_create_result.insertId;
+            }
+        }
+
+        // Tag 3
+        // console.log('tag 3', sharePostTag_3);
+        if (req.body.sharePostTag_3 !== '') {
+            const $tag_3_isSet_sql = `
+                SELECT share_post_tag_sid
+                FROM share_avatar_tags
+                WHERE share_post_tag_text = ${sharePostTag_3}
+            `;
+            const [tag_3_sid_isSet_result] = await db.query($tag_3_isSet_sql);
+
+            // console.log(tag_3_sid_isSet_result);
+            if (!tag_3_sid_isSet_result.length) {
+                // 不存在就新增
+                const $tag_create_sql = `
+                    INSERT
+                    INTO share_avatar_tags (
+                        share_post_tag_text, share_post_tag_search_times
+                    ) VALUES (
+                        ${sharePostTag_3}, 0
+                    )
+                `;
+
+                const [tag_create_result] = await db.execute($tag_create_sql);
+
+                if (!tag_create_result.affectedRows) {
+                    return res.send('標籤三新增失敗');
+                }
+
+                tag_3_ID = tag_create_result.insertId;
+            }
+        }
+
+        output.tagsCreateResult = true;
+
+        // TODO: 處理文章標籤對應
+        // TODO:
+        // TODO:
+        // TODO:
+        // TODO:
+        // TODO:
+        // TODO:
+        // TODO:
+        // TODO:
+        // TODO:
+        // TODO:
+        // TODO:
+        // TODO:
+        // TODO:
+        // 就的怎麼處理 新的譖麼錊理？
+
+        // let tagsArray = [];
+
+        // if (tag_1_ID !== 0) {
+        //     tagsArray.push(tag_1_ID);
+        // }
+
+        // if (tag_2_ID !== 0) {
+        //     tagsArray.push(tag_2_ID);
+        // }
+
+        // if (tag_3_ID !== 0) {
+        //     tagsArray.push(tag_3_ID);
+        // }
+
+        // for (let i = 0; i < tagsArray.length; i++) {
+        //     const $posts_to_tags_create_sql = `
+        //         INSERT
+        //         INTO share_avatar_posts_to_tags (
+        //             share_post_sid, share_post_tag_sid
+        //         ) VALUES (
+        //             ${postID}, ${tagsArray[i]}
+        //         )
+        //     `;
+
+        //     const [posts_to_tags_create_result] = await db.execute(
+        //         $posts_to_tags_create_sql
+        //     );
+
+        //     if (posts_to_tags_create_result.affectedRows !== 1) {
+        //         return res.json('新增標籤對應文章時出錯啦');
+        //     }
+        // }
+
+        // output.postsToTagsResult = true;
+
+        // res.json(output);
+    }
+
     return res.send('其他的請求都不接受喔～');
 });
 
@@ -1263,7 +1538,7 @@ router.route('/:sharepostID/:actionType?').delete(async (req, res) => {
     // DONE: DELETE COMMENT
     if (req.params.actionType === 'comment_delete') {
         // 稍微保護一下 不要隨便被亂刪資料
-        console.log(res.locals.loginUser);
+        // console.log(res.locals.loginUser);
         if (!res.locals.loginUser) {
             return res.send('請勿攻擊');
         }
