@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import Swal from 'sweetalert2';
-// import OutlineSoul from '../../images/sweetalert2/outline_soul.svg';
+import OutlineSoul from '../../images/sweetalert2/outline_soul.svg';
 import OutlineSoulAlert from '../../images/sweetalert2/outline_soul_alert.svg';
 
 import { CgClose } from 'react-icons/cg';
@@ -12,7 +12,7 @@ import { AiFillPlusCircle } from 'react-icons/ai';
 
 import {
     API_SHAREWALL_POST,
-    STATIC_SHAREWALL_AVA,
+    STATIC_SHAREWALL_AVATAR,
 } from '../../config/ajax-path';
 
 // Context
@@ -24,18 +24,13 @@ import HeaderContext, {
 
 import './ShareWallPost.scss';
 
-// FIXME: 假資料
-const fakeAvatarDetail =
-    '眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾 / 眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾 / 眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾 / 眼睛x2 / 精靈耳x2 / 膚色：粉色 / 貓尾';
-const fakePrice = 3500;
-const fakeAvatarSid = 5;
-
 function ShareWallPost(props) {
     const { pageName } = props;
 
     const { authorized, sid, account, token } = useContext(AuthContext);
     const { theme } = useContext(ThemeContext);
     const { setHeader } = useContext(HeaderContext);
+    const { avatarID } = useParams();
 
     const avatarTitleInputRef = useRef();
     const avatarTagInputRef_1 = useRef();
@@ -48,6 +43,17 @@ function ShareWallPost(props) {
     const [avatarTagInputString_2, setAvatarTagInputString_2] = useState('');
     const [avatarTagInputString_3, setAvatarTagInputString_3] = useState('');
     const [avatarTextareaString, setAvatarTextareaString] = useState('');
+
+    // FIXME: 這裡先寫得傻一點不然沒完沒了
+    const [postReviseShownData, setPostReviseShownData] = useState({
+        avatarData: {
+            imgName: '', // avatar 檔名
+            combinationText: '', // JSON 字串 用那兩個函式處理
+            avatarPrice: '', // 售價 最大四字元
+        },
+        userProfile: '',
+        userAccount: '',
+    });
 
     const navigate = useNavigate();
 
@@ -86,7 +92,7 @@ function ShareWallPost(props) {
         const result = await axios(API_SHAREWALL_POST, {
             method: 'POST',
             data: {
-                sharePostAvatarSid: fakeAvatarSid,
+                sharePostAvatarSid: Number(avatarID),
                 sharePostTitle: avatarTitleInputString,
                 sharePostTag_1: avatarTagInputString_1,
                 sharePostTag_2: avatarTagInputString_2,
@@ -99,7 +105,54 @@ function ShareWallPost(props) {
             },
         });
 
-        console.log(result.data);
+        // console.log(result.data);
+
+        if (
+            !result.data.postCreateResult ||
+            !result.data.tagsCreateResult ||
+            !result.data.postsToTagsResult
+        ) {
+            Swal.fire({
+                title: '好像出了一點問題...',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        } else {
+            Swal.fire({
+                title: '文章發布成功',
+                imageUrl: OutlineSoul,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+            navigate('/sharewall');
+        }
+    };
+
+    const axiosSharePostGET = async (avatarID) => {
+        const result = await axios.get(`${API_SHAREWALL_POST}/${avatarID}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        // console.log(result.data);
+
+        if (result.data === '還沒有這個形象呦') {
+            return navigate('/sharewall');
+        }
+
+        // 設定登入會員頭貼與虛擬形象部分
+        setPostReviseShownData({
+            avatarData: {
+                imgName: result.data.avatarDataResults.img_name,
+                combinationText: result.data.avatarDataResults.combinationText,
+                avatarPrice: result.data.avatarDataResults.price,
+            },
+            userProfile: result.data.userProfileResults.img_name,
+            userAccount: result.data.userProfileResults.account,
+        });
     };
 
     const handleSharePostSubmit = async () => {
@@ -121,13 +174,149 @@ function ShareWallPost(props) {
                 showConfirmButton: false,
             });
         }
+        if (avatarTextareaString.trim() === '') {
+            return Swal.fire({
+                title: '文章內容不可為空',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        }
         axiosPostPOST();
+    };
+
+    const AvatarDetailHTMLTranslator = (avatarCombinationString) => {
+        const parseData = JSON.parse(avatarCombinationString);
+        // console.log(parseData);
+
+        const combinationMap = {
+            hand: '手',
+            foot: '腳',
+            bodyColor: '膚色',
+            specialColor: '幻肢色',
+            tale: '尾',
+            taleColor: '尾色',
+            eye: '眼',
+            eyeColor: '瞳色',
+            nose: '鼻',
+            noseColor: '鼻色',
+            hair: '髮',
+            hairColor: '髮色',
+            ear: '耳',
+            topearColor: '獸耳色',
+            lip: '嘴',
+        };
+
+        let translatedHTMLStr = '';
+
+        for (let key in parseData) {
+            if (parseData[key] !== '') {
+                translatedHTMLStr += '<p>';
+                translatedHTMLStr += combinationMap[key];
+                translatedHTMLStr += '：';
+                translatedHTMLStr += parseData[key];
+                translatedHTMLStr += '</p>';
+            }
+        }
+
+        return translatedHTMLStr;
+    };
+
+    const AvatarDetailTranslator = (avatarCombinationString) => {
+        const parseData = JSON.parse(avatarCombinationString);
+        // console.log(parseData);
+
+        const combinationMap = {
+            hand: '手',
+            foot: '腳',
+            bodyColor: '膚色',
+            specialColor: '幻肢色',
+            tale: '尾',
+            taleColor: '尾色',
+            eye: '眼',
+            eyeColor: '瞳色',
+            nose: '鼻',
+            noseColor: '鼻色',
+            hair: '髮',
+            hairColor: '髮色',
+            ear: '耳',
+            topearColor: '獸耳色',
+            lip: '嘴',
+        };
+
+        let translatedStr = '';
+
+        let translatedCount = 0;
+
+        for (let key in parseData) {
+            if (parseData[key] !== '') {
+                if (translatedCount !== 0) {
+                    translatedStr += ' / ';
+                }
+                translatedStr += combinationMap[key];
+                translatedStr += '：';
+                translatedStr += parseData[key];
+                translatedCount++;
+            }
+        }
+
+        if (translatedStr.length >= 32) {
+            const WithMoreJSX = (
+                <>
+                    {translatedStr.slice(0, 32)}{' '}
+                    <span
+                        className="cpl-ivi-d-more"
+                        onClick={() => {
+                            Swal.fire({
+                                title: '形象詳情',
+                                html: AvatarDetailHTMLTranslator(
+                                    combinationText
+                                ),
+                                imageUrl: OutlineSoul,
+                                imageHeight: 50,
+                                imageWidth: 50,
+                                showConfirmButton: false,
+                            });
+                        }}
+                    >
+                        ...更多
+                    </span>
+                </>
+            );
+            return WithMoreJSX;
+        } else {
+            return translatedStr;
+        }
     };
 
     // 設定 Header
     useEffect(() => {
         setHeader(headers[pageName]);
     }, [pageName, setHeader]);
+
+    // 沒登入就彈去首頁
+    useEffect(() => {
+        if (!authorized) {
+            navigate('/', { replace: true });
+        }
+    }, []);
+
+    // 如果不是該篇文章作者應該要彈出去
+    useEffect(() => {
+        if (isNaN(avatarID)) {
+            return navigate('/', { replace: true });
+        }
+
+        // 沒問題就抓文章內容
+        axiosSharePostGET(avatarID);
+    }, []);
+
+    const {
+        avatarData: { imgName, combinationText, avatarPrice },
+        userProfile,
+        userAccount,
+    } = postReviseShownData;
 
     return (
         <>
@@ -148,11 +337,15 @@ function ShareWallPost(props) {
                         {/* TODO: 在 sweetAlert2 中放 swiper??? */}
                         {/* 不然進來不會有圖 */}
                         {/* 目前拉的是會員 sid 那張 */}
-                        <img
-                            src={`${STATIC_SHAREWALL_AVA}${sid}.png`}
-                            alt=""
-                            className="cpl-pcb-avatar"
-                        />
+                        {imgName ? (
+                            <img
+                                src={`${STATIC_SHAREWALL_AVATAR}${imgName}`}
+                                alt=""
+                                className="cpl-pcb-avatar"
+                            />
+                        ) : (
+                            ''
+                        )}
                         <div
                             className="cpl-pcb-af-round"
                             style={{
@@ -170,21 +363,9 @@ function ShareWallPost(props) {
                             <p className="cpl-ivi-title">形象詳情</p>
                             {/* FIXME: onClick 要跳出東西 */}
                             <p className="cpl-ivi-detail">
-                                {fakeAvatarDetail.length >= 35 ? (
-                                    <>
-                                        {fakeAvatarDetail.slice(0, 35)}{' '}
-                                        <span
-                                            className="cpl-ivi-d-more"
-                                            onClick={() => {
-                                                alert('施工中');
-                                            }}
-                                        >
-                                            ...更多
-                                        </span>
-                                    </>
-                                ) : (
-                                    fakeAvatarDetail
-                                )}
+                                {combinationText
+                                    ? AvatarDetailTranslator(combinationText)
+                                    : ''}
                             </p>
                             <div className="cpl-pcb-ivi-interaction-area d-flex justify-content-center align-items-center">
                                 {/* TODO: 怎麼換顏色？ */}
@@ -194,7 +375,7 @@ function ShareWallPost(props) {
                                     strokeColor={theme.cHeader}
                                 />
                                 <p className="cpl-pcb-ivi-ia-price px-2">
-                                    {fakePrice}
+                                    {avatarPrice}
                                 </p>
                                 <AiFillPlusCircle
                                     className="cpl-pcb-ivi-ia-AiFillPlusCircle"
@@ -237,14 +418,18 @@ function ShareWallPost(props) {
                             <div className="cpl-pcb-ita-th-inner-left d-flex align-items-center">
                                 <div className="cpl-pcb-ita-th-il-mh-area">
                                     {/* FIXME: 這圖是啥 */}
-                                    <img
-                                        className="cpl-pcb-ita-th-il-mh-memberhead"
-                                        src={`${STATIC_SHAREWALL_AVA}${sid}.png`}
-                                        alt=""
-                                    />
+                                    {userProfile ? (
+                                        <img
+                                            className="cpl-pcb-ita-th-il-mh-memberhead"
+                                            src={`${STATIC_SHAREWALL_AVATAR}${userProfile}`}
+                                            alt=""
+                                        />
+                                    ) : (
+                                        ''
+                                    )}
                                 </div>
                                 <p className="cpl-pcb-ita-th-il-account">
-                                    {account}
+                                    {userAccount}
                                 </p>
                             </div>
                         </div>
@@ -290,7 +475,7 @@ function ShareWallPost(props) {
                                             : 'theme-dark'
                                     }`}
                                     placeholder="我想說..."
-                                    maxLength="168"
+                                    maxLength="150"
                                     name="sharePostTextarea"
                                     ref={avatarTextareaRef}
                                     value={avatarTextareaString}
@@ -301,10 +486,10 @@ function ShareWallPost(props) {
                         </div>
                         <div className="cpl-pcb-ita-save-button-area d-flex justify-content-end">
                             <button
-                                className="cpl-pcb-ita-sba-save-button"
+                                className="cpl-pcb-ita-sba-save-button d-flex justify-content-center align-items-center"
                                 onClick={handleSharePostSubmit}
                             >
-                                保存
+                                發布
                             </button>
                         </div>
                     </div>

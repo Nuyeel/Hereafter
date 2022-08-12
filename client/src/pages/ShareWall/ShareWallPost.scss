@@ -196,9 +196,16 @@
 .cpl-pcb-ita-save-button-area {
     margin-bottom: 20px;
     .cpl-pcb-ita-sba-save-button {
+        border: none;
+        font-size: $fz-caption;
         background-color: $primary-50p;
+        color: $bgc-L-l !important;
         border-radius: 20px;
         filter: none !important;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 4px;
+        padding-bottom: 5px;
 
         // &:hover {
         //     filter: none !important;

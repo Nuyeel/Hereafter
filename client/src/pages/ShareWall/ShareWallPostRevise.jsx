@@ -42,7 +42,7 @@ function ShareWallPostRevise(props) {
 
     // FIXME: 這裡先寫得傻一點不然沒完沒了
     const [postReviseShownData, setPostReviseShownData] = useState({
-        postSid: 0, // 文章流水號
+        postSid: 0,
         avatarData: {
             imgName: '', // avatar 檔名
             combinationText: '', // JSON 字串 用那兩個函式處理
@@ -93,6 +93,10 @@ function ShareWallPostRevise(props) {
         });
         console.log(result.data);
 
+        if (result.data === '才...才沒有這篇文章呢！') {
+            return navigate('/sharewall');
+        }
+
         // 設定文章標題
         setAvatarTitleInputString(result.data.postResults.share_post_title);
 
@@ -123,7 +127,7 @@ function ShareWallPostRevise(props) {
 
         // 設定登入會員頭貼與虛擬形象部分
         setPostReviseShownData({
-            postSid: result.data.postResults.share_post_sid,
+            postSid: sharePostID,
             avatarData: {
                 imgName: result.data.postResults.img_name,
                 combinationText: result.data.postResults.combinationText,
@@ -155,6 +159,29 @@ function ShareWallPostRevise(props) {
         );
 
         // console.log(result.data);
+
+        if (
+            !result.data.postUpdateResult ||
+            !result.data.tagsCreateResult ||
+            !result.data.postsToTagsResult
+        ) {
+            Swal.fire({
+                title: '好像出了一點問題...',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        } else {
+            Swal.fire({
+                title: '文章修改成功',
+                imageUrl: OutlineSoul,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+            navigate(-1);
+        }
     };
 
     // FIXME: 這個要改
@@ -165,6 +192,15 @@ function ShareWallPostRevise(props) {
         if (avatarTitleInputString.trim() === '') {
             return Swal.fire({
                 title: '形象名稱不可為空',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        }
+        if (avatarTextareaString.trim() === '') {
+            return Swal.fire({
+                title: '文章內容不可為空',
                 imageUrl: OutlineSoulAlert,
                 imageHeight: 50,
                 imageWidth: 50,
@@ -463,7 +499,7 @@ function ShareWallPostRevise(props) {
                                             : 'theme-dark'
                                     }`}
                                     placeholder="我想說..."
-                                    maxLength="168"
+                                    maxLength="150"
                                     name="sharePostTextarea"
                                     ref={avatarTextareaRef}
                                     value={avatarTextareaString}

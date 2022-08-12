@@ -25,7 +25,7 @@ function Tagbar() {
 
     useEffect(() => {
         axiosGET();
-    }, []);
+    }, [tagList]);
 
     return (
         <div className="cpl-tagbar">
