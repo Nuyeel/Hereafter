@@ -324,6 +324,12 @@ function Nav(props) {
                                             ...userGooddeed,
                                             show: true,
                                         });
+                                        setTimeout(() => {
+                                            setUserGooddeed({
+                                                ...userGooddeed,
+                                                show: false,
+                                            });
+                                        }, 3000);
                                     }
                                 }}
                             >
@@ -385,7 +391,7 @@ function Nav(props) {
                                     />
                                 )}
 
-                                {!isDead && count === 0 ? (
+                                {isDead && count === 0 ? (
                                     ''
                                 ) : (
                                     <span className="nav-xuan-event-cartnum xuan-notion">
