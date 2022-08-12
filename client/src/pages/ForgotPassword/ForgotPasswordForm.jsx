@@ -78,11 +78,11 @@ function ForgotPasswordForm() {
                                             name="form1"
                                             onSubmit={handleSubmit}
                                         >
-                                            <div className="mb-3 d-flex justify-content-center page-title ">
+                                            <div className="mb-3 d-flex justify-content-center member-page-title ">
                                                 忘記密碼
                                             </div>
                                             <br />
-                                            <div className="mb-3 page-field">
+                                            <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="account"
                                                     className=" form-label"
@@ -105,7 +105,7 @@ function ForgotPasswordForm() {
                                                 />
                                                 <div className="form-text red"></div>
                                             </div>
-                                            <div className="mb-3 page-field">
+                                            <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="email"
                                                     className="form-label"
@@ -141,7 +141,7 @@ function ForgotPasswordForm() {
                                             <br />
                                             <div className="d-flex justify-content-center">
                                                 <Link
-                                                    className="link"
+                                                    className="member-link"
                                                     to="/login"
                                                 >
                                                     想起密碼了，直接登入
@@ -150,7 +150,7 @@ function ForgotPasswordForm() {
                                             <br />
                                             <div className="d-flex justify-content-center">
                                                 <Link
-                                                    className="link"
+                                                    className="member-link"
                                                     to="/register"
                                                 >
                                                     重新註冊

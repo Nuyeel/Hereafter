@@ -84,11 +84,11 @@ function LoginForm(props) {
                                             name="form1"
                                             onSubmit={handleSubmit}
                                         >
-                                            <div className="mb-3 d-flex justify-content-center page-title">
+                                            <div className="mb-3 d-flex justify-content-center member-page-title">
                                                 會員登入
                                             </div>
                                             <br />
-                                            <div className="mb-3 page-field">
+                                            <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="account"
                                                     className="form-label"
@@ -108,7 +108,7 @@ function LoginForm(props) {
                                                 />
                                                 <div className="form-text red"></div>
                                             </div>
-                                            <div className="mb-3 page-field">
+                                            <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="password"
                                                     className="form-label"
@@ -141,7 +141,7 @@ function LoginForm(props) {
                                             <br />
                                             <div className="d-flex justify-content-center ">
                                                 <Link
-                                                    className="link"
+                                                    className="member-link"
                                                     to="/register"
                                                 >
                                                     未註冊，先創建帳戶
@@ -150,7 +150,7 @@ function LoginForm(props) {
                                             <br />
                                             <div className="d-flex justify-content-center ">
                                                 <Link
-                                                    className="link"
+                                                    className="member-link"
                                                     to="/forgotpassword"
                                                 >
                                                     忘記密碼

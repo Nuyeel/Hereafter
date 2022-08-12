@@ -60,3 +60,56 @@
 /* overlayscrollbars */
 // @import '~overlayscrollbars/css/OverlayScrollbars.css';
 /* ============================================================ */
+
+/* ============================================================ */
+/* Bootstraps */
+// 更新Bootstraps樣式;
+/* ============================================================ */
+.breadcrumb {
+    $breadcrumb-divider: none;
+}
+
+.breadcrumb-item-link {
+    border-radius: 15px;
+    padding: 3px 10px;
+    line-height: 30px;
+    text-decoration: none;
+    font-family: $ff-t, $ff-h;
+    color: $secondary;
+    background-color: $highlight
+}
+
+.breadcrumb-item-link:hover {
+    border-radius: 15px;
+    padding: 3px 10px;
+    line-height: 30px;
+    text-decoration: none;
+    font-family: $ff-t, $ff-h;
+    color: #fff;
+    background-color: $accent-blue
+}
+
+.fa-solid {
+    font-size: 30px;
+    text-align: center;
+    color: $secondary
+}
+
+input[type=text], input[type=email], input[type=password], [type=date] {
+    font: 400 16px var(--text-font), Arial, sans-serif;
+    color: $bgc-D;
+    border-radius: 10px;
+}
+
+input[type=text]::placeholder, input[type=email]::placeholder, input[type=password]::placeholder, [type=date]::placeholder{
+    color:#BDBDBD;
+}
+
+input[type=text].error, input[type=email].error, input[type=password].error {
+    outline: var(--alert-l) 2px solid;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid, .form-control.is-invalid:focus, .was-validated:focus .form-control:invalid:focus {
+    color: $alert;
+    outline: $alert 2px solid;
+}

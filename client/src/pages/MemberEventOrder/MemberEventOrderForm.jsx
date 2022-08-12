@@ -134,7 +134,7 @@ function MemberProfileForm() {
                                                             <section className="w-100 p-4 d-flex justify-content-center pb-4">
                                                                 <div>
                                                                     <div className="tab-content">
-                                                                        <div className="mb-3 d-flex justify-content-center page-title">
+                                                                        <div className="mb-3 d-flex justify-content-center member-page-title">
                                                                             法喜充滿訂單
                                                                         </div>
 
