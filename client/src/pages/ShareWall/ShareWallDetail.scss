@@ -707,6 +707,7 @@
         color: $bgc-L-l !important;
         border-radius: 20px;
         filter: none !important;
+        outline: none !important;
         padding-left: 10px;
         padding-right: 10px;
         padding-bottom: 2px;
@@ -923,6 +924,9 @@
         background-color: transparent !important;
         border: 1px solid $white-60p;
         border-radius: 20px;
+        filter: none !important;
+        outline: none !important;
+        box-shadow: none !important;
 
         &::placeholder {
             position: relative;
