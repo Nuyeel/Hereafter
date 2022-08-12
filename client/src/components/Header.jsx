@@ -18,7 +18,13 @@ function Header() {
                         headerContext.title === '交流分享'
                             ? 'header-container-sharewall-edition'
                             : ''
-                    }`}
+                    } ${
+                        headerContext.title === '良辰吉地'
+                            ? 'header-container-place'
+                            : ''
+                    }
+                    
+                    `}
                 >
                     <h2
                         className="header"
