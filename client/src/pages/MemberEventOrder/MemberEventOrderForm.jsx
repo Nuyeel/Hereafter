@@ -17,7 +17,7 @@ function MemberProfileForm() {
         password: '',
     });
 
-    const themeContext = useContext(ThemeContext);
+    const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -75,77 +75,80 @@ function MemberProfileForm() {
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <section className="pb-4">
-                                    <div className="bg-white bg-opacity-75 rounded-5">
-                                        <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                            <div className="card-2 d-flex">
-                                                <div className="cards">
-                                                    <br />
-                                                    <ol
-                                                        className="breadcrumb justify-content-center"
-                                                        style={{
-                                                            '--bs-breadcrumb-divider':
-                                                                'none',
-                                                        }}
+                                <section
+                                    className="pb-4 justify-content-center memberBgCard rounded-5"
+                                    style={{
+                                        backgroundColor: theme.memberBgCard,
+                                    }}
+                                >
+                                    <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
+                                        <div className="card-2 d-flex">
+                                            <div className="cards">
+                                                <br />
+                                                <ol
+                                                    className="breadcrumb justify-content-center"
+                                                    style={{
+                                                        '--bs-breadcrumb-divider':
+                                                            'none',
+                                                    }}
+                                                >
+                                                    <li
+                                                        className="breadcrumb-item active"
+                                                        aria-current="page"
                                                     >
-                                                        <li
-                                                            className="breadcrumb-item active"
-                                                            aria-current="page"
+                                                        <Link
+                                                            to="/memberprofile"
+                                                            className="breadcrumb-item breadcrumb-item-link"
                                                         >
-                                                            <Link
-                                                                to="/memberprofile"
-                                                                className="breadcrumb-item breadcrumb-item-link"
-                                                            >
-                                                                會員中心主頁
-                                                            </Link>
-                                                        </li>
+                                                            會員中心主頁
+                                                        </Link>
+                                                    </li>
 
-                                                        <li className="breadcrumb-item">
-                                                            <Link
-                                                                to="/memberprofilerevise"
-                                                                className="breadcrumb-item-link"
-                                                            >
-                                                                修改會員資料
-                                                            </Link>
-                                                        </li>
-                                                        <li className="breadcrumb-item">
-                                                            <Link
-                                                                to="/memberpasswordrevise"
-                                                                className="breadcrumb-item-link"
-                                                            >
-                                                                修改登入密碼
-                                                            </Link>
-                                                        </li>
-                                                        <li className="breadcrumb-item">
-                                                            <Link
-                                                                to="/membereventorder"
-                                                                className="breadcrumb-item-link"
-                                                            >
-                                                                功德撲滿訂單
-                                                            </Link>
-                                                        </li>
-                                                    </ol>
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/memberprofilerevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            修改會員資料
+                                                        </Link>
+                                                    </li>
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/memberpasswordrevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            修改登入密碼
+                                                        </Link>
+                                                    </li>
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/membereventorder"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            功德撲滿訂單
+                                                        </Link>
+                                                    </li>
+                                                </ol>
 
-                                                    <section className="pb-4">
-                                                        <div className="bg-white bg-opacity-75 rounded-5">
-                                                            <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                                                <div>
-                                                                    <div className="tab-content">
-                                                                        <div className="mb-3 d-flex justify-content-center member-page-title">
-                                                                            功德撲滿訂單
-                                                                        </div>
-
-                                                                        {/* 這段是 二路測試用 */}
-                                                                        <EventHistory />
+                                                <section className="pb-4">
+                                                    <div className="bg-white rounded-5">
+                                                        <section className="w-100 p-4 d-flex justify-content-center pb-4">
+                                                            <div>
+                                                                <div className="tab-content">
+                                                                    <div className="mb-3 d-flex justify-content-center member-page-title">
+                                                                        功德撲滿訂單
                                                                     </div>
+
+                                                                    {/* 這段是 二路測試用 */}
+                                                                    <EventHistory />
                                                                 </div>
-                                                            </section>
-                                                        </div>
-                                                    </section>
-                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </section>
                                             </div>
-                                        </section>
-                                    </div>
+                                        </div>
+                                    </section>
                                 </section>
                             </div>
                         </div>

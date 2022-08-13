@@ -161,6 +161,7 @@ function ForgotPasswordReviseForm(props) {
                 console.log(result);
                 if (result.success) {
                     Swal.fire(result.error);
+                    navigate('/login');
                 } else {
                     Swal.fire(result.error);
                 }
