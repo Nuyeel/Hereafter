@@ -25,7 +25,7 @@ import {
 function SharePostCard(props) {
     const {
         postsid,
-        imgName,
+        NimgName,
         memberhead,
         account,
         likes,
@@ -86,10 +86,10 @@ function SharePostCard(props) {
                     {/* 來生形象 */}
                     {/* FIXME: 資料要從後端過來 網址不對 */}
                     {/* FIXME: 改成長手長腳測試 */}
-                    {imgName ? (
+                    {NimgName ? (
                         <img
                             className="cpl-spc-avatar"
-                            src={`${STATIC_SHAREWALL_AVATAR}${imgName}`}
+                            src={`${STATIC_SHAREWALL_AVATAR}${NimgName}`}
                             alt=""
                         />
                     ) : (

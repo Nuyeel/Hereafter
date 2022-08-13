@@ -1,5 +1,5 @@
 // 使用套件
-import { useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ import HeaderContext, {
 } from '../../context/HeaderContext/HeaderContext';
 
 // AJAX PATH
-import { API_SHAREWALL } from '../../config/ajax-path';
+import { API_SHAREWALL, Showcase_Data } from '../../config/ajax-path';
 
 // 共通組件
 
@@ -40,8 +40,9 @@ function ShareWallList(props) {
         setSearchParams,
         shareWallPostsData,
         setShareWallPostsData,
+        setAvatarForNewPostData,
     } = useContext(HeaderContext);
-    const { token } = useContext(AuthContext);
+    const { authorized, sid, token } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -236,9 +237,26 @@ function ShareWallList(props) {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log(result.data);
+        // console.log(result.data);
         setShareWallPostsData(result.data);
     };
+
+    const axiosAvatarForNewPostPOST = async () => {
+        const data = { id: sid };
+        const result = await axios.post(Showcase_Data, data);
+        // console.log(result.data);
+        // console.log(result.data.data);
+        setAvatarForNewPostData(result.data.data);
+        return;
+
+        // const member = JSON.parse(localStorage.getItem('auth'));
+        // if (member !== null) {
+        //     const postData = { id: member['sid'] };
+        //     const r = await axios.post(Showcase_Data, postData);
+        //     setAvatarData(r.data.data);
+        // } else {
+        //     console.log('Meow 未登入');
+    }
 
     // 設定 Header
     useEffect(() => {
@@ -249,6 +267,14 @@ function ShareWallList(props) {
     useEffect(() => {
         handleSearchParams();
     }, [shareWallSearchState]);
+
+    useEffect(() => {
+        if (authorized) {
+            axiosAvatarForNewPostPOST();
+        } else {
+            console.log('Meow...沒登入...不用去要...');
+        }
+    }, []);
 
     return (
         <>
@@ -321,7 +347,7 @@ function ShareWallList(props) {
                                 title={v.share_post_title}
                                 text={v.share_post_text}
                                 isliked={v.share_post_isliked}
-                                imgName={v.img_name}
+                                NimgName={v.Nimg_name}
                                 handleSearchParams={handleSearchParams}
                             />
                         ))}
