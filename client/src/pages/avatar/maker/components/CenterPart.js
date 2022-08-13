@@ -118,6 +118,7 @@ function CenterPart(props) {
         setColorControlSwitch,
         setFaceControlChange,
         backtoShowCase,
+        keepChange,
     } = props;
     const ref = useRef(null);
     const { theme } = useContext(ThemeContext);
@@ -565,14 +566,14 @@ function CenterPart(props) {
     `;
     const Info = styled.div`
         position: relative;
-        top: -5%;
+        top: -22px;
         left: 40%;
     `;
     const SaveBtn = styled.div`
         position: relative;
-        top: -3%;
-        left: 2%;
-        display: ${controlChange ? 'none' : 'flex'};
+        top: -13px;
+        left: 3%;
+        display: ${keepChange ? 'none' : 'flex'};
         justify-content: center;
         div {
             border: 1px solid;
@@ -599,11 +600,10 @@ function CenterPart(props) {
             <Center>
                 <div
                     style={{
-                        opacity: `${controlChange ? '0.3' : '1'}`,
                         position: 'relative',
                     }}
                 >
-                <BodyControl
+                    <BodyControl
                         onClick={() => {
                             setControlChange(0);
                             setBodyControlChange('hand');
@@ -703,7 +703,6 @@ function CenterPart(props) {
                             setColorControlSwitch(1);
                         }}
                     ></TaleControl>
-                    
                 </div>
 
                 <Info>

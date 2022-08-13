@@ -131,20 +131,22 @@ function MemberProfileForm() {
                                                 </ol>
 
                                                 <section className="pb-4">
-                                                    <div className="bg-white rounded-5">
-                                                        <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                                            <div>
-                                                                <div className="tab-content">
-                                                                    <div className="mb-3 d-flex justify-content-center member-page-title">
-                                                                        功德撲滿訂單
-                                                                    </div>
-
-                                                                    {/* 這段是 二路測試用 */}
-                                                                    <EventHistory />
-                                                                </div>
+                                                    <section
+                                                        className="w-100 p-4 d-flex justify-content-center pb-4 rounded-5  memberBgCard"
+                                                        style={{
+                                                            backgroundColor:
+                                                                theme.memberBgCard,
+                                                        }}
+                                                    >
+                                                        <div className="tab-content">
+                                                            <div className="mb-3 d-flex justify-content-center member-page-title">
+                                                                功德撲滿訂單
                                                             </div>
-                                                        </section>
-                                                    </div>
+
+                                                            {/* 這段是 二路測試用 */}
+                                                            <EventHistory />
+                                                        </div>
+                                                    </section>
                                                 </section>
                                             </div>
                                         </div>

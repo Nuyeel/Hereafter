@@ -19,7 +19,6 @@ function BodyPart(props) {
         padding-right: 40px;
         padding-top: 70px;
         box-sizing: border-box;
-        display: ${controlChange ? 'none' : 'block'};
     `;
     const Title = styled.div`
         font-size: 24px;
