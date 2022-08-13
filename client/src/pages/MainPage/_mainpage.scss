@@ -89,7 +89,7 @@ position: relative;
 }
 
 
-@media screen and (min-width: 992px) {
+// @media screen and (min-width: 992px) {
   .xuan-mainpage-nav{
     position: fixed;
     right: 0px;
@@ -100,7 +100,7 @@ position: relative;
         width: 100%;
       }
   }
-}
+// }
 
 // 手機版(768)----------------------------------
 
@@ -195,7 +195,7 @@ position: relative;
 
 
 // 一般版面(桌機版)-----------------------------
-@media screen and (min-width: 1900px) {
+// @media screen and (min-width: 1900px) {
   
   .xuan-child-center{
     width: 20%;
@@ -698,201 +698,201 @@ position: relative;
 
 
 
-}
+// }
 
 
 
 
 
 // 方塊大小跟背景圖 RWD連動調整
-@media screen and (min-width: 1500px) and (max-width: 1900px){ 
-  .xuan-child-center{
-    width: 10%;
-    height: 10%;
-    transform: translate(-52%, -47%);
-    }
+// @media screen and (min-width: 1500px) and (max-width: 1900px){ 
+//   .xuan-child-center{
+//     width: 10%;
+//     height: 10%;
+//     transform: translate(-52%, -47%);
+//     }
 
-  .xuan-mainpage-bg{
-    width: 100vw;
-    transform: translate(-50%, -50%);
-      >img{
-        width: 100%;
-        height: 100%;
-      }
-  }
-
-
-  // 轉生形象box
-  .xuan-box-avatar{
-    width: 7%;
-    height:10%;
-    position:absolute;
-    top: 56%;
-    left: 40.3%;
-    transform: translate(-50%, -50%);
-
-      >div:nth-child(3){
-        background-color: white;
-        width: 85%;
-        height: 60%;
-        border-radius: 10px;
-        margin: auto;
-        margin-top: 10px;
-      }
-
-      >p:nth-child(1){
-        width: 100%;
-        margin-top: 10px;
-        text-align: center;
-        font-size: $fz-h5;
-        font-family: $ff-t, $ff-h;
-        font-weight: 500;
-        margin: 15px auto;
-      }
-
-  }
-
-  // 會員中心box
-  .xuan-box-member{
-    border-radius: 20px;
-    width: 6.5%;
-    height: 10.5%;
-    background-color: #81A8E0;
-    position:absolute;
-    top: 65%;
-    left: 48%;
-    transform: translate(-50%, -50%);
-    color: white;
+//   .xuan-mainpage-bg{
+//     width: 100vw;
+//     transform: translate(-50%, -50%);
+//       >img{
+//         width: 100%;
+//         height: 100%;
+//       }
+//   }
 
 
-        >div:nth-child(1){
+//   // 轉生形象box
+//   .xuan-box-avatar{
+//     width: 7%;
+//     height:10%;
+//     position:absolute;
+//     top: 56%;
+//     left: 40.3%;
+//     transform: translate(-50%, -50%);
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 15px;
+//       >div:nth-child(3){
+//         background-color: white;
+//         width: 85%;
+//         height: 60%;
+//         border-radius: 10px;
+//         margin: auto;
+//         margin-top: 10px;
+//       }
 
-            >img{
-              width: 15%;
-            }
+//       >p:nth-child(1){
+//         width: 100%;
+//         margin-top: 10px;
+//         text-align: center;
+//         font-size: $fz-h5;
+//         font-family: $ff-t, $ff-h;
+//         font-weight: 500;
+//         margin: 15px auto;
+//       }
 
+//   }
 
-            >p{
-              width: 70%;
-              text-align: center;
-              font-size: $fz-h5;
-              font-family: $ff-t, $ff-h;
-              font-weight: 500;
-            }
-        }
-
-
-        >div:nth-child(2){
-          background-color: white;
-          border-radius: 10px;
-          width: 85%;
-          height: 60%;
-          margin: auto;
-          margin-top: 20px;
-        }
-
-    }
-
-  // 投胎去！
-  .xuan-go-future{
-    width: 2.5%;
-    // height: 10%;
-    border-radius: 50%;
-    background-color: #9587E1;
-    position:absolute;
-    top: 44.9%;
-    left: 57%;
-    transform: translate(-50%, -50%);
-
-    >img{
-      width: 100%;
-    }
-  }
+//   // 會員中心box
+//   .xuan-box-member{
+//     border-radius: 20px;
+//     width: 6.5%;
+//     height: 10.5%;
+//     background-color: #81A8E0;
+//     position:absolute;
+//     top: 65%;
+//     left: 48%;
+//     transform: translate(-50%, -50%);
+//     color: white;
 
 
-  // 良辰吉地
-  .xuan-time{
-    width: 13.5%;
-    height: 4.5%;
-    background-color: #9587E1;
-    border-radius: 20px;
-    position:absolute;
-    top: 58%;
-    left: 62%;
-    transform: translate(-50%, -50%);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+//         >div:nth-child(1){
+
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             margin-top: 15px;
+
+//             >img{
+//               width: 15%;
+//             }
 
 
-      >div:nth-child(1){
-        width: 35%;
-        text-align: center;
+//             >p{
+//               width: 70%;
+//               text-align: center;
+//               font-size: $fz-h5;
+//               font-family: $ff-t, $ff-h;
+//               font-weight: 500;
+//             }
+//         }
+
+
+//         >div:nth-child(2){
+//           background-color: white;
+//           border-radius: 10px;
+//           width: 85%;
+//           height: 60%;
+//           margin: auto;
+//           margin-top: 20px;
+//         }
+
+//     }
+
+//   // 投胎去！
+//   .xuan-go-future{
+//     width: 2.5%;
+//     // height: 10%;
+//     border-radius: 50%;
+//     background-color: #9587E1;
+//     position:absolute;
+//     top: 44.9%;
+//     left: 57%;
+//     transform: translate(-50%, -50%);
+
+//     >img{
+//       width: 100%;
+//     }
+//   }
+
+
+//   // 良辰吉地
+//   .xuan-time{
+//     width: 13.5%;
+//     height: 4.5%;
+//     background-color: #9587E1;
+//     border-radius: 20px;
+//     position:absolute;
+//     top: 58%;
+//     left: 62%;
+//     transform: translate(-50%, -50%);
+//     color: white;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+
+
+//       >div:nth-child(1){
+//         width: 35%;
+//         text-align: center;
         
-        >p{
-          // width: 70%;
-          text-align: center;
-          font-size: $fz-h5;
-          font-family: $ff-t, $ff-h;
-          font-weight: 500;
-          margin-bottom: 15px;
-        }
+//         >p{
+//           // width: 70%;
+//           text-align: center;
+//           font-size: $fz-h5;
+//           font-family: $ff-t, $ff-h;
+//           font-weight: 500;
+//           margin-bottom: 15px;
+//         }
 
-        >img{
-          width: 55%;
-        }
-      }
+//         >img{
+//           width: 55%;
+//         }
+//       }
 
-      >div:nth-child(2){
-        width: 60%;
+//       >div:nth-child(2){
+//         width: 60%;
 
-        >img{
-          width: 90%;
-          margin: auto;
-        }
-      }
-  }
+//         >img{
+//           width: 90%;
+//           margin: auto;
+//         }
+//       }
+//   }
 
-  // 功德撲滿
-  .xuan-box-event{
-    background-color: #81A8E0;
-    border-radius: 20px;
-    width: 7%;
-    height: 11%;
-    position:absolute;
-    top: 53%;
-    left: 32%;
-    transform: translate(-50%, -50%);
-    z-index: 300;
-    color: white;
+//   // 功德撲滿
+//   .xuan-box-event{
+//     background-color: #81A8E0;
+//     border-radius: 20px;
+//     width: 7%;
+//     height: 11%;
+//     position:absolute;
+//     top: 53%;
+//     left: 32%;
+//     transform: translate(-50%, -50%);
+//     z-index: 300;
+//     color: white;
 
-    >p:nth-child(1){
-        width: 100%;
-        margin-top: 10px;
-        text-align: center;
-        font-size: $fz-h4;
-        font-family: $ff-t, $ff-h;
-        font-weight: 500;
-        line-height: 71px;
-        margin-bottom: 12px;
-    }
-    >div:nth-child(2){
-      background-color: white;
-      width: 80%;
-      height: 65%;
-      margin: auto;
-      border-radius: 10px;
-    }
+//     >p:nth-child(1){
+//         width: 100%;
+//         margin-top: 10px;
+//         text-align: center;
+//         font-size: $fz-h4;
+//         font-family: $ff-t, $ff-h;
+//         font-weight: 500;
+//         line-height: 71px;
+//         margin-bottom: 12px;
+//     }
+//     >div:nth-child(2){
+//       background-color: white;
+//       width: 80%;
+//       height: 65%;
+//       margin: auto;
+//       border-radius: 10px;
+//     }
 
-  }
+//   }
 
-}
+// }
 
 
 
