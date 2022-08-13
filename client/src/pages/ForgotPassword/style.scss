@@ -14,6 +14,23 @@
     font-size: $fz-body
 }
 
+.member-event-info {
+    font-family: $ff-h, $ff-t;
+    font-weight: 700;
+    color: $secondary;
+    font-size: $fz-subtitle
+}
+
+.member-event-field {
+    font: 400 16px var(--text-font), Arial, sans-serif;
+    color: #ced4da;
+}
+
+.member-event-type {
+    font: 400 16px var(--text-font), Arial, sans-serif;
+    color: #3C3B67;
+}
+
 .btn-member {
     height: 32px;
     font:700 var(--text-font), Arial, sans-serif;

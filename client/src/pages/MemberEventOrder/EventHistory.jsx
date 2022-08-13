@@ -45,12 +45,12 @@ function EventHistory() {
                                 <div className="xuan-event-history-item">
                                     {/* 放該筆訂單的編號、時間 */}
                                     <div className="d-flex">
-                                        <p className="xuan-subtitle xuan-member-num">
+                                        <p className="xuan-subtitle xuan-member-num member-page-title">
                                             No.
                                             {v.event_order_sid}
                                         </p>
-                                        <p className="xuan-body">
-                                            日期：
+                                        <p className="xuan-body member-event-field">
+                                            成立日期：
                                             {v.order_created_at}
                                         </p>
                                     </div>
@@ -73,31 +73,33 @@ function EventHistory() {
                                                         />
                                                     </div>
 
-                                                    <div className="xuan-member-event-main ">
-                                                        <div className=" xuan-member-event-title">
-                                                            <p>
+                                                    <div className="xuan-member-event-main">
+                                                        <div className=" xuan-member-event-title ">
+                                                            <p className="member-event-type">
                                                                 {v.program_type}
                                                             </p>
-                                                            <p className="xuan-body">
+                                                            <p className="xuan-body member-page-field">
                                                                 {v.act_title}
                                                             </p>
                                                         </div>
 
                                                         <div className="d-flex">
-                                                            <p className="xuan-day">
+                                                            <p className="xuan-day member-page-field">
                                                                 {v.start}
                                                             </p>
-                                                            <p>
+                                                            <p className="member-page-field">
                                                                 {v.start_time}
                                                             </p>
                                                         </div>
 
-                                                        <p>
+                                                        <p className="member-page-field">
                                                             {v.place_location}
                                                         </p>
                                                     </div>
 
-                                                    <p>NT${v.price}</p>
+                                                    <p className="member-event-info">
+                                                        NT${v.price}
+                                                    </p>
                                                 </div>
                                             );
                                         })}
