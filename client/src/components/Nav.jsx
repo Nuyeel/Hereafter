@@ -101,13 +101,16 @@ function Nav(props) {
         });
     };
 
+    console.log(userGooddeed);
+
     useEffect(() => {
         if (authorized === true) {
+            console.log('去要陰德值了');
             getUserGooddeedData();
         } else {
             console.log('沒有登入無法顯示陰德值');
         }
-    }, [sid]);
+    }, [userGooddeed.gooddeed]);
 
     useEffect(() => {
         if (location.pathname === '/intro') {

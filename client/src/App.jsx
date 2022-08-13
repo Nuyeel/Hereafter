@@ -257,12 +257,24 @@ function App() {
                                 {/* ============================== */}
                                 <Route
                                     path="/gooddeed"
-                                    element={<Gooddeed pageName="gooddeed" />}
+                                    element={
+                                        <Gooddeed
+                                            pageName="gooddeed"
+                                            setUserGooddeed={setUserGooddeed}
+                                        />
+                                    }
                                 />
                                 {/* ============================== */}
                                 {/* 陰德值遊戲路由 */}
                                 {/* ============================== */}
-                                <Route path="/games" element={<Games />} />
+                                <Route
+                                    path="/games"
+                                    element={
+                                        <Games
+                                            setUserGooddeed={setUserGooddeed}
+                                        />
+                                    }
+                                />
                                 {/* ============================== */}
                                 {/* Intro路由 */}
                                 {/* ============================== */}
