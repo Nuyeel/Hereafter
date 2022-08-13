@@ -13,6 +13,9 @@ function HeaderContextProvider(props) {
     // 搜尋字串 會給 tagbar 和 searchbar 用
     const [searchParams, setSearchParams] = useState('');
 
+    // 當前分享資料的陣列 未登入則為空陣列
+    const [avatarForNewPostData, setAvatarForNewPostData] = useState([]);
+
     return (
         <HeaderContext.Provider
             value={{
@@ -24,6 +27,8 @@ function HeaderContextProvider(props) {
                 setShareWallSearchState,
                 searchParams,
                 setSearchParams,
+                avatarForNewPostData,
+                setAvatarForNewPostData,
             }}
         >
             {props.children}
