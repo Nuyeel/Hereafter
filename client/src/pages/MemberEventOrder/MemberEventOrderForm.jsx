@@ -143,8 +143,9 @@ function MemberProfileForm() {
                                                                 功德撲滿訂單
                                                             </div>
 
-                                                            {/* 這段是 二路測試用 */}
+                                                            {/* 這段是二路測試用 */}
                                                             <EventHistory />
+
                                                         </div>
                                                     </section>
                                                 </section>

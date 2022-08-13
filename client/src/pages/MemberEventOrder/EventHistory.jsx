@@ -9,7 +9,7 @@ import './_xuan_event_order.scss';
 import '../Event/_xuan_styles.scss';
 import { now } from 'lodash';
 
-function EventHistory() {
+function EventHistory(props) {
     const { sid } = useContext(AuthContext); //取得登入會員sid
 
     const [eventHistory, setEventHistory] = useState([]);
@@ -37,7 +37,13 @@ function EventHistory() {
         <>
             <div className="xuan-event-history-container">
                 {/* 將訂單細項從字串轉為陣列 */}
-                {eventHistory.length &&
+
+                {/* TODO: 這邊放如果沒有購物紀錄會顯示的文字 */}
+                {/* FIXME: 尚未修 CSS */}
+                {!eventHistory.length ? (
+                    <p>您尚未有購買紀錄</p>
+                ) : (
+                    eventHistory.length &&
                     eventHistory.map((v, i) => {
                         return (
                             <Fragment key={v.event_order_sid}>
@@ -115,7 +121,8 @@ function EventHistory() {
                                 </div>
                             </Fragment>
                         );
-                    })}
+                    })
+                )}
             </div>
         </>
     );
