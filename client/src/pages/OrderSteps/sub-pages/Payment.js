@@ -9,6 +9,7 @@ import '../styles/_creditcard.scss';
 //img
 import creditcard_logo from '../imgs/creditcard-logo.svg';
 import creditcard_logo_back from '../imgs/creditcard-logo-back.svg';
+import quicksoul from '../imgs/quicksoul.svg';
 
 // react-icon
 import { MdReplay } from 'react-icons/md';
@@ -159,6 +160,22 @@ function Payment(props) {
         e.preventDefault(); //阻擋HTML5原生錯誤訊息
     };
 
+    // 這段處理一鍵填入
+    const quickPass = () => {
+        setCardInfor({
+            ...cardInfor,
+
+            sid: sid,
+            cardnumber: '1234567812345678',
+            cardholder: '王小明',
+            ex_month: '05',
+            ex_year: '2028',
+            cvv: '123',
+            bill: '實體發票',
+            payway: '信用卡',
+        });
+    };
+
     return (
         <>
             {/* 信用卡放這邊 */}
@@ -168,6 +185,15 @@ function Payment(props) {
                         {/* 標題區(含活動明細BTN) */}
                         <div className="xuan-payment-title">
                             <div className="xuan-payment-btn">
+                                <img
+                                    className="quicksoul"
+                                    src={quicksoul}
+                                    alt=""
+                                    onClick={() => {
+                                        quickPass();
+                                    }}
+                                />
+
                                 <button
                                     className="xuan-btn-m xuan-btn-pri"
                                     onClick={() => {
@@ -197,6 +223,9 @@ function Payment(props) {
                                 className="xuan-input-radio"
                                 name="bill"
                                 type="radio"
+                                checked={cardInfor.bill === '二聯式'}
+                                value="二聯式"
+                                onChange={handleChange}
                             />
 
                             <label className="xuan-label-title  ">二聯式</label>
@@ -205,8 +234,8 @@ function Payment(props) {
                                 className="xuan-input-radio"
                                 name="bill"
                                 type="radio"
-                                checked={cardInfor.bill === '二聯式'}
-                                value="二聯式"
+                                checked={cardInfor.bill === '三聯式'}
+                                value="三聯式"
                                 onChange={handleChange}
                             />
 
@@ -215,9 +244,9 @@ function Payment(props) {
                             <input
                                 className="xuan-input-radio"
                                 name="bill"
-                                type="radio" 
-                                checked={cardInfor.bill === '三聯式'}
-                                value="三聯式"
+                                type="radio"
+                                checked={cardInfor.bill === '實體發票'}
+                                value="實體發票"
                                 onChange={handleChange}
                             />
 
@@ -230,9 +259,6 @@ function Payment(props) {
                             <label
                                 className="xuan-label-title "
                                 htmlFor="test-text"
-                                checked={cardInfor.bill === '實體發票'}
-                                value="實體發票"
-                                onChange={handleChange}
                             >
                                 付款方式：
                             </label>

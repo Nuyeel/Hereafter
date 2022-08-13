@@ -66,7 +66,7 @@ router.post('/addorder', async (req, res) => {
         error: '',
     };
 
-    console.log(res.locals.loginUser);
+    // console.log(res.locals.loginUser);
 
     const sql =
         'INSERT INTO `event_order_detail`( `member_sid`, `event_order_detail`, `order_created_at`) VALUES ( ?, ?, NOW() )';
@@ -205,7 +205,6 @@ router.get('/alreadypay', async (req, res) => {
     res.json('已從購物車刪除');
 });
 
-
 // 會員中心-活動訂單
 router.get('/testevent/:membersid', async (req, res) => {
     let output = {
@@ -214,7 +213,7 @@ router.get('/testevent/:membersid', async (req, res) => {
     };
 
     let memberSid = req.params.membersid || '';
-    const $sql1 = 'SELECT * FROM `event_order_detail` WHERE `member_sid` = ? ';
+    const $sql1 = 'SELECT * FROM `event_order_detail` WHERE `member_sid` = ? ORDER BY `event_order_detail`.`event_order_sid` DESC';
 
     const [results1] = await db.query($sql1, [memberSid]);
 
@@ -243,9 +242,9 @@ router.get('/testevent/:membersid', async (req, res) => {
                     });
 
                     // console.log(index);
-                    console.log(results);
+                    // console.log(results);
                     results1[index]['eventdetail'].push(results);
-                    console.log(results1[index]['eventdetail']);
+                    // console.log(results1[index]['eventdetail']);
 
                     if (index === results1.length - 1) {
                         resolve();
@@ -256,7 +255,7 @@ router.get('/testevent/:membersid', async (req, res) => {
     }
 
     test().then(() => {
-        console.log(results1);
+        // console.log(results1);
         return res.json(results1);
     });
 });
@@ -264,10 +263,27 @@ router.get('/testevent/:membersid', async (req, res) => {
 // 會員中心有辦法調出會員歷屆活動報名紀錄
 router.get('/memberevent/:membersid?', async (req, res) => {
     let memberSid = req.params.membersid || '';
-    console.log(memberSid);
-    const $sql = 'SELECT * FROM `event_order_detail` WHERE `member_sid` = ? ';
+    // console.log(memberSid);
+    const $sql = 'SELECT * FROM `event_order_detail` WHERE `member_sid` = ?  ';
 
     const [results] = await db.query($sql, [memberSid]);
+    res.json(results); //會獲得一個JSON包
+});
+
+// PersonForm時套入會員資訊
+router.get('/memberinfor/:membersid?', async (req, res) => {
+    let memberSid = req.params.membersid || '';
+    const $sql = 'SELECT * FROM `member` WHERE `sid` = ? ';
+
+    const [results] = await db.query($sql, [memberSid]);
+
+    // Day.js日期轉換法
+    // FIXME: 目前這邊還是壞掉的 日期沒辦法順利轉換
+    [results].forEach((value) => {
+        const birthdate = dayjs(value.birthdate).format('YYYY-MM-DD');
+        value.birthdate = birthdate;
+    });
+
     res.json(results); //會獲得一個JSON包
 });
 

@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
         value.start = mo;
     });
 
-    console.log(results);
+    // console.log(results);
     res.json(results);
 });
 
@@ -55,7 +55,7 @@ router.get('/:eventsid?', async (req, res) => {
         value.end = me;
     });
 
-    console.log(results);
+    // console.log(results);
     res.json(results);
 });
 
@@ -70,7 +70,7 @@ router.get('/eventcartnum/:membersid?', async (req, res) => {
 
     const [[{ 'COUNT(*)': results }]] = await db.query($sql, [memberSid]);
 
-    console.log('nodeJS', results);
+    // console.log('nodeJS', results);
     res.json(results);
 });
 
