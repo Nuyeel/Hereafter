@@ -60,6 +60,9 @@ function App() {
     // 讓setLightBox方法 <MainPage><Nav>可共用
     const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
+    // 目錄頁漢堡，按了可以關掉
+    const [mainpageIcon, setMainpageIcon] = useState('mainpage_icon_hidden'); //目錄漢堡預設是隱藏
+
     // navbar顯示會員陰德值
     const [userGooddeed, setUserGooddeed] = useState({
         show: false,
@@ -77,6 +80,8 @@ function App() {
                     <Nav
                         lightBox={lightBox}
                         setLightBox={setLightBox}
+                        mainpageIcon={mainpageIcon}
+                        setMainpageIcon={setMainpageIcon}
                         userGooddeed={userGooddeed}
                         setUserGooddeed={setUserGooddeed}
                     />
@@ -93,6 +98,8 @@ function App() {
                                         <MainPage
                                             pageName="mainpage"
                                             setLightBox={setLightBox}
+                                            mainpageIcon={mainpageIcon}
+                                            setMainpageIcon={setMainpageIcon}
                                         />
                                     }
                                 />

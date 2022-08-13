@@ -35,8 +35,18 @@ import { eventCartNum } from '../features/counter/counterSlice';
 import { PLACE_CARTDATA_API } from '../config/ajax-path';
 import { IoLogoClosedCaptioning } from 'react-icons/io5';
 
+// mainpage測試
+import mainpage_nav from '../pages/MainPage/imgs/mainpage_nav.svg';
+
 function Nav(props) {
-    const { lightBox, setLightBox, userGooddeed, setUserGooddeed } = props; //從App.jsx傳入
+    const {
+        lightBox,
+        setLightBox,
+        mainpageIcon,
+        setMainpageIcon,
+        userGooddeed,
+        setUserGooddeed,
+    } = props; //從App.jsx傳入
     // const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
     const { theme, setTheme } = useContext(ThemeContext);
@@ -192,6 +202,7 @@ function Nav(props) {
                         <h2 className="nav_link">交流分享</h2>
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
+
                     <div
                         className="nav_lightbox_list"
                         onClick={() => {
@@ -203,93 +214,44 @@ function Nav(props) {
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
 
-                    <div className="d-flex">
-                        {/* 登入登出btn */}
-                        {authorized ? (
-                            <>
-                                <button
-                                    type="button"
-                                    className="btn btn-outline-secondary nav-btn"
-                                    onClick={() => {
-                                        setLightBox('nav_lightbox_hidden');
-                                        userLogout();
-                                    }}
-                                >
-                                    登出
-                                </button>
-                            </>
-                        ) : (
+                    {/* 登入登出btn */}
+                    {authorized ? (
+                        <>
                             <button
                                 type="button"
                                 className="btn btn-outline-secondary nav-btn"
                                 onClick={() => {
-                                    navigate('/login', { replace: true });
                                     setLightBox('nav_lightbox_hidden');
+                                    userLogout();
                                 }}
                             >
-                                登入
+                                登出
                             </button>
-                        )}
+                        </>
+                    ) : (
+                        <button
+                            type="button"
+                            className="btn btn-outline-secondary nav-btn"
+                            onClick={() => {
+                                navigate('/login', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                            }}
+                        >
+                            登入
+                        </button>
+                    )}
 
-                        {/* 購物車btn */}
-                        <div>
-                            <span className="nir-FaShoppingCart">
-                                {authorized ? (
-                                    !isDead ? (
-                                        <FaShoppingCart
-                                            style={{
-                                                cursor: 'pointer',
-                                            }}
-                                            onClick={() => {
-                                                navigate('/ordersteps', {
-                                                    replace: true,
-                                                });
-                                                setLightBox(
-                                                    'nav_lightbox_hidden'
-                                                );
-                                            }}
-                                        />
-                                    ) : (
-                                        <FaShoppingCart
-                                            style={{
-                                                cursor: 'pointer',
-                                            }}
-                                            onClick={() => {
-                                                navigate('/reborn-cart', {
-                                                    replace: true,
-                                                });
-                                                setLightBox(
-                                                    'nav_lightbox_hidden'
-                                                );
-                                            }}
-                                        />
-                                    )
-                                ) : (
-                                    <FaShoppingCart
-                                        style={{
-                                            cursor: 'pointer',
-                                        }}
-                                        onClick={() => {
-                                            Swal.fire('請先登入會員');
-                                            navigate('/login', {
-                                                replace: true,
-                                            });
-                                            setLightBox('nav_lightbox_hidden');
-                                        }}
-                                    />
-                                )}
+                    {/* 購物車btn */}
 
-                                {/* 生者活動購物車: 數量為0時Nav不顯示 */}
-                                {!isDead && count === 0 ? (
-                                    ''
-                                ) : (
-                                    <span className="nav-xuan-event-cartnum xuan-notion">
-                                        {count}
-                                    </span>
-                                )}
-                            </span>
-                            {/* <FaShoppingCart /> */}
-                        </div>
+                    {/* 目錄頁btn */}
+                    <div
+                        className={mainpageIcon}
+                        onClick={() => {
+                            setMainpageIcon('mainpage_icon_hidden');
+                            setLightBox('nav_lightbox_hidden');
+                        }}
+                    >
+                        <img src={mainpage_nav} alt="" />
                     </div>
                 </div>
             </div>

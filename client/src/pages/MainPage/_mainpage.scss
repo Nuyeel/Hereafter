@@ -40,7 +40,12 @@ position: relative;
   user-select: none; 
   /* 禁止元素被拖拉 */
   -webkit-user-drag: none;
-  z-index: 1000;
+  // z-index: 5000;
+  // z-index: 200000 !important;
+
+  // img{
+  //       z-index: 200000!important;
+  //     }
 }
 
 .xuan-mainpage-nav:hover{
@@ -95,9 +100,11 @@ position: relative;
     right: 0px;
     top: 0px;
     width: 12%;
+    z-index: 200000 !important;
 
       >img{
         width: 100%;
+        z-index: 200000 !important;
       }
   }
 // }
