@@ -5,6 +5,7 @@ export const SERVER = 'http://localhost:3500';
 export const API_SHAREWALL = `${SERVER}/api/sharewall`;
 export const API_SHAREWALL_POST = `${SERVER}/api/sharewall/post`;
 export const API_SHAREWALL_TAGS = `${SERVER}/api/sharewall/tagbar/tags`;
+export const API_SHAREWALL_AVATARCHANGE_GET = `${SERVER}/api/sharewall/oneclickavatarchange`;
 
 // 分享牆來生形象靜態路由
 export const STATIC_SHAREWALL = `${SERVER}/uploads/images/share/`;
