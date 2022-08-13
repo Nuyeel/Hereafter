@@ -55,6 +55,36 @@
     }
 }
 
+// 以下是來生形象銜接至分享牆使用的部分
+.cpl-swal-sharewall-newpostpopup-display {
+    padding-top: 20px;
+    // background-color: red;
+    
+    .cpl-swal-snd-card {
+    position: relative;
+    // border: 1px solid $bgc-D;
+    // border-radius: 5px;
+
+        .apl-swal-snd-c-img {
+            width: 80%;
+            cursor: pointer;
+        }
+
+    }
+
+    .cpl-swal-snd-card.isActive {
+        animation: cpl-swal-snd-card-active-animation ease-in-out 1s infinite alternate;
+    }
+}
+
+@keyframes cpl-swal-snd-card-active-animation {
+    0% {
+        top: 0px
+    }
+    100% {
+        top: -4px;
+    }
+}
 
 /* ============================================================ */
 /* overlayscrollbars */
