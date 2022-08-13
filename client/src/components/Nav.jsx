@@ -209,17 +209,36 @@ function Nav(props) {
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
 
-                    <div
-                        className="nav_lightbox_list"
-                        onClick={() => {
-                            navigate('/memberprofile', { replace: true });
-                            setLightBox('nav_lightbox_hidden');
-                            setMainpageIcon('mainpage_icon_hidden');
-                        }}
-                    >
-                        <h2 className="nav_link">會員中心</h2>
-                        <h4 className="subtitle">介紹文字放這邊</h4>
-                    </div>
+                    {authorized ? (
+                        <div
+                            className="nav_lightbox_list"
+                            onClick={() => {
+                                navigate('/memberprofile', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                                setMainpageIcon('mainpage_icon_hidden');
+                            }}
+                        >
+                            <h2 className="nav_link">會員中心</h2>
+                            <h4 className="subtitle">
+                                其實這裡也有一點點的關於你
+                            </h4>
+                        </div>
+                    ) : (
+                        <div
+                            className="nav_lightbox_list"
+                            onClick={() => {
+                                Swal.fire('請先登入會員');
+                                navigate('/login', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                                setMainpageIcon('mainpage_icon_hidden');
+                            }}
+                        >
+                            <h2 className="nav_link">會員中心</h2>
+                            <h4 className="subtitle">
+                                沒有登入沒有權限，輪迴千遍有緣再見
+                            </h4>
+                        </div>
+                    )}
 
                     {/* 登入登出btn */}
                     {authorized ? (
@@ -394,7 +413,9 @@ function Nav(props) {
                                                 setLightBox(
                                                     'nav_lightbox_hidden'
                                                 );
-                                                setMainpageIcon('mainpage_icon_hidden');
+                                                setMainpageIcon(
+                                                    'mainpage_icon_hidden'
+                                                );
                                             }}
                                         />
                                     ) : (
@@ -409,7 +430,9 @@ function Nav(props) {
                                                 setLightBox(
                                                     'nav_lightbox_hidden'
                                                 );
-                                                setMainpageIcon('mainpage_icon_hidden');
+                                                setMainpageIcon(
+                                                    'mainpage_icon_hidden'
+                                                );
                                             }}
                                         />
                                     )
@@ -424,7 +447,9 @@ function Nav(props) {
                                                 replace: true,
                                             });
                                             setLightBox('nav_lightbox_hidden');
-                                            setMainpageIcon('mainpage_icon_hidden');
+                                            setMainpageIcon(
+                                                'mainpage_icon_hidden'
+                                            );
                                         }}
                                     />
                                 )}
@@ -477,7 +502,6 @@ function Nav(props) {
                                         setLightBox('nav_lightbox_visible');
                                     } else {
                                         setLightBox('nav_lightbox_hidden');
-                                        
                                     }
                                 }}
                             />
