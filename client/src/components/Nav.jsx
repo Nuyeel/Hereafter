@@ -120,127 +120,177 @@ function Nav(props) {
             {/* Nav漢堡光箱 (網站目錄) */}
             <div className={lightBox}>
                 <div className="nav_lightbox_wrap">
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/aboutusfirst', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            投放所介紹
-                        </h2>
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/aboutusfirst', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">投放所介紹</h2>
                         <h4 className="subtitle">
                             搞不清楚發生什麼事？先來看看這裡吧
                         </h4>
                     </div>
 
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/news', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            投胎速報
-                        </h2>
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/news', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">投胎速報</h2>
                         <h4 className="subtitle">最新最即時的投胎資訊都在這</h4>
                     </div>
 
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/events', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/events', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">
                             {/* FIXME: 德 缺字 */}
                             功德撲滿
                         </h2>
                         <h4 className="subtitle">天下沒有白吃的來生</h4>
                     </div>
 
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/showcase', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            來生形象
-                        </h2>
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/showcase', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">來生形象</h2>
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
 
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/Place', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            良辰吉地
-                        </h2>
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/Place', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">良辰吉地</h2>
                         <h4 className="subtitle">
                             何時何地，轉世降生~由你自己來決定！
                         </h4>
                     </div>
 
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/sharewall', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            交流分享
-                        </h2>
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/sharewall', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">交流分享</h2>
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/memberprofile', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            會員中心
-                        </h2>
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/memberprofile', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">會員中心</h2>
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
-                    {/* <div className="nav_lightbox_list"> */}
-                    {authorized ? (
-                        <>
+
+                    <div className="d-flex">
+                        {/* 登入登出btn */}
+                        {authorized ? (
+                            <>
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-secondary nav-btn"
+                                    onClick={() => {
+                                        setLightBox('nav_lightbox_hidden');
+                                        userLogout();
+                                    }}
+                                >
+                                    登出
+                                </button>
+                            </>
+                        ) : (
                             <button
                                 type="button"
                                 className="btn btn-outline-secondary nav-btn"
                                 onClick={() => {
+                                    navigate('/login', { replace: true });
                                     setLightBox('nav_lightbox_hidden');
-                                    userLogout();
                                 }}
                             >
-                                登出
+                                登入
                             </button>
-                        </>
-                    ) : (
-                        <button
-                            type="button"
-                            className="btn btn-outline-secondary nav-btn"
-                            onClick={() => {
-                                navigate('/login', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            登入
-                        </button>
-                    )}
-                    {/* </div> */}
+                        )}
+
+                        {/* 購物車btn */}
+                        <div>
+                            <span className="nir-FaShoppingCart">
+                                {authorized ? (
+                                    !isDead ? (
+                                        <FaShoppingCart
+                                            style={{
+                                                cursor: 'pointer',
+                                            }}
+                                            onClick={() => {
+                                                navigate('/ordersteps', {
+                                                    replace: true,
+                                                });
+                                                setLightBox(
+                                                    'nav_lightbox_hidden'
+                                                );
+                                            }}
+                                        />
+                                    ) : (
+                                        <FaShoppingCart
+                                            style={{
+                                                cursor: 'pointer',
+                                            }}
+                                            onClick={() => {
+                                                navigate('/reborn-cart', {
+                                                    replace: true,
+                                                });
+                                                setLightBox(
+                                                    'nav_lightbox_hidden'
+                                                );
+                                            }}
+                                        />
+                                    )
+                                ) : (
+                                    <FaShoppingCart
+                                        style={{
+                                            cursor: 'pointer',
+                                        }}
+                                        onClick={() => {
+                                            Swal.fire('請先登入會員');
+                                            navigate('/login', {
+                                                replace: true,
+                                            });
+                                            setLightBox('nav_lightbox_hidden');
+                                        }}
+                                    />
+                                )}
+
+                                {/* 生者活動購物車: 數量為0時Nav不顯示 */}
+                                {!isDead && count === 0 ? (
+                                    ''
+                                ) : (
+                                    <span className="nav-xuan-event-cartnum xuan-notion">
+                                        {count}
+                                    </span>
+                                )}
+                            </span>
+                            {/* <FaShoppingCart /> */}
+                        </div>
+                    </div>
                 </div>
             </div>
 
