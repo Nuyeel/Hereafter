@@ -135,6 +135,7 @@ function Nav(props) {
                         onClick={() => {
                             navigate('/aboutusfirst', { replace: true });
                             setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
                         }}
                     >
                         <h2 className="nav_link">投放所介紹</h2>
@@ -148,6 +149,7 @@ function Nav(props) {
                         onClick={() => {
                             navigate('/news', { replace: true });
                             setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
                         }}
                     >
                         <h2 className="nav_link">投胎速報</h2>
@@ -159,6 +161,7 @@ function Nav(props) {
                         onClick={() => {
                             navigate('/events', { replace: true });
                             setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
                         }}
                     >
                         <h2 className="nav_link">
@@ -173,6 +176,7 @@ function Nav(props) {
                         onClick={() => {
                             navigate('/showcase', { replace: true });
                             setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
                         }}
                     >
                         <h2 className="nav_link">來生形象</h2>
@@ -184,6 +188,7 @@ function Nav(props) {
                         onClick={() => {
                             navigate('/Place', { replace: true });
                             setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
                         }}
                     >
                         <h2 className="nav_link">良辰吉地</h2>
@@ -197,6 +202,7 @@ function Nav(props) {
                         onClick={() => {
                             navigate('/sharewall', { replace: true });
                             setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
                         }}
                     >
                         <h2 className="nav_link">交流分享</h2>
@@ -208,6 +214,7 @@ function Nav(props) {
                         onClick={() => {
                             navigate('/memberprofile', { replace: true });
                             setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
                         }}
                     >
                         <h2 className="nav_link">會員中心</h2>
@@ -222,6 +229,7 @@ function Nav(props) {
                                 className="btn btn-outline-secondary nav-btn"
                                 onClick={() => {
                                     setLightBox('nav_lightbox_hidden');
+                                    setMainpageIcon('mainpage_icon_hidden');
                                     userLogout();
                                 }}
                             >
@@ -235,6 +243,7 @@ function Nav(props) {
                             onClick={() => {
                                 navigate('/login', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
+                                setMainpageIcon('mainpage_icon_hidden');
                             }}
                         >
                             登入
@@ -280,6 +289,7 @@ function Nav(props) {
                                 onClick={() => {
                                     navigate('', { replace: true });
                                     setLightBox('nav_lightbox_hidden');
+                                    setMainpageIcon('mainpage_icon_hidden');
                                 }}
                             />
                         </div>
@@ -322,6 +332,7 @@ function Nav(props) {
                             onClick={() => {
                                 navigate('/nextlife', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
+                                setMainpageIcon('mainpage_icon_hidden');
                             }}
                         >
                             我要投胎
@@ -383,6 +394,7 @@ function Nav(props) {
                                                 setLightBox(
                                                     'nav_lightbox_hidden'
                                                 );
+                                                setMainpageIcon('mainpage_icon_hidden');
                                             }}
                                         />
                                     ) : (
@@ -397,6 +409,7 @@ function Nav(props) {
                                                 setLightBox(
                                                     'nav_lightbox_hidden'
                                                 );
+                                                setMainpageIcon('mainpage_icon_hidden');
                                             }}
                                         />
                                     )
@@ -411,6 +424,7 @@ function Nav(props) {
                                                 replace: true,
                                             });
                                             setLightBox('nav_lightbox_hidden');
+                                            setMainpageIcon('mainpage_icon_hidden');
                                         }}
                                     />
                                 )}
@@ -448,6 +462,7 @@ function Nav(props) {
                                         Swal.fire('請先登入會員');
                                         navigate('/login', { replace: true });
                                         setLightBox('nav_lightbox_hidden');
+                                        setMainpageIcon('mainpage_icon_hidden');
                                     }}
                                 />
                             )}
@@ -462,6 +477,7 @@ function Nav(props) {
                                         setLightBox('nav_lightbox_visible');
                                     } else {
                                         setLightBox('nav_lightbox_hidden');
+                                        
                                     }
                                 }}
                             />
