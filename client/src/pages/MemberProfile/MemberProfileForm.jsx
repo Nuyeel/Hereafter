@@ -123,63 +123,65 @@ function MemberProfileForm() {
                                                 </ol>
 
                                                 <section className="pb-4">
-                                                    <div className="bg-white rounded-5">
-                                                        <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                                            <div>
-                                                                <div className="tab-content">
-                                                                    <div className="mb-3 d-flex justify-content-center member-page-title">
-                                                                        會員中心主頁
+                                                    <section
+                                                        className="w-100 p-4 d-flex justify-content-center pb-4 rounded-5  memberBgCard"
+                                                        style={{
+                                                            backgroundColor:
+                                                                theme.memberBgCard,
+                                                        }}
+                                                    >
+                                                        <div className="tab-content">
+                                                            <div className="mb-3 d-flex justify-content-center member-page-title">
+                                                                會員中心主頁
+                                                            </div>
+                                                            <br />
+                                                            <div className="card">
+                                                                <div className="card-body d-flex align-items-center">
+                                                                    <div className="col-md-9 mb-md-0 p-md-4 member-page-field">
+                                                                        <h5 className="card-title">
+                                                                            歡迎回來，
+                                                                            <p className="card-text ">
+                                                                                <br />
+                                                                                這裡預計會放使用者的資料
+                                                                            </p>
+                                                                        </h5>
                                                                     </div>
-                                                                    <br />
-                                                                    <div className="card">
-                                                                        <div className="card-body d-flex align-items-center">
-                                                                            <div className="col-md-9 mb-md-0 p-md-4 member-page-field">
-                                                                                <h5 className="card-title">
-                                                                                    歡迎回來，
-                                                                                    <p className="card-text ">
-                                                                                        <br />
-                                                                                        這裡預計會放使用者的資料
-                                                                                    </p>
-                                                                                </h5>
-                                                                            </div>
-                                                                            <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row">
-                                                                                <i className="fa-solid fa-user"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <br />
-                                                                    <div className="cards-2 d-flex justify-content-evenly align-items-center">
-                                                                        <div className="card d-flex justify-content-evenly align-items-center">
-                                                                            <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                                <i className="fa-solid fa-earth-asia"></i>
-                                                                            </div>
-                                                                            <div className="card-body d-flex flex-column">
-                                                                                <h5 className="card-title member-page-field">
-                                                                                    這裡說不定會放東西
-                                                                                </h5>
-                                                                                <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
-                                                                                    開始預約
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="card d-flex justify-content-evenly align-items-center">
-                                                                            <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                                <i className="fa-solid fa-wand-magic-sparkles"></i>
-                                                                            </div>
-                                                                            <div className="card-body d-flex flex-column">
-                                                                                <h5 className="card-title member-page-field">
-                                                                                    這裡說不定會放東西
-                                                                                </h5>
-                                                                                <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
-                                                                                    開始創建
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
+                                                                    <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row">
+                                                                        <i className="fa-solid fa-user"></i>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </section>
-                                                    </div>
+                                                            <br />
+                                                            <div className="cards-2 d-flex justify-content-evenly align-items-center">
+                                                                <div className="card d-flex justify-content-evenly align-items-center">
+                                                                    <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
+                                                                        <i className="fa-solid fa-earth-asia"></i>
+                                                                    </div>
+                                                                    <div className="card-body d-flex flex-column">
+                                                                        <h5 className="card-title member-page-field">
+                                                                            這裡說不定會放東西
+                                                                        </h5>
+                                                                        <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
+                                                                            開始預約
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="card d-flex justify-content-evenly align-items-center">
+                                                                    <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
+                                                                        <i className="fa-solid fa-wand-magic-sparkles"></i>
+                                                                    </div>
+                                                                    <div className="card-body d-flex flex-column">
+                                                                        <h5 className="card-title member-page-field">
+                                                                            這裡說不定會放東西
+                                                                        </h5>
+                                                                        <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
+                                                                            開始創建
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
                                                 </section>
                                             </div>
                                         </div>
