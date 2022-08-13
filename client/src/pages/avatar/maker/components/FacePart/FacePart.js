@@ -32,7 +32,6 @@ function FacePart(props) {
         padding-right: 40px;
         padding-top: 70px;
         box-sizing: border-box;
-        display: ${controlChange ? 'block' : 'none'};
     `;
     const FaceButton = styled.div`
         display: flex;
