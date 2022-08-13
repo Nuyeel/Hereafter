@@ -348,7 +348,7 @@ function MemberProfileForm(props) {
                                                                         required
                                                                     />
                                                                 </div>
-
+                                                                <br />
                                                                 <div className="d-flex justify-content-sm-evenly ">
                                                                     <button
                                                                         type="submit"
@@ -356,6 +356,8 @@ function MemberProfileForm(props) {
                                                                     >
                                                                         確認修改
                                                                     </button>
+
+                                                                    <br />
                                                                     {/* <button className="btn-member btn-member-sec btn-member-l btn-member-outline-light">
                                                                                     清除
                                                                                 </button> */}

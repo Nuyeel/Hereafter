@@ -270,7 +270,7 @@ function MemberProfileReviseForm() {
                                                                         required
                                                                     />
                                                                 </div>
-
+                                                                <br />
                                                                 <div className="d-flex justify-content-sm-evenly ">
                                                                     <button
                                                                         type="submit"
@@ -278,6 +278,8 @@ function MemberProfileReviseForm() {
                                                                     >
                                                                         確認修改
                                                                     </button>
+
+                                                                    <br />
                                                                     {/* <button
                                                                                     type="reset"
                                                                                     className="btn-member btn-member-sec btn-member-l btn-member-outline-light"
