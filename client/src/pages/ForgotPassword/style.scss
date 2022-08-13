@@ -10,8 +10,8 @@
 .member-page-field {
     font-family: $ff-t, $ff-h;
     font-weight: 500;
-    color: $secondary;
-    font-size: $fz-body
+    color: $secondary; 
+    font-size: $fz-body;
 }
 
 .member-event-info {
@@ -21,14 +21,14 @@
     font-size: $fz-subtitle
 }
 
-.member-event-field {
-    font: 400 16px var(--text-font), Arial, sans-serif;
-    color: #ced4da;
+.member-event-info-2 {
+    font-size: 14px;
+    color:#3C3B67;
 }
 
-.member-event-type {
+.member-event-field {
     font: 400 16px var(--text-font), Arial, sans-serif;
-    color: #3C3B67;
+    color: #BDBDBD;
 }
 
 .btn-member {

@@ -75,18 +75,27 @@
 
                       // 活動類型 ex: 贊助 志工
                         p:nth-child(1){
-                          background-color: #EDEFF7;
+                          color: #fff;
+                          background-color: $primary;
+                          // background-color: #EDEFF7;
                           padding: 5px;
-                          border-radius: 5px;
+                          border-radius: 8px;
+                          margin-right: 7px;
+                          transition: .2s;
+                        }
+
+                        p:nth-child(1):hover{
+                          color: #fff;
+                          background-color: $secondary;
+                          // background-color: #EDEFF7;
+                          padding: 5px;
+                          border-radius: 8px;
                           margin-right: 7px;
                         }
 
                         .xuan-body{
                           font-weight: 500;
                         }
-
-                  
-                        
 
                         p{
                           margin-bottom: 10px;
@@ -145,6 +154,7 @@
                 display: flex;
                 align-items:center ;
                 justify-content: flex-start;
+                border-radius: 10px;
 
                     .xuan-member-event-detai-img{
                       max-width: 150px;

@@ -74,32 +74,40 @@ function EventHistory() {
                                                     </div>
 
                                                     <div className="xuan-member-event-main">
-                                                        <div className=" xuan-member-event-title ">
+                                                        <div className=" xuan-member-event-title">
                                                             <p className="member-event-type">
                                                                 {v.program_type}
                                                             </p>
-                                                            <p className="xuan-body member-page-field">
+                                                            <p className=" member-page-field">
                                                                 {v.act_title}
                                                             </p>
                                                         </div>
 
                                                         <div className="d-flex">
-                                                            <p className="xuan-day member-page-field">
-                                                                {v.start}
-                                                            </p>
-                                                            <p className="member-page-field">
-                                                                {v.start_time}
-                                                            </p>
+                                                            <div>
+                                                                <p className="xuan-day member-event-info-2">
+                                                                    {' '}
+                                                                    {
+                                                                        v.start
+                                                                    }{' '}
+                                                                    {
+                                                                        v.start_time
+                                                                    }{' '}
+                                                                </p>
+
+                                                                <p className="member-event-info-2">
+                                                                    {
+                                                                        v.place_location
+                                                                    }
+                                                                </p>
+                                                            </div>
                                                         </div>
-
-                                                        <p className="member-page-field">
-                                                            {v.place_location}
-                                                        </p>
                                                     </div>
-
-                                                    <p className="member-event-info">
-                                                        NT${v.price}
-                                                    </p>
+                                                    <div>
+                                                        <p className="member-event-info">
+                                                            NT${v.price}
+                                                        </p>{' '}
+                                                    </div>
                                                 </div>
                                             );
                                         })}
