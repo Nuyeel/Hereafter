@@ -41,7 +41,7 @@ function EventHistory(props) {
                 {/* TODO: 這邊放如果沒有購物紀錄會顯示的文字 */}
                 {/* FIXME: 尚未修 CSS */}
                 {!eventHistory.length ? (
-                    <p>您尚未有購買紀錄</p>
+                    <p className="member-event-default">目前尚未建立任何訂單</p>
                 ) : (
                     eventHistory.length &&
                     eventHistory.map((v, i) => {
