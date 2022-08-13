@@ -1,8 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import TWZipCode from './TWZipCode';
 import Swal from 'sweetalert2'; //sweetalert2
 import { MdReplay } from 'react-icons/md';
 import { FiSend } from 'react-icons/fi';
+import quicksoul from '../imgs/quicksoul.svg';
+import axios from 'axios';
 
 // scss
 import '../styles/_new_cart.scss';
@@ -68,6 +70,25 @@ function PersonForm(props) {
         'Australia +61',
         'Austria +43',
     ]; //電話區域代碼
+
+    // 一鍵填入魔法
+    const quickPass = () => {
+        setMyInfor({
+            ...myInfor,
+
+            // member_sid: sid, //預設一開始就代入會員資訊
+            // fullname: '王小明', //預設一開始就代入會員資訊
+            mobile_city: '台灣 +886',
+            // mobile: '0912345678', //預設一開始就代入會員資訊
+            // email: 'passtest@yahoo.com.tw',
+            gender: '不提供',
+            ID: 'R123456789',
+            birthday: '1995-09-22', //FIXME:預設一開始就代入會員資訊
+            add_city: '台北市',
+            add_town: '大安區',
+            address: '復興南路一段390號2樓',
+        });
+    };
 
     const handleChange = (e) => {
         setMyInfor({ ...myInfor, [e.target.name]: e.target.value });
@@ -155,6 +176,49 @@ function PersonForm(props) {
         });
     };
 
+    const [membercheck, setMemberCheck] = useState('true'); //預設一開始就填
+
+    const checkedMemberState = () => {
+        if (membercheck) {
+            setMyInfor({
+                ...myInfor,
+
+                fullname: '',
+                mobile: '',
+                email: '',
+                birthday: '',
+            });
+        } else {
+            fetchMemberInfor();
+        }
+    };
+
+    // 預設「同會員」已勾，填入會員資料進myinfor
+    const fetchMemberInfor = async () => {
+        const response = await axios.get(
+            `http://localhost:3500/eventcarts/memberinfor/${sid}`
+        );
+
+        await console.log(response.data[0].birthdate);
+
+        await setMyInfor({
+            ...myInfor,
+
+            member_sid: sid,
+            fullname: response.data[0].name,
+            mobile: response.data[0].mobile,
+            email: response.data[0].email,
+            birthday: response.data[0].birthdate,
+        });
+
+        await console.log(myInfor);
+    };
+
+    // 預設一進入頁面就執行(會員資料代入表格)
+    useEffect(() => {
+        fetchMemberInfor();
+    }, [sid]);
+
     // FIXME: 按下重新填寫時，錯誤訊息無法清零
 
     // 「重新填寫」 按下的時候，把myInfor都清空(變回預設值'')
@@ -197,8 +261,15 @@ function PersonForm(props) {
             <div className="xuan-person-infor-window">
                 <div className="xuan-form-wrap">
                     <div className="xuan-person-infor-title">
-                    
                         <div className="xuan-infor-btn">
+                            <img
+                                className="quicksoul"
+                                src={quicksoul}
+                                alt=""
+                                onClick={() => {
+                                    quickPass();
+                                }}
+                            />
                             <button
                                 className="xuan-btn-m xuan-btn-pri"
                                 onClick={() => {
@@ -221,7 +292,13 @@ function PersonForm(props) {
                                     className="xuan-input-checkbox"
                                     type="checkbox"
                                     id="cbox"
+                                    checked={membercheck}
+                                    onChange={() => {
+                                        setMemberCheck(!membercheck);
+                                        checkedMemberState();
+                                    }}
                                 />
+
                                 <span>同會員</span>
                             </div>
 
