@@ -173,6 +173,11 @@
 // }
 
 .memberBgCard {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    border-radius: 30px;
+    backdrop-filter: blur(3px);
     outline: rgba(255, 255, 255, 0.5) 0.5px solid;
     box-shadow: -7px -10px 7px -10px rgba(255, 255, 255, 0.3);
 }
+
