@@ -1,5 +1,6 @@
 import getDatestr from '../components/getDatestr';
 import SoulProps from '../components/SoulProps';
+import styled from '@emotion/styled';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -9,11 +10,27 @@ function AvatarCard(props) {
     const time = getDatestr(avatarinfo.avatar_created_at);
     const combination = JSON.parse(avatarinfo.combination);
     const combinationText = JSON.parse(avatarinfo.combinationText);
-    console.log(avatarinfo);
     const editAvatar = () => {
         sessionStorage.setItem('avatar_id', avatarinfo.avatar_id);
         navigate('/maker', { replace: true });
     };
+    const BGSquareShowcase = styled.div`
+        position: absolute;
+        border: ${theme.bcAvatarFrame} 3px solid;
+        height: 68%;
+        width: 68%;
+        top: 20%;
+        left: 16%;
+    `;
+    const BGCircleShowcase = styled.div`
+        position: absolute;
+        border: ${theme.bcAvatarFrame} 3px solid;
+        border-radius: 50%;
+        height: 82%;
+        width: 82%;
+        top: 6%;
+        left: 9%;
+    `;
     return (
         <>
             <div
@@ -24,7 +41,18 @@ function AvatarCard(props) {
                     投生形象{avatarinfo.avatar_id}
                 </p>
                 <p className="showcaseCardTime">最後編輯時間:{time}</p>
-                <div className="showcaseCardIMG">
+                <div
+                    className="showcaseCardIMG"
+                    style={{
+                        background: `radial-gradient(
+            50% 50% at 50% 50%,
+            ${theme.bgcShowacseCard} 0%,
+            transparent 100%
+        )`,
+                    }}
+                >
+                    <BGCircleShowcase />
+                    <BGSquareShowcase />
                     <img
                         src={
                             'http://localhost:3500/uploads/images/avatar/' +

@@ -324,19 +324,19 @@ function CenterPart(props) {
     const BGSquare = styled.div`
         position: absolute;
         border: ${theme.bcAvatarFrame} 3px solid;
-        height: 310px;
-        width: 307px;
-        top: 23%;
-        left: 16.3%;
+        height: 68%;
+        width: 68%;
+        top: 20%;
+        left: 16%;
     `;
     const BGCircle = styled.div`
         position: absolute;
         border: ${theme.bcAvatarFrame} 3px solid;
         border-radius: 50%;
-        height: 385px;
-        width: 385px;
-        top: 10.5%;
-        left: 7.6%;
+        height: 82%;
+        width: 82%;
+        top: 6%;
+        left: 9%;
     `;
     //*MING:Body區
     const Face = styled.div`
@@ -568,8 +568,8 @@ function CenterPart(props) {
         div {
             padding-left: 15px;
             opacity: 0;
-            position: relative;
-            top: 90%;
+            position: absolute;
+            top: 100%;
             i {
                 position: relative;
                 top: 10px;
@@ -629,6 +629,8 @@ function CenterPart(props) {
                 <div
                     style={{
                         position: 'relative',
+                        width: '450px',
+                        height: '450px',
                     }}
                 >
                     <BodyControl
