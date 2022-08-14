@@ -23,6 +23,11 @@ import back_to_center from './imgs/back_to_center.svg';
 import aboutus from './imgs/aboutus-star.svg';
 import mainpage_test from './imgs/mainpage_test.svg';
 
+// 格子素材用圖片
+import avatar01 from './imgs/avatar01.svg';
+import avatar02 from './imgs/avatar02.svg';
+import avatar03 from './imgs/avatar03.svg';
+
 // 放進box內的圖片
 import avartar01 from './imgs/mainpage-avatar01.png';
 
@@ -265,7 +270,9 @@ function MainPage(props) {
                     {/* 投生形象小格1 */}
                     <div className="xuan-box xuan-box-avatar-show1">
                         {/* 左邊白色框 */}
-                        <div> </div>
+                        <div>
+                            <img src={avatar01} alt="" />
+                        </div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
@@ -279,7 +286,9 @@ function MainPage(props) {
                     {/* 投生形象小格2 */}
                     <div className="xuan-box xuan-box-avatar-show2">
                         {/* 左邊白色框 */}
-                        <div> </div>
+                        <div>
+                        <img src={avatar02} alt="" />
+                        </div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
@@ -293,7 +302,9 @@ function MainPage(props) {
                     {/* 投生形象小格3 */}
                     <div className="xuan-box xuan-box-avatar-show3">
                         {/* 左邊白色框 */}
-                        <div> </div>
+                        <div>
+                        <img src={avatar03} alt="" />
+                        </div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
