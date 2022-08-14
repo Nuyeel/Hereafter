@@ -302,9 +302,6 @@ const {
     LINEPAY_CHANNEL_SECRET_KEY,
 } = process.env;
 
-const sampleData = require('../sample/sampleData');
-console.log('sampleData', sampleData);
-
 const orders = {
     1660468720: {
         amount: 1000,
