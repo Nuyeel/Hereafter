@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext, useMemo, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { useState, useEffect, useContext, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -8,7 +7,10 @@ import HeaderContext, {
     headers,
 } from '../../context/HeaderContext/HeaderContext';
 
-import NextLifeMusic from './subpages/NextLifeMusic/index.jsx';
+import NextLifeStageIndicator from './componenets/NextLifeStageIndicator';
+import NextLifeInteractionButton from './componenets/NextLifeInteractionButton';
+import NextLifeMusic from './subpages/NextLifeMusic';
+import NextLifeText from './subpages/NextLifeText';
 import NextLifeSample from './subpages/NextLifeSample';
 import NextLifeCube from './subpages/NextLifeCube';
 
@@ -33,8 +35,13 @@ function NextLife(props) {
     const navigate = useNavigate();
 
     // FIXME: 測試時調這邊
-    const [nextLifeStage, setNextLifeStage] = useState(1);
+    const [nextLifeStage, setNextLifeStage] = useState(3);
     const [cubeAnimationState, setCubeAnimationState] = useState(false);
+
+    const [musicIsHidden, setMusicIsHidden] = useState(false);
+    const [sampleIsHidden, setSampleIsHidden] = useState(false);
+    const [textIsHidden, setTextIsHidden] = useState(false);
+    const [nextLifeTextareaString, setNextLifeTextareaString] = useState('');
 
     const meshesData = useMemo(() => {
         const texturesData = myTextureLoader();
@@ -49,6 +56,8 @@ function NextLife(props) {
     }, []);
 
     // console.log(meshesData);
+
+    // ASK: 可以在 useEffect 中去預載嗎 還是直接一進主網頁就載更好
 
     // 設定 Header
     useEffect(() => {
@@ -77,13 +86,20 @@ function NextLife(props) {
     return (
         <>
             <div className="container-fluid cpl-nextlife-container-fluid p-0">
-                <div className="container cpl-ncf-container">
-                    {nextLifeStage === 0 ? (
-                        <NextLifeMusic setNextLifeStage={setNextLifeStage} />
-                    ) : (
-                        ''
-                    )}
-                </div>
+                {nextLifeStage === 0 ? (
+                    <NextLifeMusic
+                        setNextLifeStage={setNextLifeStage}
+                        musicIsHidden={musicIsHidden}
+                        setMusicIsHidden={setMusicIsHidden}
+                    />
+                ) : (
+                    ''
+                )}
+                {nextLifeStage >= 1 ? (
+                    <NextLifeStageIndicator nextLifeStage={nextLifeStage} />
+                ) : (
+                    ''
+                )}
                 {nextLifeStage === 1 ? (
                     <NextLifeSample
                         nextLifeStage={nextLifeStage}
@@ -91,11 +107,33 @@ function NextLife(props) {
                         meshesData={meshesData}
                         cubeAnimationState={cubeAnimationState}
                         setCubeAnimationState={setCubeAnimationState}
+                        sampleIsHidden={sampleIsHidden}
+                        setSampleIsHidden={setSampleIsHidden}
+                    />
+                ) : (
+                    ''
+                )}
+                {nextLifeStage >= 2 ? (
+                    <NextLifeInteractionButton
+                        nextLifeStage={nextLifeStage}
+                        setNextLifeStage={setNextLifeStage}
+                        nextLifeTextareaString={nextLifeTextareaString}
+                        setTextIsHidden={setTextIsHidden}
                     />
                 ) : (
                     ''
                 )}
                 {nextLifeStage === 2 ? (
+                    <NextLifeText
+                        nextLifeStage={nextLifeStage}
+                        textIsHidden={textIsHidden}
+                        nextLifeTextareaString={nextLifeTextareaString}
+                        setNextLifeTextareaString={setNextLifeTextareaString}
+                    />
+                ) : (
+                    ''
+                )}
+                {nextLifeStage === 3 ? (
                     <NextLifeCube
                         nextLifeStage={nextLifeStage}
                         setNextLifeStage={setNextLifeStage}

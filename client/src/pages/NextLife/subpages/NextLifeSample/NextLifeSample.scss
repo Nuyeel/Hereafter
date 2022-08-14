@@ -1,29 +1,117 @@
 @import '../../../../styles/variables.scss';
 
-.cpl-nextlife-magic-cube-container {
-    position: absolute; // FIXME: 手機版應該不能滑動 沒問題
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
+.cpl-nextlife-magic-cube-container.nlSample {
+    // FIXME: 這是隨便抓的高度
+    bottom: 100px;
 }
 
 .cpl-nmc-c-info-area {
     color: $bgc-D;
     background-color: $white-60p;
-    width: 80%;
+    width: 90%;
+    max-width: 360px;
     position: absolute;
+    left: 20px;
     bottom: 20px;
-    left: 0;
-    right: 0;
-    margin: auto;
+    line-height: $fz-title;
     border-radius: 20px;
     padding: 20px;
+    z-index: 1;
 
     .cpl-nmc-c-ia-explanation {
+        margin-bottom: $fz-title;
+
         >.cpl-nmc-c-ia-e-span {
             color:  $primary;
         }
+    }
+
+    .cpl-nmc-c-ia-wishing {
+        .cpl-nmc-c-ia-w-text {
+            display: block;
+        }
+
+        .cpl-nmc-c-ia-w-button {
+            border: none;
+            padding-top: 4px;
+            padding-bottom: 6px;
+            padding-left: 8px;
+            padding-right: 8px;
+            position: relative;
+            top: 2px;
+            background-color: $primary;
+            border-radius: 5px;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:active {
+                outline: none;
+            }
+
+            .cpl-nmc-c-ia-w-b-text {
+                color: #FFFFFF;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:500px) {
+    .cpl-nmc-c-info-area {
+        left: 40px;
+        bottom: 40px;
+    }
+}
+
+@media screen and (min-width:992px) {
+    .cpl-nmc-c-info-area {
+        // FIXME: 先稍微算就好
+        left: calc((100vw - 912px) / 2 );
+        bottom: 60px;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .cpl-nmc-c-info-area {
+        // FIXME: 先稍微算就好
+        left: calc((100vw - 1100px) / 2 );
+        bottom: 60px;
+    }
+}
+
+@media screen and (min-width:1400px) {
+    .cpl-nmc-c-info-area {
+        // FIXME: 先稍微算就好
+        left: calc((100vw - 1280px) / 2 );
+        bottom: 60px;
+    }
+}
+
+.cpl-nmc-c-info-area.isShown {
+    animation: cpl-nextlife-cube-info-area-isShown 2s;
+}
+
+@keyframes cpl-nextlife-cube-info-area-isShown {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.cpl-nmc-c-info-area.isHidden {
+    animation: cpl-nextlife-cube-info-area-isHidden 2s;
+    cursor: none;
+    pointer-events: none;
+}
+
+@keyframes cpl-nextlife-cube-info-area-isHidden {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }

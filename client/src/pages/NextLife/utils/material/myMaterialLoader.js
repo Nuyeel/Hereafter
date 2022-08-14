@@ -5,7 +5,10 @@ import myTextureLoader from '../texture/myTextureLoader';
 
 function myMaterialLoader(boxID, textureItem) {
     // 預設值先給所有時間和動畫類型變數
-    const material = {};
+    const material = {
+        side: {},
+        top: {},
+    };
 
     const uniform = {
         none_time: {
@@ -41,14 +44,22 @@ function myMaterialLoader(boxID, textureItem) {
     };
 
     const box = boxMap.filter((item) => item.ID === boxID)[0];
-    material['vertexShader'] = shaderMap.v;
-    material['fragmentShader'] = shaderMap[`f${boxID}`];
+    material['side']['vertexShader'] = shaderMap.v;
+    material['side']['fragmentShader'] = shaderMap[`f${boxID}`];
 
     box.Postfix.forEach((boxFace) => {
-        uniform[`texture${boxFace}`] = { value: textureItem[boxFace] };
+        if (boxFace !== 'T') {
+            uniform[`texture${boxFace}`] = { value: textureItem[boxFace] };
+        } else {
+            material['top']['vertexShader'] = shaderMap.v;
+            material['top']['fragmentShader'] = shaderMap['tt'];
+            material['top']['uniforms'] = {
+                textureT: { value: textureItem[boxFace] },
+            };
+        }
     });
 
-    material['uniforms'] = uniform;
+    material['side']['uniforms'] = uniform;
 
     return material;
 }
