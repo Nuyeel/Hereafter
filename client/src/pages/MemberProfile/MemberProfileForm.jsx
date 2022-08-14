@@ -145,25 +145,35 @@ function MemberProfileForm() {
                                                                                 <br />
                                                                                 您目前的陰德值為：
                                                                             </p>
+                                                                            <p className="card-text ">
+                                                                                <br />
+                                                                                您目前的陰德值為：
+                                                                            </p>
                                                                         </h5>
                                                                     </div>
-                                                                    <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row">
-                                                                        <div className="member-avatar"></div>
+                                                                    <div className="member-avatar">
+                                                                        頭貼位置
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <br />
                                                             <div className="cards-2 d-flex justify-content-evenly align-items-center ">
                                                                 <div className="card d-flex justify-content-evenly align-items-center rounded-4">
-                                                                    <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                        <i className="fa-solid fa-earth-asia"></i>
-                                                                    </div>
                                                                     <div className="card-body d-flex flex-column">
                                                                         <h5 className="card-title member-page-field">
-                                                                            這裡說不定會放東西
+                                                                            目前陰德值尚有：
                                                                         </h5>
+                                                                        <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
+                                                                            <i className="fa-solid fa-wand-magic-sparkles"></i>
+                                                                        </div>
                                                                         <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
-                                                                            開始預約
+                                                                            <Link
+                                                                                className="member-link-2"
+                                                                                to="/events
+                                                                                "
+                                                                            >
+                                                                                賺取更多陰德值
+                                                                            </Link>
                                                                         </button>{' '}
                                                                     </div>
                                                                 </div>
@@ -171,15 +181,21 @@ function MemberProfileForm() {
                                                                     {' '}
                                                                 </div>
                                                                 <div className="card d-flex justify-content-evenly align-items-center rounded-4">
-                                                                    <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                        <i className="fa-solid fa-wand-magic-sparkles"></i>
-                                                                    </div>
                                                                     <div className="card-body d-flex flex-column">
                                                                         <h5 className="card-title member-page-field">
-                                                                            這裡說不定會放東西
+                                                                            您目前預定轉生的位置為：
                                                                         </h5>
+                                                                        <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
+                                                                            <i className="fa-solid fa-earth-asia"></i>
+                                                                        </div>
                                                                         <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
-                                                                            開始創建
+                                                                            <Link
+                                                                                className="member-link-2"
+                                                                                to="/Place
+                                                                                "
+                                                                            >
+                                                                                前往良辰吉地
+                                                                            </Link>
                                                                         </button>
                                                                     </div>
                                                                 </div>

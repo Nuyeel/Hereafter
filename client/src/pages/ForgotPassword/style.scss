@@ -126,6 +126,21 @@
     text-decoration: none
 }
 
+.member-link-2 {
+    font-family: $ff-t, $ff-h;
+    color: #fff;
+    font-size: $fz-body;
+    text-decoration: none;
+    transition: .4s;
+}
+
+.member-link-2:hover {
+    font-family: $ff-t, $ff-h;
+    color: #fff;
+    font-size: $fz-body;
+    text-decoration: none;
+}
+
 // .breadcrumb {
 //     $breadcrumb-divider: none;
 // }
