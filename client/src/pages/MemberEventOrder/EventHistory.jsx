@@ -48,7 +48,7 @@ function EventHistory(props) {
                         return (
                             <Fragment key={v.event_order_sid}>
                                 {/* 存放每一筆訂單的大框框 */}
-                                <div className="xuan-event-history-item">
+                                <div className="xuan-event-history-item rounded-4">
                                     {/* 放該筆訂單的編號、時間 */}
                                     <div className="d-flex">
                                         <p className="xuan-subtitle xuan-member-num member-page-title">
