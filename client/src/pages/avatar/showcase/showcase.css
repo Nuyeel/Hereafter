@@ -55,6 +55,9 @@
     border-radius: 12px;
     cursor: pointer;
 }
+.avatarConbination{
+    line-height: 1.4rem;
+}
 
 
 @media screen and (min-width: 1200px) {

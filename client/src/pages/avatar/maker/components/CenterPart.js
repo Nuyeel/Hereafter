@@ -8,6 +8,7 @@ import { Avatar_Update } from '../../../../config/ajax-path';
 import axios from 'axios';
 import Soul from '../../components/Soul.js';
 import Swal from 'sweetalert2';
+import gsap from 'gsap';
 
 //MING: Basic引入
 import { ReactComponent as HeadSVG } from '../../../../images/avatar/basic/face.svg';
@@ -557,12 +558,28 @@ function CenterPart(props) {
         cursor: pointer;
     `;
     const BodyControl = styled.div`
+        ${'' /* border: #cff 5px dotted; */}
         position: absolute;
         height: 450px;
         width: 450px;
         display: ${controlChange ? 'block' : 'none'};
         cursor: pointer;
         z-index: 20;
+        div {
+            padding-left: 15px;
+            opacity: 0;
+            position: relative;
+            top: 90%;
+            i {
+                position: relative;
+                top: 10px;
+                font-size: 50px;
+            }
+            span {
+                padding-left: 10px;
+                font-size: 30px;
+            }
+        }
     `;
     const Info = styled.div`
         position: relative;
@@ -595,6 +612,17 @@ function CenterPart(props) {
             stroke: ${theme.cHeader};
         }
     `;
+    const onEnter = ({ currentTarget }) => {
+        gsap.to(gsap.utils.selector(currentTarget)('.showBackHint'), {
+            opacity: '1',
+        });
+    };
+
+    const onLeave = ({ currentTarget }) => {
+        gsap.to(gsap.utils.selector(currentTarget)('.showBackHint'), {
+            opacity: '0',
+        });
+    };
     return (
         <>
             <Center>
@@ -609,7 +637,14 @@ function CenterPart(props) {
                             setBodyControlChange('hand');
                             setColorControlSwitch(0);
                         }}
-                    ></BodyControl>
+                        onMouseEnter={onEnter}
+                        onMouseLeave={onLeave}
+                    >
+                        <div className="showBackHint">
+                            <i class="fa-solid fa-arrow-left-long"></i>
+                            <span>Back to edit Body</span>
+                        </div>
+                    </BodyControl>
                     <BGSquare></BGSquare>
                     <BGCircle></BGCircle>
                     <div

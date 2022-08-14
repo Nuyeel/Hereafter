@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { Avatar_GetData } from '../../../config/ajax-path';
 import axios from 'axios';
 import gsap from 'gsap';
+import getDatestr from '../components/getDatestr.js';
 
 const Maker = () => {
     const [combination, setCombination] = useState({
@@ -33,6 +34,7 @@ const Maker = () => {
     const [bodyControlChange, setBodyControlChange] = useState('hand');
     const [faceControlChange, setFaceControlChange] = useState('eye');
     const [colorControlSwitch, setColorControlSwitch] = useState(0);
+    const [avatar, setAvatar] = useState({ id: 0, time: '' });
     const navigate = useNavigate();
     const { authorized, sid } = useContext(AuthContext);
     const member = JSON.parse(localStorage.getItem('auth'));
@@ -42,6 +44,10 @@ const Maker = () => {
         const postData = { id: sid, avatar_id: aid };
         const r = await axios.post(Avatar_GetData, postData);
         const oldCombination = JSON.parse(r.data.data[0]['combination']);
+        const avatarData = { ...avatar };
+        avatarData.id = r.data.data[0]['avatar_id'];
+        avatarData.time = getDatestr(r.data.data[0]['avatar_created_at']);
+        setAvatar(avatarData);
         setCombination(oldCombination);
     };
     useEffect(() => {
@@ -218,11 +224,11 @@ const Maker = () => {
                 <AvatarMaker>
                     <AvatarTitle>
                         <h3 className="subtitle" style={{ margin: 0 }}>
-                            投生形象1
+                            投生形象{avatar.id}
                         </h3>
-                        <p className="created_time">
-                            建立時間：20220616/Thr/08:12:23
-                        </p>
+                        <span style={{ font: '14px 400' }}>
+                            建立時間：{avatar.time}
+                        </span>
                     </AvatarTitle>
                     <Back onClick={backtoShowCase}>
                         <i className="fa-solid fa-xmark"></i>

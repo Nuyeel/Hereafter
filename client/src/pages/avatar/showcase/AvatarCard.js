@@ -1,24 +1,15 @@
-//import styled from '@emotion/styled';
-// import { ReactComponent as Soul } from '../../../images/Nav/nav_soul.svg';
+import getDatestr from '../components/getDatestr';
 import SoulProps from '../components/SoulProps';
-//import testpng from '../../../images/avatar/test1.png';
+
 import { useNavigate } from 'react-router-dom';
 
 function AvatarCard(props) {
     const { theme, avatarinfo } = props;
     const navigate = useNavigate();
-    // const SoulColor = styled.div`
-    //     path {
-    //         fill: ${theme.cHeader};
-    //     }
-    //     circle {
-    //         stroke: ${theme.cHeader};
-    //     }
-    // `;
-    const time = avatarinfo.avatar_created_at;
+    const time = getDatestr(avatarinfo.avatar_created_at);
     const combination = JSON.parse(avatarinfo.combination);
     const combinationText = JSON.parse(avatarinfo.combinationText);
-    //console.log(avatarinfo);
+    console.log(avatarinfo);
     const editAvatar = () => {
         sessionStorage.setItem('avatar_id', avatarinfo.avatar_id);
         navigate('/maker', { replace: true });
