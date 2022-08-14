@@ -221,7 +221,7 @@ function PersonForm(props) {
 
     // FIXME: 按下重新填寫時，錯誤訊息無法清零
 
-    // 「重新填寫」 按下的時候，把myInfor都清空(變回預設值'')
+    // 「清空」 按下的時候，把myInfor都清空(變回預設值'')
     const handleClearForm = () => {
         // 值都變回 ''
         setMyInfor({
@@ -254,6 +254,9 @@ function PersonForm(props) {
             add_town: '', //目前這個沒辦法清空
             address: '',
         });
+
+        // 「同會員」取消勾選
+        setMemberCheck(!membercheck);
     };
 
     return (

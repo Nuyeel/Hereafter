@@ -1,5 +1,5 @@
 import Summary from '../components/Summary';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 // scss
 import '../../Event/_xuan_styles.scss';
@@ -22,9 +22,15 @@ import AuthContext from '../../../context/AuthContext/AuthContext';
 import { useSelector, useDispatch } from 'react-redux';
 import { decrementByAmount } from '../../../features/counter/counterSlice';
 
+// LinePay金流測試
+import { useNavigate } from 'react-router-dom';
+
 function Payment(props) {
     // Redux
     const dispatch = useDispatch();
+
+    // LinePay用
+    const navigate = useNavigate(); //跳轉頁面用
 
     // 會員登入登出驗證(auth)
     const { authorized, sid, account, token } = useContext(AuthContext);
@@ -176,6 +182,80 @@ function Payment(props) {
         });
     };
 
+    // 處理LINE PAY金流---------------------------------------------
+
+    let fetchbody = '';
+
+    // 先把eventPick跑迴圈，再塞進body裡面fetch
+    if (eventPick.length !== 0) {
+        eventPick.map((v, i) => {
+            fetchbody += `&detailnum=${v}`;
+        });
+
+        console.log('fetchbody', fetchbody);
+    }
+
+    const [linePay, setLinePay] = useState([]);
+
+    // 一進訂單細項，發fetch去取得 eventPick 裡sid的活動資訊
+    const fetchReadyToBuy = async () => {
+        fetch(`http://localhost:3500/eventcarts/readytobuy?${fetchbody}`, {
+            method: 'GET',
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                console.log(obj);
+                setLinePay(obj); //把取回的活動資料放進readyToBuy裡
+                // console.log(linePay);
+            });
+    };
+
+    // 避免無窮迴圈(DidMount)
+    useEffect(() => {
+        fetchReadyToBuy();
+    }, [eventPick]);
+
+    const fetchLINEPAY = async () => {
+        console.log('有跟LINEPAY要資料');
+        await fetch('http://localhost:3500/eventcarts/createlineorder', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(test),
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                console.log('收到的res', obj);
+                fetchCreateOrder();
+                fetchAlreadyPay(); //同步把購物車內容 跟 購物車數字刪掉
+                dispatch(decrementByAmount(eventPick.length));
+                window.location.href = `${obj}`;
+            })
+    };
+
+    const test = {
+        amount: calcPickPrice, //放總價
+        currency: 'TWD',
+        orderId: 'order504ac11a-1888-4410-89b2-75382fef61b3',
+        packages: [
+            {
+                id: '20191011I001',
+                amount: calcPickPrice, //放總價
+                name: `${sid}的訂單`,
+                products: linePay.map((v, i) => {
+                    return {
+                        name: v.act_title, //活動名稱
+                        quantity: 1,
+                        price: v.price, //活動單價
+                    };
+                }),
+            },
+        ],
+        redirectUrls: {
+            confirmUrl: `http://localhost:3000/membereventorder`, //確認結帳後的頁面
+            cancelUrl: `http://localhost:3000/ordersteps`, //取消結帳跳轉的頁面
+        },
+    };
+
     return (
         <>
             {/* 信用卡放這邊 */}
@@ -185,6 +265,13 @@ function Payment(props) {
                         {/* 標題區(含活動明細BTN) */}
                         <div className="xuan-payment-title">
                             <div className="xuan-payment-btn">
+                                <p
+                                    onClick={() => {
+                                        fetchLINEPAY();
+                                    }}
+                                >
+                                    LINE金流測試
+                                </p>
                                 <img
                                     className="quicksoul"
                                     src={quicksoul}

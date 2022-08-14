@@ -3,6 +3,10 @@ const router = express.Router(); //建立 router 物件
 const db = require(__dirname + '/../modules/mysql2-connect'); // 建立跟資料庫連線
 const dayjs = require('dayjs'); // day.js
 const upload = require(__dirname + '/../modules/upload-images'); // 處理formdata資料用
+const axios = require('axios'); //LinePay用
+const { HmacSHA256 } = require('crypto-js'); //LinePay加密用
+const Base64 = require('crypto-js/enc-base64'); //LinePay 把加密後物件轉字串
+require('dotenv').config();
 
 // 把獲得購物車清單的function 獨立寫
 const getUserCart = async (member_sid) => {
@@ -213,7 +217,8 @@ router.get('/testevent/:membersid', async (req, res) => {
     };
 
     let memberSid = req.params.membersid || '';
-    const $sql1 = 'SELECT * FROM `event_order_detail` WHERE `member_sid` = ? ORDER BY `event_order_detail`.`event_order_sid` DESC';
+    const $sql1 =
+        'SELECT * FROM `event_order_detail` WHERE `member_sid` = ? ORDER BY `event_order_detail`.`event_order_sid` DESC';
 
     const [results1] = await db.query($sql1, [memberSid]);
 
@@ -285,6 +290,93 @@ router.get('/memberinfor/:membersid?', async (req, res) => {
     });
 
     res.json(results); //會獲得一個JSON包
+});
+
+// 二路測試LINEPAY用----------------------------------------------
+
+// 環境變數
+const {
+    LINEPAY_CHANNEL_ID,
+    LINEPAY_SITE,
+    LINEPAY_VERSION,
+    LINEPAY_CHANNEL_SECRET_KEY,
+} = process.env;
+
+const sampleData = require('../sample/sampleData');
+console.log('sampleData', sampleData);
+
+const orders = {
+    1660468720: {
+        amount: 1000,
+        orderId: 1660468721,
+        currency: 'TWD',
+        packages: [
+            {
+                name: '六角棒棒',
+                quantity: 1,
+                price: 1000,
+            },
+        ],
+    },
+};
+
+// 顯示資訊在前端頁面用
+router.get('/linepay/:id', (req, res) => {
+    const { id } = req.params;
+    const order = sampleData[id];
+    order.orderId = parseInt(new Date().getTime() / 1000); //為訂單添加 orderId(uniq編號)
+    orders[order.orderId] = order; //新增一個屬性(orderId) 內容為order
+    console.log('order', order);
+    console.log('orders', orders); // 'orderId' : order本人
+    res.json(orders);
+    console.log('測試LINE PAY用');
+});
+
+// 跟LINE PAY串接的API
+router.post('/createlineorder', async (req, res) => {
+    try {
+        const linePayBody = req.body;
+        console.log('linePayBody', linePayBody);
+
+        // 為req.body加一些LINE PAY規定要的參數
+        const uri = '/payments/request';
+        const nonce = parseInt(new Date().getTime() / 1000);
+        const string = `${LINEPAY_CHANNEL_SECRET_KEY}/${LINEPAY_VERSION}${uri}${JSON.stringify(
+            linePayBody
+        )}${nonce}`;
+
+        // 把組建好的string進行加密
+        console.log('string', string);
+        const signature = Base64.stringify(
+            HmacSHA256(string, LINEPAY_CHANNEL_SECRET_KEY)
+        );
+
+        const headers = {
+            'Content-Type': 'application/json; charset=UTF-8', //格式固定是JSON格式
+            'X-LINE-ChannelId': LINEPAY_CHANNEL_ID,
+            'X-LINE-Authorization-Nonce': nonce,
+            'X-Line-Authorization': signature,
+        };
+
+        // 準備送給LINE Pay的資訊
+        const url = `${LINEPAY_SITE}/${LINEPAY_VERSION}${uri}`; //對LINE Pay發出請求的路徑
+
+        const linePayRes = await axios.post(url, linePayBody, { headers });
+
+        console.log(linePayRes.data.info);
+        console.log(linePayRes);
+
+        if (linePayRes?.data?.returnCode === '0000') {
+            res.json(linePayRes?.data?.info.paymentUrl.web);
+        } else {
+            res.status(400).send({
+                message: '訂單不存在',
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        //錯誤的回饋
+    }
 });
 
 module.exports = router;
