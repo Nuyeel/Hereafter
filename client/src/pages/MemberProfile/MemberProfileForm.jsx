@@ -135,7 +135,7 @@ function MemberProfileForm() {
                                                                 會員中心主頁
                                                             </div>
                                                             <br />
-                                                            <div className="card">
+                                                            <div className="card rounded-4">
                                                                 <div className="card-body d-flex align-items-center">
                                                                     <div className="col-md-9 mb-md-0 p-md-4 member-page-field">
                                                                         <h5 className="card-title">
@@ -152,8 +152,8 @@ function MemberProfileForm() {
                                                                 </div>
                                                             </div>
                                                             <br />
-                                                            <div className="cards-2 d-flex justify-content-evenly align-items-center">
-                                                                <div className="card d-flex justify-content-evenly align-items-center">
+                                                            <div className="cards-2 d-flex justify-content-evenly align-items-center ">
+                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4">
                                                                     <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
                                                                         <i className="fa-solid fa-earth-asia"></i>
                                                                     </div>
@@ -163,10 +163,13 @@ function MemberProfileForm() {
                                                                         </h5>
                                                                         <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
                                                                             開始預約
-                                                                        </button>
+                                                                        </button>{' '}
                                                                     </div>
                                                                 </div>
-                                                                <div className="card d-flex justify-content-evenly align-items-center">
+                                                                <div className="p-2">
+                                                                    {' '}
+                                                                </div>
+                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4">
                                                                     <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
                                                                         <i className="fa-solid fa-wand-magic-sparkles"></i>
                                                                     </div>
