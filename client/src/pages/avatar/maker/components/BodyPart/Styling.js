@@ -48,6 +48,13 @@ function Style(props) {
             }
         }
     `;
+    const ItemPrice = styled.div`
+        padding-top: 10px;
+        padding-bottom: 10px;
+    `;
+    const HintText = styled.div`
+        color: #fa49b6;
+    `;
     return (
         <>
             <div style={{ height: '180px' }}>
@@ -61,14 +68,14 @@ function Style(props) {
                         <i className="fa-solid fa-angle-right"></i>
                     </ClickButton>
                 </div>
-                <div className="text-center">
+                <ItemPrice className="text-center">
                     {
                         BodyData[bodyControlChange][
                             combination['body'][bodyControlChange]
                         ]['price']
                     }
-                </div>
-                <div className="hint_text text-center">
+                </ItemPrice>
+                <HintText className="text-center">
                     陰德值超過
                     {
                         BodyData[bodyControlChange][
@@ -76,7 +83,7 @@ function Style(props) {
                         ]['limit']
                     }
                     才可選購
-                </div>
+                </HintText>
             </div>
         </>
     );

@@ -8,6 +8,7 @@ import { Avatar_Update } from '../../../../config/ajax-path';
 import axios from 'axios';
 import Soul from '../../components/Soul.js';
 import Swal from 'sweetalert2';
+import gsap from 'gsap';
 
 //MING: Basic引入
 import { ReactComponent as HeadSVG } from '../../../../images/avatar/basic/face.svg';
@@ -323,19 +324,19 @@ function CenterPart(props) {
     const BGSquare = styled.div`
         position: absolute;
         border: ${theme.bcAvatarFrame} 3px solid;
-        height: 310px;
-        width: 307px;
-        top: 23%;
-        left: 16.3%;
+        height: 68%;
+        width: 68%;
+        top: 20%;
+        left: 16%;
     `;
     const BGCircle = styled.div`
         position: absolute;
         border: ${theme.bcAvatarFrame} 3px solid;
         border-radius: 50%;
-        height: 385px;
-        width: 385px;
-        top: 10.5%;
-        left: 7.6%;
+        height: 82%;
+        width: 82%;
+        top: 6%;
+        left: 9%;
     `;
     //*MING:Body區
     const Face = styled.div`
@@ -557,12 +558,28 @@ function CenterPart(props) {
         cursor: pointer;
     `;
     const BodyControl = styled.div`
+        ${'' /* border: #cff 5px dotted; */}
         position: absolute;
         height: 450px;
         width: 450px;
         display: ${controlChange ? 'block' : 'none'};
         cursor: pointer;
         z-index: 20;
+        div {
+            padding-left: 15px;
+            opacity: 0;
+            position: absolute;
+            top: 100%;
+            i {
+                position: relative;
+                top: 10px;
+                font-size: 50px;
+            }
+            span {
+                padding-left: 10px;
+                font-size: 30px;
+            }
+        }
     `;
     const Info = styled.div`
         position: relative;
@@ -595,12 +612,25 @@ function CenterPart(props) {
             stroke: ${theme.cHeader};
         }
     `;
+    const onEnter = ({ currentTarget }) => {
+        gsap.to(gsap.utils.selector(currentTarget)('.showBackHint'), {
+            opacity: '1',
+        });
+    };
+
+    const onLeave = ({ currentTarget }) => {
+        gsap.to(gsap.utils.selector(currentTarget)('.showBackHint'), {
+            opacity: '0',
+        });
+    };
     return (
         <>
             <Center>
                 <div
                     style={{
                         position: 'relative',
+                        width: '450px',
+                        height: '450px',
                     }}
                 >
                     <BodyControl
@@ -609,7 +639,14 @@ function CenterPart(props) {
                             setBodyControlChange('hand');
                             setColorControlSwitch(0);
                         }}
-                    ></BodyControl>
+                        onMouseEnter={onEnter}
+                        onMouseLeave={onLeave}
+                    >
+                        <div className="showBackHint">
+                            <i class="fa-solid fa-arrow-left-long"></i>
+                            <span>Back to edit Body</span>
+                        </div>
+                    </BodyControl>
                     <BGSquare></BGSquare>
                     <BGCircle></BGCircle>
                     <div
