@@ -149,49 +149,41 @@ function MemberProfileForm() {
                                                                             </div>
                                                                         ) : (
                                                                             <div className="card-text ">
-                                                                                尚未記錄任何出生日
+                                                                                未記錄出生日
                                                                             </div>
                                                                         )}
                                                                         <br />
-                                                                        <div className="card-text ">
-                                                                            往生日：
-                                                                            {
-                                                                                mainProfile.deathdate
-                                                                            }
-                                                                        </div>
+                                                                        {mainProfile.deathdate ? (
+                                                                            <div className="card-text ">
+                                                                                往生日：
+                                                                                {
+                                                                                    mainProfile.deathdate
+                                                                                }
+                                                                            </div>
+                                                                        ) : (
+                                                                            <div className="card-text ">
+                                                                                未存在往生紀錄
+                                                                            </div>
+                                                                        )}
                                                                     </div>
-                                                                    <div className="member-avatar">
-                                                                        {/* TODO：頭貼位置 */}
-                                                                        <div
-                                                                            style={{
-                                                                                width: '150px',
-                                                                                height: '150px',
-                                                                                overflow:
-                                                                                    'hidden',
-                                                                                position:
-                                                                                    'relative',
-                                                                                right: '80px',
-                                                                            }}
-                                                                        >
-                                                                            {mainProfile ? (
+                                                                    {/* TODO：頭貼位置 */}
+                                                                    <div className="member-page-avatar-position">
+                                                                        {mainProfile ? (
+                                                                            <Link to="/showcase">
                                                                                 <img
+                                                                                    className="member-page-avatar "
                                                                                     src={`${STATIC_SHAREWALL_AVATAR}${mainProfile.img_name}`}
                                                                                     alt=""
-                                                                                    style={{
-                                                                                        width: '400%',
-                                                                                        position:
-                                                                                            'relative',
-                                                                                        left: '-150%',
-                                                                                        top: '-45%',
-                                                                                    }}
                                                                                 />
-                                                                            ) : (
+                                                                            </Link>
+                                                                        ) : (
+                                                                            <Link to="/showcase">
                                                                                 <img
                                                                                     src={`${STATIC_SHAREWALL_AVATAR}$default.png`}
                                                                                     alt=""
                                                                                 />
-                                                                            )}
-                                                                        </div>
+                                                                            </Link>
+                                                                        )}
                                                                     </div>
                                                                 </div>
                                                             </div>

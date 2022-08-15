@@ -14,6 +14,27 @@
     font-size: $fz-body;
 }
 
+.member-page-avatar-position {
+    width: 150px;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    right: 16px;
+}
+
+.member-page-avatar {
+    width: 300%;
+    position: relative;
+    left: -100%;
+    top: 5%;
+}
+
+.member-page-avatar-position:hover {
+    color: #FFF;
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25));
+}
+
 .member-event-default {
     font-family: $ff-t, $ff-h;
     font-weight: 500;
@@ -21,7 +42,6 @@
     font-size: $fz-body;
     text-align: center;
 }
-
 
 .member-event-info {
     font-family: $ff-h, $ff-t;
