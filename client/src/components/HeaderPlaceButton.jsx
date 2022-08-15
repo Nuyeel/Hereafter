@@ -5,18 +5,22 @@ import '../pages/Place/components/pageSelect.scss';
 import { IoPersonCircleSharp, IoCaretDown } from 'react-icons/io5';
 
 import ThemeContext from '../context/ThemeContext/ThemeContext';
-import AuthContext from '../context/AuthContext/AuthContext';
 
 function HeaderPlaceButton() {
     const { theme } = useContext(ThemeContext);
-    const { authorized, token } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
     const [pageSelect, setPageSelect] = useState('place-list');
 
     return (
-        <div className="place-page-select">
+        <div
+            className={
+                theme.title === 'light'
+                    ? 'place-page-select place-light'
+                    : 'place-page-select'
+            }
+        >
             <li className="show-page">
                 <span className="page-select-link">
                     {pageSelect === 'place-list' ? '列表' : '我的收藏'}

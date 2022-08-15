@@ -8,8 +8,6 @@
     border-radius: 5px;
     border-color: #fff;
     background-color: transparent;
-    // filter: none !important;
-    // outline: none !important;
     box-shadow: inset 1px 0 0 0 #fff;
     position: relative;
     margin: 10px 30px;
@@ -22,6 +20,27 @@
     overflow: hidden;
     width: 150px;
     height: fit-content;
+
+    &.place-light {
+        border-color: #3c3b67;
+        box-shadow: inset 1px 0 0 0 #3c3b67;
+
+        .page-option,
+        .page-select-link {
+            color: #3c3b67;
+        }
+
+        .page-option {
+            &:hover {
+                background-color: #3c3b67;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+        .dropDown-icon {
+            fill: #3c3b67;
+        }
+    }
 
     &:hover {
         padding-bottom: 76px;

@@ -1,16 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListCard from './components/ListCard';
-import PageSelect from './components/PageSelect';
 import TimeNewsRow from './components/TimeNewsRow';
 import Swal from 'sweetalert2';
 import soulPng from '../Place/img/soul.png';
 import soulIconAlert from '../../images/sweetalert2/outline_soul_alert.svg';
 
 import './place.scss';
-import { PLACE_LIKED_API, PLACE_CARTDATA_API } from '../../config/ajax-path';
+import { PLACE_LIKED_API, PLACE_GETDATA_API } from '../../config/ajax-path';
 
 // 頁面標題context
 import HeaderContext, {
@@ -18,17 +17,29 @@ import HeaderContext, {
 } from '../../context/HeaderContext/HeaderContext';
 // 會員登入context
 import AuthContext from '../../context/AuthContext/AuthContext';
+// 變換主色
+import ThemeContext from '../../context/ThemeContext/ThemeContext';
 
 function PlaceLikedPage(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
     const { authorized, sid: userSid, isDead } = useContext(AuthContext);
+    const { theme } = useContext(ThemeContext);
     const navigate = useNavigate();
 
     // 要呈現的資料陣列
     const [displayLikedList, setDisplayLikedList] = useState([]);
     // 收藏資料的sid
     const [likedPlaceSidArr, setLikedPlaceSidArr] = useState([]);
+
+    // 最新消息資料
+    const [newsData, setNewsData] = useState([]);
+    const newsRef = useRef(null);
+    const getNewsData = async () => {
+        const r = await fetch(`${PLACE_GETDATA_API}/news`);
+        const obj = await r.json();
+        setNewsData(obj);
+    };
 
     // 沒登入跳轉光箱
     const gotoLogin = () => {
@@ -165,7 +176,18 @@ function PlaceLikedPage(props) {
     // 要資料
     useEffect(() => {
         getMemberLikedData();
+        getNewsData();
     }, []);
+
+    // 新聞跑馬燈
+    const handleNewsRef = useCallback(
+        (node) => {
+            if (newsData.length > 0) {
+                newsRef.current = node;
+            }
+        },
+        [newsData]
+    );
 
     return (
         <>
@@ -174,7 +196,13 @@ function PlaceLikedPage(props) {
                 {authorized ? (
                     <>
                         {/* 會員收藏列表 */}
-                        <TimeNewsRow />
+                        <TimeNewsRow
+                            style={{
+                                backgroundColor: theme.placeBg,
+                            }}
+                            newsData={newsData}
+                            handleNewsRef={handleNewsRef}
+                        />
                         <div className="place-list-wrap liked-page">
                             <div className="place-list">
                                 {/* 列表區 */}

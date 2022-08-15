@@ -16,15 +16,12 @@ function TimeFilter(props) {
                         const nowValue = v;
                         if (nowValue === null) {
                             // 清空時間區間 => 呈現所有資料,不篩選
-                            setTimeRangeFilter([new Date('2022-8'), '']);
+                            setTimeRangeFilter(null);
                         } else {
-                            setTimeRangeFilter([
-                                `${nowValue[0]}`,
-                                `${nowValue[1]}`,
-                            ]);
+                            setTimeRangeFilter(nowValue);
+                            // console.log(nowValue);
                         }
-                        filtByTimeRange(nowValue);
-                        // console.log(nowValue);
+                        // filtByTimeRange(nowValue);
                     }}
                     value={timeRangeFilter}
                     calendarClassName="myCalendar"

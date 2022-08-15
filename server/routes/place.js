@@ -116,4 +116,11 @@ router.delete('/liked', async (req, res) => {
     }
 });
 
+// 最新消息的資料
+router.get('/news', async (req, res) => {
+    const sql = `SELECT * FROM news ORDER BY event_time DESC LIMIT 5`;
+    const [r] = await db.query(sql);
+    res.json(r);
+});
+
 module.exports = router;
