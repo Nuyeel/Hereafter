@@ -202,6 +202,8 @@ app.use(
     '/event/eventlist',
     express.static(`${__dirname}/public/event/eventlist`)
 );
+// 細節評論頭貼
+app.use('/event/comment', express.static(`${__dirname}/public/event/comment`));
 
 app.use('/api/gooddeed', gooddeedRouter);
 
