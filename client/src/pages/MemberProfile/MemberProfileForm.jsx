@@ -12,10 +12,12 @@ import { ReactComponent as NavSoul } from '../../images/Nav/nav_soul.svg';
 
 function MemberProfileForm() {
     const [mainProfile, setMainProfile] = useState({
+        name: '',
         account: '',
         birthdate: '',
         deathdate: '',
         gooddeed_score: '',
+        profile_picture: '',
     });
 
     const { theme, themeContext } = useContext(ThemeContext);
@@ -32,23 +34,6 @@ function MemberProfileForm() {
         }));
     };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     // console.log(mainProfile);
-
-    //     const result = await axios(MEMBER_PROFILE, {
-    //         method: 'POST',
-    //         data: JSON.stringify(mainProfile),
-    //         headers: {
-    //             'Content-Type': 'Application/json',
-    //         },
-    //     });
-    //     if (result.data.success) {
-    //     } else {
-    //         alert('帳密錯誤～～');
-    //     }
-    // };
-
     const fetchMemberData = async () => {
         console.log('fetch start');
         const r = await fetch(MEMBER_PROFILE, {
@@ -60,7 +45,6 @@ function MemberProfileForm() {
 
         const result = await r.json();
         console.log(result);
-
         setMainProfile(result.data);
     };
 
@@ -148,10 +132,10 @@ function MemberProfileForm() {
                                                                     <div className="col-md-9 mb-md-0 p-md-4 member-page-field">
                                                                         <div className="card-title">
                                                                             歡迎回來，
-                                                                            {
-                                                                                mainProfile.account
-                                                                            }
-                                                                        </div>{' '}
+                                                                            {mainProfile.name
+                                                                                ? mainProfile.name
+                                                                                : mainProfile.account}
+                                                                        </div>
                                                                         <br />
                                                                         <div className="card-text ">
                                                                             您紀錄的出生日為：
@@ -168,7 +152,10 @@ function MemberProfileForm() {
                                                                         </div>
                                                                     </div>
                                                                     <div className="member-avatar">
-                                                                        頭貼位置
+                                                                        {/* 頭貼位置 */}
+                                                                        {
+                                                                            mainProfile.profile_picture
+                                                                        }
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -183,7 +170,7 @@ function MemberProfileForm() {
                                                                             }
                                                                         </div>
                                                                         <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                            <div className=""></div>
+                                                                            {/* <div className=""></div> */}
                                                                         </div>
                                                                         <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
                                                                             <Link
@@ -205,7 +192,7 @@ function MemberProfileForm() {
                                                                             您目前預定轉生的位置為：
                                                                         </h5>
                                                                         <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                            <i className="fa-solid fa-earth-asia"></i>
+                                                                            {/* <div className=""></div> */}
                                                                         </div>
                                                                         <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
                                                                             <Link
