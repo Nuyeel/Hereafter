@@ -35,7 +35,7 @@ export const themes = {
         cCommentInput: '#00000099',
         bgcAvatarMaker: '#FFFFFF66',
         memberBgCard: '#ffffff75',
-        rebornBg: '#ffffff4d',
+        rebornBg: '#bac7d98c',
         rebornInnerBg: '#ffffff',
         placeBg: '#9587e1ee',
         placeMainBg: '#edeff7b3',

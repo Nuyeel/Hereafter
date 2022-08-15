@@ -663,6 +663,7 @@ function CenterPart(props) {
                             {HairBackArray[combination['face']['hairBack']]}
                         </HairBack>
                         <Ear>{EarArray[combination['face']['ear']]}</Ear>
+                        <Tale>{TaleArray[combination['body']['tale']]}</Tale>
                         <TopEar>
                             {TopEarArray[combination['face']['topEar']]}
                         </TopEar>
@@ -679,7 +680,6 @@ function CenterPart(props) {
                         <HairFront>
                             {HairFrontArray[combination['face']['hairFront']]}
                         </HairFront>
-                        <Tale>{TaleArray[combination['body']['tale']]}</Tale>
                         <Arm>{ArmArray[combination['basic'][1]]}</Arm>
                         <Hand>
                             {

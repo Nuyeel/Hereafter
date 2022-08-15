@@ -89,7 +89,7 @@ function RebornCart(props) {
     // 沒登入的跳轉光箱
     const gotoLogin = () => {
         Swal.fire({
-            title: `您還沒有進入轉生購物車的資格`,
+            title: `您還不能進入轉生購物車唷`,
             imageUrl: soulIconAlert,
             imageHeight: 50,
             imageWidth: 50,
@@ -198,20 +198,21 @@ function RebornCart(props) {
                 if (result.success === true) {
                     Swal.fire({
                         title: '轉生訂單已成立',
+                        html: `<h3 clasName='confirmRebornTextAni'>祝您來世順心</h3>`,
                         imageUrl: soulIconAlert,
                         imageHeight: 50,
                         imageWidth: 50,
-                        timer: 3000,
+                        timer: 5000,
                     });
                     // TODO: setTimeout 跳轉希望方塊
                     setTimeout(() => {
-                        navigate('/', { replace: true });
-                    }, 3000);
+                        navigate('/nextlife', { replace: true });
+                    }, 5000);
                 }
             });
     };
 
-    // TODO: 送出轉生訂單
+    // 送出轉生訂單
     const submitRebornOrder = () => {
         const remainGooddeed =
             memberGooddeed -
@@ -223,7 +224,7 @@ function RebornCart(props) {
             // 2. 送出後存入資料庫(限定一筆), 跳轉到希望方塊頁面
             Swal.fire({
                 title: '確認轉生訂單',
-                html: `                        
+                html: `  
                     <h5>您將預訂於 <span style="color:#FF52BA; font-weight: bold;">${selectedPlaceInfo[0].year}年 ${selectedPlaceInfo[0].month}月</span><br/>於 <span style="color:#FF52BA; font-weight: bold;">${selectedPlaceInfo[0].country} ${selectedPlaceInfo[0].city} ${selectedPlaceInfo[0].dist}</span> 投胎轉世<h5>
                 `,
                 imageUrl: `http://localhost:3500/uploads/images/avatar/${avatarData[selectedAvatarInd].img_name}`,
@@ -297,6 +298,7 @@ function RebornCart(props) {
                                 <AvatarSwiper
                                     avatarData={avatarData}
                                     setSelectedAvatarInd={setSelectedAvatarInd}
+                                    style={{ borderColor: theme.cHeader }}
                                 />
                             </div>
                         </div>
@@ -475,10 +477,20 @@ function RebornCart(props) {
                             <div className="reborn-order-card-ava">
                                 {avatarData.length > 0 && (
                                     <>
-                                        <img
+                                        <div className="ava-option">
+                                            <div
+                                                className="ava-img"
+                                                style={{
+                                                    backgroundImage: `url(http://localhost:3500/uploads/images/avatar/${avatarData[selectedAvatarInd].img_name})`,
+                                                }}
+                                            ></div>
+                                            <div className="ava-option-bg"></div>
+                                            <div className="ava-option-bg-circle"></div>
+                                        </div>
+                                        {/* <img
                                             src={`http://localhost:3500/uploads/images/avatar/${avatarData[selectedAvatarInd].img_name}`}
                                             alt=""
-                                        />
+                                        /> */}
                                     </>
                                 )}
                             </div>
@@ -528,6 +540,10 @@ function RebornCart(props) {
                                                           .place_price
                                                     : ''}
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td>贈品：孟婆湯</td>
+                                            <td>0</td>
                                         </tr>
                                     </tbody>
                                     <tfoot

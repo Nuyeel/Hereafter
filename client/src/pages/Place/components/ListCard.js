@@ -1,6 +1,5 @@
 import MapIcon from './MapIcon';
 import SoulIcon from './SoulIcon';
-// import LikeIcon from "./LikeIcon";
 import { FaHeart } from 'react-icons/fa';
 import { BsFillCartPlusFill } from 'react-icons/bs';
 import AddPlaceToCart from './util/addPlaceToCart';
