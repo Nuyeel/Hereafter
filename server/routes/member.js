@@ -322,6 +322,7 @@ router
 
         res.json(output);
     });
+
 // 測試: http://localhost:3500/api/member/forgotpasswordrevise
 // 修改密碼頁面
 router
@@ -362,7 +363,7 @@ router
     });
 
 // 測試: http://localhost:3500/api/member/profile
-// 修改會員資料
+// 會員主頁
 router.route('/profile').get(async (req, res) => {
     // 未登入先擋掉
     if (!res.locals.loginUser) {
@@ -374,11 +375,21 @@ router.route('/profile').get(async (req, res) => {
         code: 0,
         data: {},
     };
-    const sql = 'SELECT * FROM `member` WHERE sid = ?';
+    const sql =
+        'SELECT m.*, sc.img_name FROM member m JOIN showcase sc ON m.profile_picture = sc.avatar_id WHERE sid = ?';
     const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
     console.log(q1);
     q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
     q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
+
+    // const sql2 = 'SELECT * FROM `reborn_order` WHERE `member_sid = ?';
+    // const [[q2]] = await db.query(sql, [
+    //     req.body.member_sid,
+    //     req.body.avatar_id,
+    //     req.body.place_sid,
+    // ]);
+    // console.log(q2);
+
     output.success = true;
     output.data = q1;
     output.error = '成功取得資料';
