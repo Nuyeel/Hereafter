@@ -643,7 +643,7 @@ function CenterPart(props) {
                         onMouseLeave={onLeave}
                     >
                         <div className="showBackHint">
-                            <i class="fa-solid fa-arrow-left-long"></i>
+                            <i className="fa-solid fa-arrow-left-long"></i>
                             <span>Back to edit Body</span>
                         </div>
                     </BodyControl>
@@ -666,6 +666,10 @@ function CenterPart(props) {
                         <TopEar>
                             {TopEarArray[combination['face']['topEar']]}
                         </TopEar>
+                        <Special>
+                            {SpecialArray[combination['body']['special']]}
+                        </Special>
+                        <Body>{BodyArray[combination['basic'][0]]}</Body>
                         <Face>
                             <HeadSVG />
                         </Face>
@@ -676,10 +680,6 @@ function CenterPart(props) {
                             {HairFrontArray[combination['face']['hairFront']]}
                         </HairFront>
                         <Tale>{TaleArray[combination['body']['tale']]}</Tale>
-                        <Special>
-                            {SpecialArray[combination['body']['special']]}
-                        </Special>
-                        <Body>{BodyArray[combination['basic'][0]]}</Body>
                         <Arm>{ArmArray[combination['basic'][1]]}</Arm>
                         <Hand>
                             {
