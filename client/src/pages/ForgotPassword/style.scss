@@ -14,6 +14,15 @@
     font-size: $fz-body;
 }
 
+.member-event-default {
+    font-family: $ff-t, $ff-h;
+    font-weight: 500;
+    color: $secondary; 
+    font-size: $fz-body;
+    text-align: center;
+}
+
+
 .member-event-info {
     font-family: $ff-h, $ff-t;
     font-weight: 700;
@@ -115,6 +124,21 @@
     color: $primary;
     font-size: $fz-body;
     text-decoration: none
+}
+
+.member-link-2 {
+    font-family: $ff-t, $ff-h;
+    color: #fff;
+    font-size: $fz-body;
+    text-decoration: none;
+    transition: .4s;
+}
+
+.member-link-2:hover {
+    font-family: $ff-t, $ff-h;
+    color: #fff;
+    font-size: $fz-body;
+    text-decoration: none;
 }
 
 // .breadcrumb {

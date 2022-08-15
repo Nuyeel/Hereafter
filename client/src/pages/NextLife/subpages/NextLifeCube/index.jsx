@@ -1,9 +1,18 @@
-import { useState, useEffect, useRef, useMemo, Suspense, createRef } from 'react';
+import { useState, useEffect, Suspense, createRef } from 'react';
 
-import { Canvas, useLoader, useFrame } from '@react-three/fiber';
-import { TextureLoader } from 'three';
+import { Canvas } from '@react-three/fiber';
+import { Stats } from '@react-three/drei';
 
 import Scene from './Scene';
+
+// TiArrowSync
+// TbArrowsRightLeft
+// TbBox
+// BsBox
+// FiBox
+
+import { FiBox } from 'react-icons/fi';
+
 import './NextLifeCube.scss';
 
 function NextLifeCube(props) {
@@ -16,7 +25,7 @@ function NextLifeCube(props) {
     const [eachCubeSize, setEachCubeSize] = useState(0);
     const indexRef = createRef(null);
 
-    const [bubuNum, setBubuNum] = useState(0);
+    const [currentCubeOptionIndex, setCurrentCubeOptionIndex] = useState(0);
 
     useEffect(() => {
         const handleResize = () => {
@@ -39,27 +48,36 @@ function NextLifeCube(props) {
 
         // cleaner function (willUnmount)
         return () => window.removeEventListener('resize', handleResize);
-    });
+    }, [dimensions]);
 
     return (
         <>
-            <button
-                style={{
-                    color: '#000',
-                    position: 'absolute',
-                    zIndex: 400000000,
-                }}
-                onClick={() => {
-                    // 其實只要數字變小就會壞掉
-                    let newBubuNum = bubuNum + 1;
-                    newBubuNum = newBubuNum % 35;
-                    console.log(newBubuNum);
-                    setBubuNum(newBubuNum);
-                }}
-            >
-                {bubuNum}
-            </button>
-            <div className={`cpl-nextlife-magic-cube-container`}>
+            <div className={`container nlCubeSwap isShown`}>
+                <button
+                    className="nlCubeSwap-button"
+                    onClick={() => {
+                        // 其實只要數字變小就會壞掉
+                        let newcurrentCubeOptionIndex =
+                            currentCubeOptionIndex + 1;
+                        // newcurrentCubeOptionIndex = newcurrentCubeOptionIndex % 35;
+                        // FIXME: 超怪的...
+                        if (newcurrentCubeOptionIndex === 34) {
+                            newcurrentCubeOptionIndex = 0;
+                            setCurrentCubeOptionIndex(-1);
+                            return setTimeout(() => {
+                                setCurrentCubeOptionIndex(
+                                    newcurrentCubeOptionIndex
+                                );
+                            }, 0);
+                        }
+                        setCurrentCubeOptionIndex(newcurrentCubeOptionIndex);
+                        // console.log(newcurrentCubeOptionIndex);
+                    }}
+                >
+                    <FiBox /> 更換樣式
+                </button>
+            </div>
+            <div className={`cpl-nextlife-magic-cube-container nlCube`}>
                 <Canvas
                     camera={{
                         fov: 70,
@@ -71,12 +89,13 @@ function NextLifeCube(props) {
                     <Suspense fallback={null}>
                         <Scene
                             eachCubeSize={eachCubeSize}
-                            bubuNum={bubuNum}
+                            currentCubeOptionIndex={currentCubeOptionIndex}
                             ref={indexRef}
                             meshesData={meshesData}
                             cubeAnimationState={cubeAnimationState}
                             setCubeAnimationState={setCubeAnimationState}
                         />
+                        <Stats />
                     </Suspense>
                 </Canvas>
             </div>

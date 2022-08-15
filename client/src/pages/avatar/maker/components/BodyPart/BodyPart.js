@@ -19,9 +19,11 @@ function BodyPart(props) {
         padding-right: 40px;
         padding-top: 70px;
         box-sizing: border-box;
-        display: ${controlChange ? 'none' : 'block'};
     `;
     const Title = styled.div`
+        padding-top: 15px;
+        padding-bottom: 35px;
+        border-bottom: 1px solid;
         font-size: 24px;
         i {
             font-size: 24px;
@@ -34,10 +36,7 @@ function BodyPart(props) {
                 <div className="line"></div>
                 <div className="line"></div>
                 <div className="line"></div>
-                <Title>
-                    {title[bodyControlChange]}
-                    <i className="fa-solid fa-dice"></i>
-                </Title>
+                <Title>{title[bodyControlChange]}</Title>
                 <div className="controlarea" id="controlareaEyes">
                     <Style
                         combination={combination}

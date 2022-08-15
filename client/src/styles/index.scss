@@ -325,7 +325,40 @@ h3 {
             margin-right: 25px;
         }
     }
+
+
+    // 目錄頁_漢堡_hidden
+    .mainpage_icon_hidden{
+        visibility: hidden;
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        width: 12%;
+    
+        >img{
+            width: 100%;
+        }
+    }
+
+    // 目錄頁_漢堡_visible
+    .mainpage_icon_visible{
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        width: 12%;
+        visibility: visible;
+
+        >img{
+            width: 100%;
+        }
+    }
+
+
+
 }
+
+
+
 
 /* ============================================================ */
 /* MainContent */

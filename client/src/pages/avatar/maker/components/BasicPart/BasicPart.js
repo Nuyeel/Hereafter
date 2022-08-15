@@ -3,7 +3,7 @@ import Colors from './Colors';
 import styled from '@emotion/styled';
 
 function BasicPart(props) {
-    const { combination, setCombination, controlChange } = props;
+    const { combination, setCombination } = props;
     const Basic = styled.div`
         width: 375px;
         height: 100%;
@@ -12,7 +12,6 @@ function BasicPart(props) {
         padding-top: 100px;
         box-sizing: border-box;
         position: relative;
-        display: ${controlChange ? 'none' : 'block'};
         transition: all 1.5s ease-in;
     `;
 

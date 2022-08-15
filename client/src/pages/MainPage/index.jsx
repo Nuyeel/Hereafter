@@ -23,12 +23,17 @@ import back_to_center from './imgs/back_to_center.svg';
 import aboutus from './imgs/aboutus-star.svg';
 import mainpage_test from './imgs/mainpage_test.svg';
 
+// 格子素材用圖片
+import avatar01 from './imgs/avatar01.svg';
+import avatar02 from './imgs/avatar02.svg';
+import avatar03 from './imgs/avatar03.svg';
+
 // 放進box內的圖片
 import avartar01 from './imgs/mainpage-avatar01.png';
 
 function MainPage(props) {
     // 原有MainPage code保留---------------------------
-    const { pageName, setLightBox } = props;
+    const { pageName, setLightBox, mainpageIcon, setMainpageIcon } = props;
     const { setHeader } = useContext(HeaderContext);
     const { authorized, sid, account, token } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -122,6 +127,7 @@ function MainPage(props) {
                     onClick={() => {
                         // alert('開啟目錄');
                         setLightBox('nav_lightbox_visible');
+                        setMainpageIcon('mainpage_icon_visible');
                     }}
                 >
                     <img src={mainpage_nav} alt="" />
@@ -155,13 +161,13 @@ function MainPage(props) {
 
                     {/* 背景裝飾上半部 */}
                     {/* <div className="bg-d-flex"> */}
-                        {/* 背景裝飾圖(左上方) */}
-                        {/* <div className="xuan-mainpage-bg-2">
+                    {/* 背景裝飾圖(左上方) */}
+                    {/* <div className="xuan-mainpage-bg-2">
                             <img src={mainpagebg_usual} alt="" />
                         </div> */}
 
-                        {/* 背景裝飾圖(右上方) */}
-                        {/* <div className="xuan-mainpage-bg-3">
+                    {/* 背景裝飾圖(右上方) */}
+                    {/* <div className="xuan-mainpage-bg-3">
                             <img src={mainpagebg_usual} alt="" />
                         </div>
                     </div> */}
@@ -169,12 +175,12 @@ function MainPage(props) {
                     {/* 背景裝飾下半部 */}
                     {/* <div className="bg-bottom-d-flex">
                         {/* 背景裝飾圖(左下方) */}
-                        {/* <div className="xuan-mainpage-bg-bottomleft">
+                    {/* <div className="xuan-mainpage-bg-bottomleft">
                             <img src={mainpagebg_usual} alt="" />
                         </div> */}
 
-                        {/* 背景裝飾圖(右下方) */}
-                        {/* <div className="xuan-mainpage-bg-bottomright">
+                    {/* 背景裝飾圖(右下方) */}
+                    {/* <div className="xuan-mainpage-bg-bottomright">
                             <img src={mainpagebg_usual} alt="" />
                         </div>
                     </div>  */}
@@ -264,7 +270,9 @@ function MainPage(props) {
                     {/* 投生形象小格1 */}
                     <div className="xuan-box xuan-box-avatar-show1">
                         {/* 左邊白色框 */}
-                        <div> </div>
+                        <div>
+                            <img src={avatar01} alt="" />
+                        </div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
@@ -278,7 +286,9 @@ function MainPage(props) {
                     {/* 投生形象小格2 */}
                     <div className="xuan-box xuan-box-avatar-show2">
                         {/* 左邊白色框 */}
-                        <div> </div>
+                        <div>
+                        <img src={avatar02} alt="" />
+                        </div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
@@ -292,7 +302,9 @@ function MainPage(props) {
                     {/* 投生形象小格3 */}
                     <div className="xuan-box xuan-box-avatar-show3">
                         {/* 左邊白色框 */}
-                        <div> </div>
+                        <div>
+                        <img src={avatar03} alt="" />
+                        </div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
@@ -340,11 +352,7 @@ function MainPage(props) {
                     </div>
 
                     {/* ------- 左上區域 BOX ------- */}
-                    <div className='xuan-box xuan-lefttop-1'>
-
-                    </div>
-
-
+                    <div className="xuan-box xuan-lefttop-1"></div>
                 </div>
             </div>
         </>

@@ -1,0 +1,66 @@
+@import '../../../../styles/variables.scss';
+
+// FIXME: 行動版本在左上 桌機版本在右下
+.cpl-nextlife-component-indicator {
+    color: #FFFFFF;
+    font-family: $ff-h;
+    font-size: 4rem;
+    position: absolute;
+    right: 10px;
+    bottom: calc(var(--vh, 1vh) * 100 - $height-nav-mobile - 70px);
+}
+
+.cpl-nextlife-component-indicator.isShown {
+    animation: cpl-nextlife-indicator-isShown 2s;
+}
+
+@keyframes cpl-nextlife-indicator-isShown {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-nextlife-component-indicator {
+        right: 44px;
+        bottom: calc(var(--vh, 1vh) * 100 - $height-nav-mobile - 90px);
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .cpl-nextlife-component-indicator {
+        right: calc((100vw - 500px) / 2);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .cpl-nextlife-component-indicator {
+        right: calc((100vw - 680px) / 2);
+        bottom: calc(var(--vh, 1vh) * 100 - $height-nav - 90px);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-nextlife-component-indicator {
+        // FIXME: 先稍微算就好
+        right: calc((100vw - 912px) / 2);
+        bottom: 52px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cpl-nextlife-component-indicator {
+        // FIXME: 先稍微算就好
+        right: calc((100vw - 1100px) / 2);
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cpl-nextlife-component-indicator {
+        // FIXME: 先稍微算就好
+        right: calc((100vw - 1280px) / 2);
+    }
+}

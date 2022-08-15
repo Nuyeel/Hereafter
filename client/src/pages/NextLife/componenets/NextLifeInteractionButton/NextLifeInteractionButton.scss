@@ -1,0 +1,147 @@
+@import '../../../../styles/variables.scss';
+
+.container.nlInteraction {
+    // FIXME: 這是隨便抓的高度
+    height: calc(var(--vh, 1vh) * 100 - $height-nav-mobile - 70px);
+    position: relative;
+    // background-color: #FF000033;
+    // z-index: 10
+
+    .nlInteraction-button {
+        width: 70px;
+        height: 70px;
+        color: $bgc-L-l;
+        font-size: $fz-title;
+        border-radius: 50%;
+        background-color: $primary;
+        border: none;
+        position: absolute;
+        bottom: 0;
+        transition: 0.3s;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            outline: none;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .nlInteraction-IoIosArrowUp-area {
+        right: 110px;
+    }
+
+    .nlInteraction-IoIosArrowDown-area {
+        right: 30px;
+    }
+
+    .nlInteraction-button.isDisabled {
+        background-color: $disabled;
+        color: $bgc-D-30p;
+        cursor: none;
+        pointer-events: none;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .container.nlInteraction {
+        height: calc(var(--vh, 1vh) * 100 - $height-nav-mobile - 130px);
+
+        .nlInteraction-button {
+            width: 80px;
+            height: 80px;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+
+        .nlInteraction-IoIosArrowUp-area {
+            right: calc((100vw - 442px) / 2 + 90px);
+        }
+    
+        .nlInteraction-IoIosArrowDown-area {
+            right: calc((100vw - 442px) / 2);
+        }
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .container.nlInteraction {
+        .nlInteraction-IoIosArrowUp-area {
+            right: 138px
+        }
+    
+        .nlInteraction-IoIosArrowDown-area {
+            right: 48px
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container.nlInteraction {
+        .nlInteraction-IoIosArrowUp-area {
+            right: 230px
+        }
+    
+        .nlInteraction-IoIosArrowDown-area {
+            right: 140px
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .container.nlInteraction {
+        height: calc(var(--vh, 1vh) * 100 - $height-nav-mobile - 180px);
+
+        .nlInteraction-IoIosArrowUp-area {
+            right: 114px;
+        }
+    
+        .nlInteraction-IoIosArrowDown-area {
+            right: 24px;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container.nlInteraction {
+        .nlInteraction-IoIosArrowUp-area {
+            right: 180px;
+        }
+    
+        .nlInteraction-IoIosArrowDown-area {
+            right: 90px;
+        }
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .container.nlInteraction {
+        .nlInteraction-IoIosArrowUp-area {
+            right: 268px;
+        }
+    
+        .nlInteraction-IoIosArrowDown-area {
+            right: 178px;
+        }
+    }
+}
+
+.container.nlInteraction.isShown {
+    animation: cpl-nlInteraction-isShown 2s;
+}
+
+@keyframes cpl-nlInteraction-isShown {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

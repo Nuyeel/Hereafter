@@ -1,11 +1,20 @@
 import { useState, useEffect, Suspense, createRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Stats } from '@react-three/drei'
+import { Stats } from '@react-three/drei';
 
 import SceneSample from './SceneSample';
 
+import './NextLifeSample.scss';
+
 function NextLifeSample(props) {
-    const { meshesData, cubeAnimationState, setCubeAnimationState } = props;
+    const {
+        meshesData,
+        cubeAnimationState,
+        setCubeAnimationState,
+        setNextLifeStage,
+        sampleIsHidden,
+        setSampleIsHidden,
+    } = props;
 
     // 有空再統一搬去父層
     const [dimensions, setDimensions] = useState({
@@ -14,6 +23,19 @@ function NextLifeSample(props) {
     });
     const [eachCubeSize, setEachCubeSize] = useState(0);
     const indexRef = createRef(null);
+
+    const handleSampleSubmit = () => {
+        const NewNextLifeStage = 2;
+        console.log(NewNextLifeStage);
+
+        setSampleIsHidden(true);
+
+        if (NewNextLifeStage === 2) {
+            setTimeout(() => {
+                setNextLifeStage(NewNextLifeStage);
+            }, 2000);
+        }
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -40,38 +62,61 @@ function NextLifeSample(props) {
 
         // cleaner function (willUnmount)
         return () => window.removeEventListener('resize', handleResize);
-    });
+    }, [dimensions]);
 
     return (
-        <div className={`cpl-nextlife-magic-cube-container`}>
-            <div className="cpl-nmc-c-info-area">
+        <>
+            <div
+                className={`cpl-nmc-c-info-area ${
+                    sampleIsHidden ? 'isHidden' : 'isShown'
+                }`}
+            >
                 <p className="cpl-nmc-c-ia-explanation">
                     這是<span className="cpl-nmc-c-ia-e-span">希望方塊</span>
                     ，代表著古往今來人們對於今生的感慨與來生的期許。
                 </p>
 
-                <p className="cpl-nmc-c-ia-wishing">請您也留下心中的話語吧！</p>
+                <div className="cpl-nmc-c-ia-wishing d-flex justify-content-between align-items-center">
+                    <p className="cpl-nmc-c-ia-w-text">
+                        請您也留下心中的話語吧！
+                    </p>
+                    <button
+                        className="cpl-nmc-c-ia-w-button"
+                        onClick={() => {
+                            handleSampleSubmit();
+                        }}
+                    >
+                        {/* <DeedSoul fillColor="#FFFFFF" strokeColor="#FFFFFF" /> */}
+                        <span className="cpl-nmc-c-ia-w-b-text">留下希望</span>
+                    </button>
+                </div>
             </div>
-            <Canvas
-                camera={{
-                    fov: 70,
-                    near: 0.1,
-                    far: 10000,
-                    position: [0, 150, 100],
-                }}
+            <div
+                className={`cpl-nextlife-magic-cube-container nlSample ${
+                    sampleIsHidden ? 'isHidden' : 'isShown'
+                }`}
             >
-                <Suspense fallback={null}>
-                    <SceneSample
-                        eachCubeSize={eachCubeSize}
-                        ref={indexRef}
-                        meshesData={meshesData}
-                        cubeAnimationState={cubeAnimationState}
-                        setCubeAnimationState={setCubeAnimationState}
-                    />
-                    <Stats />
-                </Suspense>
-            </Canvas>
-        </div>
+                <Canvas
+                    camera={{
+                        fov: 70,
+                        near: 0.1,
+                        far: 10000,
+                        position: [0, 150, 100],
+                    }}
+                >
+                    <Suspense fallback={null}>
+                        <SceneSample
+                            eachCubeSize={eachCubeSize}
+                            ref={indexRef}
+                            meshesData={meshesData}
+                            cubeAnimationState={cubeAnimationState}
+                            setCubeAnimationState={setCubeAnimationState}
+                        />
+                        <Stats />
+                    </Suspense>
+                </Canvas>
+            </div>
+        </>
     );
 }
 

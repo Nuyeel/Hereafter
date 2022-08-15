@@ -15,7 +15,11 @@ import { AiFillPlusCircle, AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 // import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
 
-import { API_SHAREWALL, STATIC_SHAREWALL_AVATAR } from '../../config/ajax-path';
+import {
+    API_SHAREWALL,
+    STATIC_SHAREWALL_AVATAR,
+    API_SHAREWALL_AVATARCHANGE_GET,
+} from '../../config/ajax-path';
 
 import Swal from 'sweetalert2';
 import OutlineSoul from '../../images/sweetalert2/outline_soul.svg';
@@ -145,7 +149,7 @@ function ShareWallDetail(props) {
                             Swal.fire({
                                 title: '形象詳情',
                                 html: AvatarDetailHTMLTranslator(
-                                    combinationText
+                                    NcombinationText
                                 ),
                                 imageUrl: OutlineSoul,
                                 imageHeight: 50,
@@ -318,6 +322,74 @@ function ShareWallDetail(props) {
         return;
     };
 
+    const axiosAvatarChangeGET = async () => {
+        const result = await axios.get(
+            `${API_SHAREWALL_AVATARCHANGE_GET}/${sharePostDetailData.postResults.avatar_id}/change`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        // console.log(result.data);
+
+        if (!result.data.success) {
+            return Swal.fire({
+                title: '好像出了一點問題',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        }
+
+        axiosSharePostGET(sharePostID);
+    };
+
+    const axiosAvatarCombinationGET = async () => {
+        console.log(sharePostDetailData.postResults.avatar_id);
+        const result = await axios.get(
+            `${API_SHAREWALL_AVATARCHANGE_GET}/${sharePostDetailData.postResults.avatar_id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        // console.log(result.data);
+
+        if (result.data === '您正使用此來生形象') {
+            return Swal.fire({
+                title: '您正使用相同的形象喔～',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        }
+
+        Swal.fire({
+            title: '您確定要套用這個形象嗎？',
+            imageUrl: OutlineSoul,
+            imageHeight: 50,
+            imageWidth: 50,
+            confirmButtonText: '確認',
+            showDenyButton: true,
+            denyButtonText: '取消',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosAvatarChangeGET();
+            } else if (result.isDenied) {
+                // console.log(
+                //     'Sweetalert2: ',
+                //     '不套用...虧了...'
+                // );
+            }
+        });
+    };
+
     // 設定 Header
     useEffect(() => {
         setHeader(headers[pageName]);
@@ -340,10 +412,10 @@ function ShareWallDetail(props) {
             share_post_likes,
             share_post_collects,
             share_post_text,
-            img_name,
-            price,
+            Nimg_name,
+            Nprice,
             authorProfile,
-            combinationText,
+            NcombinationText,
         },
         postTagsResults,
         postCommentsResults,
@@ -375,9 +447,9 @@ function ShareWallDetail(props) {
                     >
                         <div className="col-lg-6 cpl-pcb-inner-avatar-area">
                             {/* FIXME: 改成長手長腳測試 */}
-                            {img_name ? (
+                            {Nimg_name ? (
                                 <img
-                                    src={`${STATIC_SHAREWALL_AVATAR}${img_name}`}
+                                    src={`${STATIC_SHAREWALL_AVATAR}${Nimg_name}`}
                                     alt=""
                                     className="cpl-pcb-avatar"
                                 />
@@ -406,7 +478,7 @@ function ShareWallDetail(props) {
                                 <p className="cpl-ivi-title">形象詳情</p>
                                 {/* FIXME: onClick 要跳出東西 */}
                                 <p className="cpl-ivi-detail">
-                                    {AvatarDetailTranslator(combinationText)}
+                                    {AvatarDetailTranslator(NcombinationText)}
                                 </p>
                                 <div className="cpl-pcb-ivi-interaction-area d-flex justify-content-center align-items-center">
                                     {/* TODO: 怎麼換顏色？ */}
@@ -416,13 +488,13 @@ function ShareWallDetail(props) {
                                         strokeColor={theme.cHeader}
                                     />
                                     <p className="cpl-pcb-ivi-ia-price px-2">
-                                        {price ? price : ''}
+                                        {Nprice ? Nprice : ''}
                                     </p>
                                     <AiFillPlusCircle
                                         className="cpl-pcb-ivi-ia-AiFillPlusCircle"
                                         onClick={() => {
                                             // FIXME: 這裡要去一鍵套用
-                                            alert('施工中');
+                                            axiosAvatarCombinationGET();
                                         }}
                                     />
                                     {theme.title === 'dark' ? (

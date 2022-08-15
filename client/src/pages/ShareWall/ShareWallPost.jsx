@@ -13,6 +13,7 @@ import { AiFillPlusCircle } from 'react-icons/ai';
 import {
     API_SHAREWALL_POST,
     STATIC_SHAREWALL_AVATAR,
+    API_SHAREWALL_AVATARCHANGE_GET,
 } from '../../config/ajax-path';
 
 // Context
@@ -132,14 +133,22 @@ function ShareWallPost(props) {
     };
 
     const axiosSharePostGET = async (avatarID) => {
-        const result = await axios.get(`${API_SHAREWALL_POST}/${avatarID}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
-        // console.log(result.data);
+        const result = await axios.get(
+            `${API_SHAREWALL_POST}/${Number(avatarID)}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        console.log(result.data);
 
         if (result.data === '還沒有這個形象呦') {
+            return navigate('/sharewall');
+        }
+
+        // 如果不是該形象擁有作者應該要彈出去
+        if (sid !== result.data.avatarDataResults.member_sid) {
             return navigate('/sharewall');
         }
 
@@ -290,6 +299,73 @@ function ShareWallPost(props) {
         }
     };
 
+    const axiosAvatarChangeGET = async () => {
+        const result = await axios.get(
+            `${API_SHAREWALL_AVATARCHANGE_GET}/${Number(avatarID)}/change`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        // console.log(result.data);
+
+        if (!result.data.success) {
+            return Swal.fire({
+                title: '好像出了一點問題',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        }
+
+        axiosSharePostGET(Number(avatarID));
+    };
+
+    const axiosAvatarCombinationGET = async () => {
+        const result = await axios.get(
+            `${API_SHAREWALL_AVATARCHANGE_GET}/${Number(avatarID)}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        // console.log(result.data);
+
+        if (result.data === '您正使用此來生形象') {
+            return Swal.fire({
+                title: '您正使用相同的形象喔～',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        }
+
+        Swal.fire({
+            title: '您確定要套用這個形象嗎？',
+            imageUrl: OutlineSoul,
+            imageHeight: 50,
+            imageWidth: 50,
+            confirmButtonText: '確認',
+            showDenyButton: true,
+            denyButtonText: '取消',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosAvatarChangeGET();
+            } else if (result.isDenied) {
+                // console.log(
+                //     'Sweetalert2: ',
+                //     '不套用...虧了...'
+                // );
+            }
+        });
+    };
+
     // 設定 Header
     useEffect(() => {
         setHeader(headers[pageName]);
@@ -302,14 +378,13 @@ function ShareWallPost(props) {
         }
     }, []);
 
-    // 如果不是該篇文章作者應該要彈出去
     useEffect(() => {
-        if (isNaN(avatarID)) {
+        if (isNaN(Number(avatarID))) {
             return navigate('/', { replace: true });
         }
 
         // 沒問題就抓文章內容
-        axiosSharePostGET(avatarID);
+        axiosSharePostGET(Number(avatarID));
     }, []);
 
     const {
@@ -381,8 +456,7 @@ function ShareWallPost(props) {
                                     className="cpl-pcb-ivi-ia-AiFillPlusCircle"
                                     onClick={() => {
                                         // FIXME: 這裡要去一鍵套用
-                                        // FIXME: 根據是不是現有的形象做條件渲染
-                                        alert('施工中');
+                                        axiosAvatarCombinationGET();
                                     }}
                                 />
                                 {theme.title === 'dark' ? (

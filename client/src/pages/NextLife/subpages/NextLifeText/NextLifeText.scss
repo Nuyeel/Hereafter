@@ -1,0 +1,167 @@
+@import '../../../../styles/variables.scss';
+
+.cpl-nextlife-magic-cube-container.nlText {
+    // FIXME: 這是隨便抓的高度
+    bottom: 240px;
+}
+
+@media screen and (min-width: 768px) {
+    .cpl-nextlife-magic-cube-container.nlText {
+        // FIXME: 這是隨便抓的高度
+        bottom: 288px;
+    }
+}
+
+// @media screen and (min-width: 992px) {
+//     .cpl-nextlife-magic-cube-container.nlText {
+//         // FIXME: 這是隨便抓的高度
+//         bottom: 248px;
+//     }
+// }
+
+.cpl-nextlife-magic-cube-container.nlText.isShown {
+    animation: cpl-nextlife-cube-text-area-isShown 2s;
+}
+
+@keyframes cpl-nextlife-cube-text-area-isShown {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.cpl-nextlife-magic-cube-container.nlText.isHidden {
+    animation: cpl-nextlife-cube-text-area-isHidden 2s;
+}
+
+@keyframes cpl-nextlife-cube-text-area-isHidden {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -1500px;
+    }
+}
+
+.cpl-nextlife-text-container {
+    height: 100%;
+    // background-color: #FF000033;
+
+    .cpl-nextlife-text-inner {
+        // background-color: #0000FF33;
+        width: 100%;
+        max-width: 440px;
+        color: $bgc-D;
+        height: 10%;
+        margin: auto;
+        position: relative;
+        
+        .cpl-nl-ti-title {
+            font-size: $fz-body;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .cpl-nl-ti-title-altenative {
+            display: none;
+        }
+
+        .cpl-nl-ti-baseline-1, 
+        .cpl-nl-ti-baseline-2, 
+        .cpl-nl-ti-baseline-3 {
+            position: absolute;
+            border-bottom: 1px solid $bgc-D-70p;
+            width: 100%;
+        }
+
+        .cpl-nl-ti-baseline-1 {
+            top: 84px;
+        }
+        
+        .cpl-nl-ti-baseline-2 {
+            top: 140px;
+        }
+
+        .cpl-nl-ti-baseline-3 {
+            top: 196px;
+        }
+
+        .cpl-nl-ti-textarea {
+            resize: none;
+            border: none;
+            width: 100%;
+            height: 178px;
+            color: $bgc-D-70p;
+            font-size: 1.75rem;
+            line-height: 3.5rem;
+            letter-spacing: 0.05em;
+            background-color: transparent;
+            // text-decoration:underline;
+            margin-bottom: 18px;
+
+            &::selection {
+                background-color: $bgc-D-10p;
+            }
+
+            &::placeholder {
+                color: $bgc-D-30p;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .cpl-nl-ti-notice {
+            font-size: $fz-body-mobile;
+        }
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .cpl-nextlife-text-container {
+        .cpl-nextlife-text-inner {
+            .cpl-nl-ti-title {
+                .cpl-nl-ti-title-altenative {
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-nextlife-text-container {
+        .cpl-nextlife-text-inner {
+            max-width: 960px;
+
+            .cpl-nl-ti-title {
+                font-size: $fz-subtitle;
+            }
+
+            .cpl-nl-ti-baseline-1 {
+                top: 120px;
+            }
+            
+            .cpl-nl-ti-baseline-2 {
+                top: 214px;
+            }
+    
+            .cpl-nl-ti-baseline-3 {
+                display: none;
+            }
+
+            .cpl-nl-ti-textarea {
+                font-size: $fz-h2;
+                line-height: 6rem;
+                height: 200px;
+            }
+
+            .cpl-nl-ti-notice {
+                font-size: $fz-caption;
+            }
+        }
+    }
+}

@@ -17,6 +17,7 @@ function Card(props) {
         setActive,
         setShows,
         setRandomScore,
+        setUserGooddeed,
         ...otherProps
     } = props;
 
@@ -42,6 +43,7 @@ function Card(props) {
         });
         const result = await r.json();
         setRandomScore(result.randomScore);
+        setUserGooddeed(result.randomScore);
     };
 
     return (

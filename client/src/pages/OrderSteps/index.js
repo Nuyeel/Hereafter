@@ -308,6 +308,7 @@ function OrderSteps(props) {
                     detailVisible={detailVisible}
                     setDetailVisible={setDetailVisible}
                     step={step}
+                    setStep={setStep}
                     prev={prev}
                 />
 
@@ -351,7 +352,6 @@ function OrderSteps(props) {
                         setDetailVisible={setDetailVisible}
                         next={next}
                         fetchCreateOrder={fetchCreateOrder} //PersonForm用
-                        // fetchAlreadyPay={fetchAlreadyPay} //Payment 用
                     />
                 </div>
 

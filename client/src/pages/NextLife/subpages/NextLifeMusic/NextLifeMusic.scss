@@ -35,6 +35,7 @@
             background-color: $primary;
             border-radius: 5px;
             border: 2px solid #FFFFFF;
+            color: #FFFFFF;
             // filter: none !important;
             outline: none !important;
             // box-shadow: none !important;
@@ -123,8 +124,10 @@
     }
 }
 
-.cpl-nextlife-music-lightbox.isAnimation {
+.cpl-nextlife-music-lightbox.isHidden {
     animation: cpl-nextlife-music-lightbox-animation 2s forwards;
+    cursor: none;
+    pointer-events: none;
 }
 
 @keyframes cpl-nextlife-music-lightbox-animation {
