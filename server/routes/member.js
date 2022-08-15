@@ -360,6 +360,32 @@ router
 
         res.json(output);
     });
+
+// 測試: http://localhost:3500/api/member/profile
+// 修改會員資料
+router.route('/profile').get(async (req, res) => {
+    // 未登入先擋掉
+    if (!res.locals.loginUser) {
+        return;
+    }
+    const output = {
+        success: false,
+        error: '',
+        code: 0,
+        data: {},
+    };
+    const sql = 'SELECT * FROM `member` WHERE sid = ?';
+    const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
+    console.log(q1);
+    q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
+    q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
+    output.success = true;
+    output.data = q1;
+    output.error = '成功取得資料';
+
+    res.json(output);
+});
+
 // 測試: http://localhost:3500/api/member/memberprofilerevise
 // 修改會員資料
 router
