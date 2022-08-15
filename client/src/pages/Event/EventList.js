@@ -61,7 +61,7 @@ function EventList() {
         if (isLoading) {
             setTimeout(() => {
                 setIsLoading(false);
-            }, 1000);
+            }, 2000);
         }
     }, [isLoading]);
 
