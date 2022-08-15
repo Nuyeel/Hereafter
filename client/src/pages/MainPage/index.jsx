@@ -4,6 +4,7 @@ import HeaderContext, {
 } from '../../context/HeaderContext/HeaderContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'; //sweetalert2
 
 // scss
 import './_mainpage.scss';
@@ -24,9 +25,9 @@ import aboutus from './imgs/aboutus-star.svg';
 import mainpage_test from './imgs/mainpage_test.svg';
 
 // 格子素材用圖片
-import avatar01 from './imgs/avatar01.svg';
-import avatar02 from './imgs/avatar02.svg';
-import avatar03 from './imgs/avatar03.svg';
+// import avatar01 from './imgs/avatar01.svg';
+// import avatar02 from './imgs/avatar02.svg';
+// import avatar03 from './imgs/avatar03.svg';
 
 // 放進box內的圖片
 import avartar01 from './imgs/mainpage-avatar01.png';
@@ -103,6 +104,37 @@ function MainPage(props) {
             behavior: 'instant',
             block: 'center',
             inline: 'center',
+        });
+    };
+
+    // 處理生者亡者顏色---------------------------------------------
+    // FIXME: 每個帳號登入進到首頁只會問一次
+
+    let mainpageChoose = localStorage.getItem('mainpagechoose');
+
+    useEffect(() => {
+        if (!mainpageChoose) {
+            liveOrDeath();
+        }
+    }, []);
+
+    const liveOrDeath = function () {
+        localStorage.setItem('mainpagechoose', 'yes');
+        Swal.fire({
+            title: '歡迎光臨來生投放所',
+            text: '左轉右轉都是人生',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '我還活著',
+            cancelButtonText: '我掛掉了',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire('恭喜你', '還有轉圜的機會', 'success');
+            } else {
+                Swal.fire('哈囉', '讓我們迎接更美好的來生', 'death');
+            }
         });
     };
 
@@ -270,9 +302,7 @@ function MainPage(props) {
                     {/* 投生形象小格1 */}
                     <div className="xuan-box xuan-box-avatar-show1">
                         {/* 左邊白色框 */}
-                        <div>
-                            <img src={avatar01} alt="" />
-                        </div>
+                        <div>{/* <img src={avatar01} alt="" /> */}</div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
@@ -286,9 +316,7 @@ function MainPage(props) {
                     {/* 投生形象小格2 */}
                     <div className="xuan-box xuan-box-avatar-show2">
                         {/* 左邊白色框 */}
-                        <div>
-                        <img src={avatar02} alt="" />
-                        </div>
+                        <div>{/* <img src={avatar02} alt="" /> */}</div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
@@ -302,9 +330,7 @@ function MainPage(props) {
                     {/* 投生形象小格3 */}
                     <div className="xuan-box xuan-box-avatar-show3">
                         {/* 左邊白色框 */}
-                        <div>
-                        <img src={avatar03} alt="" />
-                        </div>
+                        <div>{/* <img src={avatar03} alt="" /> */}</div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
