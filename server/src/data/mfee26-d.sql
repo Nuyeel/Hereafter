@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-08-15 05:18:57
+-- 產生時間： 2022-08-15 05:34:37
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 7.4.29
 
@@ -306,6 +306,32 @@ CREATE TABLE `event_cart_personinfo` (
 INSERT INTO `event_cart_personinfo` (`sid`, `member_sid`, `name`, `mobile_city`, `mobile`, `email`, `gender`, `ID`, `birthday`, `add_city`, `add_town`, `add_detail`, `info_created_at`) VALUES
 (26, 100, '張容瑄', 'Vietnam +84', '0988681621', 'as840922@yahoo.com.tw', '男', 'R2241354564', '2022-07-06', NULL, NULL, '自立街174巷10號5樓', '2022-07-27 22:18:55'),
 (27, 100, '張容瑄', 'Vietnam +84', '0988681621', 'as840922@yahoo.com.tw', '男', 'R2241354564', '2022-06-28', NULL, NULL, '自立街174巷10號5樓', '2022-07-27 22:19:36');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `event_comment`
+--
+
+CREATE TABLE `event_comment` (
+  `sid` int(11) NOT NULL,
+  `event_comment_avatar` varchar(255) DEFAULT NULL,
+  `event_comment_name` varchar(20) DEFAULT NULL,
+  `event_comment_date` date DEFAULT NULL,
+  `event_comment_star` varchar(225) DEFAULT NULL,
+  `event_comment` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `event_comment`
+--
+
+INSERT INTO `event_comment` (`sid`, `event_comment_avatar`, `event_comment_name`, `event_comment_date`, `event_comment_star`, `event_comment`) VALUES
+(1, 'a01.svg', 'Yi Chin Lin', '2021-08-11', '4.2', '很有收穫！工作人員也規劃的很完善～'),
+(2, 'a02.svg', 'Christine Huang', '2021-10-14', '4.0', '很辛苦，建議路線安排可以再明確一點。'),
+(3, 'a03.svg', '吳律誼', '2021-07-13', '5.0', '非常推薦！做好事的同時還可以學到新知識，CP值超高。'),
+(4, 'a04.svg', 'Zoe Liu', '2022-06-23', '3.4', '不知道是不是剛好遇到的工作人員是新人，流程上還不太熟悉。\r\n'),
+(5, 'a05.svg', '黃湘君', '2022-07-20', '4.1', '還不錯！很適合帶小孩一起來參加。\r\n');
 
 -- --------------------------------------------------------
 
@@ -1610,6 +1636,12 @@ ALTER TABLE `event_cart_personinfo`
   ADD PRIMARY KEY (`sid`);
 
 --
+-- 資料表索引 `event_comment`
+--
+ALTER TABLE `event_comment`
+  ADD PRIMARY KEY (`sid`);
+
+--
 -- 資料表索引 `event_order_detail`
 --
 ALTER TABLE `event_order_detail`
@@ -1860,6 +1892,12 @@ ALTER TABLE `event_cart_creditcard`
 --
 ALTER TABLE `event_cart_personinfo`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `event_comment`
+--
+ALTER TABLE `event_comment`
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `event_order_detail`
