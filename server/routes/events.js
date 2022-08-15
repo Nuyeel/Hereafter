@@ -91,7 +91,7 @@ router.post('/eventcomment', async (req, res) => {
     const $sql = 'SELECT * FROM `event_comment` ';
 
     const [results] = await db.query($sql);
-    console.log(results);
+    // console.log(results);
     res.json(results); //會獲得一個JSON包
 });
 

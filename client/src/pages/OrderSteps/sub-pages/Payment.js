@@ -229,7 +229,7 @@ function Payment(props) {
                 fetchAlreadyPay(); //同步把購物車內容 跟 購物車數字刪掉
                 dispatch(decrementByAmount(eventPick.length));
                 window.location.href = `${obj}`;
-            })
+            });
     };
 
     const test = {
@@ -256,6 +256,23 @@ function Payment(props) {
         },
     };
 
+    // 清空按下的時候，把表格資料都歸0
+    const handleClearPayment = () => {
+        // 值都變回 ''
+        setCardInfor({
+            ...cardInfor,
+
+            sid: sid,
+            cardnumber: '',
+            cardholder: '',
+            ex_month: '',
+            ex_year: '',
+            cvv: '',
+            bill: '',
+            payway: '',
+        });
+    };
+
     return (
         <>
             {/* 信用卡放這邊 */}
@@ -265,13 +282,13 @@ function Payment(props) {
                         {/* 標題區(含活動明細BTN) */}
                         <div className="xuan-payment-title">
                             <div className="xuan-payment-btn">
-                                <p
+                                {/* <p
                                     onClick={() => {
                                         fetchLINEPAY();
                                     }}
                                 >
                                     LINE金流測試
-                                </p>
+                                </p> */}
                                 <img
                                     className="quicksoul"
                                     src={quicksoul}
@@ -362,7 +379,16 @@ function Payment(props) {
                             />
 
                             <label className="xuan-label-title ">信用卡</label>
-                            <input
+
+                            <button
+                                className="xuan-btn-m xuan-btn-sec"
+                                onClick={() => {
+                                    fetchLINEPAY();
+                                }}
+                            >
+                                LINE PAY 付款
+                            </button>
+                            {/* <input
                                 className="xuan-input-radio"
                                 name="payway"
                                 type="radio"
@@ -372,7 +398,7 @@ function Payment(props) {
                             />
                             <label className="xuan-label-title ">
                                 LINE Pay
-                            </label>
+                            </label> */}
                         </div>
 
                         <div className="xuan-creditcard-wrap">
@@ -577,11 +603,21 @@ function Payment(props) {
 
                                 <div className="xuan-payment-submit-button">
                                     <button
+                                        type="reset"
+                                        className="xuan-btn-m xuan-btn-sec"
+                                        onClick={() => {
+                                            handleClearPayment();
+                                        }}
+                                    >
+                                        <MdReplay />
+                                        清空
+                                    </button>
+                                    <button
                                         type="submit"
                                         className="xuan-btn-m xuan-btn-sec"
                                     >
                                         <FiSend />
-                                        確認
+                                        送出
                                     </button>
                                 </div>
                             </form>
