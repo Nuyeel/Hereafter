@@ -58,18 +58,37 @@ $maxWidth: 376px;
         display: flex;
     }
 
+    .tn {
+        color: #f0f8a6;
+    }
+
     .news-wrap {
         display: flex;
 
-        > .news {
+        .news {
             width: 100%;
-            text-overflow: clip;
+            // text-overflow: clip;
             overflow: hidden;
+            white-space: nowrap;
+            // text-overflow: ellipsis;
+        }
+        .tn {
+            animation: newsMovement 600s linear infinite;
+            display: inline-block;
+        }
+        .news-ele {
+            display: inline-block;
+            margin-right: 20px;
         }
     }
 
-    .tn {
-        color: #f0f8a6;
+    @keyframes newsMovement {
+        from {
+            transform: translate(0, 0);
+        }
+        to {
+            transform: translate(-100%, 0);
+        }
     }
 
     /* 我的收藏按鈕 */
