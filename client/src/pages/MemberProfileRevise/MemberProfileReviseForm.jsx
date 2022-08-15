@@ -35,6 +35,10 @@ function MemberProfileReviseForm() {
         }));
     };
 
+    // TODO-1：出生日與往生日的判斷式
+    // TODO-2：日期預設格式修改
+    // TODO-3：要補手機和住址資料讓活動同步撈
+
     const emailRe =
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
 
@@ -218,7 +222,6 @@ function MemberProfileReviseForm() {
                                                                     <InputIME
                                                                         type="date"
                                                                         className="form-control"
-                                                                        id="birthdate"
                                                                         name="birthdate"
                                                                         value={
                                                                             memberProfileData.birthdate
@@ -233,7 +236,7 @@ function MemberProfileReviseForm() {
                                                                         htmlFor="deathdate"
                                                                         className="form-label"
                                                                     >
-                                                                        死亡日
+                                                                        往生日
                                                                     </label>
                                                                     <InputIME
                                                                         type="date"
@@ -271,7 +274,6 @@ function MemberProfileReviseForm() {
                                                                     />
                                                                 </div>
                                                                 <br />
-                                                                {/* TODO：要補手機資料讓活動同步撈 */}
                                                                 <div className="d-flex justify-content-sm-evenly ">
                                                                     <button
                                                                         type="submit"
@@ -281,6 +283,7 @@ function MemberProfileReviseForm() {
                                                                     </button>
 
                                                                     <br />
+                                                                    {/* Improvement：補清除功能 */}
                                                                     {/* <button
                                                                                     type="reset"
                                                                                     className="btn-member btn-member-sec btn-member-l btn-member-outline-light"

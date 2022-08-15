@@ -1,7 +1,10 @@
 import './style.scss';
 import { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import { MEMBER_PROFILE } from '../../config/ajax-path';
+import {
+    MEMBER_PROFILE,
+    STATIC_SHAREWALL_AVATAR,
+} from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -131,31 +134,64 @@ function MemberProfileForm() {
                                                                 <div className="card-body d-flex align-items-center">
                                                                     <div className="col-md-9 mb-md-0 p-md-4 member-page-field">
                                                                         <div className="card-title">
-                                                                            歡迎回來，
                                                                             {mainProfile.name
                                                                                 ? mainProfile.name
                                                                                 : mainProfile.account}
                                                                         </div>
                                                                         <br />
-                                                                        <div className="card-text ">
-                                                                            您紀錄的出生日為：
-                                                                            {
-                                                                                mainProfile.birthdate
-                                                                            }
-                                                                        </div>
+                                                                        {/* TODO：有無日期的呈現方式 */}
+                                                                        {mainProfile.birthdate ? (
+                                                                            <div className="card-text ">
+                                                                                出生日：
+                                                                                {
+                                                                                    mainProfile.birthdate
+                                                                                }
+                                                                            </div>
+                                                                        ) : (
+                                                                            <div className="card-text ">
+                                                                                尚未記錄任何出生日
+                                                                            </div>
+                                                                        )}
                                                                         <br />
                                                                         <div className="card-text ">
-                                                                            您紀錄的死亡日為：
+                                                                            往生日：
                                                                             {
                                                                                 mainProfile.deathdate
                                                                             }
                                                                         </div>
                                                                     </div>
                                                                     <div className="member-avatar">
-                                                                        {/* 頭貼位置 */}
-                                                                        {
-                                                                            mainProfile.profile_picture
-                                                                        }
+                                                                        {/* TODO：頭貼位置 */}
+                                                                        <div
+                                                                            style={{
+                                                                                width: '150px',
+                                                                                height: '150px',
+                                                                                overflow:
+                                                                                    'hidden',
+                                                                                position:
+                                                                                    'relative',
+                                                                                right: '80px',
+                                                                            }}
+                                                                        >
+                                                                            {mainProfile ? (
+                                                                                <img
+                                                                                    src={`${STATIC_SHAREWALL_AVATAR}${mainProfile.img_name}`}
+                                                                                    alt=""
+                                                                                    style={{
+                                                                                        width: '400%',
+                                                                                        position:
+                                                                                            'relative',
+                                                                                        left: '-150%',
+                                                                                        top: '-45%',
+                                                                                    }}
+                                                                                />
+                                                                            ) : (
+                                                                                <img
+                                                                                    src={`${STATIC_SHAREWALL_AVATAR}$default.png`}
+                                                                                    alt=""
+                                                                                />
+                                                                            )}
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -163,6 +199,7 @@ function MemberProfileForm() {
                                                             <div className="cards-2 d-flex justify-content-evenly align-items-center ">
                                                                 <div className="card d-flex justify-content-evenly align-items-center rounded-4">
                                                                     <div className="card-body d-flex flex-column">
+                                                                        {/* TODO：有無陰德值的呈現方式 */}
                                                                         <div className="card-title member-page-field">
                                                                             目前陰德值尚有：
                                                                             {
@@ -188,8 +225,9 @@ function MemberProfileForm() {
                                                                 </div>
                                                                 <div className="card d-flex justify-content-evenly align-items-center rounded-4">
                                                                     <div className="card-body d-flex flex-column">
+                                                                        {/* TODO：有無良辰吉地的呈現方式 */}
                                                                         <h5 className="card-title member-page-field">
-                                                                            您目前預定轉生的位置為：
+                                                                            預定轉生位置為：
                                                                         </h5>
                                                                         <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
                                                                             {/* <div className=""></div> */}
