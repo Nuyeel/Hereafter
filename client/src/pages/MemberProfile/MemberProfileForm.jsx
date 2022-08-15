@@ -214,22 +214,24 @@ function MemberProfileForm() {
                                                                                 </button>{' '}
                                                                             </>
                                                                         ) : (
-                                                                            <div className="card-title member-page-field">
-                                                                                目前還沒有陰德值
-                                                                            </div>
-                                                                        )}
-                                                                        <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                            {/* <div className=""></div> */}
-                                                                        </div>
-                                                                        <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
-                                                                            <Link
-                                                                                className="member-link-2"
-                                                                                to="/gooddeed
+                                                                            <>
+                                                                                <div className="card-title member-page-field">
+                                                                                    目前還沒有陰德值
+                                                                                </div>
+                                                                                <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
+                                                                                    {/* <div className=""></div> */}
+                                                                                </div>
+                                                                                <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
+                                                                                    <Link
+                                                                                        className="member-link-2"
+                                                                                        to="/gooddeed
                                                                                 "
-                                                                            >
-                                                                                陰德值測驗GO！
-                                                                            </Link>
-                                                                        </button>{' '}
+                                                                                    >
+                                                                                        陰德值測驗GO！
+                                                                                    </Link>
+                                                                                </button>{' '}
+                                                                            </>
+                                                                        )}
                                                                     </div>
                                                                 </div>
                                                                 <div className="p-2">
