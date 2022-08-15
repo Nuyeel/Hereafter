@@ -43,7 +43,10 @@ function Card(props) {
         });
         const result = await r.json();
         setRandomScore(result.randomScore);
-        setUserGooddeed(result.randomScore);
+        setUserGooddeed({ show: true, gooddeed: result.randomScore });
+        return setTimeout(() => {
+            setUserGooddeed({ show: false, gooddeed: result.randomScore });
+        }, 3000);
     };
 
     return (
