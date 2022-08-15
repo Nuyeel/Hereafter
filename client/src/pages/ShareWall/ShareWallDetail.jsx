@@ -494,6 +494,15 @@ function ShareWallDetail(props) {
                                         className="cpl-pcb-ivi-ia-AiFillPlusCircle"
                                         onClick={() => {
                                             // FIXME: 這裡要去一鍵套用
+                                            if (!authorized) {
+                                                return Swal.fire({
+                                                    title: '請先登入',
+                                                    imageUrl: OutlineSoulAlert,
+                                                    imageHeight: 50,
+                                                    imageWidth: 50,
+                                                    showConfirmButton: false,
+                                                });
+                                            }
                                             axiosAvatarCombinationGET();
                                         }}
                                     />

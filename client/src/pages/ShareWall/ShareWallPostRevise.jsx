@@ -400,6 +400,11 @@ function ShareWallPostRevise(props) {
 
     // 如果不是該篇文章作者應該要彈出去
     useEffect(() => {
+        // 沒登入彈出去
+        if (!authorized) {
+            return navigate('/', { replace: true });
+        }
+
         // console.log(location.pathname);
         // FIXME: 可以用 useParams 其實 這裡換一種寫法
         const postSidForValidation = Number(location.pathname.slice(11, -7));
