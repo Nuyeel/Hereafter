@@ -1,62 +1,36 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
 import { MEMBER_EVENT_ORDER } from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import LoginForm from '../Login/LoginForm';
 
 import EventHistory from './EventHistory';
 
 function MemberProfileForm() {
-    const [loginData, setLoginData] = useState({
-        account: '',
-        password: '',
-    });
+    const [eventOrder, setEventOrder] = useState([]);
 
     const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
+
     const navigate = useNavigate();
+    let { eventSid } = useParams();
 
-    const handleFieldsChange = (e) => {
-        const id = e.target.id;
-        const val = e.target.value;
-        // console.log({ id, val });
-        setLoginData((prevState) => ({
-            ...prevState,
-            [id]: val,
-        }));
+    const fetchEventDetail = async () => {
+        const response = await axios.get(
+            // TODO:修成 ajax-path
+            `http://localhost:3500/events/${eventSid}`
+        );
+        setEventOrder(response.data);
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        // console.log(loginData);
-
-        // TODO: 欄位檢查
-
-        // 請注意 axios 和 fetch 的不同之處
-        // fetch 要多轉換一次 .then(r => r.json())
-        // fetch 的內容放在 body: fd
-        // axios 會自動轉換 JSON 但結果放在 r.data 中
-        // axios 的內容要放在 data: fd
-        const result = await axios(MEMBER_EVENT_ORDER, {
-            method: 'POST',
-            data: JSON.stringify(loginData),
-            headers: {
-                'Content-Type': 'Application/json',
-            },
-        });
-        if (result.data.success) {
-            // localStorage.setItem('auth', JSON.stringify(result.data.data));
-            // setAuth({ ...result.data.data, authorized: true });
-            // navigate('/');
-        } else {
-            alert('帳密錯誤～～');
-        }
-    };
+    useEffect(() => {
+        fetchEventDetail();
+    }, []);
 
     return (
         <>
@@ -146,7 +120,6 @@ function MemberProfileForm() {
 
                                                             {/* 這段是二路測試用 */}
                                                             <EventHistory />
-
                                                         </div>
                                                     </section>
                                                 </section>

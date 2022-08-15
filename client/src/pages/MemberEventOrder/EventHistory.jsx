@@ -8,6 +8,7 @@ import AuthContext from '../../context/AuthContext/AuthContext';
 import './_xuan_event_order.scss';
 import '../Event/_xuan_styles.scss';
 import { now } from 'lodash';
+import { Link } from 'react-router-dom';
 
 function EventHistory(props) {
     const { sid } = useContext(AuthContext); //取得登入會員sid
@@ -38,8 +39,6 @@ function EventHistory(props) {
             <div className="xuan-event-history-container">
                 {/* 將訂單細項從字串轉為陣列 */}
 
-                {/* TODO: 這邊放如果沒有購物紀錄會顯示的文字 */}
-                {/* FIXME: 尚未修 CSS */}
                 {!eventHistory.length ? (
                     <p className="member-event-default">目前尚未建立任何訂單</p>
                 ) : (
@@ -70,6 +69,9 @@ function EventHistory(props) {
                                                     className="xuan-member-event-detail"
                                                 >
                                                     <div className="xuan-member-event-detai-img">
+                                                        {/* <Link
+                                                            to={`event/${v.sid}`}
+                                                        > */}
                                                         <img
                                                             src={
                                                                 'http://localhost:3500/event/eventlist/' +
@@ -77,6 +79,7 @@ function EventHistory(props) {
                                                             }
                                                             alt=""
                                                         />
+                                                        {/* </Link> */}
                                                     </div>
 
                                                     <div className="xuan-member-event-main">
