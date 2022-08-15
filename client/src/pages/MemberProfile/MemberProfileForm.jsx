@@ -1,7 +1,10 @@
 import './style.scss';
 import { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import { MEMBER_PROFILE } from '../../config/ajax-path';
+import {
+    MEMBER_PROFILE,
+    STATIC_SHAREWALL_AVATAR,
+} from '../../config/ajax-path';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -12,10 +15,12 @@ import { ReactComponent as NavSoul } from '../../images/Nav/nav_soul.svg';
 
 function MemberProfileForm() {
     const [mainProfile, setMainProfile] = useState({
+        name: '',
         account: '',
         birthdate: '',
         deathdate: '',
         gooddeed_score: '',
+        profile_picture: '',
     });
 
     const { theme, themeContext } = useContext(ThemeContext);
@@ -32,23 +37,6 @@ function MemberProfileForm() {
         }));
     };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     // console.log(mainProfile);
-
-    //     const result = await axios(MEMBER_PROFILE, {
-    //         method: 'POST',
-    //         data: JSON.stringify(mainProfile),
-    //         headers: {
-    //             'Content-Type': 'Application/json',
-    //         },
-    //     });
-    //     if (result.data.success) {
-    //     } else {
-    //         alert('帳密錯誤～～');
-    //     }
-    // };
-
     const fetchMemberData = async () => {
         console.log('fetch start');
         const r = await fetch(MEMBER_PROFILE, {
@@ -60,7 +48,6 @@ function MemberProfileForm() {
 
         const result = await r.json();
         console.log(result);
-
         setMainProfile(result.data);
     };
 
@@ -147,28 +134,56 @@ function MemberProfileForm() {
                                                                 <div className="card-body d-flex align-items-center">
                                                                     <div className="col-md-9 mb-md-0 p-md-4 member-page-field">
                                                                         <div className="card-title">
-                                                                            歡迎回來，
-                                                                            {
-                                                                                mainProfile.account
-                                                                            }
-                                                                        </div>{' '}
-                                                                        <br />
-                                                                        <div className="card-text ">
-                                                                            您紀錄的出生日為：
-                                                                            {
-                                                                                mainProfile.birthdate
-                                                                            }
+                                                                            {mainProfile.name
+                                                                                ? mainProfile.name
+                                                                                : mainProfile.account}
                                                                         </div>
                                                                         <br />
-                                                                        <div className="card-text ">
-                                                                            您紀錄的死亡日為：
-                                                                            {
-                                                                                mainProfile.deathdate
-                                                                            }
-                                                                        </div>
+                                                                        {/* TODO：有無日期的呈現方式 */}
+                                                                        {mainProfile.birthdate ? (
+                                                                            <div className="card-text ">
+                                                                                出生日：
+                                                                                {
+                                                                                    mainProfile.birthdate
+                                                                                }
+                                                                            </div>
+                                                                        ) : (
+                                                                            <div className="card-text ">
+                                                                                未記錄出生日
+                                                                            </div>
+                                                                        )}
+                                                                        <br />
+                                                                        {mainProfile.deathdate ? (
+                                                                            <div className="card-text ">
+                                                                                往生日：
+                                                                                {
+                                                                                    mainProfile.deathdate
+                                                                                }
+                                                                            </div>
+                                                                        ) : (
+                                                                            <div className="card-text ">
+                                                                                未存在往生紀錄
+                                                                            </div>
+                                                                        )}
                                                                     </div>
-                                                                    <div className="member-avatar">
-                                                                        頭貼位置
+                                                                    {/* TODO：頭貼位置 */}
+                                                                    <div className="member-page-avatar-position">
+                                                                        {mainProfile ? (
+                                                                            <Link to="/showcase">
+                                                                                <img
+                                                                                    className="member-page-avatar "
+                                                                                    src={`${STATIC_SHAREWALL_AVATAR}${mainProfile.img_name}`}
+                                                                                    alt=""
+                                                                                />
+                                                                            </Link>
+                                                                        ) : (
+                                                                            <Link to="/showcase">
+                                                                                <img
+                                                                                    src={`${STATIC_SHAREWALL_AVATAR}$default.png`}
+                                                                                    alt=""
+                                                                                />
+                                                                            </Link>
+                                                                        )}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -176,6 +191,7 @@ function MemberProfileForm() {
                                                             <div className="cards-2 d-flex justify-content-evenly align-items-center ">
                                                                 <div className="card d-flex justify-content-evenly align-items-center rounded-4">
                                                                     <div className="card-body d-flex flex-column">
+                                                                        {/* TODO：有無陰德值的呈現方式 */}
                                                                         <div className="card-title member-page-field">
                                                                             目前陰德值尚有：
                                                                             {
@@ -183,7 +199,7 @@ function MemberProfileForm() {
                                                                             }
                                                                         </div>
                                                                         <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                            <div className=""></div>
+                                                                            {/* <div className=""></div> */}
                                                                         </div>
                                                                         <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
                                                                             <Link
@@ -201,11 +217,12 @@ function MemberProfileForm() {
                                                                 </div>
                                                                 <div className="card d-flex justify-content-evenly align-items-center rounded-4">
                                                                     <div className="card-body d-flex flex-column">
+                                                                        {/* TODO：有無良辰吉地的呈現方式 */}
                                                                         <h5 className="card-title member-page-field">
-                                                                            您目前預定轉生的位置為：
+                                                                            預定轉生位置為：
                                                                         </h5>
                                                                         <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                            <i className="fa-solid fa-earth-asia"></i>
+                                                                            {/* <div className=""></div> */}
                                                                         </div>
                                                                         <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
                                                                             <Link

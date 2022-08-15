@@ -93,6 +93,7 @@ const EventDetail = () => {
     useEffect(() => {
         fetchEventDetail();
         fetchCheckEvent();
+        fetchEventComment();
     }, []);
 
     // 按下「加入購物車」將資料存進MySQL //因為axios方式不熟 先用fetch方式POST
@@ -109,6 +110,20 @@ const EventDetail = () => {
             .then((r) => r.json())
             .then((obj) => {
                 console.log(obj);
+            });
+    };
+
+    const [ecomment, setEcomment] = useState([]);
+
+    // 一進頁面就跟MySQL取得評論資訊
+    const fetchEventComment = async () => {
+        fetch('http://localhost:3500/events/eventcomment', {
+            method: 'POST',
+        })
+            .then((r) => r.json())
+            .then((obj) => {
+                console.log('obj', obj);
+                setEcomment(obj);
             });
     };
 
@@ -186,12 +201,13 @@ const EventDetail = () => {
                                                     <span>{v.start_time}</span>
                                                     <span>- {v.end}</span>
                                                     <span>{v.end_time}</span>
-                                                    <a
+                                                    {/* FIXME: 來不及完成先註解 */}
+                                                    {/* <a
                                                         href="#/"
                                                         className="xuan-body"
                                                     >
                                                         + 加入行事曆
-                                                    </a>
+                                                    </a> */}
                                                 </div>
 
                                                 <div className="d-flex ">
@@ -200,10 +216,11 @@ const EventDetail = () => {
                                                         {v.city} {v.place_other}
                                                     </span>
 
-                                                    <a href="#/">
+                                                    {/* FIXME: 來不及完成先註解 */}
+                                                    {/* <a href="#/">
                                                         <TiLocationArrowOutline />
                                                         查看地圖
-                                                    </a>
+                                                    </a> */}
                                                 </div>
 
                                                 <div className="xuan-mr xuan-intro-word  xuan-subtitle">
@@ -379,193 +396,60 @@ const EventDetail = () => {
                             {/* 放Chart.js  */}
                             <div className="xuan-comment-chart">
                                 <span className="xuan-h5">精選評論</span>
-                                <TiLocationArrowOutline />
-                                <a href="#/">查看共1000則評價</a>
+                                {/* FIXME: 來不及做先取消 */}
+                                {/* <TiLocationArrowOutline /> */}
+                                {/* <a href="#/">查看共1000則評價</a> */}
                                 {/* <span className="xuan-subtitle">+撰寫評論</span> */}
                             </div>
 
                             <div className="xuan-comment-group">
                                 <SimpleBar className="xuan-comment-bar">
-                                    <div className="xuan-comment-item">
-                                        <div className="xuan-comment-avatar"></div>
-
-                                        <div className="xuan-comment-word-wrap">
-                                            <div className="xuan-subtitle">
-                                                RONG XUAN CHANG
-                                            </div>
-
-                                            <div className="d-flex">
-                                                <div className="xuan-comment-star-wrap">
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
+                                    {ecomment.map((v, i) => {
+                                        return (
+                                            <div
+                                                className="xuan-comment-item"
+                                                key={v.sid}
+                                            >
+                                                <div className="xuan-comment-avatar">
+                                                    <img
+                                                        src={
+                                                            'http://localhost:3500/event/comment/' +
+                                                            v.event_comment_avatar
+                                                        }
+                                                        alt=""
+                                                    />
                                                 </div>
 
-                                                <span className="xuan-body ">
-                                                    2022年7月9日
-                                                    <BiLike />
-                                                </span>
-                                            </div>
+                                                <div className="xuan-comment-word-wrap">
+                                                    <div className="xuan-subtitle">
+                                                        {v.event_comment_name}
+                                                    </div>
 
-                                            <span>
-                                                真的非常充實、非常喜歡這個活動，之後一定會再來參加。
-                                            </span>
-                                        </div>
+                                                    <div className="d-flex">
+                                                        <div className="xuan-comment-star-wrap">
+                                                            <FaStar />
+                                                            {
+                                                                v.event_comment_star
+                                                            }
+                                                        </div>
 
-                                        <div className="xuan-comment-imgupload"></div>
-                                    </div>
-                                    <div className="xuan-comment-item">
-                                        <div className="xuan-comment-avatar"></div>
+                                                        <span className="xuan-body ">
+                                                            {
+                                                                v.event_comment_date
+                                                            }
+                                                            {/* <BiLike /> */}
+                                                        </span>
+                                                    </div>
 
-                                        <div className="xuan-comment-word-wrap">
-                                            <div className="xuan-subtitle">
-                                                RONG XUAN CHANG
-                                            </div>
-
-                                            <div className="d-flex">
-                                                <div className="xuan-comment-star-wrap">
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
+                                                    <span>
+                                                        {v.event_comment}
+                                                    </span>
                                                 </div>
 
-                                                <span className="xuan-body ">
-                                                    2022年7月9日
-                                                    <BiLike />
-                                                </span>
+                                                <div className="xuan-comment-imgupload"></div>
                                             </div>
-
-                                            <span>
-                                                真的非常充實、非常喜歡這個活動，之後一定會再來參加。
-                                            </span>
-                                        </div>
-
-                                        <div className="xuan-comment-imgupload"></div>
-                                    </div>
-                                    <div className="xuan-comment-item">
-                                        <div className="xuan-comment-avatar"></div>
-
-                                        <div className="xuan-comment-word-wrap">
-                                            <div className="xuan-subtitle">
-                                                RONG XUAN CHANG
-                                            </div>
-
-                                            <div className="d-flex">
-                                                <div className="xuan-comment-star-wrap">
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                </div>
-
-                                                <span className="xuan-body ">
-                                                    2022年7月9日
-                                                    <BiLike />
-                                                </span>
-                                            </div>
-
-                                            <span>
-                                                真的非常充實、非常喜歡這個活動，之後一定會再來參加。
-                                            </span>
-                                        </div>
-
-                                        <div className="xuan-comment-imgupload"></div>
-                                    </div>
-                                    <div className="xuan-comment-item">
-                                        <div className="xuan-comment-avatar"></div>
-
-                                        <div className="xuan-comment-word-wrap">
-                                            <div className="xuan-subtitle">
-                                                RONG XUAN CHANG
-                                            </div>
-
-                                            <div className="d-flex">
-                                                <div className="xuan-comment-star-wrap">
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                </div>
-
-                                                <span className="xuan-body ">
-                                                    2022年7月9日
-                                                    <BiLike />
-                                                </span>
-                                            </div>
-
-                                            <span>
-                                                真的非常充實、非常喜歡這個活動，之後一定會再來參加。
-                                            </span>
-                                        </div>
-
-                                        <div className="xuan-comment-imgupload"></div>
-                                    </div>
-                                    <div className="xuan-comment-item">
-                                        <div className="xuan-comment-avatar"></div>
-
-                                        <div className="xuan-comment-word-wrap">
-                                            <div className="xuan-subtitle">
-                                                RONG XUAN CHANG
-                                            </div>
-
-                                            <div className="d-flex">
-                                                <div className="xuan-comment-star-wrap">
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                </div>
-
-                                                <span className="xuan-body ">
-                                                    2022年7月9日
-                                                    <BiLike />
-                                                </span>
-                                            </div>
-
-                                            <span>
-                                                真的非常充實、非常喜歡這個活動，之後一定會再來參加。
-                                            </span>
-                                        </div>
-
-                                        <div className="xuan-comment-imgupload"></div>
-                                    </div>
-                                    <div className="xuan-comment-item">
-                                        <div className="xuan-comment-avatar"></div>
-
-                                        <div className="xuan-comment-word-wrap">
-                                            <div className="xuan-subtitle">
-                                                RONG XUAN CHANG
-                                            </div>
-
-                                            <div className="d-flex">
-                                                <div className="xuan-comment-star-wrap">
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                    <FaStar />
-                                                </div>
-
-                                                <span className="xuan-body ">
-                                                    2022年7月9日
-                                                    <BiLike />
-                                                </span>
-                                            </div>
-
-                                            <span>
-                                                真的非常充實、非常喜歡這個活動，之後一定會再來參加。
-                                            </span>
-                                        </div>
-
-                                        <div className="xuan-comment-imgupload"></div>
-                                    </div>
+                                        );
+                                    })}
                                 </SimpleBar>
                             </div>
                         </div>

@@ -269,7 +269,15 @@ a{
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-color: gray;
+            // outline: 1px solid red;
+            // background-color: gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+              img{
+                width: 100%;
+              }
           }
     
           .xuan-comment-word-wrap{

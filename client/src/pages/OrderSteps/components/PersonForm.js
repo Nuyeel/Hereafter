@@ -555,19 +555,19 @@ function PersonForm(props) {
 
                             <div className="xuan-personform-btn-group">
                                 <button
-                                    className="xuan-btn-m xuan-btn-sec"
-                                    type="submit"
-                                >
-                                    <FiSend />
-                                    送出
-                                </button>
-                                <button
                                     type="reset"
                                     className="xuan-btn-m xuan-btn-sec"
                                     onClick={handleClearForm}
                                 >
                                     <MdReplay />
                                     清空
+                                </button>
+                                <button
+                                    className="xuan-btn-m xuan-btn-sec"
+                                    type="submit"
+                                >
+                                    <FiSend />
+                                    下一步
                                 </button>
                             </div>
                         </div>
