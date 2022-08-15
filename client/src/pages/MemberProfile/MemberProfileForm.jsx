@@ -192,12 +192,18 @@ function MemberProfileForm() {
                                                                 <div className="card d-flex justify-content-evenly align-items-center rounded-4">
                                                                     <div className="card-body d-flex flex-column">
                                                                         {/* TODO：有無陰德值的呈現方式 */}
-                                                                        <div className="card-title member-page-field">
-                                                                            目前陰德值尚有：
-                                                                            {
-                                                                                mainProfile.gooddeed_score
-                                                                            }
-                                                                        </div>
+                                                                        {mainProfile.gooddeed_score ? (
+                                                                            <div className="card-title member-page-field">
+                                                                                目前陰德值尚有：
+                                                                                {
+                                                                                    mainProfile.gooddeed_score
+                                                                                }
+                                                                            </div>
+                                                                        ) : (
+                                                                            <div className="card-title member-page-field">
+                                                                                目前還沒有陰德值
+                                                                            </div>
+                                                                        )}
                                                                         <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
                                                                             {/* <div className=""></div> */}
                                                                         </div>
