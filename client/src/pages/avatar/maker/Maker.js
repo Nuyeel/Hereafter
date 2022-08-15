@@ -51,9 +51,10 @@ const Maker = () => {
         setCombination(oldCombination);
     };
     useEffect(() => {
-        if (member !== null) {
+        if (sid !== null && aid !== null) {
             getAvatarData();
         }
+        console.log('目前沒有訂單編號或未登入');
     }, []);
     const { theme } = useContext(ThemeContext);
     const ContainerFluid = styled.div`
