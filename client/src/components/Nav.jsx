@@ -207,7 +207,9 @@ function Nav(props) {
                         }}
                     >
                         <h2 className="nav_link">交流分享</h2>
-                        <h4 className="subtitle">介紹文字放這邊</h4>
+                        <h4 className="subtitle">
+                            這世上不只有前世今生，還有來生！
+                        </h4>
                     </div>
 
                     {authorized ? (
@@ -343,7 +345,7 @@ function Nav(props) {
                             我換！
                         </div>
                         {/* FIXME: 這是暫時的按鈕 */}
-                        <div
+                        {/* <div
                             style={{
                                 outline: '1px solid red',
                                 cursor: 'pointer',
@@ -356,7 +358,7 @@ function Nav(props) {
                             }}
                         >
                             我要投胎
-                        </div>
+                        </div> */}
                         <div className="nav-inner-right">
                             {/* <NavSoul className="nir-NavSoul" /> */}
                             <span
