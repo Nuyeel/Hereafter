@@ -193,12 +193,26 @@ function MemberProfileForm() {
                                                                     <div className="card-body d-flex flex-column">
                                                                         {/* TODO：有無陰德值的呈現方式 */}
                                                                         {mainProfile.gooddeed_score ? (
-                                                                            <div className="card-title member-page-field">
-                                                                                目前陰德值尚有：
-                                                                                {
-                                                                                    mainProfile.gooddeed_score
-                                                                                }
-                                                                            </div>
+                                                                            <>
+                                                                                <div className="card-title member-page-field">
+                                                                                    目前陰德值尚有：
+                                                                                    {
+                                                                                        mainProfile.gooddeed_score
+                                                                                    }
+                                                                                </div>
+                                                                                <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
+                                                                                    {/* <div className=""></div> */}
+                                                                                </div>
+                                                                                <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
+                                                                                    <Link
+                                                                                        className="member-link-2"
+                                                                                        to="/events
+                                                                                "
+                                                                                    >
+                                                                                        賺取更多陰德值
+                                                                                    </Link>
+                                                                                </button>{' '}
+                                                                            </>
                                                                         ) : (
                                                                             <div className="card-title member-page-field">
                                                                                 目前還沒有陰德值
@@ -210,10 +224,10 @@ function MemberProfileForm() {
                                                                         <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
                                                                             <Link
                                                                                 className="member-link-2"
-                                                                                to="/events
+                                                                                to="/
                                                                                 "
                                                                             >
-                                                                                賺取更多陰德值
+                                                                                陰德值測驗GO！
                                                                             </Link>
                                                                         </button>{' '}
                                                                     </div>
