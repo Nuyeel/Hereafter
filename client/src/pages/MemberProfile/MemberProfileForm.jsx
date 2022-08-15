@@ -1,64 +1,72 @@
 import './style.scss';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-
 import { MEMBER_PROFILE } from '../../config/ajax-path';
-import Login from '../Login';
 
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import LoginForm from '../Login/LoginForm';
+import { ReactComponent as NavSoul } from '../../images/Nav/nav_soul.svg';
 
 function MemberProfileForm() {
-    const [loginData, setLoginData] = useState({
+    const [mainProfile, setMainProfile] = useState({
         account: '',
-        password: '',
+        birthdate: '',
+        deathdate: '',
+        gooddeed_score: '',
     });
 
     const { theme, themeContext } = useContext(ThemeContext);
-    const { authorized, setAuth, userLogout } = useContext(AuthContext);
+    const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleFieldsChange = (e) => {
         const id = e.target.id;
         const val = e.target.value;
         // console.log({ id, val });
-        setLoginData((prevState) => ({
+        setMainProfile((prevState) => ({
             ...prevState,
             [id]: val,
         }));
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        // console.log(loginData);
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     // console.log(mainProfile);
 
-        // TODO: 欄位檢查
+    //     const result = await axios(MEMBER_PROFILE, {
+    //         method: 'POST',
+    //         data: JSON.stringify(mainProfile),
+    //         headers: {
+    //             'Content-Type': 'Application/json',
+    //         },
+    //     });
+    //     if (result.data.success) {
+    //     } else {
+    //         alert('帳密錯誤～～');
+    //     }
+    // };
 
-        // 請注意 axios 和 fetch 的不同之處
-        // fetch 要多轉換一次 .then(r => r.json())
-        // fetch 的內容放在 body: fd
-        // axios 會自動轉換 JSON 但結果放在 r.data 中
-        // axios 的內容要放在 data: fd
-        const result = await axios(MEMBER_PROFILE, {
-            method: 'POST',
-            data: JSON.stringify(loginData),
+    const fetchMemberData = async () => {
+        console.log('fetch start');
+        const r = await fetch(MEMBER_PROFILE, {
+            method: 'GET',
             headers: {
-                'Content-Type': 'Application/json',
+                Authorization: `Bearer ${token}`,
             },
         });
 
-        // console.log(result.data);
+        const result = await r.json();
+        console.log(result);
 
-        if (result.data.success) {
-            // localStorage.setItem('auth', JSON.stringify(result.data.data));
-            // setAuth({ ...result.data.data, authorized: true });
-            // navigate('/');
-        } else {
-            alert('帳密錯誤～～');
-        }
+        setMainProfile(result.data);
     };
+
+    useEffect(() => {
+        fetchMemberData();
+    }, []);
 
     return (
         <>
@@ -138,18 +146,26 @@ function MemberProfileForm() {
                                                             <div className="card rounded-4">
                                                                 <div className="card-body d-flex align-items-center">
                                                                     <div className="col-md-9 mb-md-0 p-md-4 member-page-field">
-                                                                        {/* TODO：串後端資料 */}
-                                                                        <h5 className="card-title">
+                                                                        <div className="card-title">
                                                                             歡迎回來，
-                                                                            <p className="card-text ">
-                                                                                <br />
-                                                                                您目前的陰德值為：
-                                                                            </p>
-                                                                            <p className="card-text ">
-                                                                                <br />
-                                                                                您目前的陰德值為：
-                                                                            </p>
-                                                                        </h5>
+                                                                            {
+                                                                                mainProfile.account
+                                                                            }
+                                                                        </div>{' '}
+                                                                        <br />
+                                                                        <div className="card-text ">
+                                                                            您紀錄的出生日為：
+                                                                            {
+                                                                                mainProfile.birthdate
+                                                                            }
+                                                                        </div>
+                                                                        <br />
+                                                                        <div className="card-text ">
+                                                                            您紀錄的死亡日為：
+                                                                            {
+                                                                                mainProfile.deathdate
+                                                                            }
+                                                                        </div>
                                                                     </div>
                                                                     <div className="member-avatar">
                                                                         頭貼位置
@@ -160,11 +176,14 @@ function MemberProfileForm() {
                                                             <div className="cards-2 d-flex justify-content-evenly align-items-center ">
                                                                 <div className="card d-flex justify-content-evenly align-items-center rounded-4">
                                                                     <div className="card-body d-flex flex-column">
-                                                                        <h5 className="card-title member-page-field">
+                                                                        <div className="card-title member-page-field">
                                                                             目前陰德值尚有：
-                                                                        </h5>
+                                                                            {
+                                                                                mainProfile.gooddeed_score
+                                                                            }
+                                                                        </div>
                                                                         <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                            <i className="fa-solid fa-wand-magic-sparkles"></i>
+                                                                            <div className=""></div>
                                                                         </div>
                                                                         <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
                                                                             <Link
