@@ -190,6 +190,26 @@ function ShareWallList(props) {
                 },
             });
             // console.log(result.data);
+
+            if (result.data.length === 0) {
+                if (shareWallSearchState === 'isAuthor') {
+                    Swal.fire({
+                        title: '您未曾發表貼文',
+                        imageUrl: OutlineSoulAlert,
+                        imageHeight: 50,
+                        imageWidth: 50,
+                        showConfirmButton: false,
+                    });
+                } else if (shareWallSearchState === 'isCollector') {
+                    Swal.fire({
+                        title: '您尚未收藏任一貼文',
+                        imageUrl: OutlineSoulAlert,
+                        imageHeight: 50,
+                        imageWidth: 50,
+                        showConfirmButton: false,
+                    });
+                }
+            }
             setShareWallPostsData(result.data);
         } else {
             let axiosUrl = `${API_SHAREWALL}?search=${str}`;

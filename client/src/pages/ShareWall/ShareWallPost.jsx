@@ -309,8 +309,17 @@ function ShareWallPost(props) {
             }
         );
 
-        // console.log(result.data);
+        console.log(result.data);
 
+        if (result.data === '還沒有這個形象呦') {
+            return Swal.fire({
+                title: '還沒有這個形象呦',
+                imageUrl: OutlineSoulAlert,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        }
         if (!result.data.success) {
             return Swal.fire({
                 title: '好像出了一點問題',
