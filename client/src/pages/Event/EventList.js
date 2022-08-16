@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Event_List_GET } from '../../config/ajax-path';
+
+import HeaderContext, {
+    headers,
+} from '../../context/HeaderContext/HeaderContext';
 
 // scss
 import './_new_eventlist.scss';
@@ -21,7 +25,10 @@ import 'simplebar/dist/simplebar.min.css';
 // Loading小動畫
 import LoadingLogo from '../../components/LoadingLogo.jsx';
 
-function EventList() {
+function EventList(props) {
+    const { pageName } = props;
+    const { setHeader } = useContext(HeaderContext);
+
     // 活動用的資料
     // 1. 從伺服器來的原始資料
     const [eventRaw, setEventRaw] = useState([]);
@@ -287,6 +294,11 @@ function EventList() {
     );
 
     const [filterShow, setFilterShow] = useState('xuan-click-noshow');
+
+    // 設定 Header
+    useEffect(() => {
+        setHeader(headers[pageName]);
+    }, [pageName, setHeader]);
 
     // 真正要呈現的資料
     return (

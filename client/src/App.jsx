@@ -224,7 +224,12 @@ function App() {
                                 {/* 活動列表路由 */}
                                 {/* ============================== */}
                                 <Route path="/events" element={<Event />}>
-                                    <Route index element={<EventList />} />
+                                    <Route
+                                        index
+                                        element={
+                                            <EventList pageName="default" />
+                                        }
+                                    />
                                     <Route
                                         path=":eventSid"
                                         element={<EventDetail />}
@@ -236,7 +241,7 @@ function App() {
                                 {/* ============================== */}
                                 <Route
                                     path="/ordersteps"
-                                    element={<OrderSteps />}
+                                    element={<OrderSteps pageName="default" />}
                                 />
                                 {/* ============================== */}
                                 {/*  我的衣櫃路由*/}
