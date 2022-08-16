@@ -36,15 +36,19 @@ function EventHistory(props) {
 
     return (
         <>
-            <div className="xuan-event-history-container">
-                {/* 將訂單細項從字串轉為陣列 */}
-
-                {!eventHistory.length ? (
+            {/* 將訂單細項從字串轉為陣列 */}
+            {!eventHistory.length ? (
+                <div className="xuan-event-history-container">
                     <p className="member-event-default">目前尚未建立任何訂單</p>
-                ) : (
-                    eventHistory.length &&
-                    eventHistory.map((v, i) => {
-                        return (
+                </div>
+            ) : (
+                eventHistory.length &&
+                eventHistory.map((v, i) => {
+                    {
+                        /* 調整scrollbar後也更改判斷*/
+                    }
+                    return (
+                        <div className="xuan-event-history-container member-event-bg">
                             <Fragment key={v.event_order_sid}>
                                 {/* 存放每一筆訂單的大框框 */}
                                 <div className="xuan-event-history-item rounded-4">
@@ -123,10 +127,10 @@ function EventHistory(props) {
                                     </div>
                                 </div>
                             </Fragment>
-                        );
-                    })
-                )}
-            </div>
+                        </div>
+                    );
+                })
+            )}
         </>
     );
 }
