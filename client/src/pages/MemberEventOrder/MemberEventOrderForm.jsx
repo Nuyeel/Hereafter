@@ -116,10 +116,10 @@ function MemberProfileForm() {
                                                             <div className="mb-3 d-flex justify-content-center member-page-title">
                                                                 功德撲滿訂單
                                                             </div>
-                                                            {/* TODO: 在教室電腦確認版面呈現 */}
-
                                                             {/* 這段是二路測試用 */}
-                                                            <EventHistory />
+                                                            <div className="member-event-bg">
+                                                                <EventHistory />
+                                                            </div>
                                                         </div>
                                                     </section>
                                                 </section>

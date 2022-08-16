@@ -1,14 +1,14 @@
-import { useCallback, useRef, useContext } from 'react';
+import { useCallback, useRef } from 'react';
 import { toPng, toSvg } from 'html-to-image';
 import styled from '@emotion/styled';
 import BodyData from './BodyData';
 import FaceData from './FaceData';
-import ThemeContext from '../../../../context/ThemeContext/ThemeContext';
 import { Avatar_Update } from '../../../../config/ajax-path';
 import axios from 'axios';
 import Soul from '../../components/Soul.js';
 import Swal from 'sweetalert2';
 import gsap from 'gsap';
+import getRandomCombination from './getRandomCombination';
 
 //MING: Basic引入
 import { ReactComponent as HeadSVG } from '../../../../images/avatar/basic/face.svg';
@@ -120,9 +120,11 @@ function CenterPart(props) {
         setFaceControlChange,
         backtoShowCase,
         keepChange,
+        theme,
+        setCombination,
     } = props;
+    //用來製作圖檔的ref 沒了會死
     const ref = useRef(null);
-    const { theme } = useContext(ThemeContext);
 
     //MING:素材陣列
     const BodyArray = [<BodySSVG />, <BodyMSVG />, <BodyLSVG />];
@@ -754,7 +756,13 @@ function CenterPart(props) {
                     <div onClick={onButtonClick}>
                         <i className="fa-solid fa-floppy-disk"></i> 儲存
                     </div>
-                    <div>
+                    <div
+                        onClick={() => {
+                            const randomCombination =
+                                getRandomCombination(combination);
+                            setCombination(randomCombination);
+                        }}
+                    >
                         <i className="fa-solid fa-dice"></i> 隨機
                     </div>
                 </SaveBtn>

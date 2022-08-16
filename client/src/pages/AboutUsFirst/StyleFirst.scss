@@ -1,12 +1,133 @@
-.ab-a-bg{
+.ab-bg-a{
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 680px;
+    width: 48%;
+    border-radius: 20px;
+    padding:100px 30px 30px 30px;
+    backdrop-filter: blur(5px);
+    // position: relative;
+}
+.ab-bg-a p{
+margin-top: 20px;
+font-size: 18px;
+line-height: 2rem;
+letter-spacing: 1.5px;
+
+}
+.ab-a-wrap{
+    height: 300px;
+    position: relative;
+}
+.ab-body01{
+    transform: scale(.5);
+    display: block;
+    position: absolute;
+    top: -40px;
+    left: 37px;
+    animation: bodyT 4s 9s ease forwards;
+
+}
+.ab-body02{
+    position: absolute;
+    transform: scale(.5);
+    display: block;
+    top: 45px;
+    left: 104px;
+    animation: bodyB 4s 9s ease forwards;
+
+}
+.ab-body03{
+    opacity: 0;
+    width: 30px;
+    position: absolute;
+    top: 110px;
+    // left: 190px;
+    animation: soul 4s 5s ease forwards,soul2 2s 11s linear forwards;
+}
+.ab-body04{
+    width: 20px;
+    opacity: 0;
+    position: absolute;
+    // width: 20px;
+    top: 90px;
+    left: 259px;
+    animation: heartX 1.5s 13.5s linear forwards,heartY 1.5s 13.5s ease-out forwards,heartS .5s 13s ease forwards,heartT .3s 15s ease forwards;
+    // animation: heartS 2.5s 13s ease forwards;
+}
+@keyframes heartT {
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
+@keyframes heartS {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes heartX {
+    0%{left: 259px;width: 20px;}
+    100%{left: 882px;width: 46px;}
+}
+@keyframes heartY {
+    0%{top: 90px;}
+    100%{top: -226px;}
+}
+@keyframes soul {
+    0%{opacity: 0;}
+    20%{left: 0px;opacity: 1;}
+    100%{left: 190px;opacity: 1;}
+}
+@keyframes soul2 {
+    0%{left: 190px;}
+    50%{left: 250px;}
+    50%{left: 250px;top: 110px;}
+    100%{left: 250px;top: 90px;transform: scale(.5);}
+}
+@keyframes bodyT {
+    0%{top: -40px;}
+    30%{top: -60px;}
+    70%{top: -60px;}
+    100%{top: -40px;}
+}
+@keyframes bodyB {
+    0%{top: 45px;}
+    30%{top: 65px;}
+    70%{top: 65px;}
+    100%{top: 45px;}
+}
+.ab-bg-a p:hover{
+color: rgb(255, 255, 157);
+
+}
+.ab-bg-b{
     background-color: rgba(0, 0, 0, 0.2);
     height: 680px;
     width: 48%;
     border-radius: 20px;
     padding:120px 30px 30px 30px;
-    line-height: 2rem;
     backdrop-filter: blur(5px);
     position: relative;
+}
+
+.ab-star-wrap{
+    opacity: 0;
+    position: absolute;
+    top: 25%;
+    right: 50%;
+    animation:heartS .5s 15s linear forwards, ab-star 1.5s 15.5s linear 2, ab-startwo 2s 18.5s ease;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes ab-star {
+    0%{rotate: 0deg;}
+    100%{rotate: 360deg;}
+    
+}
+
+@keyframes ab-startwo {
+    0%{scale: 1;opacity: 1;rotate: 0deg;}
+    100%{scale: 0;opacity: .5;rotate: 360deg;top: 80%;}
+    
 }
 .ab-flag{
     position: absolute;
@@ -22,14 +143,11 @@
     left: 50px;
     letter-spacing: 3px;
 }
-.ab-a-bg p{
-    color: white;
-    font-size: 18px;
-}
+
 .ab-t-logo{
     position: absolute;
     bottom: 70px;
-    left: 85px;
+    left: 80px;
 
 }
 .ab-line-1{
@@ -37,8 +155,14 @@
     height: 220px;
     background-color: #fff;
     position: absolute;
+    transform-origin: 0 100%;
     bottom: 130px;
     left: 165px;
+    animation: ab-line .8s 20.5s ease backwards;
+}
+@keyframes ab-line{
+    0%{scale: 0;}
+    100%{scale: 1;}
 }
 .ab-c1{
     width: 55px;
@@ -58,6 +182,9 @@
     position: absolute;
     bottom: 130px;
     left: 225px;
+    transform-origin: 0 100%;
+    animation: ab-line .8s 20.7s ease backwards;
+
 }
 .ab-c2{
     width: 50px;
@@ -68,6 +195,7 @@
     background-color: #E384F2;
     border: 2.5px solid white;
     border-radius: 50%;
+    
     transform: translate(-25px,-40px);
 }
 .ab-line-3{
@@ -77,6 +205,9 @@
     position: absolute;
     bottom: 130px;
     left: 300px;
+    transform-origin: 0 100%;
+    animation: ab-line .8s 20.9s ease backwards;
+
 }
 .ab-c3{
     width: 55px;
@@ -96,6 +227,9 @@
     position: absolute;
     bottom: 130px;
     left: 400px;
+    transform-origin: 0 100%;
+    animation: ab-line .8s 21.1s ease backwards;
+
 }
 .ab-c4{
     width: 50px;
@@ -115,6 +249,9 @@
     position: absolute;
     bottom: 130px;
     left: 500px;
+    transform-origin: 0 100%;
+    animation: ab-line .8s 21.3s ease backwards;
+
 }
 .ab-c5{
     width: 55px;
@@ -146,6 +283,73 @@
 
 .ab-a-bg-wrap{
     display: flex;
+    flex-direction:row-reverse;
     justify-content: space-between;
     position: relative;
+}
+
+.ab-star-a{
+    position: absolute;
+    top: 140px;
+    left: 200px;
+    animation: twinkle 4s 1.5s linear infinite 
+
+
+}
+.ab-star-b{
+    position: absolute;
+    top: 240px;
+    left: 120px;
+    animation: twinkle 3s 1s linear infinite 
+
+}
+.ab-star-c{
+    position: absolute;
+    top: 230px;
+    right: 120px;
+    animation: twinkle 4s .5s linear infinite 
+
+}
+.ab-star-d{
+    position: absolute;
+    top: 60px;
+    right: 90px;
+    animation: twinkle 3s 1.5s linear infinite 
+
+}
+.ab-star-e{
+    position: absolute;
+    top: 120px;
+    left: 90px;
+    animation: twinkle 3s 1.5s linear infinite 
+
+}
+.ab-star-f{
+    position: absolute;
+    top: 200px;
+    left: 50px;
+    animation: twinkle 4s linear infinite 
+}
+
+.ab-star-g{
+    opacity: 0;
+    position: absolute;
+    top: 27%;
+    left: 43%;
+    animation: twinkle2 4s 7.2s linear infinite 
+
+}
+
+@keyframes twinkle2 {
+    0%{opacity: 0;}
+    25%{opacity: 1;}
+    50%{opacity: 0;}
+    
+}
+
+@keyframes twinkle {
+    0%{opacity: 1;}
+    25%{opacity: 0;}
+    50%{opacity: 1;}
+    
 }

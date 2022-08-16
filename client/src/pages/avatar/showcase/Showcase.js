@@ -1,15 +1,21 @@
 import './showcase.css';
 import { useContext, useState, useEffect } from 'react';
 import ThemeContext from '../../../context/ThemeContext/ThemeContext';
-//import styled from '@emotion/styled';
+import HeaderContext, {
+    headers,
+} from '../../../context/HeaderContext/HeaderContext';
 import { Showcase_Data } from '../../../config/ajax-path';
 import axios from 'axios';
 import AvatarCard from './AvatarCard';
 //import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
-function Showcase() {
+function Showcase(props) {
+    const { pageName } = props;
+
     const { theme } = useContext(ThemeContext);
+    const { setHeader } = useContext(HeaderContext);
+
     const [avatarData, setAvatarData] = useState([]);
     //載入Loading動畫用
     const [isLoading, setIsLoading] = useState(false);
@@ -54,6 +60,12 @@ function Showcase() {
             window.removeEventListener('resize', handleRWD);
         };
     }, []);
+
+    // 設定 Header
+    useEffect(() => {
+        setHeader(headers[pageName]);
+    }, [pageName, setHeader]);
+
     if (mobile === 'PC') {
         return (
             <>

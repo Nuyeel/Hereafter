@@ -396,27 +396,52 @@ router.route('/profile').get(async (req, res) => {
         error: '',
         code: 0,
         data: {},
+        bithdatedata: {
+            birthdate: '',
+            deathdate: '',
+        },
+        placedata: {
+            country: '',
+            city: '',
+            dist: '',
+        },
     };
-    const sql =
-        'SELECT m.*, sc.img_name FROM member m JOIN showcase sc ON m.profile_picture = sc.avatar_id WHERE sid = ?';
-    const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
-    console.log(q1);
-    if (q1.birthdate) {
-        q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
+
+    const sql4 = 'SELECT profile_picture FROM `member` WHERE sid = ?';
+    const [[q4]] = await db.query(sql4, [res.locals.loginUser.id]);
+    console.log(q4);
+
+    if (q4.profile_picture == null) {
+        const sql2 = 'SELECT * FROM `member` WHERE sid = ?';
+        const [q2] = await db.query(sql2, [res.locals.loginUser.id]);
+        output.bithdatedata = q2;
+        console.log(q2);
+    } else {
+        const sql =
+            'SELECT m.*, sc.img_name FROM member m JOIN showcase sc ON m.profile_picture = sc.avatar_id WHERE sid = ?';
+        const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
+        console.log(q1);
+
+        if (q1.birthdate) {
+            q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
+        }
+        if (q1.deathdate) {
+            q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
+        }
+
+        output.data = q1;
     }
-    if (q1.deathdate) {
-        q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
+
+    const sql3 =
+        'SELECT p.country, p.city, p.dist FROM place p JOIN place_in_cart pc ON p.sid = pc.place_sid  WHERE pc.member_sid = ? ORDER BY RAND() LIMIT 1';
+    const [q3] = await db.query(sql3, [res.locals.loginUser.id]);
+    // console.log(q3[0]);
+
+    if (q3.length !== 0) {
+        output.placedata = q3[0];
     }
-    // const sql2 = 'SELECT * FROM `reborn_order` WHERE `member_sid = ?';
-    // const [[q2]] = await db.query(sql, [
-    //     req.body.member_sid,
-    //     req.body.avatar_id,
-    //     req.body.place_sid,
-    // ]);
-    // console.log(q2);
 
     output.success = true;
-    output.data = q1;
     output.error = '成功取得資料';
 
     res.json(output);

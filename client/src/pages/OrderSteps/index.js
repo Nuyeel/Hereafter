@@ -19,7 +19,16 @@ import '../Event/_xuan_styles.scss';
 import './styles/_new_cart.scss';
 import ReadyToBuy from './components/ReadyToBuy';
 
+// 讓Header不要出現
+import HeaderContext, {
+    headers,
+} from '../../context/HeaderContext/HeaderContext';
+
 function OrderSteps(props) {
+    // 讓Header不要出現
+    const { pageName } = props;
+    const { setHeader } = useContext(HeaderContext);
+
     // 會員登入登出驗證(auth)
     const { authorized, sid, account, token } = useContext(AuthContext);
 
@@ -290,12 +299,10 @@ function OrderSteps(props) {
         if (step > 1) setStep(step - 1);
     };
 
-    // 此段處理: 上一部下一步按鈕條件式顏色轉換----------------------------------------------------
-
-    // Step2沒有按送出前Disabled且變色
-    const btnBgColor = { Default: '#E384F2', Disabled: '#EDEFF7' };
-
-    // Step3沒有按確認前Disabled且變色
+    // 設定 Header
+    useEffect(() => {
+        setHeader(headers[pageName]);
+    }, [pageName, setHeader]);
 
     return (
         <>

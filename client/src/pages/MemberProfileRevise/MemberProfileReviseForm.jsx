@@ -1,5 +1,8 @@
 import './style.scss';
 import Swal from 'sweetalert2';
+import soulIconAlert from '../../images/sweetalert2/outline_soul_alert.svg';
+import LoadingLogo from '../../components/LoadingLogo';
+
 import { useState, useContext, useCallback, useEffect } from 'react';
 import InputIME from './components/InputIME';
 import _ from 'lodash';
@@ -24,6 +27,7 @@ function MemberProfileReviseForm() {
     const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleFieldsChange = (e) => {
         const id = e.target.id;
@@ -63,8 +67,23 @@ function MemberProfileReviseForm() {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    Swal.fire(result.error);
-                    navigate('/memberprofile');
+                    Swal.fire({
+                        title: '是否確認修改當前資料',
+                        imageUrl: soulIconAlert,
+                        imageHeight: 50,
+                        imageWidth: 50,
+                        confirmButtonText: '確認修改',
+                        showDenyButton: true,
+                        denyButtonText: '取消',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: '修改成功',
+                                timer: 1000,
+                            });
+                        } else if (result.isDenied) {
+                        }
+                    });
                 } else {
                     Swal.fire(result.error);
                 }
@@ -87,6 +106,11 @@ function MemberProfileReviseForm() {
     };
 
     useEffect(() => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+
         fetchMemberData();
     }, []);
 
@@ -151,15 +175,30 @@ function MemberProfileReviseForm() {
                                                         </Link>
                                                     </li>
                                                 </ol>
-                                                <section className="pb-4">
+                                                <section
+                                                    className="pb-4 member-loading "
+                                                    
+                                                >
                                                     <section
-                                                        className="w-100 p-4 d-flex justify-content-center pb-4 rounded-5  memberBgCard"
+                                                        className="w-100 p-4 d-flex justify-content-center pb-4 rounded-5 memberBgCard member-loading "
                                                         style={{
                                                             backgroundColor:
                                                                 theme.memberBgCard,
                                                         }}
                                                     >
-                                                        <div className="tab-content">
+                                                        <div className="tab-content member-loading ">
+                                                            {isLoading ? (
+                                                                <>
+                                                                    <LoadingLogo
+                                                                        style={{
+                                                                            backgroundColor:
+                                                                                '#ffffff00',
+                                                                        }}
+                                                                    />
+                                                                </>
+                                                            ) : (
+                                                                <></>
+                                                            )}
                                                             <form
                                                                 name="form1"
                                                                 onSubmit={
