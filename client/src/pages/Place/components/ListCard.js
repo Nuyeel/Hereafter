@@ -1,6 +1,5 @@
 import MapIcon from './MapIcon';
 import SoulIcon from './SoulIcon';
-// import LikeIcon from "./LikeIcon";
 import { FaHeart } from 'react-icons/fa';
 import { BsFillCartPlusFill } from 'react-icons/bs';
 import AddPlaceToCart from './util/addPlaceToCart';
@@ -68,7 +67,7 @@ function ListCard(props) {
                     <div
                         className="place-likeBtn hover-text"
                         onClick={saveLikedPlace}
-                        data-hover="加入收藏"
+                        title=""
                     >
                         <input
                             type="checkbox"
@@ -93,7 +92,7 @@ function ListCard(props) {
                             onClick={(e) => {
                                 AddPlaceToCart(e, userSid);
                             }}
-                            data-hover="加入轉生購物車"
+                            title=""
                         >
                             <BsFillCartPlusFill className="place-cart-icon" />
                         </div>

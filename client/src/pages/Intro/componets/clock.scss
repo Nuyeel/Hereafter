@@ -1,13 +1,20 @@
-// Variables
+// // Variables
 
-$baseSize: 2vw;
-$baseTimeOrbit: 3s;
-$baseTimeRotation: 4s;
+// $baseSize: 2vw;
+// $baseTimeOrbit: 3s;
+// $baseTimeRotation: 4s;
 
-$colorGalaxy: rgb(31, 35, 87);
-$colorOrbit: #9587E180;
-$colorOrbitBefore: #81A8E0;
-$colorOrbitAfter: #81A8E080;
+// <<<<<<< HEAD
+// $colorGalaxy: rgb(31, 35, 87);
+// $colorOrbit: #9587E180;
+// $colorOrbitBefore: #81A8E0;
+// $colorOrbitAfter: #81A8E080;
+// =======
+// $colorGalaxy: rgb(31, 35, 87);
+// $colorOrbit: #323232;
+// $colorOrbitBefore: #0d7377;
+// $colorOrbitAfter: #14ffec;
+// >>>>>>> b433d87b807fc5255535667ca2f05b9b8e96680a
   
 $ratioBackground: .25;
 $ratioBorder: .05;
@@ -19,14 +26,23 @@ $lighten: 20%;
 
 $perspective: 400vw;
 
+// <<<<<<< HEAD
 // distance, ratioSize, ratioTimeOrbit, ratioTimeRotation, color, transform
-$planets: (
-  ( 0, .3, 5, 1, #ffd700, ( 1, 1, 1 ) ),
-  ( 3.5, .5, .5, 1, #b5592a, ( 1, 0, 0 ) ), 
-  ( 4, .6, .3, 1, #774181, ( 0, 1, 0 ) ), 
-);
+// $planets: (
+//   ( 0, .3, 5, 1, #ffd700, ( 1, 1, 1 ) ),
+//   ( 3.5, .5, .5, 1, #b5592a, ( 1, 0, 0 ) ), 
+//   ( 4, .6, .3, 1, #774181, ( 0, 1, 0 ) ), 
+// );
+// =======
+// // distance, ratioSize, ratioTimeOrbit, ratioTimeRotation, color, transform
+// $planets: (
+//   ( 0, 4, 5, 6, #ffd700, ( 1, 1, 1 ) ),
+//   ( 2.5, .5, .5, .8, #b5592a, ( 1, 0, 0 ) ), 
+//   ( 2, .6, .3, .4, #774181, ( 0, 1, 0 ) ), 
+// );
+// >>>>>>> b433d87b807fc5255535667ca2f05b9b8e96680a
 
-// Extends
+// // Extends
 
 %center
 {
@@ -238,7 +254,7 @@ $planets: (
   }
 }
 
-// Reset
+Reset
 
 *,
 *::before,
@@ -253,6 +269,7 @@ $planets: (
 
 // Layout
 
+// <<<<<<< HEAD
 .yun-clock-container
 {
   // border: 1px solid red;
@@ -266,18 +283,33 @@ $planets: (
   width: 100%;
   height: 100%;
 }
+// =======
+// .yun-clock-container
+// {
+//   width: 600px;
+//   height: 400px;
+// }
 
-.planet,
-.cube,
-.face
-{
-  @extend %center;
-  position: absolute;
-  transform-style: preserve-3d;
-}
+// .clockbody
+// {
+//   background-color: rgb(220, 114, 114);
+//   width: 100%;
+//   height: 100%;
+// }
+// >>>>>>> b433d87b807fc5255535667ca2f05b9b8e96680a
 
-// Cosmos
+// .planet,
+// .cube,
+// .face
+// {
+//   @extend %center;
+//   position: absolute;
+//   transform-style: preserve-3d;
+// }
 
+// // Cosmos
+
+// <<<<<<< HEAD
 .cosmos
 {
   @extend %center;
@@ -287,77 +319,98 @@ $planets: (
   perspective: $perspective;
   // background-color: $colorGalaxy;
 }
+// =======
+// .cosmos
+// {
+//   @extend %center;
+//   width: 100%;
+//   height: 100%;
+//   overflow: hidden;
+//   perspective: $perspective;
+//   background-color: $colorGalaxy;
+// }
+// >>>>>>> b433d87b807fc5255535667ca2f05b9b8e96680a
 
-// Galaxy
+// // Galaxy
 
-.galaxy
-{
-  // Planets 
-  @include planets( $planets, $baseSize );
+// .galaxy
+// {
+//   // Planets 
+//   @include planets( $planets, $baseSize );
   
-  @include galaxyAnimation();
+//   @include galaxyAnimation();
   
-  transform-style: preserve-3d;
-}
+//   transform-style: preserve-3d;
+// }
 
-// Box
+// // Box
 
-.box
-{
-  @extend %center;
-  transform-style: preserve-3d;
-}
+// .box
+// {
+//   @extend %center;
+//   transform-style: preserve-3d;
+// }
 
-.planet
-{
-  animation: orbit infinite linear;
-}
+// .planet
+// {
+//   animation: orbit infinite linear;
+// }
 
-// Orbit
+// // Orbit
 
-.orbit
-{
-  @extend %center;  
-  transform: rotate3d( 1, 0, 0, 90deg );
+// .orbit
+// {
+//   @extend %center;  
+//   transform: rotate3d( 1, 0, 0, 90deg );
   
-  &,
-  &::before,
-  &::after
-  {
-    position: absolute;
-    border-radius: 50%;
-    border-style: solid;
-  }
+//   &,
+//   &::before,
+//   &::after
+//   {
+//     position: absolute;
+//     border-radius: 50%;
+//     border-style: solid;
+//   }
   
-  &::before,
-  &::after
-  {
-    content: '';
-  }
+//   &::before,
+//   &::after
+//   {
+//     content: '';
+//   }
   
-  &
-  {
-    border-color: $colorOrbit;
-  }
+//   &
+//   {
+//     border-color: $colorOrbit;
+//   }
   
-  &::before
-  {
-    border-color: $colorOrbitBefore;
-  }
+//   &::before
+//   {
+//     border-color: $colorOrbitBefore;
+//   }
   
-  &::after
-  {
-    border-color: $colorOrbitAfter;
-  }
-}
+//   &::after
+//   {
+//     border-color: $colorOrbitAfter;
+//   }
+// }
 
-.needle{
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  // border: 2px solid red;
-}
+// <<<<<<< HEAD
+// .needle{
+//   top:0;
+//   left: 0;
+//   width: 100%;
+//   height: 100px;
+//   // border: 2px solid red;
+// }
+// =======
+// .needle{
+//   top:0;
+//   left: 0;
+//   width: 100%;
+//   height: 100px;
+//   border: 2px solid red;
+// }
+// >>>>>>> b433d87b807fc5255535667ca2f05b9b8e96680a
 
 // Cube
 

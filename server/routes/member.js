@@ -168,6 +168,8 @@ router
             hash,
         ]);
 
+        console.log(q3.insertId);
+
         const search = `SELECT * FROM member WHERE account = ?`;
         const [searchR] = await db.query(search, [req.body.account]);
 
@@ -207,29 +209,49 @@ router
         });
         const imgCreate = 'default.png';
 
-        const sqlcreate = `INSERT INTO showcase (member_sid, avatar_created_at, combination, combinationText, img_name, price) VALUES (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300)`;
-        const [rCreate] = await db.query(sqlcreate, [
-            sid,
-            combinationCreate,
-            combinationTextCreate,
-            imgCreate,
-            sid,
-            combinationCreate,
-            combinationTextCreate,
-            imgCreate,
-            sid,
-            combinationCreate,
-            combinationTextCreate,
-            imgCreate,
-            sid,
-            combinationCreate,
-            combinationTextCreate,
-            imgCreate,
+        const sqlcreate = `INSERT INTO showcase (member_sid, avatar_created_at, combination, combinationText, img_name, price) VALUES (?, NOW(), ?, ?, ?, 300)`;
+        const [rCreate_1] = await db.query(sqlcreate, [
             sid,
             combinationCreate,
             combinationTextCreate,
             imgCreate,
         ]);
+
+        console.log(rCreate_1.insertId);
+
+        const $create_profile_piture_sql = `
+            UPDATE member SET profile_picture=${rCreate_1.insertId} WHERE sid = ${sid}
+        `;
+
+        const [create_profile_piture_result] = await db.execute(
+            $create_profile_piture_sql
+        );
+
+        const [rCreate_2] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
+        const [rCreate_3] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
+        const [rCreate_4] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
+        const [rCreate_5] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
+
         output.success = true;
         output.error = '註冊成功';
 
@@ -257,25 +279,20 @@ router
             error: '',
             code: 0,
         };
-
         const sql = 'SELECT * FROM `member` WHERE account = ?';
-        const [[q1]] = await db.query(sql, [req.body.account]);
-        console.log(q1.account);
+        const [q1] = await db.query(sql, [req.body.account]);
+        console.log(q1);
         console.log(req.body.account);
 
-        const sql2 = 'SELECT * FROM `member` WHERE email = ?';
-        const [[q2]] = await db.query(sql2, [req.body.email]);
-        console.log(q2.email);
-        console.log(req.body.email);
-
-        if (q1.account !== req.body.account) {
-            output.code = 406;
+        if (!q1.length) {
+            output.code = 405;
             output.error = '帳戶不存在';
             return res.json(output);
         }
-        if (q2.email !== req.body.email) {
-            output.code = 406;
-            output.error = '電子信箱不存在';
+
+        if (q1[0].email !== req.body.email) {
+            output.code = 407;
+            output.error = '電子信箱錯誤';
             return res.json(output);
         }
 
@@ -298,15 +315,15 @@ router
             host: 'smtp.gmail.com',
             port: 465,
             auth: {
-                user: ' ',
-                pass: ' ',
-                // ！！測試寄信用的金鑰先不上傳（測試可問 Yu）！！
+                user: process.env.SMTP_EMAIL,
+                pass: process.env.SMTP_PASS,
+                // ！！測試寄信用的金鑰先不上傳！！
             },
         });
         transporter
             .sendMail({
                 from: '來生投放所 <service@nextlife.com.tw>',
-                to: `${q2.email}`,
+                to: `${q1[0].email}`,
                 subject: '《來生投放所》修改密碼通知信',
                 html: `
                 <h2>您的驗證碼為：${verifyNum}</h2>
@@ -367,6 +384,44 @@ router
         res.json(output);
     });
 
+// 測試: http://localhost:3500/api/member/profile
+// 會員主頁
+router.route('/profile').get(async (req, res) => {
+    // 未登入先擋掉
+    if (!res.locals.loginUser) {
+        return;
+    }
+    const output = {
+        success: false,
+        error: '',
+        code: 0,
+        data: {},
+    };
+    const sql =
+        'SELECT m.*, sc.img_name FROM member m JOIN showcase sc ON m.profile_picture = sc.avatar_id WHERE sid = ?';
+    const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
+    console.log(q1);
+    if (q1.birthdate) {
+        q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
+    }
+    if (q1.deathdate) {
+        q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
+    }
+    // const sql2 = 'SELECT * FROM `reborn_order` WHERE `member_sid = ?';
+    // const [[q2]] = await db.query(sql, [
+    //     req.body.member_sid,
+    //     req.body.avatar_id,
+    //     req.body.place_sid,
+    // ]);
+    // console.log(q2);
+
+    output.success = true;
+    output.data = q1;
+    output.error = '成功取得資料';
+
+    res.json(output);
+});
+
 // 測試: http://localhost:3500/api/member/memberprofilerevise
 // 修改會員資料
 router
@@ -385,10 +440,8 @@ router
         const sql = 'SELECT * FROM `member` WHERE sid = ?';
         const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
         // console.log(q1);
-
         q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
         q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
-
         output.success = true;
         output.data = q1;
         output.error = '成功取得資料';

@@ -149,7 +149,7 @@ h3 {
                     // overflow: hidden;
 
                     &.show-gooddeed {
-                        width: 100px;
+                        width: 108px;
                     }
                     &:hover {
                         cursor: pointer;
@@ -325,7 +325,40 @@ h3 {
             margin-right: 25px;
         }
     }
+
+
+    // 目錄頁_漢堡_hidden
+    .mainpage_icon_hidden{
+        visibility: hidden;
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        width: 12%;
+    
+        >img{
+            width: 100%;
+        }
+    }
+
+    // 目錄頁_漢堡_visible
+    .mainpage_icon_visible{
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        width: 12%;
+        visibility: visible;
+
+        >img{
+            width: 100%;
+        }
+    }
+
+
+
 }
+
+
+
 
 /* ============================================================ */
 /* MainContent */
@@ -362,7 +395,8 @@ h3 {
     // TODO: Try~ top: clamp(30px, 10vw, 50px);
     .header-container {
         // FIXME: 可以固定用筆電螢幕高度作為 基準嗎 或利用 padding 不可為負值的特性
-        padding-top: calc(var(--vh, 1vh) * 87 - 788px);
+        top: 0;
+        // top: calc(var(--vh, 1vh) * 109 - 935px);
         margin-bottom: calc(var(--vh, 1vh) * 2);
         // outline: 1px solid red;
     }
@@ -574,13 +608,13 @@ h3 {
 
 @media screen and (min-width: 1400px) {
     .cpl-header-sharewall-button {
-        top: 10px;
-        // top: 24px;
+        // top: 10px;
+        top: 19px;
         left: 330px;
 
         &:active {
-            top: 8px;
-            // top: 22px;
+            // top: 8px;
+            top: 17px;
             left: 330px;
         }
     }

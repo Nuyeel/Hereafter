@@ -2,10 +2,12 @@ import { useContext, useEffect,useState } from 'react';
 import HeaderContext, {
     headers,
 } from '../../context/HeaderContext/HeaderContext';
+//components
 import NewsCard from './components/NewsCard';
 import './StyleNews.scss';
-import newsData from './data/newsData.json';
 import PopCard from './components/PopCard';
+//data
+import newsData from './data/newsData.json';
 
 function News(props) {
     // const [newsData, setNewsData] = useState([]);

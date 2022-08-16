@@ -21,7 +21,7 @@ function MemberProfileReviseForm() {
         email: '',
     });
 
-    const themeContext = useContext(ThemeContext);
+    const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -34,6 +34,10 @@ function MemberProfileReviseForm() {
             [id]: val,
         }));
     };
+
+    // TODO-1：出生日與往生日的判斷式
+    // TODO-2：日期預設格式修改
+    // TODO-3：要補手機和住址資料讓活動同步撈
 
     const emailRe =
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
@@ -59,11 +63,6 @@ function MemberProfileReviseForm() {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    localStorage.setItem('auth', JSON.stringify(result.data));
-                    setAuth({
-                        ...result.data,
-                        authorized: true,
-                    });
                     Swal.fire(result.error);
                     navigate('/memberprofile');
                 } else {
@@ -98,201 +97,207 @@ function MemberProfileReviseForm() {
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <section className="pb-4">
-                                    <div className="bg-white bg-opacity-75 rounded-5">
-                                        <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                            {/* php */}
-                                            <div className="card-2 d-flex">
-                                                <div className="cards">
-                                                    <br />
-                                                    <ol
-                                                        className="breadcrumb justify-content-center"
+                                <section
+                                    className="pb-4 justify-content-center memberBgCard rounded-5"
+                                    style={{
+                                        backgroundColor: theme.memberBgCard,
+                                    }}
+                                >
+                                    <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
+                                        <div className="card-2 d-flex">
+                                            <div className="cards">
+                                                <br />
+                                                <ol
+                                                    className="breadcrumb justify-content-center"
+                                                    style={{
+                                                        '--bs-breadcrumb-divider':
+                                                            'none',
+                                                    }}
+                                                >
+                                                    <li
+                                                        className="breadcrumb-item active"
+                                                        aria-current="page"
+                                                    >
+                                                        <Link
+                                                            to="/memberprofile"
+                                                            className="breadcrumb-item breadcrumb-item-link"
+                                                        >
+                                                            會員中心主頁
+                                                        </Link>
+                                                    </li>
+
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/memberprofilerevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            修改會員資料
+                                                        </Link>
+                                                    </li>
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/memberpasswordrevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            修改登入密碼
+                                                        </Link>
+                                                    </li>
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/membereventorder"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            功德撲滿訂單
+                                                        </Link>
+                                                    </li>
+                                                </ol>
+                                                <section className="pb-4">
+                                                    <section
+                                                        className="w-100 p-4 d-flex justify-content-center pb-4 rounded-5  memberBgCard"
                                                         style={{
-                                                            '--bs-breadcrumb-divider':
-                                                                'none',
+                                                            backgroundColor:
+                                                                theme.memberBgCard,
                                                         }}
                                                     >
-                                                        <li
-                                                            className="breadcrumb-item active"
-                                                            aria-current="page"
-                                                        >
-                                                            <Link
-                                                                to="/memberprofile"
-                                                                className="breadcrumb-item breadcrumb-item-link"
+                                                        <div className="tab-content">
+                                                            <form
+                                                                name="form1"
+                                                                onSubmit={
+                                                                    handleSubmit
+                                                                }
                                                             >
-                                                                會員中心主頁
-                                                            </Link>
-                                                        </li>
+                                                                <div className="mb-3 d-flex justify-content-center member-page-title">
+                                                                    修改會員資料
+                                                                </div>
+                                                                <br />
+                                                                <div className="mb-3 member-page-field">
+                                                                    <label
+                                                                        htmlFor="account"
+                                                                        className="form-label"
+                                                                    >
+                                                                        帳戶名稱
+                                                                    </label>
+                                                                    <InputIME
+                                                                        type="text"
+                                                                        className="form-control input-2"
+                                                                        id="account"
+                                                                        name="account"
+                                                                        value={
+                                                                            memberProfileData.account
+                                                                        }
+                                                                        onChange={
+                                                                            handleFieldsChange
+                                                                        }
+                                                                        disabled="disabled"
+                                                                    />
+                                                                </div>
+                                                                <div className="mb-3 member-page-field">
+                                                                    <label
+                                                                        htmlFor="name"
+                                                                        className="form-label"
+                                                                    >
+                                                                        會員名稱
+                                                                    </label>
+                                                                    <InputIME
+                                                                        type="text"
+                                                                        className="form-control"
+                                                                        id="name"
+                                                                        name="name"
+                                                                        placeholder="快樂的靈魂"
+                                                                        value={
+                                                                            memberProfileData.name
+                                                                        }
+                                                                        onChange={
+                                                                            handleFieldsChange
+                                                                        }
+                                                                    />
+                                                                </div>
+                                                                <div className="mb-3 member-page-field">
+                                                                    <label
+                                                                        htmlFor="birthdate"
+                                                                        className="form-label"
+                                                                    >
+                                                                        出生日
+                                                                    </label>
+                                                                    <InputIME
+                                                                        type="date"
+                                                                        className="form-control"
+                                                                        name="birthdate"
+                                                                        value={
+                                                                            memberProfileData.birthdate
+                                                                        }
+                                                                        onChange={
+                                                                            handleFieldsChange
+                                                                        }
+                                                                    />
+                                                                </div>
+                                                                <div className="mb-3 member-page-field">
+                                                                    <label
+                                                                        htmlFor="deathdate"
+                                                                        className="form-label"
+                                                                    >
+                                                                        往生日
+                                                                    </label>
+                                                                    <InputIME
+                                                                        type="date"
+                                                                        className="form-control"
+                                                                        id="deathdate"
+                                                                        name="deathdate"
+                                                                        value={
+                                                                            memberProfileData.deathdate
+                                                                        }
+                                                                        onChange={
+                                                                            handleFieldsChange
+                                                                        }
+                                                                    />
+                                                                </div>
+                                                                <div className="mb-3 member-page-field">
+                                                                    <label
+                                                                        htmlFor="email"
+                                                                        className="form-label"
+                                                                    >
+                                                                        電子信箱
+                                                                    </label>
+                                                                    <InputIME
+                                                                        type="email"
+                                                                        className="form-control"
+                                                                        id="email"
+                                                                        name="email"
+                                                                        placeholder="請輸入一個有效的電子信箱"
+                                                                        value={
+                                                                            memberProfileData.email
+                                                                        }
+                                                                        onChange={
+                                                                            handleFieldsChange
+                                                                        }
+                                                                        required
+                                                                    />
+                                                                </div>
+                                                                <br />
+                                                                <div className="d-flex justify-content-sm-evenly ">
+                                                                    <button
+                                                                        type="submit"
+                                                                        className="btn-member btn-member-l btn-member-pri btn-member-outline-light"
+                                                                    >
+                                                                        確認修改
+                                                                    </button>
 
-                                                        <li className="breadcrumb-item">
-                                                            <Link
-                                                                to="/memberprofilerevise"
-                                                                className="breadcrumb-item-link"
-                                                            >
-                                                                修改會員資料
-                                                            </Link>
-                                                        </li>
-                                                        <li className="breadcrumb-item">
-                                                            <Link
-                                                                to="/memberpasswordrevise"
-                                                                className="breadcrumb-item-link"
-                                                            >
-                                                                修改登入密碼
-                                                            </Link>
-                                                        </li>
-                                                        <li className="breadcrumb-item">
-                                                            <Link
-                                                                to="/membereventorder"
-                                                                className="breadcrumb-item-link"
-                                                            >
-                                                                法喜充滿訂單
-                                                            </Link>
-                                                        </li>
-                                                    </ol>
-                                                    <section className="pb-4">
-                                                        <div className="bg-white bg-opacity-75 rounded-5">
-                                                            <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                                                <div>
-                                                                    <div className="tab-content">
-                                                                        <form
-                                                                            name="form1"
-                                                                            onSubmit={
-                                                                                handleSubmit
-                                                                            }
-                                                                        >
-                                                                            <div className="mb-3 d-flex justify-content-center page-title">
-                                                                                修改會員資料
-                                                                            </div>
-                                                                            <br />
-                                                                            <div className="mb-3 page-field">
-                                                                                <label
-                                                                                    htmlFor="account"
-                                                                                    className="form-label"
-                                                                                >
-                                                                                    帳戶名稱
-                                                                                </label>
-                                                                                <InputIME
-                                                                                    type="text"
-                                                                                    className="form-control input-2"
-                                                                                    id="account"
-                                                                                    name="account"
-                                                                                    value={
-                                                                                        memberProfileData.account
-                                                                                    }
-                                                                                    onChange={
-                                                                                        handleFieldsChange
-                                                                                    }
-                                                                                    disabled="disabled"
-                                                                                />
-                                                                            </div>
-                                                                            <div className="mb-3 page-field">
-                                                                                <label
-                                                                                    htmlFor="name"
-                                                                                    className="form-label"
-                                                                                >
-                                                                                    會員名稱
-                                                                                </label>
-                                                                                <InputIME
-                                                                                    type="text"
-                                                                                    className="form-control"
-                                                                                    id="name"
-                                                                                    name="name"
-                                                                                    placeholder="快樂的靈魂"
-                                                                                    value={
-                                                                                        memberProfileData.name
-                                                                                    }
-                                                                                    onChange={
-                                                                                        handleFieldsChange
-                                                                                    }
-                                                                                />
-                                                                            </div>
-                                                                            <div className="mb-3 page-field">
-                                                                                <label
-                                                                                    htmlFor="birthdate"
-                                                                                    className="form-label"
-                                                                                >
-                                                                                    出生日
-                                                                                </label>
-                                                                                <InputIME
-                                                                                    type="date"
-                                                                                    className="form-control"
-                                                                                    id="birthdate"
-                                                                                    name="birthdate"
-                                                                                    value={
-                                                                                        memberProfileData.birthdate
-                                                                                    }
-                                                                                    onChange={
-                                                                                        handleFieldsChange
-                                                                                    }
-                                                                                />
-                                                                            </div>
-                                                                            <div className="mb-3 page-field">
-                                                                                <label
-                                                                                    htmlFor="deathdate"
-                                                                                    className="form-label"
-                                                                                >
-                                                                                    死亡日
-                                                                                </label>
-                                                                                <InputIME
-                                                                                    type="date"
-                                                                                    className="form-control"
-                                                                                    id="deathdate"
-                                                                                    name="deathdate"
-                                                                                    value={
-                                                                                        memberProfileData.deathdate
-                                                                                    }
-                                                                                    onChange={
-                                                                                        handleFieldsChange
-                                                                                    }
-                                                                                />
-                                                                            </div>
-                                                                            <div className="mb-3 page-field">
-                                                                                <label
-                                                                                    htmlFor="email"
-                                                                                    className="form-label"
-                                                                                >
-                                                                                    電子信箱
-                                                                                </label>
-                                                                                <InputIME
-                                                                                    type="email"
-                                                                                    className="form-control"
-                                                                                    id="email"
-                                                                                    name="email"
-                                                                                    placeholder="請輸入一個有效的電子信箱"
-                                                                                    value={
-                                                                                        memberProfileData.email
-                                                                                    }
-                                                                                    onChange={
-                                                                                        handleFieldsChange
-                                                                                    }
-                                                                                    required
-                                                                                />
-                                                                            </div>
-
-                                                                            <div className="d-flex justify-content-sm-evenly ">
-                                                                                <button
-                                                                                    type="submit"
-                                                                                    className="btn-member btn-member-l btn-member-pri btn-member-outline-light"
-                                                                                >
-                                                                                    確認修改
-                                                                                </button>
-                                                                                {/* <button
+                                                                    <br />
+                                                                    {/* Improvement：補清除功能 */}
+                                                                    {/* <button
                                                                                     type="reset"
                                                                                     className="btn-member btn-member-sec btn-member-l btn-member-outline-light"
                                                                                 >
                                                                                     清除
                                                                                 </button> */}
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
                                                                 </div>
-                                                            </section>
+                                                            </form>
                                                         </div>
                                                     </section>
-                                                </div>
+                                                </section>
                                             </div>
-                                        </section>
-                                    </div>
+                                        </div>
+                                    </section>
                                 </section>
                             </div>
                         </div>

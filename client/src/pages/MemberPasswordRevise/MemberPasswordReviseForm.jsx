@@ -25,16 +25,9 @@ function MemberProfileForm(props) {
     const [confirmPasswordFieldType, setConfirmPasswordFieldType] =
         useState('password');
 
-    const themeContext = useContext(ThemeContext);
+    const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
-
-    // const handleFieldsChange = (e) => {
-    //     setNewPasswordName({
-    //         ...newPasswordName,
-    //         [e.target.name]: e.target.value,
-    //     });
-    // };
 
     const [currentPasswordPrevious, setCurrentPasswordPrevious] = useState('');
     const [passwordPrevious, setPasswordPrevious] = useState('');
@@ -172,13 +165,7 @@ function MemberProfileForm(props) {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    localStorage.setItem('auth', JSON.stringify(result.data));
-                    setAuth({
-                        ...result.data,
-                        authorized: true,
-                    });
                     Swal.fire(result.error);
-                    navigate('/memberprofile');
                 } else {
                     Swal.fire(result.error);
                 }
@@ -200,181 +187,188 @@ function MemberProfileForm(props) {
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <section className="pb-4">
-                                    <div className="bg-white bg-opacity-75 rounded-5">
-                                        <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                            <div className="card-2 d-flex">
-                                                <div className="cards">
-                                                    <br />
-                                                    <ol
-                                                        className="breadcrumb justify-content-center"
+                                <section
+                                    className="pb-4 justify-content-center memberBgCard rounded-5"
+                                    style={{
+                                        backgroundColor: theme.memberBgCard,
+                                    }}
+                                >
+                                    <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
+                                        <div className="card-2 d-flex">
+                                            <div className="cards">
+                                                <br />
+                                                <ol
+                                                    className="breadcrumb justify-content-center"
+                                                    style={{
+                                                        '--bs-breadcrumb-divider':
+                                                            'none',
+                                                    }}
+                                                >
+                                                    <li
+                                                        className="breadcrumb-item active"
+                                                        aria-current="page"
+                                                    >
+                                                        <Link
+                                                            to="/memberprofile"
+                                                            className="breadcrumb-item breadcrumb-item-link"
+                                                        >
+                                                            會員中心主頁
+                                                        </Link>
+                                                    </li>
+
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/memberprofilerevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            修改會員資料
+                                                        </Link>
+                                                    </li>
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/memberpasswordrevise"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            修改登入密碼
+                                                        </Link>
+                                                    </li>
+                                                    <li className="breadcrumb-item">
+                                                        <Link
+                                                            to="/membereventorder"
+                                                            className="breadcrumb-item-link"
+                                                        >
+                                                            功德撲滿訂單
+                                                        </Link>
+                                                    </li>
+                                                </ol>
+
+                                                <section className="pb-4">
+                                                    <section
+                                                        className="w-100 p-4 d-flex justify-content-center pb-4 rounded-5  memberBgCard"
                                                         style={{
-                                                            '--bs-breadcrumb-divider':
-                                                                'none',
+                                                            backgroundColor:
+                                                                theme.memberBgCard,
                                                         }}
                                                     >
-                                                        <li
-                                                            className="breadcrumb-item active"
-                                                            aria-current="page"
-                                                        >
-                                                            <Link
-                                                                to="/memberprofile"
-                                                                className="breadcrumb-item breadcrumb-item-link"
+                                                        <div className="tab-content">
+                                                            <form
+                                                                name="form1"
+                                                                onSubmit={
+                                                                    handleUpdate
+                                                                }
                                                             >
-                                                                會員中心主頁
-                                                            </Link>
-                                                        </li>
+                                                                <div className="mb-3 d-flex justify-content-center member-page-title">
+                                                                    修改登入密碼
+                                                                </div>
+                                                                <br />
+                                                                <div className="mb-3">
+                                                                    <label
+                                                                        htmlFor="currentPassword"
+                                                                        className="form-label member-page-field"
+                                                                    >
+                                                                        當前密碼
+                                                                    </label>
+                                                                    <InputIME
+                                                                        type={
+                                                                            currentPasswordFieldType
+                                                                        }
+                                                                        className={`form-control ${validationCssClassname2}`}
+                                                                        name="currentPassword"
+                                                                        placeholder="請輸入當前密碼"
+                                                                        onChange={
+                                                                            handleCurrentPasswordChange
+                                                                        }
+                                                                        setCurrentPasswordPrevious={
+                                                                            setCurrentPasswordPrevious
+                                                                        }
+                                                                        setPasswordPrevious={
+                                                                            setPasswordPrevious
+                                                                        }
+                                                                        setConfirmPasswordPrevious={
+                                                                            setConfirmPasswordPrevious
+                                                                        }
+                                                                        required
+                                                                    />
+                                                                </div>
+                                                                <div className="mb-3">
+                                                                    <label
+                                                                        htmlFor="password"
+                                                                        className="form-label member-page-field"
+                                                                    >
+                                                                        新密碼
+                                                                    </label>
+                                                                    <InputIME
+                                                                        type={
+                                                                            passwordFieldType
+                                                                        }
+                                                                        className={`form-control ${validationCssClassname3}`}
+                                                                        name="password"
+                                                                        placeholder="英文大小寫及數字至少七字"
+                                                                        onChange={
+                                                                            handlePasswordChange
+                                                                        }
+                                                                        setCurrentPasswordPrevious={
+                                                                            setCurrentPasswordPrevious
+                                                                        }
+                                                                        setPasswordPrevious={
+                                                                            setPasswordPrevious
+                                                                        }
+                                                                        setConfirmPasswordPrevious={
+                                                                            setConfirmPasswordPrevious
+                                                                        }
+                                                                        required
+                                                                    />
+                                                                </div>
+                                                                <div className="mb-3">
+                                                                    <label
+                                                                        htmlFor="confirmPassword"
+                                                                        className="form-label member-page-field"
+                                                                    >
+                                                                        確認新密碼
+                                                                    </label>
+                                                                    <InputIME
+                                                                        type={
+                                                                            confirmPasswordFieldType
+                                                                        }
+                                                                        className={`form-control ${validationCssClassname4}`}
+                                                                        name="confirmPassword"
+                                                                        placeholder="請再輸入一次前一欄的密碼"
+                                                                        onChange={
+                                                                            handleConfirmPasswordChange
+                                                                        }
+                                                                        setCurrentPasswordPrevious={
+                                                                            setCurrentPasswordPrevious
+                                                                        }
+                                                                        setPasswordPrevious={
+                                                                            setPasswordPrevious
+                                                                        }
+                                                                        setConfirmPasswordPrevious={
+                                                                            setConfirmPasswordPrevious
+                                                                        }
+                                                                        required
+                                                                    />
+                                                                </div>
+                                                                <br />
+                                                                <div className="d-flex justify-content-sm-evenly ">
+                                                                    <button
+                                                                        type="submit"
+                                                                        className="btn-member btn-member-l btn-member-pri btn-member-outline-light"
+                                                                    >
+                                                                        確認修改
+                                                                    </button>
 
-                                                        <li className="breadcrumb-item">
-                                                            <Link
-                                                                to="/memberprofilerevise"
-                                                                className="breadcrumb-item-link"
-                                                            >
-                                                                修改會員資料
-                                                            </Link>
-                                                        </li>
-                                                        <li className="breadcrumb-item">
-                                                            <Link
-                                                                to="/memberpasswordrevise"
-                                                                className="breadcrumb-item-link"
-                                                            >
-                                                                修改登入密碼
-                                                            </Link>
-                                                        </li>
-                                                        <li className="breadcrumb-item">
-                                                            <Link
-                                                                to="/membereventorder"
-                                                                className="breadcrumb-item-link"
-                                                            >
-                                                                法喜充滿訂單
-                                                            </Link>
-                                                        </li>
-                                                    </ol>
-
-                                                    <section className="pb-4">
-                                                        <div className="bg-white bg-opacity-75 rounded-5">
-                                                            <section className="w-100 p-4 d-flex justify-content-center pb-4">
-                                                                <div>
-                                                                    <div className="tab-content">
-                                                                        <form
-                                                                            name="form1"
-                                                                            onSubmit={
-                                                                                handleUpdate
-                                                                            }
-                                                                        >
-                                                                            <div className="mb-3 d-flex justify-content-center page-title">
-                                                                                修改登入密碼
-                                                                            </div>
-                                                                            <br />
-                                                                            <div className="mb-3">
-                                                                                <label
-                                                                                    htmlFor="currentPassword"
-                                                                                    className="form-label page-field"
-                                                                                >
-                                                                                    當前密碼
-                                                                                </label>
-                                                                                <InputIME
-                                                                                    type={
-                                                                                        currentPasswordFieldType
-                                                                                    }
-                                                                                    className={`form-control ${validationCssClassname2}`}
-                                                                                    name="currentPassword"
-                                                                                    placeholder="請輸入當前密碼"
-                                                                                    onChange={
-                                                                                        handleCurrentPasswordChange
-                                                                                    }
-                                                                                    setCurrentPasswordPrevious={
-                                                                                        setCurrentPasswordPrevious
-                                                                                    }
-                                                                                    setPasswordPrevious={
-                                                                                        setPasswordPrevious
-                                                                                    }
-                                                                                    setConfirmPasswordPrevious={
-                                                                                        setConfirmPasswordPrevious
-                                                                                    }
-                                                                                    required
-                                                                                />
-                                                                            </div>
-                                                                            <div className="mb-3">
-                                                                                <label
-                                                                                    htmlFor="password"
-                                                                                    className="form-label page-field"
-                                                                                >
-                                                                                    新密碼
-                                                                                </label>
-                                                                                <InputIME
-                                                                                    type={
-                                                                                        passwordFieldType
-                                                                                    }
-                                                                                    className={`form-control ${validationCssClassname3}`}
-                                                                                    name="password"
-                                                                                    placeholder="英文大小寫及數字至少七字"
-                                                                                    onChange={
-                                                                                        handlePasswordChange
-                                                                                    }
-                                                                                    setCurrentPasswordPrevious={
-                                                                                        setCurrentPasswordPrevious
-                                                                                    }
-                                                                                    setPasswordPrevious={
-                                                                                        setPasswordPrevious
-                                                                                    }
-                                                                                    setConfirmPasswordPrevious={
-                                                                                        setConfirmPasswordPrevious
-                                                                                    }
-                                                                                    required
-                                                                                />
-                                                                            </div>
-                                                                            <div className="mb-3">
-                                                                                <label
-                                                                                    htmlFor="confirmPassword"
-                                                                                    className="form-label page-field"
-                                                                                >
-                                                                                    確認新密碼
-                                                                                </label>
-                                                                                <InputIME
-                                                                                    type={
-                                                                                        confirmPasswordFieldType
-                                                                                    }
-                                                                                    className={`form-control ${validationCssClassname4}`}
-                                                                                    name="confirmPassword"
-                                                                                    placeholder="請再輸入一次前一欄的密碼"
-                                                                                    onChange={
-                                                                                        handleConfirmPasswordChange
-                                                                                    }
-                                                                                    setCurrentPasswordPrevious={
-                                                                                        setCurrentPasswordPrevious
-                                                                                    }
-                                                                                    setPasswordPrevious={
-                                                                                        setPasswordPrevious
-                                                                                    }
-                                                                                    setConfirmPasswordPrevious={
-                                                                                        setConfirmPasswordPrevious
-                                                                                    }
-                                                                                    required
-                                                                                />
-                                                                            </div>
-
-                                                                            <div className="d-flex justify-content-sm-evenly ">
-                                                                                <button
-                                                                                    type="submit"
-                                                                                    className="btn-member btn-member-l btn-member-pri btn-member-outline-light"
-                                                                                >
-                                                                                    確認修改
-                                                                                </button>
-                                                                                {/* <button className="btn-member btn-member-sec btn-member-l btn-member-outline-light">
+                                                                    <br />
+                                                                    {/* <button className="btn-member btn-member-sec btn-member-l btn-member-outline-light">
                                                                                     清除
                                                                                 </button> */}
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
                                                                 </div>
-                                                            </section>
+                                                            </form>
                                                         </div>
                                                     </section>
-                                                </div>
+                                                </section>
                                             </div>
-                                        </section>
-                                    </div>
+                                        </div>
+                                    </section>
                                 </section>
                             </div>
                         </div>

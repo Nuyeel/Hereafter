@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
-function TimeNewsRow({ style }) {
+function TimeNewsRow({ style, newsData, handleNewsRef }) {
     // 現在時間
     const [nowTime, setNowTime] = useState({
         y: 0,
@@ -69,8 +69,18 @@ function TimeNewsRow({ style }) {
             <div className="col-sm-8 col-12 p-0 pe-2">
                 <div className="news-wrap dark-bg-50" style={style}>
                     <p className="tn-title">最新消息：</p>
-                    <p className="news tn">
-                        受氣候變遷及戰爭影響，近年全球轉生名額不斷減少。海外轉生訂單需求增加，帶動...
+                    <p className="news">
+                        <span
+                            className="tn"
+                            // ref={handleNewsRef}
+                        >
+                            {newsData.map((v) => (
+                                <span key={v.sid} className="news-ele">
+                                    {v.topic} {v.content} {'  '}
+                                </span>
+                            ))}
+                        </span>
+                        {/* 受氣候變遷及戰爭影響，近年全球轉生名額不斷減少。海外轉生訂單需求增加，帶動... */}
                     </p>
                 </div>
             </div>

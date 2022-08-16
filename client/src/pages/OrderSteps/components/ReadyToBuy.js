@@ -127,6 +127,7 @@ function ReadyToBuy(props) {
                             className="xuan-btn-m xuan-btn-pri"
                             onClick={() => {
                                 setStep(1);
+                                console.log('setStap')
                                 setDetailVisible(
                                     'xuan-readytobuy-container-hidden'
                                 );

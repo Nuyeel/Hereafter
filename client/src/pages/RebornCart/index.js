@@ -8,11 +8,9 @@ import Swal from 'sweetalert2';
 import AvatarSwiper from './components/AvatarSwiper';
 
 import soulIconAlert from '../../images/sweetalert2/outline_soul_alert.svg';
-import soulIconSweetalert from '../../images/sweetalert2/outline_soul.svg';
 import SoulIcon from '../Place/components/SoulIcon';
 
 import PlaceOption from './components/PlaceOption';
-import avatarDataList from './data/avatarDataList.json';
 
 import { PLACE_CARTDATA_API, Showcase_Data } from '../../config/ajax-path';
 import './rebornCart.scss';
@@ -88,10 +86,10 @@ function RebornCart(props) {
         }
     }, []);
 
-    // 沒登入跳轉光箱
+    // 沒登入的跳轉光箱
     const gotoLogin = () => {
         Swal.fire({
-            title: `您還沒有進入轉生購物車的資格`,
+            title: `您還不能進入轉生購物車唷`,
             imageUrl: soulIconAlert,
             imageHeight: 50,
             imageWidth: 50,
@@ -200,43 +198,43 @@ function RebornCart(props) {
                 if (result.success === true) {
                     Swal.fire({
                         title: '轉生訂單已成立',
+                        html: `<h3 clasName='confirmRebornTextAni'>祝您來世順心</h3>`,
                         imageUrl: soulIconAlert,
                         imageHeight: 50,
                         imageWidth: 50,
-                        timer: 3000,
+                        timer: 5000,
                     });
                     // TODO: setTimeout 跳轉希望方塊
                     setTimeout(() => {
-                        navigate('/', { replace: true });
-                    }, 3000);
+                        navigate('/nextlife', { replace: true });
+                    }, 5000);
                 }
             });
     };
 
-    // TODO: 送出轉生訂單
+    // 送出轉生訂單
     const submitRebornOrder = () => {
         const remainGooddeed =
             memberGooddeed -
             avatarData[selectedAvatarInd].price -
             Number(selectedPlaceInfo[0].place_price);
-        // TODO: 確認陰德值足夠
+        // 確認陰德值足夠
         if (remainGooddeed > 0) {
-            // 1. 燈箱確認 || 跳轉到訂單確認頁面
+            // 1. 燈箱確認
             // 2. 送出後存入資料庫(限定一筆), 跳轉到希望方塊頁面
             Swal.fire({
                 title: '確認轉生訂單',
-                // TODO: 放整個轉生訂單進來嗎(包含css)
-                html: `<h5>您預定於${selectedPlaceInfo[0].year}年 ${selectedPlaceInfo[0].month}月 <br/>
-            於 ${selectedPlaceInfo[0].country} ${selectedPlaceInfo[0].city} ${selectedPlaceInfo[0].dist} 投胎轉世<h5>`,
-                imageUrl: soulIconSweetalert,
-                imageHeight: 50,
-                imageWidth: 50,
+                html: `  
+                    <h5>您將預訂於 <span style="color:#FF52BA; font-weight: bold;">${selectedPlaceInfo[0].year}年 ${selectedPlaceInfo[0].month}月</span><br/>於 <span style="color:#FF52BA; font-weight: bold;">${selectedPlaceInfo[0].country} ${selectedPlaceInfo[0].city} ${selectedPlaceInfo[0].dist}</span> 投胎轉世<h5>
+                `,
+                imageUrl: `http://localhost:3500/uploads/images/avatar/${avatarData[selectedAvatarInd].img_name}`,
+                imageHeight: 150,
+                imageWidth: 150,
                 confirmButtonText: '確認訂單，轉生去!',
                 showDenyButton: true,
                 denyButtonText: '再想想><',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // console.log('轉生gogo');
                     // 存入資料庫 -> 跳轉頁面
                     confirmRebornOrder();
                 } else if (result.isDenied) {
@@ -247,7 +245,7 @@ function RebornCart(props) {
             // 陰德值不足的提醒
             Swal.fire({
                 title: '陰德值不足！',
-                html: `<h5>您的陰德值不足<span style='color:#FF52BA'> ${-remainGooddeed}</span><br/>無法以此筆訂單轉世投胎，請另擇方案<h5>`,
+                html: `<h5>您的 <span style='color:#FF52BA; font-weight: bold;'>陰德值不足 ${-remainGooddeed}</span><br/>無法以此筆訂單轉世投胎，請另擇方案<h5>`,
                 imageUrl: soulIconAlert,
                 imageHeight: 50,
                 imageWidth: 50,
@@ -298,9 +296,9 @@ function RebornCart(props) {
                             <h4 className="reborn-cart-main-title">轉生形象</h4>
                             <div className="ava-wrap">
                                 <AvatarSwiper
-                                    avatarDataList={avatarDataList}
                                     avatarData={avatarData}
                                     setSelectedAvatarInd={setSelectedAvatarInd}
+                                    style={{ borderColor: theme.cHeader }}
                                 />
                             </div>
                         </div>
@@ -399,7 +397,7 @@ function RebornCart(props) {
                                 : 'reborn-order-wrap'
                         }
                         style={
-                            window.innerWidth > 375
+                            window.innerWidth > 767
                                 ? { backgroundColor: theme.rebornBg }
                                 : { backgroundColor: theme.rebornRwdBg }
                         }
@@ -407,7 +405,7 @@ function RebornCart(props) {
                         <div
                             className="my-deed-wrap"
                             style={
-                                window.innerWidth > 375
+                                window.innerWidth > 767
                                     ? { backgroundColor: theme.rebornInnerBg }
                                     : { backgroundColor: theme.rebornRwdBg }
                             }
@@ -422,7 +420,7 @@ function RebornCart(props) {
                         <div
                             className="deed-enough-wrap"
                             style={
-                                window.innerWidth > 375
+                                window.innerWidth > 767
                                     ? { backgroundColor: theme.rebornInnerBg }
                                     : { backgroundColor: theme.rebornRwdBg }
                             }
@@ -448,7 +446,7 @@ function RebornCart(props) {
                         <div
                             className="reborn-order-card"
                             style={
-                                window.innerWidth > 375
+                                window.innerWidth > 767
                                     ? {
                                           color: theme.cHeader,
                                           backgroundColor: theme.rebornInnerBg,
@@ -479,14 +477,20 @@ function RebornCart(props) {
                             <div className="reborn-order-card-ava">
                                 {avatarData.length > 0 && (
                                     <>
-                                        <img
+                                        <div className="ava-option">
+                                            <div
+                                                className="ava-img"
+                                                style={{
+                                                    backgroundImage: `url(http://localhost:3500/uploads/images/avatar/${avatarData[selectedAvatarInd].img_name})`,
+                                                }}
+                                            ></div>
+                                            <div className="ava-option-bg"></div>
+                                            <div className="ava-option-bg-circle"></div>
+                                        </div>
+                                        {/* <img
                                             src={`http://localhost:3500/uploads/images/avatar/${avatarData[selectedAvatarInd].img_name}`}
                                             alt=""
-                                        />
-                                        {/* <img
-                                src={`images/${avatarDataList[selectedAvatarInd].img}`}
-                                alt=""
-                            /> */}
+                                        /> */}
                                     </>
                                 )}
                             </div>
@@ -536,6 +540,10 @@ function RebornCart(props) {
                                                           .place_price
                                                     : ''}
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td>贈品：孟婆湯</td>
+                                            <td>0</td>
                                         </tr>
                                     </tbody>
                                     <tfoot

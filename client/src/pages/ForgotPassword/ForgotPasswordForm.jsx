@@ -19,6 +19,12 @@ function ForgotPasswordForm() {
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     // const navigate = useNavigate();
 
+    const [btnCssClassname, setBtnCssClassname] = useState(
+        'btn-member btn-member-l btn-member-pri btn-member-outline-light'
+    );
+
+    const [btnName, setBtnName] = useState('接收驗證信');
+
     const handleFieldsChange = (e) => {
         const id = e.target.id;
         const val = e.target.value;
@@ -42,18 +48,19 @@ function ForgotPasswordForm() {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    // localStorage.setItem('auth', JSON.stringify(result.data));
-                    // setAuth({
-                    //     ...result.data,
-                    //     authorized: true,
-                    // });
+                    setBtnCssClassname(
+                        'btn-member btn-member-l btn-member-outline-light btn-member-sent'
+                    );
+                    setBtnName('已發送');
                     Swal.fire('請前往信箱接收驗證信');
                 } else {
                     Swal.fire('帳戶或電子信箱有誤');
+                    setBtnCssClassname(
+                        'btn-member btn-member-l btn-member-outline-light btn-member-pri'
+                    );
                 }
             });
     };
-
     return (
         <>
             {authorized ? (
@@ -78,11 +85,11 @@ function ForgotPasswordForm() {
                                             name="form1"
                                             onSubmit={handleSubmit}
                                         >
-                                            <div className="mb-3 d-flex justify-content-center page-title ">
+                                            <div className="mb-3 d-flex justify-content-center member-page-title ">
                                                 忘記密碼
                                             </div>
                                             <br />
-                                            <div className="mb-3 page-field">
+                                            <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="account"
                                                     className=" form-label"
@@ -103,9 +110,8 @@ function ForgotPasswordForm() {
                                                     }
                                                     required
                                                 />
-                                                <div className="form-text red"></div>
                                             </div>
-                                            <div className="mb-3 page-field">
+                                            <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="email"
                                                     className="form-label"
@@ -126,22 +132,20 @@ function ForgotPasswordForm() {
                                                     }
                                                     required
                                                 />
-                                                <div className="form-text red"></div>
                                             </div>
-                                            <div className="text-center mb-3"></div>
+                                            <br />
                                             <div className="d-flex justify-content-center">
                                                 <button
                                                     type="submit"
-                                                    className="btn-member btn-member-l btn-member-pri btn-member-outline-light "
+                                                    className={btnCssClassname}
                                                 >
-                                                    接收驗證信
+                                                    {btnName}
                                                 </button>
                                             </div>
                                             <br />
-                                            <br />
                                             <div className="d-flex justify-content-center">
                                                 <Link
-                                                    className="link"
+                                                    className="member-link"
                                                     to="/login"
                                                 >
                                                     想起密碼了，直接登入
@@ -150,7 +154,7 @@ function ForgotPasswordForm() {
                                             <br />
                                             <div className="d-flex justify-content-center">
                                                 <Link
-                                                    className="link"
+                                                    className="member-link"
                                                     to="/register"
                                                 >
                                                     重新註冊

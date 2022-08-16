@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import HeaderContext, {
     headers,
 } from '../../context/HeaderContext/HeaderContext';
+//svg
 import { ReactComponent as Flag } from './imgs/flag.svg';
 import { ReactComponent as Taiwan } from './imgs/taiwan.svg';
 import { ReactComponent as Pagearrow } from './imgs/pagearrow.svg';
 import './StyleFirst.scss';
+
 function AboutUsFirst(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);

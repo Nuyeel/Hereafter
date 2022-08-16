@@ -15,7 +15,7 @@ import './teststyle.scss';
 import { useNavigate } from 'react-router-dom';
 
 function Gooddeed(props) {
-    const { pageName } = props;
+    const { pageName, setUserGooddeed } = props;
     const { setHeader } = useContext(HeaderContext);
     const navigate = useNavigate();
     const backtoAbout = () => {
@@ -26,7 +26,6 @@ function Gooddeed(props) {
         opacity: ['1', '0', '0'],
         height: ['', '0', '0'],
     });
-
 
     // 確定有沒有陰德值
     // const [haveScore, setHaveScore] = useState(true);
@@ -139,7 +138,11 @@ function Gooddeed(props) {
                 }}
             >
                 <div className="yun-test">
-                    <Carousel setShows={setShows} setRandomScore={setRandomScore} />
+                    <Carousel
+                        setShows={setShows}
+                        setRandomScore={setRandomScore}
+                        setUserGooddeed={setUserGooddeed}
+                    />
                 </div>
             </div>
             {/* 測驗結果頁 */}

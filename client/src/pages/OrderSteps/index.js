@@ -175,7 +175,6 @@ function OrderSteps(props) {
             });
     };
 
-
     // multiple State  填寫報名活動資訊變數(放最上層，按上下頁時資料才會保留)
     const [myInfor, setMyInfor] = useState({
         member_sid: `${sid}`,
@@ -308,6 +307,7 @@ function OrderSteps(props) {
                     detailVisible={detailVisible}
                     setDetailVisible={setDetailVisible}
                     step={step}
+                    setStep={setStep}
                     prev={prev}
                 />
 
@@ -351,7 +351,6 @@ function OrderSteps(props) {
                         setDetailVisible={setDetailVisible}
                         next={next}
                         fetchCreateOrder={fetchCreateOrder} //PersonForm用
-                        // fetchAlreadyPay={fetchAlreadyPay} //Payment 用
                     />
                 </div>
 
@@ -360,6 +359,7 @@ function OrderSteps(props) {
                     {step === 1 ? (
                         <button
                             className="xuan-btn-m xuan-btn-pri"
+                            style={{ visibility: 'visible' }}
                             onClick={() => {
                                 navigate('/events', { replace: true });
                             }}
@@ -371,17 +371,39 @@ function OrderSteps(props) {
                             className="xuan-btn-m xuan-btn-pri"
                             onClick={prev}
                             disabled={step === 1}
+                            style={{ visibility: 'hidden' }}
                         >
                             上一步
                         </button>
                     )}
 
                     {/* 如果是填寫個人資訊那一PART */}
-                    {step === 2 ? (
+                    {/* 上一步下一步消失 */}
+
+                    {step === 1 ? (
+                        <button
+                            className="xuan-btn-m xuan-btn-pri"
+                            onClick={() => {
+                                next();
+                            }}
+                        >
+                            下一步
+                        </button>
+                    ) : (
+                        <button
+                            className="xuan-btn-m xuan-btn-pri"
+                            style={{ visibility: 'hidden' }}
+                        >
+                            下一步
+                        </button>
+                    )}
+
+                    {/* {step === 2 ? (
                         <button
                             className="xuan-btn-m xuan-btn-pri"
                             disabled
-                            style={{ backgroundColor: btnBgColor.Disabled }}
+                            // style={{ backgroundColor: btnBgColor.Disabled }}
+                            style={{ visibility: 'hidden' }}
                         >
                             下一步
                         </button>
@@ -392,7 +414,8 @@ function OrderSteps(props) {
                             // type="submit"
                             // 當step是3時，也預設Disabled
                             disabled
-                            style={{ backgroundColor: btnBgColor.Disabled }}
+                            // style={{ backgroundColor: btnBgColor.Disabled }}
+                            style={{ visibility: 'hidden' }}
                         >
                             下一步
                         </button>
@@ -400,13 +423,14 @@ function OrderSteps(props) {
                         <button
                             className="xuan-btn-m xuan-btn-pri"
                             disabled={step === maxSteps}
+                            style={{ visibility: 'hidden' }}
                             onClick={() => {
                                 next();
                             }}
                         >
                             下一步
                         </button>
-                    )}
+                    )} */}
                 </div>
             </div>
         </>

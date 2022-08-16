@@ -5,20 +5,19 @@
 @import '../../styles/variables.scss';
 
 
+// 手機版放這邊-------------------------------------
 .xuan-event-history-container{
-    outline: 1px solid red;
-    padding: 10px;
     padding-top: 20px;
 
     // FIXME: 目前先寫死寬度
-    width: 300px;
+    // width: 800px;
+    max-width: 380px;
     height: 100%;
-    // margin-bottom: 0px;
 
+      // 每一筆訂單框框
       .xuan-event-history-item{
-        // background-color: rgb(139, 139, 139);
         border-radius: 10px;
-        outline: 1px solid blue;
+        // outline: 3px solid blue;
         padding: 10px;
         width: 100%;
         margin-bottom: 20px;
@@ -26,64 +25,160 @@
         >div{
           margin-bottom: 10px;
           align-items: center;
-          // justify-content: center;
 
-            p:nth-child(1){
+          .xuan-member-num{
               margin-right: 5px;
             }
         }
 
+        // 每筆訂單的活動細項
         .xuan-event-history-list{
 
               .xuan-member-event-detail{
-                  outline: 1px solid red;
-                  padding: 10px;
-                  display: flex;
-                  align-items: center;
-                  justify-content:flex-start;
+                  // outline: 1px solid red;
 
-
-                  
-                    div:nth-child(1){
-                      width: 70px;
-                      height: 60px;
+                  // 活動圖片
+                  .xuan-member-event-detai-img{
+                      // outline: 2px solid green;
+                      width: 100%;
+                      height: 110px;
                       margin-right: 5px;
                       display: flex;
                       align-items: center;
                       justify-content: center;
                       overflow: hidden;
-                      border-radius: 5px;
+                      border-radius: 10px;
+                      margin-bottom: 15px;
 
-                          img{
-                            // width: 100%;
-                            height: 100%;
-                          }
                     }
 
 
+                  // 活動內容
                   .xuan-member-event-main{
-                    
-                    .xuan-member-event-title{
 
-                      margin-right: 10px;
-
-                        p:nth-child(1){
-                          background-color: #EDEFF7;
-                          padding: 3px;
-                          border-radius: 5px;
-                        }
-                    }
-  
                     p{
                       margin-bottom: 10px;
                     }
+
+                    // 調整日期 跟 時刻 之間的間距
+                    .xuan-day{
+                      margin-right: 7px;
+                    }
+                  
+                    
+                    //活動標題
+                    .xuan-member-event-title{
+                      margin-right: 10px;
+                      display: flex;
+                      align-items: center;
+
+
+                      // 活動類型 ex: 贊助 志工
+                        p:nth-child(1){
+                          color: #fff;
+                          background-color: $primary;
+                          // background-color: #EDEFF7;
+                          padding: 5px;
+                          border-radius: 8px;
+                          margin-right: 7px;
+                          transition: .2s;
+                        }
+
+                        p:nth-child(1):hover{
+                          color: #fff;
+                          background-color: $secondary;
+                          // background-color: #EDEFF7;
+                          padding: 5px;
+                          border-radius: 8px;
+                          margin-right: 7px;
+                        }
+
+                        .xuan-body{
+                          font-weight: 500;
+                        }
+
+                        p{
+                          margin-bottom: 10px;
+                        }
+                    }
+  
                   }
 
           
               }
         }
 
+
+
+
       }
 
 
+      // 每筆訂單 Hover效果
+      .xuan-event-history-item:hover{
+        transition: .2s;
+        transform: translateY(-2px);
+        box-shadow: 3px 10px 10px 2px rgba(179, 179, 179, 0.25);
+      }
+
 }
+
+
+
+// 桌機版放這邊------------------------------------
+
+
+@media screen and (min-width: 992px){
+
+    .xuan-event-history-container{
+
+      // FIXME: 調欄位框度大小動這邊
+      max-width: 500px;
+      width: 500px;
+      // outline: 1px solid blue;
+
+
+        // 訂單編號 日期那些
+          .xuan-event-history-item{
+            background-color: #fff;
+              padding-bottom: 0px;
+
+              >div{
+                margin-bottom: 15px;
+              }
+          }
+
+          .xuan-event-history-list{
+            
+              .xuan-member-event-detail{
+                background-color: #fff;
+                display: flex;
+                align-items:center ;
+                justify-content: flex-start;
+                border-radius: 10px;
+
+                    .xuan-member-event-detai-img{
+                      max-width: 150px;
+                      margin-right: 20px !important;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+
+                          img{
+                            width:fit-content ;
+                          }
+                    }
+
+
+                    .xuan-member-event-main{
+                      margin-right: 20px;
+                    }
+
+              } 
+      }
+    }
+
+}
+
+
+

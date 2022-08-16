@@ -6,7 +6,8 @@ $widthMax: 768px;
         height: 50vh;
         max-height: 50vh;
         border-radius: 16px;
-        background: #0000004d;
+        background: #3c3b67b3;
+        backdrop-filter: blur(2px);
         margin-top: 15px;
         display: flex;
         padding: 25px 0 10px;
@@ -61,11 +62,16 @@ $widthMax: 768px;
     }
 
     .ava-wrap {
-        padding: 15px 30px;
+        padding: 15px 30px 5px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 90%;
+
+        .swiper {
+            height: 100%;
+            width: 100%;
+        }
     }
 
     .caret-wrap {
@@ -81,10 +87,6 @@ $widthMax: 768px;
         font-size: 35px;
     }
 
-    .ava-img {
-        width: 45%;
-    }
-
     .price {
         border-radius: 50px;
         display: flex;
@@ -93,11 +95,62 @@ $widthMax: 768px;
         gap: 5px;
     }
 
-    .ava-option .price {
-        background-color: rgba(255, 255, 255, 1);
-        padding: 5px 14px;
-        width: 130px;
-        margin: 20px auto 0;
+    .ava-option {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .ava-img {
+            margin: auto;
+            width: 260px;
+            height: 260px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            z-index: 2;
+        }
+
+        .ava-option-bg {
+            position: absolute;
+            border: 2px solid #3c3b67;
+            height: 170px;
+            width: 175px;
+            top: 50px;
+            left: 50%;
+            z-index: 1;
+            transform: translate(-50%, 0);
+            background: radial-gradient(
+                50% 50% at 50% 50%,
+                #a35db3 0%,
+                transparent 100%
+            );
+        }
+        .ava-option-bg-circle {
+            position: absolute;
+            border: 2px solid #3c3b67;
+            border-radius: 50%;
+            height: 210px;
+            width: 210px;
+            top: 10px;
+            left: 50%;
+            z-index: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .price {
+            background-color: rgba(255, 255, 255, 1);
+            padding: 5px 14px;
+            width: 130px;
+            margin: 20px auto 0;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
     }
 
     .swiper-button-next,
@@ -310,6 +363,7 @@ $widthMax: 768px;
         min-height: 20vh;
         border-radius: 16px;
         background-color: #3c3b67b3;
+        backdrop-filter: blur(2px);
         margin: 10px 0;
         display: flex;
         justify-content: space-around;
@@ -527,21 +581,34 @@ $widthMax: 768px;
 
     .reborn-order-card-ava {
         height: 100%;
+        width: 120px;
 
-        > img {
-            height: 100px;
-            position: relative;
+        .ava-img {
+            width: 130px;
+            height: 130px;
             top: 50%;
-            transform: translate(0, -50%);
+            transform: translate(-50%, -42%);
+        }
+        .ava-option-bg {
+            width: 85px;
+            height: 85px;
+            top: 38px;
+        }
+        .ava-option-bg-circle {
+            width: 105px;
+            height: 105px;
+            top: 15px;
         }
     }
 
-    .reborn-order-card-place > h4 {
-        font-size: 20px;
-        font-weight: normal;
-        margin: 0;
-        line-height: 32px;
-        letter-spacing: 2px;
+    .reborn-order-card-place {
+        h4 {
+            font-size: 20px;
+            font-weight: normal;
+            margin: 0;
+            line-height: 32px;
+            letter-spacing: 2px;
+        }
     }
 
     .reborn-order-card-summary {
@@ -624,6 +691,20 @@ $widthMax: 768px;
         &:hover {
             cursor: pointer;
             transform: translate(-2px, -2px);
+        }
+    }
+
+    .confirmRebornTextAni {
+        font-size: 20px;
+        font-weight: bold;
+        animation: textShow 3s linear forwards;
+    }
+    @keyframes textShow {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
         }
     }
 }

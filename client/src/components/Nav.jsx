@@ -35,8 +35,18 @@ import { eventCartNum } from '../features/counter/counterSlice';
 import { PLACE_CARTDATA_API } from '../config/ajax-path';
 import { IoLogoClosedCaptioning } from 'react-icons/io5';
 
+// mainpage測試
+import mainpage_nav from '../pages/MainPage/imgs/mainpage_nav.svg';
+
 function Nav(props) {
-    const { lightBox, setLightBox, userGooddeed, setUserGooddeed } = props; //從App.jsx傳入
+    const {
+        lightBox,
+        setLightBox,
+        mainpageIcon,
+        setMainpageIcon,
+        userGooddeed,
+        setUserGooddeed,
+    } = props; //從App.jsx傳入
     // const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
     const { theme, setTheme } = useContext(ThemeContext);
@@ -93,11 +103,12 @@ function Nav(props) {
 
     useEffect(() => {
         if (authorized === true) {
+            console.log('去要陰德值了');
             getUserGooddeedData();
         } else {
             console.log('沒有登入無法顯示陰德值');
         }
-    }, [sid]);
+    }, []);
 
     useEffect(() => {
         if (location.pathname === '/intro') {
@@ -120,89 +131,119 @@ function Nav(props) {
             {/* Nav漢堡光箱 (網站目錄) */}
             <div className={lightBox}>
                 <div className="nav_lightbox_wrap">
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/aboutusfirst', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            投放所介紹
-                        </h2>
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/aboutusfirst', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">投放所介紹</h2>
                         <h4 className="subtitle">
                             搞不清楚發生什麼事？先來看看這裡吧
                         </h4>
                     </div>
 
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/news', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            投胎速報
-                        </h2>
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/news', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">投胎速報</h2>
                         <h4 className="subtitle">最新最即時的投胎資訊都在這</h4>
                     </div>
 
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/events', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/events', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">
                             {/* FIXME: 德 缺字 */}
                             功德撲滿
                         </h2>
+                        <h4 className="subtitle">天下沒有白吃的來生</h4>
+                    </div>
+
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/showcase', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">來生形象</h2>
                         <h4 className="subtitle">介紹文字放這邊</h4>
                     </div>
 
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/showcase', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            來生形象
-                        </h2>
-                        <h4 className="subtitle">介紹文字放這邊</h4>
-                    </div>
-
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
-                            onClick={() => {
-                                navigate('/Place', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                            }}
-                        >
-                            良辰吉地
-                        </h2>
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/Place', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">良辰吉地</h2>
                         <h4 className="subtitle">
                             何時何地，轉世降生~由你自己來決定！
                         </h4>
                     </div>
 
-                    <div className="nav_lightbox_list">
-                        <h2
-                            className="nav_link"
+                    <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/sharewall', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">交流分享</h2>
+                        <h4 className="subtitle">
+                            這世上不只有前世今生，還有來生！
+                        </h4>
+                    </div>
+
+                    {authorized ? (
+                        <div
+                            className="nav_lightbox_list"
                             onClick={() => {
-                                navigate('/sharewall', { replace: true });
+                                navigate('/memberprofile', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
+                                setMainpageIcon('mainpage_icon_hidden');
                             }}
                         >
-                            交流分享
-                        </h2>
-                        <h4 className="subtitle">介紹文字放這邊</h4>
-                    </div>
-                    {/* <div className="nav_lightbox_list"> */}
+                            <h2 className="nav_link">會員中心</h2>
+                            <h4 className="subtitle">
+                                其實這裡也有一點點的關於你
+                            </h4>
+                        </div>
+                    ) : (
+                        <div
+                            className="nav_lightbox_list"
+                            onClick={() => {
+                                Swal.fire('請先登入會員');
+                                navigate('/login', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                                setMainpageIcon('mainpage_icon_hidden');
+                            }}
+                        >
+                            <h2 className="nav_link">會員中心</h2>
+                            <h4 className="subtitle">
+                                沒有登入沒有權限，輪迴千遍有緣再見
+                            </h4>
+                        </div>
+                    )}
+
+                    {/* 登入登出btn */}
                     {authorized ? (
                         <>
                             <button
@@ -210,6 +251,7 @@ function Nav(props) {
                                 className="btn btn-outline-secondary nav-btn"
                                 onClick={() => {
                                     setLightBox('nav_lightbox_hidden');
+                                    setMainpageIcon('mainpage_icon_hidden');
                                     userLogout();
                                 }}
                             >
@@ -223,12 +265,25 @@ function Nav(props) {
                             onClick={() => {
                                 navigate('/login', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
+                                setMainpageIcon('mainpage_icon_hidden');
                             }}
                         >
                             登入
                         </button>
                     )}
-                    {/* </div> */}
+
+                    {/* 購物車btn */}
+
+                    {/* 目錄頁btn */}
+                    <div
+                        className={mainpageIcon}
+                        onClick={() => {
+                            setMainpageIcon('mainpage_icon_hidden');
+                            setLightBox('nav_lightbox_hidden');
+                        }}
+                    >
+                        <img src={mainpage_nav} alt="" />
+                    </div>
                 </div>
             </div>
 
@@ -256,6 +311,7 @@ function Nav(props) {
                                 onClick={() => {
                                     navigate('', { replace: true });
                                     setLightBox('nav_lightbox_hidden');
+                                    setMainpageIcon('mainpage_icon_hidden');
                                 }}
                             />
                         </div>
@@ -289,7 +345,7 @@ function Nav(props) {
                             我換！
                         </div>
                         {/* FIXME: 這是暫時的按鈕 */}
-                        <div
+                        {/* <div
                             style={{
                                 outline: '1px solid red',
                                 cursor: 'pointer',
@@ -298,10 +354,11 @@ function Nav(props) {
                             onClick={() => {
                                 navigate('/nextlife', { replace: true });
                                 setLightBox('nav_lightbox_hidden');
+                                setMainpageIcon('mainpage_icon_hidden');
                             }}
                         >
                             我要投胎
-                        </div>
+                        </div> */}
                         <div className="nav-inner-right">
                             {/* <NavSoul className="nir-NavSoul" /> */}
                             <span
@@ -324,6 +381,12 @@ function Nav(props) {
                                             ...userGooddeed,
                                             show: true,
                                         });
+                                        setTimeout(() => {
+                                            setUserGooddeed({
+                                                ...userGooddeed,
+                                                show: false,
+                                            });
+                                        }, 3000);
                                     }
                                 }}
                             >
@@ -353,6 +416,9 @@ function Nav(props) {
                                                 setLightBox(
                                                     'nav_lightbox_hidden'
                                                 );
+                                                setMainpageIcon(
+                                                    'mainpage_icon_hidden'
+                                                );
                                             }}
                                         />
                                     ) : (
@@ -366,6 +432,9 @@ function Nav(props) {
                                                 });
                                                 setLightBox(
                                                     'nav_lightbox_hidden'
+                                                );
+                                                setMainpageIcon(
+                                                    'mainpage_icon_hidden'
                                                 );
                                             }}
                                         />
@@ -381,10 +450,14 @@ function Nav(props) {
                                                 replace: true,
                                             });
                                             setLightBox('nav_lightbox_hidden');
+                                            setMainpageIcon(
+                                                'mainpage_icon_hidden'
+                                            );
                                         }}
                                     />
                                 )}
 
+                                {/* 生者活動購物車: 數量為0時Nav不顯示 */}
                                 {!isDead && count === 0 ? (
                                     ''
                                 ) : (
@@ -417,6 +490,7 @@ function Nav(props) {
                                         Swal.fire('請先登入會員');
                                         navigate('/login', { replace: true });
                                         setLightBox('nav_lightbox_hidden');
+                                        setMainpageIcon('mainpage_icon_hidden');
                                     }}
                                 />
                             )}

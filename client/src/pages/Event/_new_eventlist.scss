@@ -7,17 +7,17 @@
 
 .event-container{
   position: relative;
-  // padding-top: 80px;
+  // outline: 1px solid red;
 
   >.row{
     width: 100%;
     margin: 0px;
 
     .event-selector{
-      width: 95%;
+      width: 97%;
       min-height: 30px;
-      // outline: 1px solid red;
       margin: 15px auto;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -38,7 +38,7 @@
           position: fixed;
           bottom: 0px;
           width: 100vw;
-          height: 60%;
+          height: 70%;
           background-color: white;
           z-index: 1500;
           border-radius: 30px 30px 0px 0px ;
@@ -64,7 +64,7 @@
               width: 60%;
               margin: auto;
               z-index: 1600;
-              margin-bottom: 20px;
+              margin-bottom: 30px;
 
               >input{
                 width: 100%;
@@ -89,7 +89,7 @@
                   }
                 }
 
-             
+            
 
                 .xuan-price-filter{
                   text-align: center;
@@ -97,28 +97,33 @@
                   width: 100%;
                   color: #3C3B67;
 
+
                   .d-flex{
                     align-items: center;
                     justify-content: center;
                   }
 
                   .xuan-title{
-                    margin-bottom: 10px;
+                    margin-bottom: 15px;
+                    font-size: $fz-subtitle;
+                    font-family: $ff-t ;
+                    font-weight: 500 ;
                   }
                 }
 
                 .xuan-type-filter{
                   width: 100%;
                   color: #3C3B67;
-                  margin-bottom: 20px;
+                  margin-bottom: 30px;
                 
-                  
-                  h4{
-                    text-align: center;
-                  }
 
                   >.xuan-title{
                     margin-bottom: 10px;
+                    font-size: $fz-subtitle;
+                    font-family: $ff-t ;
+                    font-weight: 500 ;
+                    margin-bottom: 15px;
+                    text-align: center;
                   }
 
                   .d-flex{
@@ -142,7 +147,8 @@
                 .xuan-area-filter{
                   width: 100%;
                   color: #3C3B67;
-                  margin-bottom: 20px;
+                  margin-bottom: 30px;
+
 
                   .xuan-label-title{
                     font-size: 16px;
@@ -153,10 +159,11 @@
                     height: 16px;
                   }
 
-
-
                   >.xuan-title{
-                    margin-bottom: 10px;
+                    margin-bottom: 15px;
+                    font-size: $fz-subtitle;
+                    font-family: $ff-t ;
+                    font-weight: 500 ;
                   }
 
                   h4{
@@ -188,6 +195,7 @@
           border: #9587E1 2px solid;
           color: #3C3B67;
           height: 40px;
+          font-size: 1rem;
         }
     }
 
@@ -220,9 +228,9 @@
   width: 100%;
   margin: auto;
   background-color: white;
-  margin-bottom: 40px;
+  margin-bottom: 45px;
   border-radius: 0px 15px 15px 15px;
-  padding: 15px 30px 15px 20px;
+  padding: 15px 25px 15px 10px;
   color: #3C3B67;
   display: flex;
   justify-content: space-between;
@@ -230,37 +238,45 @@
 
   >.good-cost{
     background-color: #CE59E7;
-    padding: 7px;
+    padding: 5px;
     border-radius: 10px 10px 0px 0px;
     color: white;
     position: absolute;
     left: 0px;
-    top:-25px;
+    top:-24px;
+    font-size: $fz-caption;
+
+            img{
+              margin-right: 5px;
+            }
+    
   }
 
   .event-type{
     background-color: #9587E1;
-    padding: 7px;
+    padding: 5px;
     border-radius: 10px 10px 0px 0px;
     color: white;
     position: absolute;
-    left: 100px; 
-    top:-25px;
+    left: 115px; 
+    top:-24px;
+    font-size: $fz-caption;
   }
 
   .program-type{
     background-color: #B9DED2;
-    padding: 7px;
+    padding: 5px;
     border-radius: 10px 10px 0px 0px;
     color: white;
     position: absolute;
-    left: 150px; 
-    top:-25px;
+    left: 165px; 
+    top:-24px;
+    font-size: $fz-caption;
   }
 
 
   .event-img{
-    width: 25%;
+    width: 32%;
     height: 70px;
     border-radius: 10px;
     background-color: rgb(177, 177, 177);
@@ -272,7 +288,6 @@
     justify-content: center;
 
     >img{
-      width: 100%;
       height: 100%;
     }
 
@@ -284,10 +299,16 @@
 
     .event_title{
       margin-bottom: 10px;
+      font-size: 1rem;
     }
 
     .event_npo_name{
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      font-size: $fz-caption ;
+    }
+
+    .event-time{
+      font-size: $fz-caption ;
     }
 
     
@@ -333,6 +354,10 @@
 
 
 
+
+
+
+
 // 桌機版 
 @media screen and (min-width: 992px) {
 
@@ -342,19 +367,20 @@
   padding-top: 20px;
 
   >.row{
-    width: 85%;
+    max-width: 1300px;
+    width: 87%;
     display: flex;
     margin: auto;
-
+    // outline: 1px solid blue;
 
 
     // 篩選區
     .event-selector{
       width: 20%;
       display: block;
+      padding-top: 15px;
 
 
-      
       // 請選擇排序
       .xuan-sortby{
         // outline: 1px solid red;
@@ -396,8 +422,8 @@
             display: flex;
             align-items: center;
             // justify-content:flex-start;
-            font-size: $fz-subtitle;
-            font-family: $ff-t;
+            font-size: 1.25rem;
+            font-family: "Noto Sans TC";
             font-weight: 500;
             margin-bottom: 15px;
           }
@@ -405,7 +431,9 @@
 
           // 取消不要flex
           .xuan-price-filter{
-         
+
+
+        
 
               .d-flex{
                 flex-wrap: wrap;
@@ -468,11 +496,12 @@
     .xuan-eventlist-bar{
       width: 80%;
       display: flex;
-      max-height: 580px;
+      max-height: 800px;
       padding-top: 30px;
 
       .event{
-        padding-top: 0px;
+        // outline: 1px solid red;
+        padding-top: 15px;
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -482,10 +511,11 @@
 
 
             .event-card{
+              min-height: 297px;
               background-color: white;
               border-radius: 0px 15px 15px 15px;
-              margin-left: 15px;
-              margin-right: 5px;
+              margin-left: 12px;
+              margin-right: 12px;
               text-align: center;
               position: relative;
               box-shadow: 3px 5px 5px 0px rgba(121, 121, 121, 0.25);
@@ -493,7 +523,33 @@
               display: block;
               padding: 0px;
               min-width: 230px;
-              min-height: 250px;
+              min-height: 260px;
+              margin-bottom: 55px;
+
+              .event-type{
+                left: 120px;
+                padding: 7px;
+                top:-28px;
+                font-size: $fz-caption ;
+              }
+
+              .program-type{
+                left: 169px;
+                padding: 7px;
+                top:-28px;
+                font-size: $fz-caption ;
+              }
+
+              .good-cost{
+                font-size: $fz-caption ;
+                padding: 7px;
+                top:-28px;
+
+                    img{
+                      margin-right: 5px;
+                    }
+              }
+
           
               >.event-img{
                 max-width:none ;
@@ -507,7 +563,7 @@
 
               >.event-title-group{
                 width: 100%;
-             
+            
 
                 >.event_title_bg{
                   min-height: 38px;
@@ -521,11 +577,13 @@
                   >.event_title{
                     padding: 10px auto;
                     margin-bottom: 0px;
+                    font-size: 1.25rem;
                   }
                 }
 
                 >.event_npo_name{
                   margin-bottom: 10px;
+                  font-weight: 500;
                 }
 
                 >.event-time{
@@ -538,16 +596,24 @@
                   justify-content: center;
                   border-radius: 5px;
                   margin-bottom: 10px;
+                
+
                 }
               }
 
               .event-cost{
                 width: 100%;
                 padding: 5px auto;
+                // outline: 1px solid red;
 
                 >.xuan-event-city{
                   display: block;
                   margin-right: 5px;
+                  font-weight: 500 ;
+                }
+
+                .xuan-eventcard-price{
+                  font-weight: 500 ;
                 }
               }
           

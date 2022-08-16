@@ -81,6 +81,7 @@
 @media screen and (min-width: 500px) {
     .cpl-share-post-card {
         .cpl-spc-info-abstract {
+            aspect-ratio: 112/20;
             font-size: $fz-subtitle;
         }
     }
@@ -134,7 +135,7 @@
 
         .cpl-spc-info-abstract {
             // height: 56px; /* 60px - 2px - 2px */
-            height: 13.3%;
+            aspect-ratio: 112/20;
         }
     }
 }

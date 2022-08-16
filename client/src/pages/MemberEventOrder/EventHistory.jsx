@@ -8,8 +8,9 @@ import AuthContext from '../../context/AuthContext/AuthContext';
 import './_xuan_event_order.scss';
 import '../Event/_xuan_styles.scss';
 import { now } from 'lodash';
+import { Link } from 'react-router-dom';
 
-function EventHistory() {
+function EventHistory(props) {
     const { sid } = useContext(AuthContext); //取得登入會員sid
 
     const [eventHistory, setEventHistory] = useState([]);
@@ -33,108 +34,44 @@ function EventHistory() {
         // fetchOrderHistory();
     }, [sid]);
 
-    // const [orderDetail, setOrderDetail] = useState(null);
-    // const [test, setTest] = useState([]);
-
-    // const fetchOrderHistory = async (eventsid) => {
-    //     fetch(`http://localhost:3500/events/${eventsid}`, {
-    //         method: 'GET',
-    //     })
-    //         .then((r) => r.json())
-    //         .then((obj) => {
-    //             // console.log(obj);
-    //             // console.log(obj[0].sid); //可取得sid
-    //             // console.log(obj[0].act_title); //可取得活動名稱
-    //             // console.log(obj[0].start); //可取得活動時間
-    //             setOrderDetail([obj[0].sid]);
-    //             return obj;
-    //             // return obj[0];
-    //         });
-    //     // .then((k) => {
-    //     //     return (
-    //     //         <>
-    //     //             <div key={k[0].sid}>
-    //     //                 <p>
-    //     //                     活動名稱:
-    //     //                     {/* {orderDetail} */}
-    //     //                     {k[0].act_title}
-    //     //                 </p>
-    //     //                 <p>
-    //     //                     活動日期:
-    //     //                     {k[0].start}
-    //     //                 </p>
-    //     //             </div>
-    //     //         </>
-    //     //     );
-    //     // });
-    // };
-
-    // async function test(eventsid) {
-    //     const r = await fetch(`http://localhost:3500/events/${eventsid}`, {
-    //         method: 'GET',
-    //     });
-
-    //     const data = await r.json();
-    //     const datanew = await data[0];
-    //     return [data];
-
-    // return await (
-    //     <>
-    //         <div key={datanew.sid}>
-    //             <p>
-    //                 活動名稱:
-    //                 {datanew.act_title}
-    //             </p>
-    //             <p>
-    //                 活動日期:
-    //                 {datanew.start}
-    //             </p>
-    //         </div>
-    //     </>
-    // );
-
-    // return(obj[0])
-    // console.log(obj[0].sid); //可取得sid
-    // console.log(obj[0].act_title); //可取得活動名稱
-    // console.log(obj[0].start); //可取得活動時間
-    // console.log(obj[0]); // {} 取得Object
-    // setOrderDetail(obj[0]);
-    // console.log(obj);
-    // console.log(obj[0]);
-    // return obj[0]; //真正要傳下去or傳出去的
-    // console.log('k', obj[0]);
-    // console.log('orderDetail', orderDetail);
-
     return (
         <>
             <div className="xuan-event-history-container">
                 {/* 將訂單細項從字串轉為陣列 */}
-                {eventHistory.length &&
+
+                {!eventHistory.length ? (
+                    <p className="member-event-default">目前尚未建立任何訂單</p>
+                ) : (
+                    eventHistory.length &&
                     eventHistory.map((v, i) => {
                         return (
                             <Fragment key={v.event_order_sid}>
                                 {/* 存放每一筆訂單的大框框 */}
-                                <div className="xuan-event-history-item">
+                                <div className="xuan-event-history-item rounded-4">
                                     {/* 放該筆訂單的編號、時間 */}
                                     <div className="d-flex">
-                                        <p className="xuan-subtitle">
+                                        <p className="xuan-subtitle xuan-member-num member-page-title">
                                             No.
                                             {v.event_order_sid}
                                         </p>
-                                        <p className="xuan-body">
-                                            日期：
+                                        <p className="xuan-body member-event-field">
+                                            成立日期：
                                             {v.order_created_at}
                                         </p>
                                     </div>
 
+                                    {/* 每筆訂單的詳細內容放這邊 */}
                                     <div className="xuan-event-history-list">
                                         {v.eventdetail.map((v, i) => {
                                             return (
                                                 <div
                                                     key={v.start}
-                                                    className="xuan-member-event-detail d-flex"
+                                                    className="xuan-member-event-detail"
                                                 >
-                                                    <div>
+                                                    <div className="xuan-member-event-detai-img">
+                                                        {/* <Link
+                                                            to={`event/${v.sid}`}
+                                                        > */}
                                                         <img
                                                             src={
                                                                 'http://localhost:3500/event/eventlist/' +
@@ -142,31 +79,44 @@ function EventHistory() {
                                                             }
                                                             alt=""
                                                         />
+                                                        {/* </Link> */}
                                                     </div>
 
-                                                    <div className="xuan-member-event-main ">
-                                                        <div className="d-flex xuan-member-event-title">
-                                                            <p>
+                                                    <div className="xuan-member-event-main">
+                                                        <div className=" xuan-member-event-title">
+                                                            <p className="member-event-type">
                                                                 {v.program_type}
                                                             </p>
-                                                            <p className="xuan-subtitle">
+                                                            <p className=" member-page-field">
                                                                 {v.act_title}
                                                             </p>
                                                         </div>
 
                                                         <div className="d-flex">
-                                                            <p>{v.start}</p>
-                                                            <p>
-                                                                {v.start_time}
-                                                            </p>
+                                                            <div>
+                                                                <p className="xuan-day member-event-info-2">
+                                                                    {' '}
+                                                                    {
+                                                                        v.start
+                                                                    }{' '}
+                                                                    {
+                                                                        v.start_time
+                                                                    }{' '}
+                                                                </p>
+
+                                                                <p className="member-event-info-2">
+                                                                    {
+                                                                        v.place_location
+                                                                    }
+                                                                </p>
+                                                            </div>
                                                         </div>
-
-                                                        <p>
-                                                            {v.place_location}
-                                                        </p>
                                                     </div>
-
-                                                    <p>NT${v.price}</p>
+                                                    <div>
+                                                        <p className="member-event-info">
+                                                            NT${v.price}
+                                                        </p>{' '}
+                                                    </div>
                                                 </div>
                                             );
                                         })}
@@ -174,7 +124,8 @@ function EventHistory() {
                                 </div>
                             </Fragment>
                         );
-                    })}
+                    })
+                )}
             </div>
         </>
     );

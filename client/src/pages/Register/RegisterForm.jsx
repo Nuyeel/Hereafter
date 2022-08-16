@@ -256,11 +256,11 @@ function RegisterForm(props) {
                             <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
                                 <div className="tab-content">
                                     <form name="form1" onSubmit={handleSubmit}>
-                                        <div className="mb-3 d-flex justify-content-center page-title">
+                                        <div className="mb-3 d-flex justify-content-center member-page-title">
                                             會員註冊
                                         </div>
                                         <br />
-                                        <div className="mb-3 page-field">
+                                        <div className="mb-3 member-page-field">
                                             <label
                                                 htmlFor="account"
                                                 className="form-label"
@@ -292,7 +292,7 @@ function RegisterForm(props) {
                                                 required
                                             />
                                         </div>
-                                        <div className="mb-3 page-field">
+                                        <div className="mb-3 member-page-field">
                                             <label
                                                 htmlFor="email"
                                                 className="form-label"
@@ -323,7 +323,7 @@ function RegisterForm(props) {
                                                 required
                                             />
                                         </div>
-                                        <div className="mb-3 page-field">
+                                        <div className="mb-3 member-page-field">
                                             <label
                                                 htmlFor="password"
                                                 className="form-label"
@@ -354,7 +354,7 @@ function RegisterForm(props) {
                                                 required
                                             />
                                         </div>
-                                        <div className="mb-3 page-field">
+                                        <div className="mb-3 member-page-field">
                                             <label
                                                 htmlFor="confirmPassword"
                                                 className="form-label"
@@ -392,25 +392,25 @@ function RegisterForm(props) {
                                                         <p>以其他方式註冊：</p>
                                                         <button
                                                             type="button"
-                                                            className="btn-member btn-member-link btn-member-floating mx-1"
+                                                            className="btn-member btn-member-member-link btn-member-floating mx-1"
                                                         >
                                                             <i className="fab fa-facebook-f"></i>
                                                         </button>
                                                         <button
                                                             type="button"
-                                                            className="btn-member btn-member-link btn-member-floating mx-1"
+                                                            className="btn-member btn-member-member-link btn-member-floating mx-1"
                                                         >
                                                             <i className="fab fa-google"></i>
                                                         </button>
                                                         <button
                                                             type="button"
-                                                            className="btn-member btn-member-link btn-member-floating mx-1"
+                                                            className="btn-member btn-member-member-link btn-member-floating mx-1"
                                                         >
                                                             <i className="fab fa-twitter"></i>
                                                         </button>
                                                     </div> 
                                                     */}
-
+                                        <br />
                                         <div className="d-flex justify-content-center ">
                                             <button
                                                 type="submit"
@@ -421,7 +421,10 @@ function RegisterForm(props) {
                                         </div>
                                         <br />
                                         <div className="d-flex justify-content-center ">
-                                            <Link className="link" to="/login">
+                                            <Link
+                                                className="member-link"
+                                                to="/login"
+                                            >
                                                 已註冊，直接登入
                                             </Link>
                                         </div>

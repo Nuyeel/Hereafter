@@ -1,10 +1,19 @@
 @import '../../../../styles/variables.scss';
 
-// .cpl-nextlife-magic-cube-container {
-//     position: absolute; // FIXME: 手機版應該不能滑動 沒問題
-//     left: 0;
-//     right: 0;
-//     top: 0;
-//     bottom: 0;
-//     z-index: -1;
-// }
+.cpl-nextlife-magic-cube-container.nlCube {
+    // FIXME: 這是隨便抓的高度
+    bottom: 100px;
+    z-index: -1;
+    background-color: #FF000033;
+}
+
+.nlCubeSwap-button {
+    border: none;
+    width: fit-content;
+    background-color: $secondary;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 200px;
+}

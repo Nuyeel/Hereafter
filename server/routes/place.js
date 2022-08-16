@@ -103,7 +103,7 @@ router.post('/liked', async (req, res) => {
     res.json(output);
 });
 
-// TODO: 會員刪除收藏
+// 會員刪除收藏
 router.delete('/liked', async (req, res) => {
     // place_sid
     const sql = `DELETE FROM place_liked WHERE place_sid=? AND member_sid=?`;
@@ -114,6 +114,13 @@ router.delete('/liked', async (req, res) => {
     } else {
         res.json('失敗');
     }
+});
+
+// 最新消息的資料
+router.get('/news', async (req, res) => {
+    const sql = `SELECT * FROM news ORDER BY event_time DESC LIMIT 5`;
+    const [r] = await db.query(sql);
+    res.json(r);
 });
 
 module.exports = router;

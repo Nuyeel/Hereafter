@@ -9,7 +9,7 @@ import { Navigation } from 'swiper';
 import SoulIcon from '../../Place/components/SoulIcon';
 
 function AvatarSwiper(props) {
-    const { avatarDataList, avatarData, setSelectedAvatarInd } = props;
+    const { avatarDataList, avatarData, setSelectedAvatarInd, style } = props;
 
     return (
         <Swiper
@@ -31,15 +31,24 @@ function AvatarSwiper(props) {
                         return (
                             <SwiperSlide key={v.avatar_id}>
                                 <div className="ava-option">
-                                    <img
-                                        src={`http://localhost:3500/uploads/images/avatar/${v.img_name}`}
-                                        alt=""
+                                    <div
                                         className="ava-img"
-                                    />
+                                        style={{
+                                            backgroundImage: `url(http://localhost:3500/uploads/images/avatar/${v.img_name})`,
+                                        }}
+                                    ></div>
                                     <div className="price">
                                         <SoulIcon className="soul-icon" />
                                         <span>{v.price}</span>
                                     </div>
+                                    <div
+                                        className="ava-option-bg"
+                                        style={style}
+                                    ></div>
+                                    <div
+                                        className="ava-option-bg-circle"
+                                        style={style}
+                                    ></div>
                                 </div>
                             </SwiperSlide>
                         );

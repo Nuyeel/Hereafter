@@ -40,15 +40,15 @@ function AboutUsThird(props) {
                         </Link>
                     </div>
                     <div class="ab-bg">
-                    <Link to="/aboutusfirst">
-                        <Pagearrow className="ab-page-arrow" />
-                    </Link>
+                        <Link to="/aboutusfirst">
+                            <Pagearrow className="ab-page-arrow" />
+                        </Link>
                         <div class="ab-ghost">
                             <Ghost class="ab-ghost-l1" width="43px" />
                             <Ghost class="ab-ghost-l2" width="23px" />
                             <Ghost class="ab-ghost-l3" width="18px" />
-                            <Ghost class="ab-ghost-r1" width="43px" />
-                            <Ghost class="ab-ghost-r2" width="21px" />
+                            {/* <Ghost class="ab-ghost-r1" width="43px" />
+                            <Ghost class="ab-ghost-r2" width="21px" /> */}
                         </div>
 
                         <div class="ab-card-wrap">
@@ -64,7 +64,9 @@ function AboutUsThird(props) {
                                         src="./img/Arrow.svg"
                                         alt=""
                                     />
-                                    <Link class="ab-c-btn" to="/showcase">裝扮去！</Link>
+                                    <Link class="ab-c-btn" to="/showcase">
+                                        裝扮去！
+                                    </Link>
                                 </div>
                             </div>
 
@@ -100,8 +102,9 @@ function AboutUsThird(props) {
                                     />
                                     <Link
                                         class="ab-c-btn ab-b"
-                                        to="/reborn-cart">
-                                    結帳囉！
+                                        to="/reborn-cart"
+                                    >
+                                        結帳囉！
                                     </Link>
                                 </div>
                             </div>

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef } from 'react';
+import { useContext, useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,10 +16,10 @@ import FilterSearch from './components/FilterSearch';
 import {
     PLACE_GETDATA_API,
     PLACE_FILTER_COUNTRYDATA_API,
-    PLACE_CARTDATA_API,
     PLACE_LIKED_API,
 } from '../../config/ajax-path';
 import PlaceMap from './components/PlaceMap';
+import TimeNewsRow from './components/TimeNewsRow';
 
 // 頁面標題context
 import HeaderContext, {
@@ -29,9 +29,6 @@ import HeaderContext, {
 import AuthContext from '../../context/AuthContext/AuthContext';
 // 變換主色
 import ThemeContext from '../../context/ThemeContext/ThemeContext';
-
-import PageSelect from './components/PageSelect';
-import TimeNewsRow from './components/TimeNewsRow';
 
 function Place(props) {
     const { pageName } = props;
@@ -60,14 +57,19 @@ function Place(props) {
         country: [],
         countryCity: [],
     });
+    // 最新消息資料
+    const [newsData, setNewsData] = useState([]);
+    const newsRef = useRef(null);
+    const getNewsData = async () => {
+        const r = await fetch(`${PLACE_GETDATA_API}/news`);
+        const obj = await r.json();
+        setNewsData(obj);
+    };
 
     // filter (select)
     const [countryFilter, setCountryFilter] = useState('all');
     const [cityFilter, setCityFilter] = useState('all');
-    const [timeRangeFilter, setTimeRangeFilter] = useState([
-        `${new Date()}`,
-        '',
-    ]);
+    const [timeRangeFilter, setTimeRangeFilter] = useState(null);
 
     // 篩選 RWD 燈箱開合
     const [rwdFilterLightboxOpen, setRwdFilterLightboxOpen] = useState(false);
@@ -118,7 +120,7 @@ function Place(props) {
         setHeader(headers[pageName]);
     }, []);
 
-    // didMount + loading載入畫面
+    // didMount要資料 + loading載入畫面
     useEffect(() => {
         setIsLoading(true);
 
@@ -126,6 +128,7 @@ function Place(props) {
         if (authorized === true && userSid) {
             getMemberLikedData();
         }
+        getNewsData();
 
         setTimeout(() => {
             setIsLoading(false);
@@ -148,17 +151,9 @@ function Place(props) {
     }, []);
 
     // 篩選 filter
-    const filtByCountry = (country, city) => {
-        // console.log(country, city);
+    const filtByCountry = (country) => {
         let newPlaceData = [...rawPlaceData];
-
-        if (country && city) {
-            // 1. 從placeData找country和city都符合的資料, 變成新陣列
-            newPlaceData = [...rawPlaceData].filter((v, i) => {
-                return v.country === country && v.city === city;
-            });
-        } else {
-            // 1. 從placeData找country相同的資料, 變成新陣列
+        if (country !== 'all') {
             newPlaceData = [...rawPlaceData].filter((v, i) => {
                 return v.country === country;
             });
@@ -167,8 +162,19 @@ function Place(props) {
         const newTotalRows = newPlaceData.length;
         console.log(newTotalRows);
         // 2. 設定到 placeDisplay
-        setPlaceDisplay(newPlaceData);
-        setDisplayTotalRows(newTotalRows);
+        // setPlaceDisplay(newPlaceData);
+        // setDisplayTotalRows(newTotalRows);
+        return newPlaceData;
+    };
+
+    const filtByCity = (data, city) => {
+        let newPlaceData = [...data];
+        if (city !== 'all') {
+            newPlaceData = [...data].filter((v, i) => {
+                return v.city === city;
+            });
+        }
+        return newPlaceData;
     };
 
     // 轉換時間為1970毫秒
@@ -178,31 +184,45 @@ function Place(props) {
     };
 
     // 篩選 time-range filter
-    const filtByTimeRange = (v) => {
+    const filtByTimeRange = (data, timeRangeFilter) => {
         // 清空時間區間篩選, 呈現所有資料
-        if (v === null) {
-            const newPlaceData = [...rawPlaceData];
+        if (timeRangeFilter === null) {
+            const newPlaceData = [...data];
             const newTotalRows = newPlaceData.length;
-            setPlaceDisplay(newPlaceData);
-            setDisplayTotalRows(newTotalRows);
+            // setPlaceDisplay(newPlaceData);
+            // setDisplayTotalRows(newTotalRows);
+            return newPlaceData;
         } else {
             // 取得1970至某時間的毫秒值, 再比較大小
             // .getTime()
             // new Date('YY-MM').getTime()
-            const value = v;
-            const start = value[0].getTime();
-            const end = value[1].getTime();
+            const value = timeRangeFilter;
+            console.log(value);
+            const start = new Date(`${value[0]}`).getTime();
+            const end = new Date(`${value[1]}`).getTime();
 
-            const newPlaceData = [...rawPlaceData].filter((v) => {
+            const newPlaceData = [...data].filter((v) => {
                 const placeDateSec = changeTimeFormatToMilSec(v.year, v.month);
                 return placeDateSec >= start && placeDateSec <= end;
             });
             const newTotalRows = newPlaceData.length;
             // console.log(newPlaceData);
-            setPlaceDisplay(newPlaceData);
-            setDisplayTotalRows(newTotalRows);
+            // setPlaceDisplay(newPlaceData);
+            // setDisplayTotalRows(newTotalRows);
+            return newPlaceData;
         }
     };
+
+    // 篩選元素有變動時
+    useEffect(() => {
+        let newDisplay = [];
+        newDisplay = filtByCountry(countryFilter);
+        newDisplay = filtByCity(newDisplay, cityFilter);
+        newDisplay = filtByTimeRange(newDisplay, timeRangeFilter);
+
+        setPlaceDisplay(newDisplay);
+        setDisplayTotalRows(newDisplay.length);
+    }, [countryFilter, cityFilter, timeRangeFilter]);
 
     // 排序 sort
     const handleSort = (sort) => {
@@ -256,7 +276,7 @@ function Place(props) {
         });
     };
 
-    // 收藏
+    // 收藏(存&刪)
     const saveLikedPlace = async (e) => {
         const placeIndex = e.currentTarget
             .closest('.place-info-card')
@@ -265,21 +285,75 @@ function Place(props) {
         // 存到資料庫 place-liked
         // 1. 判斷有無登入
         if (authorized === true && userSid) {
-            // 2. 存到資料庫 place-liked
             const obj = { member_sid: userSid, place_sid: placeIndex };
+            const delEle = e.currentTarget;
+            if (!likedPlaceSidArr.includes(+placeIndex)) {
+                // 2. 存到資料庫 place-liked
+                delEle.classList.add('likedBtnCartBtnAnimation-add');
 
-            fetch(PLACE_LIKED_API, {
-                method: 'POST',
-                body: JSON.stringify(obj),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-                .then((r) => r.json())
-                .then((result) => {
-                    console.log(result);
-                    getMemberLikedData();
+                fetch(PLACE_LIKED_API, {
+                    method: 'POST',
+                    body: JSON.stringify(obj),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then((r) => r.json())
+                    .then((result) => {
+                        console.log(result);
+                        getMemberLikedData();
+                    });
+
+                setTimeout(() => {
+                    delEle.classList.remove('likedBtnCartBtnAnimation-add');
+                }, 500);
+            } else {
+                // 存收藏清單移除
+                const [delPlace] = displayLikedList.filter(
+                    (v) => v.sid === Number(placeIndex)
+                );
+                Swal.fire({
+                    title: '確認移除收藏',
+                    html: `<h5>是否將 <span style="color:#FF52BA">${delPlace.year}年 ${delPlace.month}月 於 ${delPlace.country} </span>轉生<br/>的良辰吉地移出您的收藏？<h5>`,
+                    imageUrl: soulIconAlert,
+                    imageHeight: 50,
+                    imageWidth: 50,
+                    confirmButtonText: '確認移除',
+                    showDenyButton: true,
+                    denyButtonText: '再等一下',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(PLACE_LIKED_API, {
+                            method: 'DELETE',
+                            body: JSON.stringify(obj),
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        })
+                            .then((r) => r.json())
+                            .then((result) => {
+                                console.log(result);
+                            });
+
+                        // 修改收藏的資料sid陣列
+                        const newSidArr = [...likedPlaceSidArr].filter(
+                            (v) => v !== +placeIndex
+                        );
+                        setLikedPlaceSidArr(newSidArr);
+
+                        // TODO: 愛心消除動畫
+                        delEle.classList.add('likedBtnCartBtnAnimation-add');
+
+                        setTimeout(() => {
+                            delEle.classList.remove(
+                                'likedBtnCartBtnAnimation-add'
+                            );
+                        }, 500);
+                    } else if (result.isDenied) {
+                        console.log('Nooooooo!');
+                    }
                 });
+            }
         } else {
             // 去登入光箱
             gotoLoginLighbox('收藏');
@@ -292,7 +366,7 @@ function Place(props) {
             .closest('.place-info-card')
             .getAttribute('data-placesid');
         // console.log(typeof placeIndex);
-
+        // TODO: 做閃爍動畫 || 提醒提示
         setViewLocationPlaceSid(placeIndex);
     };
 
@@ -325,7 +399,7 @@ function Place(props) {
     }, [viewLocationPlaceSid]);
 
     // RWD 篩選燈箱開合
-    const rwdHandelFilterLighbox = () => {
+    const rwdHandelFilterLightbox = () => {
         if (rwdFilterLightboxOpen) {
             setRwdFilterLightboxOpen(false);
         } else {
@@ -333,21 +407,33 @@ function Place(props) {
         }
     };
 
+    // 新聞跑馬燈
+    const handleNewsRef = useCallback(
+        (node) => {
+            if (newsData.length > 0) {
+                newsRef.current = node;
+            }
+        },
+        [newsData]
+    );
+
     return (
         <>
             <div className="container place-container">
                 {/* 列表/收藏頁面切換 */}
-                <PageSelect page={'place-list'} />
+                {/* <PageSelect page={'place-list'} /> */}
 
                 <TimeNewsRow
                     style={{
                         backgroundColor: theme.placeBg,
                     }}
+                    newsData={newsData}
+                    handleNewsRef={handleNewsRef}
                 />
                 {window.innerWidth < 376 && (
                     <div
                         className="rwd-filter-btn-row my-2"
-                        onClick={rwdHandelFilterLighbox}
+                        onClick={rwdHandelFilterLightbox}
                     >
                         <img
                             src={filterIcon}

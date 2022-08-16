@@ -1,0 +1,96 @@
+.header-container-place {
+    height: 76px;
+}
+
+.place-page-select {
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #fff;
+    background-color: transparent;
+    box-shadow: inset 1px 0 0 0 #fff;
+    position: relative;
+    margin: 10px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+    list-style: none;
+    transition: 0.5s;
+    overflow: hidden;
+    width: 150px;
+    height: fit-content;
+
+    &.place-light {
+        border-color: #3c3b67;
+        box-shadow: inset 1px 0 0 0 #3c3b67;
+
+        .page-option,
+        .page-select-link {
+            color: #3c3b67;
+        }
+
+        .page-option {
+            &:hover {
+                background-color: #3c3b67;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+        .dropDown-icon {
+            fill: #3c3b67;
+        }
+    }
+
+    &:hover {
+        padding-bottom: 76px;
+        cursor: pointer;
+
+        ul {
+            display: inherit;
+        }
+    }
+
+    li.show-page {
+        display: inline-block;
+        padding: 10px 24px;
+        width: 100%;
+    }
+
+    .dropDown-icon {
+        margin-left: 10px;
+    }
+
+    ul {
+        display: none;
+        position: absolute;
+        top: 38px;
+        left: 0;
+        transition: 0.5s;
+        width: 105%;
+    }
+
+    .page-option {
+        padding: 10px 24px;
+        margin: 2px 0;
+        width: 100%;
+        // float: none;
+        display: list-item;
+        position: relative;
+        transition: 0.3s;
+        color: #fff;
+
+        &:hover {
+            background-color: #fff;
+            color: #3c3b67;
+            cursor: pointer;
+        }
+    }
+
+    .page-select-link {
+        color: #fff;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}

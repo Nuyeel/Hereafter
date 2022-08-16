@@ -1,28 +1,87 @@
 @import "../../styles/variables.scss";
 
-.page-title {
+.member-page-title {
     font-family: $ff-h, $ff-t;
     font-weight: 700;
     color: $primary;
     font-size: $fz-title
 }
 
-.page-field {
+.member-page-field {
     font-family: $ff-t, $ff-h;
     font-weight: 500;
+    color: $secondary; 
+    font-size: $fz-body;
+}
+
+.member-page-avatar-position {
+    width: 150px;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    right: 16px;
+}
+
+.member-page-avatar {
+    width: 300%;
+    position: relative;
+    left: -100%;
+    top: 5%;
+}
+
+.member-page-avatar-position:hover {
+    color: #FFF;
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25));
+}
+
+.member-event-default {
+    font-family: $ff-t, $ff-h;
+    font-weight: 500;
+    color: $secondary; 
+    font-size: $fz-body;
+    text-align: center;
+}
+
+.member-event-info {
+    font-family: $ff-h, $ff-t;
+    font-weight: 700;
     color: $secondary;
-    font-size: $fz-body
+    font-size: $fz-subtitle
+}
+
+.member-event-info-2 {
+    font-size: 14px;
+    color:#3C3B67;
+}
+
+.member-event-field {
+    font: 400 16px var(--text-font), Arial, sans-serif;
+    color: #BDBDBD;
 }
 
 .btn-member {
     height: 32px;
     font:700 var(--text-font), Arial, sans-serif;
     border-radius: 10px;
+    position: relative;
+    width: 100%;
+    transition: .3s;
+    border-color: transparent;
+    color: #fff;
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25));
 }
 
 .btn-member:hover {
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
     color: #FFF;
     background-color: $primary
+}
+
+.btn-member:active {
+    left: 1px;
+    top: 1px;
+    filter: drop-shadow(2px 2px 0px transparent);
 }
 
 .btn-member-pri{
@@ -33,82 +92,6 @@
     height: 40px;
     font:700 18px var(--text-font), Arial, sans-serif;
     border-radius: 12px;
-}
-
-button {
-    position: relative;
-    transition: .3s;
-    border-color: transparent;
-    color: #fff;
-    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25));
-}
-
-button:hover {
-    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
-}
-
-button:active {
-    left: 1px;
-    top: 1px;
-    filter: drop-shadow(2px 2px 0px transparent);
-}
-
-.link {
-    font-family: $ff-t, $ff-h;
-    color: $secondary;
-    font-size: $fz-body;
-    border-color: $secondary;
-    text-decoration: none;
-    transition: .4s;
-}
-
-.link:hover {
-    font-family: $ff-t, $ff-h;
-    color: $primary;
-    font-size: $fz-body;
-    text-decoration: none
-}
-
-.alert-success {
-    color: $accent-blue;
-    background-color: $highlight;
-    border: $highlight;
-}
-
-.alert-error {
-    color: $alert;
-    background-color: $highlight;
-    border: $highlight;
-}
-
-.breadcrumb {
-    $breadcrumb-divider: none;
-}
-
-.breadcrumb-item-link {
-    border-radius: 15px;
-    padding: 3px 10px;
-    line-height: 30px;
-    text-decoration: none;
-    font-family: $ff-t, $ff-h;
-    color: $secondary;
-    background-color: $highlight
-}
-
-.breadcrumb-item-link:hover {
-    border-radius: 15px;
-    padding: 3px 10px;
-    line-height: 30px;
-    text-decoration: none;
-    font-family: $ff-t, $ff-h;
-    color: #fff;
-    background-color: $accent-blue
-}
-
-.fa-solid {
-    font-size: 30px;
-    text-align: center;
-    color: $secondary
 }
 
 .btn-member-sec {
@@ -125,32 +108,120 @@ button:active {
     color: #fff;
 }
 
+.btn-member-sent {
+    font:700 var(--text-font), Arial, sans-serif;
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    transition: .3s;
+    background-color: $bgc-L-l-70p;
+    border-color: transparent;
+    color: #fff;
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25));
+}
+
+.btn-member-sent:hover {
+    background-color: $bgc-L-l-70p;
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.25));
+}
+
+.btn-member-sent:active {
+    background-color: $bgc-L-l-70p;
+    content: none;
+}
+
+.member-link {
+    font-family: $ff-t, $ff-h;
+    color: $secondary;
+    font-size: $fz-body;
+    border-color: $secondary;
+    text-decoration: none;
+    transition: .4s;
+}
+
+.member-link:hover {
+    font-family: $ff-t, $ff-h;
+    color: $primary;
+    font-size: $fz-body;
+    text-decoration: none
+}
+
+.member-link-2 {
+    font-family: $ff-t, $ff-h;
+    color: #fff;
+    font-size: $fz-body;
+    text-decoration: none;
+    transition: .4s;
+}
+
+.member-link-2:hover {
+    font-family: $ff-t, $ff-h;
+    color: #fff;
+    font-size: $fz-body;
+    text-decoration: none;
+}
+
+// .breadcrumb {
+//     $breadcrumb-divider: none;
+// }
+
+// .breadcrumb-item-link {
+//     border-radius: 15px;
+//     padding: 3px 10px;
+//     line-height: 30px;
+//     text-decoration: none;
+//     font-family: $ff-t, $ff-h;
+//     color: $secondary;
+//     background-color: $highlight
+// }
+
+// .breadcrumb-item-link:hover {
+//     border-radius: 15px;
+//     padding: 3px 10px;
+//     line-height: 30px;
+//     text-decoration: none;
+//     font-family: $ff-t, $ff-h;
+//     color: #fff;
+//     background-color: $accent-blue
+// }
+
+// .fa-solid {
+//     font-size: 30px;
+//     text-align: center;
+//     color: $secondary
+// }
+
+// input[type=text], input[type=email], input[type=password], [type=date] {
+//     font: 400 16px var(--text-font), Arial, sans-serif;
+//     color: $bgc-D;
+//     border-radius: 10px;
+// }
+
+// input[type=text]::placeholder, input[type=email]::placeholder, input[type=password]::placeholder, [type=date]::placeholder{
+//     color:#BDBDBD;
+// }
+
+// input[type=text].error, input[type=email].error, input[type=password].error {
+//     outline: var(--alert-l) 2px solid;
+// }
+
 .input-2[type=text] {
     font: 400 16px var(--text-font), Arial, sans-serif;
     color: #3C3B6775;
     border-radius: 10px;
 }
 
-input[type=text], input[type=email], input[type=password], [type=date] {
-    font: 400 16px var(--text-font), Arial, sans-serif;
-    color: $bgc-D;
-    border-radius: 10px;
-}
-
-input[type=text]::placeholder, input[type=email]::placeholder, input[type=password]::placeholder, [type=date]::placeholder{
-    color:#BDBDBD;
-}
-
-input[type=text].error, input[type=email].error, input[type=password].error {
-    outline: var(--alert-l) 2px solid;
-}
-
-.form-control.is-invalid, .was-validated .form-control:invalid, .form-control.is-invalid:focus, .was-validated:focus .form-control:invalid:focus {
-    color: $alert;
-    outline: $alert 2px solid;
-}
+// .form-control.is-invalid, .was-validated .form-control:invalid, .form-control.is-invalid:focus, .was-validated:focus .form-control:invalid:focus {
+//     color: $alert;
+//     outline: $alert 2px solid;
+// }
 
 .memberBgCard {
-    outline: rgba(255, 255, 255, 0.5) 0.5px solid;
-    box-shadow: -7px -10px 7px -10px rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    border-radius: 30px;
+    backdrop-filter: blur(3px);
+    // outline: rgba(255, 255, 255, 0.5) 0.5px solid;
+    // box-shadow: -7px -10px 7px -10px rgba(255, 255, 255, 0.3);
 }
+
