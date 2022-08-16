@@ -23,14 +23,27 @@ import time_map from './imgs/time_map.svg';
 import back_to_center from './imgs/back_to_center.svg';
 import aboutus from './imgs/aboutus-star.svg';
 import mainpage_test from './imgs/mainpage_test.svg';
+import linkarrow from './imgs/linkarrow.svg';
 
 // 格子素材用圖片
-// import avatar01 from './imgs/avatar01.svg';
-// import avatar02 from './imgs/avatar02.svg';
-// import avatar03 from './imgs/avatar03.svg';
+import avatar01 from './imgs/avatar01.svg';
+import avatar02 from './imgs/avatar02.svg';
+import avatar03 from './imgs/avatar03.svg';
+import member_center from './imgs/member_center.svg';
+import myavatar from './imgs/myavatar.svg';
+import boxnews from './imgs/boxnews.svg';
+import boxevent from './imgs/boxevent.svg';
+import aboutusmap from './imgs/aboutusmap.svg';
+import member_center_list from './imgs/member_center_list.svg';
+import waiter01 from './imgs/waiter01.svg';
+import waiter02 from './imgs/waiter02.svg';
+import waiter03 from './imgs/waiter03.svg';
+import waiter04 from './imgs/waiter04.svg';
+import waiter05 from './imgs/waiter05.svg';
 
-// 放進box內的圖片
-import avartar01 from './imgs/mainpage-avatar01.png';
+// react icon
+import { TbPig } from 'react-icons/tb';
+import { AiOutlineHeart } from 'react-icons/ai';
 
 function MainPage(props) {
     // 原有MainPage code保留---------------------------
@@ -185,61 +198,61 @@ function MainPage(props) {
                     >
                         <img src={mainpage_center_logo} alt="" />
                     </div>
-
                     {/* 背景裝飾圖(中心) */}
                     <div className="xuan-mainpage-bg">
                         <img src={mainpage_test} alt="" />
                     </div>
-
                     {/* 背景裝飾上半部 */}
                     {/* <div className="bg-d-flex"> */}
                     {/* 背景裝飾圖(左上方) */}
                     {/* <div className="xuan-mainpage-bg-2">
                             <img src={mainpagebg_usual} alt="" />
                         </div> */}
-
                     {/* 背景裝飾圖(右上方) */}
                     {/* <div className="xuan-mainpage-bg-3">
                             <img src={mainpagebg_usual} alt="" />
                         </div>
                     </div> */}
-
                     {/* 背景裝飾下半部 */}
                     {/* <div className="bg-bottom-d-flex">
                         {/* 背景裝飾圖(左下方) */}
                     {/* <div className="xuan-mainpage-bg-bottomleft">
                             <img src={mainpagebg_usual} alt="" />
                         </div> */}
-
                     {/* 背景裝飾圖(右下方) */}
                     {/* <div className="xuan-mainpage-bg-bottomright">
                             <img src={mainpagebg_usual} alt="" />
                         </div>
                     </div>  */}
-
                     {/* ----其他方塊----- */}
-
                     {/* 轉生形象訂製 */}
-                    <div
-                        className="xuan-box xuan-box-avatar"
-                        onClick={() => {
-                            navigate('/showcase', {
-                                replace: true,
-                            });
-                        }}
-                    >
-                        <p>轉生形象訂製</p>
+                    <div className="xuan-box xuan-box-avatar">
+                        <div className="d-flex">
+                            <p>轉生形象訂製</p>
+                            <img
+                                src={linkarrow}
+                                alt=""
+                                className="link-arrow"
+                                onClick={() => {
+                                    navigate('/showcase', {
+                                        replace: true,
+                                    });
+                                }}
+                            />
+                        </div>
+
                         <div>
                             <img src={avatar_star} alt="" />
                         </div>
 
                         {/* TODO: 放轉生形象圖 */}
-                        <div></div>
+                        <div>
+                            <img src={myavatar} alt="" />
+                        </div>
                     </div>
-
                     {/* 會員中心 */}
                     {/* Hsin：調整了一下路徑的權限導向 */}
-                    <div
+                    {/* <div
                         className="xuan-box xuan-box-member"
                         onClick={() => {
                             {
@@ -260,9 +273,45 @@ function MainPage(props) {
                         </div>
 
                         {/* TODO: 放會員相關圖片 */}
-                        <div></div>
+                    {/* <div></div>
+                    </div> */}{' '}
+                    *{/* 會員中心 */}
+                    <div className="xuan-box xuan-box-member">
+                        <div>
+                            <img src={member_star} alt="" />
+                            <p>會員中心</p>
+
+                            {/* FIXME: 為什麼會員中心不能直接連？ */}
+                            <img
+                                src={linkarrow}
+                                alt=""
+                                className="link-arrow"
+                                onClick={() => {
+                                    {
+                                        authorized
+                                            ? navigate('/memberprofile', {
+                                                  replace: true,
+                                              })
+                                            : Swal.fire('請先登入會員');
+                                        navigate('/login', {
+                                            replace: true,
+                                        });
+                                    }
+                                }}
+                            />
+                        </div>
+
+                        {/* TODO: 放會員相關圖片 */}
+                        <div>
+                            <img src={member_center} alt="" />
+                        </div>
+                    </div>
+                    {/* 會員中心旁邊對話框XD */}
+                    <div className="xuan-member-list">
+                        <img src={member_center_list} alt="" />
                     </div>
 
+                    
                     {/* 投胎去！ */}
                     <div
                         className="xuan-box xuan-go-future"
@@ -273,17 +322,23 @@ function MainPage(props) {
                         <img src={go_future} alt="" />
                     </div>
 
+
                     {/* 良辰吉地 */}
-                    <div
-                        className="xuan-box xuan-time"
-                        onClick={() => {
-                            navigate('/Place', {
-                                replace: true,
-                            });
-                        }}
-                    >
+                    <div className="xuan-box xuan-time">
                         <div>
-                            <p className="xuan-title">良辰吉地</p>
+                            <div className="d-flex">
+                                <p className="xuan-title">良辰吉地</p>
+                                <img
+                                    src={linkarrow}
+                                    alt=""
+                                    className="link-arrow"
+                                    onClick={() => {
+                                        navigate('/memberprofile', {
+                                            replace: true,
+                                        });
+                                    }}
+                                />
+                            </div>
                             <img src={time_decorate} alt="" />
                         </div>
 
@@ -292,23 +347,37 @@ function MainPage(props) {
                         </div>
                     </div>
 
+
                     {/* 功德撲滿 */}
-                    <div
-                        className="xuan-box xuan-box-event"
-                        onClick={() => {
-                            navigate('/events', {
-                                replace: true,
-                            });
-                        }}
-                    >
-                        <p>功德撲滿</p>
-                        <div></div>
+                    <div className="xuan-box xuan-box-event">
+                        <div className="d-flex">
+                            <TbPig />
+                            <p>功德撲滿</p>
+
+                            <img
+                                src={linkarrow}
+                                alt=""
+                                className="link-arrow"
+                                onClick={() => {
+                                    navigate('/events', {
+                                        replace: true,
+                                    });
+                                }}
+                            />
+                        </div>
+
+                        <div>
+                            <img src={boxevent} alt="" />
+                        </div>
                     </div>
+
 
                     {/* 投生形象小格1 */}
                     <div className="xuan-box xuan-box-avatar-show1">
                         {/* 左邊白色框 */}
-                        <div>{/* <img src={avatar01} alt="" /> */}</div>
+                        <div>
+                            <img src={avatar01} alt="" />
+                        </div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
@@ -317,12 +386,17 @@ function MainPage(props) {
                             <p>膚色:粉 貓尾</p>
                             <p>總計3400</p>
                         </div>
+
+                        <AiOutlineHeart />
                     </div>
+
 
                     {/* 投生形象小格2 */}
                     <div className="xuan-box xuan-box-avatar-show2">
                         {/* 左邊白色框 */}
-                        <div>{/* <img src={avatar02} alt="" /> */}</div>
+                        <div>
+                            <img src={avatar02} alt="" />
+                        </div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
@@ -331,12 +405,17 @@ function MainPage(props) {
                             <p>膚色:粉 貓尾</p>
                             <p>總計3400</p>
                         </div>
+
+                        <AiOutlineHeart />
                     </div>
+
 
                     {/* 投生形象小格3 */}
                     <div className="xuan-box xuan-box-avatar-show3">
                         {/* 左邊白色框 */}
-                        <div>{/* <img src={avatar03} alt="" /> */}</div>
+                        <div>
+                            <img src={avatar03} alt="" />
+                        </div>
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
@@ -345,16 +424,21 @@ function MainPage(props) {
                             <p>膚色:粉 貓尾</p>
                             <p>總計3400</p>
                         </div>
+
+                        <AiOutlineHeart />
                     </div>
+
 
                     {/* 遊戲小格1 */}
                     <div className="xuan-box xuan-box-game-show1">
                         {/* 小格標題 */}
-                        <p className="xuan-subtitle">Game.01</p>
+                        {/* <p className="xuan-subtitle">Game.01</p> */}
+                        <p className="xuan-subtitle">陰德值小測驗</p>
 
                         {/* 底下圖片區域 */}
                         <div></div>
                     </div>
+
 
                     {/* 遊戲小格2 */}
                     <div className="xuan-box xuan-box-game-show2">
@@ -365,11 +449,30 @@ function MainPage(props) {
                         <div></div>
                     </div>
 
+
                     {/* 關於我們 */}
                     <div className="xuan-box xuan-box-aboutus">
-                        <img src={aboutus} alt="" />
-                        <p className="xuan-title">關於我們</p>
+                        <div>
+                            <img src={aboutus} alt="" />
+                            <p className="xuan-title">關於</p>
+                            <p className="xuan-title">我們</p>
+                            <img
+                                src={linkarrow}
+                                alt=""
+                                className="link-arrow"
+                                onClick={() => {
+                                    navigate('/aboutusfirst', {
+                                        replace: true,
+                                    });
+                                }}
+                            />
+                        </div>
+
+                        <div>
+                            <img src={aboutusmap} alt="" />
+                        </div>
                     </div>
+
 
                     {/* 最新消息 */}
                     <div className="xuan-box xuan-box-news">
@@ -377,11 +480,31 @@ function MainPage(props) {
                         <div>
                             <img src={aboutus} alt="" />
                             <p className="xuan-title">最新消息</p>
+                            <img
+                                src={linkarrow}
+                                alt=""
+                                className="link-arrow"
+                                onClick={() => {
+                                    navigate('/news', {
+                                        replace: true,
+                                    });
+                                }}
+                            />
                         </div>
 
                         {/* 底下圖片區域 */}
-                        <div></div>
+                        <div>
+                            <img src={boxnews} alt="" />
+                        </div>
                     </div>
+
+
+                    {/* 投放所服務員1 */}
+                    <div className="xuan-box-waiter-1">
+                        <img src={waiter01} alt="" />
+                        <p className="xuan-subtitle">投放所服務員</p>
+                    </div>
+
 
                     {/* ------- 左上區域 BOX ------- */}
                     <div className="xuan-box xuan-lefttop-1"></div>

@@ -85,13 +85,20 @@ router.get('/checkeventcart/:membersid?', async (req, res) => {
     res.json(results); //會獲得一個JSON包
 });
 
-// 取得評論資料 
+// 取得評論資料
 // 為什麼這用GET拿不到資料R？
 router.post('/eventcomment', async (req, res) => {
     const $sql = 'SELECT * FROM `event_comment` ';
 
     const [results] = await db.query($sql);
     // console.log(results);
+
+    results.forEach((comment) => {
+        comment.event_comment_date = dayjs(comment.event_comment_date).format(
+            'YYYY-MM-DD'
+        );
+    });
+
     res.json(results); //會獲得一個JSON包
 });
 
