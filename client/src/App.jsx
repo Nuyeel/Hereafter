@@ -250,7 +250,7 @@ function App() {
                                 {/* ============================== */}
                                 <Route
                                     path="/maker"
-                                    element={<Maker pageName="maker" />}
+                                    element={<Maker pageName="default" />}
                                 />
                                 {/* ============================== */}
                                 {/* 陰德值測驗路由 */}

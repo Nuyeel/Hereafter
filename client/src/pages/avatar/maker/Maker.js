@@ -6,6 +6,9 @@ import FaceView from './components/FaceView.js';
 import { useState, useContext, useEffect, useRef } from 'react';
 import AuthContext from '../../../context/AuthContext/AuthContext';
 import ThemeContext from '../../../context/ThemeContext/ThemeContext.js';
+import HeaderContext, {
+    headers,
+} from '../../../context/HeaderContext/HeaderContext';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { Avatar_GetData } from '../../../config/ajax-path';
@@ -13,10 +16,11 @@ import axios from 'axios';
 import gsap from 'gsap';
 import getDatestr from '../components/getDatestr.js';
 
-const Maker = () => {
+const Maker = (props) => {
+    const { pageName } = props;
     const [combination, setCombination] = useState({
         basic: [1, 1, 1],
-        basic_color: '0',
+        basic_color: 0,
         body: { hand: 0, foot: 0, tale: 0, special: 0 },
         special_color: { tale: 0, special: 0 },
         face: {
@@ -36,10 +40,11 @@ const Maker = () => {
     const [colorControlSwitch, setColorControlSwitch] = useState(0);
     const [avatar, setAvatar] = useState({ id: 0, time: '' });
     const navigate = useNavigate();
+    //Header的資料
+    const { setHeader } = useContext(HeaderContext);
+    //拉取訂單資料的前置作業
     const { authorized, sid } = useContext(AuthContext);
-    const member = JSON.parse(localStorage.getItem('auth'));
     const aid = sessionStorage.getItem('avatar_id');
-
     const getAvatarData = async () => {
         const postData = { id: sid, avatar_id: aid };
         const r = await axios.post(Avatar_GetData, postData);
@@ -50,15 +55,12 @@ const Maker = () => {
         setAvatar(avatarData);
         setCombination(oldCombination);
     };
-    useEffect(() => {
-        if (sid !== null && aid !== null) {
-            getAvatarData();
-        }
-        console.log('目前沒有訂單編號或未登入');
-    }, []);
+    //根據主題換色的context
     const { theme } = useContext(ThemeContext);
+
     const ContainerFluid = styled.div`
         margin: 0;
+        padding-top: 50px;
         box-sizing: border-box;
         position: absolute;
         left: 50%;
@@ -95,13 +97,19 @@ const Maker = () => {
     `;
     const Back = styled.div`
         position: absolute;
-        top: 5px;
-        right: 18px;
+        top: 8px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        z-index: 10;
+        text-align: center;
         cursor: pointer;
         i {
             font-size: 40px;
         }
     `;
+    //動畫的前置作業
+    //保存動畫結束狀態的鉤子
     const [keepChange, setKeepChange] = useState(false);
     const basicRef = useRef();
     const centerRef = useRef();
@@ -213,12 +221,28 @@ const Maker = () => {
             );
         }
     };
+    //抓取訂單舊資料 如果拉到null會直接不送 防止後端crash 更新訂單資料的方法在Center.js
+    useEffect(() => {
+        if (sid !== null && aid !== null) {
+            getAvatarData();
+        }
+        console.log('目前沒有訂單編號或未登入');
+    }, []);
+
+    //更換面板的動畫
     useEffect(() => {
         changeAnime();
     }, [controlChange]);
+
+    //回到衣櫥
     const backtoShowCase = () => {
         navigate('/showcase', { replace: true });
     };
+
+    // 設定 Header
+    useEffect(() => {
+        setHeader(headers[pageName]);
+    }, [pageName, setHeader]);
     return (
         <>
             <ContainerFluid>
@@ -257,12 +281,14 @@ const Maker = () => {
                         <CenterPart
                             keepChange={keepChange}
                             combination={combination}
+                            setCombination={setCombination}
                             controlChange={controlChange}
                             setControlChange={setControlChange}
                             setBodyControlChange={setBodyControlChange}
                             setFaceControlChange={setFaceControlChange}
                             setColorControlSwitch={setColorControlSwitch}
                             backtoShowCase={backtoShowCase}
+                            theme={theme}
                         />
                     </div>
                     <div

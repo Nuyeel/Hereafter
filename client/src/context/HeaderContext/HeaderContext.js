@@ -38,9 +38,9 @@ export const headers = {
     // TODO: 頁面名稱: {
     //     title: '行善積德小遊戲',
     // },
-    // TODO: 頁面名稱: {
-    //     title: '來生形象',
-    // },
+    showcase: {
+        title: '來生形象',
+    },
     place: {
         title: '良辰吉地',
     },
