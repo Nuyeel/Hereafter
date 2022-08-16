@@ -1,10 +1,18 @@
 @import '../../../styles/variables.scss';
 
 .otherStars{
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
 }  
+@keyframes star-sparkle{
+    0%   { opacity: 1;}
+    33%{opacity: 0.5;}
+    66%{opacity: 1;}
+    100%   { opacity:0.5 ;}
+} 
 .otherStar{
     position: relative;
   
@@ -66,8 +74,8 @@
     width: 20px;
     height: 20px;
     background: url(../introImg/otherStar/otherStar5.svg)center center no-repeat;
-    top: 55%;
-    left: 70%;
+    top: 65%;
+    left: 13%;
     background-size: contain;
     animation-duration: 1.5s;
 

@@ -1,5 +1,5 @@
 // Variables
-
+@import './clock.scss';
 $baseSize: 2vw;
 $baseTimeOrbit: 3s;
 $baseTimeRotation: 4s;
@@ -9,7 +9,7 @@ $colorOrbit: #9587E180;
 $colorOrbitBefore: #81A8E0;
 $colorOrbitAfter: #81A8E080;
   
-$ratioBackground: .25;
+$ratioBackground: 1;
 $ratioBorder: .05;
 $ratioShadow: .25;
 $ratioOrbit: .1;
@@ -22,8 +22,16 @@ $perspective: 400vw;
 // distance, ratioSize, ratioTimeOrbit, ratioTimeRotation, color, transform
 $planets: (
   ( 0, .3, 5, 1, #ffd700, ( 1, 1, 1 ) ),
-  ( 3.5, .5, .5, 1, #b5592a, ( 1, 0, 0 ) ), 
-  ( 4, .6, .3, 1, #774181, ( 0, 1, 0 ) ), 
+  ( 3.5, .5, .8, 1, #b5592a, ( 1, 0, 0 ) ), 
+  ( 4, .6, .5, 1, #774181, ( 0, 1, 0 ) ), 
+  ( 6, .9, .3, 1.2, #774181, ( 0, 0, 1 ) ), 
+  ( 8, .2, .7, 1.8, #e6c2ec, ( 0, 0, 1 ) ), 
+  ( -2, .1, 1.2, 1.6, #6beff4, ( 0, 0, 1 ) ), 
+  ( -5, .1, 1, 1.6, #c68ae6, ( 0, 0, 1 ) ), 
+  ( -2, .2, 4, 1.6, #f4c96b, ( 0, 0, 1 ) ), 
+
+
+
 );
 
 // Extends
@@ -81,19 +89,19 @@ $planets: (
 
 @mixin skin ( $size, $color )
 {
-  $colorShadow: lighten( $color, $lighten);
-  $colorBorder: darken( $color, $darken );
+  // $colorShadow: lighten( $color, $lighten);
+  // $colorBorder: darken( $color, $darken );
   
-  $sizeShadow: $size * $ratioShadow;
-  $boxShadow: 0 0 $sizeShadow $sizeShadow * .25 $colorShadow inset;
+  // $sizeShadow: $size * $ratioShadow;
+  // $boxShadow: 0 0 $sizeShadow $sizeShadow * .25 $colorShadow inset;
      
   &,
   &::before,
   &::after
   {
     background-color: rgba( $color, $ratioBackground );
-    border: $size * $ratioBorder solid $colorBorder;
-    box-shadow: $boxShadow;
+    // border: $size * $ratioBorder solid $colorBorder;
+    // box-shadow: $boxShadow;
   }
 }
 
@@ -141,7 +149,7 @@ $planets: (
 @mixin galaxyAnimation ( 
   $duration: 10s, 
   $distance: 5vw, 
-  $angle: 45deg,
+  $angle: 60deg,
   $animated: true,
   $reversed: false,
 )
@@ -255,9 +263,9 @@ $planets: (
 
 .yun-clock-container
 {
-  // border: 1px solid red;
-  width: 400px;
-  height: 300px;
+
+  width: 800px;
+  height: 600px;
 }
 
 .clockbody
@@ -267,9 +275,7 @@ $planets: (
   height: 100%;
 }
 
-.planet,
-.cube,
-.face
+.hours,.minutes,.seconds, .miliseconds
 {
   @extend %center;
   position: absolute;
@@ -296,7 +302,7 @@ $planets: (
   @include planets( $planets, $baseSize );
   
   @include galaxyAnimation();
-  
+  transform-origin: center center;
   transform-style: preserve-3d;
 }
 
@@ -351,13 +357,7 @@ $planets: (
   }
 }
 
-.needle{
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  // border: 2px solid red;
-}
+
 
 // Cube
 
@@ -376,6 +376,7 @@ $planets: (
   {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
   }
 
   &::before,
@@ -395,3 +396,29 @@ $planets: (
 
 }
 
+.hours{
+  width: 10px;
+  height: 5px;
+  // background-color: #fff;
+}
+.minutes{
+  width: 100px;
+  height: 5px;
+  background-color: rgb(127, 197, 229);
+  left: -60px; 
+
+}
+.seconds{
+  width: 200px;
+  height: 5px;
+  background-color: rgb(215, 99, 230);
+ 
+  left: -135px; 
+}
+.miliseconds{
+  width: 250px;
+  height: 5px;
+  background-color: rgb(227, 230, 148);
+  left: -240px; ;
+
+}

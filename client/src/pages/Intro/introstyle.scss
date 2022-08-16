@@ -1,13 +1,12 @@
 @import '../../styles/variables.scss';
-*{
-    font-family: $ff-t;
-}
+
 
 .intro-container{ 
     position: relative;
     top: -50px;
-    background-color: rgb(31, 35, 87);
+    background-color: #3C3B67;
     margin-bottom: -50px;
+    font-family: $ff-t;
 }
 
 @media screen and (min-width:768px) {
@@ -18,38 +17,70 @@
 }
 
 @keyframes intro-scroll-guide {
-    0%   {background-color: red;}
-    25%  {background-color: yellow;}
-    50%  {background-color: blue;}
-    100% {background-color: green;}
+    0%   {background-position-y: -21px;}
+    100% {background-position-y: 22px;}
   }
 
-  h2{ font-size: $fz-h4;
+.intro-h2{ font-size: $fz-h4;
     font-family: $ff-t;
-    color: rgb(223, 122, 122);
+    color: rgb(255, 255, 255);
+    line-height: 3.5rem;
+    letter-spacing: 0.2rem;
+    font-weight: 600;
 }
 
 .yun-fix-scroll{
     
-    background-color: #fff;
-    width: 50px;height: 50px;
+
+    width: 150px;height: 50px;
     position:fixed;
-    bottom: 5%;
+    bottom: 10%;
     right: 5%;
-    animation-name: intro-scroll-guide;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
+    text-align: center;
+    // background-color: rgb(218, 112, 112);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .yun-scroll-img{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(./introImg/arrow.svg)center center no-repeat;
+        margin-left: 5px;
+        background-size: contain;
+        animation: intro-scroll-guide 1.5s linear infinite;
+   
+        
+    }
+    p{  
+        display: inline-block;
+       
+        font-size: $fz-caption;
+        font-family: $ff-t;
+        color: rgb(255, 255, 255);
+        line-height: 2.5rem;
+        letter-spacing: 0.05rem;
+        font-weight: 600;
+    }
 }
+
 .yun-intro-skip{
     z-index: 10000;
     cursor: pointer;
-    width: 200px;
+    width: 80px;
     height: 20px;
-    background-color: yellow;
+   
     position: fixed;
     top: 5%;
     right: 5%;
 
+    p{
+        font-size: $fz-caption;
+        font-family: $ff-t;
+        color: $highlight;
+        font-weight: 600;
+    }
 }
 .yun-scroll-pls{
     height: 100%;
@@ -85,7 +116,7 @@
    
     width: 160px;
     height: 165px;  
-    background-color: rgb(31, 35, 87);
+    background-color: #3C3B67;
     border-radius: 100%; 
     animation: star-shine ease-in 2s infinite alternate-reverse;
 }
@@ -106,51 +137,163 @@
         font-size: 20px;
     }
 }
-@keyframes star-sparkle{
-    0%   { opacity: 1;}
-    33%{opacity: 0.5;}
-    66%{opacity: 1;}
-    100%   { opacity:0.5 ;}
-} 
 
+@keyframes hand-rotate{
+    0%   { transform: rotate(-15deg);}
+   
+    100%   { transform: rotate(-60deg)}
+} 
+.god-table{
+    width: 700px;
+    height: 120px;
+    // background-color: #fff;
+    border-bottom: 5px solid #fff;
+}
+
+.god-glass1{
+    width: 60px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.2);
+    background: url(./introImg/god/glass.svg)center center no-repeat;
+    background-size: contain;
+    overflow: hidden;
+    position: relative;
+}
+.god-glass1::before{
+    width: 45px;
+    height: 50px;
+    content:'';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8px;
+    background-color: rgb(146, 65, 189);
+    overflow: hidden;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%,10% 100%);
+
+
+}
+.glass-water{
+    position: relative;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%,10% 100%);
+
+    top: 50%;
+    width: 100%;
+    height: 60%;
+    background-color: rgb(180, 87, 177);
+}
+.god-glass2{
+    border: 1px solid red;
+    opacity: 0.2;
+    width: 250px;
+    height: 52px;
+    background: url(./introImg/god/glass2.svg)center center no-repeat;
+    background-size: contain;
+
+}
 .god-hand{
     // border:1px solid red;
     
     width: 60px;
-    height: 180px;
+    height: 160px;
     background: url(./introImg/god/god-hand.svg)center center no-repeat;
     background-size: contain;
+    transform-origin: right top;
+    // animation: hand-rotate ease 1s infinite alternate-reverse;
 }
+
+
 .god{
-   
+    // opacity: 0.5;
     width: 280px;
     height: 320px;
     background: url(./introImg/god/god.svg)center center no-repeat;
     background-size: contain;
 }
 .intro-box{
-    width: 350px;
-    height: 500px;
+  
+    width: 550px;
+    height: 600px;
     background-color: #fff;
 }
-.Mirror1{
-
-    width: 250px;
-    height: 280px;
-    background: url(./introImg/mirrorman/Mirror1.svg)center center no-repeat;
+.mirrorMan{
+    width: 210px;
+    height: 240px;
+    background: url(./introImg/mirrorman/MirrorMan.svg)center center no-repeat;
     background-size: contain;
 }
-.Mirror2{
-
-    width: 250px;
-    height: 280px;
-    background: url(./introImg/mirrorman/Mirror2.svg)center center no-repeat;
+.InsideMirror{
+    width: 120px;
+    height: 140px;
+    background: url(./introImg/mirrorman/inside1.svg)center center no-repeat;
     background-size: contain;
+}
+.mirrorEye{
+    width: 55px;
+    height: 22px;
+    background: url(./introImg/mirrorman/eyes.svg)center center no-repeat;
+    background-size: contain;
+}
+
+.mirrorEar{
+    
+    width: 100px;
+    height: 40px;
+    background: url(./introImg/mirrorman/catEar.svg)center center no-repeat;
+    background-size: contain;
+ 
+}
+.mirror1{
+
+    width: 240px;
+    height: 300px;
+   
+    background-size: contain;
+    border: 25px solid #3C3B67;
+    border-radius: 50%;
+
+}
+.mirror1::before{
+    content: '';
+    position: absolute;
+    width: 400px;
+    height:460px;
+
+    border-radius: 50%;
+
+    left: 0px;
+    top: 0px;
+    transform: translate(-80px,-80px);
+    border: 80px solid rgba(255, 255, 255);
+
+}
+.mirror1::after{
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    // border: 1pxsolid rgb(123, 252, 130);
+    left: 0px;
+    top: 300px;
+    background-color: rgb(255, 255, 255);
+
+
+}
+.intro-boxborder{
+    width: 550px;
+    height: 600px;
+    border-right: 80px solid #b7b6dc;
+    border-left: 80px solid #aeadd7;
+    border-top: 80px solid #cccce8;
+
+
+    border-bottom:120px solid #a3a3d3;
 }
 .intro-final-logo{
-    width: 280px;
-    height: 320px;
+    width: 490px;
+    height: 560px;
     background: url(./introImg/logo.svg)center center no-repeat;
     background-size: contain;
 
+    
 }
