@@ -224,7 +224,7 @@ router.get('/testevent/:membersid', async (req, res) => {
 
     results1.forEach((value) => {
         const mo = dayjs(value.order_created_at).format('YYYY-MM-DD');
-        value.start = mo;
+        value.order_created_at = mo;
     });
 
     results1.forEach((item) => {
@@ -244,6 +244,8 @@ router.get('/testevent/:membersid', async (req, res) => {
                     [results].forEach((value) => {
                         const mo = dayjs(value.start).format('YYYY-MM-DD');
                         value.start = mo;
+                        const mo2 = value.start_time.slice(0, 5);
+                        value.start_time = mo2;
                     });
 
                     // console.log(index);
@@ -260,7 +262,7 @@ router.get('/testevent/:membersid', async (req, res) => {
     }
 
     test().then(() => {
-        // console.log(results1);
+        console.log(results1);
         return res.json(results1);
     });
 });
@@ -317,7 +319,7 @@ const orders = {
     },
 };
 
-// 顯示資訊在前端頁面用
+// // 顯示資訊在前端頁面用
 router.get('/linepay/:id', (req, res) => {
     const { id } = req.params;
     const order = sampleData[id];

@@ -168,6 +168,8 @@ router
             hash,
         ]);
 
+        console.log(q3.insertId);
+
         const search = `SELECT * FROM member WHERE account = ?`;
         const [searchR] = await db.query(search, [req.body.account]);
 
@@ -207,29 +209,49 @@ router
         });
         const imgCreate = 'default.png';
 
-        const sqlcreate = `INSERT INTO showcase (member_sid, avatar_created_at, combination, combinationText, img_name, price) VALUES (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300), (?, NOW(), ?, ?, ?, 300)`;
-        const [rCreate] = await db.query(sqlcreate, [
-            sid,
-            combinationCreate,
-            combinationTextCreate,
-            imgCreate,
-            sid,
-            combinationCreate,
-            combinationTextCreate,
-            imgCreate,
-            sid,
-            combinationCreate,
-            combinationTextCreate,
-            imgCreate,
-            sid,
-            combinationCreate,
-            combinationTextCreate,
-            imgCreate,
+        const sqlcreate = `INSERT INTO showcase (member_sid, avatar_created_at, combination, combinationText, img_name, price) VALUES (?, NOW(), ?, ?, ?, 300)`;
+        const [rCreate_1] = await db.query(sqlcreate, [
             sid,
             combinationCreate,
             combinationTextCreate,
             imgCreate,
         ]);
+
+        console.log(rCreate_1.insertId);
+
+        const $create_profile_piture_sql = `
+            UPDATE member SET profile_picture=${rCreate_1.insertId} WHERE sid = ${sid}
+        `;
+
+        const [create_profile_piture_result] = await db.execute(
+            $create_profile_piture_sql
+        );
+
+        const [rCreate_2] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
+        const [rCreate_3] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
+        const [rCreate_4] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
+        const [rCreate_5] = await db.query(sqlcreate, [
+            sid,
+            combinationCreate,
+            combinationTextCreate,
+            imgCreate,
+        ]);
+
         output.success = true;
         output.error = '註冊成功';
 
@@ -374,24 +396,40 @@ router.route('/profile').get(async (req, res) => {
         error: '',
         code: 0,
         data: {},
+        placedata: {
+            country: '',
+            city: '',
+            dist: '',
+        },
     };
     const sql =
         'SELECT m.*, sc.img_name FROM member m JOIN showcase sc ON m.profile_picture = sc.avatar_id WHERE sid = ?';
     const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
-    console.log(q1);
-    q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
-    q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
+    // console.log(q1);
 
-    // const sql2 = 'SELECT * FROM `reborn_order` WHERE `member_sid = ?';
-    // const [[q2]] = await db.query(sql, [
-    //     req.body.member_sid,
-    //     req.body.avatar_id,
-    //     req.body.place_sid,
-    // ]);
-    // console.log(q2);
+    const sql2 = 'SELECT * FROM `member` WHERE sid = ?';
+    const [q2] = await db.query(sql2, [res.locals.loginUser.id]);
+    console.log(q2);
+
+    if (q2.birthdate) {
+        q2.birthdate = new Date(q2.birthdate).toISOString().slice(0, 10);
+    }
+    if (q2.deathdate) {
+        q2.deathdate = new Date(q2.deathdate).toISOString().slice(0, 10);
+    }
+
+    const sql3 =
+        'SELECT p.country, p.city, p.dist FROM place p JOIN place_in_cart pc ON p.sid = pc.place_sid  WHERE pc.member_sid = ? ORDER BY RAND() LIMIT 1';
+    const [q3] = await db.query(sql3, [res.locals.loginUser.id]);
+    console.log(q3[0]);
+
+    if (q3.length !== 0) {
+        output.placedata = q3[0];
+    }
 
     output.success = true;
     output.data = q1;
+    output.bithdatedata = q2;
     output.error = '成功取得資料';
 
     res.json(output);
