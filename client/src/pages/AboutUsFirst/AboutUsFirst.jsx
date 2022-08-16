@@ -73,7 +73,7 @@ function AboutUsFirst(props) {
                         <div className="ab-flag">
                             <Flag />
                             <h3 className="ab-title">
-                                <i class="fa-solid fa-moon"></i>
+                                <i className="fa-solid fa-moon"></i>
                                 服務內容
                             </h3>
                         </div>

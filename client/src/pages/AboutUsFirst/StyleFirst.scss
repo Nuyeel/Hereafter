@@ -13,7 +13,6 @@ margin-top: 20px;
 font-size: 18px;
 line-height: 2rem;
 letter-spacing: 1.5px;
-
 }
 .ab-a-wrap{
     height: 300px;
@@ -125,8 +124,8 @@ color: rgb(255, 255, 157);
 }
 
 @keyframes ab-startwo {
-    0%{scale: 1;opacity: 1;rotate: 0deg;}
-    100%{scale: 0;opacity: .5;rotate: 360deg;top: 80%;}
+    0%{opacity: 1;transform: scale(1);transform: rotate(0deg);}
+    100%{opacity: .5;transform: scale(1);transform: rotate(360deg);top: 80%;}
     
 }
 .ab-flag{
@@ -161,8 +160,8 @@ color: rgb(255, 255, 157);
     animation: ab-line .8s 20.5s ease backwards;
 }
 @keyframes ab-line{
-    0%{scale: 0;}
-    100%{scale: 1;}
+    0%{transform: scale(0);}
+    100%{transform: scale(1);}
 }
 .ab-c1{
     width: 55px;
