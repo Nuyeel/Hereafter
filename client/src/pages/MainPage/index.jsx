@@ -259,9 +259,7 @@ function MainPage(props) {
                     <div
                         className="xuan-box xuan-go-future"
                         onClick={() => {
-                            navigate('/login', {
-                                replace: true,
-                            });
+                            navigate('/nextlife');
                         }}
                     >
                         <img src={go_future} alt="" />
