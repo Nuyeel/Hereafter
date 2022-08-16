@@ -16,6 +16,8 @@ $widthMax: 768px;
             flex-direction: column;
             height: 70vh;
             max-height: 70vh;
+            margin-top: 0;
+            padding: 0 0 10px;
         }
 
         .reborn-cart-main-title {
@@ -24,6 +26,7 @@ $widthMax: 768px;
             margin-bottom: 10px;
             font-family: 'M PLUS Rounded 1c', Arial, 'Helvetica Neue', Helvetica,
                 sans-serif;
+            font-weight: bold;
         }
     }
 
@@ -44,21 +47,20 @@ $widthMax: 768px;
     @media screen and (max-width: $widthMax) {
         .select-ava {
             width: 100%;
-            height: 55%;
+            height: 54%;
         }
 
         .select-place {
             width: 100%;
-            height: 45%;
+            height: 42%;
         }
         .select-ava {
             border-right: none;
             border-bottom: 1px solid #fff;
             margin-bottom: 15px;
         }
-        .ava-img {
-            margin-bottom: 20px;
-        }
+
+        
     }
 
     .ava-wrap {
@@ -93,6 +95,26 @@ $widthMax: 768px;
         justify-content: center;
         align-items: center;
         gap: 5px;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #fff !important;
+        filter: drop-shadow(1px 1px 2px #3c3b67b3);
+    }
+
+    .soul-icon {
+        fill: #81a8e0;
+        width: 30px;
+    }
+
+    .price { 
+        span {
+            font-family: 'Noto Sans TC', Arial, sans-serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            line-height: 0px;
+            color: #81a8e0;
+        }
     }
 
     .ava-option {
@@ -153,25 +175,47 @@ $widthMax: 768px;
         }
     }
 
-    .swiper-button-next,
-    .swiper-button-prev {
-        color: #fff !important;
-        filter: drop-shadow(1px 1px 2px #3c3b67b3);
+    @media screen and (max-width: $widthMax) {
+        .price {
+            span {
+            font-size: 20px;
+            }
+        }
+
+        .soul-icon {
+            width: 25px;
+        }
+        .ava-wrap {
+            padding: 5px 0;
+        }
+
+        .ava-option {
+            .price {
+                padding: 0;
+                bottom: 15px;
+            }
+            .ava-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .ava-option-bg {
+                width: 100px;
+                height: 100px;
+                top: 30px;
+            }
+            .ava-option-bg-circle {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
     }
 
-    .soul-icon {
-        fill: #81a8e0;
-        width: 30px;
-    }
 
-    .price > span {
-        font-family: 'Noto Sans TC', Arial, sans-serif;
-        font-size: 24px;
-        letter-spacing: 2px;
-        line-height: 0px;
-        color: #81a8e0;
-    }
 
+
+    
     /* 良辰吉地 */
 
     .place-wrap {
@@ -179,25 +223,27 @@ $widthMax: 768px;
         height: 90%;
         width: 100%;
     }
+    
+    .place-options-box {
+        width: 100%;
+    }
 
     @media screen and (max-width: $widthMax) {
         .place-wrap {
-            padding: 20px 0;
-            width: 90vw;
+            padding: 0;
+            padding-top: 5px;
+            width: 100%;
+            height: 80%;
 
             // 改成可以scroll
             .place-options-box {
-                width: 90%;
-                height: 190px;
-                padding-right: 15px;
+                width: 100%;
+                height: 100%;
+                padding-right: 10px;
                 overflow-y: scroll;
                 overflow-x: hidden;
             }
         }
-    }
-
-    .place-options-box {
-        width: 100%;
     }
 
     .place-option-flex {
@@ -205,6 +251,27 @@ $widthMax: 768px;
         align-items: center;
         margin-bottom: 10px;
         height: 50px;
+    }
+
+    .place-option-flex.deleteAni {
+        animation: deleteAni .7s linear forwards;
+    }
+
+    @keyframes deleteAni {
+        0% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+        95% {
+            transform: translate(500%, 0);
+            opacity: 1;
+        }
+        96% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0;
+        }
     }
 
     .place-options-box.while-no-options {
@@ -238,6 +305,14 @@ $widthMax: 768px;
 
     @media screen and (max-width: $widthMax) {
         .place-wrap {
+            .place-option-flex {
+                margin-bottom: 5px;
+
+                svg {
+                    width: 28px;
+                }
+            }
+
             .place-options-box.while-no-options {
                 padding: 20px 0;
                 width: 100%;
@@ -372,139 +447,6 @@ $widthMax: 768px;
 
     .rwdBtn {
         display: none;
-    }
-
-    @media screen and (max-width: $widthMax) {
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: #fff;
-            border-radius: 10px;
-
-            /* border: 3px solid #ffffff; */
-        }
-
-        .reborn-order-wrap {
-            max-width: 90%;
-            flex-direction: column;
-            position: fixed;
-            z-index: 9;
-            bottom: -350px;
-            left: 5%;
-            height: 400px;
-            background-color: rgba(255, 255, 255, 1);
-            border: 2px solid #f3f59f;
-            padding: 0;
-            padding-bottom: 25px;
-            // animation: boxShowFromBottom;
-            transition: bottom 1s;
-
-            .reborn-order-card {
-                flex-direction: column;
-                width: 100%;
-                color: #3c3b67;
-
-                .reborn-order-card-title {
-                    padding: 10px;
-                    width: 100%;
-                    text-align: center;
-                    writing-mode: horizontal-tb;
-                    font-size: 16px;
-                    height: 45px;
-                    margin-bottom: 120px;
-                }
-
-                .reborn-order-card-title:hover {
-                    cursor: pointer;
-                    .rwdBtn {
-                        top: -25px;
-                        opacity: 1;
-                    }
-                }
-                .reborn-order-card-ava,
-                .reborn-order-card-place {
-                    display: none;
-                }
-
-                .reborn-order-card-summary {
-                    width: 80%;
-                    tfoot {
-                        td {
-                            border-top: 1px solid #3c3b67;
-                        }
-                    }
-                }
-                button.reborn-order-card-btn {
-                    width: 90%;
-                    height: 50px;
-                    display: flex;
-                    justify-content: center;
-                    p {
-                        writing-mode: horizontal-tb;
-                        line-height: 20px;
-                    }
-                }
-            }
-
-            .my-deed-wrap,
-            .deed-enough-wrap {
-                position: absolute;
-                top: 65px;
-                width: 40%;
-                font-size: 14px;
-                height: 100px;
-            }
-            .my-deed-wrap {
-                left: 8%;
-            }
-            .deed-enough-wrap {
-                right: 8%;
-            }
-            .my-deed-wrap-text,
-            .deed-enough-wrap-text {
-                font-size: 20px;
-            }
-
-            // 開合按鈕
-            .rwdBtn {
-                display: block;
-                width: 40px;
-                height: 40px;
-                background-color: #f3f59f;
-                border-radius: 10px;
-                position: absolute;
-                top: 20px;
-                left: 50%;
-                transform: translate(-50%);
-                opacity: 0;
-                transition: 0.3s;
-                z-index: -1;
-                color: #3c3b67;
-                font-size: 20px;
-            }
-        }
-        .box-show-ani {
-            // animation: boxShowFromBottom 3s linear forwards;
-            bottom: -25px;
-        }
-        .animate-reverse {
-            animation-direction: reverse;
-        }
-
-        @keyframes boxShowFromBottom {
-            from {
-                bottom: -350px;
-            }
-            to {
-                bottom: -25px;
-            }
-        }
     }
 
     .my-deed-wrap {
@@ -665,46 +607,190 @@ $widthMax: 768px;
     button.reborn-order-card-btn {
         border: none;
         background-color: #f3f59f;
-        padding: 15px 10px;
+        padding: 5px 10px;
         margin-right: 8px;
         height: 90%;
         border-radius: 12px;
         transition: 0.3s;
         width: fit-content;
         display: block;
+        transform: translate(0,0);
+        overflow: hidden;
 
-        > p {
+        p {
             writing-mode: vertical-lr;
             font: 600 20px 'M PLUS Rounded 1c', Arial, sans-serif;
             color: #6247f4;
-            letter-spacing: 1.5px;
+            letter-spacing: 2.5px;
             margin: 0;
             transform: translate(-2px, 0);
         }
 
         .exclamation-mark {
             font-size: 26px;
-            color: #6247f4;
+            color: #E384F2;
             transform: translate(-1px, 0);
         }
 
         &:hover {
             cursor: pointer;
-            transform: translate(-2px, -2px);
+            // transform: translate(-2px, -2px);
+            p, svg {
+                animation: btnMove .5s linear forwards;
+            }
         }
     }
 
-    .confirmRebornTextAni {
-        font-size: 20px;
-        font-weight: bold;
-        animation: textShow 3s linear forwards;
-    }
-    @keyframes textShow {
-        from {
-            opacity: 0;
+    @keyframes btnMove {
+        0% {
+            transform: translate(0,0);
         }
-        to {
-            opacity: 1;
+        50% {
+            transform: translate(100%,0);
+        }
+        51% {
+            transform: translate(-100%,0);
+        }
+        100% {
+            transform: translate(0,0);
+
+        }
+    }
+    
+    @media screen and (max-width: $widthMax) {
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #fff;
+            border-radius: 10px;
+
+            /* border: 3px solid #ffffff; */
+        }
+
+        .reborn-order-wrap {
+            max-width: 90%;
+            flex-direction: column;
+            position: fixed;
+            z-index: 9;
+            bottom: -350px;
+            left: 5%;
+            height: 400px;
+            background-color: rgba(255, 255, 255, 1);
+            border: 2px solid #f3f59f;
+            padding: 0;
+            // padding-bottom: 25px;
+            // animation: boxShowFromBottom;
+            transition: bottom 1s;
+
+            .reborn-order-card {
+                flex-direction: column;
+                width: 100%;
+                color: #3c3b67;
+                height: 100%;
+                padding-bottom: 25px;
+
+                .reborn-order-card-title {
+                    padding: 8px;
+                    width: 100%;
+                    text-align: center;
+                    writing-mode: horizontal-tb;
+                    font-size: 16px;
+                    height: 40px;
+                    margin-bottom: 120px;
+                }
+
+                .reborn-order-card-title:hover {
+                    cursor: pointer;
+                    .rwdBtn {
+                        top: -25px;
+                        opacity: 1;
+                    }
+                }
+                .reborn-order-card-ava,
+                .reborn-order-card-place {
+                    display: none;
+                }
+
+                .reborn-order-card-summary {
+                    width: 80%;
+                    tfoot {
+                        td {
+                            border-top: 1px solid #3c3b67;
+                        }
+                    }
+                }
+                button.reborn-order-card-btn {
+                    width: 90%;
+                    height: 50px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+
+                    p, svg {
+                        writing-mode: horizontal-tb;
+                        line-height: 20px;
+                    }
+                }
+            }
+
+            .my-deed-wrap,
+            .deed-enough-wrap {
+                position: absolute;
+                top: 65px;
+                width: 40%;
+                font-size: 14px;
+                height: 100px;
+            }
+            .my-deed-wrap {
+                left: 8%;
+            }
+            .deed-enough-wrap {
+                right: 8%;
+            }
+            .my-deed-wrap-text,
+            .deed-enough-wrap-text {
+                font-size: 20px;
+            }
+
+            // 開合按鈕
+            .rwdBtn {
+                display: block;
+                width: 40px;
+                height: 40px;
+                background-color: #f3f59f;
+                border-radius: 10px;
+                position: absolute;
+                top: 20px;
+                left: 50%;
+                transform: translate(-50%);
+                opacity: 0;
+                transition: 0.3s;
+                z-index: -1;
+                color: #3c3b67;
+                font-size: 20px;
+            }
+        }
+        .box-show-ani {
+            // animation: boxShowFromBottom 3s linear forwards;
+            bottom: -25px;
+        }
+        .animate-reverse {
+            animation-direction: reverse;
+        }
+
+        @keyframes boxShowFromBottom {
+            from {
+                bottom: -350px;
+            }
+            to {
+                bottom: -25px;
+            }
         }
     }
 }

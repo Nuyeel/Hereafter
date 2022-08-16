@@ -22,31 +22,6 @@ $maxWidth: 376px;
         gap: 10px;
     }
 
-    @media screen and (max-width: $maxWidth) {
-        .place-map-wrap {
-            max-height: 60vh;
-            height: 60vh;
-        }
-        .map-list-wrap {
-            flex-direction: column-reverse;
-            justify-content: start;
-
-            .place-map {
-                width: 100%;
-                height: 70%;
-            }
-            .place-sideList {
-                width: 100%;
-                height: 30%;
-            }
-
-            .place-btns-wrap {
-                margin-top: 0;
-                transform: translate(1px, -2px);
-            }
-        }
-    }
-
     // 地圖map旁列表 and 手機板?
     .place-sideList {
         max-height: 55vh;
@@ -139,6 +114,7 @@ $maxWidth: 376px;
             }
         }
     }
+
     .place-map {
         height: 100%;
         width: 78%;
@@ -269,8 +245,9 @@ $maxWidth: 376px;
         position: relative;
         background-color: #6289bf;
         z-index: 9999;
-        left: 40%;
+        left: 50%;
         top: 5px;
+        transform: translate(-50%,0);
         padding: 5px;
         border-radius: 10px;
         opacity: 0.8;
@@ -279,6 +256,50 @@ $maxWidth: 376px;
 
         &:hover {
             opacity: 1;
+        }
+    }
+
+    @media screen and (max-width: $maxWidth) {
+        .place-map-wrap {
+            max-height: 55vh;
+            height: 55vh;
+        }
+        .filter-row {
+            margin: 5px 0 !important;
+        }
+
+        .map-list-wrap {
+            // flex-direction: column-reverse;
+            // justify-content: start;
+            flex-direction: column-reverse;
+            justify-content: start;
+
+            .place-map {
+                width: 100%;
+                height: 100%;
+            }
+            .place-sideList {
+                display: none;
+            }
+
+            .place-btns-wrap {
+                margin-top: 0;
+                transform: translate(1px, -2px);
+            }
+
+            // .place-map {
+            //     width: 100%;
+            //     height: 70%;
+            // }
+            // .place-sideList {
+            //     width: 100%;
+            //     height: 30%;
+            // }
+
+            // .place-btns-wrap {
+            //     margin-top: 0;
+            //     transform: translate(1px, -2px);
+            // }
         }
     }
 }

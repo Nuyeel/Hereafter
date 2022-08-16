@@ -17,28 +17,7 @@ $maxWidth: 376px;
         }
     }
 
-    @media screen and (max-width: $maxWidth) {
-        .time-news-row {
-            font-size: 14px;
-        }
-        .rwd-filter-btn-row {
-            width: fit-content;
-            padding: 4px 5px;
-            background-color: rgba(197, 190, 235, 0.5);
-            border-radius: 10px;
-            border: 2px solid rgba(0, 0, 0, 0.4);
-        }
-
-        .filter-row {
-            height: 0;
-            overflow: hidden;
-            transition: height 1s;
-        }
-
-        .filter-row.filterRowShow {
-            height: 78px;
-        }
-    }
+   
 
     .dark-bg-50 {
         height: 40px;
@@ -91,7 +70,6 @@ $maxWidth: 376px;
         }
     }
 
-    /* 我的收藏按鈕 */
 
     .place-btn {
         padding: 8px 15px;
@@ -103,23 +81,33 @@ $maxWidth: 376px;
         align-items: center;
     }
 
-    .likedPageBtn {
-        background-color: #f3f59f;
-        color: #505050;
-        font-size: 16px;
-        font-family: 'M PLUS Rounded 1c' sans-serif;
-        border-radius: 10px;
-        transition: 0.3s;
-
-        &:hover {
-            cursor: pointer;
-            background-color: #b7dfd3;
-        }
-    }
-
     /* 篩選區 */
     .filter-wrap {
         height: 40px;
+    }
+
+    @media screen and (max-width: $maxWidth) {
+        .time-news-row {
+            font-size: 14px;
+        }
+        .rwd-filter-btn-row {
+            width: fit-content;
+            padding: 4px 5px;
+            background-color: rgba(197, 190, 235, 0.5);
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.4);
+        }
+
+        .filter-row {
+            height: 0;
+            overflow: hidden;
+            transition: height 1s;
+        }
+
+        .filter-row.filterRowShow {
+            height: 78px;
+            overflow: visible;
+        }
     }
 
     .place-filter {
@@ -146,7 +134,7 @@ $maxWidth: 376px;
             flex: 1;
             padding: 0 10px;
             margin: 2px;
-            color: #2c3e50;
+            color: #3C3B67;
             font-size: 14px;
             font-weight: bold;
             background-color: rgba(197, 190, 235, 0.5);
@@ -182,7 +170,7 @@ $maxWidth: 376px;
             // background-color: #34495e;
             transition: 0.25s all ease;
             pointer-events: none;
-            font-size: 10px;
+            font-size: 6px;
             color: #2c3e50;
         }
         /* Transition */
@@ -412,17 +400,20 @@ $maxWidth: 376px;
         font-weight: normal;
     }
 
+    html{
+        scroll-behavior: auto;
+    }
     /* custom scroll bar */
     ::-webkit-scrollbar {
-        width: 5px;
+        width: 8px;
     }
 
     ::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
     }
 
     ::-webkit-scrollbar-thumb {
-        background-color: #fff;
+        background-color: #E384F280;
         border-radius: 10px;
 
         /* border: 3px solid #ffffff; */
@@ -455,12 +446,56 @@ $maxWidth: 376px;
         }
     }
 
+    
+    input[type='radio'] {
+        appearance: none;
+        background-color: rgba(255, 255, 255, 0);
+        margin: 0;
+        width: 1em;
+        height: 1em;
+        border: 0.15em solid rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        display: grid;
+        place-content: center;
+
+        &:checked {
+            border-color: #ce59e7;
+            box-shadow: 1em 1em 1em #efbbfbc1;
+        }
+
+        &::before {
+            content: '';
+            width: 0.4em;
+            height: 0.4em;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em #ce59e7;
+        }
+
+        &:checked::before {
+            transform: scale(1);
+        }
+    }
+
     .place-list {
         padding: 5px 10px 5px 0;
-        overflow-y: scroll;
+        // overflow-y: scroll;
+        overflow-y: hidden;
         overflow-x: hidden;
         flex-grow: 1;
         flex-shrink: 1;
+    }
+
+    .liked-page {
+        margin-top: 10px;
+        .place-list {
+            overflow-y: scroll;
+            padding-right: 10px;
+        }
+        .place-card-map-icon {
+            display: none;
+        }
     }
 
     .list-card.listCardDisappear {
@@ -549,6 +584,14 @@ $maxWidth: 376px;
     }
 
     @media screen and (max-width: $maxWidth) {
+        .place-list-wrap {
+            padding: 10px 15px;
+        }
+
+        .place-list {
+            padding: 5px 0 5px;
+        }
+
         .list-card {
             width: 100%;
             height: fit-content;
@@ -747,28 +790,6 @@ $maxWidth: 376px;
         }
     }
 
-    /* hover提示 */
-    // .hover-text {
-    //     position: relative;
-
-    //     &::before {
-    //         content: attr(data-hover);
-    //         opacity: 0;
-    //         width: fit-content;
-    //         height: fit-content;
-    //         background-color: rgba(0, 0, 0, 0.6);
-    //         color: #fff;
-    //         text-align: center;
-    //         border-radius: 5px;
-    //         padding: 5px 0;
-    //         transition: 0.3s;
-    //         position: absolute;
-    //         z-index: 5;
-    //         left: 0;
-    //         // top: 110%;
-    //     }
-    // }
-
     /* 地圖檢視按鈕 */
     .foot-view-map {
         position: absolute;
@@ -780,6 +801,10 @@ $maxWidth: 376px;
         z-index: 99;
         width: fit-content;
         cursor: pointer;
+
+        @media screen and (max-width: $maxWidth) {
+            bottom: -10px;
+        }
     }
 
     .viewMapBtn {
@@ -823,34 +848,6 @@ $maxWidth: 376px;
         }
     }
 
-    input[type='radio'] {
-        appearance: none;
-        background-color: rgba(255, 255, 255, 0);
-        margin: 0;
-        width: 1em;
-        height: 1em;
-        border: 0.15em solid rgba(255, 255, 255, 0.6);
-        border-radius: 50%;
-        display: grid;
-        place-content: center;
 
-        &:checked {
-            border-color: #ce59e7;
-            box-shadow: 1em 1em 1em #efbbfbc1;
-        }
 
-        &::before {
-            content: '';
-            width: 0.4em;
-            height: 0.4em;
-            border-radius: 50%;
-            transform: scale(0);
-            transition: 120ms transform ease-in-out;
-            box-shadow: inset 1em 1em #ce59e7;
-        }
-
-        &:checked::before {
-            transform: scale(1);
-        }
-    }
 }

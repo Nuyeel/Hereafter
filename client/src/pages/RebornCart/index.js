@@ -1,9 +1,10 @@
-import { Fragment, useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { BsExclamation, BsPatchPlusFill, BsPatchPlus } from 'react-icons/bs';
 import { HiChevronDoubleUp, HiChevronDoubleDown } from 'react-icons/hi';
+import { GoArrowRight } from 'react-icons/go';
 import Swal from 'sweetalert2';
 import AvatarSwiper from './components/AvatarSwiper';
 
@@ -117,12 +118,13 @@ function RebornCart(props) {
                 .closest('.place-option-flex')
                 .getAttribute('data-placesid')
         );
+        const delElement = e.currentTarget.closest('.place-option-flex');
         const [delPlace] = cartPlaceList.filter((v) => v.sid === placeIndex);
 
         // 確認是否要刪除 confirm popup
         Swal.fire({
             title: '移出轉生購物車',
-            html: `<h5>是否確認將 <span style='color: #FF52BA'>${delPlace.year}年 ${delPlace.month}月 於 ${delPlace.country}</span> 轉生的選項移出購物車？<h5>`,
+            html: `<h5>是否確認將 <span style='color: #FF52BA'>${delPlace.year}年 ${delPlace.month}月 於 ${delPlace.country} 轉生</span><br/>的選項移出購物車？<h5>`,
             imageUrl: soulIconAlert,
             imageHeight: 50,
             imageWidth: 50,
@@ -131,11 +133,18 @@ function RebornCart(props) {
             denyButtonText: '再等一下',
         }).then((result) => {
             if (result.isConfirmed) {
-                removePlaceFromCartDatabase(placeIndex);
-                Swal.fire({
-                    title: '成功移除',
-                    timer: 1000,
-                });
+                delElement.classList.add('deleteAni');
+
+                setTimeout(() => {
+                    // Swal.fire({
+                    //     title: '成功移除',
+                    //     timer: 1000,
+                    // });
+                    removePlaceFromCartDatabase(placeIndex);
+                }, 500);
+                setTimeout(() => {
+                    delElement.classList.remove('deleteAni');
+                }, 800);
             } else if (result.isDenied) {
                 console.log('Nooooooo!');
             }
@@ -487,10 +496,6 @@ function RebornCart(props) {
                                             <div className="ava-option-bg"></div>
                                             <div className="ava-option-bg-circle"></div>
                                         </div>
-                                        {/* <img
-                                            src={`http://localhost:3500/uploads/images/avatar/${avatarData[selectedAvatarInd].img_name}`}
-                                            alt=""
-                                        /> */}
                                     </>
                                 )}
                             </div>
@@ -578,8 +583,9 @@ function RebornCart(props) {
                                 className="reborn-order-card-btn"
                                 onClick={submitRebornOrder}
                             >
+                                <GoArrowRight className="exclamation-mark" />
                                 <p>轉生去</p>
-                                <BsExclamation className="exclamation-mark" />
+                                <GoArrowRight className="exclamation-mark" />
                             </button>
                         </div>
                     </div>
