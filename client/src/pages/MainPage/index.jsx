@@ -238,12 +238,20 @@ function MainPage(props) {
                     </div>
 
                     {/* 會員中心 */}
+                    {/* Hsin：調整了一下路徑的權限導向 */}
                     <div
                         className="xuan-box xuan-box-member"
                         onClick={() => {
-                            navigate('/login', {
-                                replace: true,
-                            });
+                            {
+                                authorized
+                                    ? navigate('/memberprofile', {
+                                          replace: true,
+                                      })
+                                    : Swal.fire('請先登入會員');
+                                navigate('/login', {
+                                    replace: true,
+                                });
+                            }
                         }}
                     >
                         <div>
