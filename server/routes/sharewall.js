@@ -374,6 +374,11 @@ router.route('/').get(async (req, res) => {
                     }
 
                     // console.log(collectString);
+
+                    if (!collect_results.length) {
+                        return res.json([]);
+                    }
+
                     $search_sql += ` AND t1.share_post_sid IN (${collectString}) `;
                 }
             }
@@ -452,6 +457,10 @@ router.route('/').get(async (req, res) => {
                     const [collect_results] = await db.query($collect_sql, [
                         res.locals.loginUser.id,
                     ]);
+
+                    if (!collect_results.length) {
+                        return res.json([]);
+                    }
 
                     // console.log(collect_results);
 
