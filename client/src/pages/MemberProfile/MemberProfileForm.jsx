@@ -10,32 +10,30 @@ import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import LoginForm from '../Login/LoginForm';
 import { ReactComponent as NavSoul } from '../../images/Nav/nav_soul.svg';
 
 function MemberProfileForm() {
     const [mainProfile, setMainProfile] = useState({
         name: '',
         account: '',
-        birthdate: '',
-        deathdate: '',
         gooddeed_score: '',
         profile_picture: '',
+    });
+
+    const [dateData, setDateData] = useState({
+        birthdate: '',
+        deathdate: '',
+    })
+
+    const [placeData, setPlaceData] = useState({
+        country: '',
+        city: '',
+        dist: '',
     });
 
     const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
-
-    const handleFieldsChange = (e) => {
-        const id = e.target.id;
-        const val = e.target.value;
-        // console.log({ id, val });
-        setMainProfile((prevState) => ({
-            ...prevState,
-            [id]: val,
-        }));
-    };
 
     const fetchMemberData = async () => {
         console.log('fetch start');
@@ -48,12 +46,16 @@ function MemberProfileForm() {
 
         const result = await r.json();
         console.log(result);
+
         setMainProfile(result.data);
+        setPlaceData(result.placedata);
+        setDateData(result.bithdatedata);
     };
 
     useEffect(() => {
         fetchMemberData();
     }, []);
+    // const { country, city, dist} = placeData;
 
     return (
         <>
@@ -144,7 +146,7 @@ function MemberProfileForm() {
                                                                             <div className="card-text ">
                                                                                 出生日：
                                                                                 {
-                                                                                    mainProfile.birthdate
+                                                                                    dateData.birthdate
                                                                                 }
                                                                             </div>
                                                                         ) : (
@@ -157,7 +159,7 @@ function MemberProfileForm() {
                                                                             <div className="card-text ">
                                                                                 往生日：
                                                                                 {
-                                                                                    mainProfile.deathdate
+                                                                                    dateData.deathdate
                                                                                 }
                                                                             </div>
                                                                         ) : (
@@ -244,7 +246,17 @@ function MemberProfileForm() {
                                                                             預定轉生位置為：
                                                                         </h5>
                                                                         <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                            {/* <div className=""></div> */}
+                                                                            <div className="">
+                                                                                {
+                                                                                    placeData.country
+                                                                                }
+                                                                                {
+                                                                                    placeData.city
+                                                                                }
+                                                                                {
+                                                                                    placeData.dist
+                                                                                }
+                                                                            </div>
                                                                         </div>
                                                                         <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
                                                                             <Link
