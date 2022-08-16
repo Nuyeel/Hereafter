@@ -70,7 +70,7 @@ function AvatarCard(props) {
                         {(combination.special ? '尾:' : '腳:') +
                             combinationText.foot}{' '}
                         {combination.body.special
-                            ? `尾色:${combinationText.specialColor}`
+                            ? `  尾色:${combinationText.specialColor}`
                             : null}
                         <br />
                         眼:{combinationText.eye} 瞳色:{combinationText.eyeColor}
@@ -84,16 +84,14 @@ function AvatarCard(props) {
                         {combinationText.noseColor}
                         <br />
                         耳朵:
+                        {combinationText.ear}
                         {combination.face.topEar
-                            ? combinationText.topEar
-                            : combinationText.ear}
-                        {combination.face.topEar
-                            ? `尾色:${combinationText.topearColor}`
+                            ? `  顏色:${combinationText.topearColor}`
                             : null}
                         <br />
                         獸尾:{combinationText.tale}
                         {combination.body.tale
-                            ? `尾色:${combinationText.taleColor}`
+                            ? `  尾色:${combinationText.taleColor}`
                             : null}
                     </p>
 
