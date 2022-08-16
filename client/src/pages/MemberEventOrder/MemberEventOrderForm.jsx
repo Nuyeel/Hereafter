@@ -117,7 +117,7 @@ function MemberProfileForm() {
                                                                 功德撲滿訂單
                                                             </div>
                                                             {/* 這段是二路測試用 */}
-                                                            <div className="member-event-bg">
+                                                            <div className="">
                                                                 <EventHistory />
                                                             </div>
                                                         </div>

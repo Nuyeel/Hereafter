@@ -1,6 +1,8 @@
-import { useState, useEffect, Suspense, createRef } from 'react';
+import { useState, useEffect, useContext, Suspense, createRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Stats } from '@react-three/drei';
+// import { Stats } from '@react-three/drei';
+
+import MeshContext from '../../../../context/MeshContext/MeshContext';
 
 import SceneSample from './SceneSample';
 
@@ -8,13 +10,14 @@ import './NextLifeSample.scss';
 
 function NextLifeSample(props) {
     const {
-        meshesData,
         cubeAnimationState,
         setCubeAnimationState,
         setNextLifeStage,
         sampleIsHidden,
         setSampleIsHidden,
     } = props;
+
+    const meshesData = useContext(MeshContext);
 
     // 有空再統一搬去父層
     const [dimensions, setDimensions] = useState({
@@ -96,25 +99,27 @@ function NextLifeSample(props) {
                     sampleIsHidden ? 'isHidden' : 'isShown'
                 }`}
             >
-                <Canvas
-                    camera={{
-                        fov: 70,
-                        near: 0.1,
-                        far: 10000,
-                        position: [0, 150, 100],
-                    }}
-                >
-                    <Suspense fallback={null}>
-                        <SceneSample
-                            eachCubeSize={eachCubeSize}
-                            ref={indexRef}
-                            meshesData={meshesData}
-                            cubeAnimationState={cubeAnimationState}
-                            setCubeAnimationState={setCubeAnimationState}
-                        />
-                        <Stats />
-                    </Suspense>
-                </Canvas>
+                {
+                    <Canvas
+                        camera={{
+                            fov: 70,
+                            near: 0.1,
+                            far: 10000,
+                            position: [0, 150, 100],
+                        }}
+                    >
+                        <Suspense fallback={null}>
+                            <SceneSample
+                                eachCubeSize={eachCubeSize}
+                                ref={indexRef}
+                                meshesData={meshesData}
+                                cubeAnimationState={cubeAnimationState}
+                                setCubeAnimationState={setCubeAnimationState}
+                            />
+                            {/* <Stats /> */}
+                        </Suspense>
+                    </Canvas>
+                }
             </div>
         </>
     );

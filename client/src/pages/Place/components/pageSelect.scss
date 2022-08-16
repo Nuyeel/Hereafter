@@ -1,5 +1,10 @@
 .header-container-place {
     height: 76px;
+    @media screen and (max-width: 375px) {
+        &.header-container {
+            margin: 0;
+        }
+    }
 }
 
 .place-page-select {
@@ -18,8 +23,12 @@
     list-style: none;
     transition: 0.5s;
     overflow: hidden;
-    width: 150px;
+    width: 140px;
     height: fit-content;
+
+    @media screen and (max-width: 375px) {
+        margin: 0 0 0 20px;
+    }
 
     &.place-light {
         border-color: #3c3b67;
@@ -42,7 +51,8 @@
         }
     }
 
-    &:hover {
+    // &:hover,
+    &.open {
         padding-bottom: 76px;
         cursor: pointer;
 
@@ -53,7 +63,7 @@
 
     li.show-page {
         display: inline-block;
-        padding: 10px 24px;
+        padding: 10px 22px;
         width: 100%;
     }
 
@@ -94,3 +104,5 @@
         justify-content: space-between;
     }
 }
+
+

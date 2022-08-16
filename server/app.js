@@ -47,6 +47,7 @@ const eventsRouter = require(`${__dirname}/routes/events`);
 const eventcartsRouter = require(`${__dirname}/routes/eventcarts`);
 const avatarRouter = require(`${__dirname}/routes/avatar`);
 const gooddeedRouter = require(`${__dirname}/routes/gooddeed`);
+const nextlifeRouter = require(`${__dirname}/routes/nextlife`);
 const newsRouter = require(`${__dirname}/routes/news`);
 
 // 設定路由比對時重視大小寫
@@ -166,6 +167,7 @@ app.use((req, res, next) => {
 app.use('/test', testRouter);
 app.use('/api/member', memberRouter);
 app.use('/api/sharewall', sharewallRouter);
+app.use('/api/nextlife', nextlifeRouter);
 // TODO: 組員新增路由 Step 3. 在路由宣告的位址撰寫自己的 RESTful API
 
 // 二路 - 活動頁面路由
@@ -177,6 +179,9 @@ app.use('/eventcarts', eventcartsRouter);
 app.use('/api/place', placeRouter);
 // 轉生購物車
 app.use('/api/reborn-cart', rebornRouter);
+
+// 陰德值心理測驗
+app.use('/api/gooddeed', gooddeedRouter);
 
 //來生形象更新
 app.use('/avatar', avatarRouter);

@@ -246,11 +246,11 @@ function MemberProfileForm() {
                                                                 <div className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card">
                                                                     <div className="card-body d-flex flex-column member-page-card">
                                                                         {/* TODO：有無良辰吉地的呈現方式 */}
-                                                                        {placeData ? (
+                                                                        {country && city && dist ? (
                                                                             <>
                                                                                 <h5 className="card-title member-page-field">
                                                                                     ★
-                                                                                    您選取的轉生地點：
+                                                                                    您感興趣的轉生地點
                                                                                 </h5>
                                                                                 <div className="mb-md-0 p-md-4 d-flex flex-row justify-content-center">
                                                                                     <div className="member-page-place">

@@ -6,9 +6,6 @@ function PlaceFilterSelect(props) {
         setCountryFilter,
         cityFilter,
         setCityFilter,
-        rawPlaceData,
-        filtByCountry,
-        setPlaceDisplay,
         countryFilterData,
     } = props;
 
@@ -27,10 +24,9 @@ function PlaceFilterSelect(props) {
                         if (nowCountry === 'all') {
                             // const newPlaceData = [...rawPlaceData];
                             setCountryFilter('all');
-                            // setPlaceDisplay(newPlaceData);
+                            setCityFilter('all');
                         } else {
                             setCountryFilter(nowCountry);
-                            // filtByCountry(nowCountry, null);
                         }
                     }}
                 >
@@ -60,10 +56,8 @@ function PlaceFilterSelect(props) {
                             const nowCity = e.target.value;
                             if (nowCity === 'all') {
                                 setCityFilter('all');
-                                // filtByCountry(countryFilter, null);
                             } else {
                                 setCityFilter(nowCity);
-                                // filtByCountry(countryFilter, nowCity);
                             }
                         }}
                     >

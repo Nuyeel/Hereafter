@@ -31,9 +31,9 @@
 }
 
 .member-page-card {
-    background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
+    // background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
     background-repeat: no-repeat;
-    // background-color: #f3f3f3;
+    background-color: #f3f3f3;
     border: none;
     overflow: hidden;
 }
@@ -109,6 +109,10 @@
     background-repeat: no-repeat;
     border-radius: 25px;
 	// background-color: $secondary;
+}
+
+.member-loading {
+    overflow: hidden;
 }
 
 .btn-member {

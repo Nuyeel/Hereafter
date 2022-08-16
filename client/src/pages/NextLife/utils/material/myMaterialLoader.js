@@ -1,8 +1,6 @@
 import boxMap from '../box/boxMap';
 import shaderMap from '../shader/shaderMap';
 
-import myTextureLoader from '../texture/myTextureLoader';
-
 function myMaterialLoader(boxID, textureItem) {
     // 預設值先給所有時間和動畫類型變數
     const material = {

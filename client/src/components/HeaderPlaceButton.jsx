@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../pages/Place/components/pageSelect.scss';
 
-import { IoPersonCircleSharp, IoCaretDown } from 'react-icons/io5';
+import { IoCaretDown, IoCaretUp } from 'react-icons/io5';
 
 import ThemeContext from '../context/ThemeContext/ThemeContext';
 
@@ -12,19 +12,29 @@ function HeaderPlaceButton() {
     const navigate = useNavigate();
 
     const [pageSelect, setPageSelect] = useState('place-list');
+    const [openMenu, setOpenMenu] = useState(false);
 
     return (
         <div
             className={
                 theme.title === 'light'
-                    ? 'place-page-select place-light'
+                    ? openMenu
+                        ? 'place-page-select place-light open'
+                        : 'place-page-select place-light'
+                    : openMenu
+                    ? 'place-page-select open'
                     : 'place-page-select'
             }
         >
-            <li className="show-page">
+            <li className="show-page" onClick={() => setOpenMenu(!openMenu)}>
                 <span className="page-select-link">
                     {pageSelect === 'place-list' ? '列表' : '我的收藏'}
-                    <IoCaretDown className="dropDown-icon" />
+                    {/* <IoCaretDown className="dropDown-icon" /> */}
+                    {openMenu ? (
+                        <IoCaretUp className="dropDown-icon" />
+                    ) : (
+                        <IoCaretDown className="dropDown-icon" />
+                    )}
                 </span>
 
                 <ul>

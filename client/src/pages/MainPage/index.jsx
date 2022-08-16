@@ -40,6 +40,19 @@ import waiter02 from './imgs/waiter02.svg';
 import waiter03 from './imgs/waiter03.svg';
 import waiter04 from './imgs/waiter04.svg';
 import waiter05 from './imgs/waiter05.svg';
+import mainpage_side_logo from './imgs/mainpage_side_logo.svg';
+import rebornstep1 from './imgs/reborn_step1.svg';
+import rebornsteps from './imgs/reborn_steps.svg';
+import avatarbox from './imgs/avatarbox.svg';
+import gooddeed from './imgs/gooddeedtest.svg';
+import goodsoul from './imgs/gooddeedsoul.svg';
+import boxshare from './imgs/boxshare.svg';
+import aboutword from './imgs/aboutus_word.svg';
+
+// 這邊處理背景不足的素材裝飾
+import decorate_left from './imgs/decorate-left.svg';
+import decorate_left_2 from './imgs/decorate-left-2.svg';
+import decorate_left_middle from './imgs/de-left-middle.svg';
 
 // react icon
 import { TbPig } from 'react-icons/tb';
@@ -49,7 +62,7 @@ function MainPage(props) {
     // 原有MainPage code保留---------------------------
     const { pageName, setLightBox, mainpageIcon, setMainpageIcon } = props;
     const { setHeader } = useContext(HeaderContext);
-    const { authorized, sid, account, token } = useContext(AuthContext);
+    const { authorized, sid, account, token, isDead } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -247,7 +260,8 @@ function MainPage(props) {
 
                         {/* TODO: 放轉生形象圖 */}
                         <div>
-                            <img src={myavatar} alt="" />
+                            <img src={avatarbox} alt="" />
+                            {/* <img src={myavatar} alt="" /> */}
                         </div>
                     </div>
                     {/* 會員中心 */}
@@ -310,19 +324,17 @@ function MainPage(props) {
                     <div className="xuan-member-list">
                         <img src={member_center_list} alt="" />
                     </div>
-
-                    
                     {/* 投胎去！ */}
                     <div
                         className="xuan-box xuan-go-future"
                         onClick={() => {
-                            navigate('/nextlife');
+                            if (isDead) {
+                                navigate('/nextlife');
+                            }
                         }}
                     >
                         <img src={go_future} alt="" />
                     </div>
-
-
                     {/* 良辰吉地 */}
                     <div className="xuan-box xuan-time">
                         <div>
@@ -333,7 +345,7 @@ function MainPage(props) {
                                     alt=""
                                     className="link-arrow"
                                     onClick={() => {
-                                        navigate('/memberprofile', {
+                                        navigate('/Place', {
                                             replace: true,
                                         });
                                     }}
@@ -346,8 +358,6 @@ function MainPage(props) {
                             <img src={time_map} alt="" />
                         </div>
                     </div>
-
-
                     {/* 功德撲滿 */}
                     <div className="xuan-box xuan-box-event">
                         <div className="d-flex">
@@ -370,8 +380,10 @@ function MainPage(props) {
                             <img src={boxevent} alt="" />
                         </div>
                     </div>
-
-
+                    {/* 功德撲滿下方LOGO */}
+                    <div className=" xuan-side-logo">
+                        <img src={mainpage_side_logo} alt="" />
+                    </div>
                     {/* 投生形象小格1 */}
                     <div className="xuan-box xuan-box-avatar-show1">
                         {/* 左邊白色框 */}
@@ -381,16 +393,14 @@ function MainPage(props) {
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
-                            <p>投生形象001</p>
+                            <p className="xuan-subtitle">投生形象001</p>
                             <p>眼睛x2 精靈耳x2</p>
-                            <p>膚色:粉 貓尾</p>
-                            <p>總計3400</p>
+                            <p>膚色：粉 其他：章魚腳</p>
+                            <p>總計：4500</p>
                         </div>
 
                         <AiOutlineHeart />
                     </div>
-
-
                     {/* 投生形象小格2 */}
                     <div className="xuan-box xuan-box-avatar-show2">
                         {/* 左邊白色框 */}
@@ -400,16 +410,14 @@ function MainPage(props) {
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
-                            <p>投生形象002</p>
-                            <p>眼睛x2 精靈耳x2</p>
-                            <p>膚色:粉 貓尾</p>
-                            <p>總計3400</p>
+                            <p className="xuan-subtitle">投生形象002</p>
+                            <p>眼睛x2 獸角x2</p>
+                            <p>膚色:黃 </p>
+                            <p>總計：1000</p>
                         </div>
 
                         <AiOutlineHeart />
                     </div>
-
-
                     {/* 投生形象小格3 */}
                     <div className="xuan-box xuan-box-avatar-show3">
                         {/* 左邊白色框 */}
@@ -419,27 +427,42 @@ function MainPage(props) {
 
                         {/* 右側文字框 */}
                         <div className="xuan-caption">
-                            <p>投生形象003</p>
-                            <p>眼睛x2 精靈耳x2</p>
-                            <p>膚色:粉 貓尾</p>
-                            <p>總計3400</p>
+                            <p className="xuan-subtitle">投生形象003</p>
+                            <p>眼睛x2 獸角x2</p>
+                            <p>膚色：綠 其他：貓掌</p>
+                            <p>總計：2500</p>
                         </div>
 
                         <AiOutlineHeart />
                     </div>
-
-
                     {/* 遊戲小格1 */}
                     <div className="xuan-box xuan-box-game-show1">
                         {/* 小格標題 */}
                         {/* <p className="xuan-subtitle">Game.01</p> */}
-                        <p className="xuan-subtitle">陰德值小測驗</p>
+
+                        <div>
+                            <img
+                                src={linkarrow}
+                                alt=""
+                                className="link-arrow"
+                                onClick={() => {
+                                    navigate('/gooddeed', {
+                                        replace: true,
+                                    });
+                                }}
+                            />
+                        </div>
+
+                        <div className="d-flex">
+                            <img src={goodsoul} alt="" />
+                            <p className="xuan-subtitle">陰德值小測驗</p>
+                        </div>
 
                         {/* 底下圖片區域 */}
-                        <div></div>
+                        <div>
+                            <img src={gooddeed} alt="" />
+                        </div>
                     </div>
-
-
                     {/* 遊戲小格2 */}
                     <div className="xuan-box xuan-box-game-show2">
                         {/* 小格標題 */}
@@ -448,8 +471,6 @@ function MainPage(props) {
                         {/* 底下圖片區域 */}
                         <div></div>
                     </div>
-
-
                     {/* 關於我們 */}
                     <div className="xuan-box xuan-box-aboutus">
                         <div>
@@ -472,8 +493,6 @@ function MainPage(props) {
                             <img src={aboutusmap} alt="" />
                         </div>
                     </div>
-
-
                     {/* 最新消息 */}
                     <div className="xuan-box xuan-box-news">
                         {/* 小標區域 */}
@@ -497,17 +516,90 @@ function MainPage(props) {
                             <img src={boxnews} alt="" />
                         </div>
                     </div>
-
-
                     {/* 投放所服務員1 */}
                     <div className="xuan-box-waiter-1">
                         <img src={waiter01} alt="" />
-                        <p className="xuan-subtitle">投放所服務員</p>
+                        {/* <p className="xuan-subtitle">投放所服務員</p> */}
                     </div>
+                    {/* /aboutussecond */}
+                    <div
+                        className="xuan-box-waiter-1-word"
+                        onClick={() => {
+                            navigate('/aboutussecond ', {
+                                replace: true,
+                            });
+                        }}
+                    >
+                        <img src={aboutword} alt="" />
+                    </div>
+                    {/* 投放所服務員2 */}
+                    <div className="xuan-box-waiter-2">
+                        <img src={waiter02} alt="" />
+                    </div>
+                    <div
+                        className="xuan-box-waiter-2-word"
+                        onClick={() => {
+                            navigate('/aboutussecond ', {
+                                replace: true,
+                            });
+                        }}
+                    >
+                        <img src={aboutword} alt="" />
+                    </div>
+                    {/* 投放所服務員3 */}
+                    <div className="xuan-box-waiter-3">
+                        <img src={waiter03} alt="" />
+                    </div>
+                    <div
+                        className="xuan-box-waiter-3-word"
+                        onClick={() => {
+                            navigate('/aboutussecond ', {
+                                replace: true,
+                            });
+                        }}
+                    >
+                        <img src={aboutword} alt="" />
+                    </div>
+                    {/* 轉生三步驟 */}
+                    <div className="xuan-reborn-step">
+                        <img src={rebornsteps} alt="" />
+                    </div>
+                    {/* 交流分享 */}
+                    <div className="xuan-box xuan-box-share d-flex">
+                        <div>
+                            <img src={boxshare} alt="" />
+                        </div>
 
-
+                        <div>
+                            <p className="xuan-subtitle">交流</p>
+                            <p className="xuan-subtitle">分享</p>
+                            <img
+                                src={linkarrow}
+                                alt=""
+                                className="link-arrow"
+                                onClick={() => {
+                                    navigate('/sharewall', {
+                                        replace: true,
+                                    });
+                                }}
+                            />
+                        </div>
+                    </div>
                     {/* ------- 左上區域 BOX ------- */}
                     <div className="xuan-box xuan-lefttop-1"></div>
+                    {/* 背景不足的素材部分 */}
+                    {/* 左下-最左邊 */}
+                    <div className="de-left">
+                        <img src={decorate_left} alt="" />
+                    </div>
+                    {/* 左下-倒數第二個 */}
+                    <div className="de-left-2">
+                        <img src={decorate_left_2} alt="" />
+                    </div>
+                    {/* 左下-中間 */}
+                    <div className="de-left-middle">
+                        <img src={decorate_left_middle} alt="" />
+                    </div>
                 </div>
             </div>
         </>

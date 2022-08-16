@@ -4,255 +4,286 @@
 // $baseTimeOrbit: 3s;
 // $baseTimeRotation: 4s;
 
+// <<<<<<< HEAD
+// $colorGalaxy: rgb(31, 35, 87);
+// $colorOrbit: #9587E180;
+// $colorOrbitBefore: #81A8E0;
+// $colorOrbitAfter: #81A8E080;
+// =======
 // $colorGalaxy: rgb(31, 35, 87);
 // $colorOrbit: #323232;
 // $colorOrbitBefore: #0d7377;
 // $colorOrbitAfter: #14ffec;
+// >>>>>>> b433d87b807fc5255535667ca2f05b9b8e96680a
   
-// $ratioBackground: .25;
-// $ratioBorder: .05;
-// $ratioShadow: .25;
-// $ratioOrbit: .1;
+$ratioBackground: .25;
+$ratioBorder: .05;
+$ratioShadow: .25;
+$ratioOrbit: .1;
 
-// $darken: 10%;
-// $lighten: 20%;
+$darken: 10%;
+$lighten: 20%;
 
-// $perspective: 400vw;
+$perspective: 400vw;
 
+// <<<<<<< HEAD
+// distance, ratioSize, ratioTimeOrbit, ratioTimeRotation, color, transform
+// $planets: (
+//   ( 0, .3, 5, 1, #ffd700, ( 1, 1, 1 ) ),
+//   ( 3.5, .5, .5, 1, #b5592a, ( 1, 0, 0 ) ), 
+//   ( 4, .6, .3, 1, #774181, ( 0, 1, 0 ) ), 
+// );
+// =======
 // // distance, ratioSize, ratioTimeOrbit, ratioTimeRotation, color, transform
 // $planets: (
 //   ( 0, 4, 5, 6, #ffd700, ( 1, 1, 1 ) ),
 //   ( 2.5, .5, .5, .8, #b5592a, ( 1, 0, 0 ) ), 
 //   ( 2, .6, .3, .4, #774181, ( 0, 1, 0 ) ), 
 // );
+// >>>>>>> b433d87b807fc5255535667ca2f05b9b8e96680a
 
 // // Extends
 
-// %center
-// {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
+%center
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-// // Mixins
+// Mixins
 
-// @mixin position ( $position )
-// {
-//   left: $position;
-//   transform-origin: -$position;  
-// }
+@mixin position ( $position )
+{
+  left: $position;
+  transform-origin: -$position;  
+}
 
-// @mixin orbit ( $size, $distance )
-// {
-//   $orbitBorder: $size * $ratioOrbit;
-//   $orbitSize: $distance * 2 + $orbitBorder;
-//   $orbitDistance: 2 * $orbitBorder;
-//   $orbitSizeBefore: $orbitSize - $orbitDistance;
-//   $orbitSizeAfter: $orbitSize + $orbitDistance;
+@mixin orbit ( $size, $distance )
+{
+  $orbitBorder: $size * $ratioOrbit;
+  $orbitSize: $distance * 2 + $orbitBorder;
+  $orbitDistance: 2 * $orbitBorder;
+  $orbitSizeBefore: $orbitSize - $orbitDistance;
+  $orbitSizeAfter: $orbitSize + $orbitDistance;
   
-//   &
-//   {
-//     width: $orbitSize;
-//     height: $orbitSize;
+  &
+  {
+    width: $orbitSize;
+    height: $orbitSize;
     
-//     &,
-//     &::before,
-//     &::after
-//     {
-//       border-width: $orbitBorder;
-//     }
+    &,
+    &::before,
+    &::after
+    {
+      border-width: $orbitBorder;
+    }
     
-//     &::before
-//     {
-//       width: $orbitSizeBefore;
-//       height: $orbitSizeBefore;
-//     }
+    &::before
+    {
+      width: $orbitSizeBefore;
+      height: $orbitSizeBefore;
+    }
 
-//     &::after
-//     {
-//       width: $orbitSizeAfter;
-//       height: $orbitSizeAfter;
-//     }
-//   }
-// }
+    &::after
+    {
+      width: $orbitSizeAfter;
+      height: $orbitSizeAfter;
+    }
+  }
+}
 
-// // Cube colors
+// Cube colors
 
-// @mixin skin ( $size, $color )
-// {
-//   $colorShadow: lighten( $color, $lighten);
-//   $colorBorder: darken( $color, $darken );
+@mixin skin ( $size, $color )
+{
+  $colorShadow: lighten( $color, $lighten);
+  $colorBorder: darken( $color, $darken );
   
-//   $sizeShadow: $size * $ratioShadow;
-//   $boxShadow: 0 0 $sizeShadow $sizeShadow * .25 $colorShadow inset;
+  $sizeShadow: $size * $ratioShadow;
+  $boxShadow: 0 0 $sizeShadow $sizeShadow * .25 $colorShadow inset;
      
-//   &,
-//   &::before,
-//   &::after
-//   {
-//     background-color: rgba( $color, $ratioBackground );
-//     border: $size * $ratioBorder solid $colorBorder;
-//     box-shadow: $boxShadow;
-//   }
-// }
+  &,
+  &::before,
+  &::after
+  {
+    background-color: rgba( $color, $ratioBackground );
+    border: $size * $ratioBorder solid $colorBorder;
+    box-shadow: $boxShadow;
+  }
+}
 
-// // Cube
+// Cube
 
-// @mixin cube ( $size )
-// {
-//   width: $size;
-//   height: $size;
-// }
+@mixin cube ( $size )
+{
+  width: $size;
+  height: $size;
+}
 
-// // Cube faces
+// Cube faces
 
-// @mixin cubeFaces ( $half )
-// {
-//   &:first-child
-//   {
-//     & { transform: rotate3d( 0, 1, 0, 0deg ) translate3d( 0, 0, $half ) }
-//     &::before { transform: rotate3d( 0, 1, 0, 90deg ) translate3d( $half, 0, $half ) }
-//     &::after { transform: rotate3d( 0, 1, 0, -90deg ) translate3d( -$half, 0, $half ) }
-//   }
+@mixin cubeFaces ( $half )
+{
+  &:first-child
+  {
+    & { transform: rotate3d( 0, 1, 0, 0deg ) translate3d( 0, 0, $half ) }
+    &::before { transform: rotate3d( 0, 1, 0, 90deg ) translate3d( $half, 0, $half ) }
+    &::after { transform: rotate3d( 0, 1, 0, -90deg ) translate3d( -$half, 0, $half ) }
+  }
 
-//   &:last-child
-//   {
-//     & { transform: rotate3d( 0, 1, 0, 180deg ) translate3d( 0, 0, $half ) }
-//     &::before { transform: rotate3d( 1, 0, 0, 90deg ) translate3d( 0, -$half, $half ) }
-//     &::after { transform: rotate3d( 1, 0, 0, -90deg ) translate3d( 0, $half, $half ) }
-//   }
-// }
+  &:last-child
+  {
+    & { transform: rotate3d( 0, 1, 0, 180deg ) translate3d( 0, 0, $half ) }
+    &::before { transform: rotate3d( 1, 0, 0, 90deg ) translate3d( 0, -$half, $half ) }
+    &::after { transform: rotate3d( 1, 0, 0, -90deg ) translate3d( 0, $half, $half ) }
+  }
+}
 
-// // Cube animation
+// Cube animation
 
-// @mixin cubeAnimation ( $timeAnimation, $transform )
-// {
-//   animation-duration: $timeAnimation;
+@mixin cubeAnimation ( $timeAnimation, $transform )
+{
+  animation-duration: $timeAnimation;
     
-//   @keyframes rotation
-//   {
-//     100% { transform: rotate3d( $transform, 360deg ) }
-//   }
-// }
+  @keyframes rotation
+  {
+    100% { transform: rotate3d( $transform, 360deg ) }
+  }
+}
 
-// // Galaxy animation
+// Galaxy animation
 
-// @mixin galaxyAnimation ( 
-//   $duration: 10s, 
-//   $distance: 5vw, 
-//   $angle: 45deg,
-//   $animated: true,
-//   $reversed: false,
-// )
-// {
-//   $direction: if( $reversed, 1, -1 );
+@mixin galaxyAnimation ( 
+  $duration: 10s, 
+  $distance: 5vw, 
+  $angle: 45deg,
+  $animated: true,
+  $reversed: false,
+)
+{
+  $direction: if( $reversed, 1, -1 );
   
-//   $distance: $direction * $distance;
-//   $angle: $direction * $angle;
+  $distance: $direction * $distance;
+  $angle: $direction * $angle;
   
-//   @if $animated
-//   {
-//     animation: galaxy infinite ease-in-out alternate $duration;
+  @if $animated
+  {
+    animation: galaxy infinite ease-in-out alternate $duration;
     
-//     @keyframes galaxy
-//     {
-//       0% { transform: translate3d( 0, $distance, 0 ) rotate3d( 1, 1, 1, $angle ) }
-//       100% { transform: translate3d( 0, -$distance, 0 ) rotate3d( 1, 1, 1, -$angle ) }
-//     }
-//   }
-//   @else
-//   {
-//     transform: translate3d( 0, $distance, 0 ) rotate3d( 1, 1, 0, $angle );
-//   }
-// }
+    @keyframes galaxy
+    {
+      0% { transform: translate3d( 0, $distance, 0 ) rotate3d( 1, 1, 1, $angle ) }
+      100% { transform: translate3d( 0, -$distance, 0 ) rotate3d( 1, 1, 1, -$angle ) }
+    }
+  }
+  @else
+  {
+    transform: translate3d( 0, $distance, 0 ) rotate3d( 1, 1, 0, $angle );
+  }
+}
 
 // Planet
 
-// @mixin planets ( 
-//   $planets, 
-//   $baseSize: 5vw, 
-//   $baseTimeOrbit: 5s, 
-//   $baseTimeRotation: 5s 
-// )
-// {
-//   $index: 1;
+@mixin planets ( 
+  $planets, 
+  $baseSize: 5vw, 
+  $baseTimeOrbit: 5s, 
+  $baseTimeRotation: 5s 
+)
+{
+  $index: 1;
   
-//   $prevDistance: 0;
+  $prevDistance: 0;
   
-//   @each 
-//     $distance, 
-//     $ratioSize, 
-//     $ratioTimeOrbit, 
-//     $ratioTimeRotation, 
-//     $color, 
-//     $transform 
-//   in $planets
-//   {
-//     $size: $baseSize * $ratioSize;
-//     $half: $size / 2;
+  @each 
+    $distance, 
+    $ratioSize, 
+    $ratioTimeOrbit, 
+    $ratioTimeRotation, 
+    $color, 
+    $transform 
+  in $planets
+  {
+    $size: $baseSize * $ratioSize;
+    $half: $size / 2;
      
-//     $nextDistance: $prevDistance + $distance + $half;
+    $nextDistance: $prevDistance + $distance + $half;
     
-//     $currentDistance: if( $index == 1, 0, $nextDistance );
+    $currentDistance: if( $index == 1, 0, $nextDistance );
     
-//     .box:nth-of-type( #{ $index } )
-//     {
-//       .planet
-//       {
-//         @include position( $currentDistance );
+    .box:nth-of-type( #{ $index } )
+    {
+      .planet
+      {
+        @include position( $currentDistance );
         
-//         animation-duration: $ratioTimeOrbit * $baseTimeOrbit;
+        animation-duration: $ratioTimeOrbit * $baseTimeOrbit;
         
-//         .cube
-//         {
-//           @include cube( $size );
-//           @include cubeAnimation( 
-//             $ratioTimeRotation * $baseTimeRotation, 
-//             $transform 
-//           );
-//         }
+        .cube
+        {
+          @include cube( $size );
+          @include cubeAnimation( 
+            $ratioTimeRotation * $baseTimeRotation, 
+            $transform 
+          );
+        }
         
-//         .face
-//         {
-//           @include cubeFaces( $half );
-//           @include skin( $size, $color );
-//         }
+        .face
+        {
+          @include cubeFaces( $half );
+          @include skin( $size, $color );
+        }
         
-//         // @if $index > 1
-//         // {
-//         //   @include orbit( $size, $currentDistance );
-//         // }
-//       }
+        // @if $index > 1
+        // {
+        //   @include orbit( $size, $currentDistance );
+        // }
+      }
       
-//       .orbit {
-//         @if $index > 1
-//         {
-//           @include orbit( $size, $currentDistance );
-//         }
-//       }
-//     }
+      .orbit {
+        @if $index > 1
+        {
+          @include orbit( $size, $currentDistance );
+        }
+      }
+    }
     
-//     $index: $index + 1;
-//     $prevDistance: $currentDistance + $half;
-//   }
-// }
+    $index: $index + 1;
+    $prevDistance: $currentDistance + $half;
+  }
+}
 
-// Reset
+Reset
 
-// *,
-// *::before,
-// *::after
-// {
-//   outline: 0;
-//   margin: 0;
-//   border: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-// }
+*,
+*::before,
+*::after
+{
+  outline: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 // Layout
 
+// <<<<<<< HEAD
+.yun-clock-container
+{
+  // border: 1px solid red;
+  width: 400px;
+  height: 300px;
+}
+
+.clockbody
+{
+  // background-color: rgb(220, 114, 114);
+  width: 100%;
+  height: 100%;
+}
+// =======
 // .yun-clock-container
 // {
 //   width: 600px;
@@ -265,6 +296,7 @@
 //   width: 100%;
 //   height: 100%;
 // }
+// >>>>>>> b433d87b807fc5255535667ca2f05b9b8e96680a
 
 // .planet,
 // .cube,
@@ -277,6 +309,17 @@
 
 // // Cosmos
 
+// <<<<<<< HEAD
+.cosmos
+{
+  @extend %center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  perspective: $perspective;
+  // background-color: $colorGalaxy;
+}
+// =======
 // .cosmos
 // {
 //   @extend %center;
@@ -286,6 +329,7 @@
 //   perspective: $perspective;
 //   background-color: $colorGalaxy;
 // }
+// >>>>>>> b433d87b807fc5255535667ca2f05b9b8e96680a
 
 // // Galaxy
 
@@ -350,6 +394,15 @@
 //   }
 // }
 
+// <<<<<<< HEAD
+// .needle{
+//   top:0;
+//   left: 0;
+//   width: 100%;
+//   height: 100px;
+//   // border: 2px solid red;
+// }
+// =======
 // .needle{
 //   top:0;
 //   left: 0;
@@ -357,40 +410,41 @@
 //   height: 100px;
 //   border: 2px solid red;
 // }
+// >>>>>>> b433d87b807fc5255535667ca2f05b9b8e96680a
 
-// // Cube
+// Cube
 
-// .cube
-// {
-//   animation: rotation infinite linear;
-// }
+.cube
+{
+  animation: rotation infinite linear;
+}
 
-// // Cube face
+// Cube face
 
-// .face
-// {   
-//   &,
-//   &::before,
-//   &::after
-//   {
-//     width: 100%;
-//     height: 100%;
-//   }
+.face
+{   
+  &,
+  &::before,
+  &::after
+  {
+    width: 100%;
+    height: 100%;
+  }
 
-//   &::before,
-//   &::after
-//   {    
-//     content: '';
-//     position: absolute;
-//     box-sizing: content-box;
-//   }
-// }
+  &::before,
+  &::after
+  {    
+    content: '';
+    position: absolute;
+    box-sizing: content-box;
+  }
+}
 
-// // Animations
+// Animations
 
-// @keyframes orbit
-// {
-//   100% { transform: rotate3d( 0, 1, 0, 360deg ) }
+@keyframes orbit
+{
+  100% { transform: rotate3d( 0, 1, 0, 360deg ) }
 
-// }
+}
 

@@ -205,6 +205,24 @@ function HeaderShareWallButton() {
                     confirmButtonText: '來去分享',
                     showDenyButton: true,
                     denyButtonText: '突然好累',
+                    didOpen: () => {
+                        Swal.disableButtons();
+                        document
+                            .querySelectorAll('.cpl-swal-snd-card')
+                            .forEach((v, i) => {
+                                v.addEventListener('click', () => {
+                                    if (
+                                        !document.querySelector(
+                                            '.cpl-swal-snd-card.isActive'
+                                        )
+                                    ) {
+                                        Swal.disableButtons();
+                                    } else {
+                                        Swal.enableButtons();
+                                    }
+                                });
+                            });
+                    },
                     preConfirm: () => ({
                         chosenAvatarID:
                             avatarForNewPostData[

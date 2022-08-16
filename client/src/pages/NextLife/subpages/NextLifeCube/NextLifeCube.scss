@@ -4,16 +4,158 @@
     // FIXME: 這是隨便抓的高度
     bottom: 100px;
     z-index: -1;
-    background-color: #FF000033;
+    // background-color: #FF000033;
+}
+
+.container.nlCubeSwap.isShown {
+    animation: cpl-nextlife-nlCubeSwap-isShown 2s;
+}
+
+@keyframes cpl-nextlife-nlCubeSwap-isShown {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.container.nlCubeSwap.isMaking {
+    animation: cpl-nextlife-nlCubeSwap-isMaking 2s forwards;
+}
+
+@keyframes cpl-nextlife-nlCubeSwap-isMaking {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        cursor: none;
+        pointer-events: none;
+    }
+}
+
+.cpl-nextlife-magic-cube-container.nlCube.isShown {
+    .container.nlCubeSwap.isShown {
+        animation: cpl-nextlife-nlCube-isShown 2s;
+    }
+}
+
+@keyframes cpl-nextlife-nlCube-isShown {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .nlCubeSwap-button {
     border: none;
-    width: fit-content;
+    width: 60px;
+    height: 60px;
+    color: $bgc-L-l;
+    font-size: $fz-body-mobile;
     background-color: $secondary;
+    border-radius: 50%;
     position: absolute;
+    right: 30px;
+    bottom: 160px;
+    transition: 0.3s;
+    outline: none;
+
+    &:hover {
+        transform: scale(1.2);
+        outline: none;
+    }
+
+    :focus {
+        outline: none;
+    }
+
+    .nlCubeSwap-button-Fibox {
+        position: relative;
+        font-size: $fz-body;
+        top: -4px;
+    }
+
+    .nlCubeSwap-button-paragraph {
+        position: relative;
+        top: -2px;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .nlCubeSwap-button {
+        right: calc((100vw - 442px) / 2);
+        bottom: 220px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .nlCubeSwap-button {
+        bottom: 180px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .nlCubeSwap-button {
+        bottom: 140px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+}
+
+.container.nlCubeMakingCircle {
+    position: absolute;
+    top: 0;
+    bottom: 90px;
     left: 0;
     right: 0;
     margin: auto;
-    bottom: 200px;
+    width: 300px;
+    height: 300px;
+    font-family: $ff-h;
+    font-size: 10px;
+    opacity: 0;
+    // background-color: #FF000033;
+
+    svg {
+        display: block;
+        overflow: visible;
+    
+        path {
+            fill: none;
+        }
+
+        text {
+            top: 6px;
+        }
+    }
+}
+
+.container.nlCubeMakingCircle.isShown {
+    animation: 
+        cpl-nextlife-nlCubeMakingCircle-isShown 2s forwards,
+        cpl-nextlife-nlCubeMakingCircle-marryGoRoundGo linear 10s infinite;
+    ;
+}
+
+@keyframes cpl-nextlife-nlCubeMakingCircle-isShown {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes cpl-nextlife-nlCubeMakingCircle-marryGoRoundGo {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
 }

@@ -927,53 +927,36 @@ INSERT INTO `place` (`sid`, `year`, `month`, `country`, `city`, `dist`, `quota`,
 --
 
 CREATE TABLE `place_city` (
+  `sid` int(11) NOT NULL,
   `country` varchar(225) DEFAULT NULL,
-  `city` varchar(225) NOT NULL
+  `city` varchar(225) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `place_city`
 --
 
-INSERT INTO `place_city` (`country`, `city`) VALUES
-('台灣', '南投縣'),
-('台灣', '基隆市'),
-('台灣', '宜蘭縣'),
-('台灣', '屏東縣'),
-('台灣', '新北市'),
-('台灣', '新竹市'),
-('台灣', '新竹縣'),
-('台灣', '桃園市'),
-('台灣', '澎湖縣'),
-('台灣', '臺中市'),
-('台灣', '臺北市'),
-('台灣', '臺南市'),
-('台灣', '臺東縣'),
-('台灣', '花蓮縣'),
-('台灣', '金門縣'),
-('台灣', '高雄市'),
-('美國', '加州'),
-('美國', '夏威夷'),
-('美國', '紐約');
+INSERT INTO `place_city` (`sid`, `country`, `city`) VALUES
+(1, '台灣', '基隆市'),
+(2, '台灣', '臺北市'),
+(3, '台灣', '新北市'),
+(4, '台灣', '桃園市'),
+(5, '台灣', '新竹市'),
+(6, '台灣', '新竹縣'),
+(7, '台灣', '臺中市'),
+(8, '台灣', '臺南市'),
+(9, '台灣', '高雄市'),
+(11, '台灣', '南投縣'),
+(12, '台灣', '宜蘭縣'),
+(13, '台灣', '花蓮縣'),
+(14, '台灣', '臺東縣'),
+(15, '台灣', '屏東縣'),
+(16, '台灣', '澎湖縣'),
+(17, '台灣', '金門縣'),
+(100, '美國', '加州'),
+(101, '美國', '紐約'),
+(102, '美國', '夏威夷');
 
--- --------------------------------------------------------
-
---
--- 資料表結構 `place_country`
---
-
-CREATE TABLE `place_country` (
-  `country` varchar(225) NOT NULL,
-  `country_price` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- 傾印資料表的資料 `place_country`
---
-
-INSERT INTO `place_country` (`country`, `country_price`) VALUES
-('台灣', 100),
-('美國', 500);
 
 -- --------------------------------------------------------
 

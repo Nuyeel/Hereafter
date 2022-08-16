@@ -1,7 +1,16 @@
-import { useState, useEffect, Suspense, createRef } from 'react';
+import {
+    useState,
+    useEffect,
+    Suspense,
+    createRef,
+    useContext,
+    forwardRef,
+} from 'react';
 
 import { Canvas } from '@react-three/fiber';
-import { Stats } from '@react-three/drei';
+// import { Stats } from '@react-three/drei';
+
+import MeshContext from '../../../../context/MeshContext/MeshContext';
 
 import Scene from './Scene';
 
@@ -13,19 +22,34 @@ import Scene from './Scene';
 
 import { FiBox } from 'react-icons/fi';
 
-import './NextLifeCube.scss';
+import CubeIsMakingSVG from '../../components/animation/CubeIsMakingSVG';
 
-function NextLifeCube(props) {
-    const { meshesData, cubeAnimationState, setCubeAnimationState } = props;
+import './NextLifeCube.scss';
+import NextLifeCubeIsMakingCanvas from '../../components/NextLifeCubeIsMakingCanvas/index.jsx';
+
+function NextLifeCube(props, ref) {
+    const {
+        cubeAnimationState,
+        setCubeAnimationState,
+        cubeIsMaking,
+        cubeRotatingStyle,
+        setCubeRotatingStyle,
+        currentCubeOptionIndex,
+        setCurrentCubeOptionIndex,
+        currentCubeColorIndex,
+        setCurrentCubeColorIndex,
+    } = props;
+
+    const meshesData = useContext(MeshContext);
 
     const [dimensions, setDimensions] = useState({
         width: window.innerWidth,
         height: window.innerHeight,
     });
     const [eachCubeSize, setEachCubeSize] = useState(0);
+    const [stylishTimer, setStylishTimer] = useState(0);
+    const [timeoutID, setTimeoutID] = useState(0);
     const indexRef = createRef(null);
-
-    const [currentCubeOptionIndex, setCurrentCubeOptionIndex] = useState(0);
 
     useEffect(() => {
         const handleResize = () => {
@@ -52,32 +76,88 @@ function NextLifeCube(props) {
 
     return (
         <>
-            <div className={`container nlCubeSwap isShown`}>
+            <NextLifeCubeIsMakingCanvas ref={ref} />
+            <div
+                className={`container nlCubeSwap ${
+                    cubeIsMaking ? 'isMaking' : 'isShown'
+                }`}
+            >
                 <button
                     className="nlCubeSwap-button"
                     onClick={() => {
                         // 其實只要數字變小就會壞掉
-                        let newcurrentCubeOptionIndex =
+                        let newCurrentCubeOptionIndex =
                             currentCubeOptionIndex + 1;
-                        // newcurrentCubeOptionIndex = newcurrentCubeOptionIndex % 35;
+
+                        let newCurrentCubeColorIndex =
+                            currentCubeColorIndex + 1;
+                        newCurrentCubeColorIndex =
+                            newCurrentCubeColorIndex % 34;
+                        setCurrentCubeColorIndex(newCurrentCubeColorIndex);
+
                         // FIXME: 超怪的...
-                        if (newcurrentCubeOptionIndex === 34) {
-                            newcurrentCubeOptionIndex = 0;
+                        if (newCurrentCubeOptionIndex === 34) {
+                            newCurrentCubeOptionIndex = 0;
                             setCurrentCubeOptionIndex(-1);
                             return setTimeout(() => {
                                 setCurrentCubeOptionIndex(
-                                    newcurrentCubeOptionIndex
+                                    newCurrentCubeOptionIndex
+                                );
+                                setCubeRotatingStyle('stylish');
+
+                                if (timeoutID > 0) {
+                                    clearTimeout(timeoutID);
+                                }
+
+                                return setTimeoutID(
+                                    setTimeout(() => {
+                                        setCubeRotatingStyle('classic');
+                                    }, 500)
                                 );
                             }, 0);
                         }
-                        setCurrentCubeOptionIndex(newcurrentCubeOptionIndex);
+                        setCurrentCubeOptionIndex(newCurrentCubeOptionIndex);
+                        setCubeRotatingStyle('stylish');
+
+                        if (timeoutID > 0) {
+                            clearTimeout(timeoutID);
+                        }
+
+                        return setTimeoutID(
+                            setTimeout(() => {
+                                setCubeRotatingStyle('classic');
+                            }, 500)
+                        );
                         // console.log(newcurrentCubeOptionIndex);
                     }}
                 >
-                    <FiBox /> 更換樣式
+                    <FiBox className="nlCubeSwap-button-Fibox" />
+                    <p className="nlCubeSwap-button-paragraph">Change</p>
                 </button>
             </div>
-            <div className={`cpl-nextlife-magic-cube-container nlCube`}>
+            <div
+                className={`container nlCubeMakingCircle d-flex justify-content-center align-items-center ${
+                    eachCubeSize <= 54 && cubeIsMaking ? 'isShown' : ''
+                }`}
+            >
+                <CubeIsMakingSVG
+                    colorOne={
+                        meshesData.fontColorsData[currentCubeColorIndex][
+                            'colorOne'
+                        ]
+                    }
+                    colorTwo={
+                        meshesData.fontColorsData[currentCubeColorIndex][
+                            'colorTwo'
+                        ]
+                    }
+                />
+            </div>
+            <div
+                className={`cpl-nextlife-magic-cube-container nlCube ${
+                    cubeIsMaking ? '' : 'isShown'
+                }`}
+            >
                 <Canvas
                     camera={{
                         fov: 70,
@@ -89,13 +169,18 @@ function NextLifeCube(props) {
                     <Suspense fallback={null}>
                         <Scene
                             eachCubeSize={eachCubeSize}
+                            setEachCubeSize={setEachCubeSize}
                             currentCubeOptionIndex={currentCubeOptionIndex}
                             ref={indexRef}
                             meshesData={meshesData}
                             cubeAnimationState={cubeAnimationState}
+                            stylishTimer={stylishTimer}
+                            setStylishTimer={setStylishTimer}
                             setCubeAnimationState={setCubeAnimationState}
+                            cubeRotatingStyle={cubeRotatingStyle}
+                            cubeIsMaking={cubeIsMaking}
                         />
-                        <Stats />
+                        {/* <Stats /> */}
                     </Suspense>
                 </Canvas>
             </div>
@@ -103,4 +188,4 @@ function NextLifeCube(props) {
     );
 }
 
-export default NextLifeCube;
+export default forwardRef(NextLifeCube);

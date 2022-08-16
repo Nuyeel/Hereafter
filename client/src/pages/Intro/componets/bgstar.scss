@@ -1,16 +1,69 @@
 @import '../../../styles/variables.scss';
 
-.otherStars{
-    position: absolute;
+
+.otherStars,.starClouds{
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
+    overflow:visible;
 }  
+@keyframes star-cloud-move{
+    0%   { transform: translate(-50px,0px);}
+  
+    100%   {transform: translate(50px,0px);}
+} 
+@keyframes star-cloud-rotate{
+    0%   { transform: rotate(0deg);}
+  
+    100%   {transform: rotate(360deg);}
+} 
+.starCloud{
+    position: absolute;
+    // animation: star-sparkle ease-in infinite alternate-reverse;
+}
+.starCloud:nth-child(1){
+    width: 800px;
+    height: 800px;
+    opacity: 0.5;
+    background: url(../introImg/otherStar/starcloud1.svg)center center no-repeat;
+    background-size: contain;
+    top: -50%;
+    left: 70%;
+    animation: star-cloud-rotate 20s linear infinite;
+    filter: blur(20px);
+
+
+}
+.starCloud:nth-child(2){
+    opacity: 0.5;
+    width: 700px;
+    height: 500px;
+    background: url(../introImg/otherStar/starcloud3.svg)center center no-repeat;
+    background-size: contain;
+    top: 55%;
+    left: -20%;
+    animation-duration: 6s;
+    filter: blur(20px);
+
+    animation: star-cloud-move 15s linear infinite alternate-reverse ;
+
+}
+
+
+
+@keyframes star-sparkle{
+    0%   { opacity: 1;}
+    33%{opacity: 0.5;}
+    66%{opacity: 1;}
+    100%   { opacity:0.5 ;}
+} 
 .otherStar{
     position: relative;
-  
-    
     animation: star-sparkle ease-in infinite alternate-reverse;
 }
+
 .otherStar:nth-child(1){
     
     width: 10px;
@@ -20,6 +73,8 @@
     top: 10%;
     left: 60%;
     animation-duration: 3s;
+    filter: brightness(6);
+
 }
 .otherStar:nth-child(2){
     
@@ -41,6 +96,7 @@
     top: 40%;
     left: 90%;}
 .otherStar:nth-child(4){
+    filter: brightness(3);
     
     width: 20px;
     height: 20px;
@@ -66,8 +122,8 @@
     width: 20px;
     height: 20px;
     background: url(../introImg/otherStar/otherStar5.svg)center center no-repeat;
-    top: 55%;
-    left: 70%;
+    top: 65%;
+    left: 13%;
     background-size: contain;
     animation-duration: 1.5s;
 
@@ -81,4 +137,41 @@
     left: 80%;
     background-size: contain;
     animation-duration: 2.5s;
+    filter: brightness(3);
+    // filter: blur(5px);
+    // filter: brightness(0.4);
+}
+.otherStar:nth-child(8){ 
+    
+    width: 10px;
+    height: 10px;
+    background: url(../introImg/otherStar/otherStar7.svg)center center no-repeat;
+    background-size: contain;
+    animation-duration: 3.2s;
+    top: 34%;
+    left: 70%;
+    filter: brightness(4);
+
+}
+.otherStar:nth-child(9){ 
+    
+    width: 5px;
+    height: 5px;
+    background: url(../introImg/otherStar/otherStar5.svg)center center no-repeat;
+    background-size: contain;
+    animation-duration: 3s;
+    top: 54%;
+    left: 24%;
+    filter: blur(5px);
+}
+.otherStar:nth-child(10){ 
+    
+    width: 12px;
+    height: 12px;
+    background: url(../introImg/otherStar/otherStar4.svg)center center no-repeat;
+    background-size: contain;
+    animation-duration: 2s;
+    top: 58%;
+    left: 63%;
+    filter: blur(2px);
 }

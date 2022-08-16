@@ -23,6 +23,21 @@
     }
 }
 
+.cpl-nextlife-component-indicator.isMaking {
+    animation: cpl-nextlife-indicator-isMaking 2s forwards;
+}
+
+@keyframes cpl-nextlife-indicator-isMaking {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        cursor: none;
+        pointer-events: none;
+    }
+}
+
 @media screen and (min-width: 500px) {
     .cpl-nextlife-component-indicator {
         right: 44px;

@@ -39,7 +39,7 @@ router.get('/', async (req, res) => {
 // 連動的下拉選單資料
 router.get('/country-city', async (req, res) => {
     const sql01 = `SELECT * FROM place_country_list WHERE 1`;
-    const sql02 = `SELECT * FROM place_city WHERE 1`;
+    const sql02 = `SELECT * FROM place_city WHERE 1 ORDER BY sid ASC`;
     const [r1] = await db.query(sql01);
     const [r2] = await db.query(sql02);
 
