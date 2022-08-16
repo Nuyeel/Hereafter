@@ -51,7 +51,7 @@ router.post('/showcase', async (req, res) => {
     if (isNum(mid)) {
         const [r] = await db.query(sql, []);
         if (r.length === 5) {
-            console.log('Meow 資料有5筆');
+            //console.log(r);
             output.success = true;
             output.data = r;
             output.msg = '拉取資料成功!';

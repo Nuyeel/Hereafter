@@ -5,7 +5,7 @@ import '@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css';
 import 'react-calendar/dist/Calendar.css';
 
 function TimeFilter(props) {
-    const { timeRangeFilter, setTimeRangeFilter, filtByTimeRange } = props;
+    const { timeRangeFilter, setTimeRangeFilter } = props;
 
     return (
         <>

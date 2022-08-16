@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReactWindowListCard from './components/ReactWindowListCard';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListCard from './components/ListCard';
@@ -150,7 +151,7 @@ function Place(props) {
         getOptionData();
     }, []);
 
-    // 篩選 filter
+    // 篩選 地點filter
     const filtByCountry = (country) => {
         let newPlaceData = [...rawPlaceData];
         if (country !== 'all') {
@@ -166,7 +167,6 @@ function Place(props) {
         // setDisplayTotalRows(newTotalRows);
         return newPlaceData;
     };
-
     const filtByCity = (data, city) => {
         let newPlaceData = [...data];
         if (city !== 'all') {
@@ -213,7 +213,7 @@ function Place(props) {
         }
     };
 
-    // 篩選元素有變動時
+    // 篩選元素有變動時做所有filter確認
     useEffect(() => {
         let newDisplay = [];
         newDisplay = filtByCountry(countryFilter);
@@ -432,8 +432,9 @@ function Place(props) {
                 />
                 {window.innerWidth < 376 && (
                     <div
-                        className="rwd-filter-btn-row my-2"
+                        className="rwd-filter-btn-row mt-2"
                         onClick={rwdHandelFilterLightbox}
+                        style={{ display: 'block' }}
                     >
                         <img
                             src={filterIcon}
@@ -558,7 +559,24 @@ function Place(props) {
                                         {/* 列表區 */}
                                         {placeDisplay.length > 0 ? (
                                             <>
-                                                {placeDisplay.map((v, i) => (
+                                                <ReactWindowListCard
+                                                    userSid={userSid}
+                                                    isDead={isDead}
+                                                    saveLikedPlace={
+                                                        saveLikedPlace
+                                                    }
+                                                    handlePlaceMapIconClicked={
+                                                        handlePlaceMapIconClicked
+                                                    }
+                                                    likedPlaceSidArr={
+                                                        likedPlaceSidArr
+                                                    }
+                                                    style={{
+                                                        border: theme.placeCardBorder,
+                                                    }}
+                                                    placeDisplay={placeDisplay}
+                                                />
+                                                {/* {placeDisplay.map((v, i) => (
                                                     <ListCard
                                                         key={v.sid}
                                                         value={v}
@@ -577,7 +595,7 @@ function Place(props) {
                                                             border: theme.placeCardBorder,
                                                         }}
                                                     />
-                                                ))}
+                                                ))} */}
                                             </>
                                         ) : (
                                             <>
