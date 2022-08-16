@@ -1,5 +1,7 @@
 import './style.scss';
 import Swal from 'sweetalert2';
+import soulIconAlert from '../../images/sweetalert2/outline_soul_alert.svg';
+
 import { useState, useContext, useCallback, useEffect } from 'react';
 import InputIME from './/components/InputIME';
 import _ from 'lodash';
@@ -165,7 +167,23 @@ function MemberProfileForm(props) {
             .then((result) => {
                 console.log(result);
                 if (result.success) {
-                    Swal.fire(result.error);
+                    Swal.fire({
+                        title: '是否確認修改密碼',
+                        imageUrl: soulIconAlert,
+                        imageHeight: 50,
+                        imageWidth: 50,
+                        confirmButtonText: '確認修改',
+                        showDenyButton: true,
+                        denyButtonText: '取消',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: '修改成功',
+                                timer: 1000,
+                            });
+                        } else if (result.isDenied) {
+                        }
+                    });
                 } else {
                     Swal.fire(result.error);
                 }
