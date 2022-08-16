@@ -1,0 +1,36 @@
+// Pattern: [colorOne, colorTwo, colorTop]
+
+export const fontArray0 = ['#0F1746', '#E8B387', '#EEEEEE'];
+export const fontArray1 = ['#FFC6D4', '#612680', '#612680'];
+export const fontArray2 = ['#ED1848', '#612680', '#612680'];
+export const fontArray3 = ['#612680', '#139DBF', '#FFC6D4'];
+export const fontArray4 = ['#E8B387', '#0F1746', '#E8B387'];
+export const fontArray5 = ['#E8B387', '#0F1746', '#0F1746'];
+export const fontArray6 = ['#FDD31B', '#612680', '#FDD31B'];
+export const fontArray7 = ['#ED1848', '#FFC6D4', '#EEEEEE'];
+export const fontArray8 = ['#139DBF', '#0F1746', '#EEEEEE'];
+export const fontArray9 = ['#006251', '#FDD31B', '#006251'];
+export const fontArray10 = ['#ED1848', '#612680', '#FDD31B'];
+export const fontArray11 = ['#FFC6D4', '#139DBF', '#139DBF'];
+export const fontArray12 = ['#ED1848', '#612680', '#006251'];
+export const fontArray13 = ['#FDD31B', '#612680', '#FDD31B'];
+export const fontArray14 = ['#006251', '#E8B387', '#006251'];
+export const fontArray15 = ['#0F1746', '#8890C1', '#0F1746'];
+export const fontArray16 = ['#139DBF', '#FFC6D4', '#139DBF'];
+export const fontArray17 = ['#0F1746', '#8890C1', '#0F1746'];
+export const fontArray18 = ['#006251', '#FFC6D4', '#E8B387'];
+export const fontArray19 = ['#139DBF', '#AEE0D7', '#139DBF'];
+export const fontArray20 = ['#139DBF', '#0F1746', '#139DBF'];
+export const fontArray21 = ['#FFC6D4', '#139DBF', '#FFC6D4'];
+export const fontArray22 = ['#AEE0D7', '#612680', '#AEE0D7'];
+export const fontArray23 = ['#0F1746', '#8890C1', '#EEEEEE'];
+export const fontArray24 = ['#E8B387', '#006251', '#FDD31B'];
+export const fontArray25 = ['#006251', '#FDD31B', '#E8B387'];
+export const fontArray27 = ['#006251', '#FDD31B', '#E8B387'];
+export const fontArray28 = ['#FDD31B', '#006251', '#FDD31B'];
+export const fontArray30 = ['#E8B387', '#612680', '#612680'];
+export const fontArray31 = ['#FFC6D4', '#ED1848', '#EEEEEE'];
+export const fontArray32 = ['#FFC6D4', '#ED1848', '#ED1848'];
+export const fontArray34 = ['#FFC6D4', '#139DBF', '#EEEEEE'];
+export const fontArray35 = ['#FFC6D4', '#FDD31B', '#ED1848'];
+export const fontArray37 = ['#ED1848', '#006251', '#E8B387'];

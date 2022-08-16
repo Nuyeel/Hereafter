@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useMemo } from 'react';
+import { useState, useEffect, useContext, createRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import AuthContext from '../../context/AuthContext/AuthContext';
@@ -6,19 +6,17 @@ import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import HeaderContext, {
     headers,
 } from '../../context/HeaderContext/HeaderContext';
+import MeshContext from '../../context/MeshContext/MeshContext';
 
-import NextLifeStageIndicator from './componenets/NextLifeStageIndicator';
-import NextLifeInteractionButton from './componenets/NextLifeInteractionButton';
+import NextLifeStageIndicator from './components/NextLifeStageIndicator';
+import NextLifeInteractionButton from './components/NextLifeInteractionButton';
 import NextLifeMusic from './subpages/NextLifeMusic';
 import NextLifeText from './subpages/NextLifeText';
 import NextLifeSample from './subpages/NextLifeSample';
 import NextLifeCube from './subpages/NextLifeCube';
 
-import myTextureLoader from './utils/texture/myTextureLoader';
-import myMaterialLoader from './utils/material/myMaterialLoader';
-import boxMap from './utils/box/boxMap';
-
 import './NextLife.scss';
+import cubeTextLoader from './utils/texture/cubeTextLoader';
 
 // TODO: 來生頁面會強制轉換為生者配色
 // DONE: 如果要記得會員的選擇 這功能也可以改成在 Background.jsx 做
@@ -29,35 +27,131 @@ import './NextLife.scss';
 
 function NextLife(props) {
     const { pageName } = props;
-    const { isDead } = useContext(AuthContext);
+    const { account, isDead } = useContext(AuthContext);
     const { setTheme } = useContext(ThemeContext);
     const { setHeader } = useContext(HeaderContext);
+    const meshesData = useContext(MeshContext);
     const navigate = useNavigate();
+    const canvasRef = createRef();
 
+    //const [isPending, startTransition] = useTransition()
     // FIXME: 測試時調這邊
     const [nextLifeStage, setNextLifeStage] = useState(3);
     const [cubeAnimationState, setCubeAnimationState] = useState(false);
+    const [cubeRotatingStyle, setCubeRotatingStyle] = useState('classic');
 
     const [musicIsHidden, setMusicIsHidden] = useState(false);
+
     const [sampleIsHidden, setSampleIsHidden] = useState(false);
+
     const [textIsHidden, setTextIsHidden] = useState(false);
     const [nextLifeTextareaString, setNextLifeTextareaString] = useState('');
 
-    const meshesData = useMemo(() => {
-        const texturesData = myTextureLoader();
+    const [cubeIsMaking, setCubeIsMaking] = useState(false);
+    const [currentCubeOptionIndex, setCurrentCubeOptionIndex] = useState(0);
+    const [currentCubeColorIndex, setCurrentCubeColorIndex] = useState(0);
 
-        let materialsData = [];
+    // 用來控制方塊做好了以後的動畫的 trigger
+    const [cubeIntro, setCubeIntro] = useState(false);
+    const [cubeTextTextureData, setCubeTextTextureData] = useState({});
 
-        boxMap.forEach((item, index) => {
-            materialsData.push(myMaterialLoader(item.ID, texturesData[index]));
+    const wrapText = (
+        context,
+        text,
+        x,
+        y,
+        account,
+        x2,
+        y2,
+        maxWidth,
+        lineHeight,
+        scale
+    ) => {
+        const words = text.split('');
+        let line = '';
+
+        context.scale(scale, scale);
+
+        for (let n = 0; n < words.length; n++) {
+            let testLine = line + words[n];
+            let metrics = context.measureText(testLine);
+            let testWidth = metrics.width;
+            if (testWidth > maxWidth && n > 0) {
+                context.fillText(line, x, y);
+                line = words[n];
+                y += lineHeight;
+            } else {
+                line = testLine;
+            }
+        }
+        context.fillText(line, x, y);
+
+        context.font = "italic 700 32px 'Noto Sans JP', sans-serif";
+        context.fillText(account, x2, y2);
+    };
+
+    const handleCubeTextDraw = () => {
+        // const width = 512;
+        // const height = 512;
+        const canvasScale = 4;
+
+        // const size = 512 * canvasScale;
+        const context = canvasRef.current.getContext('2d');
+        canvasRef.current.width = canvasRef.current.height = 512 * canvasScale;
+        context.font = `700 60px 'Noto Sans JP', sans-serif`;
+        context.fillStyle =
+            meshesData.fontColorsData[currentCubeColorIndex]['colorTop'];
+        context.textAlign = 'left';
+        context.textBaseline = 'alphabetic';
+
+        const canvasX = 45;
+        const canvasY = 95;
+        const canvasX2 = 40;
+        const canvasY2 = 467;
+        const canvasMaxWidth = 432;
+        const canvasLineHeight = 75;
+        const canvasAccount = `@${account}`;
+        const canvasText = nextLifeTextareaString;
+
+        wrapText(
+            context,
+            canvasText,
+            canvasX,
+            canvasY,
+            canvasAccount,
+            canvasX2,
+            canvasY2,
+            canvasMaxWidth,
+            canvasLineHeight,
+            canvasScale
+        );
+
+        const cubeTextTexture = cubeTextLoader(
+            meshesData.texturesData[currentCubeOptionIndex]['T'],
+            canvasRef
+        );
+
+        setCubeTextTextureData(cubeTextTexture);
+        meshesData.setMeshesMemoData((prevState) => {
+            const newObj = { ...prevState };
+            console.log('new', newObj);
+            newObj.materialsData[currentCubeOptionIndex]['top'] =
+                cubeTextTexture;
+            console.log('newnew', newObj);
+            return newObj;
         });
 
-        return { texturesData, materialsData };
-    }, []);
+        setTimeout(() => {
+            // FIXME: 利用黑暗手法強制更新
+            const newCurrentCubeOptionIndex = currentCubeOptionIndex - 1;
+            setCurrentCubeOptionIndex(newCurrentCubeOptionIndex);
+            setTimeout(() => {
+                setCurrentCubeOptionIndex(newCurrentCubeOptionIndex + 1);
+            }, 0);
+        }, 2000);
+    };
 
     // console.log(meshesData);
-
-    // ASK: 可以在 useEffect 中去預載嗎 還是直接一進主網頁就載更好
 
     // 設定 Header
     useEffect(() => {
@@ -96,7 +190,10 @@ function NextLife(props) {
                     ''
                 )}
                 {nextLifeStage >= 1 ? (
-                    <NextLifeStageIndicator nextLifeStage={nextLifeStage} />
+                    <NextLifeStageIndicator
+                        nextLifeStage={nextLifeStage}
+                        cubeIsMaking={cubeIsMaking}
+                    />
                 ) : (
                     ''
                 )}
@@ -104,7 +201,6 @@ function NextLife(props) {
                     <NextLifeSample
                         nextLifeStage={nextLifeStage}
                         setNextLifeStage={setNextLifeStage}
-                        meshesData={meshesData}
                         cubeAnimationState={cubeAnimationState}
                         setCubeAnimationState={setCubeAnimationState}
                         sampleIsHidden={sampleIsHidden}
@@ -119,6 +215,10 @@ function NextLife(props) {
                         setNextLifeStage={setNextLifeStage}
                         nextLifeTextareaString={nextLifeTextareaString}
                         setTextIsHidden={setTextIsHidden}
+                        cubeIsMaking={cubeIsMaking}
+                        setCubeIsMaking={setCubeIsMaking}
+                        currentCubeOptionIndex={currentCubeOptionIndex}
+                        handleCubeTextDraw={handleCubeTextDraw}
                     />
                 ) : (
                     ''
@@ -135,11 +235,17 @@ function NextLife(props) {
                 )}
                 {nextLifeStage === 3 ? (
                     <NextLifeCube
-                        nextLifeStage={nextLifeStage}
-                        setNextLifeStage={setNextLifeStage}
-                        meshesData={meshesData}
                         cubeAnimationState={cubeAnimationState}
                         setCubeAnimationState={setCubeAnimationState}
+                        cubeIsMaking={cubeIsMaking}
+                        cubeRotatingStyle={cubeRotatingStyle}
+                        setCubeRotatingStyle={setCubeRotatingStyle}
+                        currentCubeOptionIndex={currentCubeOptionIndex}
+                        nextLifeTextareaString={nextLifeTextareaString}
+                        ref={canvasRef}
+                        setCurrentCubeOptionIndex={setCurrentCubeOptionIndex}
+                        currentCubeColorIndex={currentCubeColorIndex}
+                        setCurrentCubeColorIndex={setCurrentCubeColorIndex}
                     />
                 ) : (
                     ''

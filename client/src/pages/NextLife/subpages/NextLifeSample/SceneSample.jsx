@@ -29,6 +29,8 @@ function SceneSample(props, ref) {
         fragmentShader: shaderMap.t,
     };
 
+    // console.log(sampleMaterial);
+
     useFrame(() => {
         meshRef.current.rotation.y += 0.01;
 

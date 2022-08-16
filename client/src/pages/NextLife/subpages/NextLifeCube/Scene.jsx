@@ -1,4 +1,4 @@
-import { useRef, Fragment, forwardRef } from 'react';
+import { useState, useRef, Fragment, forwardRef } from 'react';
 
 import { useFrame } from '@react-three/fiber';
 
@@ -7,17 +7,44 @@ import { gsap } from 'gsap';
 function Scene(props, ref) {
     const {
         eachCubeSize,
+        setEachCubeSize,
         meshesData,
         currentCubeOptionIndex,
         cubeAnimationState,
         setCubeAnimationState,
+        cubeRotatingStyle,
+        cubeIsMaking,
+        stylishTimer,
+        setStylishTimer,
     } = props;
     const meshRef = useRef(null);
 
     // console.log(meshesData);
 
     useFrame(() => {
-        meshRef.current.rotation.y += 0.01;
+        if (cubeRotatingStyle !== 'classic') {
+            if (stylishTimer < 0.2) {
+                meshRef.current.rotation.y += Math.sin(stylishTimer);
+                const newStylishTimer = stylishTimer + Math.PI / 2 / 150;
+                // 注意 setState() 時間是整段之後
+                setStylishTimer(newStylishTimer);
+            } else {
+                meshRef.current.rotation.y += 0.2;
+            }
+        } else {
+            meshRef.current.rotation.y += 0.01;
+            if (stylishTimer !== 0) {
+                setStylishTimer(0);
+            }
+        }
+
+        // 這會隨 RWD 變動 先做到差不多就好
+        if (cubeIsMaking) {
+            if (eachCubeSize >= 52) {
+                const newEachCubeSize = eachCubeSize - 0.2;
+                setEachCubeSize(newEachCubeSize);
+            }
+        }
 
         if (!cubeAnimationState) {
             gsap.to(

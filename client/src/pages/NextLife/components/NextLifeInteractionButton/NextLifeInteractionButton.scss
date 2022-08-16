@@ -29,7 +29,12 @@
 
         &:hover {
             transform: scale(1.1);
+            z-index: 1;
         }
+    }
+
+    .nlInteraction-button.isFinale {
+        transform: scale(1.1);
     }
 
     .nlInteraction-IoIosArrowUp-area {
@@ -40,11 +45,21 @@
         right: 30px;
     }
 
+    .nlInteraction-OK-paragraph {
+        font-family: $ff-h;
+    }
+
     .nlInteraction-button.isDisabled {
         background-color: $disabled;
         color: $bgc-D-30p;
         cursor: none;
         pointer-events: none;
+    }
+
+    .nlInteraction-button.isAbled {
+        background-color: $disabled;
+        color: $bgc-D;
+        border: 2px solid $bgc-D;
     }
 }
 
@@ -59,6 +74,10 @@
             &:hover {
                 transform: scale(1.2);
             }
+        }
+
+        .nlInteraction-button.isFinale {
+            transform: scale(1.2);
         }
 
         .nlInteraction-IoIosArrowUp-area {
@@ -143,5 +162,20 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+.container.nlInteraction.isMaking {
+    animation: cpl-nlInteraction-isMaking 2s forwards;
+}
+
+@keyframes cpl-nlInteraction-isMaking {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        cursor: none;
+        pointer-events: none;
     }
 }
