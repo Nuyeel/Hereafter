@@ -10,6 +10,7 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 15px 50px 0px 50px;
+    position: relative;
 
 }
 
@@ -17,6 +18,49 @@
     margin: 0px 30px 40px 30px;
     position: relative;
 
+}
+
+// .ab-box:hover .ab-g-jump{
+//     opacity: 1;
+//     transition: .5s;
+// }
+.ab-g-1{
+    width: 23px;
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    transform: rotate(43deg);
+
+}
+.ab-g-2{
+    width: 18px;
+    position: absolute;
+    top: 25px;
+    right: -7px;
+    transform: rotate(60deg);
+
+}
+.ab-g-3{
+    width: 18px;
+    position: absolute;
+    top: -15px;
+    right: 27px;
+    transform: rotate(35deg);
+    z-index: 99;
+
+}
+.ab-box:hover .ab-g-3{
+    opacity: 1;
+    animation: fall 1s ease ;
+    animation-fill-mode: forwards;
+
+    
+}
+@keyframes fall {
+    0%{top: -15px;right: 27px;opacity: 1;};
+    80%{opacity: 0;};
+    100%{top: 300px;right: 20px;rotate: 600deg;opacity: 0;};
+    
 }
 .ab-pic{
     height: 180px;
