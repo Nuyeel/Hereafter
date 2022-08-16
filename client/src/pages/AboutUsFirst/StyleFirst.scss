@@ -113,18 +113,18 @@ color: rgb(255, 255, 157);
     position: absolute;
     top: 25%;
     right: 50%;
-    animation:heartS .5s 15s linear forwards, star 1.5s 15.5s linear 2, startwo 2s 18.5s ease;
+    animation:heartS .5s 15s linear forwards, ab-star 1.5s 15.5s linear 2, ab-startwo 2s 18.5s ease;
     animation-fill-mode: forwards;
 }
 
 
-@keyframes star {
+@keyframes ab-star {
     0%{rotate: 0deg;}
     100%{rotate: 360deg;}
     
 }
 
-@keyframes startwo {
+@keyframes ab-startwo {
     0%{scale: 1;opacity: 1;rotate: 0deg;}
     100%{scale: 0;opacity: .5;rotate: 360deg;top: 80%;}
     
@@ -158,9 +158,9 @@ color: rgb(255, 255, 157);
     transform-origin: 0 100%;
     bottom: 130px;
     left: 165px;
-    animation: line .8s 20.5s ease backwards;
+    animation: ab-line .8s 20.5s ease backwards;
 }
-@keyframes line{
+@keyframes ab-line{
     0%{scale: 0;}
     100%{scale: 1;}
 }
@@ -183,7 +183,7 @@ color: rgb(255, 255, 157);
     bottom: 130px;
     left: 225px;
     transform-origin: 0 100%;
-    animation: line .8s 20.7s ease backwards;
+    animation: ab-line .8s 20.7s ease backwards;
 
 }
 .ab-c2{
@@ -206,7 +206,7 @@ color: rgb(255, 255, 157);
     bottom: 130px;
     left: 300px;
     transform-origin: 0 100%;
-    animation: line .8s 20.9s ease backwards;
+    animation: ab-line .8s 20.9s ease backwards;
 
 }
 .ab-c3{
@@ -228,7 +228,7 @@ color: rgb(255, 255, 157);
     bottom: 130px;
     left: 400px;
     transform-origin: 0 100%;
-    animation: line .8s 21.1s ease backwards;
+    animation: ab-line .8s 21.1s ease backwards;
 
 }
 .ab-c4{
@@ -250,7 +250,7 @@ color: rgb(255, 255, 157);
     bottom: 130px;
     left: 500px;
     transform-origin: 0 100%;
-    animation: line .8s 21.3s ease backwards;
+    animation: ab-line .8s 21.3s ease backwards;
 
 }
 .ab-c5{
