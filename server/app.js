@@ -47,6 +47,7 @@ const eventsRouter = require(`${__dirname}/routes/events`);
 const eventcartsRouter = require(`${__dirname}/routes/eventcarts`);
 const avatarRouter = require(`${__dirname}/routes/avatar`);
 const gooddeedRouter = require(`${__dirname}/routes/gooddeed`);
+const newsRouter = require(`${__dirname}/routes/news`);
 
 // 設定路由比對時重視大小寫
 app.set('case sensitive routing', true);
@@ -202,10 +203,14 @@ app.use(
     '/event/eventlist',
     express.static(`${__dirname}/public/event/eventlist`)
 );
+// 電子報
+app.use('/news', express.static(`${__dirname}/public/news`));
+
 // 細節評論頭貼
 app.use('/event/comment', express.static(`${__dirname}/public/event/comment`));
 
 app.use('/api/gooddeed', gooddeedRouter);
+app.use('/api/sendnews', newsRouter);
 
 // catch 404 and forward to error handler
 // Http Status Code 404: 倒數第二道防線

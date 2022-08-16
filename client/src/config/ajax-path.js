@@ -41,3 +41,5 @@ export const Avatar_Update = `${SERVER}/avatar/update`;
 
 // 陰德值測驗
 export const API_GOODDEED_GET = `${SERVER}/api/gooddeed`;
+// 最新消息
+export const NEWS_MAIL = `${SERVER}/api/sendnews`;
