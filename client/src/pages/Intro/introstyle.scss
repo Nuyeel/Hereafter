@@ -3,9 +3,9 @@
 
 .intro-container{ 
     position: relative;
-    top: -50px;
+    
     background-color: #3C3B67;
-    margin-bottom: -50px;
+   
     font-family: $ff-t;
 }
 
@@ -34,7 +34,7 @@
 
     width: 150px;height: 50px;
     position:fixed;
-    bottom: 10%;
+    bottom: 5%;
     right: 5%;
     text-align: center;
     // background-color: rgb(218, 112, 112);
@@ -116,7 +116,7 @@
    
     width: 160px;
     height: 165px;  
-    background-color: #3C3B67;
+    background-color: $bgc-D;
     border-radius: 100%; 
     animation: star-shine ease-in 2s infinite alternate-reverse;
 }
@@ -249,7 +249,7 @@
     height: 300px;
    
     background-size: contain;
-    border: 25px solid #3C3B67;
+    border: 25px solid $bgc-D;
     border-radius: 50%;
 
 }

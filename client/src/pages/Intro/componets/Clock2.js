@@ -32,42 +32,7 @@ function Clock() {
                             </div>
                             <div class="orbit"></div>
                         </div>
-                        <div class="box">
-                            <div class="planet">
-                                <div className="cube">
-                                    <div className="face"></div>
-                                    <div className="face"></div>
-                                </div>
-                            </div>
-                            {/* <div class="orbit"></div> */}
-                        </div>
-                        <div class="box">
-                            <div class="planet">
-                                <div className="cube">
-                                    <div className="face"></div>
-                                    <div className="face"></div>
-                                </div>
-                            </div>
-                            {/* <div class="orbit"></div> */}
-                        </div>
-                        <div class="box">
-                            <div class="planet">
-                                <div className="cube">
-                                    <div className="face"></div>
-                                    <div className="face"></div>
-                                </div>
-                            </div>
-                            {/* <div class="orbit"></div> */}
-                        </div>
-                        <div class="box">
-                            <div class="planet">
-                                <div className="cube">
-                                    <div className="face"></div>
-                                    <div className="face"></div>
-                                </div>
-                            </div>
-                            {/* <div class="orbit"></div> */}
-                        </div>
+                     
                     </div>
                   
                 </div>

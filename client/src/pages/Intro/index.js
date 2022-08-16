@@ -159,13 +159,10 @@ function Intro() {
             <div className="intro-container">
                 <div className="yun-fix-scroll">
                     <p>SCROLL</p>
-                    <div className="yun-scroll-img">
-
-                    </div>
+                    <div className="yun-scroll-img"></div>
                 </div>
                 <div className="yun-intro-skip" onClick={backtoMainpage}>
                     <p>SKIP</p>
-                    
                 </div>
 
                 <ScrollContainer>
@@ -285,7 +282,7 @@ function Intro() {
                             animation={batch(
                                 Pos(8, 50, 0, 0),
                                 Fade(),
-                                MoveOut()
+                                Move(0, 50, 0, -50)
                             )}
                         >
                             <div className="intro-h2">
@@ -307,7 +304,7 @@ function Intro() {
                             animation={batch(
                                 Pos(8, 50, 0, 0),
                                 Fade(),
-                                MoveOut()
+                                Move(0, 50, 0, -50)
                             )}
                         >
                             <div className="intro-h2">
@@ -375,8 +372,8 @@ function Intro() {
                         <Animator
                             animation={batch(
                                 Pos(8, 50, 0, 0),
-                                Fade()
-                                // MoveOut()
+                                Fade(),
+                                Move(0, 50, 0, -50)
                             )}
                         >
                             <div className="intro-h2">又或是不滿意</div>
@@ -397,12 +394,20 @@ function Intro() {
 
                     <ScrollPage>
                         <Animator
-                            animation={batch(Pos(10, 10, 0, 0), FadeIn())}
+                            animation={batch(
+                                Pos(10, 10, 0, 0),
+                                Fade(),
+                                Move(0, 50, 0, -50)
+                            )}
                         >
                             <div className="intro-final-logo"></div>
                         </Animator>
                         <Animator
-                            animation={batch(Pos(50, 40, 0, 0), FadeIn())}
+                            animation={batch(
+                                Pos(50, 40, 0, 0),
+                                Fade(),
+                                Move(0, 50, 0, -50)
+                            )}
                         >
                             <div className="intro-h2">
                                 即刻開始打造下一段人生吧
