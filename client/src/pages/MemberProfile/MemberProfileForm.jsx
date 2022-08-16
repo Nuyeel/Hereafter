@@ -16,6 +16,8 @@ function MemberProfileForm() {
     const [mainProfile, setMainProfile] = useState({
         name: '',
         account: '',
+        birthdate: '',
+        deathdate: '',
         gooddeed_score: '',
         profile_picture: '',
     });
@@ -23,13 +25,15 @@ function MemberProfileForm() {
     const [dateData, setDateData] = useState({
         birthdate: '',
         deathdate: '',
-    })
+    });
 
     const [placeData, setPlaceData] = useState({
         country: '',
         city: '',
         dist: '',
     });
+
+    const { country, city, dist } = placeData;
 
     const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, token } = useContext(AuthContext);
@@ -55,7 +59,6 @@ function MemberProfileForm() {
     useEffect(() => {
         fetchMemberData();
     }, []);
-    // const { country, city, dist} = placeData;
 
     return (
         <>
@@ -132,10 +135,10 @@ function MemberProfileForm() {
                                                                 會員中心主頁
                                                             </div>
                                                             <br />
-                                                            <div className="card rounded-4">
-                                                                <div className="card-body d-flex align-items-center">
-                                                                    <div className="col-md-9 mb-md-0 p-md-4 member-page-field">
-                                                                        <div className="card-title">
+                                                            <div className="card rounded-4 member-page-card member-page-card">
+                                                                <div className="card-body d-flex align-items-center  member-page-card">
+                                                                    <div className="col-md-9 mb-md-0 p-md-4 member-page-card">
+                                                                        <div className="card-title member-page-name">
                                                                             {mainProfile.name
                                                                                 ? mainProfile.name
                                                                                 : mainProfile.account}
@@ -143,27 +146,27 @@ function MemberProfileForm() {
                                                                         <br />
                                                                         {/* TODO：有無日期的呈現方式 */}
                                                                         {mainProfile.birthdate ? (
-                                                                            <div className="card-text ">
+                                                                            <div className="card-text member-page-field">
                                                                                 出生日：
                                                                                 {
-                                                                                    dateData.birthdate
+                                                                                    mainProfile.birthdate
                                                                                 }
                                                                             </div>
                                                                         ) : (
-                                                                            <div className="card-text ">
+                                                                            <div className="card-text member-page-field">
                                                                                 未記錄出生日
                                                                             </div>
                                                                         )}
                                                                         <br />
                                                                         {mainProfile.deathdate ? (
-                                                                            <div className="card-text ">
+                                                                            <div className="card-text member-page-field">
                                                                                 往生日：
                                                                                 {
-                                                                                    dateData.deathdate
+                                                                                    mainProfile.deathdate
                                                                                 }
                                                                             </div>
                                                                         ) : (
-                                                                            <div className="card-text ">
+                                                                            <div className="card-text member-page-field">
                                                                                 未存在往生紀錄
                                                                             </div>
                                                                         )}
@@ -190,9 +193,9 @@ function MemberProfileForm() {
                                                                 </div>
                                                             </div>
                                                             <br />
-                                                            <div className="cards-2 d-flex justify-content-evenly align-items-center ">
-                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4">
-                                                                    <div className="card-body d-flex flex-column">
+                                                            <div className="cards-2 d-flex justify-content-evenly align-items-center">
+                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card">
+                                                                    <div className="card-body d-flex flex-column member-page-card">
                                                                         {/* TODO：有無陰德值的呈現方式 */}
                                                                         {mainProfile.gooddeed_score ? (
                                                                             <>
@@ -218,7 +221,8 @@ function MemberProfileForm() {
                                                                         ) : (
                                                                             <>
                                                                                 <div className="card-title member-page-field">
-                                                                                    目前還沒有陰德值
+                                                                                    ★
+                                                                                    您目前還沒有陰德值
                                                                                 </div>
                                                                                 <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
                                                                                     {/* <div className=""></div> */}
@@ -239,34 +243,68 @@ function MemberProfileForm() {
                                                                 <div className="p-2">
                                                                     {' '}
                                                                 </div>
-                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4">
-                                                                    <div className="card-body d-flex flex-column">
+                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card">
+                                                                    <div className="card-body d-flex flex-column member-page-card">
                                                                         {/* TODO：有無良辰吉地的呈現方式 */}
-                                                                        <h5 className="card-title member-page-field">
-                                                                            預定轉生位置為：
-                                                                        </h5>
-                                                                        <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                            <div className="">
-                                                                                {
-                                                                                    placeData.country
-                                                                                }
-                                                                                {
-                                                                                    placeData.city
-                                                                                }
-                                                                                {
-                                                                                    placeData.dist
-                                                                                }
-                                                                            </div>
-                                                                        </div>
-                                                                        <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
-                                                                            <Link
-                                                                                className="member-link-2"
-                                                                                to="/Place
+                                                                        {placeData ? (
+                                                                            <>
+                                                                                <h5 className="card-title member-page-field">
+                                                                                    ★
+                                                                                    您選取的轉生地點：
+                                                                                </h5>
+                                                                                <div className="mb-md-0 p-md-4 d-flex flex-row justify-content-center">
+                                                                                    <div className="member-page-place">
+                                                                                        {
+                                                                                            country
+                                                                                        }
+                                                                                        {
+                                                                                            city
+                                                                                        }
+                                                                                        {
+                                                                                            dist
+                                                                                        }
+                                                                                    </div>
+                                                                                </div>
+                                                                                <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
+                                                                                    <Link
+                                                                                        className="member-link-2"
+                                                                                        to="/reborn-cart
                                                                                 "
-                                                                            >
-                                                                                前往良辰吉地
-                                                                            </Link>
-                                                                        </button>
+                                                                                    >
+                                                                                        查看轉生購物車
+                                                                                    </Link>
+                                                                                </button>
+                                                                            </>
+                                                                        ) : (
+                                                                            <>
+                                                                                <h5 className="card-title member-page-field">
+                                                                                    ★
+                                                                                    選擇一塊良辰吉地吧
+                                                                                </h5>
+                                                                                <div className="mb-md-0 p-md-4 d-flex flex-row justify-content-center">
+                                                                                    {/* <div className="member-page-place">
+                                                                                        {
+                                                                                            country
+                                                                                        }
+                                                                                        {
+                                                                                            city
+                                                                                        }
+                                                                                        {
+                                                                                            dist
+                                                                                        }
+                                                                                    </div> */}
+                                                                                </div>
+                                                                                <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
+                                                                                    <Link
+                                                                                        className="member-link-2"
+                                                                                        to="/Place
+                                                                                "
+                                                                                    >
+                                                                                        前往良辰吉地
+                                                                                    </Link>
+                                                                                </button>
+                                                                            </>
+                                                                        )}
                                                                     </div>
                                                                 </div>
                                                             </div>

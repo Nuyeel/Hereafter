@@ -112,7 +112,7 @@ function MemberProfileForm() {
                                                                 theme.memberBgCard,
                                                         }}
                                                     >
-                                                        <div className="tab-content">
+                                                        <div className="tab-content member-event-bg">
                                                             <div className="mb-3 d-flex justify-content-center member-page-title">
                                                                 功德撲滿訂單
                                                             </div>
