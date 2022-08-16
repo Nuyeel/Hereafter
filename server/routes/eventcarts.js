@@ -209,6 +209,20 @@ router.get('/alreadypay', async (req, res) => {
     res.json('已從購物車刪除');
 });
 
+const eventDetailMember = async (sid) => {
+    const sql =
+        'SELECT * FROM (`npo_act` JOIN `npo_act_type` ON `npo_act`.`type_sid` = `npo_act_type`.`typesid`)  INNER JOIN `city_type` ON `npo_act`.`place_city`= `city_type`.`city_sid` WHERE `sid`= ? ';
+    const [results] = await db.query(sql, [sid]);
+
+    // Day.js日期轉換法
+    const mo = dayjs(results[0].start).format('YYYY-MM-DD');
+    results[0].start = mo;
+    const mo2 = results[0].start_time.slice(0, 5);
+    results[0].start_time = mo2;
+
+    return results[0];
+};
+
 // 會員中心-活動訂單
 router.get('/testevent/:membersid', async (req, res) => {
     let output = {
@@ -221,6 +235,7 @@ router.get('/testevent/:membersid', async (req, res) => {
         'SELECT * FROM `event_order_detail` WHERE `member_sid` = ? ORDER BY `event_order_detail`.`event_order_sid` DESC';
 
     const [results1] = await db.query($sql1, [memberSid]);
+    // console.log(results1);
 
     results1.forEach((value) => {
         const mo = dayjs(value.order_created_at).format('YYYY-MM-DD');
@@ -232,39 +247,16 @@ router.get('/testevent/:membersid', async (req, res) => {
         item['eventdetail'] = [];
     });
 
-    function test() {
-        return new Promise((resolve, reject) => {
-            results1.forEach((item, index) => {
-                item.event_order_detail.forEach(async (sid) => {
-                    const sql =
-                        'SELECT * FROM (`npo_act` JOIN `npo_act_type` ON `npo_act`.`type_sid` = `npo_act_type`.`typesid`)  INNER JOIN `city_type` ON `npo_act`.`place_city`= `city_type`.`city_sid` WHERE `sid`= ? ';
-                    const [[results]] = await db.query(sql, [sid]);
-
-                    // Day.js日期轉換法
-                    [results].forEach((value) => {
-                        const mo = dayjs(value.start).format('YYYY-MM-DD');
-                        value.start = mo;
-                        const mo2 = value.start_time.slice(0, 5);
-                        value.start_time = mo2;
-                    });
-
-                    // console.log(index);
-                    // console.log(results);
-                    results1[index]['eventdetail'].push(results);
-                    // console.log(results1[index]['eventdetail']);
-
-                    if (index === results1.length - 1) {
-                        resolve();
-                    }
-                });
-            });
-        });
+    for (let i = 0; i < results1.length; i++) {
+        for (let k = 0; k < results1[i]['event_order_detail'].length; k++) {
+            results1[i]['eventdetail'].push(
+                await eventDetailMember(results1[i]['event_order_detail'][k])
+            );
+        }
     }
 
-    test().then(() => {
-        console.log(results1);
-        return res.json(results1);
-    });
+    // console.log(results1);
+    res.json(results1);
 });
 
 // 會員中心有辦法調出會員歷屆活動報名紀錄
