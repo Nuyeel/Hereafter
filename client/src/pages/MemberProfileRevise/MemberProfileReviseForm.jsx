@@ -176,17 +176,20 @@ function MemberProfileReviseForm() {
                                                     </li>
                                                 </ol>
                                                 <section
-                                                    className="pb-4 member-loading "
-                                                    
+                                                    className="pb-4 member-loading"
+                                                    style={{
+                                                        'max-height': '550px',
+                                                        'border-radius': '20px',
+                                                    }}
                                                 >
                                                     <section
-                                                        className="w-100 p-4 d-flex justify-content-center pb-4 rounded-5 memberBgCard member-loading "
+                                                        className="w-100 p-4 d-flex justify-content-center pb-4 rounded-5 memberBgCard"
                                                         style={{
                                                             backgroundColor:
                                                                 theme.memberBgCard,
                                                         }}
                                                     >
-                                                        <div className="tab-content member-loading ">
+                                                        <div className="tab-content">
                                                             {isLoading ? (
                                                                 <>
                                                                     <LoadingLogo
