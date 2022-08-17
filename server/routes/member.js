@@ -483,38 +483,6 @@ router
         const sql = 'SELECT * FROM `member` WHERE account = ?';
         const [q1] = await db.query(sql, [req.body.account]);
 
-        // const sql2 = 'SELECT * FROM `member` WHERE name = ?';
-        // const [q2] = await db.query(sql2, [req.body.name]);
-        // if (q2.length > 0) {
-        //     output.code = 406;
-        //     output.error = '會員名稱尚未修改';
-        //     return res.json(output);
-        // }
-
-        // const sql3 = 'SELECT * FROM `member` WHERE birthdate = ?';
-        // const [q3] = await db.query(sql3, [req.body.birthdate]);
-        // if (q3.length > 0) {
-        //     output.code = 406;
-        //     output.error = '您的出生日尚未修改';
-        //     return res.json(output);
-        // }
-
-        // const sql4 = 'SELECT * FROM `member` WHERE deathdate = ?';
-        // const [q4] = await db.query(sql4, [req.body.deathdate]);
-        // if (q4.length > 0) {
-        //     output.code = 406;
-        //     output.error = '您的死亡日尚未修改';
-        //     return res.json(output);
-        // }
-
-        // const sql5 = 'SELECT * FROM `member` WHERE email = ?';
-        // const [q5] = await db.query(sql5, [req.body.email]);
-        // if (q5.length > 0) {
-        //     output.code = 406;
-        //     output.error = '電子信箱尚未修改';
-        //     return res.json(output);
-        // }
-
         //更新會員名稱
         const nameupdate = 'UPDATE `member` SET `name`=? WHERE sid=?';
         const nameupdate2 = sqlstring.format(nameupdate, [
@@ -543,13 +511,24 @@ router
         // console.log(deathdateupdate3);
 
         //更新電子信箱
-        const emailupdate = 'UPDATE `member` SET `email`=? WHERE sid=?';
-        const emailupdate2 = sqlstring.format(emailupdate, [
-            req.body.email,
-            res.locals.loginUser.id,
-        ]);
-        const emailupdate3 = await db.query(emailupdate2);
-        // console.log(emailupdate3);
+        const sql2 = 'SELECT `sid` FROM `member` WHERE email = ?';
+        const [q2] = await db.query(sql2, [req.body.email]);
+        console.log(q2[0].sid);
+        // SELECT COUNT(*) FROM `member` WHERE `email`='HappyCat0@gmail.com';
+
+        if (q2[0].sid !== res.locals.loginUser.id) {
+            output.code = 406;
+            output.error = '已有人使用此電子信箱';
+            return res.json(output);
+        } else {
+            const emailupdate = 'UPDATE `member` SET `email`=? WHERE sid=?';
+            const emailupdate2 = sqlstring.format(emailupdate, [
+                req.body.email,
+                res.locals.loginUser.id,
+            ]);
+            const emailupdate3 = await db.query(emailupdate2);
+            // console.log(emailupdate3);
+        }
 
         output.success = true;
         output.error = '修改成功';
