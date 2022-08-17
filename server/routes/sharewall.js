@@ -768,7 +768,11 @@ router.route('/post').post(async (req, res) => {
         const [tag_1_sid_isSet_result] = await db.query($tag_1_isSet_sql);
 
         // console.log(tag_1_sid_isSet_result);
-        if (!tag_1_sid_isSet_result.length) {
+
+        // 存在就記下 ID
+        if (tag_1_sid_isSet_result.length) {
+            tag_1_ID = tag_1_sid_isSet_result[0].share_post_tag_sid
+        } else if (!tag_1_sid_isSet_result.length) {
             // 不存在就新增
             const $tag_create_sql = ` 
                 INSERT 
@@ -800,7 +804,11 @@ router.route('/post').post(async (req, res) => {
         const [tag_2_sid_isSet_result] = await db.query($tag_2_isSet_sql);
 
         // console.log(tag_2_sid_isSet_result);
-        if (!tag_2_sid_isSet_result.length) {
+
+        // 存在就記下 ID
+        if (tag_2_sid_isSet_result.length) {
+            tag_2_ID = tag_2_sid_isSet_result[0].share_post_tag_sid;
+        } else if (!tag_2_sid_isSet_result.length) {
             // 不存在就新增
             const $tag_create_sql = ` 
                 INSERT 
@@ -832,7 +840,11 @@ router.route('/post').post(async (req, res) => {
         const [tag_3_sid_isSet_result] = await db.query($tag_3_isSet_sql);
 
         // console.log(tag_3_sid_isSet_result);
-        if (!tag_3_sid_isSet_result.length) {
+
+        // 存在就記下 ID
+        if (tag_3_sid_isSet_result.length) {
+            tag_3_ID = tag_3_sid_isSet_result[0].share_post_tag_sid;
+        } else if (!tag_3_sid_isSet_result.length) {
             // 不存在就新增
             const $tag_create_sql = ` 
                 INSERT 
