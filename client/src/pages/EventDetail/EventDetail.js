@@ -199,7 +199,7 @@ const EventDetail = () => {
                                                     <BiTimeFive />
                                                     <span>{v.start}</span>
                                                     <span>{v.start_time}</span>
-                                                    <span>- {v.end}</span>
+                                                    <span>～ {v.end}</span>
                                                     <span>{v.end_time}</span>
                                                     {/* FIXME: 來不及完成先註解 */}
                                                     {/* <a
