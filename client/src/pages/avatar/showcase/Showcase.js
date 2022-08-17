@@ -73,6 +73,7 @@ function Showcase(props) {
                     className="container showcase"
                     style={{
                         color: theme.cHeader,
+                        overflow: 'hidden',
                     }}
                 >
                     <Carousel

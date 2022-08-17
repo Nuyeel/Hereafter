@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { toPng, toSvg } from 'html-to-image';
 import styled from '@emotion/styled';
 import BodyData from './BodyData';
@@ -122,6 +122,7 @@ function CenterPart(props) {
         keepChange,
         theme,
         setCombination,
+        setKeepLineChange,
     } = props;
     //用來製作圖檔的ref 沒了會死
     const ref = useRef(null);
@@ -499,6 +500,14 @@ function CenterPart(props) {
         top: 6%;
         left: 34.5%;
         cursor: pointer;
+        display: ${controlChange ? 'none' : 'block'};
+        div {
+            opacity: 0;
+            position: absolute;
+            width: 80px;
+            top: -20px;
+            left: 140px;
+        }
     `;
     const HandRControl = styled.div`
         position: absolute;
@@ -509,6 +518,14 @@ function CenterPart(props) {
         top: 15%;
         left: 70%;
         cursor: pointer;
+        display: ${controlChange ? 'none' : 'block'};
+        div {
+            opacity: 0;
+            position: absolute;
+            width: 80px;
+            top: -30px;
+            left: 30px;
+        }
     `;
     const HandLControl = styled.div`
         position: absolute;
@@ -519,6 +536,14 @@ function CenterPart(props) {
         top: 15%;
         left: 10%;
         cursor: pointer;
+        display: ${controlChange ? 'none' : 'block'};
+        div {
+            opacity: 0;
+            position: absolute;
+            width: 80px;
+            top: -30px;
+            left: 25px;
+        }
     `;
     const FootRControl = styled.div`
         position: absolute;
@@ -529,6 +554,14 @@ function CenterPart(props) {
         top: 67%;
         left: 60%;
         cursor: pointer;
+        display: ${controlChange ? 'none' : 'block'};
+        div {
+            opacity: 0;
+            position: absolute;
+            width: 80px;
+            top: 100px;
+            left: 120px;
+        }
     `;
     const FootLControl = styled.div`
         position: absolute;
@@ -539,6 +572,14 @@ function CenterPart(props) {
         top: 67%;
         left: 16%;
         cursor: pointer;
+        display: ${controlChange ? 'none' : 'block'};
+        div {
+            opacity: 0;
+            position: absolute;
+            width: 80px;
+            top: 100px;
+            left: -55px;
+        }
     `;
     const TaleControl = styled.div`
         position: absolute;
@@ -549,6 +590,14 @@ function CenterPart(props) {
         top: 46%;
         left: 62%;
         cursor: pointer;
+        display: ${controlChange ? 'none' : 'block'};
+        div {
+            opacity: 0;
+            position: absolute;
+            width: 80px;
+            top: 35px;
+            left: 130px;
+        }
     `;
     const SpecialControl = styled.div`
         position: absolute;
@@ -558,6 +607,14 @@ function CenterPart(props) {
         top: 55%;
         left: 32%;
         cursor: pointer;
+        display: ${controlChange ? 'none' : 'block'};
+        div {
+            opacity: 0;
+            position: absolute;
+            width: 80px;
+            top: 50px;
+            left: -145px;
+        }
     `;
     const BodyControl = styled.div`
         ${'' /* border: #cff 5px dotted; */}
@@ -639,6 +696,7 @@ function CenterPart(props) {
                         onClick={() => {
                             setControlChange(0);
                             setBodyControlChange('hand');
+                            setKeepLineChange('hand');
                             setColorControlSwitch(0);
                         }}
                         onMouseEnter={onEnter}
@@ -705,43 +763,92 @@ function CenterPart(props) {
                             setColorControlSwitch(1);
                             setFaceControlChange('eye');
                         }}
-                    ></FaceControl>
+                        onMouseEnter={onEnter}
+                        onMouseLeave={onLeave}
+                    >
+                        <div className="showBackHint">
+                            <Soul />
+                            <span>臉</span>
+                        </div>
+                    </FaceControl>
                     <HandRControl
                         onClick={() => {
-                            setBodyControlChange('hand');
                             setColorControlSwitch(0);
+                            setBodyControlChange('hand');
                         }}
-                    ></HandRControl>
+                        onMouseEnter={onEnter}
+                        onMouseLeave={onLeave}
+                    >
+                        <div className="showBackHint">
+                            <Soul />
+                            <span>手</span>
+                        </div>
+                    </HandRControl>
                     <HandLControl
                         onClick={() => {
-                            setBodyControlChange('hand');
                             setColorControlSwitch(0);
+                            setBodyControlChange('hand');
                         }}
-                    ></HandLControl>
+                        onMouseEnter={onEnter}
+                        onMouseLeave={onLeave}
+                    >
+                        <div className="showBackHint">
+                            <Soul />
+                            <span>手</span>
+                        </div>
+                    </HandLControl>
                     <FootRControl
                         onClick={() => {
                             setBodyControlChange('foot');
                             setColorControlSwitch(0);
                         }}
-                    ></FootRControl>
+                        onMouseEnter={onEnter}
+                        onMouseLeave={onLeave}
+                    >
+                        <div className="showBackHint">
+                            <Soul />
+                            <span>腳</span>
+                        </div>
+                    </FootRControl>
                     <FootLControl
                         onClick={() => {
                             setBodyControlChange('foot');
                             setColorControlSwitch(0);
                         }}
-                    ></FootLControl>
+                        onMouseEnter={onEnter}
+                        onMouseLeave={onLeave}
+                    >
+                        <div className="showBackHint">
+                            <Soul />
+                            <span>腳</span>
+                        </div>
+                    </FootLControl>
                     <SpecialControl
                         onClick={() => {
                             setBodyControlChange('special');
                             setColorControlSwitch(1);
                         }}
-                    ></SpecialControl>
+                        onMouseEnter={onEnter}
+                        onMouseLeave={onLeave}
+                    >
+                        <div className="showBackHint">
+                            <Soul />
+                            <span>特殊</span>
+                        </div>
+                    </SpecialControl>
                     <TaleControl
                         onClick={() => {
                             setBodyControlChange('tale');
                             setColorControlSwitch(1);
                         }}
-                    ></TaleControl>
+                        onMouseEnter={onEnter}
+                        onMouseLeave={onLeave}
+                    >
+                        <div className="showBackHint">
+                            <Soul />
+                            <span>尾巴</span>
+                        </div>
+                    </TaleControl>
                 </div>
 
                 <Info>

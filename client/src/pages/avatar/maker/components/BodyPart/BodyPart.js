@@ -4,14 +4,15 @@ import Colors from './Colors';
 
 function BodyPart(props) {
     const {
-        controlChange,
         bodyControlChange,
         setCombination,
         combination,
         colorControlSwitch,
+        theme,
     } = props;
     const title = { hand: '手', foot: '腳', tale: '尾巴', special: '特殊' };
     const Body = styled.div`
+        position: relative;
         width: 375px;
         height: 100%;
         flex: 0 0 auto;
@@ -29,13 +30,9 @@ function BodyPart(props) {
             font-size: 24px;
         }
     `;
-
     return (
         <>
             <Body>
-                <div className="line"></div>
-                <div className="line"></div>
-                <div className="line"></div>
                 <Title>{title[bodyControlChange]}</Title>
                 <div className="controlarea" id="controlareaEyes">
                     <Style

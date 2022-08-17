@@ -65,6 +65,7 @@ const Maker = (props) => {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+        transition: 1s;
     `;
     const AvatarMaker = styled.div`
         width: 1200px;
@@ -108,14 +109,28 @@ const Maker = (props) => {
             font-size: 40px;
         }
     `;
+    const Line = styled.div`
+        box-sizing: border-box;
+        height: 3px;
+        border-radius: 5px;
+        background: ${theme.cHeader};
+        position: absolute;
+        opacity: 0;
+    `;
+
     //動畫的前置作業
     //保存動畫結束狀態的鉤子
     const [keepChange, setKeepChange] = useState(false);
+    const [keepLineChange, setKeepLineChange] = useState('hand');
     const basicRef = useRef();
     const centerRef = useRef();
     const faceRef = useRef();
     const faceViewRef = useRef();
     const bodyRef = useRef();
+    const handLineRef = useRef();
+    const footLineRef = useRef();
+    const taleLineRef = useRef();
+    const specialLineRef = useRef();
     const changeAnime = () => {
         if (controlChange === 1) {
             gsap.to(basicRef.current, {
@@ -221,6 +236,63 @@ const Maker = (props) => {
             );
         }
     };
+    useEffect(() => {
+        if (bodyControlChange === 'hand') {
+            const a = gsap.utils.selector(handLineRef.current);
+            gsap.timeline()
+                .fromTo(a('.line2'), { opacity: '0' }, { opacity: '1' })
+                .fromTo(
+                    a('.line1'),
+                    { opacity: '0' },
+                    {
+                        opacity: '1',
+                        onComplete: () => {
+                            setKeepLineChange('hand');
+                        },
+                    }
+                );
+        } else if (bodyControlChange === 'foot') {
+            const a = gsap.utils.selector(footLineRef.current);
+            gsap.timeline()
+                .fromTo(a('.line2'), { opacity: '0' }, { opacity: '1' })
+                .fromTo(
+                    a('.line1'),
+                    { opacity: '0' },
+                    {
+                        opacity: '1',
+                        onComplete: () => {
+                            setKeepLineChange('foot');
+                        },
+                    }
+                );
+        } else if (bodyControlChange === 'tale') {
+            const a = gsap.utils.selector(taleLineRef.current);
+            gsap.timeline()
+                .fromTo(a('.line2'), { opacity: '0' }, { opacity: '1' })
+                .fromTo(
+                    a('.line1'),
+                    { opacity: '0' },
+                    {
+                        opacity: '1',
+                        onComplete: () => {
+                            setKeepLineChange('tale');
+                        },
+                    }
+                );
+        } else if (bodyControlChange === 'special') {
+            const a = gsap.utils.selector(specialLineRef.current);
+            gsap.fromTo(
+                a('.line1'),
+                { opacity: '0' },
+                {
+                    opacity: '1',
+                    onComplete: () => {
+                        setKeepLineChange('special');
+                    },
+                }
+            );
+        }
+    }, [bodyControlChange]);
     //抓取訂單舊資料 如果拉到null會直接不送 防止後端crash 更新訂單資料的方法在Center.js
     useEffect(() => {
         if (sid !== null && aid !== null) {
@@ -278,6 +350,119 @@ const Maker = (props) => {
                             opacity: keepChange ? 0.3 : 1,
                         }}
                     >
+                        <div ref={handLineRef} style={{ position: 'relative' }}>
+                            <Line
+                                className="line1"
+                                style={{
+                                    width: '60px',
+                                    top: '100px',
+                                    left: '94%',
+                                    opacity:
+                                        controlChange === 0 &&
+                                        keepLineChange === 'hand' &&
+                                        bodyControlChange === 'hand'
+                                            ? 1
+                                            : 0,
+                                }}
+                            ></Line>
+                            <Line
+                                className="line2"
+                                style={{
+                                    width: '90px',
+                                    top: '138px',
+                                    transform: 'rotate(300deg)',
+                                    left: '79.5%',
+                                    opacity:
+                                        controlChange === 0 &&
+                                        keepLineChange === 'hand' &&
+                                        bodyControlChange === 'hand'
+                                            ? 1
+                                            : 0,
+                                }}
+                            ></Line>
+                        </div>
+                        <div ref={footLineRef} style={{ position: 'relative' }}>
+                            <Line
+                                className="line1"
+                                style={{
+                                    width: '60px',
+                                    top: '100px',
+                                    left: '94%',
+                                    opacity:
+                                        controlChange === 0 &&
+                                        keepLineChange === 'foot' &&
+                                        bodyControlChange === 'foot'
+                                            ? 1
+                                            : 0,
+                                }}
+                            ></Line>
+                            <Line
+                                className="line2"
+                                style={{
+                                    width: '300px',
+                                    top: '247px',
+                                    transform: 'rotate(280deg)',
+                                    left: '55.3%',
+                                    opacity:
+                                        controlChange === 0 &&
+                                        keepLineChange === 'foot' &&
+                                        bodyControlChange === 'foot'
+                                            ? 1
+                                            : 0,
+                                }}
+                            ></Line>
+                        </div>
+                        <div
+                            ref={specialLineRef}
+                            style={{ position: 'relative' }}
+                        >
+                            <Line
+                                className="line1"
+                                style={{
+                                    width: '270px',
+                                    top: '200px',
+                                    transform: 'rotate(313deg)',
+                                    left: '56%',
+                                    opacity:
+                                        controlChange === 0 &&
+                                        keepLineChange === 'special' &&
+                                        bodyControlChange === 'special'
+                                            ? 1
+                                            : 0,
+                                }}
+                            ></Line>
+                        </div>
+                        <div ref={taleLineRef} style={{ position: 'relative' }}>
+                            <Line
+                                className="line1"
+                                style={{
+                                    width: '40px',
+                                    top: '100px',
+                                    left: '98%',
+                                    opacity:
+                                        controlChange === 0 &&
+                                        keepLineChange === 'tale' &&
+                                        bodyControlChange === 'tale'
+                                            ? 1
+                                            : 0,
+                                }}
+                            ></Line>
+                            <Line
+                                className="line2"
+                                style={{
+                                    width: '200px',
+                                    top: '186px',
+                                    transform: 'rotate(300deg)',
+                                    left: '65%',
+                                    opacity:
+                                        controlChange === 0 &&
+                                        keepLineChange === 'tale' &&
+                                        bodyControlChange === 'tale'
+                                            ? 1
+                                            : 0,
+                                }}
+                            ></Line>
+                        </div>
                         <CenterPart
                             keepChange={keepChange}
                             combination={combination}
@@ -289,6 +474,7 @@ const Maker = (props) => {
                             setColorControlSwitch={setColorControlSwitch}
                             backtoShowCase={backtoShowCase}
                             theme={theme}
+                            setKeepLineChange={setKeepLineChange}
                         />
                     </div>
                     <div
@@ -300,6 +486,7 @@ const Maker = (props) => {
                         }}
                     >
                         <BodyPart
+                            theme={theme}
                             combination={combination}
                             controlChange={controlChange}
                             bodyControlChange={bodyControlChange}

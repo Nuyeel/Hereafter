@@ -14,13 +14,16 @@
     padding: 15px 0;
     margin: 20px 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
-.showcaseCardIMG{
+
+.showcaseCardIMG {
     margin: auto;
     position: relative;
     width: 350px;
     height: 350px;
 }
+
 .showcaseCardIMG img {
     position: relative;
     z-index: 20;
@@ -66,7 +69,9 @@
 
 
 @media screen and (min-width: 1200px) {
-    .showcase {position: relative;}
+    .showcase {
+        position: relative;
+    }
 
     .showcaseCard {
         display: flex;
