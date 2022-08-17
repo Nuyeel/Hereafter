@@ -913,7 +913,8 @@
         // outline: 1px solid green;
         width: 100%;
         margin-left: 0px;
-        max-height: 450px;
+        max-height: 570px;
+        // outline: 1px solid red;
 
         .xuan-cart-list-wrap{
           width: 100%;
@@ -1278,9 +1279,9 @@
                           // padding-top: 150px;
 
 
-                            // button:nth-child(1){
-                            //   margin-left: 80px;
-                            // }
+                            button:nth-child(1){
+                              margin-left: 80px;
+                            }
 
                             button{
                               min-width: 80px;
