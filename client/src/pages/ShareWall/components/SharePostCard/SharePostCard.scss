@@ -11,6 +11,8 @@
     margin-right: auto;
     margin-bottom: 40px;
     overflow: hidden;
+    top: 0;
+    transition: 0.4s;
 
     .cpl-spc-avatar {
         position: absolute;
@@ -76,6 +78,10 @@
         font-size: $fz-body;
         color: #FFFFFF;
     }
+}
+
+.cpl-share-post-card:hover {
+    top: -5px;
 }
 
 @media screen and (min-width: 500px) {
