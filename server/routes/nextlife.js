@@ -7,7 +7,7 @@ const SqlString = require('sqlstring');
 
 router.route('/').post(async (req, res) => {
     let output = {
-        cubeCreateResult: false
+        cubeCreateResult: false,
     };
 
     if (!res.locals.loginUser) {
