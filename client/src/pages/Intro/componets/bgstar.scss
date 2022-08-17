@@ -10,22 +10,22 @@
     overflow:visible;
 }  
 @keyframes star-cloud-move{
-    0%   { transform: translate(-50px,0px);}
+    0%   { transform: translate(-50px,20px);}
   
     100%   {transform: translate(50px,0px);}
 } 
 @keyframes star-cloud-rotate{
-    0%   { transform: rotate(0deg);}
+    0%   { transform: rotate(0deg) translate(-50px,0px);}
   
-    100%   {transform: rotate(360deg);}
+    100%   {transform: rotate(360deg) translate(-50px,0px);}
 } 
 .starCloud{
     position: absolute;
     // animation: star-sparkle ease-in infinite alternate-reverse;
 }
 .starCloud:nth-child(1){
-    width: 800px;
-    height: 800px;
+    width: 900px;
+    height: 900px;
     opacity: 0.5;
     background: url(../introImg/otherStar/starcloud1.svg)center center no-repeat;
     background-size: contain;
@@ -55,9 +55,9 @@
 
 @keyframes star-sparkle{
     0%   { opacity: 1;}
-    33%{opacity: 0.5;}
+    33%{opacity: 0;}
     66%{opacity: 1;}
-    100%   { opacity:0.5 ;}
+    100%   { opacity:0.3 ;}
 } 
 .otherStar{
     position: relative;

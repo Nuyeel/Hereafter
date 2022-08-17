@@ -1,5 +1,5 @@
-// import { React, useEffect } from 'react';
-import React from 'react';
+import { React, useEffect, useState } from 'react';
+
 import './introstyle.scss';
 
 // import Clock from './componets/Clock';
@@ -33,12 +33,28 @@ var utils_1 = require('../../../node_modules/react-scroll-motion/dist/utils');
 
 function Intro() {
     const navigate = useNavigate();
-    const ZoomInScrollOut = batch(MoveIn(0, 200));
-    const FadeUp = batch(Fade(), Move(), Sticky());
+
     const backtoMainpage = () => {
         console.log('click skip');
         navigate('/', { replace: true });
     };
+    const [show, setShow] = useState(false);
+    const GoMainpage = (
+    <>
+    
+        <button
+            className="yun-intro-button"
+            type="button"
+            onClick={backtoMainpage}
+        >
+            規劃我的來生
+        </button>
+        <div className="intro-end">
+            <p>END</p>
+        </div>
+    </>
+    );
+
 
     const Push = () => ({
         in: {
@@ -154,6 +170,37 @@ function Intro() {
             },
         };
     };
+
+    useEffect(() => {
+        const handleScroll = (event) => {
+            const body = document.body;
+            const html = document.documentElement;
+
+            const height = Math.max(
+                body.scrollHeight,
+                body.offsetHeight,
+                html.clientHeight,
+                html.scrollHeight,
+                html.offsetHeight
+            );
+            const scrollDetect = window.innerHeight + window.scrollY;
+            console.log('pageHeight', height);
+            console.log('window.scrollY', window.scrollY);
+            console.log('window.innerHeight', window.innerHeight);
+            console.log('scrollDetect', scrollDetect);
+
+            if (scrollDetect == height) {
+                // window.removeEventListener('scroll', handleScroll);
+                setShow(true);
+            } else {
+                setShow(false);
+                console.log('false');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <>
             <div className="intro-container">
@@ -251,9 +298,7 @@ function Intro() {
                         <Animator animation={batch(Sticky(50, 50))}>
                             <div className="god"></div>
                         </Animator>
-                        <Animator animation={batch(Move(50, 50))}>
-                            <div className="god-work"></div>
-                        </Animator>
+
                         <Animator
                             animation={batch(
                                 Pos(8, 80, 0, 0),
@@ -272,8 +317,8 @@ function Intro() {
                         <Animator
                             animation={batch(
                                 Pos(40, 20, 0, 0),
-                                Fade(),
-                                MoveOut()
+                                ZoomOut(),
+                                Fade()
                             )}
                         >
                             <Clock2 />
@@ -290,6 +335,7 @@ function Intro() {
                             </div>
                         </Animator>
                     </ScrollPage>
+                    <ScrollPage></ScrollPage>
                     <ScrollPage>
                         <Animator
                             animation={batch(
@@ -416,6 +462,7 @@ function Intro() {
                                 歡迎光臨 來生投放所
                             </div>
                         </Animator>
+                        {show ? GoMainpage : ''}
                     </ScrollPage>
 
                     <ScrollPage></ScrollPage>
