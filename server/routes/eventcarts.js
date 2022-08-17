@@ -23,7 +23,6 @@ const getUserCart = async (member_sid) => {
         value.start = mo;
         const mo2 = value.start_time.slice(0, 5);
         value.start_time = mo2;
-
     });
 
     return r; //應該會獲得一個array
@@ -179,6 +178,14 @@ router.get('/readytobuy', async (req, res) => {
 
     // 如果只取results，會得到[[{}]]的物件，無法直接被解析。[results]可以先少一個[]
     const [results] = await db.query($sql, [detailnum]);
+
+    // Day.js日期轉換法
+    results.forEach((value) => {
+        const mo = dayjs(value.start).format('YYYY-MM-DD');
+        value.start = mo;
+        const mo2 = value.start_time.slice(0, 5);
+        value.start_time = mo2;
+    });
 
     // console.log(results);
     res.json(results);
