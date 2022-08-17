@@ -19,6 +19,8 @@ import ThemeContext, { themes } from '../context/ThemeContext/ThemeContext';
 
 import { ReactComponent as NavLogo } from '../images/Nav/nav_logo.svg';
 import { ReactComponent as NavSoul } from '../images/Nav/nav_soul.svg';
+import { ReactComponent as NavSkeleton } from '../images/Nav/nav_toggle_skeleton.svg';
+import { ReactComponent as NavCuteBoy } from '../images/Nav/nav_toggle_cuteboy.svg';
 // import { ReactComponent as Soul } from '../images/Nav/soul.svg';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaShoppingCart } from 'react-icons/fa';
@@ -273,7 +275,6 @@ function Nav(props) {
                     )}
 
                     {/* 購物車btn */}
-
                     {/* 目錄頁btn */}
                     <div
                         className={mainpageIcon}
@@ -283,6 +284,51 @@ function Nav(props) {
                         }}
                     >
                         <img src={mainpage_nav} alt="" />
+                    </div>
+                    {/* TODO: 在這裡製作切換按鈕草案 */}
+                    <div
+                        className={`nav-toggle-wrapper ${
+                            theme.title === 'light'
+                                ? 'nav-toggle-wrapper-light'
+                                : 'nav-toggle-wrapper-dark'
+                        }`}
+                    >
+                        <input
+                            type="checkbox"
+                            className="nav-tw-input"
+                            id="navToggler"
+                        />
+                        <label
+                            htmlFor="navToggler"
+                            className="nav-tw-label d-flex justify-content-center align-items-center"
+                            onClick={() => {
+                                // 注意 setState() 會最後做 所以會印出一樣的 theme
+                                // console.log('theme before :', theme);
+                                if (theme.title === 'light') {
+                                    // DONE: 存進去 localStorage
+                                    // FIXME: 如果要記憶會員 要跟資料庫連線
+                                    // 而且這個資料庫的檔案順位要高於 localStorage
+                                    if (location.pathname === '/nextlife') {
+                                        // console.log('不可以換');
+                                        return;
+                                    }
+                                    localStorage.setItem('theme', 'dark');
+                                    setTheme(themes.dark);
+                                } else {
+                                    localStorage.setItem('theme', 'light');
+                                    setTheme(themes.light);
+                                }
+                                // console.log('theme after :', theme);
+                            }}
+                        >
+                            <span className="nav-tw-l-toggle-indicator"></span>
+                            <span className="nav-tw-l-span nav-tw-l-span-S d-flex justify-content-center align-items-center">
+                                <NavSkeleton className="nav-tw-l-s-NavSkeleton" />
+                            </span>
+                            <span className="nav-tw-l-span nav-tw-l-span-C d-flex justify-content-center align-items-center">
+                                <NavCuteBoy className="nav-tw-l-s-NavCuteBoy" />
+                            </span>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -315,50 +361,6 @@ function Nav(props) {
                                 }}
                             />
                         </div>
-                        {/* FIXME: 這是暫時的按鈕 */}
-                        <div
-                            style={{
-                                outline: '1px solid red',
-                                cursor: 'pointer',
-                                color: theme.bcAvatarFrame,
-                            }}
-                            onClick={() => {
-                                // 注意 setState() 會最後做 所以會印出一樣的 theme
-                                // console.log('theme before :', theme);
-                                if (theme.title === 'light') {
-                                    // DONE: 存進去 localStorage
-                                    // FIXME: 如果要記憶會員 要跟資料庫連線
-                                    // 而且這個資料庫的檔案順位要高於 localStorage
-                                    if (location.pathname === '/nextlife') {
-                                        // console.log('不可以換');
-                                        return;
-                                    }
-                                    localStorage.setItem('theme', 'dark');
-                                    setTheme(themes.dark);
-                                } else {
-                                    localStorage.setItem('theme', 'light');
-                                    setTheme(themes.light);
-                                }
-                                // console.log('theme after :', theme);
-                            }}
-                        >
-                            我換！
-                        </div>
-                        {/* FIXME: 這是暫時的按鈕 */}
-                        {/* <div
-                            style={{
-                                outline: '1px solid red',
-                                cursor: 'pointer',
-                                color: theme.bcAvatarFrame,
-                            }}
-                            onClick={() => {
-                                navigate('/nextlife', { replace: true });
-                                setLightBox('nav_lightbox_hidden');
-                                setMainpageIcon('mainpage_icon_hidden');
-                            }}
-                        >
-                            我要投胎
-                        </div> */}
                         <div className="nav-inner-right">
                             {/* <NavSoul className="nir-NavSoul" /> */}
                             <span

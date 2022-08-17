@@ -227,6 +227,7 @@ h3 {
 
 .nav_lightbox_wrap {
     width: 80%;
+    position: relative;
 
     > .nav_lightbox_list {
         display: flex;
@@ -352,12 +353,106 @@ h3 {
             width: 100%;
         }
     }
-
-
-
 }
 
+// TODO: 以下處理 Navbar 模式切換按鈕
+.nav-toggle-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    // overflow: hidden;
+    // padding: 0 200px;
+    // transform: translate3d(-50%, -50%, 0);
 
+    .nav-tw-input {
+        visibility: hidden;
+    }
+
+    .nav-tw-label {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        width: 110px;
+        height: 60px;
+        // background-color: #83D8FF;
+        // border: 4px solid green;
+        border-width: 4px;
+        border-style: solid;
+        border-radius: 30px;
+        transition: background-color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+        .nav-tw-l-toggle-indicator {
+            width: 49px;
+            height: 49px;
+            background-color: #000000;
+            position: absolute;
+            border-radius: 50%;
+            transform: translateX(-24.5px);
+            z-index: 1;
+            transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .nav-tw-l-span-S {
+            // background-color: #fff;
+            border-radius: 50%;
+            width: 49px;
+            height: 49px;
+            margin: 1px;
+            position: relative;
+            left: 1px;
+            z-index: 2;
+        }
+        
+        .nav-tw-l-span-C {
+            // background-color: #fff;
+            border-radius: 50%;
+            width: 49px;
+            height: 49px;
+            margin: 1px;
+            position: relative;
+            z-index: 2;
+        }
+    }
+
+    .nav-tw-input:checked {
+        + .nav-tw-label {
+            .nav-tw-l-toggle-indicator {
+                transform: translateX(24.5px);
+                background-color: #FFFFFF;
+            }
+            .nav-tw-l-span-S {
+                // background-color: green;
+                border-radius: 50%;
+                width: 49px;
+                height: 49px;
+                margin: 1px;
+            }
+        }
+    }
+}
+
+// 這裡處理雙色配置
+.nav-toggle-wrapper-light {
+    .nav-tw-label {
+        background-color: $primary-50p;
+        border-color: $primary-50p;
+    }
+}
+
+.nav-toggle-wrapper-dark {
+    .nav-tw-label {
+        background-color: #cccccc;
+        border-color: #000000;
+
+        .nav-tw-l-span-C {
+            filter: grayscale(1);
+        }
+
+        .nav-tw-l-span-S {
+            filter: grayscale(1);
+        }
+    }
+}
 
 
 /* ============================================================ */
