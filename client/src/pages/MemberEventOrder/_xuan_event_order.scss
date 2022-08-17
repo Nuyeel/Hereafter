@@ -12,7 +12,7 @@
     // FIXME: 目前先寫死寬度
     // width: 800px;
     max-width: 380px;
-    height: 100%;
+    // height: 100%;
 
       // 每一筆訂單框框
       .xuan-event-history-item{
@@ -55,6 +55,7 @@
 
                   // 活動內容
                   .xuan-member-event-main{
+                    flex-grow: 1;
 
                     p{
                       margin-bottom: 10px;
@@ -171,7 +172,7 @@
 
 
                     .xuan-member-event-main{
-                      margin-right: 20px;
+                      // margin-right: 20px;
                     }
 
               } 

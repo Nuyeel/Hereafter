@@ -135,7 +135,12 @@ function MemberProfileForm() {
                                                                 會員中心主頁
                                                             </div>
                                                             <br />
-                                                            <div className="card rounded-4 member-page-card">
+                                                            <div
+                                                                className="card rounded-4 member-page-card"
+                                                                style={{
+                                                                    border: 'none',
+                                                                }}
+                                                            >
                                                                 <div className="card-body d-flex align-items-center member-page-card">
                                                                     <div className="col-md-9 mb-md-0 p-md-4 ">
                                                                         <div className="card-title member-page-name">
@@ -194,19 +199,24 @@ function MemberProfileForm() {
                                                             </div>
                                                             <br />
                                                             <div className="cards-2 d-flex justify-content-evenly align-items-center">
-                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card-2">
+                                                                <div
+                                                                    className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card-2"
+                                                                    style={{
+                                                                        border: 'none',
+                                                                    }}
+                                                                >
                                                                     <div className="card-body d-flex flex-column member-page-card-2">
-                                                                        {/* TODO：有無陰德值的呈現方式 */}
                                                                         {mainProfile.gooddeed_score ? (
                                                                             <>
-                                                                                <div className="card-title member-page-field">
-                                                                                    目前陰德值尚有：
+                                                                                <div className="card-title member-page-text-2">
+                                                                                    目前陰德值尚餘
+                                                                                </div>
+                                                                                <div className="mb-md-0 p-md-4 d-flex justify-content-center member-page-gooddeed">
+                                                                                    --{' '}
                                                                                     {
                                                                                         mainProfile.gooddeed_score
-                                                                                    }
-                                                                                </div>
-                                                                                <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                                    {/* <div className=""></div> */}
+                                                                                    }{' '}
+                                                                                    --
                                                                                 </div>
                                                                                 <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
                                                                                     <Link
@@ -220,12 +230,13 @@ function MemberProfileForm() {
                                                                             </>
                                                                         ) : (
                                                                             <>
-                                                                                <div className="card-title member-page-field">
-                                                                                    ★
-                                                                                    您目前還沒有陰德值
+                                                                                <div className="card-title member-page-text-2">
+                                                                                    目前還沒有陰德值記錄
                                                                                 </div>
-                                                                                <div className="col-md-9 mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                                    {/* <div className=""></div> */}
+                                                                                <div className="mb-md-0 p-md-4 d-flex justify-content-center">
+                                                                                    <div className="member-page-gooddeed">
+                                                                                        icon
+                                                                                    </div>
                                                                                 </div>
                                                                                 <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
                                                                                     <Link
@@ -243,14 +254,20 @@ function MemberProfileForm() {
                                                                 <div className="p-2">
                                                                     {' '}
                                                                 </div>
-                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card-2">
-                                                                    <div className="card-body d-flex flex-column member-page-card-2">
+                                                                <div
+                                                                    className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card-3 "
+                                                                    style={{
+                                                                        border: 'none',
+                                                                    }}
+                                                                >
+                                                                    <div className="card-body d-flex flex-column member-page-card-3">
                                                                         {/* TODO：有無良辰吉地的呈現方式 */}
-                                                                        {country && city && dist ? (
+                                                                        {country &&
+                                                                        city &&
+                                                                        dist ? (
                                                                             <>
-                                                                                <h5 className="card-title member-page-field">
-                                                                                    ★
-                                                                                    您感興趣的轉生地點
+                                                                                <h5 className="card-title member-page-text-2">
+                                                                                    感興趣的良辰吉地
                                                                                 </h5>
                                                                                 <div className="mb-md-0 p-md-4 d-flex flex-row justify-content-center">
                                                                                     <div className="member-page-place">
@@ -277,7 +294,7 @@ function MemberProfileForm() {
                                                                             </>
                                                                         ) : (
                                                                             <>
-                                                                                <h5 className="card-title member-page-field">
+                                                                                <h5 className="card-title member-page-text-2">
                                                                                     ★
                                                                                     選擇一塊良辰吉地吧
                                                                                 </h5>

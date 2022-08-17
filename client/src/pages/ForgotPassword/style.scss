@@ -46,14 +46,24 @@
     height: 180px;
     background-repeat: no-repeat;
     background-color: #f3f3f3;
-    border: none;
+    overflow: hidden;
+}
+
+.member-page-card-1:hover {
+    // background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
+    // max-width: 520px;
+    width: 500px;
+    height: 180px;
+    background-repeat: no-repeat;
+    background-color: #e1e1e4;
     overflow: hidden;
 }
 
 .member-page-card-2 {
     // background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
     // max-width: 260px;
-    width: 240px;
+    width: 220px;
+    height: 160px;
     background-repeat: no-repeat;
     background-color: #f3f3f3;
     border: none;
@@ -64,6 +74,7 @@
     // background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
     // max-width: 260px;
     width: 260px;
+    height: 160px;
     background-repeat: no-repeat;
     background-color: #f3f3f3;
     border: none;
@@ -84,6 +95,21 @@
     color: $secondary; 
     font-size: 1.15rem;
     // text-align: center;
+}
+
+.member-page-text-2 {
+    font-family: $ff-t, $ff-h;
+    font-weight: 500;
+    color: $secondary; 
+    font-size: 1.15rem;
+    text-align: center;
+}
+
+.member-page-gooddeed {
+    font-family: $ff-t, $ff-h;
+    font-weight: 700;
+    color: $primary; 
+    font-size: $fz-title;
 }
 
 .member-page-place {
@@ -120,7 +146,7 @@
 
 .member-event-bg {
     overflow-y: scroll;
-    height: 542px;
+    height: 600px;
     padding: 20px;
     border-radius: 25px;
 }
@@ -252,60 +278,11 @@
     text-decoration: none;
 }
 
-// .breadcrumb {
-//     $breadcrumb-divider: none;
-// }
-
-// .breadcrumb-item-link {
-//     border-radius: 15px;
-//     padding: 3px 10px;
-//     line-height: 30px;
-//     text-decoration: none;
-//     font-family: $ff-t, $ff-h;
-//     color: $secondary;
-//     background-color: $highlight
-// }
-
-// .breadcrumb-item-link:hover {
-//     border-radius: 15px;
-//     padding: 3px 10px;
-//     line-height: 30px;
-//     text-decoration: none;
-//     font-family: $ff-t, $ff-h;
-//     color: #fff;
-//     background-color: $accent-blue
-// }
-
-// .fa-solid {
-//     font-size: 30px;
-//     text-align: center;
-//     color: $secondary
-// }
-
-// input[type=text], input[type=email], input[type=password], [type=date] {
-//     font: 400 16px var(--text-font), Arial, sans-serif;
-//     color: $bgc-D;
-//     border-radius: 10px;
-// }
-
-// input[type=text]::placeholder, input[type=email]::placeholder, input[type=password]::placeholder, [type=date]::placeholder{
-//     color:#BDBDBD;
-// }
-
-// input[type=text].error, input[type=email].error, input[type=password].error {
-//     outline: var(--alert-l) 2px solid;
-// }
-
 .input-2[type=text] {
     font: 400 16px var(--text-font), Arial, sans-serif;
     color: #3C3B6775;
     border-radius: 10px;
 }
-
-// .form-control.is-invalid, .was-validated .form-control:invalid, .form-control.is-invalid:focus, .was-validated:focus .form-control:invalid:focus {
-//     color: $alert;
-//     outline: $alert 2px solid;
-// }
 
 .memberBgCard {
     background-color: rgba(0, 0, 0, 0.2);
