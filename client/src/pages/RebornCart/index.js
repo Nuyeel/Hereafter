@@ -343,21 +343,27 @@ function RebornCart(props) {
                                     <>
                                         {/* 呈現購物車內資料 */}
                                         <div className="place-options-box">
-                                            {cartPlaceList.map((v, i) => (
-                                                <PlaceOption
-                                                    key={v.sid}
-                                                    value={v}
-                                                    selectedPlace={
-                                                        selectedPlace
-                                                    }
-                                                    setSelectedPlace={
-                                                        setSelectedPlace
-                                                    }
-                                                    removePlaceFromCart={
-                                                        removePlaceFromCart
-                                                    }
-                                                />
-                                            ))}
+                                            {cartPlaceList.length > 0 && (
+                                                <>
+                                                    {cartPlaceList.map(
+                                                        (v, i) => (
+                                                            <PlaceOption
+                                                                key={v.sid}
+                                                                value={v}
+                                                                selectedPlace={
+                                                                    selectedPlace
+                                                                }
+                                                                setSelectedPlace={
+                                                                    setSelectedPlace
+                                                                }
+                                                                removePlaceFromCart={
+                                                                    removePlaceFromCart
+                                                                }
+                                                            />
+                                                        )
+                                                    )}
+                                                </>
+                                            )}
                                             {/* 上限5 - 陣列長度 => render新增按鈕 */}
                                             {Array(5 - cartPlaceListLength)
                                                 .fill(1)
