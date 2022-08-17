@@ -255,7 +255,7 @@ function MemberProfileReviseForm() {
                                                                         onChange={
                                                                             handleFieldsChange
                                                                         }
-                                                                        maxLength="20"
+                                                                        maxLength="12"
                                                                     />
                                                                 </div>
                                                                 <div className="mb-3 member-page-field">
