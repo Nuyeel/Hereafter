@@ -16,6 +16,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2'; //sweetalert2
 
 import ThemeContext, { themes } from '../context/ThemeContext/ThemeContext';
+import HeaderContext from '../context/HeaderContext/HeaderContext';
 
 import { ReactComponent as NavLogo } from '../images/Nav/nav_logo.svg';
 import { ReactComponent as NavSoul } from '../images/Nav/nav_soul.svg';
@@ -52,6 +53,7 @@ function Nav(props) {
     // const [lightBox, setLightBox] = useState('nav_lightbox_hidden'); //光箱預設是隱藏
 
     const { theme, setTheme } = useContext(ThemeContext);
+    const { setShareWallSearchState } = useContext(HeaderContext);
     const navigate = useNavigate(); //跳轉頁面用
     const location = useLocation();
 
@@ -125,6 +127,12 @@ function Nav(props) {
             }
         }
     }, []);
+
+    useEffect(() => {
+        if (location.pathname.slice(0, 10) !== 'sharewall') {
+            setShareWallSearchState('default');
+        }
+    }, [location.pathname]);
 
     // -------------------------------------------
     // FIXME: 我先簡單的讓首頁的 nav 消失方便二路施工
@@ -299,7 +307,8 @@ function Nav(props) {
                             type="checkbox"
                             className="nav-tw-input"
                             id="navToggler"
-                            {...theme.navChecked}
+                            onChange={() => {}}
+                            checked={theme.navChecked}
                         />
                         <label
                             htmlFor="navToggler"

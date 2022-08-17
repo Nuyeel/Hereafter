@@ -265,9 +265,9 @@ function HeaderShareWallButton() {
         );
     }, [shareWallSearchState]);
 
-    useEffect(() => {
-        axiosListGET();
-    }, [shareWallSearchState]);
+    // useEffect(() => {
+    //     axiosListGET();
+    // }, [shareWallSearchState]);
 
     const { icon, title, caret } = shareWallButtonData;
 
