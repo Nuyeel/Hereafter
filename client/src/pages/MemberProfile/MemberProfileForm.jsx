@@ -135,9 +135,9 @@ function MemberProfileForm() {
                                                                 會員中心主頁
                                                             </div>
                                                             <br />
-                                                            <div className="card rounded-4 member-page-card member-page-card">
-                                                                <div className="card-body d-flex align-items-center  member-page-card">
-                                                                    <div className="col-md-9 mb-md-0 p-md-4 member-page-card">
+                                                            <div className="card rounded-4 member-page-card">
+                                                                <div className="card-body d-flex align-items-center member-page-card">
+                                                                    <div className="col-md-9 mb-md-0 p-md-4 ">
                                                                         <div className="card-title member-page-name">
                                                                             {mainProfile.name
                                                                                 ? mainProfile.name
