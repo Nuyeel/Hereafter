@@ -135,9 +135,9 @@ function MemberProfileForm() {
                                                                 會員中心主頁
                                                             </div>
                                                             <br />
-                                                            <div className="card rounded-4 member-page-card member-page-card">
-                                                                <div className="card-body d-flex align-items-center  member-page-card">
-                                                                    <div className="col-md-9 mb-md-0 p-md-4 member-page-card">
+                                                            <div className="card rounded-4 member-page-card">
+                                                                <div className="card-body d-flex align-items-center member-page-card">
+                                                                    <div className="col-md-9 mb-md-0 p-md-4 ">
                                                                         <div className="card-title member-page-name">
                                                                             {mainProfile.name
                                                                                 ? mainProfile.name
@@ -146,27 +146,27 @@ function MemberProfileForm() {
                                                                         <br />
                                                                         {/* TODO：有無日期的呈現方式 */}
                                                                         {mainProfile.birthdate ? (
-                                                                            <div className="card-text member-page-field">
+                                                                            <div className="card-text member-page-text">
                                                                                 出生日：
                                                                                 {
                                                                                     mainProfile.birthdate
                                                                                 }
                                                                             </div>
                                                                         ) : (
-                                                                            <div className="card-text member-page-field">
+                                                                            <div className="card-text member-page-text">
                                                                                 未記錄出生日
                                                                             </div>
                                                                         )}
                                                                         <br />
                                                                         {mainProfile.deathdate ? (
-                                                                            <div className="card-text member-page-field">
+                                                                            <div className="card-text member-page-text">
                                                                                 往生日：
                                                                                 {
                                                                                     mainProfile.deathdate
                                                                                 }
                                                                             </div>
                                                                         ) : (
-                                                                            <div className="card-text member-page-field">
+                                                                            <div className="card-text member-page-text">
                                                                                 未存在往生紀錄
                                                                             </div>
                                                                         )}
@@ -194,8 +194,8 @@ function MemberProfileForm() {
                                                             </div>
                                                             <br />
                                                             <div className="cards-2 d-flex justify-content-evenly align-items-center">
-                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card">
-                                                                    <div className="card-body d-flex flex-column member-page-card">
+                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card-2">
+                                                                    <div className="card-body d-flex flex-column member-page-card-2">
                                                                         {/* TODO：有無陰德值的呈現方式 */}
                                                                         {mainProfile.gooddeed_score ? (
                                                                             <>
@@ -243,8 +243,8 @@ function MemberProfileForm() {
                                                                 <div className="p-2">
                                                                     {' '}
                                                                 </div>
-                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card">
-                                                                    <div className="card-body d-flex flex-column member-page-card">
+                                                                <div className="card d-flex justify-content-evenly align-items-center rounded-4 member-page-card-2">
+                                                                    <div className="card-body d-flex flex-column member-page-card-2">
                                                                         {/* TODO：有無良辰吉地的呈現方式 */}
                                                                         {country && city && dist ? (
                                                                             <>
