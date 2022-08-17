@@ -23,7 +23,7 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 // Loading小動畫
-import LoadingLogo from '../../components/LoadingLogo.jsx';
+import LoadingLogo from './XuanLoading.jsx';
 
 function EventList(props) {
     const { pageName } = props;

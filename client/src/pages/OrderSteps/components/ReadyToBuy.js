@@ -109,10 +109,10 @@ function ReadyToBuy(props) {
                                                 </p>
                                             </div>
 
-                                            <p>
-                                                {v.start}
-                                                {v.start_time}
-                                            </p>
+                                            <div className="d-flex">
+                                                <p>{v.start}</p>
+                                                <p>{v.start_time}</p>
+                                            </div>
                                             <p>NT${v.price}</p>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@ function ReadyToBuy(props) {
                             className="xuan-btn-m xuan-btn-pri"
                             onClick={() => {
                                 setStep(1);
-                                console.log('setStap')
+                                console.log('setStap');
                                 setDetailVisible(
                                     'xuan-readytobuy-container-hidden'
                                 );

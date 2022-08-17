@@ -697,7 +697,7 @@
   
                 .xuan-readytobuy-img{
                   background-color: gray;
-                  width: 65px;
+                  width: 85px;
                   height: 65px;
                   border-radius: 10px;
                   margin-right: 10px;
@@ -722,6 +722,10 @@
                       padding: 5px;
                       margin-right: 5px;
                       border-radius: 5px;
+                    }
+
+                    p:nth-child(1){
+                      margin-right: 5px;
                     }
   
                   }
