@@ -297,6 +297,7 @@ function Nav(props) {
                             type="checkbox"
                             className="nav-tw-input"
                             id="navToggler"
+                            {...theme.navChecked}
                         />
                         <label
                             htmlFor="navToggler"
