@@ -123,6 +123,7 @@ function CenterPart(props) {
         theme,
         setCombination,
         setKeepLineChange,
+        canSave,
     } = props;
     //用來製作圖檔的ref 沒了會死
     const ref = useRef(null);
@@ -260,50 +261,62 @@ function CenterPart(props) {
     orderData.combinationText = combinationText;
     orderData.totalPrice = avatarTotalPrice;
     const onButtonClick = useCallback(async () => {
-        Swal.fire({
-            title: '形象準備中',
-            didOpen: () => {
-                setTimeout(
-                    Swal.update({
-                        confirmButtonText:
-                            '<i class="fa fa-thumbs-up"></i> 我知道了',
-                    }),
-                    2000
-                );
-            },
-        });
-        if (ref.current === null) {
-            return;
-        }
-        await toPng(ref.current, {
-            cacheBust: true,
-            pixelRatio: 1.2,
-            canvasWidth: 900,
-            canvasHeight: 900,
-        })
-            .then((dataUrl) => {
-                const link = document.createElement('a');
-                link.download = 'my-image-name.png';
-                link.href = dataUrl;
-                orderData.img = dataUrl;
-                if (sessionStorage.getItem('avatar_id') === null) {
-                    link.click();
-                }
-            })
-            .catch((err) => {
-                console.log(err);
+        if (
+            canSave['hand'] &&
+            canSave['foot'] &&
+            canSave['tale'] &&
+            canSave['special'] &&
+            canSave['eye'] &&
+            canSave['ear'] &&
+            canSave['lip'] &&
+            canSave['nose'] &&
+            canSave['hairFront'] &&
+            canSave['hairBack'] &&
+            canSave['topEar']
+        ) {
+            Swal.fire({
+                title: '形象準備中',
+                didOpen: () => {
+                    setTimeout(
+                        Swal.update({
+                            confirmButtonText:
+                                '<i class="fa fa-thumbs-up"></i> 我知道了',
+                        }),
+                        2000
+                    );
+                },
             });
-        if (sessionStorage.getItem('avatar_id') === null) {
-            console.log('Meow 目前沒有訂單編號!');
-        } else {
-            const r = await axios.post(Avatar_Update, orderData);
-            console.log(orderData);
-            console.log(r.data);
-            if (r.data.success) {
-                setTimeout(() => {
+            if (ref.current === null) {
+                return;
+            }
+            await toPng(ref.current, {
+                cacheBust: true,
+                pixelRatio: 1.2,
+                canvasWidth: 900,
+                canvasHeight: 900,
+            })
+                .then((dataUrl) => {
+                    const link = document.createElement('a');
+                    link.download = 'my-image-name.png';
+                    link.href = dataUrl;
+                    orderData.img = dataUrl;
+                    if (sessionStorage.getItem('avatar_id') === null) {
+                        link.click();
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            if (sessionStorage.getItem('avatar_id') === null) {
+                console.log('Meow 目前沒有訂單編號!');
+            } else {
+                const r = await axios.post(Avatar_Update, orderData);
+                console.log(orderData);
+                console.log(r.data);
+                if (r.data.success) {
                     Swal.fire({
-                        title: 'Meow 檔案存進去了',
-                        confirmButtonText: `<p onClick={}>YA</p>`,
+                        title: '形象保存成功',
+                        confirmButtonText: `<p >我知道了</p>`,
                     }).then((result) => {
                         if (result.isConfirmed) {
                             console.log('訂單ID已清除');
@@ -311,8 +324,13 @@ function CenterPart(props) {
                             backtoShowCase();
                         }
                     });
-                }, 1000);
+                }
             }
+        } else {
+            Swal.fire({
+                title: '陰德值不足',
+                confirmButtonText: `<p >我知道了</p>`,
+            });
         }
     }, [ref]);
 

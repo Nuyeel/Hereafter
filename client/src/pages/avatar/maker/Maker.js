@@ -15,9 +15,10 @@ import { Avatar_GetData } from '../../../config/ajax-path';
 import axios from 'axios';
 import gsap from 'gsap';
 import getDatestr from '../components/getDatestr.js';
+import Swal from 'sweetalert2';
 
 const Maker = (props) => {
-    const { pageName } = props;
+    const { pageName, gooddeed } = props;
     const [combination, setCombination] = useState({
         basic: [1, 1, 1],
         basic_color: 0,
@@ -39,6 +40,19 @@ const Maker = (props) => {
     const [faceControlChange, setFaceControlChange] = useState('eye');
     const [colorControlSwitch, setColorControlSwitch] = useState(0);
     const [avatar, setAvatar] = useState({ id: 0, time: '' });
+    const [canSave, setCanSave] = useState({
+        hand: 1,
+        foot: 1,
+        tale: 1,
+        special: 1,
+        eye: 1,
+        ear: 1,
+        lip: 1,
+        nose: 1,
+        hairFront: 1,
+        hairBack: 1,
+        topEar: 1,
+    });
     const navigate = useNavigate();
     //Header的資料
     const { setHeader } = useContext(HeaderContext);
@@ -327,7 +341,19 @@ const Maker = (props) => {
                             建立時間：{avatar.time}
                         </span>
                     </AvatarTitle>
-                    <Back onClick={backtoShowCase}>
+                    <Back
+                        onClick={() => {
+                            Swal.fire({
+                                title: '確定要放棄編輯嗎?',
+                                confirmButtonText: `<p >確定</p>`,
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    sessionStorage.removeItem('avatar_id');
+                                    backtoShowCase();
+                                }
+                            });
+                        }}
+                    >
                         <i className="fa-solid fa-xmark"></i>
                     </Back>
                     <div
@@ -475,6 +501,7 @@ const Maker = (props) => {
                             backtoShowCase={backtoShowCase}
                             theme={theme}
                             setKeepLineChange={setKeepLineChange}
+                            canSave={canSave}
                         />
                     </div>
                     <div
@@ -487,11 +514,14 @@ const Maker = (props) => {
                     >
                         <BodyPart
                             theme={theme}
+                            gooddeed={gooddeed}
                             combination={combination}
                             controlChange={controlChange}
                             bodyControlChange={bodyControlChange}
                             setCombination={setCombination}
                             colorControlSwitch={colorControlSwitch}
+                            canSave={canSave}
+                            setCanSave={setCanSave}
                         />
                     </div>
 
@@ -519,13 +549,17 @@ const Maker = (props) => {
                         }}
                     >
                         <FacePart
+                            theme={theme}
                             combination={combination}
+                            gooddeed={gooddeed}
                             controlChange={controlChange}
                             setCombination={setCombination}
                             colorControlSwitch={colorControlSwitch}
                             setColorControlSwitch={setColorControlSwitch}
                             faceControlChange={faceControlChange}
                             setFaceControlChange={setFaceControlChange}
+                            canSave={canSave}
+                            setCanSave={setCanSave}
                         />
                     </div>
                 </AvatarMaker>

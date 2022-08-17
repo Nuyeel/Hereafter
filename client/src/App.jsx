@@ -255,7 +255,12 @@ function App() {
                                 {/* ============================== */}
                                 <Route
                                     path="/maker"
-                                    element={<Maker pageName="default" />}
+                                    element={
+                                        <Maker
+                                            pageName="default"
+                                            gooddeed={userGooddeed['gooddeed']}
+                                        />
+                                    }
                                 />
                                 {/* ============================== */}
                                 {/* 陰德值測驗路由 */}
