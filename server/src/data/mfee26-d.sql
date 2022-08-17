@@ -2046,17 +2046,8 @@ ALTER TABLE `news`
   ADD CONSTRAINT `news_ibfk_2` FOREIGN KEY (`type_sid`) REFERENCES `type` (`ty_sid`);
 
 --
--- 資料表的限制式 `place_city`
---
-ALTER TABLE `place_city`
-  ADD CONSTRAINT `place_city_ibfk_1` FOREIGN KEY (`country`) REFERENCES `place_country_list` (`country`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- 資料表的限制式 `place_dist`
---
-ALTER TABLE `place_dist`
-  ADD CONSTRAINT `place_dist_ibfk_2` FOREIGN KEY (`country`) REFERENCES `place_country_list` (`country`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
