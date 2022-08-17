@@ -1,4 +1,5 @@
 import './style.scss';
+import soulIconAlert from '../../images/Nav/nav_soul.svg';
 import { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import {
@@ -233,10 +234,14 @@ function MemberProfileForm() {
                                                                                 <div className="card-title member-page-text-2">
                                                                                     目前還沒有陰德值記錄
                                                                                 </div>
-                                                                                <div className="mb-md-0 p-md-4 d-flex justify-content-center">
-                                                                                    <div className="member-page-gooddeed">
-                                                                                        icon
-                                                                                    </div>
+                                                                                <div className=" d-flex justify-content-center">
+                                                                                    <img
+                                                                                        className="member-page-gooddeed-icon"
+                                                                                        src={
+                                                                                            soulIconAlert
+                                                                                        }
+                                                                                        alt=""
+                                                                                    />
                                                                                 </div>
                                                                                 <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
                                                                                     <Link
@@ -295,21 +300,16 @@ function MemberProfileForm() {
                                                                         ) : (
                                                                             <>
                                                                                 <h5 className="card-title member-page-text-2">
-                                                                                    ★
-                                                                                    選擇一塊良辰吉地吧
+                                                                                    即刻挑選一塊良辰吉地吧
                                                                                 </h5>
-                                                                                <div className="mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                                    {/* <div className="member-page-place">
-                                                                                        {
-                                                                                            country
+                                                                                <div className=" d-flex justify-content-center">
+                                                                                    <img
+                                                                                        className="member-page-gooddeed-icon"
+                                                                                        src={
+                                                                                            soulIconAlert
                                                                                         }
-                                                                                        {
-                                                                                            city
-                                                                                        }
-                                                                                        {
-                                                                                            dist
-                                                                                        }
-                                                                                    </div> */}
+                                                                                        alt=""
+                                                                                    />
                                                                                 </div>
                                                                                 <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
                                                                                     <Link

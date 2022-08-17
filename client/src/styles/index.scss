@@ -382,7 +382,8 @@ h3 {
             border-radius: 50%;
             transform: translateX(-24.5px);
             z-index: 1;
-            transition: all 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            // transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         .nav-tw-l-span-S {
@@ -444,6 +445,27 @@ h3 {
         .nav-tw-l-span-S {
             filter: grayscale(1);
         }
+    }
+}
+
+// 處理消失時間差
+.nav-toggle-wrapper {
+    .nav-tw-label {
+        .nav-tw-l-toggle-indicator.isOpening {
+            transition: all 0s;
+        }
+    }
+}
+
+.nav_lightbox_hidden {
+    .nav-toggle-wrapper {
+        display: none;
+    }
+}
+
+.nav_lightbox_visible {
+    .nav-toggle-wrapper {
+        display: block;
     }
 }
 
