@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- 主機： 127.0.0.1
--- 產生時間： 2022-08-15 05:34:37
--- 伺服器版本： 10.4.24-MariaDB
--- PHP 版本： 7.4.29
+-- Host: localhost
+-- Generation Time: Aug 17, 2022 at 06:20 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫: `mfee26-d`
+-- Database: `mfee26-d`
 --
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `admin_test_jwt`
+-- Table structure for table `admin_test_jwt`
 --
 
 CREATE TABLE `admin_test_jwt` (
@@ -36,29 +36,29 @@ CREATE TABLE `admin_test_jwt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `admin_test_jwt`
+-- Dumping data for table `admin_test_jwt`
 --
 
 INSERT INTO `admin_test_jwt` (`sid`, `member_sid`, `token`, `expires`, `payload`) VALUES
 (24, 12, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImFjY291bnQiOiJIYXBweUNhdDEyIiwiaWF0IjoxNjU5NDE1NDA2fQ.Sdb-iHJV936lBgaBaOGWESS78NIvV7QmCAxDBcBjkaA', '1659416606039', '{\"id\":12,\"account\":\"HappyCat12\"}'),
 (34, 14, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImFjY291bnQiOiJIYXBweUNhdDEzIiwiaWF0IjoxNjYwMTk1OTIxfQ.7AuVe-073GZ5UxaQ2WU8vJZdxmpcT7qqWhP_LnyYbrk', '1660197121154', '{\"id\":14,\"account\":\"HappyCat13\"}'),
-(55, 8, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiYWNjb3VudCI6IkhhcHB5Q2F0MDgiLCJpYXQiOjE2NjAyNzM5NDh9.jv6i2Q0Ej28l_TJWrx-qWIEQYkvYHWY9kTg3yzquQb0', '1660275148303', '{\"id\":8,\"account\":\"HappyCat08\"}'),
-(56, 9, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWNjb3VudCI6IkhhcHB5Q2F0MDkiLCJpYXQiOjE2NjAyNzQwNjB9.2fZ-hiGCiP9OeEl4l6-bZoUeLy27yW2UfKdzw3nrsXM', '1660275260439', '{\"id\":9,\"account\":\"HappyCat09\"}'),
-(57, 10, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImFjY291bnQiOiJIYXBweUNhdDEwIiwiaWF0IjoxNjYwMjc0MjAxfQ._RI9i0WyosniDzSIoFoZfO8Dz0RrmhraNyjjsnmhJ84', '1660275401700', '{\"id\":10,\"account\":\"HappyCat10\"}'),
 (59, 99, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTksImFjY291bnQiOiJIYXBweUNhdDk4IiwiaWF0IjoxNjYwMzE4OTI0fQ.XHOtBbF5br9IsaaRzSqVQgaJyKOWE7piBigamd1NcxU', '1660320124011', '{\"id\":99,\"account\":\"HappyCat98\"}'),
-(64, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudCI6IkhhcHB5Q2F0MDEiLCJpYXQiOjE2NjAzOTUxNTN9.Hq2eQv--RAgkXQOCVthXHvOhl0W1KM2FQ35xwiE2uhI', '1660396353098', '{\"id\":1,\"account\":\"HappyCat01\"}'),
-(67, 2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiYWNjb3VudCI6IkhhcHB5Q2F0MDIiLCJpYXQiOjE2NjAzOTU2MDh9.JUqufWI201etW3HjzCpGPxDjzSvXgydzTcfXnpQFKjo', '1660396808979', '{\"id\":2,\"account\":\"HappyCat02\"}'),
-(68, 3, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiYWNjb3VudCI6IkhhcHB5Q2F0MDMiLCJpYXQiOjE2NjAzOTU2MzZ9.YlMTXF0iyghEgLoWAco3JzpsbIrFLR6msZd438UgnCE', '1660396836168', '{\"id\":3,\"account\":\"HappyCat03\"}'),
-(69, 4, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiYWNjb3VudCI6IkhhcHB5Q2F0MDQiLCJpYXQiOjE2NjAzOTU5MDl9.J0nupgV_TkHvj_bccuPBGTGHrVF00vv9V4Zfu87834I', '1660397109340', '{\"id\":4,\"account\":\"HappyCat04\"}'),
-(70, 5, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWNjb3VudCI6IkhhcHB5Q2F0MDUiLCJpYXQiOjE2NjAzOTYxNjV9.xI2ZyWUGttTfi60r0aTDLn5musWxIuZR3WcW07EkPOM', '1660397365235', '{\"id\":5,\"account\":\"HappyCat05\"}'),
-(71, 6, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiYWNjb3VudCI6IkhhcHB5Q2F0MDYiLCJpYXQiOjE2NjAzOTY0MTh9.n9nXpIfYgxwNSrlIv6xln4-bDpAgMeRQHQREmqZaoHA', '1660397618354', '{\"id\":6,\"account\":\"HappyCat06\"}'),
-(72, 7, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWNjb3VudCI6IkhhcHB5Q2F0MDciLCJpYXQiOjE2NjAzOTY4MTB9.5atxmrIzU8dz156t9NEE-Se2bOMLpunH-N9Nx_jVlWU', '1660398010334', '{\"id\":7,\"account\":\"HappyCat07\"}'),
-(73, 37, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImFjY291bnQiOiJIYXBweUNhdDM2IiwiaWF0IjoxNjYwNTMzNDE2fQ.qV5k7mXadefBCXn5JGlk3jbh-zPyxjdq1j-_-PJtC4s', '1660534616517', '{\"id\":37,\"account\":\"HappyCat36\"}');
+(73, 37, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImFjY291bnQiOiJIYXBweUNhdDM2IiwiaWF0IjoxNjYwNTMzNDE2fQ.qV5k7mXadefBCXn5JGlk3jbh-zPyxjdq1j-_-PJtC4s', '1660534616517', '{\"id\":37,\"account\":\"HappyCat36\"}'),
+(74, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudCI6IkhhcHB5Q2F0MDEiLCJpYXQiOjE2NjA3NDg0MDZ9.SWjb5jqK8r4sgLOZq-v6UZMTUlA7xO_xSK_hlLZXArc', '1660749606301', '{\"id\":1,\"account\":\"HappyCat01\"}'),
+(75, 2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiYWNjb3VudCI6IkhhcHB5Q2F0MDIiLCJpYXQiOjE2NjA3NDg3NzN9.MrE9rTLMaLoKd8ZLxYJ9mMdCq4CXW6Lg7w1-kaenT8M', '1660749973617', '{\"id\":2,\"account\":\"HappyCat02\"}'),
+(76, 3, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiYWNjb3VudCI6IkhhcHB5Q2F0MDMiLCJpYXQiOjE2NjA3NDg5ODh9.NB_7r7TlVRmqUkVK0uDcwpZfi7qPIuAEwsRhgr4UHYY', '1660750188140', '{\"id\":3,\"account\":\"HappyCat03\"}'),
+(77, 4, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiYWNjb3VudCI6IkhhcHB5Q2F0MDQiLCJpYXQiOjE2NjA3NDkzMTF9.NDp9kGpSzeOCkdIhmB-L63FizuHneMJn1flVGbJpkwY', '1660750511595', '{\"id\":4,\"account\":\"HappyCat04\"}'),
+(78, 5, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWNjb3VudCI6IkhhcHB5Q2F0MDUiLCJpYXQiOjE2NjA3NDk1NDd9.ghYnNHT-81TQ8_gbR7u_RxG-bayFM1ZJGykIpynXsKc', '1660750747979', '{\"id\":5,\"account\":\"HappyCat05\"}'),
+(79, 6, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiYWNjb3VudCI6IkhhcHB5Q2F0MDYiLCJpYXQiOjE2NjA3NTAxNjZ9.7Wz67X_nwTpDl34hKSoO42XmqibiDpCcNnmJt1gU9c8', '1660751366526', '{\"id\":6,\"account\":\"HappyCat06\"}'),
+(80, 7, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWNjb3VudCI6IkhhcHB5Q2F0MDciLCJpYXQiOjE2NjA3NTE4NTV9.ik2vI7Q5XXyx6e2KztdMAwt8NRM9dQ4bAMCyVMp_nUI', '1660753055969', '{\"id\":7,\"account\":\"HappyCat07\"}'),
+(81, 8, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiYWNjb3VudCI6IkhhcHB5Q2F0MDgiLCJpYXQiOjE2NjA3NTIyMTh9.p_LiEGvQ7kAQ8DcMtl7g2lTUmgkphxj6vRAMIzTQTSM', '1660753418977', '{\"id\":8,\"account\":\"HappyCat08\"}'),
+(82, 9, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWNjb3VudCI6IkhhcHB5Q2F0MDkiLCJpYXQiOjE2NjA3NTI0OTl9.RpI3tSRGB2x0dzDjuj2I2MqTEhvXHkX_EKfkajxdhes', '1660753699580', '{\"id\":9,\"account\":\"HappyCat09\"}'),
+(83, 10, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImFjY291bnQiOiJIYXBweUNhdDEwIiwiaWF0IjoxNjYwNzUyODk0fQ.SuyRLAGf92QX7sUa-a44M8MrwEUt6joxFL5KfN74E7c', '1660754094678', '{\"id\":10,\"account\":\"HappyCat10\"}');
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `body_parts`
+-- Table structure for table `body_parts`
 --
 
 CREATE TABLE `body_parts` (
@@ -71,7 +71,7 @@ CREATE TABLE `body_parts` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `city_type`
+-- Table structure for table `city_type`
 --
 
 CREATE TABLE `city_type` (
@@ -82,7 +82,7 @@ CREATE TABLE `city_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `city_type`
+-- Dumping data for table `city_type`
 --
 
 INSERT INTO `city_type` (`city_sid`, `city`, `area_sid`, `area_name`) VALUES
@@ -112,7 +112,7 @@ INSERT INTO `city_type` (`city_sid`, `city`, `area_sid`, `area_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `cube`
+-- Table structure for table `cube`
 --
 
 CREATE TABLE `cube` (
@@ -123,7 +123,7 @@ CREATE TABLE `cube` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `cube`
+-- Dumping data for table `cube`
 --
 
 INSERT INTO `cube` (`member_sid`, `cube_sid`, `cube_text`, `cube_style_sid`) VALUES
@@ -141,7 +141,7 @@ INSERT INTO `cube` (`member_sid`, `cube_sid`, `cube_text`, `cube_style_sid`) VAL
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `cube_category`
+-- Table structure for table `cube_category`
 --
 
 CREATE TABLE `cube_category` (
@@ -156,7 +156,7 @@ CREATE TABLE `cube_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `cube_category`
+-- Dumping data for table `cube_category`
 --
 
 INSERT INTO `cube_category` (`cube_style_sid`, `cube_img_a`, `cube_img_b`, `cube_img_c`, `cube_img_t`, `cube_color_1`, `cube_color_2`, `cube_color_font`) VALUES
@@ -189,7 +189,7 @@ INSERT INTO `cube_category` (`cube_style_sid`, `cube_img_a`, `cube_img_b`, `cube
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `cube_music`
+-- Table structure for table `cube_music`
 --
 
 CREATE TABLE `cube_music` (
@@ -199,7 +199,7 @@ CREATE TABLE `cube_music` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `cube_music`
+-- Dumping data for table `cube_music`
 --
 
 INSERT INTO `cube_music` (`cube_music_sid`, `cube_music_type`, `cube_music_name`) VALUES
@@ -211,7 +211,7 @@ INSERT INTO `cube_music` (`cube_music_sid`, `cube_music_type`, `cube_music_name`
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `date_price`
+-- Table structure for table `date_price`
 --
 
 CREATE TABLE `date_price` (
@@ -220,7 +220,7 @@ CREATE TABLE `date_price` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `date_price`
+-- Dumping data for table `date_price`
 --
 
 INSERT INTO `date_price` (`year`, `price`) VALUES
@@ -232,7 +232,7 @@ INSERT INTO `date_price` (`year`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `event_cart`
+-- Table structure for table `event_cart`
 --
 
 CREATE TABLE `event_cart` (
@@ -243,7 +243,7 @@ CREATE TABLE `event_cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `event_cart`
+-- Dumping data for table `event_cart`
 --
 
 INSERT INTO `event_cart` (`order_sid`, `event_sid`, `member_sid`, `created_at`) VALUES
@@ -256,7 +256,7 @@ INSERT INTO `event_cart` (`order_sid`, `event_sid`, `member_sid`, `created_at`) 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `event_cart_creditcard`
+-- Table structure for table `event_cart_creditcard`
 --
 
 CREATE TABLE `event_cart_creditcard` (
@@ -271,7 +271,7 @@ CREATE TABLE `event_cart_creditcard` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `event_cart_creditcard`
+-- Dumping data for table `event_cart_creditcard`
 --
 
 INSERT INTO `event_cart_creditcard` (`credit_sid`, `member_sid`, `cardnumber`, `cardholder`, `ex_month`, `ex_year`, `cvv`, `credit_created_at`) VALUES
@@ -280,7 +280,7 @@ INSERT INTO `event_cart_creditcard` (`credit_sid`, `member_sid`, `cardnumber`, `
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `event_cart_personinfo`
+-- Table structure for table `event_cart_personinfo`
 --
 
 CREATE TABLE `event_cart_personinfo` (
@@ -300,7 +300,7 @@ CREATE TABLE `event_cart_personinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `event_cart_personinfo`
+-- Dumping data for table `event_cart_personinfo`
 --
 
 INSERT INTO `event_cart_personinfo` (`sid`, `member_sid`, `name`, `mobile_city`, `mobile`, `email`, `gender`, `ID`, `birthday`, `add_city`, `add_town`, `add_detail`, `info_created_at`) VALUES
@@ -310,7 +310,7 @@ INSERT INTO `event_cart_personinfo` (`sid`, `member_sid`, `name`, `mobile_city`,
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `event_comment`
+-- Table structure for table `event_comment`
 --
 
 CREATE TABLE `event_comment` (
@@ -323,7 +323,7 @@ CREATE TABLE `event_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `event_comment`
+-- Dumping data for table `event_comment`
 --
 
 INSERT INTO `event_comment` (`sid`, `event_comment_avatar`, `event_comment_name`, `event_comment_date`, `event_comment_star`, `event_comment`) VALUES
@@ -336,7 +336,7 @@ INSERT INTO `event_comment` (`sid`, `event_comment_avatar`, `event_comment_name`
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `event_order_detail`
+-- Table structure for table `event_order_detail`
 --
 
 CREATE TABLE `event_order_detail` (
@@ -347,7 +347,7 @@ CREATE TABLE `event_order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `event_order_detail`
+-- Dumping data for table `event_order_detail`
 --
 
 INSERT INTO `event_order_detail` (`event_order_sid`, `member_sid`, `event_order_detail`, `order_created_at`) VALUES
@@ -364,7 +364,7 @@ INSERT INTO `event_order_detail` (`event_order_sid`, `member_sid`, `event_order_
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `good_deed_games`
+-- Table structure for table `good_deed_games`
 --
 
 CREATE TABLE `good_deed_games` (
@@ -375,7 +375,7 @@ CREATE TABLE `good_deed_games` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `good_deed_games`
+-- Dumping data for table `good_deed_games`
 --
 
 INSERT INTO `good_deed_games` (`sid`, `game_id`, `game_name`, `game_detail`) VALUES
@@ -385,7 +385,7 @@ INSERT INTO `good_deed_games` (`sid`, `game_id`, `game_name`, `game_detail`) VAL
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `good_deed_games_record`
+-- Table structure for table `good_deed_games_record`
 --
 
 CREATE TABLE `good_deed_games_record` (
@@ -401,7 +401,7 @@ CREATE TABLE `good_deed_games_record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `good_deed_games_record`
+-- Dumping data for table `good_deed_games_record`
 --
 
 INSERT INTO `good_deed_games_record` (`sid`, `member_sid`, `member_account`, `member_name`, `member_birth`, `member_death`, `play_date`, `game_id`, `game_score`) VALUES
@@ -411,7 +411,7 @@ INSERT INTO `good_deed_games_record` (`sid`, `member_sid`, `member_account`, `me
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `location`
+-- Table structure for table `location`
 --
 
 CREATE TABLE `location` (
@@ -420,7 +420,7 @@ CREATE TABLE `location` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `location`
+-- Dumping data for table `location`
 --
 
 INSERT INTO `location` (`l_sid`, `location`) VALUES
@@ -445,7 +445,7 @@ INSERT INTO `location` (`l_sid`, `location`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `member`
+-- Table structure for table `member`
 --
 
 CREATE TABLE `member` (
@@ -465,20 +465,20 @@ CREATE TABLE `member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `member`
+-- Dumping data for table `member`
 --
 
 INSERT INTO `member` (`sid`, `name`, `birthdate`, `deathdate`, `isdead`, `mobile`, `email`, `account`, `password`, `gooddeed_score`, `profile_picture`, `passcode`, `create_at`) VALUES
-(1, 'the first cat', NULL, NULL, 'false', '', 'HappyCat01@gmail.com', 'HappyCat01', '$2a$10$.Xh/TQA3aVJ.orVOX1JRZO8K3hB9rdoe7RydbkYih97T1msjAzpKq', NULL, 1143, NULL, '2022-06-09 05:52:24'),
-(2, '貓貓貓', NULL, NULL, 'false', '', 'HappyCat02@gmail.com', 'HappyCat02', '$2y$10$NYuxH3UUfyHRr8yjeDo0Ou/zw83PT/hjbaAwWQ6u.MVlwhS2KMct6', NULL, 1133, NULL, '2022-06-09 05:52:51'),
-(3, '九天玄女不在這', NULL, NULL, 'false', '', 'HappyCat03@gmail.com', 'HappyCat03', '$2y$10$QCyABgd5IjBYYmQhnK0bpeBjSOKzSjiPbyI8fFPpV.cBoclFe8f1.', NULL, 1148, NULL, '2022-06-09 05:53:34'),
-(4, 'Bible Thumb', NULL, NULL, 'false', '', 'HappyCat04@gmail.com', 'HappyCat04', '$2y$10$xyN7xDkGJ5SustZEWCDyIuA/7RdTp0Y3yg4MhtFPFyzmnmayB9EZC', NULL, 1153, NULL, '2022-06-09 05:54:15'),
-(5, '偷尼史塔克 Tony Stark ', '1990-06-14', '2022-06-02', 'false', '0977101050', 'HappyCat05@gmail.com', 'HappyCat05', '$2y$10$sFaM2bucSZ9h0bRb9vXYJuwSy1.YS7eHOutpxih.qfOieXQX1b6ze', NULL, 1158, NULL, '2022-06-09 05:54:42'),
-(6, '怎一直下雨', '1990-03-05', '2022-05-31', 'false', '', 'HappyCat06@gmail.com', 'HappyCat06', '$2y$10$KQFhzDlfZFdk.stmlCA7U.il3fDWO2z0kkVzrHuF9SJPIgNXWKAp.', NULL, 1163, NULL, '2022-06-09 05:55:06'),
-(7, '趕著投胎', NULL, NULL, 'true', '', 'HappyCat07@gmail.com', 'HappyCat07', '$2y$10$Wy1j.2RcH0cA565y0kP2I.yIGvH8rdoEFXhWRokuDHgOerj1NNG9u', NULL, 1128, NULL, '2022-06-09 05:55:27'),
-(8, '咖啡因成癮重症患者', NULL, NULL, 'false', '', 'HappyCat08@gmail.com', 'HappyCat08', '$2y$10$hfdvXtFq2/leKrM2jLXxf.L1YiKAr5wMCq7.rp69fiSgoG3pnJlsK', NULL, 1168, NULL, '2022-06-09 05:55:47'),
-(9, '陳怡君', NULL, NULL, 'false', '', 'HappyCat09@gmail.com', 'HappyCat09', '$2y$10$7zyt3mR2ghfGKn9xkEWgdeXlmxoRy4rm3DmrP/3kDFMXoIPPEj/wy', NULL, 1173, NULL, '2022-06-09 05:56:28'),
-(10, '總有幾隻貓的', NULL, NULL, 'false', '', 'HappyCat10@gmail.com', 'HappyCat10', '$2y$10$n3p/32p42bi1QqX/U0KjBe4Yb0WdAI.8UaoZH3tiRR8NbBaxHGcOK', NULL, 1178, NULL, '2022-06-09 05:56:51'),
+(1, 'the first cat', NULL, NULL, 'false', '', 'HappyCat01@gmail.com', 'HappyCat01', '$2a$10$.Xh/TQA3aVJ.orVOX1JRZO8K3hB9rdoe7RydbkYih97T1msjAzpKq', 10000, 1143, NULL, '2022-06-09 05:52:24'),
+(2, '貓貓貓', NULL, NULL, 'false', '', 'HappyCat02@gmail.com', 'HappyCat02', '$2y$10$NYuxH3UUfyHRr8yjeDo0Ou/zw83PT/hjbaAwWQ6u.MVlwhS2KMct6', 10000, 1133, NULL, '2022-06-09 05:52:51'),
+(3, '九天玄女不在這', NULL, NULL, 'false', '', 'HappyCat03@gmail.com', 'HappyCat03', '$2y$10$QCyABgd5IjBYYmQhnK0bpeBjSOKzSjiPbyI8fFPpV.cBoclFe8f1.', 10000, 1148, NULL, '2022-06-09 05:53:34'),
+(4, 'Bible Thumb', NULL, NULL, 'false', '', 'HappyCat04@gmail.com', 'HappyCat04', '$2y$10$xyN7xDkGJ5SustZEWCDyIuA/7RdTp0Y3yg4MhtFPFyzmnmayB9EZC', 10000, 1153, NULL, '2022-06-09 05:54:15'),
+(5, '偷尼史塔克 Tony Stark ', '1990-06-14', '2022-06-02', 'false', '0977101050', 'HappyCat05@gmail.com', 'HappyCat05', '$2y$10$sFaM2bucSZ9h0bRb9vXYJuwSy1.YS7eHOutpxih.qfOieXQX1b6ze', 10000, 1158, NULL, '2022-06-09 05:54:42'),
+(6, '怎一直下雨', '1990-03-05', '2022-05-31', 'false', '', 'HappyCat06@gmail.com', 'HappyCat06', '$2y$10$KQFhzDlfZFdk.stmlCA7U.il3fDWO2z0kkVzrHuF9SJPIgNXWKAp.', 10000, 1163, NULL, '2022-06-09 05:55:06'),
+(7, '趕著投胎', NULL, NULL, 'true', '', 'HappyCat07@gmail.com', 'HappyCat07', '$2y$10$Wy1j.2RcH0cA565y0kP2I.yIGvH8rdoEFXhWRokuDHgOerj1NNG9u', 10000, 1128, NULL, '2022-06-09 05:55:27'),
+(8, '咖啡因成癮重症患者', NULL, NULL, 'false', '', 'HappyCat08@gmail.com', 'HappyCat08', '$2y$10$hfdvXtFq2/leKrM2jLXxf.L1YiKAr5wMCq7.rp69fiSgoG3pnJlsK', 10000, 1168, NULL, '2022-06-09 05:55:47'),
+(9, '陳怡君', NULL, NULL, 'false', '', 'HappyCat09@gmail.com', 'HappyCat09', '$2y$10$7zyt3mR2ghfGKn9xkEWgdeXlmxoRy4rm3DmrP/3kDFMXoIPPEj/wy', 10000, 1173, NULL, '2022-06-09 05:56:28'),
+(10, '總有幾隻貓的', NULL, NULL, 'false', '', 'HappyCat10@gmail.com', 'HappyCat10', '$2y$10$n3p/32p42bi1QqX/U0KjBe4Yb0WdAI.8UaoZH3tiRR8NbBaxHGcOK', 10000, 1178, NULL, '2022-06-09 05:56:51'),
 (11, 'unhappy cat', NULL, NULL, 'true', '', 'HappyCat11@gmail.com', 'HappyCat11', '$2y$10$JG.LjNM0flM7vAV8zkh6PO3Hb2bgA3c8xKW83W2qbgJgns/n/Hdoa', NULL, NULL, NULL, '2022-06-09 05:57:16'),
 (12, '靈魂急轉彎', '1990-06-15', '2022-06-07', 'false', '', 'HappyCat12@gmail.com', 'HappyCat12', '$2y$10$7.aum6zzCAAX1XsrQyhOf.U8r5MrG586P2fdGiW27WfBOztqK4IHa', NULL, NULL, NULL, '2022-06-09 05:57:37'),
 (13, '', NULL, NULL, 'false', '', 'admin@gmail.com', 'Admin', '$2y$10$0DADDxhf55DPxOKcyISJt.L0uHOkeiSh7J/lTqQ73jMYj1qhLBrBW', NULL, NULL, NULL, '2022-06-09 17:51:04'),
@@ -576,7 +576,7 @@ INSERT INTO `member` (`sid`, `name`, `birthdate`, `deathdate`, `isdead`, `mobile
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `music_category`
+-- Table structure for table `music_category`
 --
 
 CREATE TABLE `music_category` (
@@ -586,7 +586,7 @@ CREATE TABLE `music_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `music_category`
+-- Dumping data for table `music_category`
 --
 
 INSERT INTO `music_category` (`music_type_sid`, `music_type_en`, `music_type_ch`) VALUES
@@ -597,7 +597,7 @@ INSERT INTO `music_category` (`music_type_sid`, `music_type_en`, `music_type_ch`
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE `news` (
@@ -612,7 +612,7 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `news`
+-- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`sid`, `topic`, `event_time`, `type_sid`, `img`, `location_sid`, `content`, `publish_date`) VALUES
@@ -630,7 +630,7 @@ INSERT INTO `news` (`sid`, `topic`, `event_time`, `type_sid`, `img`, `location_s
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `news_tag`
+-- Table structure for table `news_tag`
 --
 
 CREATE TABLE `news_tag` (
@@ -640,7 +640,7 @@ CREATE TABLE `news_tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `news_tag`
+-- Dumping data for table `news_tag`
 --
 
 INSERT INTO `news_tag` (`nt_sid`, `news_sid`, `tag_sid`) VALUES
@@ -713,7 +713,7 @@ INSERT INTO `news_tag` (`nt_sid`, `news_sid`, `tag_sid`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `npo_act`
+-- Table structure for table `npo_act`
 --
 
 CREATE TABLE `npo_act` (
@@ -738,7 +738,7 @@ CREATE TABLE `npo_act` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `npo_act`
+-- Dumping data for table `npo_act`
 --
 
 INSERT INTO `npo_act` (`sid`, `img`, `type_sid`, `program_type`, `comment_star`, `price`, `value`, `start`, `start_time`, `end`, `end_time`, `npo_name`, `act_title`, `place_city`, `place_other`, `place_location`, `limit_num`, `intro`) VALUES
@@ -756,7 +756,7 @@ INSERT INTO `npo_act` (`sid`, `img`, `type_sid`, `program_type`, `comment_star`,
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `npo_act_type`
+-- Table structure for table `npo_act_type`
 --
 
 CREATE TABLE `npo_act_type` (
@@ -765,7 +765,7 @@ CREATE TABLE `npo_act_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `npo_act_type`
+-- Dumping data for table `npo_act_type`
 --
 
 INSERT INTO `npo_act_type` (`typesid`, `name`) VALUES
@@ -779,7 +779,7 @@ INSERT INTO `npo_act_type` (`typesid`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `npo_name`
+-- Table structure for table `npo_name`
 --
 
 CREATE TABLE `npo_name` (
@@ -794,7 +794,7 @@ CREATE TABLE `npo_name` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `npo_name`
+-- Dumping data for table `npo_name`
 --
 
 INSERT INTO `npo_name` (`npo_sid`, `npo_name`, `npo_img`, `email`, `phone`, `mobile`, `npo_intro`, `create_at`) VALUES
@@ -811,7 +811,7 @@ INSERT INTO `npo_name` (`npo_sid`, `npo_name`, `npo_img`, `email`, `phone`, `mob
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place`
+-- Table structure for table `place`
 --
 
 CREATE TABLE `place` (
@@ -827,7 +827,7 @@ CREATE TABLE `place` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `place`
+-- Dumping data for table `place`
 --
 
 INSERT INTO `place` (`sid`, `year`, `month`, `country`, `city`, `dist`, `quota`, `booked`, `place_price`) VALUES
@@ -923,45 +923,44 @@ INSERT INTO `place` (`sid`, `year`, `month`, `country`, `city`, `dist`, `quota`,
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place_city`
+-- Table structure for table `place_city`
 --
 
 CREATE TABLE `place_city` (
   `sid` int(11) NOT NULL,
   `country` varchar(225) DEFAULT NULL,
-  `city` varchar(225) DEFAULT NULL
+  `city` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `place_city`
+-- Dumping data for table `place_city`
 --
 
 INSERT INTO `place_city` (`sid`, `country`, `city`) VALUES
+(100, '美國', '加州'),
+(11, '台灣', '南投縣'),
 (1, '台灣', '基隆市'),
-(2, '台灣', '臺北市'),
+(102, '美國', '夏威夷'),
+(12, '台灣', '宜蘭縣'),
+(15, '台灣', '屏東縣'),
 (3, '台灣', '新北市'),
-(4, '台灣', '桃園市'),
 (5, '台灣', '新竹市'),
 (6, '台灣', '新竹縣'),
-(7, '台灣', '臺中市'),
-(8, '台灣', '臺南市'),
-(9, '台灣', '高雄市'),
-(11, '台灣', '南投縣'),
-(12, '台灣', '宜蘭縣'),
-(13, '台灣', '花蓮縣'),
-(14, '台灣', '臺東縣'),
-(15, '台灣', '屏東縣'),
+(4, '台灣', '桃園市'),
 (16, '台灣', '澎湖縣'),
-(17, '台灣', '金門縣'),
-(100, '美國', '加州'),
 (101, '美國', '紐約'),
-(102, '美國', '夏威夷');
-
+(7, '台灣', '臺中市'),
+(2, '台灣', '臺北市'),
+(8, '台灣', '臺南市'),
+(14, '台灣', '臺東縣'),
+(13, '台灣', '花蓮縣'),
+(17, '台灣', '金門縣'),
+(9, '台灣', '高雄市');
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place_country_list`
+-- Table structure for table `place_country_list`
 --
 
 CREATE TABLE `place_country_list` (
@@ -970,7 +969,7 @@ CREATE TABLE `place_country_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `place_country_list`
+-- Dumping data for table `place_country_list`
 --
 
 INSERT INTO `place_country_list` (`sid`, `country`) VALUES
@@ -980,7 +979,7 @@ INSERT INTO `place_country_list` (`sid`, `country`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place_dist`
+-- Table structure for table `place_dist`
 --
 
 CREATE TABLE `place_dist` (
@@ -990,7 +989,7 @@ CREATE TABLE `place_dist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `place_dist`
+-- Dumping data for table `place_dist`
 --
 
 INSERT INTO `place_dist` (`country`, `city`, `dist`) VALUES
@@ -1031,7 +1030,7 @@ INSERT INTO `place_dist` (`country`, `city`, `dist`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place_in_cart`
+-- Table structure for table `place_in_cart`
 --
 
 CREATE TABLE `place_in_cart` (
@@ -1042,7 +1041,7 @@ CREATE TABLE `place_in_cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `place_in_cart`
+-- Dumping data for table `place_in_cart`
 --
 
 INSERT INTO `place_in_cart` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUES
@@ -1070,7 +1069,7 @@ INSERT INTO `place_in_cart` (`sid`, `member_sid`, `place_sid`, `created_at`) VAL
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `place_liked`
+-- Table structure for table `place_liked`
 --
 
 CREATE TABLE `place_liked` (
@@ -1081,7 +1080,7 @@ CREATE TABLE `place_liked` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `place_liked`
+-- Dumping data for table `place_liked`
 --
 
 INSERT INTO `place_liked` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUES
@@ -1113,7 +1112,7 @@ INSERT INTO `place_liked` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUE
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `reborn_order`
+-- Table structure for table `reborn_order`
 --
 
 CREATE TABLE `reborn_order` (
@@ -1127,7 +1126,7 @@ CREATE TABLE `reborn_order` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `reincarnation`
+-- Table structure for table `reincarnation`
 --
 
 CREATE TABLE `reincarnation` (
@@ -1137,7 +1136,7 @@ CREATE TABLE `reincarnation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `reincarnation`
+-- Dumping data for table `reincarnation`
 --
 
 INSERT INTO `reincarnation` (`member_sid`, `soul_id`, `generation`) VALUES
@@ -1153,7 +1152,7 @@ INSERT INTO `reincarnation` (`member_sid`, `soul_id`, `generation`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `reincarnation_order`
+-- Table structure for table `reincarnation_order`
 --
 
 CREATE TABLE `reincarnation_order` (
@@ -1174,7 +1173,7 @@ CREATE TABLE `reincarnation_order` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `sessions`
+-- Table structure for table `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -1186,7 +1185,7 @@ CREATE TABLE `sessions` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `share_avatar_collects`
+-- Table structure for table `share_avatar_collects`
 --
 
 CREATE TABLE `share_avatar_collects` (
@@ -1196,7 +1195,7 @@ CREATE TABLE `share_avatar_collects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `share_avatar_collects`
+-- Dumping data for table `share_avatar_collects`
 --
 
 INSERT INTO `share_avatar_collects` (`share_post_collect_sid`, `share_post_sid`, `member_sid`) VALUES
@@ -1207,12 +1206,32 @@ INSERT INTO `share_avatar_collects` (`share_post_collect_sid`, `share_post_sid`,
 (36, 26, 4),
 (37, 26, 5),
 (38, 27, 6),
-(39, 25, 6);
+(39, 25, 6),
+(40, 28, 1),
+(41, 31, 2),
+(42, 32, 3),
+(43, 28, 3),
+(44, 30, 4),
+(45, 33, 5),
+(46, 24, 5),
+(47, 31, 5),
+(48, 35, 6),
+(49, 28, 6),
+(50, 36, 7),
+(51, 35, 7),
+(52, 34, 7),
+(53, 27, 7),
+(54, 24, 7),
+(55, 37, 8),
+(56, 37, 9),
+(57, 28, 9),
+(58, 39, 10),
+(59, 31, 10);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `share_avatar_comments`
+-- Table structure for table `share_avatar_comments`
 --
 
 CREATE TABLE `share_avatar_comments` (
@@ -1225,7 +1244,7 @@ CREATE TABLE `share_avatar_comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `share_avatar_comments`
+-- Dumping data for table `share_avatar_comments`
 --
 
 INSERT INTO `share_avatar_comments` (`share_post_comment_sid`, `share_post_sid`, `member_sid`, `share_post_comment_text`, `created_at`, `updated_at`) VALUES
@@ -1233,12 +1252,45 @@ INSERT INTO `share_avatar_comments` (`share_post_comment_sid`, `share_post_sid`,
 (80, 26, 4, '這太可愛了吧，除了沒有黃色的部分都好可愛喔！', '2022-08-13 21:08:41', NULL),
 (81, 23, 4, '不要不開心～', '2022-08-13 21:08:59', NULL),
 (82, 26, 5, '海咪覺得這個好棒', '2022-08-13 21:12:58', NULL),
-(83, 28, 7, '海咪也懂馬尾嗎？', '2022-08-13 21:22:19', NULL);
+(83, 28, 7, '海咪也懂馬尾嗎？', '2022-08-13 21:22:19', NULL),
+(84, 30, 1, '這樣肚子看起來好巨大啊...', '2022-08-17 23:04:56', '2022-08-17 23:05:10'),
+(85, 29, 1, '沒有妹妹那是誰在叫你', '2022-08-17 23:05:35', NULL),
+(86, 28, 1, '海咪這麼可愛竟然沒人收藏嗎？', '2022-08-17 23:05:53', NULL),
+(87, 31, 2, '我也是最近開始玩隨機功能，最近形象漲價漲得很兇啊', '2022-08-17 23:08:25', NULL),
+(88, 28, 2, '海咪感覺是大善人啊，這些配件不容易。', '2022-08-17 23:08:57', NULL),
+(89, 32, 3, '大佛哥布林願意接受一個有雪女的世界嗎？', '2022-08-17 23:12:40', NULL),
+(90, 29, 3, '其實是雪女在叫你喔～', '2022-08-17 23:12:57', NULL),
+(92, 31, 3, '#驚', '2022-08-17 23:13:48', NULL),
+(93, 28, 3, '全世界都喜歡海咪，那誰要來喜歡雪女...', '2022-08-17 23:14:47', NULL),
+(94, 30, 4, '黃色系就給讚', '2022-08-17 23:17:36', NULL),
+(95, 32, 4, '大佛哥布林願意變成黃色嗎？', '2022-08-17 23:18:16', NULL),
+(96, 33, 5, '海咪覺得雪女很酷的說', '2022-08-17 23:25:24', NULL),
+(97, 23, 5, '海咪比較喜歡毛皮族呦', '2022-08-17 23:25:58', NULL),
+(98, 25, 5, '這到底什麼形象海咪喔喔喔', '2022-08-17 23:26:32', NULL),
+(99, 27, 5, '海咪會考慮變成黃色喔', '2022-08-17 23:26:53', NULL),
+(100, 28, 5, '@HappyCat02 其實海咪也沒有那麼好啦', '2022-08-17 23:27:27', NULL),
+(101, 28, 5, '@HappyCat03 海咪會喜歡你喔', '2022-08-17 23:27:48', NULL),
+(102, 31, 5, '欸欸你是日本太太嗎？？？海咪吃驚！', '2022-08-17 23:28:20', NULL),
+(103, 34, 5, '海咪覺得這種命名完全就是食用色素喔 #食用色素', '2022-08-17 23:29:07', NULL),
+(104, 31, 6, '#驚', '2022-08-17 23:56:14', NULL),
+(105, 30, 6, '最近這個黃色是不是絕版了啊', '2022-08-17 23:56:32', NULL),
+(106, 28, 6, '那海咪也會愛我嗎？', '2022-08-17 23:57:01', NULL),
+(107, 36, 7, '冒牌的都這麼好看，正牌的還得了？', '2022-08-18 00:01:23', NULL),
+(108, 32, 7, '感覺應該新增哥布林標籤啊 #哥布林', '2022-08-18 00:01:49', NULL),
+(109, 27, 7, '特地回來朝聖，這就是色素系列的始祖吧！', '2022-08-18 00:02:41', NULL),
+(110, 25, 7, '我覺得這個臉很讚喔～馬上套用', '2022-08-18 00:02:58', NULL),
+(111, 37, 8, '大肚腩就是讚', '2022-08-18 00:06:52', NULL),
+(112, 34, 8, '好了啦食用色素', '2022-08-18 00:07:21', NULL),
+(113, 37, 9, '豬鼻也很讚呀', '2022-08-18 00:08:37', NULL),
+(114, 31, 9, '要不要阿姨幫你收驚', '2022-08-18 00:12:11', NULL),
+(115, 29, 9, '乖孫供三咪你會老我欸大，你啊欸啊罵欸傷心啦', '2022-08-18 00:13:15', NULL),
+(116, 28, 9, '少年郎哪欸災影莎蜜係愛啦', '2022-08-18 00:13:53', NULL),
+(117, 34, 10, '黃色四號好像有致癌的疑慮...', '2022-08-18 00:18:29', NULL);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `share_avatar_likes`
+-- Table structure for table `share_avatar_likes`
 --
 
 CREATE TABLE `share_avatar_likes` (
@@ -1248,7 +1300,7 @@ CREATE TABLE `share_avatar_likes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `share_avatar_likes`
+-- Dumping data for table `share_avatar_likes`
 --
 
 INSERT INTO `share_avatar_likes` (`share_post_like_sid`, `share_post_sid`, `member_sid`) VALUES
@@ -1264,12 +1316,41 @@ INSERT INTO `share_avatar_likes` (`share_post_like_sid`, `share_post_sid`, `memb
 (68, 28, 6),
 (69, 27, 6),
 (70, 25, 6),
-(71, 28, 7);
+(71, 28, 7),
+(72, 29, 1),
+(73, 31, 2),
+(74, 28, 2),
+(75, 28, 3),
+(76, 30, 4),
+(77, 24, 4),
+(78, 33, 5),
+(79, 34, 5),
+(80, 31, 6),
+(81, 35, 6),
+(82, 33, 6),
+(83, 32, 6),
+(84, 32, 7),
+(85, 27, 7),
+(86, 34, 8),
+(87, 31, 8),
+(88, 24, 8),
+(89, 37, 9),
+(90, 36, 9),
+(91, 33, 9),
+(92, 31, 9),
+(93, 28, 9),
+(94, 39, 9),
+(95, 24, 9),
+(96, 39, 10),
+(97, 30, 10),
+(98, 26, 10),
+(99, 24, 10),
+(100, 37, 10);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `share_avatar_posts`
+-- Table structure for table `share_avatar_posts`
 --
 
 CREATE TABLE `share_avatar_posts` (
@@ -1289,23 +1370,33 @@ CREATE TABLE `share_avatar_posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `share_avatar_posts`
+-- Dumping data for table `share_avatar_posts`
 --
 
 INSERT INTO `share_avatar_posts` (`share_post_sid`, `member_sid`, `avatar_sid`, `share_post_title`, `share_post_text`, `share_post_likes`, `share_post_collects`, `Ncombination`, `NcombinationText`, `Nimg_name`, `Nprice`, `created_at`, `updated_at`) VALUES
 (23, 1, 1143, '哥布林貓人', '其實也不知道有沒有來生這種東西，但還是捏了個理想的形象，希望下輩子可以變成像凱多的貓咪，雷鳴八卦！', 1, 1, '{\"basic\":[0,0,0],\"basic_color\":1,\"body\":{\"hand\":2,\"foot\":3,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":4,\"lip\":4,\"nose\":1,\"hairFront\":3,\"hairBack\":5,\"topEar\":2},\"face_color\":{\"eye\":2,\"nose\":6,\"hairFront\":1,\"topEar\":7}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"午夜藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"阿嬤+捲捲\",\"hairColor\":\"棕\",\"ear\":\"饅頭\",\"topearColor\":\"鐵灰\",\"lip\":\"不開心\"}', '8dc3b953-5f4a-44ee-b354-2fd3e870e9df.png', 900, '2022-08-13 20:55:16', NULL),
-(24, 1, 1144, '海天使好可愛', '其實也沒什麼特別的，最近迷上海生動物，覺得轉生成海天使好像也不錯吧。提供給需要的人～', 2, 2, '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":4,\"foot\":0,\"tale\":1,\"special\":1},\"special_color\":{\"tale\":5,\"special\":6},\"face\":{\"eye\":0,\"ear\":2,\"lip\":4,\"nose\":2,\"hairFront\":4,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":1,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"魚尾\",\"bodyColor\":\"粉\",\"specialColor\":\"巧克力\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"狗狗鼻\",\"noseColor\":\"粉\",\"hair\":\"旁分+飄逸長\",\"hairColor\":\"紫\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"不開心\"}', '1e0d2c0d-1727-492b-94c3-5f465bf08161.png', 1800, '2022-08-13 20:56:50', NULL),
+(24, 1, 1144, '海天使好可愛', '其實也沒什麼特別的，最近迷上海生動物，覺得轉生成海天使好像也不錯吧。提供給需要的人～', 6, 4, '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":4,\"foot\":0,\"tale\":1,\"special\":1},\"special_color\":{\"tale\":5,\"special\":6},\"face\":{\"eye\":0,\"ear\":2,\"lip\":4,\"nose\":2,\"hairFront\":4,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":1,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"魚尾\",\"bodyColor\":\"粉\",\"specialColor\":\"巧克力\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"狗狗鼻\",\"noseColor\":\"粉\",\"hair\":\"旁分+飄逸長\",\"hairColor\":\"紫\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"不開心\"}', '1e0d2c0d-1727-492b-94c3-5f465bf08161.png', 1800, '2022-08-13 20:56:50', NULL),
 (25, 2, 1133, '我都捏了什麼', '這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔', 2, 1, '{\"basic\":[2,2,2],\"basic_color\":6,\"body\":{\"hand\":2,\"foot\":0,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":1},\"face\":{\"eye\":2,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":1,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"紅\",\"specialColor\":\"石板藍\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"外星人\",\"eyeColor\":\"紅\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'ccd8abb7-2d69-4ac2-8f51-673f780d73b4.png', 900, '2022-08-13 20:58:46', NULL),
-(26, 3, 1148, '豬鼻豬鼻可愛', '豬鼻可愛人～要是來生真的可以長這樣就好了，最近水生動物好夯，就捏了這麼個形象。好像還有一些很貴但是很好的配件，要卯起來行善了，希望世界更加美好～～', 3, 2, '{\"basic\":[2,2,2],\"basic_color\":7,\"body\":{\"hand\":3,\"foot\":4,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":7},\"face\":{\"eye\":4,\"ear\":3,\"lip\":1,\"nose\":5,\"hairFront\":0,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":6,\"hairFront\":2,\"topEar\":3}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"藍綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"水藍\",\"nose\":\"小豬\",\"noseColor\":\"紅\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"天藍\",\"ear\":\"蠑螈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', 'c715b140-50b9-454d-8fd3-d91f3e7d695d.png', 1400, '2022-08-13 21:03:48', '2022-08-13 21:04:01'),
-(27, 4, 1153, '黃色一號', '這其實還蠻好玩的，大家一起捏黃色生物～', 1, 1, '{\"basic\":[0,2,0],\"basic_color\":3,\"body\":{\"hand\":0,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":3,\"hairBack\":3,\"topEar\":1},\"face_color\":{\"eye\":1,\"nose\":0,\"hairFront\":7,\"topEar\":1}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"綠\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"阿嬤+飄逸長\",\"hairColor\":\"雪\",\"ear\":\"貓耳\",\"topearColor\":\"灰\",\"lip\":\"kitty\"}', '9dc0a94a-76a2-438f-8d07-6323658b6e0a.png', 700, '2022-08-13 21:08:16', NULL),
-(28, 5, 1159, '海咪貓人', '喵喵喵喵喵喵喵喵電感應～因為太多太奇妙的觸電反應～喵喵喵喵海咪海咪～～喵喵喵喵嗚逼屋逼～海咪海咪～海咪好可愛～海咪之歌～我的最愛～大家一起～～～～轉～生～成～海～咪～～～～～～～～～～～～～～～～～～～～～～～～咪！咪！咪～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～', 3, 0, '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":4,\"special\":0},\"face\":{\"eye\":2,\"ear\":1,\"lip\":1,\"nose\":1,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":6,\"hairFront\":6,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"粉\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"紫\",\"eye\":\"外星人\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"小麥\",\"ear\":\"小精靈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '7e1e9eaa-d4f8-413d-a043-a31c392f11a6.png', 1800, '2022-08-13 21:12:28', NULL),
-(29, 6, 1164, '這太ㄎㄧㄤ啦', '來生也要 Rocking Style 喔天啊這好棒，覺得在這裡想了很多以前沒想過的事，第一次去目目非營利當志工的時候，才知道這世界上還有這麼多需要幫助的人，而且他們都比我還要努力，這些來生形象也超！對！味！啊我妹妹在叫我，我先走啦！', 0, 0, '{\"basic\":[2,2,0],\"basic_color\":1,\"body\":{\"hand\":4,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":2,\"lip\":3,\"nose\":1,\"hairFront\":2,\"hairBack\":5,\"topEar\":0},\"face_color\":{\"eye\":2,\"nose\":3,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"午夜藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"黃\",\"hair\":\"飛機+捲捲\",\"hairColor\":\"天藍\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', 'a0d9b3f2-ac79-4576-83d2-3f012476734b.png', 800, '2022-08-13 21:19:06', NULL),
-(30, 7, 1131, '露出馬尾', '這世界上最棒的東西就是馬尾，尤其是東海帝皇的馬尾，你也來跟我說馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！', 0, 0, '{\"basic\":[2,0,1],\"basic_color\":3,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"黃\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"棕\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', '81b2ab4a-74da-4774-9240-0ef0d1df2db1.png', 1400, '2022-08-13 21:22:05', NULL);
+(26, 3, 1148, '豬鼻豬鼻可愛', '豬鼻可愛人～要是來生真的可以長這樣就好了，最近水生動物好夯，就捏了這麼個形象。好像還有一些很貴但是很好的配件，要卯起來行善了，希望世界更加美好～～', 4, 2, '{\"basic\":[2,2,2],\"basic_color\":7,\"body\":{\"hand\":3,\"foot\":4,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":7},\"face\":{\"eye\":4,\"ear\":3,\"lip\":1,\"nose\":5,\"hairFront\":0,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":6,\"hairFront\":2,\"topEar\":3}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"藍綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"水藍\",\"nose\":\"小豬\",\"noseColor\":\"紅\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"天藍\",\"ear\":\"蠑螈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', 'c715b140-50b9-454d-8fd3-d91f3e7d695d.png', 1400, '2022-08-13 21:03:48', '2022-08-13 21:04:01'),
+(27, 4, 1153, '黃色一號', '這其實還蠻好玩的，大家一起捏黃色生物～', 2, 2, '{\"basic\":[0,2,0],\"basic_color\":3,\"body\":{\"hand\":0,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":3,\"hairBack\":3,\"topEar\":1},\"face_color\":{\"eye\":1,\"nose\":0,\"hairFront\":7,\"topEar\":1}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"綠\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"阿嬤+飄逸長\",\"hairColor\":\"雪\",\"ear\":\"貓耳\",\"topearColor\":\"灰\",\"lip\":\"kitty\"}', '9dc0a94a-76a2-438f-8d07-6323658b6e0a.png', 700, '2022-08-13 21:08:16', NULL),
+(28, 5, 1159, '海咪貓人', '喵喵喵喵喵喵喵喵電感應～因為太多太奇妙的觸電反應～喵喵喵喵海咪海咪～～喵喵喵喵嗚逼屋逼～海咪海咪～海咪好可愛～海咪之歌～我的最愛～大家一起～～～～轉～生～成～海～咪～～～～～～～～～～～～～～～～～～～～～～～～咪！咪！咪～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～', 6, 4, '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":4,\"special\":0},\"face\":{\"eye\":2,\"ear\":1,\"lip\":1,\"nose\":1,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":6,\"hairFront\":6,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"粉\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"紫\",\"eye\":\"外星人\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"小麥\",\"ear\":\"小精靈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '7e1e9eaa-d4f8-413d-a043-a31c392f11a6.png', 1800, '2022-08-13 21:12:28', NULL),
+(29, 6, 1164, '這太ㄎㄧㄤ啦', '來生也要 Rocking Style 喔天啊這好棒，覺得在這裡想了很多以前沒想過的事，第一次去目目非營利當志工的時候，才知道這世界上還有這麼多需要幫助的人，而且他們都比我還要努力，這些來生形象也超！對！味！啊我妹妹在叫我，我先走啦！', 1, 0, '{\"basic\":[2,2,0],\"basic_color\":1,\"body\":{\"hand\":4,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":2,\"lip\":3,\"nose\":1,\"hairFront\":2,\"hairBack\":5,\"topEar\":0},\"face_color\":{\"eye\":2,\"nose\":3,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"午夜藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"黃\",\"hair\":\"飛機+捲捲\",\"hairColor\":\"天藍\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', 'a0d9b3f2-ac79-4576-83d2-3f012476734b.png', 800, '2022-08-13 21:19:06', NULL),
+(30, 7, 1131, '露出馬尾', '這世界上最棒的東西就是馬尾，尤其是東海帝皇的馬尾，你也來跟我說馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！', 2, 1, '{\"basic\":[2,0,1],\"basic_color\":3,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"黃\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"棕\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', '81b2ab4a-74da-4774-9240-0ef0d1df2db1.png', 1400, '2022-08-13 21:22:05', NULL),
+(31, 1, 1145, '這到底什麼人', '想說沒事玩一下隨機功能，結果竟然長這樣啊...日本太太好吃驚～', 4, 3, '{\"basic\":[1,2,1],\"basic_color\":8,\"body\":{\"hand\":0,\"foot\":1,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":2,\"nose\":2,\"hairFront\":2,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":3,\"nose\":1,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"藍\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"土耳其藍\",\"nose\":\"狗狗鼻\",\"noseColor\":\"粉\",\"hair\":\"飛機+俐落短\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"下門牙\"}', '67b76259-0df4-4769-8183-dde450b7198b.png', 600, '2022-08-17 23:04:23', NULL),
+(32, 2, 1136, '大佛哥布林', '意外的有種慈眉善目的感覺？總之下輩子長這樣大概也不錯吧，陰德值太低了所以都用不起貴的形象，是應該轉生成大佛沒錯...', 2, 1, '{\"basic\":[1,2,0],\"basic_color\":1,\"body\":{\"hand\":4,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":2,\"hairFront\":3,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":2,\"nose\":3,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"午夜藍\",\"nose\":\"狗狗鼻\",\"noseColor\":\"黃\",\"hair\":\"阿嬤+不留長\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '0d91966d-a270-4d45-ba7e-44d58c5fa6f8.png', 600, '2022-08-17 23:07:50', NULL),
+(33, 3, 1150, '雪女', '轉世成雪女～感覺就像在看靈異教師神眉一樣～但是都有哥布林跟豬鼻了，轉生成雪女也不賴吧，和北極熊一起生存下去吧！！', 3, 1, '{\"basic\":[2,1,0],\"basic_color\":7,\"body\":{\"hand\":2,\"foot\":2,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":0,\"lip\":3,\"nose\":3,\"hairFront\":0,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":2,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"紫\",\"nose\":\"大鼻子\",\"noseColor\":\"灰\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"紫\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', '524e69c1-546c-41b0-ad63-30713a602a66.png', 700, '2022-08-17 23:12:04', '2022-08-17 23:12:16'),
+(34, 4, 1155, '黃色三號', '最新製作的黃色三號，絕對不是食用色素，是我的來生，我的未來，跟我的希望，我向各位保證未來會有更多黃色來生形象，黃色的時代要來了，黃色最棒！', 2, 1, '{\"basic\":[2,1,2],\"basic_color\":3,\"body\":{\"hand\":3,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":0,\"nose\":3,\"hairFront\":1,\"hairBack\":1,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":1,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"大鼻子\",\"noseColor\":\"綠\",\"hair\":\"捲捲+辮子\",\"hairColor\":\"棕\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'f5854395-7406-475e-bcd3-8e9135987f49.png', 500, '2022-08-17 23:17:17', NULL),
+(35, 5, 1160, '海咪又來囉', '海咪最近看到新上架的顏色，就用了三個小時捏出新的海咪喔，但不管怎麼捏，海咪就是海咪喵～最近在淨灘的時候啊，聽到旁邊有人在討論海咪好可愛，雖然海咪真的可愛，但還是好害羞啊～海咪才沒有那麼可愛呢！', 1, 2, '{\"basic\":[1,1,1],\"basic_color\":7,\"body\":{\"hand\":3,\"foot\":1,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":5,\"special\":0},\"face\":{\"eye\":2,\"ear\":0,\"lip\":1,\"nose\":1,\"hairFront\":1,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":6,\"hairFront\":3,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"章魚腳\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"外星人\",\"eyeColor\":\"水藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"捲捲+不留長\",\"hairColor\":\"鮭魚\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '65a9da0f-a3a2-4203-b0d6-7f23e9b27c6d.png', 1500, '2022-08-17 23:25:07', '2022-08-17 23:28:34'),
+(36, 6, 1165, '冒牌海咪', '最近去參加淨灘活動的時候發現大家都在討論海咪，剛好陰德值也夠了，就捏了一個像海咪的形象，這個相似度，下輩子應該可以當海咪的雙胞胎了吧哈哈！', 1, 1, '{\"basic\":[0,1,2],\"basic_color\":3,\"body\":{\"hand\":2,\"foot\":2,\"tale\":1,\"special\":1},\"special_color\":{\"tale\":2,\"special\":0},\"face\":{\"eye\":2,\"ear\":0,\"lip\":1,\"nose\":3,\"hairFront\":0,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":3,\"nose\":3,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"黃\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"黃\",\"eye\":\"外星人\",\"eyeColor\":\"土耳其藍\",\"nose\":\"大鼻子\",\"noseColor\":\"黃\",\"hair\":\"中分+俐落短\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '418ac8e1-0352-4f42-8af7-2e6e19d43cab.png', 1600, '2022-08-17 23:50:05', '2022-08-17 23:51:08'),
+(37, 7, 1132, '綠鼻豬力士', '人小鬼大已經不稀奇了，人小肚皮大才是真滴潮！', 2, 2, '{\"basic\":[2,0,0],\"basic_color\":2,\"body\":{\"hand\":1,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":3,\"ear\":1,\"lip\":1,\"nose\":5,\"hairFront\":0,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":1,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"小眉毛\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"中分+學生妹\",\"hairColor\":\"棕\",\"ear\":\"小精靈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '53071ced-1463-4456-bfc0-d83f63b8109c.png', 900, '2022-08-18 00:00:32', NULL),
+(38, 8, 1169, '韓國人的感覺', '玩著玩著就玩出一個很像韓國人的形象，感覺也很不錯啊，都敏俊西～希望良辰吉地趕快上架韓國～～～', 0, 0, '{\"basic\":[2,0,0],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":5,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":1,\"hairFront\":4,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":4,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"章魚腳\",\"bodyColor\":\"粉\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"水藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"綠\",\"hair\":\"旁分+不留長\",\"hairColor\":\"天藍\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '579fe4cf-0a7a-470b-a952-e1fb94945ded.png', 1400, '2022-08-18 00:06:39', NULL),
+(39, 9, 1173, '混紅豬男', '啊那個齁，我孫子啦，一直叫偶來玩這個，也不豬到素什麼東西，啊不錯玩啦，下被轉是一隻豬豬，混嫩混嫩，野宿很幸福啦！', 2, 1, '{\"basic\":[2,0,0],\"basic_color\":5,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":4,\"lip\":1,\"nose\":5,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"中毒紫\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '652ac255-02d7-4100-93de-7443ef5e69d7.png', 800, '2022-08-18 00:11:31', NULL),
+(40, 10, 1179, '雙馬尾🐸人', '最近發現可以打表情符號欸🐸', 0, 0, '{\"basic\":[2,2,2],\"basic_color\":3,\"body\":{\"hand\":3,\"foot\":1,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":2},\"face\":{\"eye\":3,\"ear\":4,\"lip\":3,\"nose\":0,\"hairFront\":1,\"hairBack\":1,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":1,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"黃\",\"specialColor\":\"碧綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"小眉毛\",\"eyeColor\":\"紫\",\"nose\":\"那個人\",\"noseColor\":\"粉\",\"hair\":\"捲捲+辮子\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', '84729db0-eadf-485e-9697-4a9c246a7043.png', 1300, '2022-08-18 00:17:16', NULL);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `share_avatar_posts_to_tags`
+-- Table structure for table `share_avatar_posts_to_tags`
 --
 
 CREATE TABLE `share_avatar_posts_to_tags` (
@@ -1315,7 +1406,7 @@ CREATE TABLE `share_avatar_posts_to_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `share_avatar_posts_to_tags`
+-- Dumping data for table `share_avatar_posts_to_tags`
 --
 
 INSERT INTO `share_avatar_posts_to_tags` (`share_p_to_t_sid`, `share_post_sid`, `share_post_tag_sid`) VALUES
@@ -1335,12 +1426,33 @@ INSERT INTO `share_avatar_posts_to_tags` (`share_p_to_t_sid`, `share_post_sid`, 
 (54, 29, 61),
 (55, 30, 62),
 (56, 30, 63),
-(57, 30, 64);
+(57, 30, 64),
+(58, 31, 65),
+(59, 32, 66),
+(60, 32, 67),
+(62, 33, 68),
+(63, 34, 69),
+(64, 34, 70),
+(67, 35, 71),
+(68, 35, 72),
+(69, 35, 73),
+(70, 36, 71),
+(71, 37, 52),
+(72, 37, 66),
+(73, 37, 31),
+(74, 38, 74),
+(75, 38, 73),
+(76, 38, 31),
+(77, 39, 75),
+(78, 39, 52),
+(79, 40, 54),
+(80, 40, 76),
+(81, 40, 77);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `share_avatar_tags`
+-- Table structure for table `share_avatar_tags`
 --
 
 CREATE TABLE `share_avatar_tags` (
@@ -1350,14 +1462,14 @@ CREATE TABLE `share_avatar_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `share_avatar_tags`
+-- Dumping data for table `share_avatar_tags`
 --
 
 INSERT INTO `share_avatar_tags` (`share_post_tag_sid`, `share_post_tag_text`, `share_post_tag_search_times`) VALUES
 (28, '小手手', 0),
 (29, '長臂猿', 0),
 (30, '瘦子Eso', 0),
-(31, '大肚腩', 0),
+(31, '大肚腩', 2),
 (32, '矮萌', 0),
 (33, '姚明', 0),
 (34, '粉紅', 0),
@@ -1376,26 +1488,39 @@ INSERT INTO `share_avatar_tags` (`share_post_tag_sid`, `share_post_tag_text`, `s
 (47, '凱多的角', 0),
 (48, '哥布林', 0),
 (49, '海天使', 0),
-(50, '魚尾', 0),
+(50, '魚尾', 1),
 (51, '貓掌', 0),
-(52, '豬鼻', 0),
+(52, '豬鼻', 5),
 (53, '天空藍', 0),
-(54, '蛙人', 0),
+(54, '蛙人', 2),
 (55, '碧眼', 0),
 (56, '誰是海咪', 0),
-(57, '海咪是誰', 0),
+(57, '海咪是誰', 3),
 (58, '我就是海咪', 0),
 (59, '你會老我會大', 0),
 (60, 'ㄎ一ㄤ', 0),
 (61, '我沒有妹妹', 0),
 (62, '馬尾教派', 0),
 (63, '馬尾萌萌', 0),
-(64, '馬尾最棒', 0);
+(64, '馬尾最棒', 0),
+(65, '驚', 0),
+(66, '綠的', 0),
+(67, '大佛', 0),
+(68, '雪女', 0),
+(69, '黃色', 0),
+(70, '食用色素', 0),
+(71, '對就是海咪', 0),
+(72, '海咪', 2),
+(73, '馬尾', 2),
+(74, '露出狐狸尾巴', 0),
+(75, '混紅', 0),
+(76, '呱', 0),
+(77, '雙馬尾', 0);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `showcase`
+-- Table structure for table `showcase`
 --
 
 CREATE TABLE `showcase` (
@@ -1409,7 +1534,7 @@ CREATE TABLE `showcase` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `showcase`
+-- Dumping data for table `showcase`
 --
 
 INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combination`, `combinationText`, `img_name`, `price`) VALUES
@@ -1423,11 +1548,11 @@ INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combina
 (1129, 7, '2022-08-13 20:34:01', '{\"basic\":[0,1,1],\"basic_color\":8,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":2},\"face\":{\"eye\":4,\"ear\":3,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":3,\"topEar\":2},\"face_color\":{\"eye\":5,\"nose\":3,\"hairFront\":3,\"topEar\":7}}', '{\"hand\":\"饅頭\",\"foot\":\"魚尾\",\"bodyColor\":\"藍\",\"specialColor\":\"碧綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紫\",\"nose\":\"那個人\",\"noseColor\":\"黃\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"鮭魚\",\"ear\":\"饅頭\",\"topearColor\":\"鐵灰\",\"lip\":\"kitty\"}', '804490d5-9fb0-4af4-ae71-d54c969cd359.png', 1100),
 (1130, 7, '2022-08-13 20:31:30', '{\"basic\":[2,0,2],\"basic_color\":1,\"body\":{\"hand\":3,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":1,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":1,\"nose\":0,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"綠\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"捲捲+不留長\",\"hairColor\":\"天藍\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'df778225-5859-4d9b-a51d-7fde20f7a2f6.png', 500),
 (1131, 7, '2022-08-13 20:32:56', '{\"basic\":[2,0,1],\"basic_color\":3,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"黃\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"棕\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', '81b2ab4a-74da-4774-9240-0ef0d1df2db1.png', 1400),
-(1132, 7, '2022-08-13 20:33:16', '{\"basic\":[2,0,2],\"basic_color\":2,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', '61e04435-42ba-4745-b724-6aaed6d7ffb8.png', 300),
+(1132, 7, '2022-08-17 23:59:08', '{\"basic\":[2,0,0],\"basic_color\":2,\"body\":{\"hand\":1,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":3,\"ear\":1,\"lip\":1,\"nose\":5,\"hairFront\":0,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":1,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"小眉毛\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"中分+學生妹\",\"hairColor\":\"棕\",\"ear\":\"小精靈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '53071ced-1463-4456-bfc0-d83f63b8109c.png', 900),
 (1133, 2, '2022-08-11 14:28:48', '{\"basic\":[2,2,2],\"basic_color\":6,\"body\":{\"hand\":2,\"foot\":0,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":1},\"face\":{\"eye\":2,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":1,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"紅\",\"specialColor\":\"石板藍\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"外星人\",\"eyeColor\":\"紅\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'ccd8abb7-2d69-4ac2-8f51-673f780d73b4.png', 900),
 (1134, 2, '2022-08-13 21:00:22', '{\"basic\":[2,0,2],\"basic_color\":5,\"body\":{\"hand\":0,\"foot\":1,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":2,\"lip\":2,\"nose\":3,\"hairFront\":1,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":6,\"hairFront\":4,\"topEar\":6}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"中毒紫\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"紫\",\"nose\":\"大鼻子\",\"noseColor\":\"紅\",\"hair\":\"捲捲+不留長\",\"hairColor\":\"金\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"下門牙\"}', '4fb7f201-8ad3-4441-8c8b-aa8cf6792ad2.png', 700),
 (1135, 2, '2022-08-13 20:20:13', '{\"basic\":[2,2,2],\"basic_color\":6,\"body\":{\"hand\":2,\"foot\":0,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":1},\"face\":{\"eye\":2,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":1,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"紅\",\"specialColor\":\"石板藍\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"外星人\",\"eyeColor\":\"紅\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'ccd8abb7-2d69-4ac2-8f51-673f780d73b4.png', 900),
-(1136, 2, '2022-08-11 09:17:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1136, 2, '2022-08-17 23:06:31', '{\"basic\":[1,2,0],\"basic_color\":1,\"body\":{\"hand\":4,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":2,\"hairFront\":3,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":2,\"nose\":3,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"午夜藍\",\"nose\":\"狗狗鼻\",\"noseColor\":\"黃\",\"hair\":\"阿嬤+不留長\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '0d91966d-a270-4d45-ba7e-44d58c5fa6f8.png', 600),
 (1137, 2, '2022-08-11 09:17:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1138, 14, '2022-08-11 13:32:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1139, 14, '2022-08-11 13:32:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
@@ -1436,41 +1561,41 @@ INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combina
 (1142, 14, '2022-08-11 13:32:40', '{\"basic\":[1,2,2],\"basic_color\":2,\"body\":{\"hand\":1,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', '24cf7307-16a6-43db-8a49-909a8895c928.png', 400),
 (1143, 1, '2022-08-13 20:54:06', '{\"basic\":[0,0,0],\"basic_color\":1,\"body\":{\"hand\":2,\"foot\":3,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":4,\"lip\":4,\"nose\":1,\"hairFront\":3,\"hairBack\":5,\"topEar\":2},\"face_color\":{\"eye\":2,\"nose\":6,\"hairFront\":1,\"topEar\":7}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"午夜藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"阿嬤+捲捲\",\"hairColor\":\"棕\",\"ear\":\"饅頭\",\"topearColor\":\"鐵灰\",\"lip\":\"不開心\"}', '8dc3b953-5f4a-44ee-b354-2fd3e870e9df.png', 900),
 (1144, 1, '2022-08-13 20:55:46', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":4,\"foot\":0,\"tale\":1,\"special\":1},\"special_color\":{\"tale\":5,\"special\":6},\"face\":{\"eye\":0,\"ear\":2,\"lip\":4,\"nose\":2,\"hairFront\":4,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":1,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"魚尾\",\"bodyColor\":\"粉\",\"specialColor\":\"巧克力\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"狗狗鼻\",\"noseColor\":\"粉\",\"hair\":\"旁分+飄逸長\",\"hairColor\":\"紫\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"不開心\"}', '1e0d2c0d-1727-492b-94c3-5f465bf08161.png', 1800),
-(1145, 1, '2022-08-11 14:25:29', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1145, 1, '2022-08-17 23:03:02', '{\"basic\":[1,2,1],\"basic_color\":8,\"body\":{\"hand\":0,\"foot\":1,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":2,\"nose\":2,\"hairFront\":2,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":3,\"nose\":1,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"藍\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"土耳其藍\",\"nose\":\"狗狗鼻\",\"noseColor\":\"粉\",\"hair\":\"飛機+俐落短\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"下門牙\"}', '67b76259-0df4-4769-8183-dde450b7198b.png', 600),
 (1146, 1, '2022-08-11 14:25:29', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1147, 1, '2022-08-11 14:25:29', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1148, 3, '2022-08-13 21:00:47', '{\"basic\":[2,2,2],\"basic_color\":7,\"body\":{\"hand\":3,\"foot\":4,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":7},\"face\":{\"eye\":4,\"ear\":3,\"lip\":1,\"nose\":5,\"hairFront\":0,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":6,\"hairFront\":2,\"topEar\":3}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"藍綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"水藍\",\"nose\":\"小豬\",\"noseColor\":\"紅\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"天藍\",\"ear\":\"蠑螈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', 'c715b140-50b9-454d-8fd3-d91f3e7d695d.png', 1400),
 (1149, 3, '2022-08-13 21:01:11', '{\"basic\":[0,0,0],\"basic_color\":6,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":2},\"special_color\":{\"tale\":0,\"special\":5},\"face\":{\"eye\":2,\"ear\":4,\"lip\":5,\"nose\":1,\"hairFront\":2,\"hairBack\":2,\"topEar\":5},\"face_color\":{\"eye\":6,\"nose\":5,\"hairFront\":6,\"topEar\":4}}', '{\"hand\":\"饅頭\",\"foot\":\"章魚腳\",\"bodyColor\":\"紅\",\"specialColor\":\"紫\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"外星人\",\"eyeColor\":\"紅\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紫\",\"hair\":\"飛機+俐落短\",\"hairColor\":\"小麥\",\"ear\":\"饅頭\",\"topearColor\":\"粉\",\"lip\":\"笑笑\"}', '70d29d3c-a574-4a54-8983-a89c7887fe08.png', 1200),
-(1150, 3, '2022-08-11 14:29:28', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1150, 3, '2022-08-17 23:10:07', '{\"basic\":[2,1,0],\"basic_color\":7,\"body\":{\"hand\":2,\"foot\":2,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":0,\"lip\":3,\"nose\":3,\"hairFront\":0,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":2,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"紫\",\"nose\":\"大鼻子\",\"noseColor\":\"灰\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"紫\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', '524e69c1-546c-41b0-ad63-30713a602a66.png', 700),
 (1151, 3, '2022-08-11 14:29:28', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1152, 3, '2022-08-11 14:29:28', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1153, 4, '2022-08-13 21:06:15', '{\"basic\":[0,2,0],\"basic_color\":3,\"body\":{\"hand\":0,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":3,\"hairBack\":3,\"topEar\":1},\"face_color\":{\"eye\":1,\"nose\":0,\"hairFront\":7,\"topEar\":1}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"綠\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"阿嬤+飄逸長\",\"hairColor\":\"雪\",\"ear\":\"貓耳\",\"topearColor\":\"灰\",\"lip\":\"kitty\"}', '9dc0a94a-76a2-438f-8d07-6323658b6e0a.png', 700),
 (1154, 4, '2022-08-13 21:06:32', '{\"basic\":[1,1,1],\"basic_color\":3,\"body\":{\"hand\":1,\"foot\":3,\"tale\":1,\"special\":0},\"special_color\":{\"tale\":2,\"special\":0},\"face\":{\"eye\":3,\"ear\":0,\"lip\":0,\"nose\":2,\"hairFront\":1,\"hairBack\":0,\"topEar\":2},\"face_color\":{\"eye\":0,\"nose\":6,\"hairFront\":3,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"有\",\"taleColor\":\"黃\",\"eye\":\"小眉毛\",\"eyeColor\":\"灰\",\"nose\":\"狗狗鼻\",\"noseColor\":\"紅\",\"hair\":\"捲捲+不留長\",\"hairColor\":\"鮭魚\",\"ear\":\"饅頭\",\"topearColor\":\"白\",\"lip\":\"kitty\"}', '41ae8ba6-a895-4c45-87a7-275627ae53da.png', 1200),
-(1155, 4, '2022-08-11 14:32:15', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1155, 4, '2022-08-17 23:15:28', '{\"basic\":[2,1,2],\"basic_color\":3,\"body\":{\"hand\":3,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":0,\"nose\":3,\"hairFront\":1,\"hairBack\":1,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":1,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"大鼻子\",\"noseColor\":\"綠\",\"hair\":\"捲捲+辮子\",\"hairColor\":\"棕\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'f5854395-7406-475e-bcd3-8e9135987f49.png', 500),
 (1156, 4, '2022-08-11 14:32:15', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1157, 4, '2022-08-11 14:32:15', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1158, 5, '2022-08-13 21:09:51', '{\"basic\":[2,0,0],\"basic_color\":5,\"body\":{\"hand\":2,\"foot\":4,\"tale\":0,\"special\":2},\"special_color\":{\"tale\":0,\"special\":1},\"face\":{\"eye\":2,\"ear\":4,\"lip\":1,\"nose\":4,\"hairFront\":1,\"hairBack\":3,\"topEar\":6},\"face_color\":{\"eye\":6,\"nose\":6,\"hairFront\":7,\"topEar\":4}}', '{\"hand\":\"貓掌\",\"foot\":\"章魚腳\",\"bodyColor\":\"中毒紫\",\"specialColor\":\"石板藍\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"外星人\",\"eyeColor\":\"紅\",\"nose\":\"圓圓\",\"noseColor\":\"紅\",\"hair\":\"捲捲+飄逸長\",\"hairColor\":\"雪\",\"ear\":\"饅頭\",\"topearColor\":\"粉\",\"lip\":\"上門牙\"}', '58a3f8d8-4881-4a8d-9434-fd5378c3d1ac.png', 1300),
 (1159, 5, '2022-08-13 21:10:14', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":4,\"special\":0},\"face\":{\"eye\":2,\"ear\":1,\"lip\":1,\"nose\":1,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":6,\"hairFront\":6,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"粉\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"紫\",\"eye\":\"外星人\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"小麥\",\"ear\":\"小精靈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '7e1e9eaa-d4f8-413d-a043-a31c392f11a6.png', 1800),
-(1160, 5, '2022-08-11 14:34:50', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1160, 5, '2022-08-17 23:22:57', '{\"basic\":[1,1,1],\"basic_color\":7,\"body\":{\"hand\":3,\"foot\":1,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":5,\"special\":0},\"face\":{\"eye\":2,\"ear\":0,\"lip\":1,\"nose\":1,\"hairFront\":1,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":6,\"hairFront\":3,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"章魚腳\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"外星人\",\"eyeColor\":\"水藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"捲捲+不留長\",\"hairColor\":\"鮭魚\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '65a9da0f-a3a2-4203-b0d6-7f23e9b27c6d.png', 1500),
 (1161, 5, '2022-08-11 14:34:50', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1162, 5, '2022-08-11 14:34:50', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1163, 6, '2022-08-13 21:14:04', '{\"basic\":[1,2,2],\"basic_color\":6,\"body\":{\"hand\":1,\"foot\":3,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":1,\"lip\":5,\"nose\":1,\"hairFront\":0,\"hairBack\":2,\"topEar\":3},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":5}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"紅\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"白\",\"hair\":\"中分+俐落短\",\"hairColor\":\"黑\",\"ear\":\"饅頭\",\"topearColor\":\"棕\",\"lip\":\"笑笑\"}', '9034c492-c932-4d98-817a-bc8059e59087.png', 900),
 (1164, 6, '2022-08-13 21:14:26', '{\"basic\":[2,2,0],\"basic_color\":1,\"body\":{\"hand\":4,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":2,\"lip\":3,\"nose\":1,\"hairFront\":2,\"hairBack\":5,\"topEar\":0},\"face_color\":{\"eye\":2,\"nose\":3,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"午夜藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"黃\",\"hair\":\"飛機+捲捲\",\"hairColor\":\"天藍\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', 'a0d9b3f2-ac79-4576-83d2-3f012476734b.png', 800),
-(1165, 6, '2022-08-11 14:39:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1165, 6, '2022-08-17 23:47:02', '{\"basic\":[0,1,2],\"basic_color\":3,\"body\":{\"hand\":2,\"foot\":2,\"tale\":1,\"special\":1},\"special_color\":{\"tale\":2,\"special\":0},\"face\":{\"eye\":2,\"ear\":0,\"lip\":1,\"nose\":3,\"hairFront\":0,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":3,\"nose\":3,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"黃\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"黃\",\"eye\":\"外星人\",\"eyeColor\":\"土耳其藍\",\"nose\":\"大鼻子\",\"noseColor\":\"黃\",\"hair\":\"中分+俐落短\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '418ac8e1-0352-4f42-8af7-2e6e19d43cab.png', 1600),
 (1166, 6, '2022-08-11 14:39:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1167, 6, '2022-08-11 14:39:13', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
-(1168, 8, '2022-08-11 14:54:45', '{\"basic\":[0,0,2],\"basic_color\":8,\"body\":{\"hand\":1,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":4,\"lip\":2,\"nose\":5,\"hairFront\":2,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":2,\"hairFront\":4,\"topEar\":6}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"藍\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"紫\",\"nose\":\"小豬\",\"noseColor\":\"灰\",\"hair\":\"飛機+俐落短\",\"hairColor\":\"金\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"下門牙\"}', 'b04ce2a3-efcc-43ea-8f2a-ee43cfa81913.png', 1000),
-(1169, 8, '2022-08-12 11:13:45', '{\"basic\":[2,0,0],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":5,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":1,\"hairFront\":4,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":4,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"章魚腳\",\"bodyColor\":\"粉\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"水藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"綠\",\"hair\":\"旁分+不留長\",\"hairColor\":\"天藍\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', 'f2f126ae-08a9-4d23-927d-1c571dac834b.png', 1400),
+(1168, 8, '2022-08-18 00:03:55', '{\"basic\":[0,0,2],\"basic_color\":8,\"body\":{\"hand\":1,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":4,\"lip\":2,\"nose\":5,\"hairFront\":2,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":2,\"hairFront\":4,\"topEar\":6}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"藍\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"紫\",\"nose\":\"小豬\",\"noseColor\":\"灰\",\"hair\":\"飛機+俐落短\",\"hairColor\":\"金\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"下門牙\"}', 'c6d7b5f2-f902-4797-9dd0-d52059ca5bf6.png', 1000),
+(1169, 8, '2022-08-18 00:04:04', '{\"basic\":[2,0,0],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":5,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":1,\"hairFront\":4,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":4,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"章魚腳\",\"bodyColor\":\"粉\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"水藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"綠\",\"hair\":\"旁分+不留長\",\"hairColor\":\"天藍\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '579fe4cf-0a7a-470b-a952-e1fb94945ded.png', 1400),
 (1170, 8, '2022-08-11 14:48:14', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1171, 8, '2022-08-11 14:48:14', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1172, 8, '2022-08-11 14:48:14', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
-(1173, 9, '2022-08-11 14:58:58', '{\"basic\":[2,0,0],\"basic_color\":5,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":4,\"lip\":1,\"nose\":5,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"中毒紫\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '695f3365-7c2a-444c-bc9d-e2411de1ee1c.png', 800),
-(1174, 9, '2022-08-12 11:16:15', '{\"basic\":[2,0,2],\"basic_color\":2,\"body\":{\"hand\":1,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":0,\"hairFront\":3,\"hairBack\":4,\"topEar\":4},\"face_color\":{\"eye\":1,\"nose\":6,\"hairFront\":7,\"topEar\":2}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"綠\",\"nose\":\"那個人\",\"noseColor\":\"紅\",\"hair\":\"阿嬤+學生妹\",\"hairColor\":\"雪\",\"ear\":\"饅頭\",\"topearColor\":\"鼠灰\",\"lip\":\"上門牙\"}', 'e50c3e4d-1f7a-47f1-ac8c-693635ef57a4.png', 800),
+(1173, 9, '2022-08-18 00:09:07', '{\"basic\":[2,0,0],\"basic_color\":5,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":4,\"lip\":1,\"nose\":5,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"中毒紫\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '652ac255-02d7-4100-93de-7443ef5e69d7.png', 800),
+(1174, 9, '2022-08-18 00:09:16', '{\"basic\":[2,0,2],\"basic_color\":2,\"body\":{\"hand\":1,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":0,\"hairFront\":3,\"hairBack\":4,\"topEar\":4},\"face_color\":{\"eye\":1,\"nose\":6,\"hairFront\":7,\"topEar\":2}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"綠\",\"nose\":\"那個人\",\"noseColor\":\"紅\",\"hair\":\"阿嬤+學生妹\",\"hairColor\":\"雪\",\"ear\":\"勞數\",\"topearColor\":\"鼠灰\",\"lip\":\"上門牙\"}', '02ab4528-ffb7-494c-937e-9de5715079a0.png', 800),
 (1175, 9, '2022-08-11 14:55:38', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1176, 9, '2022-08-11 14:55:38', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1177, 9, '2022-08-11 14:55:38', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
-(1178, 10, '2022-08-11 15:02:56', '{\"basic\":[0,2,0],\"basic_color\":2,\"body\":{\"hand\":2,\"foot\":3,\"tale\":1,\"special\":0},\"special_color\":{\"tale\":1,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":6},\"face_color\":{\"eye\":0,\"nose\":1,\"hairFront\":7,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"有\",\"taleColor\":\"綠\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"雪\",\"ear\":\"饅頭\",\"topearColor\":\"白\",\"lip\":\"kitty\"}', '0cbf9db8-645e-4edc-b0c5-00c2c3de3be1.png', 1200),
-(1179, 10, '2022-08-12 11:18:08', '{\"basic\":[2,2,2],\"basic_color\":3,\"body\":{\"hand\":3,\"foot\":1,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":2},\"face\":{\"eye\":3,\"ear\":4,\"lip\":3,\"nose\":0,\"hairFront\":1,\"hairBack\":1,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":1,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"黃\",\"specialColor\":\"碧綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"小眉毛\",\"eyeColor\":\"紫\",\"nose\":\"那個人\",\"noseColor\":\"粉\",\"hair\":\"捲捲+辮子\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', 'ebf05080-4525-4898-ba43-e59c8a0e81df.png', 1300),
+(1178, 10, '2022-08-18 00:15:11', '{\"basic\":[0,2,0],\"basic_color\":2,\"body\":{\"hand\":2,\"foot\":3,\"tale\":1,\"special\":0},\"special_color\":{\"tale\":1,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":6},\"face_color\":{\"eye\":0,\"nose\":1,\"hairFront\":7,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"有\",\"taleColor\":\"綠\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"雪\",\"ear\":\"兔耳\",\"topearColor\":\"白\",\"lip\":\"kitty\"}', '31c16b8e-8a22-41fc-bc43-3661c17c7d5a.png', 1200),
+(1179, 10, '2022-08-18 00:15:21', '{\"basic\":[2,2,2],\"basic_color\":3,\"body\":{\"hand\":3,\"foot\":1,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":2},\"face\":{\"eye\":3,\"ear\":4,\"lip\":3,\"nose\":0,\"hairFront\":1,\"hairBack\":1,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":1,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"黃\",\"specialColor\":\"碧綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"小眉毛\",\"eyeColor\":\"紫\",\"nose\":\"那個人\",\"noseColor\":\"粉\",\"hair\":\"捲捲+辮子\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', '84729db0-eadf-485e-9697-4a9c246a7043.png', 1300),
 (1180, 10, '2022-08-11 14:59:39', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1181, 10, '2022-08-11 14:59:39', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1182, 10, '2022-08-11 14:59:39', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
@@ -1488,7 +1613,7 @@ INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combina
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `tag`
+-- Table structure for table `tag`
 --
 
 CREATE TABLE `tag` (
@@ -1497,7 +1622,7 @@ CREATE TABLE `tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 傾印資料表的資料 `tag`
+-- Dumping data for table `tag`
 --
 
 INSERT INTO `tag` (`tg_sid`, `tag_name`) VALUES
@@ -1533,7 +1658,7 @@ INSERT INTO `tag` (`tg_sid`, `tag_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `type`
+-- Table structure for table `type`
 --
 
 CREATE TABLE `type` (
@@ -1542,7 +1667,7 @@ CREATE TABLE `type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 傾印資料表的資料 `type`
+-- Dumping data for table `type`
 --
 
 INSERT INTO `type` (`ty_sid`, `type_name`) VALUES
@@ -1554,114 +1679,114 @@ INSERT INTO `type` (`ty_sid`, `type_name`) VALUES
 (6, '投胎');
 
 --
--- 已傾印資料表的索引
+-- Indexes for dumped tables
 --
 
 --
--- 資料表索引 `admin_test_jwt`
+-- Indexes for table `admin_test_jwt`
 --
 ALTER TABLE `admin_test_jwt`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `body_parts`
+-- Indexes for table `body_parts`
 --
 ALTER TABLE `body_parts`
   ADD PRIMARY KEY (`parts_sid`);
 
 --
--- 資料表索引 `city_type`
+-- Indexes for table `city_type`
 --
 ALTER TABLE `city_type`
   ADD PRIMARY KEY (`city_sid`);
 
 --
--- 資料表索引 `cube`
+-- Indexes for table `cube`
 --
 ALTER TABLE `cube`
   ADD PRIMARY KEY (`cube_sid`),
   ADD KEY `member_sid` (`member_sid`);
 
 --
--- 資料表索引 `cube_category`
+-- Indexes for table `cube_category`
 --
 ALTER TABLE `cube_category`
   ADD PRIMARY KEY (`cube_style_sid`);
 
 --
--- 資料表索引 `cube_music`
+-- Indexes for table `cube_music`
 --
 ALTER TABLE `cube_music`
   ADD PRIMARY KEY (`cube_music_sid`);
 
 --
--- 資料表索引 `date_price`
+-- Indexes for table `date_price`
 --
 ALTER TABLE `date_price`
   ADD PRIMARY KEY (`year`);
 
 --
--- 資料表索引 `event_cart`
+-- Indexes for table `event_cart`
 --
 ALTER TABLE `event_cart`
   ADD PRIMARY KEY (`order_sid`);
 
 --
--- 資料表索引 `event_cart_creditcard`
+-- Indexes for table `event_cart_creditcard`
 --
 ALTER TABLE `event_cart_creditcard`
   ADD PRIMARY KEY (`credit_sid`);
 
 --
--- 資料表索引 `event_cart_personinfo`
+-- Indexes for table `event_cart_personinfo`
 --
 ALTER TABLE `event_cart_personinfo`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `event_comment`
+-- Indexes for table `event_comment`
 --
 ALTER TABLE `event_comment`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `event_order_detail`
+-- Indexes for table `event_order_detail`
 --
 ALTER TABLE `event_order_detail`
   ADD PRIMARY KEY (`event_order_sid`);
 
 --
--- 資料表索引 `good_deed_games`
+-- Indexes for table `good_deed_games`
 --
 ALTER TABLE `good_deed_games`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `good_deed_games_record`
+-- Indexes for table `good_deed_games_record`
 --
 ALTER TABLE `good_deed_games_record`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `location`
+-- Indexes for table `location`
 --
 ALTER TABLE `location`
   ADD PRIMARY KEY (`l_sid`);
 
 --
--- 資料表索引 `member`
+-- Indexes for table `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `music_category`
+-- Indexes for table `music_category`
 --
 ALTER TABLE `music_category`
   ADD PRIMARY KEY (`music_type_sid`);
 
 --
--- 資料表索引 `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`sid`),
@@ -1669,7 +1794,7 @@ ALTER TABLE `news`
   ADD KEY `type_sid` (`type_sid`);
 
 --
--- 資料表索引 `news_tag`
+-- Indexes for table `news_tag`
 --
 ALTER TABLE `news_tag`
   ADD PRIMARY KEY (`nt_sid`),
@@ -1677,7 +1802,7 @@ ALTER TABLE `news_tag`
   ADD KEY `tag_sid` (`tag_sid`);
 
 --
--- 資料表索引 `npo_act`
+-- Indexes for table `npo_act`
 --
 ALTER TABLE `npo_act`
   ADD PRIMARY KEY (`sid`),
@@ -1685,369 +1810,364 @@ ALTER TABLE `npo_act`
   ADD KEY `place_city` (`place_city`);
 
 --
--- 資料表索引 `npo_act_type`
+-- Indexes for table `npo_act_type`
 --
 ALTER TABLE `npo_act_type`
   ADD PRIMARY KEY (`typesid`);
 
 --
--- 資料表索引 `npo_name`
+-- Indexes for table `npo_name`
 --
 ALTER TABLE `npo_name`
   ADD PRIMARY KEY (`npo_sid`);
 
 --
--- 資料表索引 `place`
+-- Indexes for table `place`
 --
 ALTER TABLE `place`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `place_city`
+-- Indexes for table `place_city`
 --
 ALTER TABLE `place_city`
   ADD PRIMARY KEY (`city`),
   ADD KEY `place_city_ibfk_1` (`country`);
 
 --
-
---
--- 資料表索引 `place_country_list`
+-- Indexes for table `place_country_list`
 --
 ALTER TABLE `place_country_list`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `place_dist`
+-- Indexes for table `place_dist`
 --
 ALTER TABLE `place_dist`
   ADD PRIMARY KEY (`dist`),
   ADD KEY `place_dist_ibfk_2` (`country`);
 
 --
--- 資料表索引 `place_in_cart`
+-- Indexes for table `place_in_cart`
 --
 ALTER TABLE `place_in_cart`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `place_liked`
+-- Indexes for table `place_liked`
 --
 ALTER TABLE `place_liked`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `reborn_order`
+-- Indexes for table `reborn_order`
 --
 ALTER TABLE `reborn_order`
   ADD PRIMARY KEY (`sid`);
 
 --
--- 資料表索引 `reincarnation`
+-- Indexes for table `reincarnation`
 --
 ALTER TABLE `reincarnation`
   ADD KEY `member_sid` (`member_sid`);
 
 --
--- 資料表索引 `reincarnation_order`
+-- Indexes for table `reincarnation_order`
 --
 ALTER TABLE `reincarnation_order`
   ADD PRIMARY KEY (`reincarnation_order_sid`);
 
 --
--- 資料表索引 `sessions`
+-- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`session_id`);
 
 --
--- 資料表索引 `share_avatar_collects`
+-- Indexes for table `share_avatar_collects`
 --
 ALTER TABLE `share_avatar_collects`
   ADD PRIMARY KEY (`share_post_collect_sid`);
 
 --
--- 資料表索引 `share_avatar_comments`
+-- Indexes for table `share_avatar_comments`
 --
 ALTER TABLE `share_avatar_comments`
   ADD PRIMARY KEY (`share_post_comment_sid`);
 
 --
--- 資料表索引 `share_avatar_likes`
+-- Indexes for table `share_avatar_likes`
 --
 ALTER TABLE `share_avatar_likes`
   ADD PRIMARY KEY (`share_post_like_sid`);
 
 --
--- 資料表索引 `share_avatar_posts`
+-- Indexes for table `share_avatar_posts`
 --
 ALTER TABLE `share_avatar_posts`
   ADD PRIMARY KEY (`share_post_sid`);
 
 --
--- 資料表索引 `share_avatar_posts_to_tags`
+-- Indexes for table `share_avatar_posts_to_tags`
 --
 ALTER TABLE `share_avatar_posts_to_tags`
   ADD PRIMARY KEY (`share_p_to_t_sid`);
 
 --
--- 資料表索引 `share_avatar_tags`
+-- Indexes for table `share_avatar_tags`
 --
 ALTER TABLE `share_avatar_tags`
   ADD PRIMARY KEY (`share_post_tag_sid`);
 
 --
--- 資料表索引 `showcase`
+-- Indexes for table `showcase`
 --
 ALTER TABLE `showcase`
   ADD PRIMARY KEY (`avatar_id`);
 
 --
--- 資料表索引 `tag`
+-- Indexes for table `tag`
 --
 ALTER TABLE `tag`
   ADD PRIMARY KEY (`tg_sid`);
 
 --
--- 資料表索引 `type`
+-- Indexes for table `type`
 --
 ALTER TABLE `type`
   ADD PRIMARY KEY (`ty_sid`);
 
 --
--- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `admin_test_jwt`
+-- AUTO_INCREMENT for table `admin_test_jwt`
 --
 ALTER TABLE `admin_test_jwt`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `body_parts`
+-- AUTO_INCREMENT for table `body_parts`
 --
 ALTER TABLE `body_parts`
   MODIFY `parts_sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `city_type`
+-- AUTO_INCREMENT for table `city_type`
 --
 ALTER TABLE `city_type`
   MODIFY `city_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `cube`
+-- AUTO_INCREMENT for table `cube`
 --
 ALTER TABLE `cube`
   MODIFY `cube_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `cube_category`
+-- AUTO_INCREMENT for table `cube_category`
 --
 ALTER TABLE `cube_category`
   MODIFY `cube_style_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `cube_music`
+-- AUTO_INCREMENT for table `cube_music`
 --
 ALTER TABLE `cube_music`
   MODIFY `cube_music_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart`
+-- AUTO_INCREMENT for table `event_cart`
 --
 ALTER TABLE `event_cart`
   MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart_creditcard`
+-- AUTO_INCREMENT for table `event_cart_creditcard`
 --
 ALTER TABLE `event_cart_creditcard`
   MODIFY `credit_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart_personinfo`
+-- AUTO_INCREMENT for table `event_cart_personinfo`
 --
 ALTER TABLE `event_cart_personinfo`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `event_comment`
+-- AUTO_INCREMENT for table `event_comment`
 --
 ALTER TABLE `event_comment`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `event_order_detail`
+-- AUTO_INCREMENT for table `event_order_detail`
 --
 ALTER TABLE `event_order_detail`
   MODIFY `event_order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `good_deed_games`
+-- AUTO_INCREMENT for table `good_deed_games`
 --
 ALTER TABLE `good_deed_games`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `good_deed_games_record`
+-- AUTO_INCREMENT for table `good_deed_games_record`
 --
 ALTER TABLE `good_deed_games_record`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `location`
+-- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
   MODIFY `l_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `member`
+-- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `music_category`
+-- AUTO_INCREMENT for table `music_category`
 --
 ALTER TABLE `music_category`
   MODIFY `music_type_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `news`
+-- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `news_tag`
+-- AUTO_INCREMENT for table `news_tag`
 --
 ALTER TABLE `news_tag`
   MODIFY `nt_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `npo_act`
+-- AUTO_INCREMENT for table `npo_act`
 --
 ALTER TABLE `npo_act`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `npo_act_type`
+-- AUTO_INCREMENT for table `npo_act_type`
 --
 ALTER TABLE `npo_act_type`
   MODIFY `typesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `npo_name`
+-- AUTO_INCREMENT for table `npo_name`
 --
 ALTER TABLE `npo_name`
   MODIFY `npo_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `place`
+-- AUTO_INCREMENT for table `place`
 --
 ALTER TABLE `place`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `place_country_list`
+-- AUTO_INCREMENT for table `place_country_list`
 --
 ALTER TABLE `place_country_list`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `place_in_cart`
+-- AUTO_INCREMENT for table `place_in_cart`
 --
 ALTER TABLE `place_in_cart`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `place_liked`
+-- AUTO_INCREMENT for table `place_liked`
 --
 ALTER TABLE `place_liked`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `reborn_order`
+-- AUTO_INCREMENT for table `reborn_order`
 --
 ALTER TABLE `reborn_order`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `reincarnation_order`
+-- AUTO_INCREMENT for table `reincarnation_order`
 --
 ALTER TABLE `reincarnation_order`
   MODIFY `reincarnation_order_sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_collects`
+-- AUTO_INCREMENT for table `share_avatar_collects`
 --
 ALTER TABLE `share_avatar_collects`
-  MODIFY `share_post_collect_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `share_post_collect_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_comments`
+-- AUTO_INCREMENT for table `share_avatar_comments`
 --
 ALTER TABLE `share_avatar_comments`
-  MODIFY `share_post_comment_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `share_post_comment_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_likes`
+-- AUTO_INCREMENT for table `share_avatar_likes`
 --
 ALTER TABLE `share_avatar_likes`
-  MODIFY `share_post_like_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `share_post_like_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_posts`
+-- AUTO_INCREMENT for table `share_avatar_posts`
 --
 ALTER TABLE `share_avatar_posts`
-  MODIFY `share_post_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `share_post_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_posts_to_tags`
+-- AUTO_INCREMENT for table `share_avatar_posts_to_tags`
 --
 ALTER TABLE `share_avatar_posts_to_tags`
-  MODIFY `share_p_to_t_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `share_p_to_t_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_tags`
+-- AUTO_INCREMENT for table `share_avatar_tags`
 --
 ALTER TABLE `share_avatar_tags`
-  MODIFY `share_post_tag_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `share_post_tag_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `showcase`
+-- AUTO_INCREMENT for table `showcase`
 --
 ALTER TABLE `showcase`
   MODIFY `avatar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1193;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `tag`
+-- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
   MODIFY `tg_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `type`
+-- AUTO_INCREMENT for table `type`
 --
 ALTER TABLE `type`
   MODIFY `ty_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- 已傾印資料表的限制式
+-- Constraints for dumped tables
 --
 
 --
--- 資料表的限制式 `news`
+-- Constraints for table `news`
 --
 ALTER TABLE `news`
   ADD CONSTRAINT `news_ibfk_1` FOREIGN KEY (`location_sid`) REFERENCES `location` (`l_sid`),
   ADD CONSTRAINT `news_ibfk_2` FOREIGN KEY (`type_sid`) REFERENCES `type` (`ty_sid`);
-
---
-
-
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
