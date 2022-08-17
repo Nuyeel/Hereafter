@@ -11,7 +11,7 @@
 // import axios from 'axios';
 
 // 使用套件
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2'; //sweetalert2
 
@@ -54,6 +54,8 @@ function Nav(props) {
     const { theme, setTheme } = useContext(ThemeContext);
     const navigate = useNavigate(); //跳轉頁面用
     const location = useLocation();
+
+    const [lightBoxIsOpening, setLightBoxIsOpening] = useState(false);
 
     // console.log(location.pathname);
 
@@ -322,7 +324,11 @@ function Nav(props) {
                                 // console.log('theme after :', theme);
                             }}
                         >
-                            <span className="nav-tw-l-toggle-indicator"></span>
+                            <span
+                                className={`nav-tw-l-toggle-indicator ${
+                                    lightBoxIsOpening ? 'isOpening' : ''
+                                }`}
+                            ></span>
                             <span className="nav-tw-l-span nav-tw-l-span-S d-flex justify-content-center align-items-center">
                                 <NavSkeleton className="nav-tw-l-s-NavSkeleton" />
                             </span>
@@ -506,8 +512,16 @@ function Nav(props) {
                                 onClick={() => {
                                     if (lightBox === 'nav_lightbox_hidden') {
                                         setLightBox('nav_lightbox_visible');
+                                        setLightBoxIsOpening(true);
+                                        return setTimeout(() => {
+                                            setLightBoxIsOpening(false);
+                                        }, 100);
                                     } else {
                                         setLightBox('nav_lightbox_hidden');
+                                        setLightBoxIsOpening(true);
+                                        return setTimeout(() => {
+                                            setLightBoxIsOpening(false);
+                                        }, 100);
                                     }
                                 }}
                             />

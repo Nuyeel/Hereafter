@@ -297,3 +297,58 @@
 
     
 }
+
+.yun-intro-button{
+  
+    
+    z-index: 99999999;
+    cursor: pointer;
+    width: 500px;
+    height: 50px;
+    background-color: transparent;
+    position: fixed;
+    top: 65%;
+    right: 5%;
+
+    
+        font-size: $fz-subtitle;
+        font-family: $ff-t;
+        color: $highlight;
+        font-weight: 600;
+    
+}
+.intro-end{
+    
+
+    width: 150px;height: 50px;
+    position:fixed;
+    bottom: 5%;
+    right: 5%;
+    text-align: center;
+    // background-color: rgb(218, 112, 112);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .yun-scroll-img{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(./introImg/arrow.svg)center center no-repeat;
+        margin-left: 5px;
+        background-size: contain;
+       border-bottom: 3px solid red;
+   
+        
+    }
+    p{  
+        display: inline-block;
+       
+        font-size: $fz-caption;
+        font-family: $ff-t;
+        color: rgb(255, 255, 255);
+        line-height: 2.5rem;
+        letter-spacing: 0.05rem;
+        font-weight: 600;
+    }
+}
