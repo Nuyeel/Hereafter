@@ -153,10 +153,13 @@ function MemberProfileForm() {
                                                                         {/* TODO：有無日期的呈現方式 */}
                                                                         {mainProfile.birthdate ? (
                                                                             <div className="card-text member-page-text">
-                                                                                出生日：
-                                                                                {
-                                                                                    mainProfile.birthdate
-                                                                                }
+                                                                                出生於
+                                                                                <span>
+                                                                                    {' '}
+                                                                                    {
+                                                                                        mainProfile.birthdate
+                                                                                    }
+                                                                                </span>
                                                                             </div>
                                                                         ) : (
                                                                             <div className="card-text member-page-text">
@@ -166,10 +169,13 @@ function MemberProfileForm() {
                                                                         <br />
                                                                         {mainProfile.deathdate ? (
                                                                             <div className="card-text member-page-text">
-                                                                                往生日：
-                                                                                {
-                                                                                    mainProfile.deathdate
-                                                                                }
+                                                                                往生於
+                                                                                <span>
+                                                                                    {' '}
+                                                                                    {
+                                                                                        mainProfile.deathdate
+                                                                                    }
+                                                                                </span>
                                                                             </div>
                                                                         ) : (
                                                                             <div className="card-text member-page-text">

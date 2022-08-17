@@ -81,10 +81,14 @@ function MemberProfileReviseForm() {
                                 title: '修改成功',
                                 timer: 1000,
                             });
+                        } else {
+                            Swal.fire('此電子信箱已有其他人使用囉');
+                            return;
                         }
                     });
             } else if (result.isDenied) {
-                //
+                Swal.fire('資料未變更');
+                return;
             }
         });
     };
@@ -251,6 +255,7 @@ function MemberProfileReviseForm() {
                                                                         onChange={
                                                                             handleFieldsChange
                                                                         }
+                                                                        maxLength="20"
                                                                     />
                                                                 </div>
                                                                 <div className="mb-3 member-page-field">
