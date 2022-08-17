@@ -43,6 +43,18 @@
     }
 }
 
+@media screen and (min-width: 1600px) {
+    .cpl-spc-c-container {
+        .os-scrollbar {
+            >.os-scrollbar-track {
+                width: 400px;
+                height: 16px;
+                bottom: 16px;
+            }
+        }
+    }
+}
+
 // 這裡處理淺色配色
 .cpl-spc-c-container.os-theme-light {
     .os-scrollbar {
@@ -64,6 +76,7 @@
 // 處理卡片區域定位
 .cpl-share-post-container {
     position: relative;
+    padding-top: 5px;
     padding-bottom: 30px;
 }
 
@@ -85,5 +98,12 @@
 @media screen and (min-width: 1400px) {
     .cpl-share-post-container {
         left: calc((1400px - 60px - 100vw) / 2);
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .cpl-share-post-container {
+        padding-top: 10px;
+        padding-bottom: 50px;
     }
 }
