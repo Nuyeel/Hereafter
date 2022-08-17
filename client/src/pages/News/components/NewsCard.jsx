@@ -1,13 +1,18 @@
+import { useContext } from 'react';
 import { ReactComponent as Email } from '../imgs/email.svg';
 import { NEWS_MAIL } from '../../../config/ajax-path';
+import AuthContext from '../../../context/AuthContext/AuthContext';
 
 function NewsCard(props) {
+    const { token } = useContext(AuthContext);
+
     const handleSendMail = async () => {
         fetch(NEWS_MAIL, {
             method: 'POST',
             body: JSON.stringify(props.card),
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
         })
             .then((r) => r.json())

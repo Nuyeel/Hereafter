@@ -8,6 +8,7 @@ import './StyleThird.scss';
 import { ReactComponent as Arrow } from './imgs/arrow.svg';
 import { ReactComponent as Ghost } from './imgs/ghost.svg';
 import { ReactComponent as Pagearrow } from './imgs/pagearrow.svg';
+import Chat from '../../components/Chat/Chat';
 
 function AboutUsThird(props) {
     const { pageName } = props;
@@ -19,6 +20,7 @@ function AboutUsThird(props) {
     return (
         <>
             <div class="container">
+                <Chat />
                 <div className="ab-third-wrap">
                     <div class="ab-hint-wrap">
                         <Link class="ab-hint-l-wrap" to="/news">

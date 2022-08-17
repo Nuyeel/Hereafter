@@ -11,6 +11,7 @@ import { ReactComponent as Star } from './imgs/star.svg';
 import { ReactComponent as StarS } from './imgs/star-s.svg';
 import { ReactComponent as Ghost } from '../AboutUsThird/imgs/ghost.svg';
 import './StyleFirst.scss';
+import Chat from '../../components/Chat/Chat';
 
 function AboutUsFirst(props) {
     const { pageName } = props;
@@ -23,6 +24,7 @@ function AboutUsFirst(props) {
     return (
         <>
             <div className="container">
+                <Chat />
                 <div className="ab-a-bg-wrap">
                     <Link to="/aboutussecond">
                         <Pagearrow className="ab-page-arrow" />

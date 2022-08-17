@@ -104,3 +104,8 @@
     right: 20px;
     bottom: -25px;
 }
+@media (min-width: 375px) and (max-width: 800px) {
+    .ab-bg-sec{
+        height: 30%;
+    }
+  }
