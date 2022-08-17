@@ -199,6 +199,7 @@ function MemberProfileReviseForm() {
                                                                         style={{
                                                                             backgroundColor:
                                                                                 '#ffffff00',
+                                                                            top: '-225px',
                                                                         }}
                                                                     />
                                                                 </>
