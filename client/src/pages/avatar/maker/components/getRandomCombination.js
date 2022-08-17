@@ -5,7 +5,7 @@ function getRandomCombination(combination) {
     const foot = BodyData['foot'].length;
     const basicColors = BodyData['basicColors'].length;
     const eye = FaceData['eye'].length;
-    const ear = FaceData['ear'].length;
+    //const ear = FaceData['ear'].length;
     const nose = FaceData['nose'].length;
     const lip = FaceData['lip'].length;
     const hairFront = FaceData['hairFront'].length;
@@ -27,7 +27,7 @@ function getRandomCombination(combination) {
     randomCombination.body['hand'] = getRandomInt(hand);
     randomCombination.body['foot'] = getRandomInt(foot);
     randomCombination.face['eye'] = getRandomInt(eye);
-    randomCombination.face['ear'] = getRandomInt(ear);
+    //randomCombination.face['ear'] = getRandomInt(ear);
     randomCombination.face['nose'] = getRandomInt(nose);
     randomCombination.face['lip'] = getRandomInt(lip);
     randomCombination.face['hairFront'] = getRandomInt(hairFront);
