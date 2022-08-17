@@ -38,6 +38,7 @@ function NextLifeCube(props, ref) {
         setCurrentCubeOptionIndex,
         currentCubeColorIndex,
         setCurrentCubeColorIndex,
+        cubeIsDone,
     } = props;
 
     const meshesData = useContext(MeshContext);
@@ -138,7 +139,7 @@ function NextLifeCube(props, ref) {
             <div
                 className={`container nlCubeMakingCircle d-flex justify-content-center align-items-center ${
                     eachCubeSize <= 54 && cubeIsMaking ? 'isShown' : ''
-                }`}
+                } ${cubeIsDone ? 'isHidden' : ''}`}
             >
                 <CubeIsMakingSVG
                     colorOne={
@@ -179,10 +180,23 @@ function NextLifeCube(props, ref) {
                             setCubeAnimationState={setCubeAnimationState}
                             cubeRotatingStyle={cubeRotatingStyle}
                             cubeIsMaking={cubeIsMaking}
+                            cubeIsDone={cubeIsDone}
                         />
                         {/* <Stats /> */}
                     </Suspense>
                 </Canvas>
+            </div>
+            <div
+                className={`cpl-nmc-c-info-area isDone ${
+                    cubeIsDone ? 'isShown' : 'isHidden'
+                }`}
+            >
+                <p className="cpl-nmc-c-ia-explanation">
+                    您的<span className="cpl-nmc-c-ia-e-span">希望方塊</span>
+                    已經製作完成！
+                    <br />
+                    <p>祝您有個美好的來生！</p>
+                </p>
             </div>
         </>
     );

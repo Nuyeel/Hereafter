@@ -18,6 +18,9 @@ function myTextureLoader() {
                 // Box['_0A']
                 Box[`_${item.ID}${boxFace}`]
             );
+            textures[indexI][boxFace].anisotropy = 4;
+            textures[indexI][boxFace].minFilter = THREE.LinearFilter;
+            textures[indexI][boxFace].magFilter = THREE.LinearFilter;
             textures[indexI][boxFace].wrapS = THREE.RepeatWrapping;
             textures[indexI][boxFace].wrapT = THREE.RepeatWrapping;
         });

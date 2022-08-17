@@ -16,6 +16,7 @@ function Scene(props, ref) {
         cubeIsMaking,
         stylishTimer,
         setStylishTimer,
+        cubeIsDone,
     } = props;
     const meshRef = useRef(null);
 
@@ -39,10 +40,21 @@ function Scene(props, ref) {
         }
 
         // 這會隨 RWD 變動 先做到差不多就好
-        if (cubeIsMaking) {
+        if (cubeIsMaking && !cubeIsDone) {
             if (eachCubeSize >= 52) {
                 const newEachCubeSize = eachCubeSize - 0.2;
                 setEachCubeSize(newEachCubeSize);
+            }
+        }
+
+        if (cubeIsDone) {
+            if (eachCubeSize <= 84) {
+                const newEachCubeSize = eachCubeSize + 0.5;
+                setEachCubeSize(newEachCubeSize);
+                meshRef.current.rotation.y += 0.25;
+            }
+            if (meshRef.current.rotation.x <= 0.25) {
+                meshRef.current.rotation.x += 0.01;
             }
         }
 
@@ -201,42 +213,42 @@ function Scene(props, ref) {
                                             {...meshesData.materialsData[i][
                                                 'side'
                                             ]}
-                                            transparent
+                                            transparent={true}
                                         />
                                         <shaderMaterial
                                             attach="material-1"
                                             {...meshesData.materialsData[i][
                                                 'side'
                                             ]}
-                                            transparent
+                                            transparent={true}
                                         />
                                         <shaderMaterial
                                             attach="material-2"
                                             {...meshesData.materialsData[i][
                                                 'top'
                                             ]}
-                                            transparent
+                                            transparent={true}
                                         />
                                         <shaderMaterial
                                             attach="material-3"
                                             {...meshesData.materialsData[i][
                                                 'top'
                                             ]}
-                                            transparent
+                                            transparent={true}
                                         />
                                         <shaderMaterial
                                             attach="material-4"
                                             {...meshesData.materialsData[i][
                                                 'side'
                                             ]}
-                                            transparent
+                                            transparent={true}
                                         />
                                         <shaderMaterial
                                             attach="material-5"
                                             {...meshesData.materialsData[i][
                                                 'side'
                                             ]}
-                                            transparent
+                                            transparent={true}
                                         />
                                     </>
                                 ) : (

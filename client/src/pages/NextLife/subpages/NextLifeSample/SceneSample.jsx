@@ -20,6 +20,12 @@ function SceneSample(props, ref) {
 
     // 這裡處理材質疊加
     const sampleTextTexture = useLoader(THREE.TextureLoader, sampleText);
+    sampleTextTexture.anisotropy = 4;
+    sampleTextTexture.minFilter = THREE.LinearFilter;
+    sampleTextTexture.magFilter = THREE.LinearFilter;
+    sampleTextTexture.wrapS = THREE.RepeatWrapping;
+    sampleTextTexture.wrapT = THREE.RepeatWrapping;
+
     const sampleMaterial = {
         uniforms: {
             textureT: { value: meshesData.texturesData[33]['T'] },
@@ -104,32 +110,32 @@ function SceneSample(props, ref) {
                 <shaderMaterial
                     attach="material-0"
                     {...meshesData.materialsData[33]['side']}
-                    transparent
+                    transparent={true}
                 />
                 <shaderMaterial
                     attach="material-1"
                     {...meshesData.materialsData[33]['side']}
-                    transparent
+                    transparent={true}
                 />
                 <shaderMaterial
                     attach="material-2"
                     {...sampleMaterial}
-                    transparent
+                    transparent={true}
                 />
                 <shaderMaterial
                     attach="material-3"
                     {...sampleMaterial}
-                    transparent
+                    transparent={true}
                 />
                 <shaderMaterial
                     attach="material-4"
                     {...meshesData.materialsData[33]['side']}
-                    transparent
+                    transparent={true}
                 />
                 <shaderMaterial
                     attach="material-5"
                     {...meshesData.materialsData[33]['side']}
-                    transparent
+                    transparent={true}
                 />
             </mesh>
         </>

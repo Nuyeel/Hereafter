@@ -90,6 +90,7 @@
 
 .cpl-nmc-c-info-area.isShown {
     animation: cpl-nextlife-cube-info-area-isShown 2s;
+    visibility: visible;
 }
 
 @keyframes cpl-nextlife-cube-info-area-isShown {

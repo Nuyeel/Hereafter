@@ -159,3 +159,13 @@
         transform: rotate(-360deg);
     }
 }
+
+.container.nlCubeMakingCircle.isHidden {
+    display: none;
+}
+
+.cpl-nmc-c-info-area.isDone.isHidden {
+    visibility: hidden;
+    cursor: none;
+    pointer-events: none;
+}
