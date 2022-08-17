@@ -152,9 +152,9 @@ function MemberProfileForm() {
                                                                         <br />
                                                                         {/* TODO：有無日期的呈現方式 */}
                                                                         {mainProfile.birthdate ? (
-                                                                            <div className="card-text member-page-text">
+                                                                            <div className="member-page-subtitle">
                                                                                 出生於
-                                                                                <span>
+                                                                                <span className=" member-page-text">
                                                                                     {' '}
                                                                                     {
                                                                                         mainProfile.birthdate
@@ -162,15 +162,15 @@ function MemberProfileForm() {
                                                                                 </span>
                                                                             </div>
                                                                         ) : (
-                                                                            <div className="card-text member-page-text">
+                                                                            <div className="member-page-subtitle">
                                                                                 未記錄出生日
                                                                             </div>
                                                                         )}
                                                                         <br />
                                                                         {mainProfile.deathdate ? (
-                                                                            <div className="card-text member-page-text">
+                                                                            <div className="member-page-subtitle">
                                                                                 往生於
-                                                                                <span>
+                                                                                <span className=" member-page-text">
                                                                                     {' '}
                                                                                     {
                                                                                         mainProfile.deathdate
@@ -178,7 +178,7 @@ function MemberProfileForm() {
                                                                                 </span>
                                                                             </div>
                                                                         ) : (
-                                                                            <div className="card-text member-page-text">
+                                                                            <div className="member-page-subtitle">
                                                                                 未存在往生紀錄
                                                                             </div>
                                                                         )}
