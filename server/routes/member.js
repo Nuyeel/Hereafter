@@ -510,25 +510,26 @@ router
         const deathdateupdate3 = await db.query(deathdateupdate2);
         // console.log(deathdateupdate3);
 
+        console.log(req.body.email);
         //更新電子信箱
         const sql2 = 'SELECT `sid` FROM `member` WHERE email = ?';
         const [q2] = await db.query(sql2, [req.body.email]);
-        console.log(q2[0].sid);
+        console.log('q2: ', q2);
         // SELECT COUNT(*) FROM `member` WHERE `email`='HappyCat0@gmail.com';
 
-        if (q2[0].sid !== res.locals.loginUser.id) {
+        if (q2.length && q2[0].sid !== res.locals.loginUser.id) {
             output.code = 406;
             output.error = '已有人使用此電子信箱';
             return res.json(output);
-        } else {
-            const emailupdate = 'UPDATE `member` SET `email`=? WHERE sid=?';
-            const emailupdate2 = sqlstring.format(emailupdate, [
-                req.body.email,
-                res.locals.loginUser.id,
-            ]);
-            const emailupdate3 = await db.query(emailupdate2);
-            // console.log(emailupdate3);
         }
+
+        const emailupdate = 'UPDATE `member` SET `email`=? WHERE sid=?';
+        const emailupdate2 = sqlstring.format(emailupdate, [
+            req.body.email,
+            res.locals.loginUser.id,
+        ]);
+        const emailupdate3 = await db.query(emailupdate2);
+        // console.log(emailupdate3);
 
         output.success = true;
         output.error = '修改成功';
