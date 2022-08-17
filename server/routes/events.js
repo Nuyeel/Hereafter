@@ -53,6 +53,12 @@ router.get('/:eventsid?', async (req, res) => {
         value.start = mo;
         const me = dayjs(value.end).format('YYYY-MM-DD');
         value.end = me;
+
+        // 讓時間只顯示到分鐘
+        const mo2 = value.start_time.slice(0, 5);
+        value.start_time = mo2;
+        const mo3 = value.end_time.slice(0, 5);
+        value.end_time = mo3;
     });
 
     // console.log(results);

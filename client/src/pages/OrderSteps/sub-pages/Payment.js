@@ -421,7 +421,7 @@ function Payment(props) {
                                     </div>
 
                                     <div className="xuan-display-flex xuan-credit-bottom">
-                                        <div className="box">
+                                        <div className="credit-box">
                                             <p className="xuan-credit-notion xuan-body">
                                                 有效期限
                                             </p>
@@ -446,7 +446,7 @@ function Payment(props) {
                                             </div>
                                         </div>
 
-                                        <div className="box">
+                                        <div className="credit-box">
                                             <img
                                                 src={creditcard_logo}
                                                 alt=""
@@ -460,7 +460,7 @@ function Payment(props) {
                                 <div className="back" style={cardTransformBack}>
                                     <div className="stripe"></div>
 
-                                    <div className="box">
+                                    <div className="credit-box">
                                         <p className="xuan-credit-notion xuan-body cvv-notion">
                                             CVV
                                         </p>
@@ -617,7 +617,7 @@ function Payment(props) {
                                         className="xuan-btn-m xuan-btn-sec"
                                     >
                                         <FiSend />
-                                        送出
+                                        下一步
                                     </button>
                                 </div>
                             </form>

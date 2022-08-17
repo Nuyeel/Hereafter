@@ -80,7 +80,7 @@ function EventItem(props) {
                 <div className="xuan-cart-intro">
                     <div className="xuan-cart-intro-title">
                         <span className="xuan-body">{program_type}</span>
-                        <span className="xuan-subtitle">{act_title}</span>
+                        <span className="xuan-subtitle xuan-act-title">{act_title}</span>
                     </div>
 
                     <div className="xuan-time-location">

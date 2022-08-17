@@ -28,72 +28,84 @@ function OrderDetail(props) {
 
     const { cardnumber, bill, payway } = cardInfor;
 
+
     return (
         <>
             <div className="xuan-finally-container">
                 <div className="xuan-finally-center-block">
                     <p className="xuan-h5 ">感謝你的購買</p>
-                    <p className="xuan-subtitle">以下為您的訂購資訊</p>
+                    <p className="xuan-subtitle">—　以下為您的訂購資訊　—</p>
 
                     <div className="xuan-finally-infor">
-                        {/* 左邊放總金額 & 付款資訊 */}
-                        <div className="xuan-finally-infor-left ">
-                            <div>
-                                <p className="xuan-subtitle">
-                                    總計: NT${calcPickPrice}
-                                </p>
-                            </div>
-                            <div className="xuan-subtitle xuan-orderdetail-p ">
-                                <p className="xuan-finally-title">發票種類</p>
-                                {bill}
-                            </div>
-
-                            <div className="xuan-subtitle xuan-orderdetail-p">
-                                <p className="xuan-finally-title">付款資訊</p>
-                                {payway}
-                            </div>
-
-                            <div className="xuan-subtitle xuan-orderdetail-p">
-                                <p className="xuan-finally-title">
-                                    末4碼
-                                </p>
-                                {cardnumber}
-                            </div>
+                        <div className="xuan-final-top-cost">
+                            <p className="xuan-subtitle">
+                                總計: NT${calcPickPrice}
+                            </p>
                         </div>
 
-                        {/* 右邊放個人資訊 */}
-                        <div className="xuan-finally-infor-right">
-                            <div className="xuan-subtitle xuan-orderdetail-p">
-                                <p className="xuan-finally-title">姓名</p>
-                                {fullname}
-                            </div>
-                            <div className="xuan-subtitle xuan-orderdetail-p">
-                                <p className="xuan-finally-title">手機</p>
-                                {mobile_town}
-                                {mobile}
+                        <div className="xuan-d-flex">
+                            {/* 左邊放總金額 & 付款資訊 */}
+                            <div className="xuan-finally-infor-left ">
+                                <div className="xuan-subtitle xuan-orderdetail-p ">
+                                    <p className="xuan-finally-title">
+                                        發票種類
+                                    </p>
+                                    {bill}
+                                </div>
+
+                                <div className="xuan-subtitle xuan-orderdetail-p">
+                                    <p className="xuan-finally-title">
+                                        付款資訊
+                                    </p>
+                                    {payway}
+                                </div>
+
+                                <div className="xuan-subtitle xuan-orderdetail-p">
+                                    <p className="xuan-finally-title">末4碼</p>
+                                    5678
+                                    {/* FIXME: 目前還沒修成split */}
+                                    {/* {cardnumber} */}
+                                </div>
+
+                                <div className="xuan-subtitle xuan-orderdetail-p">
+                                    <p className="xuan-finally-title">姓名</p>
+                                    {fullname}
+                                </div>
+                                <div className="xuan-subtitle xuan-orderdetail-p">
+                                    <p className="xuan-finally-title">手機</p>
+                                    {mobile_town}
+                                    {mobile}
+                                </div>
                             </div>
 
-                            <div className="xuan-subtitle xuan-orderdetail-p">
-                                <p className="xuan-finally-title">性別</p>
-                                {gender}
-                            </div>
-                            <div className="xuan-subtitle xuan-orderdetail-p">
-                                <p className="xuan-finally-title">信箱</p>
-                                {email}
-                            </div>
+                            {/* 右邊放個人資訊 */}
+                            <div className="xuan-finally-infor-right">
+                                <div className="xuan-subtitle xuan-orderdetail-p">
+                                    <p className="xuan-finally-title">性別</p>
+                                    {gender}
+                                </div>
+                                <div className="xuan-subtitle xuan-orderdetail-p">
+                                    <p className="xuan-finally-title">信箱</p>
+                                    {email}
+                                </div>
 
-                            <div className="xuan-subtitle xuan-orderdetail-p">
-                                <p className="xuan-finally-title">出生日期</p>
-                                {birthday}
-                            </div>
-                            <div className="xuan-subtitle xuan-orderdetail-p">
-                                <p className="xuan-finally-title">身分證字號</p>
-                                {ID}
-                            </div>
+                                <div className="xuan-subtitle xuan-orderdetail-p">
+                                    <p className="xuan-finally-title">
+                                        出生日期
+                                    </p>
+                                    {birthday}
+                                </div>
+                                <div className="xuan-subtitle xuan-orderdetail-p">
+                                    <p className="xuan-finally-title">
+                                        身分證字號
+                                    </p>
+                                    {ID}
+                                </div>
 
-                            <div className="xuan-subtitle xuan-orderdetail-p">
-                                <p className="xuan-finally-title">地址</p>
-                                {address}
+                                <div className="xuan-subtitle xuan-orderdetail-p">
+                                    <p className="xuan-finally-title">地址</p>
+                                    {address}
+                                </div>
                             </div>
                         </div>
                     </div>
