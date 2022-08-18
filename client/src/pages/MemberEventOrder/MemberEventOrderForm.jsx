@@ -110,6 +110,8 @@ function MemberProfileForm() {
                                                         style={{
                                                             backgroundColor:
                                                                 theme.memberBgCard,
+                                                            'max-height':
+                                                                '600px',
                                                         }}
                                                     >
                                                         <div className="tab-content">
