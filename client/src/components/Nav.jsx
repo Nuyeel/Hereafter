@@ -61,6 +61,7 @@ function Nav(props) {
     const location = useLocation();
 
     const [lightBoxIsOpening, setLightBoxIsOpening] = useState(false);
+    const [timeoutID, setTimeoutID] = useState(null);
 
     // console.log(location.pathname);
 
@@ -192,7 +193,7 @@ function Nav(props) {
                         }}
                     >
                         {/* <div className="nav_link nav_missing_word"> */}
-                            <img src={missingWord} alt="" />
+                        <img src={missingWord} alt="" />
                         {/* </div> */}
                         {/* <h2 className="nav_link">
                             功德撲滿
@@ -333,9 +334,29 @@ function Nav(props) {
                                     }
                                     localStorage.setItem('theme', 'dark');
                                     setTheme(themes.dark);
+                                    setLightBoxIsOpening(true);
+
+                                    if (timeoutID) {
+                                        clearTimeout(timeoutID);
+                                    }
+                                    return setTimeoutID(
+                                        setTimeout(() => {
+                                            setLightBoxIsOpening(false);
+                                        }, 400)
+                                    );
                                 } else {
                                     localStorage.setItem('theme', 'light');
                                     setTheme(themes.light);
+                                    setLightBoxIsOpening(true);
+
+                                    if (timeoutID) {
+                                        clearTimeout(timeoutID);
+                                    }
+                                    return setTimeoutID(
+                                        setTimeout(() => {
+                                            setLightBoxIsOpening(false);
+                                        }, 400)
+                                    );
                                 }
                                 // console.log('theme after :', theme);
                             }}
@@ -530,16 +551,8 @@ function Nav(props) {
                                 onClick={() => {
                                     if (lightBox === 'nav_lightbox_hidden') {
                                         setLightBox('nav_lightbox_visible');
-                                        setLightBoxIsOpening(true);
-                                        return setTimeout(() => {
-                                            setLightBoxIsOpening(false);
-                                        }, 100);
                                     } else {
                                         setLightBox('nav_lightbox_hidden');
-                                        setLightBoxIsOpening(true);
-                                        return setTimeout(() => {
-                                            setLightBoxIsOpening(false);
-                                        }, 100);
                                     }
                                 }}
                             />

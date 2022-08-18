@@ -428,7 +428,7 @@ h3 {
             transform: translateX(-24.5px);
             z-index: 1;
             // transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            // transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         .nav-tw-l-span-S {
@@ -497,7 +497,7 @@ h3 {
 .nav-toggle-wrapper {
     .nav-tw-label {
         .nav-tw-l-toggle-indicator.isOpening {
-            transition: all 0s;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
     }
 }
