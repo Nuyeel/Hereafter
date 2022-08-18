@@ -391,3 +391,13 @@ animation: show2 .8s .5s ease forwards;
     }
 }
 
+@media screen and (min-width: 992px) {
+    .rsc-float-button {
+        bottom: -40px  !important;
+        transition: 0.4s;
+    }
+
+    .rsc-float-button:hover {
+        bottom: 0px  !important;
+    }
+}
