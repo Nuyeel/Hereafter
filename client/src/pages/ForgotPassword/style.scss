@@ -27,7 +27,7 @@
     position: relative;
     border-radius: 15px;
     right: 16px;
-    background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
+    background-image: linear-gradient(180deg, #EDEFF7, d6dae4);
     transition: .2s;
     border-color: #fff;
 }
@@ -47,43 +47,38 @@
 }
 
 .member-page-card {
-    // background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
+    background-image: linear-gradient(180deg, #f3f3f3d5, #e2e6f0);
+    background-repeat: no-repeat;
     // max-width: 520px;
     width: 500px;
     height: 180px;
-    background-repeat: no-repeat;
-    background-color: #f3f3f3;
     overflow: hidden;
 }
 
-.member-page-card-1:hover {
-    // background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
-    // max-width: 520px;
-    width: 500px;
-    height: 180px;
-    background-repeat: no-repeat;
-    background-color: #e1e1e4;
-    overflow: hidden;
-}
+// .member-page-card:hover {
+//     background-image: linear-gradient(180deg, #e2e6f0, #f3f3f3d5);
+//     background-repeat: no-repeat;
+//     width: 500px;
+//     height: 180px;
+//     background-repeat: no-repeat;
+//     background-color: #e1e1e4;
+//     overflow: hidden;
+// }
 
 .member-page-card-2 {
-    // background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
-    // max-width: 260px;
+    background-image: linear-gradient(180deg, #f3f3f3d5, #e2e6f0d5);
+    background-repeat: no-repeat;
     width: 220px;
     height: 160px;
-    background-repeat: no-repeat;
-    background-color: #f3f3f3;
     border: none;
     overflow: hidden;
 }
 
 .member-page-card-3 {
-    // background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
-    // max-width: 260px;
+    background-image: linear-gradient(180deg, #f3f3f3d5, #e2e6f0d5);
+    background-repeat: no-repeat;
     width: 260px;
     height: 160px;
-    background-repeat: no-repeat;
-    background-color: #f3f3f3;
     border: none;
     overflow: hidden;
 }
