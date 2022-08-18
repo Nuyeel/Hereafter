@@ -8,8 +8,9 @@
 }
 
 .member-page-subtitle {
-    font: 400 20px var(--text-font), Arial, sans-serif;
-    color: #3C3B67;
+    font-size: 18px;
+    font-weight: 500;
+    color: #55546b;
 }
 
 .member-page-field {
@@ -104,7 +105,7 @@
     font-family: $ff-t, $ff-h;
     font-weight: 500;
     color: $secondary; 
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     // text-align: center;
 }
 
@@ -162,7 +163,7 @@
 
 .member-event-bg {
     overflow-y: scroll;
-    max-height: 600px;
+    max-height: 500px;
     padding: 20px;
     border-radius: 25px;
 }
@@ -305,7 +306,5 @@
     width: 100%;
     border-radius: 30px;
     backdrop-filter: blur(3px);
-    // outline: rgba(255, 255, 255, 0.5) 0.5px solid;
-    // box-shadow: -7px -10px 7px -10px rgba(255, 255, 255, 0.3);
 }
 

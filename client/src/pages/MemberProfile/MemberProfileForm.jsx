@@ -61,11 +61,8 @@ function MemberProfileForm(props) {
     };
 
     useEffect(() => {
-        fetchMemberData();
-    }, []);
-
-    useEffect(() => {
         setHeader(headers[pageName]);
+        fetchMemberData();
     }, []);
 
     return (

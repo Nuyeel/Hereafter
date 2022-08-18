@@ -212,7 +212,7 @@ function MemberProfileReviseForm() {
                                                                 }
                                                             >
                                                                 <div className="mb-3 d-flex justify-content-center member-page-title">
-                                                                    修改會員資料
+                                                                    修改生死紀錄
                                                                 </div>
                                                                 <br />
                                                                 <div className="mb-3 member-page-field">
@@ -245,7 +245,7 @@ function MemberProfileReviseForm() {
                                                                     </label>
                                                                     <input
                                                                         type="text"
-                                                                        className="form-control"
+                                                                        className="form-control input-3"
                                                                         id="name"
                                                                         name="name"
                                                                         placeholder="快樂的靈魂"
@@ -267,7 +267,7 @@ function MemberProfileReviseForm() {
                                                                     </label>
                                                                     <input
                                                                         type="date"
-                                                                        className="form-control"
+                                                                        className="form-control input-3"
                                                                         name="birthdate"
                                                                         value={
                                                                             memberProfileData.birthdate
@@ -286,7 +286,7 @@ function MemberProfileReviseForm() {
                                                                     </label>
                                                                     <input
                                                                         type="date"
-                                                                        className="form-control"
+                                                                        className="form-control input-3"
                                                                         id="deathdate"
                                                                         name="deathdate"
                                                                         value={
@@ -306,7 +306,7 @@ function MemberProfileReviseForm() {
                                                                     </label>
                                                                     <input
                                                                         type="email"
-                                                                        className="form-control"
+                                                                        className="form-control input-3"
                                                                         id="email"
                                                                         name="email"
                                                                         placeholder="請輸入一個有效的電子信箱"
@@ -327,15 +327,7 @@ function MemberProfileReviseForm() {
                                                                     >
                                                                         確認修改
                                                                     </button>
-
                                                                     <br />
-                                                                    {/* Improvement：補清除功能 */}
-                                                                    {/* <button
-                                                                                    type="reset"
-                                                                                    className="btn-member btn-member-sec btn-member-l btn-member-outline-light"
-                                                                                >
-                                                                                    清除
-                                                                                </button> */}
                                                                 </div>
                                                             </form>
                                                         </div>

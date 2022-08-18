@@ -27,6 +27,7 @@ function PlaceFilterSelect(props) {
                             setCityFilter('all');
                         } else {
                             setCountryFilter(nowCountry);
+                            setCityFilter('all');
                         }
                     }}
                 >

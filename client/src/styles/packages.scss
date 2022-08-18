@@ -97,11 +97,13 @@
 /* ============================================================ */
 .breadcrumb {
     $breadcrumb-divider: none;
+    font-size: $fz-subtitle;
+    font-weight: 500;
 }
 
 .breadcrumb-item-link {
-    border-radius: 15px;
-    padding: 3px 10px;
+    border-radius: 18px;
+    padding: 3px 12px;
     line-height: 30px;
     text-decoration: none;
     font-family: $ff-t, $ff-h;
@@ -110,11 +112,6 @@
 }
 
 .breadcrumb-item-link:hover {
-    border-radius: 15px;
-    padding: 3px 10px;
-    line-height: 30px;
-    text-decoration: none;
-    font-family: $ff-t, $ff-h;
     color: #fff;
     background-color: $accent-blue
 }

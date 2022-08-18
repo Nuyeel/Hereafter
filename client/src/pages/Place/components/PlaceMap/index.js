@@ -103,7 +103,7 @@ function PlaceMap(props) {
 
     // 篩選城市, 找出程式的geoData
     const filterGeoData = () => {
-        if (cityFilter !== 'all' && placeDisplay.length > 0) {
+        if (cityFilter !== 'all') {
             const newData = taiwanGeoData.filter((v) => {
                 return cityFilter === v.properties.COUNTY;
             });
