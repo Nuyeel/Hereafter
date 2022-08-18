@@ -558,6 +558,7 @@ h3 {
     min-width: 220px;
     // TODO: height (%)
     height: 15px;
+    border-radius: 5px;
     position: absolute;
     left: 0;
     bottom: -7px;
@@ -607,6 +608,7 @@ h3 {
 @media screen and (min-width: 1400px) {
     .header-baseline-decoration {
         width: 30vw;
+        max-width: 420px;
     }
 }
 
@@ -615,6 +617,7 @@ h3 {
         .header-baseline-decoration {
             width: 30vw;
             min-width: 520px;
+            
         }
     }
 }
