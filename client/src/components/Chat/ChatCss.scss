@@ -384,10 +384,10 @@ animation: show2 .8s .5s ease forwards;
     color: #ffffff;
 }
 
-@media (min-width: 375px) and (max-width: 800px) {
+@media (min-width: 375px) and (max-width: 767px) {
     .rsc-float-button{
         left: -42px  !important;
         bottom: -40px  !important;
     }
-  }
-  
+}
+
