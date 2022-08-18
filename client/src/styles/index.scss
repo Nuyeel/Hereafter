@@ -231,12 +231,14 @@ h3 {
 
     > .nav_lightbox_list {
         display: flex;
+        border-radius: 10px;
 
         > h2 {
             color: #ffffff;
             line-height: 5rem;
             // line-height: 4rem;
-            margin-right: 25px;
+            margin-right: 20px;
+            margin-left: 10px;
         }
 
         > h4 {
@@ -245,6 +247,7 @@ h3 {
             color: #ffffff;
             line-height: 6rem;
             letter-spacing: 0.2rem;
+            visibility: hidden;
         }
     }
 
@@ -257,6 +260,12 @@ h3 {
         > h2,
         h4 {
             color: $bgc-D;
+        }
+
+        h4{
+            visibility: visible;
+            transition: .3s linear;
+            transform: translateX(5px);
         }
 
         // 「功德撲滿」SVG變色

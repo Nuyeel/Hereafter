@@ -5,6 +5,32 @@ const db = require(`${__dirname}/../modules/mysql2-connect`);
 // 專用處理 sql 字串的工具，主要 format 與 escape
 const SqlString = require('sqlstring');
 
+router.route('/').get(async (req, res) => {
+    let output = {
+        cubeIsMadeResult: false,
+    }
+
+    if (!res.locals.loginUser) {
+        return res.send('請先登入');
+    }
+
+    const $cube_ismade_sql = `
+        SELECT COUNT(*) 
+        FROM cube 
+        WHERE member_sid = ${res.locals.loginUser.id} 
+    `;
+
+    const [[{ 'COUNT(*)': cube_ismade_result }]] = await db.query(
+        $cube_ismade_sql
+    );
+
+    if (cube_ismade_result > 0) {
+        output.cubeIsMadeResult = true;
+    }
+
+    res.json(output);
+});
+
 router.route('/').post(async (req, res) => {
     let output = {
         cubeCreateResult: false,

@@ -61,7 +61,7 @@ router.route('/').post((req, res) => {
         }
     );
 
-    res.json(req.body);
+    res.json(res.locals.loginUser);
 });
 
 module.exports = router;

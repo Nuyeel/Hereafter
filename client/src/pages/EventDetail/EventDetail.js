@@ -189,8 +189,8 @@ const EventDetail = () => {
                                                     </div>
                                                     <div className="xuan-intro-tag-2">
                                                         <FaStar />
-                                                        <FaStar />
-                                                        <FaStar />
+                                                        {/* <FaStar /> */}
+                                                        {/* <FaStar /> */}
                                                         <p>{v.comment_star}</p>
                                                     </div>
                                                 </div>
@@ -199,7 +199,7 @@ const EventDetail = () => {
                                                     <BiTimeFive />
                                                     <span>{v.start}</span>
                                                     <span>{v.start_time}</span>
-                                                    <span>- {v.end}</span>
+                                                    <span>～ {v.end}</span>
                                                     <span>{v.end_time}</span>
                                                     {/* FIXME: 來不及完成先註解 */}
                                                     {/* <a
@@ -426,7 +426,7 @@ const EventDetail = () => {
                                                     </div>
 
                                                     <div className="d-flex">
-                                                        <div className="xuan-comment-star-wrap">
+                                                        <div className="xuan-comment-star-wrap ">
                                                             <FaStar />
                                                             {
                                                                 v.event_comment_star

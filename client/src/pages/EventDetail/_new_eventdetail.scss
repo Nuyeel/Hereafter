@@ -113,6 +113,15 @@ a{
                   color: #3C3B67;
                   padding: 10px;
                   font-size: $fz-caption ;
+
+                    svg{
+                      margin-right: 5px;
+                      margin-top: 1px;
+                    }
+
+                    // svg:nth-child(3){
+                    //   margin-right: 5px;
+                    // }
                 }
               }
 
@@ -287,7 +296,7 @@ a{
             
           
               >svg{
-                padding-top:0.5px
+                // padding-top:0.5px
               }
     
               .xuan-subtitle{
@@ -304,6 +313,18 @@ a{
                 margin-bottom: 10px;
               }
 
+
+              .xuan-comment-star-wrap{
+                // outline: 1px solid red;
+                display: flex;
+                align-items:flex-start;
+                margin-right: 10px;
+                padding-top: 2px;
+                  svg{
+                    margin-right: 5px;
+                    // padding-top: 2px;
+                  }
+              }
         
 
           

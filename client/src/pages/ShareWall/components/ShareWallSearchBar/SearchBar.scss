@@ -2,6 +2,7 @@
 
 .cpl-searchbar-container {
     width: 100%;
+    // outline: 1px solid red;
 }
 
 .cpl-searchbar {
@@ -13,8 +14,8 @@
     background-color: transparent !important;
     border: 2px solid $secondary !important;
     border-radius: 10px !important;
-    padding-left: 10px;
-    margin-bottom: 8px;
+    padding-left: 10px !important;
+    margin-bottom: 8px !important;
     filter: none !important;
     outline: none !important;
     box-shadow: none !important;
@@ -73,11 +74,16 @@
 @media screen and (min-width: 1400px) {
     // FIXME: 先大致調整 1400px 以上的狀況
     .cpl-searchbar {
-        margin-bottom: calc(var(--vh, 1vh) * 2);
-        // outline: 1px solid red !important;
+        margin-bottom: calc(var(--vh, 1vh) * 1) !important;
     }
 }
 
+@media screen and (min-width: 1600px) {
+    // FIXME: 先大致調整 1400px 以上的狀況
+    .cpl-searchbar {
+        margin-bottom: calc(var(--vh, 1vh) * 2) !important;
+    }
+}
 
 .cpl-searchbar-light {
     color: $bgc-D !important; // TODO: 這是在設定平時的顏色

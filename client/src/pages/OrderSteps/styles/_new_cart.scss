@@ -106,14 +106,15 @@
     }
 
     .xuan-cost-list{
-      width: 90%;
+      // outline: 1px solid red;
+      width: 95%;
       margin: auto;
       padding: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-bottom:1px solid rgb(205, 205, 205) ;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
 
       .xuan-donate-cost{
         margin-right: 15px;
@@ -121,6 +122,10 @@
         p{
           color: #828282;
           margin-right: 5px;
+        }
+
+        h5{
+          font-size: 1rem;
         }
       }
 
@@ -131,12 +136,17 @@
           color: #828282;
           margin-right: 5px;
         }
+
+        h5{
+          font-size: 1rem;
+        }
       }
     }
 
 
     .xuan-total-cost{
-      width: 85%;
+      // outline: 1px solid red;
+      width: 95%;
       margin: auto;
       display: flex;
       align-items: center;
@@ -146,6 +156,10 @@
       p{
         color: #828282;
         margin-right: 5px;
+      }
+
+      h4{
+        font-size: 1rem;
       }
     }
 
@@ -163,7 +177,7 @@
 
 }
 
-// OrderList頁面
+// OrderList頁面(Cart.js)-----------------------------------
 
 // 應該要95%即可 
 .xuan-orderlist-container{
@@ -179,10 +193,17 @@
   display: flex;
   margin-bottom: 10px;
   padding-left: 10px;
+  // outline: 1px solid red;
   
 
   input{
     margin-right: 5px;
+  }
+
+  p{
+    font-size: 1rem;
+    font-family: "Noto Sans TC";
+    font-weight: 500;
   }
 }
 
@@ -228,9 +249,9 @@
 
   .xuan-cart-intro{
     color:#3C3B67;
-    min-width: 170px;
+    min-width: 165px;
     // outline: 1px solid red;
-    margin-right: 5px;
+    // margin-right: 5px;
 
 
     .xuan-cart-intro-title{
@@ -245,6 +266,15 @@
         // margin-right: 5px;
         // border-radius: 5px;
       }
+
+      .xuan-act-title{
+        font-size: 1rem;
+        font-family: "Noto Sans TC";
+        font-weight: 500;
+      }
+
+
+
     }
 
     .xuan-time-location{
@@ -523,8 +553,10 @@
                     }
 
                     select:nth-child(2){
-                      margin-right: 7px; 
+                      // margin-right: 7px; 
+                      margin-right: 10px; 
                       margin-bottom: 10px;
+                      // outline: 1px solid red;
                     }
                     select:nth-child(3){
                       margin-right: 7px; 
@@ -665,7 +697,7 @@
   
                 .xuan-readytobuy-img{
                   background-color: gray;
-                  width: 65px;
+                  width: 85px;
                   height: 65px;
                   border-radius: 10px;
                   margin-right: 10px;
@@ -690,6 +722,10 @@
                       padding: 5px;
                       margin-right: 5px;
                       border-radius: 5px;
+                    }
+
+                    p:nth-child(1){
+                      margin-right: 5px;
                     }
   
                   }
@@ -828,8 +864,11 @@
         width: 100%;
 
         .xuan-row{
-          width: 100%;
           display: flex;
+          max-width: 1300px;
+          width: 87%;
+          // outline: 1px solid red;
+          margin: auto;
         }
       }
     }
@@ -838,8 +877,12 @@
   
     // ProgressBar
     .xuan-progress-container{
-      width: 86%;
+      padding-top: 35px;
+      max-width: 1300px;
+      width: 87%;
+      margin: auto;
       // outline: 1px solid red;
+      margin-bottom: 45px;
 
       .progressbar{
         // outline: 1px solid blue;
@@ -857,7 +900,16 @@
 
 
       .xuan-all-select-delete{
+        // outline: 1px solid red;
         padding-left: 25px;
+        margin-bottom: 20px;
+
+            p{
+              font-size: 1.25rem;
+              font-family: "Noto Sans TC";
+              font-weight: 500;
+            }
+        
       }
 
       // SimpleBar
@@ -865,7 +917,8 @@
         // outline: 1px solid green;
         width: 100%;
         margin-left: 0px;
-        max-height: 450px;
+        max-height: 570px;
+        // outline: 1px solid red;
 
         .xuan-cart-list-wrap{
           width: 100%;
@@ -875,12 +928,14 @@
 
       .xuan-cart-list{
         justify-content: space-between;
-        padding:10px 25px ;
+        padding:20px 25px ;
+        // outline: 1px solid red;
+        margin-bottom: 15px;
 
         .xuan-cart-img{
           width: 120px;
           height: 80px;
-             
+        
         }
 
         .xuan-cart-intro{
@@ -892,6 +947,8 @@
             display: flex;
             justify-content:flex-start;
             align-items: center;
+            margin-bottom: 12px;
+            
 
             span:nth-child(1){
               display: block;
@@ -912,7 +969,7 @@
 
           .xuan-time-location{
 
-            margin-bottom: 7px;
+            margin-bottom: 10px;
 
             p{
               font-size: $fz-subtitle;
@@ -960,15 +1017,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 18%;
+      width: 14%;
       position: fixed;
-      bottom: 13vw;
-      right:7.5vw;
+      bottom: 18vw;
+      right:16.7vw;
 
       button{
         margin: 0px;
         width: 45%;
         min-width: 95px;
+      }
+
+      .xuan-btn-m{
+        // font-size: 20px;
       }
       
     }
@@ -980,7 +1041,7 @@
       position:relative;
       width: 25%;
       margin-left: 30px;
-      margin-top: 28px;
+      margin-top: 40px;
       border-radius: 15px;
       min-width: 200px;
       background-color:rgba(255, 255, 255, 0);
@@ -1015,10 +1076,18 @@
               margin: 0px;
               margin-bottom: 15px;
               justify-content:space-between;
+
+                  h5{
+                    font-size: 1.5rem;
+                  }
             }
 
             .xuan-volunteer-cost{
               justify-content:space-between;
+
+                  h5{
+                    font-size: 1.5rem;
+                  }
             }
         }
 
@@ -1028,6 +1097,10 @@
           // outline: 1px solid blue;
           justify-content: space-between;
           align-items: center;
+
+          h4{
+            font-size: 1.5rem;
+          }
         }
 
       }
@@ -1042,15 +1115,18 @@
     .xuan-personinfor-container{
 
       width: 100%;
+      // outline: 1px solid red;
 
         .xuan-row{
-          width: 100%;
           display: flex;
+          max-width: 1300px;
+          width: 87%;
+          margin: auto;
+          // outline: 2px solid red;
           
           .xuan-person-infor-window{
             width: 86%;
-            // outline: 1px solid red;
-            margin-top: 28px;
+            margin-top: 38px;
             padding: 30px 40px;
 
 
@@ -1085,11 +1161,15 @@
                     }
 
                     .xuan-personform-btn-group{
-                      justify-content:end;
+                      padding-top: 20px;
+                      // outline: 1px solid red;
+                      justify-content: right !important;
+                      // justify-content:end;
+                      margin-bottom: 15px;
 
 
                           button:nth-child(2){
-                            margin-right: 10px;
+                            margin-right: 50px;
                           }
                     }
                 }
@@ -1123,6 +1203,9 @@
     // 訂購人資訊-------------------------
 
     .xuan-creditcard-container{
+        max-width: 1300px;
+        width: 87%;
+        margin: auto;
 
         .xuan-row{
           width: 100%;
@@ -1130,7 +1213,7 @@
 
             .payment-card-window{
               width: 86%;
-              margin-top: 28px;
+              margin-top: 38px;
               padding: 30px 40px;
               margin-bottom: 0px;
 
@@ -1163,13 +1246,13 @@
 
                   .xuan-creditcard-wrap{
                     display: flex;
-                    align-items: center;
+                    // align-items: center;
                     justify-content:flex-start ;
                     // outline: 1px solid red;
+                    padding-top: 30px;
                     margin-left: 0px;
 
                       .xuan-card-container{
-                        // margin-right: 10px;
                         // outline: 1px solid red;
                         margin: 0px;
                         margin-top: 0px;
@@ -1178,22 +1261,38 @@
                       }
 
                       .xuan-credit-form{
-                        padding-left: 15px;
-                        padding-top: 30px;
-                        max-width: 300px;
-                        display: flex;
+                        // outline: 1px solid blue;
+                        padding-left: 30px;
+                        // padding-top: 30px;
+                        max-width: 338px;
+                        padding-top: 10px;
+
+
+                        .xuan-payment-form-password{
+                          input{
+                            // outline: 1px solid red;
+                            max-width: 100px;
+                          }
+                        }
 
                         .xuan-payment-submit-button{
                           // outline: 1px solid red;
                           display: block;
-                          padding-top: 150px;
+                          padding-top: 5px;
+                          margin-bottom: 10px;
+                          // padding-top: 150px;
+
+
+                            button:nth-child(1){
+                              margin-left: 80px;
+                            }
 
                             button{
                               min-width: 80px;
                               margin: 0px;
-                              margin-right: 0px;
-                              margin-left: 50px;
-                              margin-bottom: 30px;
+                              margin-right: 18px;
+                              // margin-left: 50px;
+                              // margin-bottom: 30px;
                             }
                         }
 

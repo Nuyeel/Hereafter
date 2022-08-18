@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 import Styling from './Styling';
 import Colors from './Colors';
-import { useContext } from 'react';
-import ThemeContext from '../../../../../context/ThemeContext/ThemeContext';
 
 function FacePart(props) {
     const {
@@ -13,8 +11,11 @@ function FacePart(props) {
         setColorControlSwitch,
         faceControlChange,
         setFaceControlChange,
+        gooddeed,
+        canSave,
+        setCanSave,
+        theme,
     } = props;
-    const { theme } = useContext(ThemeContext);
     const faceControl = [
         { v: 'eye', title: '眼', color: 1 },
         { v: 'ear', title: '耳', color: 0 },
@@ -46,9 +47,11 @@ function FacePart(props) {
                 <FaceButton>
                     {faceControl.map((v, i) => {
                         const FaceControlText = styled.h4`
-                            color: ${v.v === faceControlChange
+                            color: ${v.v === faceControlChange && canSave[v.v]
                                 ? theme.cHeader
-                                : '#888'};
+                                : canSave[v.v]
+                                ? '#888'
+                                : '#fa49b6'};
                             padding-right: 15px;
                             font-size: 22px;
                             z-index: 3;
@@ -86,6 +89,9 @@ function FacePart(props) {
                     combination={combination}
                     setCombination={setCombination}
                     faceControlChange={faceControlChange}
+                    gooddeed={gooddeed}
+                    canSave={canSave}
+                    setCanSave={setCanSave}
                 />
 
                 <Colors

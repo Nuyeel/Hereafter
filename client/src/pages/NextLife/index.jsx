@@ -1,5 +1,8 @@
 import { useState, useEffect, useContext, createRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+import { API_NEXTLIFE } from '../../config/ajax-path';
 
 import AuthContext from '../../context/AuthContext/AuthContext';
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
@@ -18,6 +21,9 @@ import NextLifeCube from './subpages/NextLifeCube';
 import './NextLife.scss';
 import cubeTextLoader from './utils/texture/cubeTextLoader';
 
+import Swal from 'sweetalert2';
+import OutlineSoul from '../../images/sweetalert2/outline_soul.svg';
+
 // TODO: 來生頁面會強制轉換為生者配色
 // DONE: 如果要記得會員的選擇 這功能也可以改成在 Background.jsx 做
 // FIXME: 強制鎖住配色 可以做在 Nav 也可以做在 useLayoutEffect()
@@ -27,7 +33,7 @@ import cubeTextLoader from './utils/texture/cubeTextLoader';
 
 function NextLife(props) {
     const { pageName } = props;
-    const { account, isDead } = useContext(AuthContext);
+    const { account, token, isDead } = useContext(AuthContext);
     const { setTheme } = useContext(ThemeContext);
     const { setHeader } = useContext(HeaderContext);
     const meshesData = useContext(MeshContext);
@@ -36,7 +42,7 @@ function NextLife(props) {
 
     //const [isPending, startTransition] = useTransition()
     // FIXME: 測試時調這邊
-    const [nextLifeStage, setNextLifeStage] = useState(3);
+    const [nextLifeStage, setNextLifeStage] = useState(0);
     const [cubeAnimationState, setCubeAnimationState] = useState(false);
     const [cubeRotatingStyle, setCubeRotatingStyle] = useState('classic');
 
@@ -52,8 +58,10 @@ function NextLife(props) {
     const [currentCubeColorIndex, setCurrentCubeColorIndex] = useState(0);
 
     // 用來控制方塊做好了以後的動畫的 trigger
-    const [cubeIntro, setCubeIntro] = useState(false);
-    const [cubeTextTextureData, setCubeTextTextureData] = useState({});
+    const [cubeIsDone, setCubeIsDone] = useState(false);
+    const [nextLifeIsOutro, setNextLifeIsOutro] = useState(false);
+
+    const [nextLifeCubeIsMade, setNextLifeCubeIsMade] = useState(null);
 
     const wrapText = (
         context,
@@ -131,14 +139,12 @@ function NextLife(props) {
             canvasRef
         );
 
-        setCubeTextTextureData(cubeTextTexture);
         meshesData.setMeshesMemoData((prevState) => {
-            const newObj = { ...prevState };
-            console.log('new', newObj);
-            newObj.materialsData[currentCubeOptionIndex]['top'] =
+            const newData = { ...prevState };
+            // console.log('new', newData);
+            newData.materialsData[currentCubeOptionIndex]['top'] =
                 cubeTextTexture;
-            console.log('newnew', newObj);
-            return newObj;
+            return newData;
         });
 
         setTimeout(() => {
@@ -148,10 +154,32 @@ function NextLife(props) {
             setTimeout(() => {
                 setCurrentCubeOptionIndex(newCurrentCubeOptionIndex + 1);
             }, 0);
-        }, 2000);
+            setCubeIsDone(true);
+        }, 4000);
     };
 
     // console.log(meshesData);
+
+    const axiosCubeIsMadeGET = async () => {
+        const result = await axios.get(API_NEXTLIFE, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        console.log(result.data);
+
+        if (result.data.cubeIsMadeResult) {
+            Swal.fire({
+                title: '您已經製作過希望方塊囉～',
+                imageUrl: OutlineSoul,
+                imageHeight: 50,
+                imageWidth: 50,
+                showConfirmButton: false,
+            });
+        }
+        setNextLifeCubeIsMade(result.data.cubeIsMadeResult);
+    };
 
     // 設定 Header
     useEffect(() => {
@@ -172,6 +200,11 @@ function NextLife(props) {
         }
     }, []);
 
+    // useEffect 中去找有沒有製作過來生方塊
+    useEffect(() => {
+        axiosCubeIsMadeGET();
+    }, []);
+
     // TODO: 如果條件渲染的時間點 是在條件吻合時才回初次運作
     // 則應該一開始就讀入最重要的 component 以達成預載
 
@@ -179,78 +212,94 @@ function NextLife(props) {
 
     return (
         <>
-            <div className="container-fluid cpl-nextlife-container-fluid p-0">
-                {nextLifeStage === 0 ? (
-                    <NextLifeMusic
-                        setNextLifeStage={setNextLifeStage}
-                        musicIsHidden={musicIsHidden}
-                        setMusicIsHidden={setMusicIsHidden}
-                    />
-                ) : (
-                    ''
-                )}
-                {nextLifeStage >= 1 ? (
-                    <NextLifeStageIndicator
-                        nextLifeStage={nextLifeStage}
-                        cubeIsMaking={cubeIsMaking}
-                    />
-                ) : (
-                    ''
-                )}
-                {nextLifeStage === 1 ? (
-                    <NextLifeSample
-                        nextLifeStage={nextLifeStage}
-                        setNextLifeStage={setNextLifeStage}
-                        cubeAnimationState={cubeAnimationState}
-                        setCubeAnimationState={setCubeAnimationState}
-                        sampleIsHidden={sampleIsHidden}
-                        setSampleIsHidden={setSampleIsHidden}
-                    />
-                ) : (
-                    ''
-                )}
-                {nextLifeStage >= 2 ? (
-                    <NextLifeInteractionButton
-                        nextLifeStage={nextLifeStage}
-                        setNextLifeStage={setNextLifeStage}
-                        nextLifeTextareaString={nextLifeTextareaString}
-                        setTextIsHidden={setTextIsHidden}
-                        cubeIsMaking={cubeIsMaking}
-                        setCubeIsMaking={setCubeIsMaking}
-                        currentCubeOptionIndex={currentCubeOptionIndex}
-                        handleCubeTextDraw={handleCubeTextDraw}
-                    />
-                ) : (
-                    ''
-                )}
-                {nextLifeStage === 2 ? (
-                    <NextLifeText
-                        nextLifeStage={nextLifeStage}
-                        textIsHidden={textIsHidden}
-                        nextLifeTextareaString={nextLifeTextareaString}
-                        setNextLifeTextareaString={setNextLifeTextareaString}
-                    />
-                ) : (
-                    ''
-                )}
-                {nextLifeStage === 3 ? (
-                    <NextLifeCube
-                        cubeAnimationState={cubeAnimationState}
-                        setCubeAnimationState={setCubeAnimationState}
-                        cubeIsMaking={cubeIsMaking}
-                        cubeRotatingStyle={cubeRotatingStyle}
-                        setCubeRotatingStyle={setCubeRotatingStyle}
-                        currentCubeOptionIndex={currentCubeOptionIndex}
-                        nextLifeTextareaString={nextLifeTextareaString}
-                        ref={canvasRef}
-                        setCurrentCubeOptionIndex={setCurrentCubeOptionIndex}
-                        currentCubeColorIndex={currentCubeColorIndex}
-                        setCurrentCubeColorIndex={setCurrentCubeColorIndex}
-                    />
-                ) : (
-                    ''
-                )}
-            </div>
+            {nextLifeCubeIsMade === true ? (
+                <div className="container cpl-nextlifer-container-isMade d-flex justify-content-center align-items-center">
+                    See You NextLife!
+                </div>
+            ) : (
+                ''
+            )}
+            {nextLifeCubeIsMade === false ? (
+                <div className="container-fluid cpl-nextlife-container-fluid p-0">
+                    {nextLifeStage === 0 ? (
+                        <NextLifeMusic
+                            setNextLifeStage={setNextLifeStage}
+                            musicIsHidden={musicIsHidden}
+                            setMusicIsHidden={setMusicIsHidden}
+                        />
+                    ) : (
+                        ''
+                    )}
+                    {nextLifeStage >= 1 ? (
+                        <NextLifeStageIndicator
+                            nextLifeStage={nextLifeStage}
+                            cubeIsMaking={cubeIsMaking}
+                        />
+                    ) : (
+                        ''
+                    )}
+                    {nextLifeStage === 1 ? (
+                        <NextLifeSample
+                            nextLifeStage={nextLifeStage}
+                            setNextLifeStage={setNextLifeStage}
+                            cubeAnimationState={cubeAnimationState}
+                            setCubeAnimationState={setCubeAnimationState}
+                            sampleIsHidden={sampleIsHidden}
+                            setSampleIsHidden={setSampleIsHidden}
+                        />
+                    ) : (
+                        ''
+                    )}
+                    {nextLifeStage >= 2 ? (
+                        <NextLifeInteractionButton
+                            nextLifeStage={nextLifeStage}
+                            setNextLifeStage={setNextLifeStage}
+                            nextLifeTextareaString={nextLifeTextareaString}
+                            setTextIsHidden={setTextIsHidden}
+                            cubeIsMaking={cubeIsMaking}
+                            setCubeIsMaking={setCubeIsMaking}
+                            currentCubeOptionIndex={currentCubeOptionIndex}
+                            handleCubeTextDraw={handleCubeTextDraw}
+                        />
+                    ) : (
+                        ''
+                    )}
+                    {nextLifeStage === 2 ? (
+                        <NextLifeText
+                            nextLifeStage={nextLifeStage}
+                            textIsHidden={textIsHidden}
+                            nextLifeTextareaString={nextLifeTextareaString}
+                            setNextLifeTextareaString={
+                                setNextLifeTextareaString
+                            }
+                        />
+                    ) : (
+                        ''
+                    )}
+                    {nextLifeStage === 3 ? (
+                        <NextLifeCube
+                            cubeAnimationState={cubeAnimationState}
+                            setCubeAnimationState={setCubeAnimationState}
+                            cubeIsMaking={cubeIsMaking}
+                            cubeRotatingStyle={cubeRotatingStyle}
+                            setCubeRotatingStyle={setCubeRotatingStyle}
+                            currentCubeOptionIndex={currentCubeOptionIndex}
+                            nextLifeTextareaString={nextLifeTextareaString}
+                            ref={canvasRef}
+                            setCurrentCubeOptionIndex={
+                                setCurrentCubeOptionIndex
+                            }
+                            currentCubeColorIndex={currentCubeColorIndex}
+                            setCurrentCubeColorIndex={setCurrentCubeColorIndex}
+                            cubeIsDone={cubeIsDone}
+                        />
+                    ) : (
+                        ''
+                    )}
+                </div>
+            ) : (
+                ''
+            )}
         </>
     );
 }

@@ -81,10 +81,14 @@ function MemberProfileReviseForm() {
                                 title: '修改成功',
                                 timer: 1000,
                             });
+                        } else {
+                            Swal.fire('此電子信箱已有其他人使用囉');
+                            return;
                         }
                     });
             } else if (result.isDenied) {
-                //
+                Swal.fire('資料未變更');
+                return;
             }
         });
     };
@@ -145,7 +149,7 @@ function MemberProfileReviseForm() {
                                                             to="/memberprofile"
                                                             className="breadcrumb-item breadcrumb-item-link"
                                                         >
-                                                            會員中心主頁
+                                                            我的生死紀錄
                                                         </Link>
                                                     </li>
 
@@ -154,7 +158,7 @@ function MemberProfileReviseForm() {
                                                             to="/memberprofilerevise"
                                                             className="breadcrumb-item-link"
                                                         >
-                                                            修改會員資料
+                                                            修改生死紀錄
                                                         </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
@@ -162,7 +166,7 @@ function MemberProfileReviseForm() {
                                                             to="/memberpasswordrevise"
                                                             className="breadcrumb-item-link"
                                                         >
-                                                            修改登入密碼
+                                                            修改我的密碼
                                                         </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
@@ -170,7 +174,7 @@ function MemberProfileReviseForm() {
                                                             to="/membereventorder"
                                                             className="breadcrumb-item-link"
                                                         >
-                                                            功德撲滿訂單
+                                                            我的功德撲滿
                                                         </Link>
                                                     </li>
                                                 </ol>
@@ -195,6 +199,7 @@ function MemberProfileReviseForm() {
                                                                         style={{
                                                                             backgroundColor:
                                                                                 '#ffffff00',
+                                                                            top: '-225px',
                                                                         }}
                                                                     />
                                                                 </>
@@ -251,6 +256,7 @@ function MemberProfileReviseForm() {
                                                                         onChange={
                                                                             handleFieldsChange
                                                                         }
+                                                                        maxLength="12"
                                                                     />
                                                                 </div>
                                                                 <div className="mb-3 member-page-field">

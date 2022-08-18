@@ -73,6 +73,9 @@ function PersonForm(props) {
 
     // 一鍵填入魔法
     const quickPass = () => {
+
+        setCountryIndex(Number(1)); //一鍵代入區域
+        setTownshipIndex(Number(4)); //一鍵代入鄉鎮
         setMyInfor({
             ...myInfor,
 
@@ -83,10 +86,19 @@ function PersonForm(props) {
             // email: 'passtest@yahoo.com.tw',
             gender: '不提供',
             ID: 'R123456789',
-            birthday: '1995-09-22', //FIXME:預設一開始就代入會員資訊
-            add_city: '台北市',
-            add_town: '大安區',
+            // birthday: '1995-09-22', //FIXME:預設一開始就代入會員資訊
+            // add_city: '台北市',
+            // add_town: '大安區',
             address: '復興南路一段390號2樓',
+        });
+
+        // 同時把錯誤訊息清除掉
+        setInputErrors({
+            ...inputErrors,
+            mobile_city: '',
+            gender: '',
+            ID: '',
+            address: '',
         });
     };
 

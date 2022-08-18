@@ -30,7 +30,7 @@ function ShareWallPost(props) {
 
     const { authorized, sid, account, token } = useContext(AuthContext);
     const { theme } = useContext(ThemeContext);
-    const { setHeader } = useContext(HeaderContext);
+    const { setHeader, setShareWallSearchState } = useContext(HeaderContext);
     const { avatarID } = useParams();
 
     const avatarTitleInputRef = useRef();
@@ -128,6 +128,7 @@ function ShareWallPost(props) {
                 imageWidth: 50,
                 showConfirmButton: false,
             });
+            setShareWallSearchState('default');
             navigate('/sharewall');
         }
     };
@@ -313,7 +314,7 @@ function ShareWallPost(props) {
 
         if (result.data === '還沒有這個形象呦') {
             return Swal.fire({
-                title: '還沒有這個形象呦',
+                title: '請先完成分享才能使用此功能',
                 imageUrl: OutlineSoulAlert,
                 imageHeight: 50,
                 imageWidth: 50,

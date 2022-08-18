@@ -47,12 +47,22 @@ import avatarbox from './imgs/avatarbox.svg';
 import gooddeed from './imgs/gooddeedtest.svg';
 import goodsoul from './imgs/gooddeedsoul.svg';
 import boxshare from './imgs/boxshare.svg';
-import aboutword from './imgs/aboutus_word.svg';
+import aboutword1 from './imgs/aboutword1.svg';
+import aboutword2 from './imgs/aboutword2.svg';
+import aboutword3 from './imgs/aboutword3.svg';
+import event01 from './imgs/event01.svg';
+import eventcart from './imgs/event-cart-logo.svg';
+import game01 from './imgs/game01.svg';
+import game02 from './imgs/game02.svg';
 
 // 這邊處理背景不足的素材裝飾
 import decorate_left from './imgs/decorate-left.svg';
 import decorate_left_2 from './imgs/decorate-left-2.svg';
 import decorate_left_middle from './imgs/de-left-middle.svg';
+import bg_top_left from './imgs/bg-top-left.svg';
+import bg_top from './imgs/bg-top.svg';
+import bg_top_right from './imgs/bg-top-right.svg';
+import bg_right_middle from './imgs/bg-right-middle.svg';
 
 // react icon
 import { TbPig } from 'react-icons/tb';
@@ -326,7 +336,9 @@ function MainPage(props) {
                     </div>
                     {/* 投胎去！ */}
                     <div
-                        className="xuan-box xuan-go-future"
+                        className={`xuan-box xuan-go-future ${
+                            !isDead ? 'isDisabled' : ''
+                        }`}
                         onClick={() => {
                             if (isDead) {
                                 navigate('/nextlife');
@@ -465,11 +477,27 @@ function MainPage(props) {
                     </div>
                     {/* 遊戲小格2 */}
                     <div className="xuan-box xuan-box-game-show2">
-                        {/* 小格標題 */}
-                        <p className="xuan-subtitle">Game.02</p>
+                        <div className="d-flex">
+                            {/* 小格標題 */}
+                            <p className="xuan-subtitle">行善積德小遊戲</p>
+                            <img
+                                src={linkarrow}
+                                alt=""
+                                className="link-arrow"
+                                onClick={() => {
+                                    navigate('/', {
+                                        replace: true,
+                                    });
+                                }}
+                            />
+                        </div>
 
                         {/* 底下圖片區域 */}
-                        <div></div>
+                        <div className='xuan-game-img'>
+
+                            <img src={game01} alt="" />
+                            <img src={game02} alt="" />
+                        </div>
                     </div>
                     {/* 關於我們 */}
                     <div className="xuan-box xuan-box-aboutus">
@@ -530,7 +558,7 @@ function MainPage(props) {
                             });
                         }}
                     >
-                        <img src={aboutword} alt="" />
+                        <img src={aboutword1} alt="" />
                     </div>
                     {/* 投放所服務員2 */}
                     <div className="xuan-box-waiter-2">
@@ -544,7 +572,7 @@ function MainPage(props) {
                             });
                         }}
                     >
-                        <img src={aboutword} alt="" />
+                        <img src={aboutword2} alt="" />
                     </div>
                     {/* 投放所服務員3 */}
                     <div className="xuan-box-waiter-3">
@@ -558,7 +586,7 @@ function MainPage(props) {
                             });
                         }}
                     >
-                        <img src={aboutword} alt="" />
+                        <img src={aboutword3} alt="" />
                     </div>
                     {/* 轉生三步驟 */}
                     <div className="xuan-reborn-step">
@@ -585,6 +613,46 @@ function MainPage(props) {
                             />
                         </div>
                     </div>
+                    {/* 活動小格01 */}
+                    <div className="xuan-box xuan-event01">
+                        <div>
+                            <div className="d-flex">
+                                <p className="xuan-title">立即報名</p>
+                                <img
+                                    src={linkarrow}
+                                    alt=""
+                                    className="link-arrow"
+                                    onClick={() => {
+                                        navigate('/sharewall', {
+                                            replace: true,
+                                        });
+                                    }}
+                                />
+                            </div>
+                            <img src={event01} alt="" />
+                        </div>
+                    </div>
+                    <div className="xuan-box xuan-box-cart">
+                        <div className="d-flex">
+                            <p className="xuan-title">活動購物車</p>
+                            <img
+                                src={linkarrow}
+                                alt=""
+                                className="link-arrow"
+                                onClick={() => {
+                                    navigate('/ordersteps', {
+                                        replace: true,
+                                    });
+                                }}
+                            />
+                        </div>
+
+                        <img
+                            src={eventcart}
+                            alt=""
+                            className="xuan-event-cart-logo"
+                        />
+                    </div>
                     {/* ------- 左上區域 BOX ------- */}
                     <div className="xuan-box xuan-lefttop-1"></div>
                     {/* 背景不足的素材部分 */}
@@ -599,6 +667,19 @@ function MainPage(props) {
                     {/* 左下-中間 */}
                     <div className="de-left-middle">
                         <img src={decorate_left_middle} alt="" />
+                    </div>
+                    {/* 左-中間 */}
+                    <div className="bg_top_left">
+                        <img src={bg_top_left} alt="" />
+                    </div>
+                    <div className="bg_top">
+                        <img src={bg_top} alt="" />
+                    </div>
+                    <div className="bg_top_right">
+                        <img src={bg_top_right} alt="" />
+                    </div>
+                    <div className="bg_right_middle">
+                        <img src={bg_right_middle} alt="" />
                     </div>
                 </div>
             </div>

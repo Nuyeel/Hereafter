@@ -4,7 +4,14 @@ import { useContext } from 'react';
 import ThemeContext from '../../../../../context/ThemeContext/ThemeContext';
 
 function Style(props) {
-    const { bodyControlChange, setCombination, combination } = props;
+    const {
+        bodyControlChange,
+        setCombination,
+        combination,
+        gooddeed,
+        canSave,
+        setCanSave,
+    } = props;
     const { theme } = useContext(ThemeContext);
     const plus = () => {
         const newCombination = { ...combination };
@@ -53,18 +60,44 @@ function Style(props) {
         padding-bottom: 10px;
     `;
     const HintText = styled.div`
+        opacity: ${canSave[bodyControlChange] ? 0 : 1};
         color: #fa49b6;
     `;
+    const saveCount = () => {
+        if (
+            BodyData[bodyControlChange][combination['body'][bodyControlChange]][
+                'limit'
+            ] > gooddeed
+        ) {
+            const newCanSave = { ...canSave };
+            newCanSave[bodyControlChange] = 0;
+            setCanSave(newCanSave);
+        } else {
+            const newCanSave = { ...canSave };
+            newCanSave[bodyControlChange] = 1;
+            setCanSave(newCanSave);
+        }
+    };
     return (
         <>
             <div style={{ height: '180px' }}>
                 <h5 style={{ paddingTop: '10px' }}>款式</h5>
                 <div className="btns d-flex justify-content-center">
-                    <ClickButton onClick={minus}>
+                    <ClickButton
+                        onClick={() => {
+                            minus();
+                            saveCount();
+                        }}
+                    >
                         <i className="fa-solid fa-angle-left"></i>
                     </ClickButton>
                     <Circle></Circle>
-                    <ClickButton onClick={plus}>
+                    <ClickButton
+                        onClick={() => {
+                            plus();
+                            saveCount();
+                        }}
+                    >
                         <i className="fa-solid fa-angle-right"></i>
                     </ClickButton>
                 </div>

@@ -477,9 +477,14 @@ position: relative;
     }
   }
 
-
   .xuan-go-future:hover{
     cursor: pointer;
+  }
+
+  .xuan-go-future.isDisabled {
+    filter: grayscale(1) brightness(1.42);
+    pointer-events: none;
+    // background-color: #ccccff;
   }
 
   // 良辰吉地
@@ -560,8 +565,8 @@ position: relative;
 
       align-items: center;
       justify-content: center;
-      margin-top: 20px;
-      margin-bottom: 15px;
+      margin-top: 35px;
+      margin-bottom: 25px;
 
       svg{
         width: 30px;
@@ -588,16 +593,17 @@ position: relative;
 
     }
 
-   
+  
     >div:nth-child(2){
       // background-color: white;
-      width: 80%;
+      width: 85%;
       height: 70%;
       margin: auto;
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
+      // outline: 1px solid red;
 
             img{
               width: 100%;
@@ -896,25 +902,51 @@ position: relative;
     background-color: #9587E1;
     border-radius: 20px;
     width: 13%;
-    height: 24%;
+    height: 25.3%;
     position:absolute;
-    top: 12%;
+    top: 11.5%;
     left: 55.5%;
     transform: translate(-50%, -50%);
     z-index: 300;
     color: white;
     padding: 15px;
+    padding-top: 30px;
 
       p{
-        margin-bottom: 7px;
+        margin-bottom: px;
+        letter-spacing: 0.2rem;
+        margin-right: 10px;
       }
 
-      div{
-        width: 100%;
-        height: 80%;
-        border-radius: 10px;
-        background-color: white;
+      .d-flex{
+
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        img{
+          width: 30px;
+        }
       }
+
+      .xuan-game-img{
+        // outline: 1px solid red;
+        height: 70%;
+
+
+            img{
+              width: 100%;
+              margin-bottom: 10px;
+
+            }
+      }
+
+      // div{
+      //   width: 100%;
+      //   height: 80%;
+      //   border-radius: 10px;
+      //   background-color: white;
+      // }
 
   }
 
@@ -1298,6 +1330,134 @@ position: relative;
   color: white;
   padding: 20px;
 }
+
+.bg_top_left{
+  // outline: 1px solid red;
+  width: 9%;
+  height: 10%;
+  position:absolute;
+  top: 49%;
+  left:4.5%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+      img{
+        width: 95%;
+      }
+}
+.bg_top{
+  // outline: 1px solid red;
+  // width: 9%;
+  // height: 10%;
+  position:absolute;
+  top: 3.5%;
+  left:19.2%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+      img{
+        width: 115%;
+      }
+}
+.bg_top_right{
+  // outline: 1px solid red;
+  // width: 9%;
+  // height: 10%;
+  position:absolute;
+  top: 5.5%;
+  right:25.2%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+      img{
+        width: 150%;
+      }
+}
+
+.bg_right_middle{
+  position:absolute;
+  top: 60%;
+  right:-4%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+      img{
+        width: 140%;
+      }
+}
+
+
+.xuan-event01{
+  background-color: #9587E1;
+  border-radius: 20px;
+  width: 10.5%;
+  height: 30%;
+  position:absolute;
+  top: 26%;
+  left: 6%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+
+        img{
+          height: 70%;
+        }
+        p{
+          margin-bottom: 40px;
+          margin-right: 15px;
+          margin-left: 60px;
+        }
+
+        .link-arrow{
+          width: 30px;
+        }
+
+}
+
+// 活動購物車
+
+.xuan-box-cart{
+  background-color: #81A8E0;
+  border-radius: 50%;
+  width: 13vw;
+  height: 13vw;
+  position:absolute;
+  top: 81%;
+  right: -6%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+  color: white;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  text-align: center;
+  padding: 10px;
+  padding-top: 60px;
+  
+      p{
+        letter-spacing: 0.2rem;
+        margin-right: 5px;
+      }
+
+      .link-arrow{
+        width: 28px;
+      }
+
+      .d-flex{
+        margin-bottom: 15px;
+        justify-content: center;
+      }
+
+      .xuan-event-cart-logo{
+        // outline: 1px solid red;
+        width: 50%;
+      }
+
+
+}
+
+
 
 
 

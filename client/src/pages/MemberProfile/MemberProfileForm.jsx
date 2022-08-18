@@ -93,7 +93,7 @@ function MemberProfileForm() {
                                                             to="/memberprofile"
                                                             className="breadcrumb-item breadcrumb-item-link"
                                                         >
-                                                            會員中心主頁
+                                                            我的生死紀錄
                                                         </Link>
                                                     </li>
 
@@ -102,7 +102,7 @@ function MemberProfileForm() {
                                                             to="/memberprofilerevise"
                                                             className="breadcrumb-item-link"
                                                         >
-                                                            修改會員資料
+                                                            修改生死紀錄
                                                         </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
@@ -110,7 +110,7 @@ function MemberProfileForm() {
                                                             to="/memberpasswordrevise"
                                                             className="breadcrumb-item-link"
                                                         >
-                                                            修改登入密碼
+                                                            修改我的密碼
                                                         </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
@@ -118,7 +118,7 @@ function MemberProfileForm() {
                                                             to="/membereventorder"
                                                             className="breadcrumb-item-link"
                                                         >
-                                                            功德撲滿訂單
+                                                            我的功德撲滿
                                                         </Link>
                                                     </li>
                                                 </ol>
@@ -133,7 +133,7 @@ function MemberProfileForm() {
                                                     >
                                                         <div className="tab-content">
                                                             <div className="mb-3 d-flex justify-content-center member-page-title">
-                                                                會員中心主頁
+                                                                我的生死紀錄
                                                             </div>
                                                             <br />
                                                             <div
@@ -152,27 +152,33 @@ function MemberProfileForm() {
                                                                         <br />
                                                                         {/* TODO：有無日期的呈現方式 */}
                                                                         {mainProfile.birthdate ? (
-                                                                            <div className="card-text member-page-text">
-                                                                                出生日：
-                                                                                {
-                                                                                    mainProfile.birthdate
-                                                                                }
+                                                                            <div className="member-page-subtitle">
+                                                                                出生於
+                                                                                <span className=" member-page-text">
+                                                                                    {' '}
+                                                                                    {
+                                                                                        mainProfile.birthdate
+                                                                                    }
+                                                                                </span>
                                                                             </div>
                                                                         ) : (
-                                                                            <div className="card-text member-page-text">
+                                                                            <div className="member-page-subtitle">
                                                                                 未記錄出生日
                                                                             </div>
                                                                         )}
                                                                         <br />
                                                                         {mainProfile.deathdate ? (
-                                                                            <div className="card-text member-page-text">
-                                                                                往生日：
-                                                                                {
-                                                                                    mainProfile.deathdate
-                                                                                }
+                                                                            <div className="member-page-subtitle">
+                                                                                往生於
+                                                                                <span className=" member-page-text">
+                                                                                    {' '}
+                                                                                    {
+                                                                                        mainProfile.deathdate
+                                                                                    }
+                                                                                </span>
                                                                             </div>
                                                                         ) : (
-                                                                            <div className="card-text member-page-text">
+                                                                            <div className="member-page-subtitle">
                                                                                 未存在往生紀錄
                                                                             </div>
                                                                         )}
