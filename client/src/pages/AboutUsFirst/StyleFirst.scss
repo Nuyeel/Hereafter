@@ -2,7 +2,9 @@
     color: #fff;
     background-color: rgba(0, 0, 0, 0.2);
     height: 680px;
-    width: 48%;
+    // width: 48%;
+    flex-basis: 0;
+    flex-grow: 1;
     border-radius: 20px;
     padding:100px 30px 30px 30px;
     backdrop-filter: blur(5px);
@@ -100,9 +102,12 @@ color: rgb(255, 255, 157);
 .ab-bg-b{
     background-color: rgba(0, 0, 0, 0.2);
     height: 680px;
-    width: 48%;
+    // width: 48%;
+    flex-basis: 0;
+    flex-grow: 1;
     border-radius: 20px;
     padding:120px 30px 30px 30px;
+    margin-left: 30px;
     backdrop-filter: blur(5px);
     position: relative;
 }
@@ -281,8 +286,9 @@ color: rgb(255, 255, 157);
 }
 
 .ab-a-bg-wrap{
+    outline: 1px solid red;
     display: flex;
-    flex-direction:row-reverse;
+    flex-direction: row-reverse;
     justify-content: space-between;
     position: relative;
 }
