@@ -76,6 +76,8 @@ function PlaceLikedPage(props) {
             .closest('.place-info-card')
             .getAttribute('data-placesid');
         const delEle = e.currentTarget.closest('.place-info-card');
+        const likedBtn = e.currentTarget;
+        likedBtn.classList.add('likedBtnCartBtnAnimation-add');
         // console.log(placeIndex);
         // console.log(userSid);
         // console.log(likedPlaceSidArr);
@@ -83,19 +85,23 @@ function PlaceLikedPage(props) {
         if (!likedPlaceSidArr.includes(+placeIndex)) {
             // 存到資料庫 place-liked
             const obj = { member_sid: userSid, place_sid: placeIndex };
+            likedBtn.classList.add('likedBtnCartBtnAnimation-add');
+            setTimeout(() => {
+                likedBtn.classList.remove('likedBtnCartBtnAnimation-add');
 
-            fetch(PLACE_LIKED_API, {
-                method: 'POST',
-                body: JSON.stringify(obj),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-                .then((r) => r.json())
-                .then((result) => {
-                    console.log(result);
-                });
-
+                fetch(PLACE_LIKED_API, {
+                    method: 'POST',
+                    body: JSON.stringify(obj),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then((r) => r.json())
+                    .then((result) => {
+                        console.log(result);
+                        getMemberLikedData();
+                    });
+            }, 500);
             // 收藏的資料, 愛心保持亮
             const newSidArr = [...likedPlaceSidArr].push(placeIndex);
             setLikedPlaceSidArr(newSidArr);

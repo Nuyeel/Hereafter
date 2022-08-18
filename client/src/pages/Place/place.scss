@@ -382,8 +382,8 @@ $maxWidth: 376px;
         padding: 10px 20px 15px;
         display: flex;
         flex-direction: column;
-        max-height: 55vh;
-        height: 55vh;
+        max-height: 58vh;
+        height: 58vh;
         position: relative;
     }
 
@@ -479,7 +479,7 @@ $maxWidth: 376px;
     }
 
     .place-list {
-        padding: 5px 10px 5px 0;
+        padding: 10px 10px 5px 0;
         // overflow-y: scroll;
         overflow-y: hidden;
         overflow-x: hidden;
@@ -586,6 +586,7 @@ $maxWidth: 376px;
     @media screen and (max-width: $maxWidth) {
         .place-list-wrap {
             padding: 10px 15px;
+            height: 55vh;
         }
 
         .place-list {
@@ -725,22 +726,6 @@ $maxWidth: 376px;
         position: relative;
 
         &:hover {
-            // FIXME: 會被切掉
-            &[title]::before {
-                content: '加入收藏';
-                position: absolute;
-                background-color: #fde1efa4;
-                border: 1px solid #d5a7efa5;
-                border-radius: 10px;
-                top: 40px;
-                left: 40px;
-                font-size: 10px;
-                width: 65px;
-                padding: 5px;
-                letter-spacing: 1px;
-                z-index: 999;
-            }
-
             .place-like-icon {
                 color: #f3f59f;
                 filter: drop-shadow(1px 0 4px #f3f59f);
@@ -750,7 +735,6 @@ $maxWidth: 376px;
     }
 
     .place-cartBtn {
-        background-color: #ce59e7;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -767,10 +751,13 @@ $maxWidth: 376px;
         font-size: 22px;
     }
 
-    .place-cartBtn:hover .place-cart-icon,
-    .place-like-icon.btn-checked {
+    .place-cartBtn:hover .place-cart-icon {
         color: #f3f59f;
         filter: drop-shadow(1px 0 4px #f3f59f);
+        cursor: pointer;
+    }
+    .place-like-icon.btn-checked{
+        color: #f3f59f;
         cursor: pointer;
     }
 

@@ -2,13 +2,18 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { BsExclamation, BsPatchPlusFill, BsPatchPlus } from 'react-icons/bs';
+import {
+    BsPatchPlusFill,
+    BsPatchPlus,
+    BsPatchQuestionFill,
+} from 'react-icons/bs';
 import { HiChevronDoubleUp, HiChevronDoubleDown } from 'react-icons/hi';
 import { GoArrowRight } from 'react-icons/go';
 import Swal from 'sweetalert2';
 import AvatarSwiper from './components/AvatarSwiper';
 
 import soulIconAlert from '../../images/sweetalert2/outline_soul_alert.svg';
+import soulIconSweetalert from '../../images/sweetalert2/outline_soul.svg';
 import SoulIcon from '../Place/components/SoulIcon';
 
 import PlaceOption from './components/PlaceOption';
@@ -208,7 +213,7 @@ function RebornCart(props) {
                     Swal.fire({
                         title: '轉生訂單已成立',
                         html: `<h3 clasName='confirmRebornTextAni'>祝您來世順心</h3>`,
-                        imageUrl: soulIconAlert,
+                        imageUrl: soulIconSweetalert,
                         imageHeight: 50,
                         imageWidth: 50,
                         timer: 5000,
@@ -445,9 +450,20 @@ function RebornCart(props) {
                                 memberGooddeed -
                                     avatarData[selectedAvatarInd].price -
                                     Number(selectedPlaceInfo[0].place_price) >
-                                    0
-                                    ? '陰德值剩餘'
-                                    : '陰德值不足！'}
+                                    0 ? (
+                                    '陰德值剩餘'
+                                ) : (
+                                    <>
+                                        陰德值不足！
+                                        <Link to="/" className="gotoGame">
+                                            <BsPatchQuestionFill
+                                                className="gotogame-icon
+                                        "
+                                                title=""
+                                            />
+                                        </Link>
+                                    </>
+                                )}
                             </div>
                             <div className="deed-enough-wrap-text">
                                 {selectedPlaceInfo.length > 0 &&
@@ -500,7 +516,6 @@ function RebornCart(props) {
                                                 }}
                                             ></div>
                                             <div className="ava-option-bg"></div>
-                                            <div className="ava-option-bg-circle"></div>
                                         </div>
                                     </>
                                 )}

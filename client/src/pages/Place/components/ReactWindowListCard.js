@@ -19,38 +19,10 @@ function ReactWindowListCard(props) {
         // style,
     } = props;
 
-    // const {
-    //     sid,
-    //     year,
-    //     month,
-    //     country,
-    //     city,
-    //     dist,
-    //     quota,
-    //     booked,
-    //     place_price,
-    // } = {
-    //     ...value,
-    // };
-
-    const dataRows = () => {
-        placeDisplay.map((v, i) => (
-            <ListCard
-                key={v.sid}
-                value={v}
-                userSid={userSid}
-                isDead={isDead}
-                saveLikedPlace={saveLikedPlace}
-                handlePlaceMapIconClicked={handlePlaceMapIconClicked}
-                likedPlaceSidArr={likedPlaceSidArr}
-            />
-        ));
-    };
-
     return (
         <>
             <FixedSizeList
-                height={window.innerWidth < 376 ? 315 : 390}
+                height={window.innerWidth < 376 ? 315 : 450}
                 itemData={placeDisplay}
                 itemCount={placeDisplay.length}
                 itemSize={window.innerWidth < 376 ? 200 : 78}

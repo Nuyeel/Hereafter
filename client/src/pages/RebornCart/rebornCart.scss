@@ -456,13 +456,19 @@ $widthMax: 768px;
         width: 15%;
         overflow: hidden;
         color: #3c3b67;
+        display: flex;
+        flex-direction: column;
     }
 
     .my-deed-wrap-title {
         background-color: #b9ded2;
         text-align: center;
-        padding: 15px 0;
+        padding: 20px 0;
         font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-height: 56px;
     }
 
     .my-deed-wrap-text {
@@ -470,7 +476,10 @@ $widthMax: 768px;
         text-align: center;
         font-size: 35px;
         font-weight: bold;
-        transform: translate(0, 60%);
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .deed-enough-wrap {
@@ -480,13 +489,56 @@ $widthMax: 768px;
         width: 15%;
         overflow: hidden;
         color: #3c3b67;
+        display: flex;
+        flex-direction: column;
+        position: relative;
     }
 
     .deed-enough-wrap-title {
         background-color: #eebcdd;
         text-align: center;
-        padding: 15px 0;
+        padding: 20px 0;
         font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-height: 56px;
+    }
+
+    .gotoGame {
+        color: #3c3b67;
+        transform: translate(0, 1px);
+        transition: .5s;
+        &:hover {
+            color: #ff52ba;
+            transform: scale(1.5) rotate(20deg) translate(0, 0);
+        }
+    }
+    .gotogame-icon {
+        font-size: 18px;
+        cursor: pointer;
+        margin-left: 5px;
+        
+        
+        &[title] {
+            position: relative;
+        }
+        // &[title]:hover::before {
+        //     content: '小遊戲增加陰德值';
+        //     display: inline-block;
+        //     visibility: visible;
+        //     position: absolute;
+        //     background-color: #fde1efa4;
+        //     border: 1px solid #d5a7efa5;
+        //     border-radius: 10px;
+        //     top: 20px;
+        //     left: 20px;
+        //     font-size: 10px;
+        //     width: 65px;
+        //     padding: 5px;
+        //     letter-spacing: 1px;
+        //     z-index: 999;
+        // }
     }
 
     .deed-enough-wrap-text {
@@ -494,7 +546,10 @@ $widthMax: 768px;
         text-align: center;
         font-size: 35px;
         font-weight: bold;
-        transform: translate(0, 60%);
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .reborn-order-card {
@@ -532,15 +587,16 @@ $widthMax: 768px;
             transform: translate(-50%, -42%);
         }
         .ava-option-bg {
-            width: 85px;
-            height: 85px;
-            top: 38px;
+            width: 110px;
+            height: 110px;
+            top: 25px;
+            border: none;
         }
-        .ava-option-bg-circle {
-            width: 105px;
-            height: 105px;
-            top: 15px;
-        }
+        // .ava-option-bg-circle {
+        //     width: 105px;
+        //     height: 105px;
+        //     top: 15px;
+        // }
     }
 
     .reborn-order-card-place {
