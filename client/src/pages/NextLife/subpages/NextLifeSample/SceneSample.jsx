@@ -1,13 +1,16 @@
 import { useRef, forwardRef } from 'react';
-import { useLoader, useFrame } from '@react-three/fiber';
-
-import gsap from 'gsap';
+import { useFrame } from '@react-three/fiber';
 
 import * as THREE from 'three';
 
-// 用 37 號當成 Sample 吧
-import sampleText from '../../../../images/NextLifeCube/text/shinderWife.png';
-import shaderMap from '../../utils/shader/shaderMap';
+import gsap from 'gsap';
+
+import position from '../../utils/position/postion';
+import {
+    horizontalArrayOne,
+    horizontalArrayTwo,
+    horizontalArrayThree,
+} from '../../utils/position/horizontal';
 
 function SceneSample(props, ref) {
     const {
@@ -16,128 +19,470 @@ function SceneSample(props, ref) {
         cubeAnimationState,
         setCubeAnimationState,
     } = props;
-    const meshRef = useRef(null);
 
-    // 這裡處理材質疊加
-    const sampleTextTexture = useLoader(THREE.TextureLoader, sampleText);
-    sampleTextTexture.anisotropy = 4;
-    sampleTextTexture.minFilter = THREE.LinearFilter;
-    sampleTextTexture.magFilter = THREE.LinearFilter;
-    sampleTextTexture.wrapS = THREE.RepeatWrapping;
-    sampleTextTexture.wrapT = THREE.RepeatWrapping;
+    // FIXME: 先使用 1.04 的間距比例
+    const positionArray = position(eachCubeSize, 1.04);
 
-    const sampleMaterial = {
-        uniforms: {
-            textureT: { value: meshesData.texturesData[33]['T'] },
-            textureText: { value: sampleTextTexture },
-        },
-        vertexShader: shaderMap.v,
-        fragmentShader: shaderMap.t,
-    };
+    // FIXME: 有機會再改成 forwardRef()
+    const groupRef_1 = useRef(null);
+    const groupRef_2 = useRef(null);
+    const groupRef_3 = useRef(null);
 
     // console.log(sampleMaterial);
 
     useFrame(() => {
-        meshRef.current.rotation.y += 0.01;
-
-        if (!cubeAnimationState) {
-            gsap.to(meshesData.materialsData[33]['side'].uniforms.circ_time, {
-                duration: 0.5,
-                value: 0.0,
-                ease: 'circ.out',
-            });
-            gsap.to(
-                meshesData.materialsData[33]['side'].uniforms.elastic_time,
-                {
-                    duration: 0.5,
-                    value: 0.0,
-                    ease: 'elastic.out(1, 0.3)',
-                }
-            );
-            gsap.to(
-                meshesData.materialsData[33]['side'].uniforms
-                    .elastic_drastic_time,
-                {
-                    duration: 0.5,
-                    value: 0.0,
-                    ease: 'elastic.out(1.5, 0.3)',
-                }
-            );
-
-            if (
-                meshesData.materialsData[33]['side'].uniforms.circ_time
-                    .value === 0.0
-            ) {
-                meshesData.materialsData[33][
-                    'side'
-                ].uniforms.circ_time.value = 1.0;
-                meshesData.materialsData[33][
-                    'side'
-                ].uniforms.elastic_time.value = 1.0;
-                meshesData.materialsData[33][
-                    'side'
-                ].uniforms.elastic_drastic_time.value = 1.0;
-
-                if (
-                    meshesData.materialsData[33]['side'].uniforms.animate
-                        .value === 1.0
-                ) {
-                    meshesData.materialsData[33][
-                        'side'
-                    ].uniforms.animate.value = 2.0;
-                } else {
-                    meshesData.materialsData[33][
-                        'side'
-                    ].uniforms.animate.value = 1.0;
-                }
-            }
-
-            setCubeAnimationState(true);
-
-            setTimeout(() => {
-                setCubeAnimationState(false);
-            }, 1200);
-        }
+        groupRef_1.current.rotation.y -= 0.005;
+        groupRef_2.current.rotation.y += 0.005;
+        groupRef_3.current.rotation.y -= 0.005;
     });
 
     return (
         <>
-            <mesh ref={meshRef}>
-                <boxBufferGeometry
-                    attach="geometry"
-                    args={[eachCubeSize, eachCubeSize, eachCubeSize]}
-                />
-                <shaderMaterial
-                    attach="material-0"
-                    {...meshesData.materialsData[33]['side']}
-                    transparent={true}
-                />
-                <shaderMaterial
-                    attach="material-1"
-                    {...meshesData.materialsData[33]['side']}
-                    transparent={true}
-                />
-                <shaderMaterial
-                    attach="material-2"
-                    {...sampleMaterial}
-                    transparent={true}
-                />
-                <shaderMaterial
-                    attach="material-3"
-                    {...sampleMaterial}
-                    transparent={true}
-                />
-                <shaderMaterial
-                    attach="material-4"
-                    {...meshesData.materialsData[33]['side']}
-                    transparent={true}
-                />
-                <shaderMaterial
-                    attach="material-5"
-                    {...meshesData.materialsData[33]['side']}
-                    transparent={true}
-                />
-            </mesh>
+            <group ref={groupRef_1}>
+                {horizontalArrayOne &&
+                    horizontalArrayOne.map((v, i) => {
+                        return (
+                            <mesh
+                                key={`groupOne-${i}`}
+                                position={
+                                    positionArray[horizontalArrayOne[i] - 1]
+                                }
+                            >
+                                <boxBufferGeometry
+                                    attach="geometry"
+                                    args={[
+                                        eachCubeSize,
+                                        eachCubeSize,
+                                        eachCubeSize,
+                                    ]}
+                                />
+                                {i % 2 === 0 ? (
+                                    <>
+                                        <shaderMaterial
+                                            attach="material-0"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-1"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-2"
+                                            {...meshesData.materialsData[i][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-3"
+                                            {...meshesData.materialsData[i][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-4"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-5"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                    </>
+                                ) : (
+                                    ''
+                                )}
+                                {i === 1 || i === 7 ? (
+                                    <>
+                                        <shaderMaterial
+                                            attach="material-0"
+                                            {...meshesData.materialsData[i][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-1"
+                                            {...meshesData.materialsData[i][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-2"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-3"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-4"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-5"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                    </>
+                                ) : (
+                                    ''
+                                )}
+                                {i === 3 || i === 5 ? (
+                                    <>
+                                        <shaderMaterial
+                                            attach="material-0"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-1"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-2"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-3"
+                                            {...meshesData.materialsData[i][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-4"
+                                            {...meshesData.materialsData[i][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-5"
+                                            {...meshesData.materialsData[i][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                    </>
+                                ) : (
+                                    ''
+                                )}
+                            </mesh>
+                        );
+                    })}
+            </group>
+            <group ref={groupRef_2}>
+                {horizontalArrayTwo &&
+                    horizontalArrayTwo.map((v, i) => {
+                        return (
+                            <mesh
+                                key={`groupTwo-${i}`}
+                                position={
+                                    positionArray[horizontalArrayTwo[i] - 1]
+                                }
+                            >
+                                <boxBufferGeometry
+                                    attach="geometry"
+                                    args={[
+                                        eachCubeSize,
+                                        eachCubeSize,
+                                        eachCubeSize,
+                                    ]}
+                                />
+                                {i % 2 === 0 ? (
+                                    <>
+                                        <shaderMaterial
+                                            attach="material-0"
+                                            {...meshesData.materialsData[i + 9][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-1"
+                                            {...meshesData.materialsData[i + 9][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-2"
+                                            {...meshesData.materialsData[i + 9][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-3"
+                                            {...meshesData.materialsData[i + 9][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-4"
+                                            {...meshesData.materialsData[i + 9][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-5"
+                                            {...meshesData.materialsData[i + 9][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                    </>
+                                ) : (
+                                    <>
+                                        <shaderMaterial
+                                            attach="material-0"
+                                            {...meshesData.materialsData[i + 9][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-1"
+                                            {...meshesData.materialsData[i + 9][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-2"
+                                            {...meshesData.materialsData[i + 9][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-3"
+                                            {...meshesData.materialsData[i + 9][
+                                                'sample'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-4"
+                                            {...meshesData.materialsData[i + 9][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-5"
+                                            {...meshesData.materialsData[i + 9][
+                                                'side'
+                                            ]}
+                                            transparent={true}
+                                        />
+                                    </>
+                                )}
+                            </mesh>
+                        );
+                    })}
+            </group>
+            <group ref={groupRef_3}>
+                {horizontalArrayThree &&
+                    horizontalArrayThree.map((v, i) => {
+                        return (
+                            <mesh
+                                key={`groupThree-${i}`}
+                                position={
+                                    positionArray[horizontalArrayThree[i] - 1]
+                                }
+                            >
+                                <boxBufferGeometry
+                                    attach="geometry"
+                                    args={[
+                                        eachCubeSize,
+                                        eachCubeSize,
+                                        eachCubeSize,
+                                    ]}
+                                />
+                                {i % 2 === 0 ? (
+                                    <>
+                                        <shaderMaterial
+                                            attach="material-0"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-1"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-2"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['sample']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-3"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['sample']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-4"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-5"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                    </>
+                                ) : (
+                                    ''
+                                )}
+                                {i === 1 || i === 7 ? (
+                                    <>
+                                        <shaderMaterial
+                                            attach="material-0"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['sample']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-1"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['sample']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-2"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-3"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-4"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-5"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                    </>
+                                ) : (
+                                    ''
+                                )}
+                                {i === 3 || i === 5 ? (
+                                    <>
+                                        <shaderMaterial
+                                            attach="material-0"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-1"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-2"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-3"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['side']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-4"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['sample']}
+                                            transparent={true}
+                                        />
+                                        <shaderMaterial
+                                            attach="material-5"
+                                            {...meshesData.materialsData[
+                                                i + 18
+                                            ]['sample']}
+                                            transparent={true}
+                                        />
+                                    </>
+                                ) : (
+                                    ''
+                                )}
+                            </mesh>
+                        );
+                    })}
+            </group>
         </>
     );
 }
