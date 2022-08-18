@@ -510,7 +510,7 @@
             // FORM 右邊
               .xuan-infor-right{
                   // outline: 1px solid red;
-
+                  
                   // ID DIV
                   .xuan-form-ID{
                     margin-bottom: 20px;
@@ -557,6 +557,8 @@
                       margin-right: 10px; 
                       margin-bottom: 10px;
                       // outline: 1px solid red;
+                      // outline: 1px solid red;
+                      min-width: 74px;
                     }
                     select:nth-child(3){
                       margin-right: 7px; 
@@ -1019,7 +1021,8 @@
       justify-content: space-between;
       width: 14%;
       position: fixed;
-      bottom: 18vw;
+      // bottom: 18vw;
+      bottom: 17vw;
       right:16.7vw;
 
       button{
@@ -1158,6 +1161,11 @@
 
                     .xuan-infor-left{
                       width: 60%;
+                    }
+
+                    .xuan-infor-right{
+                      // outline: 1px solid red;
+                      min-width: 500px;
                     }
 
                     .xuan-personform-btn-group{

@@ -219,6 +219,7 @@ a{
           img{
             width: 30px;
             margin-right: 10px;
+
           }
 
         }
@@ -370,7 +371,8 @@ a{
               }
 
               .xuan-intro-bar{
-                min-height: 380px;
+                min-height: 350px;
+                // outline: 1px solid red;
               }
 
               .xuan-intro-img{
@@ -431,5 +433,5 @@ a{
 }
 
 .xuan-comment-bar{
-  max-height: 420px;
+  max-height: 410px;
 }

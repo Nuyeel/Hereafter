@@ -1,6 +1,8 @@
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; //sweetalert2
+import OutlineSoul from '../../images/sweetalert2/outline_soul.svg';
+import OutlineSoulAlert from '../../images/sweetalert2/outline_soul_alert.svg';
 
 // 子頁面(區域)
 import Cart from './sub-pages/Cart'; //購物車明細
@@ -237,11 +239,14 @@ function OrderSteps(props) {
                 Swal.fire({
                     title: '哎呀！看來你的購物車是空的喔！',
                     text: '立刻前往「功德撲滿」賺取陰德值吧',
-                    icon: 'warning',
+                    // icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
+                    confirmButtonColor: '#9587E1',
+                    cancelButtonColor: '#FF52BA',
                     confirmButtonText: '來去逛逛',
+                    imageUrl: OutlineSoul,
+                    imageHeight: 50,
+                    imageWidth: 50,
                 }).then((result) => {
                     if (result.isConfirmed) {
                         navigate('/events', { replace: true });

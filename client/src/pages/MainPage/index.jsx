@@ -20,6 +20,7 @@ import member_star from './imgs/member_star.svg';
 import go_future from './imgs/go_future.svg';
 import time_decorate from './imgs/time_decorate.svg';
 import time_map from './imgs/time_map.svg';
+import new_time_map from './imgs/new_time_map.svg';
 import back_to_center from './imgs/back_to_center.svg';
 import aboutus from './imgs/aboutus-star.svg';
 import mainpage_test from './imgs/mainpage_test.svg';
@@ -357,7 +358,9 @@ function MainPage(props) {
                         </div>
 
                         <div>
-                            <img src={time_map} alt="" />
+                            {/* 原本的圖 */}
+                            {/* <img src={time_map} alt="" /> */}
+                            <img src={new_time_map} alt="" className='xuan-test-0818' />
                         </div>
                     </div>
                     {/* 功德撲滿 */}

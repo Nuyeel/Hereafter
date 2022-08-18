@@ -242,11 +242,11 @@ const EventDetail = () => {
                                                 </span>
                                                 <br />
                                                 <br />
-                                                <span className="xuan-intro-word xuan-subtitle xuan-intro-text">
+                                                {/* <span className="xuan-intro-word xuan-subtitle xuan-intro-text">
                                                     主辦單位介紹：
                                                     <br />
                                                     <br />
-                                                </span>
+                                                </span> */}
                                             </div>
                                         </SimpleBar>
                                     </div>

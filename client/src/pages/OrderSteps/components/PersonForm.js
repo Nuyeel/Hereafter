@@ -73,7 +73,6 @@ function PersonForm(props) {
 
     // 一鍵填入魔法
     const quickPass = () => {
-
         setCountryIndex(Number(1)); //一鍵代入區域
         setTownshipIndex(Number(4)); //一鍵代入鄉鎮
         setMyInfor({
@@ -221,6 +220,7 @@ function PersonForm(props) {
             mobile: response.data[0].mobile,
             email: response.data[0].email,
             birthday: response.data[0].birthdate,
+            mobile_city: '台灣 +886',
         });
 
         await console.log(myInfor);

@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'; //sweetalert2
+import OutlineSoul from '../../../images/sweetalert2/outline_soul.svg';
+import OutlineSoulAlert from '../../../images/sweetalert2/outline_soul_alert.svg';
 import { useNavigate } from 'react-router-dom';
 
 // scss
@@ -24,11 +26,9 @@ const initState = (eventArray) => {
 };
 
 const Cart = (props) => {
-
     const navigate = useNavigate();
 
     // ---------此段用於「取得該會員購物車有什麼」的資訊--------------------------------------
-
 
     // 此Function處理:當User什麼都沒選直接按購物車ICON時，跳通知。
     const sweetAlertCartNum = (num) => {
@@ -38,10 +38,13 @@ const Cart = (props) => {
             Swal.fire({
                 title: '哎呀！看來你的購物車是空的喔！',
                 text: '立刻前往「功德撲滿」賺取陰德值吧',
-                icon: 'warning',
+                imageUrl: OutlineSoul,
+                imageHeight: 50,
+                imageWidth: 50,
+                // icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#9587E1',
+                cancelButtonColor: '#FF52BA',
                 confirmButtonText: '來去逛逛',
             }).then((result) => {
                 if (result.isConfirmed) {

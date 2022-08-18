@@ -4,6 +4,8 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { useState, useEffect, useContext } from 'react';
 import Swal from 'sweetalert2'; //sweetalert2
+import OutlineSoul from '../../../../images/sweetalert2/outline_soul.svg';
+import OutlineSoulAlert from '../../../../images/sweetalert2/outline_soul_alert.svg';
 
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -140,10 +142,13 @@ function OrderList(props) {
                                         Swal.fire({
                                             title: '確定要刪除此筆訂單?',
                                             // text: "You won't be able to revert this!",
-                                            icon: 'warning',
+                                            // icon: 'warning',
+                                            imageUrl: OutlineSoul,
+                                            imageHeight: 50,
+                                            imageWidth: 50,
                                             showCancelButton: true,
-                                            confirmButtonColor: '#3085d6',
-                                            cancelButtonColor: '#d33',
+                                            confirmButtonColor: '#9587E1',
+                                            cancelButtonColor: '#FF52BA',
                                             cancelButtonText: '取消',
                                             confirmButtonText: '確定刪除',
                                         }).then((result) => {
