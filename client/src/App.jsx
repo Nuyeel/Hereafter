@@ -52,6 +52,7 @@ import AboutUsThird from './pages/AboutUsThird/AboutUsThird';
 import { useState } from 'react';
 import ShareWallPosting from './pages/ShareWall/ShareWallPosting.jsx';
 import ShareWallPostRevise from './pages/ShareWall/ShareWallPostRevise.jsx';
+import Chat from './components/Chat/Chat.js';
 
 function App() {
     // 認證登入狀態 (也可以新增其他 state 紀錄其他狀態)
@@ -344,7 +345,7 @@ function App() {
                             {/* 路由列表結束 */}
                         </ScrolltoTop>
                     </MainContent>
-                    {/* <Genie /> */}
+                    <Chat />
                     <Background />
                 </ProviderContainer>
             </Provider>

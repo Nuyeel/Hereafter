@@ -109,10 +109,10 @@ function Nav(props) {
 
     useEffect(() => {
         if (authorized === true) {
-            console.log('去要陰德值了');
+            // console.log('去要陰德值了');
             getUserGooddeedData();
         } else {
-            console.log('沒有登入無法顯示陰德值');
+            // console.log('沒有登入無法顯示陰德值');
         }
     }, []);
 
@@ -129,7 +129,7 @@ function Nav(props) {
     }, []);
 
     useEffect(() => {
-        if (location.pathname.slice(0, 10) !== 'sharewall') {
+        if (location.pathname.slice(0, 10) !== '/sharewall') {
             setShareWallSearchState('default');
         }
     }, [location.pathname]);

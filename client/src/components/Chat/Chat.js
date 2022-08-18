@@ -1,7 +1,7 @@
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import './ChatCss.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as Ghost } from '../../pages/AboutUsThird/imgs/ghost.svg';
 import { ReactComponent as Star } from './imgs/star-s.svg';
 // import ghost from "./imgs/Vector.png";
@@ -169,18 +169,28 @@ const steps = [
     },
 ];
 
-const ChatTwo = () => (
-    <ThemeProvider theme={theme}>
-        <ChatBot
-            headerTitle="來生問事處"
-            botAvatar={bot}
-            userAvatar={avatar}
-            botDelay="1200"
-            floating={true}
-            steps={steps}
-            placeholder="說點什麼吧！"
-        />
-    </ThemeProvider>
-);
+function Chat() {
+    const location = useLocation();
 
-export default ChatTwo;
+    return (
+        <>
+            {location.pathname !== '/' && location.pathname !== '/intro' ? (
+                <ThemeProvider theme={theme}>
+                    <ChatBot
+                        headerTitle="來生問事處"
+                        botAvatar={bot}
+                        userAvatar={avatar}
+                        botDelay="1200"
+                        floating={true}
+                        steps={steps}
+                        placeholder="說點什麼吧！"
+                    />
+                </ThemeProvider>
+            ) : (
+                ''
+            )}
+        </>
+    );
+}
+
+export default Chat;

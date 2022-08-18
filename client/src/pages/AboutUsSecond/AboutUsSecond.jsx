@@ -23,7 +23,7 @@ function AboutUsSecond(props) {
     return (
         <>
             <div className="container">
-                <Chat />
+                {/* <Chat /> */}
                 <div className="ab-bg-sec ">
                     <Link to="/aboutusthird">
                         <Pagearrow className="ab-page-arrow" />

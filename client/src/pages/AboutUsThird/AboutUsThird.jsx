@@ -20,7 +20,7 @@ function AboutUsThird(props) {
     return (
         <>
             <div class="container">
-                <Chat />
+                {/* <Chat /> */}
                 <div className="ab-third-wrap">
                     <div class="ab-hint-wrap">
                         <Link class="ab-hint-l-wrap" to="/news">
