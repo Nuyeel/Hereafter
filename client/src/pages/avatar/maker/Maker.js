@@ -338,7 +338,7 @@ const Maker = (props) => {
                             投生形象{avatar.id}
                         </h3>
                         <span style={{ font: '14px 400' }}>
-                            建立時間：{avatar.time}
+                        &nbsp;&nbsp;建立時間：{avatar.time}
                         </span>
                     </AvatarTitle>
                     <Back
