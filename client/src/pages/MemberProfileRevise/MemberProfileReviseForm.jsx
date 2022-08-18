@@ -149,7 +149,7 @@ function MemberProfileReviseForm() {
                                                             to="/memberprofile"
                                                             className="breadcrumb-item breadcrumb-item-link"
                                                         >
-                                                            會員中心主頁
+                                                            我的生死紀錄
                                                         </Link>
                                                     </li>
 
@@ -158,7 +158,7 @@ function MemberProfileReviseForm() {
                                                             to="/memberprofilerevise"
                                                             className="breadcrumb-item-link"
                                                         >
-                                                            修改會員資料
+                                                            修改生死紀錄
                                                         </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
@@ -166,7 +166,7 @@ function MemberProfileReviseForm() {
                                                             to="/memberpasswordrevise"
                                                             className="breadcrumb-item-link"
                                                         >
-                                                            修改登入密碼
+                                                            修改我的密碼
                                                         </Link>
                                                     </li>
                                                     <li className="breadcrumb-item">
@@ -174,7 +174,7 @@ function MemberProfileReviseForm() {
                                                             to="/membereventorder"
                                                             className="breadcrumb-item-link"
                                                         >
-                                                            功德撲滿訂單
+                                                            我的功德撲滿
                                                         </Link>
                                                     </li>
                                                 </ol>
