@@ -56,9 +56,9 @@ export const headers = {
     events: {
         title: 'TODO: 頁面標題',
     },
-    // TODO: 頁面名稱: {
-    //     title: '會員中心',
-    // },
+    memberprofile: {
+        title: '會員中心',
+    },
 };
 
 const HeaderContext = React.createContext({
