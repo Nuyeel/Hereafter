@@ -212,7 +212,7 @@ function MemberProfileReviseForm() {
                                                                 }
                                                             >
                                                                 <div className="mb-3 d-flex justify-content-center member-page-title">
-                                                                    修改會員資料
+                                                                    修改生死紀錄
                                                                 </div>
                                                                 <br />
                                                                 <div className="mb-3 member-page-field">
