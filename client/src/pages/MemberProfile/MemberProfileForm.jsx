@@ -7,13 +7,16 @@ import {
     STATIC_SHAREWALL_AVATAR,
 } from '../../config/ajax-path';
 
+import HeaderContext, {
+    headers,
+} from '../../context/HeaderContext/HeaderContext';
 import ThemeContext, { themes } from '../../context/ThemeContext/ThemeContext';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { ReactComponent as NavSoul } from '../../images/Nav/nav_soul.svg';
 
-function MemberProfileForm() {
+function MemberProfileForm(props) {
+    const { pageName } = props;
     const [mainProfile, setMainProfile] = useState({
         name: '',
         account: '',
@@ -35,7 +38,7 @@ function MemberProfileForm() {
     });
 
     const { country, city, dist } = placeData;
-
+    const { setHeader } = useContext(HeaderContext);
     const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -59,6 +62,10 @@ function MemberProfileForm() {
 
     useEffect(() => {
         fetchMemberData();
+    }, []);
+
+    useEffect(() => {
+        setHeader(headers[pageName]);
     }, []);
 
     return (

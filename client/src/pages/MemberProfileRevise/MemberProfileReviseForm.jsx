@@ -4,7 +4,6 @@ import soulIconAlert from '../../images/sweetalert2/outline_soul_alert.svg';
 import LoadingLogo from '../../components/LoadingLogo';
 
 import { useState, useContext, useCallback, useEffect } from 'react';
-import InputIME from './components/InputIME';
 import _ from 'lodash';
 
 import { MEMBER_PROFILE_REVISE } from '../../config/ajax-path';
@@ -223,7 +222,7 @@ function MemberProfileReviseForm() {
                                                                     >
                                                                         帳戶名稱
                                                                     </label>
-                                                                    <InputIME
+                                                                    <input
                                                                         type="text"
                                                                         className="form-control input-2"
                                                                         id="account"
@@ -244,7 +243,7 @@ function MemberProfileReviseForm() {
                                                                     >
                                                                         會員名稱
                                                                     </label>
-                                                                    <InputIME
+                                                                    <input
                                                                         type="text"
                                                                         className="form-control"
                                                                         id="name"
@@ -266,7 +265,7 @@ function MemberProfileReviseForm() {
                                                                     >
                                                                         出生日
                                                                     </label>
-                                                                    <InputIME
+                                                                    <input
                                                                         type="date"
                                                                         className="form-control"
                                                                         name="birthdate"
@@ -285,7 +284,7 @@ function MemberProfileReviseForm() {
                                                                     >
                                                                         往生日
                                                                     </label>
-                                                                    <InputIME
+                                                                    <input
                                                                         type="date"
                                                                         className="form-control"
                                                                         id="deathdate"
@@ -305,7 +304,7 @@ function MemberProfileReviseForm() {
                                                                     >
                                                                         電子信箱
                                                                     </label>
-                                                                    <InputIME
+                                                                    <input
                                                                         type="email"
                                                                         className="form-control"
                                                                         id="email"
