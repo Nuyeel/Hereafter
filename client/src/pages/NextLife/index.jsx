@@ -155,7 +155,7 @@ function NextLife(props) {
                 setCurrentCubeOptionIndex(newCurrentCubeOptionIndex + 1);
             }, 0);
             setCubeIsDone(true);
-        }, 4000);
+        }, 6000);
     };
 
     // console.log(meshesData);

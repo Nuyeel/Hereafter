@@ -2,7 +2,14 @@
 
 .cpl-nextlife-magic-cube-container.nlSample {
     // FIXME: 這是隨便抓的高度
-    bottom: 100px;
+    bottom: 140px;
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-nextlife-magic-cube-container.nlSample {
+        // FIXME: 這是隨便抓的高度
+        bottom: 190px;
+    }
 }
 
 .cpl-nmc-c-info-area {
@@ -12,7 +19,7 @@
     max-width: 360px;
     position: absolute;
     left: 20px;
-    bottom: 20px;
+    bottom: 70px;
     line-height: $fz-title;
     border-radius: 20px;
     padding: 20px;
@@ -57,36 +64,40 @@
     }
 }
 
-@media screen and (min-width:500px) {
+@media screen and (min-width :500px) {
     .cpl-nmc-c-info-area {
         left: 40px;
-        bottom: 40px;
+        bottom: 90px;
     }
 }
 
-@media screen and (min-width:992px) {
+@media screen and (min-width: 768px) {
     .cpl-nmc-c-info-area {
-        // FIXME: 先稍微算就好
-        left: calc((100vw - 912px) / 2 );
-        bottom: 60px;
+        left: 170px;
+        bottom: 52px;
     }
 }
 
-@media screen and (min-width:1200px) {
+@media screen and (min-width: 992px) {
     .cpl-nmc-c-info-area {
         // FIXME: 先稍微算就好
-        left: calc((100vw - 1100px) / 2 );
-        bottom: 60px;
+        left: 170px;
     }
 }
 
-@media screen and (min-width:1400px) {
-    .cpl-nmc-c-info-area {
-        // FIXME: 先稍微算就好
-        left: calc((100vw - 1280px) / 2 );
-        bottom: 60px;
-    }
-}
+// @media screen and (min-width:1200px) {
+//     .cpl-nmc-c-info-area {
+//         // FIXME: 先稍微算就好
+//         left: calc((100vw - 888px) / 2 );
+//     }
+// }
+
+// @media screen and (min-width:1400px) {
+//     .cpl-nmc-c-info-area {
+//         // FIXME: 先稍微算就好
+//         left: calc((100vw - 1280px) / 2 );
+//     }
+// }
 
 .cpl-nmc-c-info-area.isShown {
     animation: cpl-nextlife-cube-info-area-isShown 2s;

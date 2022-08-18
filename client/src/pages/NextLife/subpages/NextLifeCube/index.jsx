@@ -191,12 +191,12 @@ function NextLifeCube(props, ref) {
                     cubeIsDone ? 'isShown' : 'isHidden'
                 }`}
             >
-                <p className="cpl-nmc-c-ia-explanation">
+                <div className="cpl-nmc-c-ia-explanation">
                     您的<span className="cpl-nmc-c-ia-e-span">希望方塊</span>
                     已經製作完成！
                     <br />
-                    <p>祝您有個美好的來生！</p>
-                </p>
+                    祝您有個美好的來生！
+                </div>
             </div>
         </>
     );

@@ -2,9 +2,16 @@
 
 .cpl-nextlife-magic-cube-container.nlCube {
     // FIXME: 這是隨便抓的高度
-    bottom: 100px;
+    bottom: 140px;
     z-index: -1;
     // background-color: #FF000033;
+}
+
+@media screen and (min-width: 992px) {
+    .cpl-nextlife-magic-cube-container.nlCube {
+        // FIXME: 這是隨便抓的高度
+        bottom: 190px;
+    }
 }
 
 .container.nlCubeSwap.isShown {
@@ -110,7 +117,7 @@
 .container.nlCubeMakingCircle {
     position: absolute;
     top: 0;
-    bottom: 90px;
+    bottom: 130px;
     left: 0;
     right: 0;
     margin: auto;
@@ -132,6 +139,12 @@
         text {
             top: 6px;
         }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .container.nlCubeMakingCircle {
+        bottom: 190px;
     }
 }
 

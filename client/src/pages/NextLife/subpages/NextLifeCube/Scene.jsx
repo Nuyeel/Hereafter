@@ -41,7 +41,7 @@ function Scene(props, ref) {
 
         // 這會隨 RWD 變動 先做到差不多就好
         if (cubeIsMaking && !cubeIsDone) {
-            if (eachCubeSize >= 52) {
+            if (eachCubeSize >= 48) {
                 const newEachCubeSize = eachCubeSize - 0.2;
                 setEachCubeSize(newEachCubeSize);
             }
