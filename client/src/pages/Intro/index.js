@@ -40,21 +40,28 @@ function Intro() {
     };
     const [show, setShow] = useState(false);
     const GoMainpage = (
-    <>
-    
-        <button
-            className="yun-intro-button"
-            type="button"
-            onClick={backtoMainpage}
-        >
-            規劃我的來生
-        </button>
-        <div className="intro-end">
-            <p>END</p>
-        </div>
-    </>
+        <>
+            <div className="yun-intro-button" onClick={backtoMainpage}>
+                <p>規劃我的來生</p>
+            </div>
+            <div className="intro-end">
+                <p>END</p>
+                <div className="yun-scroll-img"></div>
+            </div>
+        </>
     );
+    const ScrollGuide = (
+        <>
+            <div className="yun-intro-skip" onClick={backtoMainpage}>
+                <p>SKIP</p>
+            </div>
 
+            <div className="yun-fix-scroll">
+                <p>SCROLL</p>
+                <div className="yun-scroll-img"></div>
+            </div>
+        </>
+    );
 
     const Push = () => ({
         in: {
@@ -204,16 +211,9 @@ function Intro() {
     return (
         <>
             <div className="intro-container">
-                <div className="yun-fix-scroll">
-                    <p>SCROLL</p>
-                    <div className="yun-scroll-img"></div>
-                </div>
-                <div className="yun-intro-skip" onClick={backtoMainpage}>
-                    <p>SKIP</p>
-                </div>
-
                 <ScrollContainer>
                     <BgStar />
+
                     <ScrollPage>
                         <Animator animation={batch(Sticky(50, 50))}>
                             <div className="star"></div>
@@ -255,7 +255,7 @@ function Intro() {
                             animation={batch(
                                 Sticky(50, 50),
                                 ZoomOut(0, 5),
-                                FadeIn(0, 1)
+                                FadeStay()
                             )}
                         >
                             <div className="mainstar"></div>
@@ -264,7 +264,7 @@ function Intro() {
                             animation={batch(
                                 Pos(8, 80, 0, 0),
                                 Fade(),
-                                MoveOut()
+                                Move(0, 50, 0, -50)
                             )}
                         >
                             <div className="intro-h2">
@@ -272,9 +272,49 @@ function Intro() {
                             </div>
                         </Animator>
                     </ScrollPage>
+                    <ScrollPage> </ScrollPage>
+                    <ScrollPage>
+                        <Animator
+                            animation={batch(
+                                Fade(),
+                                Sticky(50, 50),
+                                ZoomIn(0, 1)
+                            )}
+                        >
+                            <div className="god"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(8, 80, 0, 0),
+                                FadeIn(),
+                                MoveIn(0, 50)
+                            )}
+                        >
+                            <div className="intro-h2">
+                                此刻卻懷疑自己是一個帶著瑕疵的作品
+                            </div>
+                        </Animator>
+                    </ScrollPage>
+                    <ScrollPage>
+                        <Animator
+                            animation={batch(
+                                Pos(50, 50, -50, 0),
+                                ZoomIn(0, 1),
+                                Fade()
+                            )}
+                        >
+                            <div className="god-table"></div>
+                        </Animator>
 
-                    <ScrollPage></ScrollPage>
-
+                        <Animator animation={batch(Sticky(50, 50))}>
+                            <div className="god"></div>
+                        </Animator>
+                        <Animator animation={batch(Pos(8, 80, 0, 0))}>
+                            <div className="intro-h2">
+                                此刻卻懷疑自己是一個帶著瑕疵的作品
+                            </div>
+                        </Animator>
+                    </ScrollPage>
                     <ScrollPage>
                         <Animator animation={batch(Pos(50, 50, -50, 0))}>
                             <div className="god-table"></div>
@@ -282,6 +322,7 @@ function Intro() {
 
                         <Animator
                             animation={batch(
+                                FadeIn(),
                                 Pos(50, 50, 250, 30),
                                 MoveOut(30, 0),
                                 Glass()
@@ -302,8 +343,8 @@ function Intro() {
                         <Animator
                             animation={batch(
                                 Pos(8, 80, 0, 0),
-                                Fade(),
-                                Move(0, 50, 0, -50)
+                                FadeOut(1, 0),
+                                MoveOut(0, -50)
                             )}
                         >
                             <div className="intro-h2">
@@ -311,14 +352,45 @@ function Intro() {
                             </div>
                         </Animator>
                     </ScrollPage>
-                    <ScrollPage></ScrollPage>
+                    {/* <ScrollPage>
+                        <Animator animation={batch(Pos(50, 50, -50, 0))}>
+                            <div className="god-table"></div>
+                        </Animator>
 
+                        <Animator
+                            animation={batch(FadeIn(), Pos(50, 50, 250, 30))}
+                        >
+                            <div className="god-glass1"></div>
+                        </Animator>
+
+                        <Animator
+                            animation={batch(Pos(50, 50, 0, -25), Push())}
+                        >
+                            <div className="god-hand"></div>
+                        </Animator>
+                        <Animator animation={batch(Sticky(50, 50))}>
+                            <div className="god"></div>
+                        </Animator>
+
+                        <Animator
+                            animation={batch(
+                                Pos(8, 80, 0, 0),
+                                FadeOut(1, 0),
+                                MoveOut(0, -50)
+                            )}
+                        >
+                            <div className="intro-h2">
+                                此刻卻懷疑自己是一個帶著瑕疵的作品
+                            </div>
+                        </Animator>
+                    </ScrollPage> */}
+                    <ScrollPage> </ScrollPage>
                     <ScrollPage>
                         <Animator
                             animation={batch(
                                 Pos(40, 20, 0, 0),
                                 ZoomOut(),
-                                Fade()
+                                FadeOut(1, 0)
                             )}
                         >
                             <Clock2 />
@@ -339,6 +411,7 @@ function Intro() {
                     <ScrollPage>
                         <Animator
                             animation={batch(
+                                ZoomIn(),
                                 Pos(40, 25, 0, 0),
                                 Fade(),
                                 MoveOut()
@@ -358,16 +431,55 @@ function Intro() {
                             </div>
                         </Animator>
                     </ScrollPage>
-                    <ScrollPage></ScrollPage>
-
                     <ScrollPage>
                         <Animator
                             animation={batch(
-                                Pos(50, 10, 0, 0)
-                                // Fade(),
+                                Pos(50, 10, 335, 305),
+                                FadeOut(1, 0)
+                            )}
+                        >
+                            <div className="intro-box-front-pin"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(50, 10, 40, 40),
+                                ZoomIn(0, 1)
+                                // Fade()
+                            )}
+                        >
+                            <div className="intro-box-front"></div>
+                        </Animator>
+                    </ScrollPage>
+                    <ScrollPage>
+                        <Animator animation={batch(Pos(50, 10, 0, 0), Fade())}>
+                            <div className="intro-box"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(50, 10, 40, 40),
+                                ZoomIn(0, 1),
+                                FadeOut()
+                            )}
+                        >
+                            <div className="intro-box-front"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(Pos(50, 10, 40, 40), Fade())}
+                        >
+                            <div className="mirror"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(50, 10, 0, 0),
+                                Fade()
                                 // MoveOut()
                             )}
                         >
+                            <div className="intro-boxborder"></div>
+                        </Animator>
+                    </ScrollPage>
+                    <ScrollPage>
+                        <Animator animation={batch(Pos(50, 10, 0, 0))}>
                             <div className="intro-box"></div>
                         </Animator>
                         <Animator
@@ -390,12 +502,21 @@ function Intro() {
                         </Animator>
                         <Animator
                             animation={batch(
-                                Pos(50, 10, 340, 1460),
+                                Pos(50, 10, 340, 1470),
                                 // Fade(),
                                 Move(100, 100, 2, -4)
                             )}
                         >
                             <div className="mirrorEye"></div>
+                        </Animator>
+                        <Animator
+                            animation={batch(
+                                Pos(50, 10, 340, 1470),
+                                FadeStay(),
+                                Move(100, 100, 2, -4)
+                            )}
+                        >
+                            <div className="mirrorEye1"></div>
                         </Animator>
                         <Animator
                             animation={batch(
@@ -462,7 +583,7 @@ function Intro() {
                                 歡迎光臨 來生投放所
                             </div>
                         </Animator>
-                        {show ? GoMainpage : ''}
+                        {show ? GoMainpage : ScrollGuide}
                     </ScrollPage>
 
                     <ScrollPage></ScrollPage>

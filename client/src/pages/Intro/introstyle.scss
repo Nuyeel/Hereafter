@@ -173,15 +173,15 @@
 
 
 }
-.glass-water{
-    position: relative;
-    clip-path: polygon(0% 0%, 100% 0%, 90% 100%,10% 100%);
+// .glass-water{
+//     position: relative;
+//     clip-path: polygon(0% 0%, 100% 0%, 90% 100%,10% 100%);
 
-    top: 50%;
-    width: 100%;
-    height: 60%;
-    background-color: rgb(180, 87, 177);
-}
+//     top: 50%;
+//     width: 100%;
+//     height: 60%;
+//     background-color: rgb(180, 87, 177);
+// }
 .god-glass2{
     border: 1px solid red;
     opacity: 0.2;
@@ -210,6 +210,30 @@
     background: url(./introImg/god/god.svg)center center no-repeat;
     background-size: contain;
 }
+.intro-box-front-pin{
+    width: 56px;
+    height: 80px;
+    background: url(./introImg/Pin.svg)center center no-repeat;
+    background-size: contain;
+
+}
+.intro-box-front{
+  
+    width: 240px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.mirror{
+
+    width: 240px;
+    height: 300px;
+   
+    background-size: contain;
+    border: 25px solid $bgc-D;
+    border-radius: 50%;
+
+}
 .intro-box{
   
     width: 550px;
@@ -234,7 +258,12 @@
     background: url(./introImg/mirrorman/eyes.svg)center center no-repeat;
     background-size: contain;
 }
-
+.mirrorEye1{
+    width: 55px;
+    height: 22px;
+    background: url(./introImg/mirrorman/eyes-shine.svg)center center no-repeat;
+    background-size: contain;
+}
 .mirrorEar{
     
     width: 100px;
@@ -289,33 +318,82 @@
 
     border-bottom:120px solid #a3a3d3;
 }
-.intro-final-logo{
-    width: 490px;
-    height: 560px;
-    background: url(./introImg/logo.svg)center center no-repeat;
-    background-size: contain;
+@keyframes logoshine {
+    0%   {    
+        transform: translate(50px,50px);
+        width: 500px;
+        height: 500px;
+        }
+    100% { 
+        transform: translate(-50px,-50px);
 
-    
-}
-
-.yun-intro-button{
+        width: 700px;
+        height: 700px;
+    }
+  }
+  .intro-final-logo{
+      width: 490px;
+      height: 560px;
+      background: url(./introImg/logo.svg)center center no-repeat;
+      background-size: contain;
+  
+      
+  }
+.intro-final-logo::before{
+    content:'';
+    z-index: -999;
+    position: absolute;
+    top: -20;
+    left: -55px;
+    border-radius: 50%;
+    width: 600px;
+    height: 600px;
+    background-image: radial-gradient(#e384f283, #9587E180,#9487e100 50%);
+    animation: logoshine  2s linear infinite alternate-reverse;
   
     
+}
+@keyframes button-float {
+    0%   { box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+        transform: translate(-1px,-1px);}
+    100% {box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+        transform: translate(1px,1px);}
+  }
+.yun-intro-button{
+  
+    border-radius: 20px;
+    border: 3px solid $primary-50p;
     z-index: 99999999;
     cursor: pointer;
-    width: 500px;
-    height: 50px;
+    // width: 300px;
+    // height: 50px;
     background-color: transparent;
     position: fixed;
     top: 65%;
-    right: 5%;
-
+    left: 50%;
+    text-align: center;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
+    animation: button-float  1s ease-in-out infinite alternate-reverse;
     
+    p{
+        
         font-size: $fz-subtitle;
         font-family: $ff-t;
-        color: $highlight;
+        color: $primary;
         font-weight: 600;
+        line-height: 2.5rem;
+        margin: 0px 24px;
+        
+    }
     
+    &:hover{
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
+        background-color: rgba(0, 0, 0, 0.3);
+        transform: translate(5px,5px);
+        animation: button-float  0s ease-in-out infinite alternate-reverse;
+        
+    
+    }
 }
 .intro-end{
     
@@ -337,7 +415,7 @@
         background: url(./introImg/arrow.svg)center center no-repeat;
         margin-left: 5px;
         background-size: contain;
-       border-bottom: 3px solid red;
+       border-bottom: 3px solid rgb(255, 255, 255);
    
         
     }
