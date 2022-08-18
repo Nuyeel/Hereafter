@@ -171,7 +171,9 @@ function App() {
                                 {/* ============================== */}
                                 <Route
                                     path="/memberprofile"
-                                    element={<MemberProfile pageName="memberprofile" />}
+                                    element={
+                                        <MemberProfile pageName="memberprofile" />
+                                    }
                                 />
                                 {/* ============================== */}
                                 {/* 會員中心資料修改頁路由 */}
