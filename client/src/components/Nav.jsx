@@ -476,7 +476,9 @@ function Nav(props) {
                                 )}
 
                                 {/* 生者活動購物車: 數量為0時Nav不顯示 */}
-                                {!isDead && count === 0 ? (
+                                {isDead ? (
+                                    ''
+                                ) : !isDead && count === 0 ? (
                                     ''
                                 ) : (
                                     <span className="nav-xuan-event-cartnum xuan-notion">
