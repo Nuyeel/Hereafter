@@ -147,33 +147,33 @@ function MainPage(props) {
     // 處理生者亡者顏色---------------------------------------------
     // FIXME: 每個帳號登入進到首頁只會問一次
 
-    let mainpageChoose = localStorage.getItem('mainpagechoose');
+    // let mainpageChoose = localStorage.getItem('mainpagechoose');
 
-    useEffect(() => {
-        if (!mainpageChoose) {
-            liveOrDeath();
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (!mainpageChoose) {
+    //         liveOrDeath();
+    //     }
+    // }, []);
 
-    const liveOrDeath = function () {
-        localStorage.setItem('mainpagechoose', 'yes');
-        Swal.fire({
-            title: '歡迎光臨來生投放所',
-            text: '左轉右轉都是人生',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '我還活著',
-            cancelButtonText: '我掛掉了',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire('恭喜你', '還有轉圜的機會', 'success');
-            } else {
-                Swal.fire('哈囉', '讓我們迎接更美好的來生', 'death');
-            }
-        });
-    };
+    // const liveOrDeath = function () {
+    //     localStorage.setItem('mainpagechoose', 'yes');
+    //     Swal.fire({
+    //         title: '歡迎光臨來生投放所',
+    //         text: '左轉右轉都是人生',
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: '我還活著',
+    //         cancelButtonText: '我掛掉了',
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             Swal.fire('恭喜你', '還有轉圜的機會', 'success');
+    //         } else {
+    //             Swal.fire('哈囉', '讓我們迎接更美好的來生', 'death');
+    //         }
+    //     });
+    // };
 
     return (
         <>
@@ -360,7 +360,7 @@ function MainPage(props) {
                         <div>
                             {/* 原本的圖 */}
                             {/* <img src={time_map} alt="" /> */}
-                            <img src={new_time_map} alt="" className='xuan-test-0818' />
+                            <img src={new_time_map} alt=""/>
                         </div>
                     </div>
                     {/* 功德撲滿 */}
