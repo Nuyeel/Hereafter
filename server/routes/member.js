@@ -405,6 +405,11 @@ router.route('/profile').get(async (req, res) => {
             city: '',
             dist: '',
         },
+        placelikeddata: {
+            country: '',
+            city: '',
+            dist: '',
+        },
     };
 
     const sql4 = 'SELECT profile_picture FROM `member` WHERE sid = ?';
@@ -439,6 +444,15 @@ router.route('/profile').get(async (req, res) => {
 
     if (q3.length !== 0) {
         output.placedata = q3[0];
+    }
+
+    const sql5 =
+        'SELECT p.country, p.city, p.dist FROM place p JOIN place_liked pl ON p.sid = pl.place_sid WHERE pl.member_sid = ? ORDER BY RAND() LIMIT 1';
+    const [q5] = await db.query(sql5, [res.locals.loginUser.id]);
+    console.log(q5[0]);
+
+    if (q5.length !== 0) {
+        output.placelikeddata = q5[0];
     }
 
     output.success = true;

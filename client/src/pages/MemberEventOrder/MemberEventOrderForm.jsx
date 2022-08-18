@@ -106,12 +106,10 @@ function MemberProfileForm() {
 
                                                 <section className="pb-4">
                                                     <section
-                                                        className="w-100 p-4 d-flex justify-content-center pb-4 rounded-5  memberBgCard"
+                                                        className="w-100 p-4 d-flex justify-content-center pb-4 rounded-5 memberBgCard"
                                                         style={{
                                                             backgroundColor:
                                                                 theme.memberBgCard,
-                                                            'max-height':
-                                                                '600px',
                                                         }}
                                                     >
                                                         <div className="tab-content">
