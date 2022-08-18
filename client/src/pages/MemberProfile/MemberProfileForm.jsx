@@ -304,7 +304,35 @@ function MemberProfileForm(props) {
                                                                                             placLikedData.dist}
                                                                                     </div>
                                                                                 </div>
-                                                                                <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
+                                                                                {country &&
+                                                                                city &&
+                                                                                dist ? (
+                                                                                    <>
+                                                                                        <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
+                                                                                            <Link
+                                                                                                className="member-link-2"
+                                                                                                to="/reborn-cart
+                                                                                "
+                                                                                            >
+                                                                                                查看轉生購物車
+                                                                                            </Link>
+                                                                                        </button>
+                                                                                    </>
+                                                                                ) : (
+                                                                                    <>
+                                                                                        <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
+                                                                                            <Link
+                                                                                                className="member-link-2"
+                                                                                                to="/Place
+                                                                                "
+                                                                                            >
+                                                                                                前往良辰吉地
+                                                                                            </Link>
+                                                                                        </button>
+                                                                                    </>
+                                                                                )}
+
+                                                                                {/* <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
                                                                                     <Link
                                                                                         className="member-link-2"
                                                                                         to="/reborn-cart
@@ -312,7 +340,7 @@ function MemberProfileForm(props) {
                                                                                     >
                                                                                         查看轉生購物車
                                                                                     </Link>
-                                                                                </button>
+                                                                                </button> */}
                                                                             </>
                                                                         ) : (
                                                                             <>
