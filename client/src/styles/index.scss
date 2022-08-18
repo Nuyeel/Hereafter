@@ -228,6 +228,7 @@ h3 {
 .nav_lightbox_wrap {
     width: 80%;
     position: relative;
+    // outline: 1px solid white;
 
     > .nav_lightbox_list {
         display: flex;
@@ -235,7 +236,7 @@ h3 {
 
         > h2 {
             color: #ffffff;
-            line-height: 5rem;
+            line-height: 4.5rem;
             // line-height: 4rem;
             margin-right: 20px;
             margin-left: 10px;
@@ -250,6 +251,11 @@ h3 {
             visibility: hidden;
         }
     }
+
+    // 會員中心下面margin較多
+    .nav_lightbox_list:nth-child(8){
+        margin-bottom: 30px;
+    } 
 
     .nav_lightbox_list:hover {
         background-color: $highlight;
@@ -291,15 +297,40 @@ h3 {
     background-color: $secondary;
 }
 
+
+
+// 目錄頁_漢堡_visible
+.mainpage_icon_visible{
+    // outline: 1px solid red;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 25%;
+    visibility: visible;
+
+    >img{
+        width: 100%;
+    }
+}
+
+// 目錄頁_漢堡_hidden
+.mainpage_icon_hidden{
+    visibility: hidden;
+}
+
+
 // 功德撲滿缺字處理
 .nav_lightbox_list {
     img {
         width: 48%;
-        margin-top: 12px;
-        margin-bottom: 10px;
+        margin-top: 14px;
+        margin-bottom: 14px;
         margin-right: 25px;
+        // outline: 1px solid red;
+        margin-left: 9px;
     }
 }
+
 
 @media screen and (min-width: 992px) {
     .nav_lightbox_wrap {
@@ -307,9 +338,11 @@ h3 {
 
         > .nav_lightbox_list {
             display: flex;
+            align-items: center;
+            margin-right: 140px;
+            max-height: 65px;
 
             > h2 {
-                line-height: 6rem;
                 margin-right: 25px;
             }
 
@@ -322,10 +355,12 @@ h3 {
     // 功德撲滿缺字處理
     .nav_lightbox_list {
         img {
-            width: 12%;
+            width: 10.5%;
             margin-top: 14px;
             margin-bottom: 14px;
             margin-right: 25px;
+            // outline: 1px solid red;
+            margin-left: 9px;
         }
     }
 
@@ -355,6 +390,7 @@ h3 {
             width: 100%;
         }
     }
+
 }
 
 // TODO: 以下處理 Navbar 模式切換按鈕

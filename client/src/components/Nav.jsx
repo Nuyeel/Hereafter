@@ -38,6 +38,9 @@ import { eventCartNum } from '../features/counter/counterSlice';
 import { PLACE_CARTDATA_API } from '../config/ajax-path';
 import { IoLogoClosedCaptioning } from 'react-icons/io5';
 
+// img
+import missingWord from '../images/Nav/missing_word.svg';
+
 // mainpage測試
 import mainpage_nav from '../pages/MainPage/imgs/mainpage_nav.svg';
 
@@ -143,6 +146,17 @@ function Nav(props) {
             {/* Nav漢堡光箱 (網站目錄) */}
             <div className={lightBox}>
                 <div className="nav_lightbox_wrap">
+                    {/* 目錄頁btn */}
+                    <div
+                        className={mainpageIcon}
+                        onClick={() => {
+                            setMainpageIcon('mainpage_icon_hidden');
+                            setLightBox('nav_lightbox_hidden');
+                        }}
+                    >
+                        <img src={mainpage_nav} alt="" />
+                    </div>
+
                     <div
                         className="nav_lightbox_list"
                         onClick={() => {
@@ -177,10 +191,12 @@ function Nav(props) {
                             setMainpageIcon('mainpage_icon_hidden');
                         }}
                     >
-                        <h2 className="nav_link">
-                            {/* FIXME: 德 缺字 */}
+                        {/* <div className="nav_link nav_missing_word"> */}
+                            <img src={missingWord} alt="" />
+                        {/* </div> */}
+                        {/* <h2 className="nav_link">
                             功德撲滿
-                        </h2>
+                        </h2> */}
                         <h4 className="subtitle">天下沒有白吃的來生</h4>
                     </div>
 
@@ -285,16 +301,7 @@ function Nav(props) {
                     )}
 
                     {/* 購物車btn */}
-                    {/* 目錄頁btn */}
-                    <div
-                        className={mainpageIcon}
-                        onClick={() => {
-                            setMainpageIcon('mainpage_icon_hidden');
-                            setLightBox('nav_lightbox_hidden');
-                        }}
-                    >
-                        <img src={mainpage_nav} alt="" />
-                    </div>
+
                     {/* TODO: 在這裡製作切換按鈕草案 */}
                     <div
                         className={`nav-toggle-wrapper ${
