@@ -287,10 +287,8 @@ router.get('/memberinfor/:membersid?', async (req, res) => {
 
     // Day.js日期轉換法
     // FIXME: 目前這邊還是壞掉的 日期沒辦法順利轉換
-    [results].forEach((value) => {
-        const birthdate = dayjs(value.birthdate).format('YYYY-MM-DD');
-        value.birthdate = birthdate;
-    });
+    const mo = dayjs(results[0].birthdate).format('YYYY-MM-DD');
+    results[0].birthdate = mo;
 
     res.json(results); //會獲得一個JSON包
 });

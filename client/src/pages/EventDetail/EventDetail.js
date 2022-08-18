@@ -189,8 +189,8 @@ const EventDetail = () => {
                                                     </div>
                                                     <div className="xuan-intro-tag-2">
                                                         <FaStar />
-                                                        <FaStar />
-                                                        <FaStar />
+                                                        {/* <FaStar /> */}
+                                                        {/* <FaStar /> */}
                                                         <p>{v.comment_star}</p>
                                                     </div>
                                                 </div>
@@ -426,7 +426,7 @@ const EventDetail = () => {
                                                     </div>
 
                                                     <div className="d-flex">
-                                                        <div className="xuan-comment-star-wrap">
+                                                        <div className="xuan-comment-star-wrap ">
                                                             <FaStar />
                                                             {
                                                                 v.event_comment_star

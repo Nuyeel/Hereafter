@@ -124,8 +124,8 @@ color: rgb(255, 255, 157);
 }
 
 @keyframes ab-startwo {
-    0%{opacity: 1;transform: scale(1);transform: rotate(0deg);}
-    100%{opacity: .5;transform: scale(1);transform: rotate(360deg);top: 80%;}
+    0%{opacity: 1; transform: rotate(0deg) scale(1);}
+    100%{opacity: .5; transform: rotate(360deg) scale(.5);top: 80%;transform: scale(0);}
     
 }
 .ab-flag{

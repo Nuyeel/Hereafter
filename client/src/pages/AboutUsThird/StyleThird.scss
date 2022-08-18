@@ -336,4 +336,21 @@
     90%{left: 15px;;transform:scaleX(-1);}
     93%{left: 15px;;transform:scaleX(1);}
 }
+@media (min-width: 375px) and (max-width: 800px) {
+    .ab-hint-wrap{
+      display: block;
+      margin-bottom: 150px;
+    }
+    .ab-hint-m{
+        height: 50px;
+    }
+    .ab-hint-l{
+        border-radius: 15px;
+    }
+    .ab-hint-arrow{
+        border: 0px;
+    }
+
+  }
+  
 
