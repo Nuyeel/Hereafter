@@ -37,6 +37,12 @@ function MemberProfileForm(props) {
         dist: '',
     });
 
+    const [placLikedData, setPlaceLikedData] = useState({
+        country: '',
+        city: '',
+        dist: '',
+    });
+
     const { country, city, dist } = placeData;
     const { setHeader } = useContext(HeaderContext);
     const { theme, themeContext } = useContext(ThemeContext);
@@ -58,6 +64,7 @@ function MemberProfileForm(props) {
         setMainProfile(result.data);
         setPlaceData(result.placedata);
         setDateData(result.bithdatedata);
+        setPlaceLikedData(result.placelikeddata);
     };
 
     useEffect(() => {
@@ -277,24 +284,24 @@ function MemberProfileForm(props) {
                                                                 >
                                                                     <div className="card-body d-flex flex-column member-page-card-3">
                                                                         {/* TODO：有無良辰吉地的呈現方式 */}
-                                                                        {country &&
-                                                                        city &&
-                                                                        dist ? (
+                                                                        {(country &&
+                                                                            city &&
+                                                                            dist) ||
+                                                                        (placLikedData.country &&
+                                                                            placLikedData.city &&
+                                                                            placLikedData.dist) ? (
                                                                             <>
                                                                                 <h5 className="card-title member-page-text-2">
                                                                                     感興趣的良辰吉地
                                                                                 </h5>
                                                                                 <div className="mb-md-0 p-md-4 d-flex flex-row justify-content-center">
                                                                                     <div className="member-page-place">
-                                                                                        {
-                                                                                            country
-                                                                                        }
-                                                                                        {
-                                                                                            city
-                                                                                        }
-                                                                                        {
-                                                                                            dist
-                                                                                        }
+                                                                                        {country ||
+                                                                                            placLikedData.country}
+                                                                                        {city ||
+                                                                                            placLikedData.city}
+                                                                                        {dist ||
+                                                                                            placLikedData.dist}
                                                                                     </div>
                                                                                 </div>
                                                                                 <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
@@ -310,7 +317,7 @@ function MemberProfileForm(props) {
                                                                         ) : (
                                                                             <>
                                                                                 <h5 className="card-title member-page-text-2">
-                                                                                    即刻挑選一塊良辰吉地吧
+                                                                                    即刻收藏一塊良辰吉地吧
                                                                                 </h5>
                                                                                 <div className=" d-flex justify-content-center">
                                                                                     <img
