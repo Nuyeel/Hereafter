@@ -291,11 +291,11 @@ function MemberProfileForm(props) {
                                                                             placLikedData.city &&
                                                                             placLikedData.dist) ? (
                                                                             <>
-                                                                                <h5 className="card-title member-page-text-2">
+                                                                                <h5 className="card-title member-page-text-2 ">
                                                                                     感興趣的良辰吉地
                                                                                 </h5>
-                                                                                <div className="mb-md-0 p-md-4 d-flex flex-row justify-content-center">
-                                                                                    <div className="member-page-place">
+                                                                                <div className="mb-md-0 p-md-4 d-flex flex-row justify-content-center member-page-place-scroll">
+                                                                                    <div className="member-page-place member-page-place-scroll-2">
                                                                                         {country ||
                                                                                             placLikedData.country}
                                                                                         {city ||

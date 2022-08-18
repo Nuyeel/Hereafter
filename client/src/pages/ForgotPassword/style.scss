@@ -133,9 +133,29 @@
 .member-page-place {
     font-family: $ff-t, $ff-h;
     font-weight: 700;
-    color: $secondary; 
-    font-size: $fz-subtitle;
+    color: #3C3B6785;; 
+    font-size: 1.3rem;
 }
+
+.member-page-place-scroll {
+    display: flex;
+    .member-page-place-scroll-2 {
+        white-space: nowrap;
+  text-transform: uppercase;
+  animation: scroll 15s linear infinite;
+    }
+}
+
+@keyframes scroll{
+    from{transform: translateX(100%)}
+    to{transform: translateX(-100%)}
+  }
+  
+  @keyframes scroll2{
+    from{transform: translateX(0%)}
+    to{transform: translateX(-200%)}
+  }
+
 
 .member-event-default {
     font-family: $ff-t, $ff-h;
