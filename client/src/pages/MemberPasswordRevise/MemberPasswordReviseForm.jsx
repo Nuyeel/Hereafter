@@ -376,9 +376,6 @@ function MemberProfileForm(props) {
                                                                     </button>
 
                                                                     <br />
-                                                                    {/* <button className="btn-member btn-member-sec btn-member-l btn-member-outline-light">
-                                                                                    清除
-                                                                                </button> */}
                                                                 </div>
                                                             </form>
                                                         </div>
