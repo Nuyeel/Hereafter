@@ -11,6 +11,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 // import MarkerClusterGroup from "react-leaflet-markercluster";
 
 import taiwanGeoData from '../../data/taiwan-city-geojson.json';
+import usaGeoData from '../../data/usa-state-geojson.json';
 // import placeData from "../data/place_test.json";
 // import cityLatLngData from '../../data/city-latlng.json';
 import taiwanDdistCenterData from '../../data/city-dist-lnglat.json';
@@ -23,6 +24,7 @@ function PlaceMap(props) {
         placeDisplay,
         setPlaceDisplay,
         cityFilter,
+        countryFilter,
         userSid,
         isDead,
         saveLikedPlace,
@@ -103,15 +105,22 @@ function PlaceMap(props) {
 
     // 篩選城市, 找出程式的geoData
     const filterGeoData = () => {
-        if (cityFilter !== 'all') {
-            const newData = taiwanGeoData.filter((v) => {
-                return cityFilter === v.properties.COUNTY;
-            });
-            // console.log(newData);
-            setFilterGeo(newData);
-        } else if (cityFilter === 'all') {
+        if (cityFilter === 'all') {
             const newData = [];
             setFilterGeo(newData);
+        } else {
+            if (countryFilter === '台灣') {
+                const newData = taiwanGeoData.filter((v) => {
+                    return cityFilter === v.properties.COUNTY;
+                });
+                // console.log(newData);
+                setFilterGeo(newData);
+            } else if (countryFilter === '美國') {
+                const newData = usaGeoData.filter((v) => {
+                    return cityFilter === v.properties.state;
+                });
+                setFilterGeo(newData);
+            }
         }
     };
 

@@ -1,8 +1,14 @@
 .header-container-place {
-    height: 76px;
+
     @media screen and (max-width: 375px) {
         &.header-container {
             margin: 0;
+        }
+    }
+
+    @media screen and (min-width: 1400px){
+        .header-baseline-decoration {
+            max-width: 520px;
         }
     }
 }

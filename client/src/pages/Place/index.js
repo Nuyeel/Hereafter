@@ -281,31 +281,31 @@ function Place(props) {
         const placeIndex = e.currentTarget
             .closest('.place-info-card')
             .getAttribute('data-placesid');
+        const likedBtn = e.currentTarget;
+        likedBtn.classList.add('likedBtnCartBtnAnimation-add');
 
         // 存到資料庫 place-liked
         // 1. 判斷有無登入
         if (authorized === true && userSid) {
             const obj = { member_sid: userSid, place_sid: placeIndex };
-            const delEle = e.currentTarget;
             if (!likedPlaceSidArr.includes(+placeIndex)) {
                 // 2. 存到資料庫 place-liked
-                delEle.classList.add('likedBtnCartBtnAnimation-add');
-
-                fetch(PLACE_LIKED_API, {
-                    method: 'POST',
-                    body: JSON.stringify(obj),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                })
-                    .then((r) => r.json())
-                    .then((result) => {
-                        console.log(result);
-                        getMemberLikedData();
-                    });
-
+                likedBtn.classList.add('likedBtnCartBtnAnimation-add');
                 setTimeout(() => {
-                    delEle.classList.remove('likedBtnCartBtnAnimation-add');
+                    likedBtn.classList.remove('likedBtnCartBtnAnimation-add');
+
+                    fetch(PLACE_LIKED_API, {
+                        method: 'POST',
+                        body: JSON.stringify(obj),
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                        .then((r) => r.json())
+                        .then((result) => {
+                            console.log(result);
+                            getMemberLikedData();
+                        });
                 }, 500);
             } else {
                 // 存收藏清單移除
@@ -340,15 +340,6 @@ function Place(props) {
                             (v) => v !== +placeIndex
                         );
                         setLikedPlaceSidArr(newSidArr);
-
-                        // TODO: 愛心消除動畫
-                        delEle.classList.add('likedBtnCartBtnAnimation-add');
-
-                        setTimeout(() => {
-                            delEle.classList.remove(
-                                'likedBtnCartBtnAnimation-add'
-                            );
-                        }, 500);
                     } else if (result.isDenied) {
                         console.log('Nooooooo!');
                     }
@@ -508,6 +499,7 @@ function Place(props) {
                                         placeDisplay={placeDisplay}
                                         setPlaceDisplay={setPlaceDisplay}
                                         cityFilter={cityFilter}
+                                        countryFilter={countryFilter}
                                         saveLikedPlace={saveLikedPlace}
                                         userSid={userSid}
                                         isDead={isDead}
