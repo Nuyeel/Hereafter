@@ -214,9 +214,7 @@ function MainPage(props) {
                         className="xuan-child-center xuan-box"
                         id="xuan-btn"
                         onClick={() => {
-                            navigate('#/', {
-                                replace: true,
-                            });
+                            navigate('/');
                         }}
                     >
                         <img src={mainpage_center_logo} alt="" />
@@ -257,9 +255,7 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/showcase', {
-                                        replace: true,
-                                    });
+                                    navigate('/showcase');
                                 }}
                             />
                         </div>
@@ -311,15 +307,11 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    {
-                                        authorized
-                                            ? navigate('/memberprofile', {
-                                                  replace: true,
-                                              })
-                                            : Swal.fire('請先登入會員');
-                                        navigate('/login', {
-                                            replace: true,
-                                        });
+                                    if (authorized) {
+                                        navigate('/memberprofile');
+                                    } else {
+                                        Swal.fire('請先登入會員');
+                                        navigate('/login');
                                     }
                                 }}
                             />
@@ -357,9 +349,7 @@ function MainPage(props) {
                                     alt=""
                                     className="link-arrow"
                                     onClick={() => {
-                                        navigate('/Place', {
-                                            replace: true,
-                                        });
+                                        navigate('/Place');
                                     }}
                                 />
                             </div>
@@ -381,9 +371,7 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/events', {
-                                        replace: true,
-                                    });
+                                    navigate('/events');
                                 }}
                             />
                         </div>
@@ -458,9 +446,7 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/gooddeed', {
-                                        replace: true,
-                                    });
+                                    navigate('/gooddeed');
                                 }}
                             />
                         </div>
@@ -485,16 +471,13 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/', {
-                                        replace: true,
-                                    });
+                                    navigate('/');
                                 }}
                             />
                         </div>
 
                         {/* 底下圖片區域 */}
-                        <div className='xuan-game-img'>
-
+                        <div className="xuan-game-img">
                             <img src={game01} alt="" />
                             <img src={game02} alt="" />
                         </div>
@@ -510,9 +493,7 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/aboutusfirst', {
-                                        replace: true,
-                                    });
+                                    navigate('/aboutusfirst');
                                 }}
                             />
                         </div>
@@ -532,9 +513,7 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/news', {
-                                        replace: true,
-                                    });
+                                    navigate('/news');
                                 }}
                             />
                         </div>
@@ -553,9 +532,7 @@ function MainPage(props) {
                     <div
                         className="xuan-box-waiter-1-word"
                         onClick={() => {
-                            navigate('/aboutussecond ', {
-                                replace: true,
-                            });
+                            navigate('/aboutussecond ');
                         }}
                     >
                         <img src={aboutword1} alt="" />
@@ -567,9 +544,7 @@ function MainPage(props) {
                     <div
                         className="xuan-box-waiter-2-word"
                         onClick={() => {
-                            navigate('/aboutussecond ', {
-                                replace: true,
-                            });
+                            navigate('/aboutussecond ');
                         }}
                     >
                         <img src={aboutword2} alt="" />
@@ -581,9 +556,7 @@ function MainPage(props) {
                     <div
                         className="xuan-box-waiter-3-word"
                         onClick={() => {
-                            navigate('/aboutussecond ', {
-                                replace: true,
-                            });
+                            navigate('/aboutussecond ');
                         }}
                     >
                         <img src={aboutword3} alt="" />
@@ -606,9 +579,7 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/sharewall', {
-                                        replace: true,
-                                    });
+                                    navigate('/sharewall');
                                 }}
                             />
                         </div>
@@ -623,9 +594,7 @@ function MainPage(props) {
                                     alt=""
                                     className="link-arrow"
                                     onClick={() => {
-                                        navigate('/sharewall', {
-                                            replace: true,
-                                        });
+                                        navigate('/sharewall');
                                     }}
                                 />
                             </div>
@@ -640,9 +609,7 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/ordersteps', {
-                                        replace: true,
-                                    });
+                                    navigate('/ordersteps');
                                 }}
                             />
                         </div>
