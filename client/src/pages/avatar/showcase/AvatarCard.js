@@ -12,7 +12,7 @@ function AvatarCard(props) {
     const combinationText = JSON.parse(avatarinfo.combinationText);
     const editAvatar = () => {
         sessionStorage.setItem('avatar_id', avatarinfo.avatar_id);
-        navigate('/maker', { replace: true });
+        navigate('/maker');
     };
     const BGSquareShowcase = styled.div`
         position: absolute;
@@ -73,30 +73,32 @@ function AvatarCard(props) {
                             ? `  尾色:${combinationText.specialColor}`
                             : null}
                         <br />
-                        眼:{combinationText.eye} 瞳色:{combinationText.eyeColor}
+                        眼:{combinationText.eye}
+                        &nbsp;&nbsp;&nbsp;瞳色:
+                        {combinationText.eyeColor}
                         <br />
-                        髮型:{combinationText.hair} 髮色:
+                        髮型:{combinationText.hair} &nbsp;&nbsp;&nbsp;髮色:
                         {combinationText.hairColor}
                         <br />
                         嘴巴:{combinationText.lip}
                         <br />
-                        鼻子:{combinationText.nose} 顏色:
+                        鼻子:{combinationText.nose}&nbsp;&nbsp;&nbsp;顏色:
                         {combinationText.noseColor}
                         <br />
                         耳朵:
                         {combinationText.ear}
                         {combination.face.topEar
-                            ? `  顏色:${combinationText.topearColor}`
+                            ? `&nbsp;&nbsp;&nbsp;顏色:${combinationText.topearColor}`
                             : null}
                         <br />
                         獸尾:{combinationText.tale}
                         {combination.body.tale
-                            ? `  尾色:${combinationText.taleColor}`
+                            ? `&nbsp;&nbsp;&nbsp;尾色:${combinationText.taleColor}`
                             : null}
                     </p>
 
                     <p className="avatarTotalPrice">
-                        總計價格:{avatarinfo.price}
+                        總計價格:&nbsp;{avatarinfo.price}&nbsp;
                         <SoulProps theme={theme} />
                     </p>
 

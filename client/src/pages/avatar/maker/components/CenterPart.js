@@ -872,7 +872,7 @@ function CenterPart(props) {
                 <Info>
                     <SoulColor>
                         <p>
-                            總計:{avatarTotalPrice}
+                            總計:&nbsp;{avatarTotalPrice}&nbsp;
                             <Soul />
                         </p>
                     </SoulColor>
