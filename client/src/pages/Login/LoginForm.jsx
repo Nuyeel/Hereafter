@@ -18,6 +18,11 @@ function LoginForm(props) {
         password: '',
     });
 
+    const [fillData, setFillData] = useState({
+        account: 'HappyCat07',
+        password: 'HappyCat07',
+    });
+
     const { pageName } = props;
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     const { setHeader } = useContext(HeaderContext);
@@ -75,7 +80,14 @@ function LoginForm(props) {
                             className="pb-4 justify-content-center memberBgCard rounded-5"
                             style={{ backgroundColor: theme.memberBgCard }}
                         >
-                            <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
+                            <section className="w-100 p-4 d-flex justify-content-center pb-4">
+                            {/* 點左邊區塊自動填入HappyCat07登入資料 */}
+                                <div
+                                    className="member-login-auto-fill"
+                                    onClick={() => {
+                                        setLoginData(fillData);
+                                    }}
+                                ></div>
                                 <div className="tab-content">
                                     <form name="form1" onSubmit={handleSubmit}>
                                         <div className="mb-3 d-flex justify-content-center member-page-title">

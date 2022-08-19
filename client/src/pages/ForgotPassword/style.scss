@@ -18,6 +18,24 @@
     font-weight: 500;
     color: $secondary; 
     font-size: $fz-body;
+    padding-top: 3px;
+}
+
+.member-login-auto-fill {
+    position: absolute;
+    width: 420px;
+    height: 380px;
+    background-color: #ffffff00;
+    // outline: #fff 1px solid;
+    left: 10px;
+}
+
+.member-login-page-field {
+    font-family: $ff-t, $ff-h;
+    font-weight: 500;
+    color: $secondary; 
+    font-size: $fz-body;
+    padding-top: 3px;
 }
 
 .member-login-field {
@@ -94,7 +112,7 @@
     font-family: $ff-t, $ff-h;
     font-weight: 700;
     color: $secondary; 
-    font-size: 1.35rem;
+    font-size: 20px;
     transition: .3s;
     // text-align: center;
 }
