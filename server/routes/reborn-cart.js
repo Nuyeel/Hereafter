@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
     if (total === 5) {
         output.error = '購物車已滿';
         return res.json(output);
-        // TODO: 前台react提醒
+        // 前台react提醒
     }
 
     if (!req.body.place_sid) {
@@ -116,6 +116,14 @@ router.post('/reborn-order', async (req, res) => {
     const [[{ num }]] = await db.query(sqlCheck, [req.body.member_sid]);
     if (num > 0) {
         output.error = '已有轉生訂單';
+        return res.json(output);
+    }
+
+    // 判斷是否還有名額
+    const sqlCheck2 = `SELECT * FROM place WHERE sid=?`;
+    const [[row2]] = await db.query(sqlCheck2, [req.body.place_sid]);
+    if (row2.quota <= row2.booked) {
+        output.error = '目前此良辰吉地名額不足';
         return res.json(output);
     }
 
