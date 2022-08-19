@@ -22,29 +22,19 @@ function Showcase(props) {
     const navigate = useNavigate();
 
     const [avatarData, setAvatarData] = useState([]);
-    //載入Loading動畫用
-    const [isLoading, setIsLoading] = useState(false);
-    //1秒後自動關掉spinner(設定isLoading為false)
-    useEffect(() => {
-        if (isLoading) {
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 1000);
-        }
-    }, [isLoading]);
+
     const getAvatarData = async () => {
-        if (sid !== null && sid !== 0) {
+        if (sid === undefined || sid === null || sid === 0) {
+            navigate('/login');
+        } else {
+            console.log(sid);
             const postData = { id: sid };
             const r = await axios.post(Showcase_Data, postData);
             setAvatarData(r.data.data);
-        } else {
-            navigate('/login');
         }
     };
 
     useEffect(() => {
-        setIsLoading(true);
-
         getAvatarData();
     }, []);
 

@@ -68,16 +68,17 @@ function AvatarCard(props) {
                         手:{combinationText.hand}
                         <br />
                         {(combination.special ? '尾:' : '腳:') +
-                            combinationText.foot}{' '}
+                            combinationText.foot}
+                        &nbsp;&nbsp;&nbsp;
                         {combination.body.special
-                            ? `  尾色:${combinationText.specialColor}`
+                            ? `尾色:${combinationText.specialColor}`
                             : null}
                         <br />
                         眼:{combinationText.eye}
                         &nbsp;&nbsp;&nbsp;瞳色:
                         {combinationText.eyeColor}
                         <br />
-                        髮型:{combinationText.hair} &nbsp;&nbsp;&nbsp;髮色:
+                        髮型:{combinationText.hair}&nbsp;&nbsp;&nbsp;髮色:
                         {combinationText.hairColor}
                         <br />
                         嘴巴:{combinationText.lip}
