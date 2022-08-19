@@ -329,7 +329,11 @@ router
                 to: `${q1[0].email}`,
                 subject: '《來生投放所》修改密碼通知信',
                 html: `
-                <h2>您的驗證碼為：${verifyNum}</h2>
+                <span>
+                <h2 style='color: #9587E1'>歡迎蒞臨來生投放所。</h2>
+                <h2 style='color: #9587E1'>您申請修改密碼的驗證碼為：<h2 style='color: #E384F2'>${verifyNum}</h2></h2>
+                <h2 style='color: #9587E1'>請盡速前往修改，謝謝！</h2>
+                </span>
                 <a href="http://localhost:3000/forgotpasswordrevise">
                 <img src="https://i.imgur.com/ICrQRRJ.png" width="800" />
                 </a>
@@ -365,11 +369,11 @@ router
         };
         // 用query方法查詢驗證碼
         const sql = 'SELECT * FROM member WHERE passcode = ?';
-        const [[q1]] = await db.query(sql, [req.body.passcode]);
-        // console.log(q1.passcode);
+        const [q1] = await db.query(sql, [req.body.passcode]);
         // console.log(req.body.passcode);
+        // console.log(q1.length);
 
-        if (req.body.passcode !== q1.passcode) {
+        if (!q1.length && req.body.passcode !== q1.passcode) {
             output.code = 412;
             output.error = '您的驗證碼輸入錯誤';
             return res.json(output);
