@@ -23,6 +23,7 @@ const getPlaceData = async (req, res) => {
     const [[{ totalRows }]] = await db.query(sql01);
     if (totalRows) {
         const sql02 = `SELECT * FROM place WHERE 1 ORDER BY year, month ASC`;
+        // const sql02 = `SELECT * FROM place WHERE quota > booked ORDER BY year, month ASC`;  // 不顯示沒有名額的資料
         const [r2] = await db.query(sql02);
         output.rows = r2;
     }
