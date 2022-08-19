@@ -1,6 +1,7 @@
 import './showcase.css';
 import { useContext, useState, useEffect } from 'react';
 import ThemeContext from '../../../context/ThemeContext/ThemeContext';
+import AuthContext from '../../../context/AuthContext/AuthContext';
 import HeaderContext, {
     headers,
 } from '../../../context/HeaderContext/HeaderContext';
@@ -9,12 +10,16 @@ import axios from 'axios';
 import AvatarCard from './AvatarCard';
 //import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { useNavigate } from 'react-router-dom';
 
 function Showcase(props) {
     const { pageName } = props;
 
     const { theme } = useContext(ThemeContext);
     const { setHeader } = useContext(HeaderContext);
+    const { authorized, sid } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const [avatarData, setAvatarData] = useState([]);
     //載入Loading動畫用
@@ -28,14 +33,12 @@ function Showcase(props) {
         }
     }, [isLoading]);
     const getAvatarData = async () => {
-        const member = JSON.parse(localStorage.getItem('auth'));
-
-        if (member !== null) {
-            const postData = { id: member['sid'] };
+        if (sid !== null && sid !== 0) {
+            const postData = { id: sid };
             const r = await axios.post(Showcase_Data, postData);
             setAvatarData(r.data.data);
         } else {
-            console.log('Meow 未登入');
+            navigate('/login');
         }
     };
 

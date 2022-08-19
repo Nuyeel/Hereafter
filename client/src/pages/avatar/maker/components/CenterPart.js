@@ -308,18 +308,18 @@ function CenterPart(props) {
                     console.log(err);
                 });
             if (sessionStorage.getItem('avatar_id') === null) {
-                console.log('Meow 目前沒有訂單編號!');
+                //console.log('Meow 目前沒有訂單編號!');
             } else {
                 const r = await axios.post(Avatar_Update, orderData);
-                console.log(orderData);
-                console.log(r.data);
+                //console.log(orderData);
+                //console.log(r.data);
                 if (r.data.success) {
                     Swal.fire({
                         title: '形象保存成功',
                         confirmButtonText: `<p >我知道了</p>`,
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            console.log('訂單ID已清除');
+                            //console.log('訂單ID已清除');
                             sessionStorage.removeItem('avatar_id');
                             backtoShowCase();
                         }

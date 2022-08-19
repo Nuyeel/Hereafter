@@ -86,14 +86,14 @@ function AvatarCard(props) {
                         {combinationText.noseColor}
                         <br />
                         耳朵:
-                        {combinationText.ear}
+                        {combinationText.ear}&nbsp;&nbsp;&nbsp;
                         {combination.face.topEar
-                            ? `&nbsp;&nbsp;&nbsp;顏色:${combinationText.topearColor}`
+                            ? `顏色:${combinationText.topearColor}`
                             : null}
                         <br />
-                        獸尾:{combinationText.tale}
+                        獸尾:{combinationText.tale}&nbsp;&nbsp;&nbsp;
                         {combination.body.tale
-                            ? `&nbsp;&nbsp;&nbsp;尾色:${combinationText.taleColor}`
+                            ? `尾色:${combinationText.taleColor}`
                             : null}
                     </p>
 
