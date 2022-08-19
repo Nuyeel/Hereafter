@@ -249,7 +249,8 @@
     // height: 32px;
     // font:700 var(--text-font), Arial, sans-serif;
     border: none;
-    font-size: $fz-body;
+    font-size: 18px;
+    font-weight: 500;
     border-radius: 10px;
     position: relative;
     width: 100%;
@@ -277,7 +278,6 @@
 
 .btn-member-l {
     height: 40px;
-    font:500 18px, Arial, sans-serif;
     border-radius: 12px;
 }
 
