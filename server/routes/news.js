@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require(`${__dirname}/../modules/mysql2-connect`);
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const content = (card) => {
@@ -31,7 +32,21 @@ ${card.content}
 </div>`;
 };
 // const { router } = require('../app');
-router.route('/').post((req, res) => {
+router.route('/').post(async (req, res) => {
+    const output = {
+        success: false,
+        error: '',
+    };
+
+    if (!res.locals.loginUser) {
+        output.error = '請先登入';
+        res.json(output);
+        return;
+    }
+
+    const sql = 'SELECT * FROM `member` WHERE sid = ?';
+    const [member] = (await db.query(sql, [res.locals.loginUser.id]))[0];
+
     const mailTransport = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -43,7 +58,7 @@ router.route('/').post((req, res) => {
     mailTransport.sendMail(
         {
             from: '來生投放所 <service@nextlife.com.tw>',
-            to: 'abby <chiquzt@gmail.com>',
+            to: `${member.account} <${member.email}>`,
             subject: '來生投放所電子報',
             html: content(req.body),
             attachments: [
@@ -61,7 +76,9 @@ router.route('/').post((req, res) => {
         }
     );
 
-    res.json(res.locals.loginUser);
+    output.success = true;
+
+    res.json(output);
 });
 
 module.exports = router;
