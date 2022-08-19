@@ -248,7 +248,7 @@ function RegisterForm(props) {
         <>
             <div className="container">
                 <div className="row">
-                    <div className="col">
+                    <div className="col member-login-area">
                         <section
                             className="pb-4 justify-content-center memberBgCard rounded-5"
                             style={{ backgroundColor: theme.memberBgCard }}
