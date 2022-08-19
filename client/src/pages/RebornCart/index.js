@@ -5,9 +5,11 @@ import axios from 'axios';
 import {
     BsPatchPlusFill,
     BsPatchPlus,
-    BsPatchQuestionFill,
+    BsFillPatchQuestionFill,
+    BsQuestionCircleFill,
 } from 'react-icons/bs';
 import { HiChevronDoubleUp, HiChevronDoubleDown } from 'react-icons/hi';
+import { MdModeEdit } from 'react-icons/md';
 import { GoArrowRight } from 'react-icons/go';
 import Swal from 'sweetalert2';
 import AvatarSwiper from './components/AvatarSwiper';
@@ -307,7 +309,12 @@ function RebornCart(props) {
                                 color: theme.cHeader,
                             }}
                         >
-                            <h4 className="reborn-cart-main-title">轉生形象</h4>
+                            <h4 className="reborn-cart-main-title">
+                                轉生形象{' '}
+                                <Link to="/showcase" className="gotoShowcase">
+                                    <MdModeEdit className="gotoShowcase-icon" />
+                                </Link>
+                            </h4>
                             <div className="ava-wrap">
                                 <AvatarSwiper
                                     avatarData={avatarData}
@@ -456,7 +463,7 @@ function RebornCart(props) {
                                     <>
                                         陰德值不足！
                                         <Link to="/" className="gotoGame">
-                                            <BsPatchQuestionFill
+                                            <BsQuestionCircleFill
                                                 className="gotogame-icon
                                         "
                                                 title=""
