@@ -644,7 +644,7 @@ h3 {
 @media screen and (min-width: 1400px) {
     .header-baseline-decoration {
         width: 30vw;
-        max-width: 420px;
+        max-width: 430px;
     }
 }
 
@@ -830,13 +830,23 @@ h3 {
         right: -10%;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
         // DONE: 目前暫時沒問題
-        top: -50%;
+        top: -40%;
         width: 50%;
     }
 
     @media screen and (min-width: 992px) {
         .bg-L-mist-right-top-L {
             display: block;
+            animation: bgLmrtL ease-in-out 12s infinite alternate-reverse;
+        }
+
+        @keyframes bgLmrtL {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
         }
     }
 
@@ -846,13 +856,23 @@ h3 {
         right: -10%;
         // FIXME: 如果素材有修正要調整定位方式 最後要以教室電腦為主
         // DONE: 目前暫時沒問題
-        top: -52%;
+        top: -42%;
         width: 50%;
     }
 
     @media screen and (min-width: 992px) {
         .bg-L-mist-right-top-S {
             display: block;
+            animation: bgLmrtS ease-in-out 12s infinite alternate-reverse;
+        }
+
+        @keyframes bgLmrtS {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
         }
     }
 
@@ -1013,6 +1033,58 @@ h3 {
         //     // 85%  { transform: rotate(0); }
         //     100% { transform: rotate(0); }
         // }
+    }
+
+    .bg-D-meteor-right-top {
+        display: none;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-meteor-right-top {
+            display: block;
+            position: absolute;
+            right: 9%;
+            top: 10%;
+        }
+    }
+
+    .bg-D-meteor-right-bottom {
+        display: none;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-meteor-right-bottom {
+            display: block;
+            position: absolute;
+            right: 35%;
+            bottom: 10%;
+        }
+    }
+
+    .bg-D-meteor-left-top {
+        display: none;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-meteor-left-top {
+            display: block;
+            position: absolute;
+            left: 42%;
+            top: 21%;
+        }
+    }
+
+    .bg-D-meteor-left-bottom {
+        display: none;
+    }
+
+    @media screen and (min-width: 992px) {
+        .bg-D-meteor-left-bottom {
+            display: block;
+            position: absolute;
+            left: 17%;
+            bottom: 29%;
+        }
     }
 }
 
