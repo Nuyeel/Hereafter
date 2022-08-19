@@ -17,10 +17,10 @@ import { useNavigate } from 'react-router-dom';
 function Games(props) {
     const { pageName, setUserGooddeed } = props;
     const { setHeader } = useContext(HeaderContext);
-    const navigate = useNavigate();
-    const backtoAbout = () => {
-        navigate('/AboutUsThird', { replace: true });
-    };
+    // const navigate = useNavigate();
+    // const backtoAbout = () => {
+    //     navigate('/AboutUsThird', { replace: true });
+    // };
     const { authorized, sid, account, token } = useContext(AuthContext);
 
     // const gamesRef = createRef();
@@ -38,19 +38,8 @@ function Games(props) {
     }, [canvas]);
 
     const draw = (canvas) => {
-        // create DOM canvas
-        // let canvas = document.createElement('canvas');
-
-        // canvas.classList.add('bubu');
-
         if (canvas) {
             let ctx = canvas.getContext('2d');
-
-            // set canvas dim
-            // canvas.width = window.innerWidth;
-            // canvas.height = window.innerHeight;
-
-            // document.querySelector('.main-container').appendChild(canvas);
 
             function rand(min, max, interval) {
                 if (interval === undefined) interval = 1;
@@ -69,11 +58,13 @@ function Games(props) {
             let player = (function () {
                 let x = 100,
                     y = canvas.height / 2,
-                    w = 10,
-                    h = 10,
+                    w = 36,
+                    h = 30,
                     speed = 10,
                     dead = false,
                     death = 0;
+                //     playerImage = new Image();
+                // playerImage.src = './game-img/Player-alive.svg';
 
                 return {
                     getX: function () {
@@ -118,10 +109,15 @@ function Games(props) {
                     isDead: function () {
                         return dead;
                     },
-
                     draw: function () {
-                        ctx.fillStyle = '#50BEFA';
-                        ctx.fillRect(x, y, w, h);
+                        // ctx.drawImage(playerImage, x, y, w, h);
+
+                        // ctx.fillStyle = '#FFFFFF';
+                        // ctx.fillRect(x, y, w, h);
+
+                        const playerAlive =
+                            document.querySelector('.player-alive');
+                        ctx.drawImage(playerAlive, x, y, 2 * w, h);
                     },
 
                     moveTo: function (a, b) {
@@ -143,24 +139,24 @@ function Games(props) {
                         n: 10,
                         x1: 210,
                         x2: 700,
-                        h_min: 15,
+                        h_min: 65,
                         h_max: 100,
                         speed_min: 0.5,
-                        speed_max: 5,
+                        speed_max: 3,
                         direction: ['up', 'down'],
                     };
 
                 function Block(direction) {
-                    this.w = 10;
+                    this.w = 50;
                     this.h = rand(start.h_min, start.h_max);
-                    this.x = rand(start.x1, start.x2, 10);
+                    this.x = rand(200, 680, 70);
                     this.y = 0;
                     this.speed = rand(start.speed_min, start.speed_max);
                     this.direction = direction;
                     if (direction === 'up') {
-                        this.y = canvas.height + rand(5, 350);
+                        this.y = canvas.height + rand(25, 350);
                     } else {
-                        this.y -= rand(5, 350);
+                        this.y -= rand(25, 350);
                     }
                 }
 
@@ -187,13 +183,33 @@ function Games(props) {
                     },
 
                     drawZone: function () {
-                        ctx.fillStyle = '#111111';
+                        ctx.fillStyle = '#676767';
                         ctx.fillRect(
                             start.x1,
                             0,
                             start.x2 - start.x1 + 10,
                             canvas.height
                         );
+                        ctx.fillStyle = '#C26345';
+                        ctx.fillRect(130, 0, 80, canvas.height);
+                        ctx.fillRect(710, 0, 80, canvas.height);
+
+                        ctx.fillStyle = '#DFC6B7';
+                        ctx.fillRect(205, 0, 5, canvas.height);
+                        ctx.fillRect(705, 0, 5, canvas.height);
+
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fillRect(280, 0, 5, canvas.height);
+
+                        for (let k = 0; k < 3; k++) {
+                            for (let i = 0; i < 10; i++) {
+                                ctx.fillRect(350 + 140 * k, i * 45, 5, 30);
+                            }
+                        }
+
+                        ctx.fillRect(420, 0, 5, canvas.height);
+
+                        ctx.fillRect(560, 0, 5, canvas.height);
                     },
 
                     createXBlocks: function (n) {
@@ -226,6 +242,7 @@ function Games(props) {
                             if (blocks[i].direction === 'up') {
                                 blocks[i].y -= blocks[i].speed;
                                 if (blocks[i].y + blocks[i].h < 0) {
+                                    // blocks[i].y = canvas.height + rand(10, 350);
                                     blocks[i].y = canvas.height + rand(10, 350);
                                 }
                             } else {
@@ -392,7 +409,7 @@ function Games(props) {
 
                     if (isNaN(fps)) fps = 1;
 
-                    ctx.fillStyle = '#888';
+                    ctx.fillStyle = '#7d7d7d';
                     ctx.font = '10px Verdana';
                     ctx.fillText(fps.toFixed(0) + ' fps', 5, canvas.height - 5);
                 }
@@ -408,20 +425,33 @@ function Games(props) {
         }
     };
     return (
-        <canvas
-            ref={canvasRef}
-            width={920}
-            height={300}
-            style={{
-                position: 'absolute',
-                outline: '1px solid green',
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0,
-                margin: 'auto',
-            }}
-        />
+        <>
+            <img
+                src="http://localhost:3500/games/Player-alive.svg"
+                className="player-alive"
+                style={{ display: 'none' }}
+            />
+            <img
+                src="http://localhost:3500/games/Player-dead.svg"
+                className="player-alive"
+                style={{ display: 'none' }}
+            />
+
+            <canvas
+                ref={canvasRef}
+                width={920}
+                height={400}
+                style={{
+                    position: 'absolute',
+                    outline: '1px solid green',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    margin: 'auto',
+                }}
+            />
+        </>
     );
 }
 
