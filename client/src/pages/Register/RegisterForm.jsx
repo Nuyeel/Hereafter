@@ -62,7 +62,7 @@ function RegisterForm(props) {
             searchAccountWord.length >= 3 &&
             searchAccountWord.match(accountRe)
         ) {
-            setValidationCssClassname('is-valid');
+            setValidationCssClassname('');
         } else {
             setValidationCssClassname('is-invalid');
         }
@@ -92,7 +92,7 @@ function RegisterForm(props) {
         }
         // // 即時驗證欄位條件
         if (searchEmailWord.match(emailRe)) {
-            setValidationCssClassname2('is-valid');
+            setValidationCssClassname2('');
         } else {
             setValidationCssClassname2('is-invalid');
         }
@@ -122,7 +122,7 @@ function RegisterForm(props) {
         }
         // // 即時驗證欄位條件
         if (searchPasswordWord.match(passwordRe)) {
-            setValidationCssClassname3('is-valid');
+            setValidationCssClassname3('');
         } else {
             setValidationCssClassname3('is-invalid');
         }
@@ -157,7 +157,7 @@ function RegisterForm(props) {
         console.log(passwordPrevious);
         // // 即時驗證欄位條件
         if (searchConfirmPasswordWord === passwordPrevious) {
-            setValidationCssClassname4('is-valid');
+            setValidationCssClassname4('');
         } else {
             setValidationCssClassname4('is-invalid');
         }

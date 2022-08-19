@@ -52,7 +52,7 @@ function MemberProfileForm(props) {
         }
         // // 即時驗證欄位條件
         if (searchCurrentPasswordWord.match(passwordRe)) {
-            setValidationCssClassname2('is-valid');
+            setValidationCssClassname2('');
         } else {
             setValidationCssClassname2('is-invalid');
         }
@@ -82,7 +82,7 @@ function MemberProfileForm(props) {
         }
         // // 即時驗證欄位條件
         if (searchPasswordWord.match(passwordRe)) {
-            setValidationCssClassname3('is-valid');
+            setValidationCssClassname3('');
         } else {
             setValidationCssClassname3('is-invalid');
         }
@@ -115,7 +115,7 @@ function MemberProfileForm(props) {
         }
         // // 即時驗證欄位條件
         if (searchConfirmPasswordWord === passwordPrevious) {
-            setValidationCssClassname4('is-valid');
+            setValidationCssClassname4('');
         } else {
             setValidationCssClassname4('is-invalid');
         }

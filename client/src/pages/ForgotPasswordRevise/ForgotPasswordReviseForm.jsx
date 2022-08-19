@@ -49,7 +49,7 @@ function ForgotPasswordReviseForm(props) {
         }
         // // 即時驗證欄位條件
         // if (searchPasscodeWord.match(passwordRe)) {
-        //     setValidationCssClassname2('is-valid');
+        //     setValidationCssClassname2('');
         // } else {
         //     setValidationCssClassname2('is-invalid');
         // }
@@ -79,7 +79,7 @@ function ForgotPasswordReviseForm(props) {
         }
         // // 即時驗證欄位條件
         if (searchPasswordWord.match(passwordRe)) {
-            setValidationCssClassname2('is-valid');
+            setValidationCssClassname2('');
         } else {
             setValidationCssClassname2('is-invalid');
         }
@@ -112,7 +112,7 @@ function ForgotPasswordReviseForm(props) {
         }
         // // 即時驗證欄位條件
         if (searchConfirmPasswordWord === passwordPrevious) {
-            setValidationCssClassname3('is-valid');
+            setValidationCssClassname3('');
         } else {
             setValidationCssClassname3('is-invalid');
         }
