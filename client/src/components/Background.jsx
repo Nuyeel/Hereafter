@@ -1,6 +1,7 @@
 // import styled from '@emotion/styled';
 
 import { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import ThemeContext from '../context/ThemeContext/ThemeContext';
 
@@ -16,11 +17,16 @@ import { ReactComponent as BGDWaveRTL } from '../images/Background/bg-D-wave-rig
 import { ReactComponent as BGDWaveRTS } from '../images/Background/bg-D-wave-right-top-S.svg';
 import { ReactComponent as BGDStarL } from '../images/Background/bg-D-star-left.svg';
 import { ReactComponent as BGDStarR } from '../images/Background/bg-D-star-right.svg';
+import { ReactComponent as BGDMeteorT } from '../images/Background/bd-D-meteor-top.svg';
+import { ReactComponent as BGDMeteorB } from '../images/Background/bd-D-meteor-bottom.svg';
 
 // TODO: 調整切換背景的動畫 底色換完 svg 再從兩側滑入應該較易實作
 
 function Background() {
     const { theme } = useContext(ThemeContext);
+    const location = useLocation();
+
+    // console.log(location.pathname);
 
     return (
         <div
@@ -42,6 +48,16 @@ function Background() {
                     <BGDWaveRTS className="bg-D-wave-right-top-S" />
                     <BGDStarL className="bg-D-star-left" />
                     <BGDStarR className="bg-D-star-right" />
+                    {location.pathname !== '/' ? (
+                        <>
+                            <BGDMeteorT className="bg-D-meteor-right-top" />
+                            <BGDMeteorB className="bg-D-meteor-right-bottom" />
+                            {/* <BGDMeteorT className="bg-D-meteor-left-top" />
+                            <BGDMeteorB className="bg-D-meteor-left-bottom" /> */}
+                        </>
+                    ) : (
+                        ''
+                    )}
                 </>
             )}
         </div>
