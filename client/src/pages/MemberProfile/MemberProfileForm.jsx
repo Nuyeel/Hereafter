@@ -236,7 +236,7 @@ function MemberProfileForm(props) {
                                                                                     }{' '}
                                                                                     --
                                                                                 </div>
-                                                                                <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
+                                                                                <button className="btn-member btn-member-pri btn-member-l btn-member-outline-light">
                                                                                     <Link
                                                                                         className="member-link-2"
                                                                                         to="/events
@@ -260,7 +260,7 @@ function MemberProfileForm(props) {
                                                                                         alt=""
                                                                                     />
                                                                                 </div>
-                                                                                <button className="btn-member btn-member-pri btn-member-m btn-member-outline-light">
+                                                                                <button className="btn-member btn-member-pri btn-member-l btn-member-outline-light">
                                                                                     <Link
                                                                                         className="member-link-2"
                                                                                         to="/gooddeed
@@ -308,7 +308,7 @@ function MemberProfileForm(props) {
                                                                                 city &&
                                                                                 dist ? (
                                                                                     <>
-                                                                                        <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
+                                                                                        <button className="btn-member btn-member-sec btn-member-l btn-member-outline-light">
                                                                                             <Link
                                                                                                 className="member-link-2"
                                                                                                 to="/reborn-cart
@@ -320,7 +320,7 @@ function MemberProfileForm(props) {
                                                                                     </>
                                                                                 ) : (
                                                                                     <>
-                                                                                        <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
+                                                                                        <button className="btn-member btn-member-sec btn-member-l btn-member-outline-light">
                                                                                             <Link
                                                                                                 className="member-link-2"
                                                                                                 to="/Place
@@ -356,7 +356,7 @@ function MemberProfileForm(props) {
                                                                                         alt=""
                                                                                     />
                                                                                 </div>
-                                                                                <button className="btn-member btn-member-sec btn-member-m btn-member-outline-light">
+                                                                                <button className="btn-member btn-member-sec btn-member-l btn-member-outline-light">
                                                                                     <Link
                                                                                         className="member-link-2"
                                                                                         to="/Place

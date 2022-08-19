@@ -129,7 +129,7 @@
     font-family: $ff-t, $ff-h;
     font-weight: 700;
     color: #3C3B6785;; 
-    font-size: 1.3rem;
+    font-size: $fz-title;
 }
 
 .member-page-place-scroll {
@@ -211,8 +211,8 @@
 }
 
 .btn-member {
-    height: 32px;
-    font:700 var(--text-font), Arial, sans-serif;
+    // height: 32px;
+    // font:700 var(--text-font), Arial, sans-serif;
     border-radius: 10px;
     position: relative;
     width: 100%;
@@ -240,7 +240,7 @@
 
 .btn-member-l {
     height: 40px;
-    font:700 18px var(--text-font), Arial, sans-serif;
+    font:700 18px, Arial, sans-serif;
     border-radius: 12px;
 }
 
@@ -283,7 +283,7 @@
 .member-link {
     font-family: $ff-t, $ff-h;
     color: $secondary;
-    font-size: $fz-body;
+    font-size: $fz-subtitle;
     border-color: $secondary;
     text-decoration: none;
     transition: .4s;
