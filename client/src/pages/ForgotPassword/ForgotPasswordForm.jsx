@@ -92,7 +92,7 @@ function ForgotPasswordForm() {
                                             <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="account"
-                                                    className=" form-label"
+                                                    className=" form-label member-login-field"
                                                 >
                                                     帳戶名稱
                                                 </label>
@@ -114,7 +114,7 @@ function ForgotPasswordForm() {
                                             <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="email"
-                                                    className="form-label"
+                                                    className="form-label member-login-field"
                                                 >
                                                     電子信箱
                                                 </label>
