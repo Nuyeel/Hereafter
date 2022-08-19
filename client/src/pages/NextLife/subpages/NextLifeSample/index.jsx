@@ -105,7 +105,7 @@ function NextLifeSample(props) {
                             fov: 70,
                             near: 0.1,
                             far: 10000,
-                            position: [0, 150, 100],
+                            position: [0, 200, 300],
                         }}
                     >
                         <Suspense fallback={null}>

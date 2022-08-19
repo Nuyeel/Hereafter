@@ -1,11 +1,12 @@
 import boxMap from '../box/boxMap';
 import shaderMap from '../shader/shaderMap';
 
-function myMaterialLoader(boxID, textureItem) {
+function myMaterialLoader(boxID, textureItem, sampleTextureItem) {
     // 預設值先給所有時間和動畫類型變數
     const material = {
         side: {},
         top: {},
+        sample: {},
     };
 
     const uniform = {
@@ -53,6 +54,12 @@ function myMaterialLoader(boxID, textureItem) {
             material['top']['fragmentShader'] = shaderMap['tt'];
             material['top']['uniforms'] = {
                 textureT: { value: textureItem[boxFace] },
+            };
+            material['sample']['vertexShader'] = shaderMap.v;
+            material['sample']['fragmentShader'] = shaderMap['t'];
+            material['sample']['uniforms'] = {
+                textureT: { value: textureItem[boxFace] },
+                textureText: { value: sampleTextureItem },
             };
         }
     });
