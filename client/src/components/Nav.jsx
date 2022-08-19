@@ -41,6 +41,8 @@ import { IoLogoClosedCaptioning } from 'react-icons/io5';
 // img
 import missingWord from '../images/Nav/missing_word.svg';
 
+import OutlineSoulAlert from '../images/sweetalert2/outline_soul_alert.svg';
+
 // mainpage測試
 import mainpage_nav from '../pages/MainPage/imgs/mainpage_nav.svg';
 
@@ -416,7 +418,13 @@ function Nav(props) {
                                 onClick={() => {
                                     if (!authorized) {
                                         // TODO: 登入提示: 登入才可以查看陰德值哦
-                                        return;
+                                        return Swal.fire({
+                                            title: '請登入以查看陰德值～',
+                                            imageUrl: OutlineSoulAlert,
+                                            imageHeight: 50,
+                                            imageWidth: 50,
+                                            showConfirmButton: false,
+                                        });
                                     } else if (userGooddeed.show) {
                                         setUserGooddeed({
                                             ...userGooddeed,
