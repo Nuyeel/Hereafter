@@ -268,6 +268,7 @@ function MemberProfileReviseForm() {
                                                                     <input
                                                                         type="date"
                                                                         className="form-control input-3"
+                                                                        id="birthdate"
                                                                         name="birthdate"
                                                                         value={
                                                                             memberProfileData.birthdate
