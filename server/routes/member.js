@@ -480,8 +480,14 @@ router
         const sql = 'SELECT * FROM `member` WHERE sid = ?';
         const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
 
-        q1.birthdate = dayjs(q1.birthdate).format('YYYY-MM-DD');
-        q1.deathdate = dayjs(q1.deathdate).format('YYYY-MM-DD');
+        if (q1.birthdate) {
+            q1.birthdate = dayjs(q1.birthdate).format('YYYY-MM-DD');
+            // console.log(q1.birthdate);
+        }
+        if (q1.deathdate) {
+            q1.deathdate = dayjs(q1.deathdate).format('YYYY-MM-DD');
+            // console.log(q1.deathdate);
+        }
 
         output.success = true;
         output.data = q1;
