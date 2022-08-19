@@ -939,7 +939,7 @@ INSERT INTO `place` (`sid`, `year`, `month`, `country`, `city`, `dist`, `quota`,
 CREATE TABLE `place_city` (
   `sid` int(11) NOT NULL,
   `country` varchar(225) DEFAULT NULL,
-  `city` varchar(225) NOT NULL
+  `city` varchar(225) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -995,7 +995,7 @@ INSERT INTO `place_country_list` (`sid`, `country`) VALUES
 CREATE TABLE `place_dist` (
   `country` varchar(225) DEFAULT NULL,
   `city` varchar(225) DEFAULT NULL,
-  `dist` varchar(225) NOT NULL
+  `dist` varchar(225) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
