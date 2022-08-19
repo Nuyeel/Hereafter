@@ -46,7 +46,7 @@ function TimeNewsRow({ style, newsData, handleNewsRef }) {
 
     return (
         <div className="time-news-row row">
-            <div className="col-sm-4 col-12 p-0 pe-2 my-2">
+            <div className="col-sm-4 col-12 p-0 pe-2 rwd-mb">
                 <div className="time-wrap dark-bg-50" style={style}>
                     <p className="tn-title">現在時間：</p>
                     <p className="time tn">

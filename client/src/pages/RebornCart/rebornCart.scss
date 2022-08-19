@@ -11,6 +11,7 @@ $widthMax: 768px;
         margin-top: 15px;
         display: flex;
         padding: 25px 0 10px;
+        position: relative;
 
         @media screen and (max-width: $widthMax) {
             flex-direction: column;
@@ -30,8 +31,30 @@ $widthMax: 768px;
         }
     }
 
+    .soul-deco {
+        position: absolute;
+        width: 25px;
+        right: 40px;
+        top: -22px;
+        animation: soul-opacity-ani 15s ease-in infinite;
+    }
+    @keyframes soul-opacity-ani {
+        0% {
+            opacity: 1;
+        } 20% {
+            opacity: 0.3;
+        } 40% {
+            opacity: 1;
+        } 
+        100% {
+            opacity: 1;
+        }
+    }
+
+
     .gotoShowcase {
         color: #fff;
+        position: relative;
 
         .gotoShowcase-icon {
             border-radius: 50%;
@@ -42,6 +65,27 @@ $widthMax: 768px;
             color: #CE59E7;
             .gotoShowcase-icon{
                 transform: scale(1.2) translate(0, -2px);
+            }
+
+            &::before {
+                content: '修改轉生形象';
+                display: inline-block;
+                visibility: visible;
+                position: absolute;
+                background-color: #e384f2c2;
+                border: 1px solid #d5a7efcc;
+                border-radius: 10px;
+                font-size: 8px;
+                color: #fff;
+                font-weight: 400;
+                top: 50%;
+                left: 110%;
+                width: max-content;
+                text-align: center;
+                padding: 5px;
+                letter-spacing: 1px;
+                word-wrap:break-word;
+                z-index: 9;
             }
             
         }
@@ -525,12 +569,37 @@ $widthMax: 768px;
     .gotoGame {
         color: #3c3b67;
         transition: .5s;
+        position: relative;
+        overflow: visible;
+        svg {
+            transition: .5s;
+        }
 
-        &:hover {
-            color: #CE59E7;
+        &:hover {            
             transform: scale(1.2);
             svg {
-                transform: scale(1.2);
+                color: #CE59E7;
+            }
+
+            &::before {
+                content: '小遊戲增加陰德值';
+                display: inline-block;
+                position: absolute;
+                background-color: #544992;
+                border: 1px solid #d5a7efa5;
+                border-radius: 10px;
+                font-size: 8px;
+                color: #fff;
+                font-weight: 400;
+                top: 130%;
+                right: -110%;
+                width: max-content;
+                text-align: center;
+                padding: 5px;
+                letter-spacing: 1px;
+                word-wrap:break-word;
+                z-index: 9;
+                transform: scale(.9);
             }
         }
     }
@@ -539,26 +608,7 @@ $widthMax: 768px;
         cursor: pointer;
         margin-left: 5px;
         filter: drop-shadow(2px 2px 0 #fff);
-        
-        // &[title] {
-        //     position: relative;
-        // }
-        // &[title]:hover::before {
-        //     content: '小遊戲增加陰德值';
-        //     display: inline-block;
-        //     visibility: visible;
-        //     position: absolute;
-        //     background-color: #fde1efa4;
-        //     border: 1px solid #d5a7efa5;
-        //     border-radius: 10px;
-        //     top: 20px;
-        //     left: 20px;
-        //     font-size: 10px;
-        //     width: 65px;
-        //     padding: 5px;
-        //     letter-spacing: 1px;
-        //     z-index: 999;
-        // }
+       
     }
 
     .deed-enough-wrap-text {

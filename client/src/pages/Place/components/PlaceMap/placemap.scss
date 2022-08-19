@@ -59,6 +59,27 @@ $maxWidth: 376px;
                 }
             }
 
+            .place-card-map-icon-wrap {
+                
+        &[title]:hover::after {
+            top: 115%;
+            left: 0;
+            width: fit-content;
+            word-wrap: none;
+            text-align: center;
+        }
+        .place-card-map-icon {
+            margin-left: 25px;
+            fill: #db8db3;
+            transition: 0.3s;
+
+            &:hover {
+                transform: scale(1.2);
+                fill: #9b60bb;
+            }
+        }
+            }
+
             .price-wrap {
                 color: rgba(34, 34, 34, 0);
                 margin-left: 5px;

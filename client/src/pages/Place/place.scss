@@ -90,6 +90,9 @@ $maxWidth: 376px;
         .time-news-row {
             font-size: 14px;
         }
+        .rwd-mb {
+            margin-bottom: 5px;
+        }
         .rwd-filter-btn-row {
             width: fit-content;
             padding: 4px 5px;
@@ -453,14 +456,13 @@ $maxWidth: 376px;
         margin: 0;
         width: 1em;
         height: 1em;
-        border: 0.15em solid rgba(255, 255, 255, 0.6);
+        border: .15em solid rgba(255, 255, 255, 0.6);
         border-radius: 50%;
         display: grid;
         place-content: center;
 
         &:checked {
             border-color: #ce59e7;
-            box-shadow: 1em 1em 1em #efbbfbc1;
         }
 
         &::before {
@@ -668,8 +670,8 @@ $maxWidth: 376px;
             background-color: #fde1efa4;
             border: 1px solid #d5a7efa5;
             border-radius: 10px;
-            top: 100%;
-            left: 100%;
+            top: 75%;
+            left: 105%;
             font-size: 10px;
             width: 65px;
             padding: 5px;
@@ -681,8 +683,7 @@ $maxWidth: 376px;
             transition: 0.3s;
 
             &:hover {
-                width: 26px;
-                height: 26px;
+                transform: scale(1.2);
                 fill: #9b60bb;
             }
         }

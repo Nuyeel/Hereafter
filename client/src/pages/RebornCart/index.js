@@ -5,18 +5,19 @@ import axios from 'axios';
 import {
     BsPatchPlusFill,
     BsPatchPlus,
-    BsFillPatchQuestionFill,
     BsQuestionCircleFill,
 } from 'react-icons/bs';
 import { HiChevronDoubleUp, HiChevronDoubleDown } from 'react-icons/hi';
 import { MdModeEdit } from 'react-icons/md';
 import { GoArrowRight } from 'react-icons/go';
+import { TbSoup } from 'react-icons/tb';
 import Swal from 'sweetalert2';
 import AvatarSwiper from './components/AvatarSwiper';
 
 import soulIconAlert from '../../images/sweetalert2/outline_soul_alert.svg';
 import soulIconSweetalert from '../../images/sweetalert2/outline_soul.svg';
 import SoulIcon from '../Place/components/SoulIcon';
+import soulPlain from './soul-plain.svg';
 
 import PlaceOption from './components/PlaceOption';
 
@@ -303,6 +304,7 @@ function RebornCart(props) {
                             backgroundColor: theme.rebornBg,
                         }}
                     >
+                        <img alt="" src={soulPlain} className="soul-deco" />
                         <div
                             className="select-ava"
                             style={{
@@ -575,7 +577,15 @@ function RebornCart(props) {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>贈品：孟婆湯</td>
+                                            <td
+                                                style={{
+                                                    fontSize: '14px',
+                                                    fontWeight: '200',
+                                                }}
+                                            >
+                                                贈品： 孟婆湯
+                                                <TbSoup />
+                                            </td>
                                             <td>0</td>
                                         </tr>
                                     </tbody>
