@@ -41,7 +41,8 @@ export const Avatar_Update = `${SERVER}/avatar/update`;
 
 // 陰德值測驗
 export const API_GOODDEED_GET = `${SERVER}/api/gooddeed`;
-
+// 陰德值測驗
+export const API_GAMES_GET = `${SERVER}/api/games`;
 // 希望方塊部分
 export const API_NEXTLIFE = `${SERVER}/api/nextlife`;
 

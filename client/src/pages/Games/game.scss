@@ -1,0 +1,15 @@
+.gameframe{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 840px;
+    height: 460px;
+    transform: translate(-50%,-50%);
+    background-color: rgba(212, 61, 61, 0.421);
+}
+.game-screen{
+    width: 840px;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.406);
+    margin: 'auto',
+}
