@@ -17,17 +17,17 @@ import './game.scss';
 function Games(props) {
     const { pageName, setUserGooddeed } = props;
     const { setHeader } = useContext(HeaderContext);
-    // const navigate = useNavigate();
-    // const backtoAbout = () => {
-    //     navigate('/AboutUsThird', { replace: true });
-    // };
+    const navigate = useNavigate();
 
     const { authorized, sid, account, token } = useContext(AuthContext);
-
+    const backtoMain = () => {
+        navigate('/', { replace: true });
+    };
     // const gamesRef = createRef();
     const canvasRef = useRef();
     const canvas = canvasRef.current;
     const [playtimes, setPlaytimes] = useState(0);
+    const [alert, setAlert] = useState(false);
     const [gooddeedAdd, setGooddeedAdd] = useState(0);
     const fetchGameScore = async () => {
         const r = await fetch(`${API_GAMES_GET}?score=${gooddeedAdd}`, {
@@ -72,10 +72,10 @@ function Games(props) {
             }
 
             let player = (function () {
-                let x = 20,
+                let x = 0,
                     y = canvas.height / 2,
-                    w = 36,
-                    h = 30,
+                    w = 60,
+                    h = 25,
                     speed = 5,
                     dead = false,
                     death = 0;
@@ -129,9 +129,9 @@ function Games(props) {
                         const playerDead =
                             document.querySelector('.player-dead');
                         if (player.isDead()) {
-                            ctx.drawImage(playerDead, x, y, 2 * w, h);
+                            ctx.drawImage(playerDead, x, y, w, h);
                         } else {
-                            ctx.drawImage(playerAlive, x, y, 2 * w, h);
+                            ctx.drawImage(playerAlive, x, y, w, h);
                         }
                     },
 
@@ -258,7 +258,7 @@ function Games(props) {
                         if (player.isDead()) return;
                         else if (px > start.x2) {
                             //level pass
-                            ctrl.x = 0;
+                            ctrl.x = 200;
                             ctrl.y = canvas.height / 2;
                             ctrl.velX = 0;
                             ctrl.velY = 0;
@@ -284,17 +284,17 @@ function Games(props) {
 
                             //colission detection
                             if (
-                                px > blocks[i].x &&
-                                px < blocks[i].x + blocks[i].w &&
-                                py > blocks[i].y &&
-                                py < blocks[i].y + blocks[i].h
+                                px >= blocks[i].x &&
+                                px <= blocks[i].x + blocks[i].w &&
+                                py >= blocks[i].y &&
+                                py <= blocks[i].y + blocks[i].h
                             ) {
                                 player.die();
                             } else if (
-                                px + pw < blocks[i].x + blocks[i].w &&
-                                px + pw > blocks[i].x &&
-                                py + ph < blocks[i].y + blocks[i].h &&
-                                py + ph > blocks[i].y
+                                px + pw <= blocks[i].x + blocks[i].w &&
+                                px + pw >= blocks[i].x &&
+                                py + ph <= blocks[i].y + blocks[i].h &&
+                                py + ph >= blocks[i].y
                             ) {
                                 player.die();
                             }
@@ -409,6 +409,7 @@ function Games(props) {
                     ctx.fillText('Game over!', 20, 50);
                     ctx.fillText('過馬路失敗!', 20, 30);
                     ctx.fillText('Press [SPACE]', 20, 70);
+                    setAlert(true);
                 } else {
                     ctx.fillStyle = '#D98D00';
                     ctx.font = '16px Verdana';
@@ -426,6 +427,7 @@ function Games(props) {
                     setGooddeedAdd(gooddeedPlus);
                     let playTimestotal = blocks.curLevel() + player.getDeath();
                     setPlaytimes(playTimestotal);
+                    setAlert(false);
                 }
             }
 
@@ -481,13 +483,21 @@ function Games(props) {
         />
     );
     const saveBtn = (
-        <div
-            className="saveBtn"
-            onClick={() => {
-                fetchGameScore();
-            }}
-        >
-            儲存遊戲獲得的陰德值！
+        <div>
+            <h4 className='yun-end-game'
+           
+            >
+                遊戲結束
+            </h4>
+            <div
+                className="saveBtn"
+                onClick={() => {
+                    fetchGameScore();
+                    backtoMain();
+                }}
+            >
+                儲存遊戲獲得的陰德值！
+            </div>
         </div>
     );
     return (
@@ -527,17 +537,32 @@ function Games(props) {
                             {playtimes > 5 ? saveBtn : ''}
 
                             <div>
-                                <h4
-                                    style={{
-                                        lineHeight: '1.5rem',
-                                        fontSize: '14px',
-                                        textAlign: 'center',
-                                    }}
-                                >
-                                    透過鍵盤方向鍵
-                                    <br />
-                                    控制上下左右
-                                </h4>
+                                {alert ? (
+                                    <h4
+                                        style={{
+                                            lineHeight: '1.5rem',
+                                            fontSize: '14px',
+                                            textAlign: 'center',
+                                            color: '#FF52BA',
+                                        }}
+                                    >
+                                        按下空白鍵
+                                        <br />
+                                        再玩一次
+                                    </h4>
+                                ) : (
+                                    <h4
+                                        style={{
+                                            lineHeight: '1.5rem',
+                                            fontSize: '14px',
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        透過鍵盤方向鍵
+                                        <br />
+                                        控制上下左右
+                                    </h4>
+                                )}
                             </div>
                             <div
                                 style={{
@@ -600,7 +625,6 @@ function Games(props) {
                                 <p>行善積德，不落人後！</p>
                             </div>
                         </div>
-                       
                     </div>
                 </div>
 

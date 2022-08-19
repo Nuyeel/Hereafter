@@ -16,17 +16,33 @@
     overflow: hidden;
     // background-color: rgba(212, 61, 61, 0.421);
 }
+.yun-end-game{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    display: inline-block;
+    line-height: 2.5rem;
+    font-size: 30px;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    padding: 0px 20px;
+    font-weight: 600;
+
+    
+   color: #E384F2;
+}
 .saveBtn{
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 60%;
     transform: translate(-50%,-50%);
     display: inline-block;
     
     border: 3px solid #E384F2;
     box-shadow: 0px 0px 8px #fc93e0;
     font-size: $fz-subtitle;
-    line-height: 4.5rem;
+    line-height: 3.5rem;
     font-weight: 600;
     color: #E384F2;
     padding: 0px 20px;
@@ -221,7 +237,7 @@
         left: 15%;
         top: 30%;
         transform: translate(-50%,-50%);
-        box-shadow: inset 0px 40px 5px #ebebeb ;
+        box-shadow: inset -5px 0px 0px #cfcdcd ;
     }
     .control-bar::after{
         content: '';
@@ -234,6 +250,8 @@
         left: 50%;
         top: -10%;
         transform: translate(-50%,-50%);
+        box-shadow: inset -10px -10px 0px #c268d0 ;
+
        
 
 
