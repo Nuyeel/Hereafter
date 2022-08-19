@@ -49,7 +49,10 @@ function Games(props) {
     useEffect(() => {
         draw(canvas);
     }, [canvas]);
-
+    const turnoffstart = () => {
+        let gameContext = document.querySelector('.game-context1');
+        gameContext.style.display = 'none';
+    };
     const draw = (canvas) => {
         if (canvas) {
             let ctx = canvas.getContext('2d');
@@ -320,7 +323,7 @@ function Games(props) {
                 // restart
                 if (ctrl.keys[32]) {
                     if (player.isDead()) {
-                        ctrl.x = 0;
+                        ctrl.x = 200;
                         ctrl.y = canvas.height / 2;
                         ctrl.velX = 0;
                         ctrl.velY = 0;
@@ -462,7 +465,7 @@ function Games(props) {
     const Canvas = (
         <canvas
             ref={canvasRef}
-            width={840}
+            width={800}
             height={400}
             style={{
                 position: 'absolute',
@@ -470,7 +473,7 @@ function Games(props) {
                 left: '50%',
 
                 top: '50%',
-                transform: 'translate(-50%,-50%)',
+                transform: 'translate(-50% ,calc(-50% + 20px))',
 
                 // margin: 'auto',
                 zIndex: -1,
@@ -492,12 +495,6 @@ function Games(props) {
             {playtimes <= 5 ? Canvas : ''}
 
             <div className="gameframe">
-                {playtimes >= 5 ? saveBtn : ''}
-
-                <div>
-                    <p>累計陰德值：{gooddeedAdd}</p>
-                    <p>本日遊戲機會剩{5 - playtimes}次</p>
-                </div>
                 <img
                     src="http://localhost:3500/games/Player-alive.svg"
                     className="player-alive"
@@ -510,16 +507,114 @@ function Games(props) {
                 />
 
                 <div className="game-screen">
-                    <div>
-                        <h4>《扶老奶奶過馬路》</h4>
-                        <p>啊罵需要你的幫助！</p>
-                        <p>透過遊戲行善積德，不落人後！</p>
+                    <div className="game-border">
+                        <div className="game-context1">
+                            <h4>《扶老奶奶過馬路》</h4>
+                            <p>啊罵需要你的幫助！</p>
+                            <p>透過遊戲行善積德，不落人後！</p>
+                            <div className="grandma"></div>
+                            <div className="kindman"></div>
+                            <div
+                                className="game-start-btn"
+                                onClick={() => {
+                                    turnoffstart();
+                                }}
+                            >
+                                <p>開始行善！</p>
+                            </div>
+                        </div>
+                        <div className="game-context2">
+                            {playtimes > 5 ? saveBtn : ''}
+
+                            <div>
+                                <h4
+                                    style={{
+                                        lineHeight: '1.5rem',
+                                        fontSize: '14px',
+                                        textAlign: 'center',
+                                    }}
+                                >
+                                    透過鍵盤方向鍵
+                                    <br />
+                                    控制上下左右
+                                </h4>
+                            </div>
+                            <div
+                                style={{
+                                    lineHeight: '1.5rem',
+                                    fontSize: '16px',
+                                    textAlign: 'center',
+                                    marginTop: '20px',
+                                }}
+                            >
+                                <p>
+                                    累計陰德值：
+                                    <br />
+                                    <span
+                                        style={{
+                                            lineHeight: '2rem',
+                                            fontSize: '24px',
+                                            color: '#E384F2',
+                                            fontWeight: 600,
+                                        }}
+                                    >
+                                        {gooddeedAdd}
+                                    </span>
+                                    <div
+                                        className="yun-ghost-cash"
+                                        style={{
+                                            display: 'inline-block',
+                                            width: '20px',
+                                            height: '20px',
+                                            marginLeft: '4px',
+                                        }}
+                                    ></div>
+                                </p>
+                                <p>
+                                    本日遊戲機會剩：
+                                    <br />
+                                    <span
+                                        style={{
+                                            lineHeight: '2rem',
+                                            fontSize: '24px',
+                                            color: '#E384F2',
+                                            fontWeight: 600,
+                                            marginRight: '4px',
+                                        }}
+                                    >
+                                        {playtimes > 5 ? 0 : 6 - playtimes}
+                                    </span>
+                                    次
+                                </p>
+                            </div>
+                            <div
+                                style={{
+                                    lineHeight: '1.5rem',
+                                    fontSize: '14px',
+                                    color: '#F3F59F',
+                                    textAlign: 'center',
+                                    marginTop: '20px',
+                                }}
+                            >
+                                <p>帶領啊罵突破車潮！</p>
+                                <p>行善積德，不落人後！</p>
+                            </div>
+                        </div>
+                       
                     </div>
                 </div>
-                <div className="game-top"></div>
+
                 <div className="game-btm"></div>
-                <div className="game-l"></div>
-                <div className="game-r"></div>
+            </div>
+            <div className="yun-controlpanel1"></div>
+            <div className="yun-controlpanel2">
+                <div className="control-table">
+                    <div className="control-button"></div>
+                    <div className="control-button"></div>
+                    <div className="control-button"></div>
+                    <div className="control-button"></div>
+                </div>
+                <div className="control-bar"></div>
             </div>
         </>
     );
