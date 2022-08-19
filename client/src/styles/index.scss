@@ -209,6 +209,10 @@ h3 {
     align-items: center;
     justify-content: center;
     visibility: hidden;
+
+        h2,h4{
+            visibility: hidden !important;
+        }
 }
 
 .nav_lightbox_visible {
