@@ -211,6 +211,8 @@ app.use(
 // 電子報
 app.use('/news', express.static(`${__dirname}/public/news`));
 
+//小遊戲
+app.use('/games', express.static(`${__dirname}/public/game`));
 // 細節評論頭貼
 app.use('/event/comment', express.static(`${__dirname}/public/event/comment`));
 
