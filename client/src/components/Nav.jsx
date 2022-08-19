@@ -210,7 +210,7 @@ function Nav(props) {
                         }}
                     >
                         <h2 className="nav_link">來生形象</h2>
-                        <h4 className="subtitle">介紹文字放這邊</h4>
+                        <h4 className="subtitle">若有福蔭，形象由己。無緣來此，交由天定。</h4>
                     </div>
 
                     <div
