@@ -155,39 +155,83 @@ function MemberProfileForm(props) {
             return;
         }
 
-        fetch(MEMBER_PASSWORD_REVISE, {
-            method: 'POST',
-            body: JSON.stringify(newPasswordName),
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        })
-            .then((r) => r.json())
-            .then((result) => {
-                console.log(result);
-                if (result.success) {
-                    Swal.fire({
-                        title: '是否確認修改密碼',
-                        imageUrl: soulIconAlert,
-                        imageHeight: 50,
-                        imageWidth: 50,
-                        confirmButtonText: '確認修改',
-                        showDenyButton: true,
-                        denyButtonText: '取消',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
+        Swal.fire({
+            title: '是否確認修改密碼',
+            imageUrl: soulIconAlert,
+            imageHeight: 50,
+            imageWidth: 50,
+            confirmButtonText: '確認修改',
+            showDenyButton: true,
+            denyButtonText: '取消',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(MEMBER_PASSWORD_REVISE, {
+                    method: 'POST',
+                    body: JSON.stringify(newPasswordName),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                    .then((r) => r.json())
+                    .then((result) => {
+                        console.log(result);
+                        if (result.success) {
                             Swal.fire({
                                 title: '修改成功',
+                                html: `<h4>請重新登入</h4>`,
                                 timer: 1000,
                             });
-                        } else if (result.isDenied) {
+                            localStorage.removeItem('auth');
+                            setAuth({
+                                ...result.data,
+                                // authorized: true,
+                            });
+                            navigate('/login');
+                        } else {
+                            Swal.fire(result.error);
+                            return;
                         }
                     });
-                } else {
-                    Swal.fire(result.error);
-                }
-            });
+            } else if (result.isDenied) {
+                Swal.fire('密碼未修改');
+                return;
+            }
+        });
+
+        // fetch(MEMBER_PASSWORD_REVISE, {
+        //     method: 'POST',
+        //     body: JSON.stringify(newPasswordName),
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         Authorization: `Bearer ${token}`,
+        //     },
+        // })
+        //     .then((r) => r.json())
+        //     .then((result) => {
+        //         console.log(result);
+        //         if (result.success) {
+        //             Swal.fire({
+        //                 title: '是否確認修改密碼',
+        //                 imageUrl: soulIconAlert,
+        //                 imageHeight: 50,
+        //                 imageWidth: 50,
+        //                 confirmButtonText: '確認修改',
+        //                 showDenyButton: true,
+        //                 denyButtonText: '取消',
+        //             }).then((result) => {
+        //                 if (result.isConfirmed) {
+        //                     Swal.fire({
+        //                         title: '修改成功',
+        //                         timer: 1000,
+        //                     });
+        //                 } else if (result.isDenied) {
+        //                 }
+        //             });
+        //         } else {
+        //             Swal.fire(result.error);
+        //         }
+        //     });
     };
 
     useEffect(() => {
