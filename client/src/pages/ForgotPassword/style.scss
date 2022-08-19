@@ -20,6 +20,13 @@
     font-size: $fz-body;
 }
 
+.member-login-field {
+    font-family: $ff-h, $ff-t;
+    font-weight: 700;
+    color: $secondary;
+    font-size: 1.28rem;
+}
+
 .member-page-avatar-position {
     width: 150px;
     height: 125px;
@@ -27,7 +34,7 @@
     position: relative;
     border-radius: 15px;
     right: 16px;
-    background-image: linear-gradient(180deg, #EDEFF7, d6dae4);
+    background-image: linear-gradient(180deg, #EDEFF7, #d6dae4);
     transition: .2s;
     border-color: #fff;
 }
@@ -87,7 +94,7 @@
     font-family: $ff-t, $ff-h;
     font-weight: 700;
     color: $secondary; 
-    font-size: $fz-title;
+    font-size: 1.35rem;
     transition: .3s;
     // text-align: center;
 }
@@ -101,7 +108,7 @@
     font-family: $ff-t, $ff-h;
     font-weight: 500;
     color: $secondary; 
-    font-size: 1.2rem;
+    font-size: 18px;
     // text-align: center;
 }
 
@@ -114,7 +121,7 @@
 }
 
 .member-page-gooddeed {
-    font-family: $ff-t, $ff-h;
+    font-family: $ff-h, $ff-t;
     font-weight: 700;
     color: $primary; 
     font-size: $fz-title;
@@ -126,7 +133,7 @@
 }
 
 .member-page-place {
-    font-family: $ff-t, $ff-h;
+    font-family: $ff-h, $ff-t;
     font-weight: 700;
     color: #3C3B6785;; 
     font-size: $fz-title;
@@ -164,16 +171,17 @@
     font-family: $ff-h, $ff-t;
     font-weight: 700;
     color: $secondary;
-    font-size: $fz-subtitle
+    font-size: 1.3rem;
 }
 
 .member-event-info-2 {
-    font-size: 14px;
+    font-size: 16px;
     color:#3C3B67;
 }
 
 .member-event-field {
-    font: 400 16px var(--text-font), Arial, sans-serif;
+    font-size: 14px;
+    // font: 400 14px var(--text-font), Arial, sans-serif;
     color: #BDBDBD;
 }
 
@@ -283,7 +291,7 @@
 .member-link {
     font-family: $ff-t, $ff-h;
     color: $secondary;
-    font-size: $fz-subtitle;
+    font-size: 1.15rem;
     border-color: $secondary;
     text-decoration: none;
     transition: .4s;
@@ -292,22 +300,20 @@
 .member-link:hover {
     font-family: $ff-t, $ff-h;
     color: $primary;
-    font-size: $fz-body;
+    font-size: 1.15rem;
     text-decoration: none
 }
 
 .member-link-2 {
     font-family: $ff-t, $ff-h;
     color: #fff;
-    font-size: $fz-body;
+    font-size: 16px;
     text-decoration: none;
     transition: .4s;
 }
 
 .member-link-2:hover {
-    font-family: $ff-t, $ff-h;
     color: #fff;
-    font-size: $fz-body;
     text-decoration: none;
 }
 

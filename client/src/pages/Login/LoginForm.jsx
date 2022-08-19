@@ -85,7 +85,7 @@ function LoginForm(props) {
                                         <div className="mb-3 member-page-field">
                                             <label
                                                 htmlFor="account"
-                                                className="form-label"
+                                                className="form-label member-login-field"
                                             >
                                                 帳戶名稱
                                             </label>
@@ -103,7 +103,7 @@ function LoginForm(props) {
                                         <div className="mb-3 member-page-field">
                                             <label
                                                 htmlFor="password"
-                                                className="form-label"
+                                                className="form-label member-login-field"
                                             >
                                                 登入密碼
                                             </label>

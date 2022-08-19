@@ -49,8 +49,13 @@ function MemberProfileReviseForm() {
         e.preventDefault();
         console.log(memberProfileData);
 
+        if (memberProfileData.deathdate < memberProfileData.birthdate) {
+            Swal.fire('您的往生日似乎有誤？');
+            return;
+        }
+
         if (!memberProfileData.email.match(emailRe)) {
-            Swal.fire('電子信箱格式有誤');
+            Swal.fire('您的電子信箱格式似乎有誤？');
             return;
         }
 

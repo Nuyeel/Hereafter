@@ -201,7 +201,7 @@ function ForgotPasswordReviseForm(props) {
                                             <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="passcode"
-                                                    className="form-label"
+                                                    className="form-label member-login-field"
                                                 >
                                                     驗證碼
                                                 </label>
@@ -231,7 +231,7 @@ function ForgotPasswordReviseForm(props) {
                                             <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="password"
-                                                    className="form-label"
+                                                    className="form-label member-login-field"
                                                 >
                                                     新密碼
                                                 </label>
@@ -261,7 +261,7 @@ function ForgotPasswordReviseForm(props) {
                                             <div className="mb-3 member-page-field">
                                                 <label
                                                     htmlFor="confirmPassword"
-                                                    className="form-label"
+                                                    className="form-label member-login-field"
                                                 >
                                                     確認新密碼
                                                 </label>

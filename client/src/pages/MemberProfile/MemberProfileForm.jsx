@@ -155,44 +155,46 @@ function MemberProfileForm(props) {
                                                             >
                                                                 <div className="card-body d-flex align-items-center member-page-card">
                                                                     <div className="col-md-9 mb-md-0 p-md-4 ">
-                                                                        <div className="card-title member-page-name">
-                                                                            {mainProfile.name
-                                                                                ? mainProfile.name
-                                                                                : mainProfile.account}
-                                                                        </div>
-                                                                        <br />
-                                                                        {/* TODO：有無日期的呈現方式 */}
-                                                                        {mainProfile.birthdate ? (
-                                                                            <div className="member-page-subtitle">
-                                                                                出生於
-                                                                                <span className=" member-page-text">
-                                                                                    {' '}
-                                                                                    {
-                                                                                        mainProfile.birthdate
-                                                                                    }
-                                                                                </span>
+                                                                        <Link to="/memberprofilerevise">
+                                                                            <div className="card-title member-page-name">
+                                                                                {mainProfile.name
+                                                                                    ? mainProfile.name
+                                                                                    : mainProfile.account}
                                                                             </div>
-                                                                        ) : (
-                                                                            <div className="member-page-subtitle">
-                                                                                未記錄出生日
-                                                                            </div>
-                                                                        )}
-                                                                        <br />
-                                                                        {mainProfile.deathdate ? (
-                                                                            <div className="member-page-subtitle">
-                                                                                往生於
-                                                                                <span className=" member-page-text">
-                                                                                    {' '}
-                                                                                    {
-                                                                                        mainProfile.deathdate
-                                                                                    }
-                                                                                </span>
-                                                                            </div>
-                                                                        ) : (
-                                                                            <div className="member-page-subtitle">
-                                                                                未存在往生紀錄
-                                                                            </div>
-                                                                        )}
+                                                                            <br />
+                                                                            {/* TODO：有無日期的呈現方式 */}
+                                                                            {mainProfile.birthdate ? (
+                                                                                <div className="member-page-subtitle">
+                                                                                    出生於
+                                                                                    <span className=" member-page-text">
+                                                                                        {' '}
+                                                                                        {
+                                                                                            mainProfile.birthdate
+                                                                                        }
+                                                                                    </span>
+                                                                                </div>
+                                                                            ) : (
+                                                                                <div className="member-page-subtitle">
+                                                                                    未記錄出生日
+                                                                                </div>
+                                                                            )}
+                                                                            <br />
+                                                                            {mainProfile.deathdate ? (
+                                                                                <div className="member-page-subtitle">
+                                                                                    往生於
+                                                                                    <span className=" member-page-text">
+                                                                                        {' '}
+                                                                                        {
+                                                                                            mainProfile.deathdate
+                                                                                        }
+                                                                                    </span>
+                                                                                </div>
+                                                                            ) : (
+                                                                                <div className="member-page-subtitle">
+                                                                                    未存在往生紀錄
+                                                                                </div>
+                                                                            )}
+                                                                        </Link>
                                                                     </div>
                                                                     {/* TODO：頭貼位置 */}
                                                                     <div className="member-page-avatar-position">
