@@ -61,6 +61,10 @@ function NextLifeSample(props) {
             return setEachCubeSize(50);
         }
 
+        if (size > 80) {
+            return setEachCubeSize(80);
+        }
+
         setEachCubeSize(size);
 
         // cleaner function (willUnmount)
@@ -102,10 +106,10 @@ function NextLifeSample(props) {
                 {
                     <Canvas
                         camera={{
-                            fov: 70,
+                            fov: 10,
                             near: 0.1,
                             far: 10000,
-                            position: [0, 200, 300],
+                            position: [0, 1440, 1920],
                         }}
                     >
                         <Suspense fallback={null}>

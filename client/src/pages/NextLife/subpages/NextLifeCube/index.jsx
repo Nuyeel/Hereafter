@@ -161,10 +161,10 @@ function NextLifeCube(props, ref) {
             >
                 <Canvas
                     camera={{
-                        fov: 70,
+                        fov: 10,
                         near: 0.1,
                         far: 10000,
-                        position: [0, 100, 150],
+                        position: [0, 900, 1350],
                     }}
                 >
                     <Suspense fallback={null}>
