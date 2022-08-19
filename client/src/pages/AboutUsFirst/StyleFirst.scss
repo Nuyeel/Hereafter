@@ -1,360 +1,380 @@
-.ab-bg-a{
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.2);
-    height: 680px;
-    // width: 48%;
-    flex-basis: 0;
-    flex-grow: 1;
-    border-radius: 20px;
-    padding:100px 30px 30px 30px;
-    backdrop-filter: blur(5px);
-    // position: relative;
-}
-.ab-bg-a p{
-margin-top: 20px;
-font-size: 18px;
-line-height: 2rem;
-letter-spacing: 1.5px;
-}
-.ab-a-wrap{
-    height: 300px;
-    position: relative;
-}
-.ab-body01{
-    transform: scale(.5);
-    display: block;
-    position: absolute;
-    top: -40px;
-    left: 37px;
-    animation: bodyT 4s 9s ease forwards;
-
-}
-.ab-body02{
-    position: absolute;
-    transform: scale(.5);
-    display: block;
-    top: 45px;
-    left: 104px;
-    animation: bodyB 4s 9s ease forwards;
-
-}
-.ab-body03{
-    opacity: 0;
-    width: 30px;
-    position: absolute;
-    top: 110px;
-    // left: 190px;
-    animation: soul 4s 5s ease forwards,soul2 2s 11s linear forwards;
-}
-.ab-body04{
-    width: 20px;
-    opacity: 0;
-    position: absolute;
-    // width: 20px;
-    top: 90px;
-    left: 259px;
-    animation: heartX 1.5s 13.5s linear forwards,heartY 1.5s 13.5s ease-out forwards,heartS .5s 13s ease forwards,heartT .3s 15s ease forwards;
-    // animation: heartS 2.5s 13s ease forwards;
-}
-@keyframes heartT {
-    0%{opacity: 1;}
-    100%{opacity: 0;}
-}
-@keyframes heartS {
-    0%{opacity: 0;}
-    100%{opacity: 1;}
-}
-@keyframes heartX {
-    0%{left: 259px;width: 20px;}
-    100%{left: 882px;width: 46px;}
-}
-@keyframes heartY {
-    0%{top: 90px;}
-    100%{top: -226px;}
-}
-@keyframes soul {
-    0%{opacity: 0;}
-    20%{left: 0px;opacity: 1;}
-    100%{left: 190px;opacity: 1;}
-}
-@keyframes soul2 {
-    0%{left: 190px;}
-    50%{left: 250px;}
-    50%{left: 250px;top: 110px;}
-    100%{left: 250px;top: 90px;transform: scale(.5);}
-}
-@keyframes bodyT {
-    0%{top: -40px;}
-    30%{top: -60px;}
-    70%{top: -60px;}
-    100%{top: -40px;}
-}
-@keyframes bodyB {
-    0%{top: 45px;}
-    30%{top: 65px;}
-    70%{top: 65px;}
-    100%{top: 45px;}
-}
-.ab-bg-a p:hover{
-color: rgb(255, 255, 157);
-
-}
-.ab-bg-b{
-    background-color: rgba(0, 0, 0, 0.2);
-    height: 680px;
-    // width: 48%;
-    flex-basis: 0;
-    flex-grow: 1;
-    border-radius: 20px;
-    padding:120px 30px 30px 30px;
-    margin-left: 30px;
-    backdrop-filter: blur(5px);
-    position: relative;
-}
-
-.ab-star-wrap{
-    opacity: 0;
-    position: absolute;
-    top: 25%;
-    right: 50%;
-    animation:heartS .5s 15s linear forwards, ab-star 1.5s 15.5s linear 2, ab-startwo 2s 18.5s ease;
-    animation-fill-mode: forwards;
-}
-
-
-@keyframes ab-star {
-    0%{transform: rotate(0deg);}
-    100%{transform: rotate(360deg);}
-    
-}
-
-@keyframes ab-startwo {
-    0%{opacity: 1; transform: rotate(0deg) scale(1);}
-    100%{opacity: .5; transform: rotate(360deg) scale(.5);top: 80%;transform: scale(0);}
-    
-}
-.ab-flag{
-    position: absolute;
-    top: 25px;
-    left: -5px;
-}
-.ab-title{
-    position: absolute;
-    color: white;
-    font-size: 32px;
-    font-weight: 700;
-    top:17px;
-    left: 50px;
-    letter-spacing: 3px;
-}
-
-.ab-t-logo{
-    position: absolute;
-    bottom: 70px;
-    left: 80px;
-
-}
-.ab-line-1{
-    width: 1.5px;
-    height: 220px;
-    background-color: #fff;
-    position: absolute;
-    transform-origin: 0 100%;
-    bottom: 130px;
-    left: 165px;
-    animation: ab-line .8s 20.5s ease backwards;
-}
-@keyframes ab-line{
-    0%{transform: scale(0);}
-    100%{transform: scale(1);}
-}
-.ab-c1{
-    width: 55px;
-    height: 55px;
-    color: #fff;
-    line-height: 3rem;
-    text-align: center;
-    background-color: #9587E1;
-    border: 2.5px solid white;
-    border-radius: 50%;
-    transform: translate(-27px,-50px);
-}
-.ab-line-2{
-    width: 1.5px;
-    height: 150px;
-    background-color: #fff;
-    position: absolute;
-    bottom: 130px;
-    left: 225px;
-    transform-origin: 0 100%;
-    animation: ab-line .8s 20.7s ease backwards;
-
-}
-.ab-c2{
-    width: 50px;
-    height: 50px;
-    color: #fff;
-    line-height: 2.7rem;
-    text-align: center;
-    background-color: #E384F2;
-    border: 2.5px solid white;
-    border-radius: 50%;
-    
-    transform: translate(-25px,-40px);
-}
-.ab-line-3{
-    width: 1.5px;
-    height: 180px;
-    background-color: #fff;
-    position: absolute;
-    bottom: 130px;
-    left: 300px;
-    transform-origin: 0 100%;
-    animation: ab-line .8s 20.9s ease backwards;
-
-}
-.ab-c3{
-    width: 55px;
-    height: 55px;
-    color: #fff;
-    line-height: 3rem;
-    text-align: center;
-    background-color: #EAAE77;
-    border: 2.5px solid white;
-    border-radius: 50%;
-    transform: translate(-27px,-40px);
-}
-.ab-line-4{
-    width: 1.5px;
-    height: 168px;
-    background-color: #fff;
-    position: absolute;
-    bottom: 130px;
-    left: 400px;
-    transform-origin: 0 100%;
-    animation: ab-line .8s 21.1s ease backwards;
-
-}
-.ab-c4{
-    width: 50px;
-    height: 50px;
-    color: #fff;
-    line-height: 2.7rem;
-    text-align: center;
-    background-color: #81A8E0;
-    border: 2.5px solid white;
-    border-radius: 50%;
-    transform: translate(-25px,-40px);
-}
-.ab-line-5{
-    width: 1.5px;
-    height: 210px;
-    background-color: #fff;
-    position: absolute;
-    bottom: 130px;
-    left: 500px;
-    transform-origin: 0 100%;
-    animation: ab-line .8s 21.3s ease backwards;
-
-}
-.ab-c5{
-    width: 55px;
-    height: 55px;
-    color: #fff;
-    line-height: 3rem;
-    text-align: center;
-    background-color: #84D2B9;
-    border: 2.5px solid white;
-    border-radius: 50%;
-    transform: translate(-27px,-40px);
-}
-.fa-solid.fa-moon{
-    margin-right: 5px;
-    color: #fff;
-}
-.fa-solid.fa-location-dot{
-    margin-right: 5px;
-    color: #fff;
-}
-
-.ab-page-arrow{
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    z-index: 99;
-
-}
-
 .ab-a-bg-wrap{
-    outline: 1px solid red;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     position: relative;
-}
 
-.ab-star-a{
-    position: absolute;
-    top: 140px;
-    left: 200px;
-    animation: twinkle 4s 1.5s linear infinite 
+    .ab-page-arrow{
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        z-index: 99;
+    }
+
+    .ab-bg-a{
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.2);
+        height: 680px;
+        // width: 48%;
+        flex-basis: 0;
+        flex-grow: 1;
+        border-radius: 20px;
+        padding:100px 30px 30px 30px;
+        backdrop-filter: blur(5px);
+        // position: relative;
+    }
+    .ab-bg-a p{
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 2rem;
+    letter-spacing: 1.5px;
+    }
+
+    .ab-flag{
+        position: absolute;
+        top: 25px;
+        left: -5px;
+    }
+
+    .ab-title{
+        position: absolute;
+        color: white;
+        font-size: 32px;
+        font-weight: 700;
+        top:17px;
+        left: 50px;
+        letter-spacing: 3px;
+    }
+
+    .fa-solid.fa-moon{
+        margin-right: 5px;
+        color: #fff;
+    }
+
+    .fa-solid.fa-location-dot{
+        margin-right: 5px;
+        color: #fff;
+    }
+
+    .ab-a-wrap{
+        height: 300px;
+        position: relative;
 
 
-}
-.ab-star-b{
-    position: absolute;
-    top: 240px;
-    left: 120px;
-    animation: twinkle 3s 1s linear infinite 
+        // 上半身
+        .ab-body01{
+            transform: scale(.45);
+            display: block;
+            position: absolute;
+            top: -41px;
+            left: 75px;
+            animation: bodyT 4s 9s ease forwards;
+        }
 
-}
-.ab-star-c{
-    position: absolute;
-    top: 230px;
-    right: 120px;
-    animation: twinkle 4s .5s linear infinite 
+        // 下半身
+        .ab-body02{
+            position: absolute;
+            transform: scale(.45);
+            display: block;
+            top: 60px;
+            left: 85.5px;
+            animation: bodyB 4s 9s ease forwards;
 
-}
-.ab-star-d{
-    position: absolute;
-    top: 60px;
-    right: 90px;
-    animation: twinkle 3s 1.5s linear infinite 
+        }
+        // 靈魂
+        .ab-body03{
+            opacity: 0;
+            width: 30px;
+            position: absolute;
+            top: 120px;
+            animation: soul 4s 5s ease forwards,soul2 2s 11s linear forwards;
+        }
 
-}
-.ab-star-e{
-    position: absolute;
-    top: 120px;
-    left: 90px;
-    animation: twinkle 3s 1.5s linear infinite 
+        //流星
+        .ab-body04{
+            width: 20px;
+            opacity: 0;
+            position: absolute;
+            top: 90px;
+            left: 283px;
+            animation: heartX 1.5s 13.5s linear forwards,heartY 1.5s 13.5s ease-out forwards,heartS .5s 13s ease forwards,heartT .3s 15s ease forwards;
+        }
+    }
 
-}
-.ab-star-f{
-    position: absolute;
-    top: 200px;
-    left: 50px;
-    animation: twinkle 4s linear infinite 
-}
+    @keyframes heartT {
+        0%{opacity: 1;}
+        100%{opacity: 0;}
+    }
 
-.ab-star-g{
-    opacity: 0;
-    position: absolute;
-    top: 27%;
-    left: 43%;
-    animation: twinkle2 4s 7.2s linear infinite 
+    //心臟
+    @keyframes heartS {
+        0%{opacity: 0;}
+        100%{opacity: 1;}
+    }
 
-}
+    //拋物線
+    @keyframes heartX {
+        0%{left: 283px;width: 20px;}
+        100%{left: 903px;width: 46px;}
+    }
+    @keyframes heartY {
+        0%{top: 90px;}
+        100%{top: -226px;}
 
-@keyframes twinkle2 {
-    0%{opacity: 0;}
-    25%{opacity: 1;}
-    50%{opacity: 0;}
-    
-}
+    }
+    // 走進
+    @keyframes soul {
+        0%{opacity: 0;}
+        20%{left: 0px;opacity: 1;}
+        100%{left: 210px;opacity: 1;}
+    }
 
-@keyframes twinkle {
-    0%{opacity: 1;}
-    25%{opacity: 0;}
-    50%{opacity: 1;}
-    
+    // 裝箱
+    @keyframes soul2 {
+        0%{left: 210px;}
+        50%{left: 280px;}
+        50%{left: 280px;top: 120px;}
+        100%{left: 280px;top: 100px;transform: scale(.5);}
+    }
+
+    // 上半身
+    @keyframes bodyT {
+        0%{top: -41px;}
+        30%{top: -55px;}
+        70%{top: -55px;}
+        100%{top: -41px;}
+    }
+
+    // 下半身
+    @keyframes bodyB {
+        0%{top: 60px;}
+        30%{top: 80px;}
+        70%{top: 80px;}
+        100%{top: 60px;}
+    }
+
+    .ab-bg-a p:hover{
+    color: rgb(255, 255, 157);
+
+    }
+    .ab-bg-b{
+        background-color: rgba(0, 0, 0, 0.2);
+        height: 680px;
+        flex-basis: 0;
+        flex-grow: 1;
+        border-radius: 20px;
+        padding:120px 30px 30px 30px;
+        margin-left: 30px;
+        backdrop-filter: blur(5px);
+        position: relative;
+    }
+
+    // 星星落下
+    .ab-star-wrap{
+        opacity: 0;
+        position: absolute;
+        top: 25%;
+        right: 50%;
+        animation:heartS .5s 15s linear forwards, ab-star 1.5s 15.5s linear 2, ab-startwo 2s 18.5s ease forwards;
+    }
+
+
+    @keyframes ab-star {
+        0%{transform: rotate(0deg);}
+        100%{transform: rotate(360deg);}
+        
+    }
+
+    @keyframes ab-startwo {
+        0%{opacity: 1; transform: rotate(0deg) scale(1);}
+        100%{opacity: .5; transform: rotate(360deg) scale(.3);top: 80%;}
+        
+    }
+
+    .ab-t-logo{
+        position: absolute;
+        bottom: 70px;
+        left: 80px;
+
+    }
+
+    .ab-line-1{
+        width: 1.5px;
+        height: 220px;
+        background-color: #fff;
+        position: absolute;
+        transform-origin: 0 100%;
+        bottom: 130px;
+        left: 165px;
+        animation: ab-line .8s 20.5s ease backwards;
+        .ab-c1{
+            width: 55px;
+            height: 55px;
+            color: #fff;
+            line-height: 3rem;
+            text-align: center;
+            background-color: #9587E1;
+            border: 2.5px solid white;
+            border-radius: 50%;
+            transform: translate(-27px,-50px);
+        }
+    }
+
+    // 伸縮
+    @keyframes ab-line{
+        0%{transform: scale(0);}
+        100%{transform: scale(1);}
+    }
+
+    .ab-line-2{
+        width: 1.5px;
+        height: 150px;
+        background-color: #fff;
+        position: absolute;
+        bottom: 130px;
+        left: 225px;
+        transform-origin: 0 100%;
+        animation: ab-line .8s 20.7s ease backwards;
+        .ab-c2{
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            line-height: 2.7rem;
+            text-align: center;
+            background-color: #E384F2;
+            border: 2.5px solid white;
+            border-radius: 50%;
+            
+            transform: translate(-25px,-40px);
+        }
+    }
+
+    .ab-line-3{
+        width: 1.5px;
+        height: 180px;
+        background-color: #fff;
+        position: absolute;
+        bottom: 130px;
+        left: 300px;
+        transform-origin: 0 100%;
+        animation: ab-line .8s 20.9s ease backwards;
+        .ab-c3{
+            width: 55px;
+            height: 55px;
+            color: #fff;
+            line-height: 3rem;
+            text-align: center;
+            background-color: #EAAE77;
+            border: 2.5px solid white;
+            border-radius: 50%;
+            transform: translate(-27px,-40px);
+        }
+    }
+
+    .ab-line-4{
+        width: 1.5px;
+        height: 168px;
+        background-color: #fff;
+        position: absolute;
+        bottom: 130px;
+        left: 400px;
+        transform-origin: 0 100%;
+        animation: ab-line .8s 21.1s ease backwards;
+        .ab-c4{
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            line-height: 2.7rem;
+            text-align: center;
+            background-color: #81A8E0;
+            border: 2.5px solid white;
+            border-radius: 50%;
+            transform: translate(-25px,-40px);
+        }
+    }
+
+    .ab-line-5{
+        width: 1.5px;
+        height: 210px;
+        background-color: #fff;
+        position: absolute;
+        bottom: 130px;
+        left: 500px;
+        transform-origin: 0 100%;
+        animation: ab-line .8s 21.3s ease backwards;
+    .ab-c5{
+        width: 55px;
+        height: 55px;
+        color: #fff;
+        line-height: 3rem;
+        text-align: center;
+        background-color: #84D2B9;
+        border: 2.5px solid white;
+        border-radius: 50%;
+        transform: translate(-27px,-40px);
+    }
+    }
+
+    // 背景一閃一閃亮晶晶
+    .ab-star-a{
+        position: absolute;
+        top: 140px;
+        left: 200px;
+        animation: twinkle 4s 1.5s linear infinite 
+    }
+
+    .ab-star-b{
+        position: absolute;
+        top: 240px;
+        left: 120px;
+        animation: twinkle 3s 1s linear infinite 
+    }
+
+    .ab-star-c{
+        position: absolute;
+        top: 230px;
+        right: 120px;
+        animation: twinkle 4s .5s linear infinite 
+    }
+
+    .ab-star-d{
+        position: absolute;
+        top: 60px;
+        right: 90px;
+        animation: twinkle 3s 1.5s linear infinite 
+    }
+
+    .ab-star-e{
+        position: absolute;
+        top: 120px;
+        left: 90px;
+        animation: twinkle 3s 1.5s linear infinite 
+    }
+
+    .ab-star-f{
+        position: absolute;
+        top: 200px;
+        left: 50px;
+        animation: twinkle 4s linear infinite 
+    }
+
+    .ab-star-g{
+        opacity: 0;
+        position: absolute;
+        top: 27%;
+        left: 43%;
+        animation: twinkle2 4s 7.2s linear infinite 
+    }
+
+    @keyframes twinkle2 {
+        0%{opacity: 0;}
+        25%{opacity: 1;}
+        50%{opacity: 0;}
+    }
+
+    @keyframes twinkle {
+        0%{opacity: 1;}
+        25%{opacity: 0;}
+        50%{opacity: 1;}
+    }
 }

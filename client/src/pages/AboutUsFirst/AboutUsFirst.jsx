@@ -11,7 +11,6 @@ import { ReactComponent as Star } from './imgs/star.svg';
 import { ReactComponent as StarS } from './imgs/star-s.svg';
 import { ReactComponent as Ghost } from '../AboutUsThird/imgs/ghost.svg';
 import './StyleFirst.scss';
-import Chat from '../../components/Chat/Chat';
 
 function AboutUsFirst(props) {
     const { pageName } = props;
@@ -24,7 +23,6 @@ function AboutUsFirst(props) {
     return (
         <>
             <div className="container">
-                {/* <Chat /> */}
                 <div className="ab-a-bg-wrap">
                     <Link to="/aboutussecond">
                         <Pagearrow className="ab-page-arrow" />
@@ -90,18 +88,21 @@ function AboutUsFirst(props) {
                             若你已結束了此生，也可透過小遊戲連接陽介提升少許陰德值。
                         </p>
                         <div className="ab-a-wrap">
+                            {/* 上半身 */}
                             <img
                                 className="ab-body02"
                                 src={require('./imgs/a02.png')}
                                 alt="bodybottom"
                             />
+                            {/* 靈魂 */}
                             <Ghost className="ab-body03" />
-
+                            {/* 下半身 */}
                             <img
                                 className="ab-body01"
                                 src={require('./imgs/a01.png')}
                                 alt="bodytop"
                             />
+                            {/* 流星 */}
                             <Star className="ab-body04" />
                         </div>
                     </div>

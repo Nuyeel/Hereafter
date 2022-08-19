@@ -1,6 +1,9 @@
-// .ab-third-wrap{
-// height: 650px;
-// }
+.ab-page-arrow{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+}
 
 .ab-bg{
     background-color: rgba(0, 0, 0, 0.2);
@@ -11,6 +14,7 @@
     position: relative;
 
 }
+
 .ab-hint-wrap{
     color: white;
     font-weight: 500;
@@ -23,10 +27,7 @@
     margin-bottom: 80px;
     display: flex;
 }
-.ab-hint-l-wrap{
-    width: 40%;
 
-}
 .ab-hint-l{
     color: #fff;
     background-color: #E384F2;
@@ -34,6 +35,7 @@
     height: 50px;
     border-radius: 15px 0 0 15px;
 }
+
 .ab-hint-l-wrap:hover .ab-hint-l{
     color: #fff;
     background-color: #D649EC;
@@ -74,10 +76,7 @@
     top: 50px;
     left: 20px;
 }
-.ab-hint-l-wrap:hover .ab-hint-arrow{
-    border-color: #D649EC transparent transparent transparent
 
-}
 
 .ab-card-wrap{
     /* background-color: #fff; */
@@ -188,10 +187,7 @@
     margin-right: 5px;
     // margin-bottom: 18px;
 }
-.ab-ghost-a{
-    position: absolute;
-    top: 85px;
-}
+
 
 .ab-ghost-b{
     position: absolute;
@@ -209,23 +205,35 @@
     right: 450px;
 
 }
+.ab-hint-l-wrap{
+    width: 40%;
 
-.ab-ghost-l1{
-    position: absolute;
-    left: 80px;
+    .ab-ghost-a{
+        position: absolute;
+        top: 85px;
 
+        // 鬼鬼走路
+        .ab-ghost-l1{
+            position: absolute;
+            left: 80px;
+        }
+
+        .ab-ghost-l2{
+            position: absolute;
+            left: 45px;
+            top: 10px;
+        }
+
+        .ab-ghost-l3{
+            position: absolute;
+            left: 15px;
+            top: 12px;
+        }
+    }
 }
+.ab-hint-l-wrap:hover .ab-hint-arrow{
+    border-color: #D649EC transparent transparent transparent
 
-.ab-ghost-l2{
-    position: absolute;
-    left: 45px;
-    top: 10px;
-}
-
-.ab-ghost-l3{
-    position: absolute;
-    left: 15px;
-    top: 12px;
 }
 
 .ab-hint-l-wrap:hover .ab-ghost-l1{
@@ -240,76 +248,7 @@
     animation: g3 4s ease;
 }
 
-.ab-ghost-r1{
-    position: absolute;
-    top: 7px;
-
-}
-.ab-ghost-r2{
-    position: absolute;
-    top: -22px;
-    right: -34px;
-}
-
-.ab-hint-r:hover .ab-ghost-r1{
-    animation: g4 1.5s ease;
-
-}
-
-.ab-hint-r:hover .ab-ghost-r2{
-    animation: g5 1.5s ease;
-
-}
-
-.ab-ghost-m1{
-    position: absolute;
-    top: 5.5px;
-
-}
-.ab-ghost-m2{
-    position: absolute;
-    top: 17px;
-    right: 10px;
-
-}
-.ab-ghost-m3{
-    position: absolute;
-    top: 17px;
-    right: -70px;
-}
-
-.ab-hint-m:hover .ab-ghost-c{
-    animation: show 1s ease;
-}
-
-@keyframes show {
-    0%{opacity:0;}
-    40%{opacity:1;}
-    50%{opacity:.5;}
-    60%{opacity:1;}
-    100%{opacity:0;}
-
-}
-
-
-@keyframes g4 {
-    0%{top: 7px;}
-    30%{top: 7px;}
-    38%{top: 12px;}
-    50%{top: 7px;}
-
-}
-
-@keyframes g5 {
-    0%{top: -22px;}
-    15%{top: -32px;}
-    30%{top: -17px;}
-    40%{top: -25px;}
-    47%{top: -19px;}
-    55%{top: -22px;}
-
-}
-
+// 鬼鬼走路動畫
 @keyframes g1{
     0%{left: 80px;}
     30%{left: 150px;transform:scaleX(1);}
@@ -318,7 +257,6 @@
     65%{left: 80px;transform:scaleX(-1);}
     70%{left: 80px;transform:scaleX(1);}
     100%{left: 80px;transform:scaleX(1);}
-
 }
 
 @keyframes g2{
@@ -336,6 +274,76 @@
     90%{left: 15px;;transform:scaleX(-1);}
     93%{left: 15px;;transform:scaleX(1);}
 }
+
+// 鬼鬼彈跳
+.ab-ghost-r1{
+    position: absolute;
+    top: 7px;
+
+}
+.ab-ghost-r2{
+    position: absolute;
+    top: -22px;
+    right: -34px;
+}
+
+.ab-hint-r:hover .ab-ghost-r1{
+    animation: g4 1.5s ease;
+}
+
+.ab-hint-r:hover .ab-ghost-r2{
+    animation: g5 1.5s ease;
+}
+
+// 鬼鬼彈跳動畫
+@keyframes g4 {
+    0%{top: 7px;}
+    30%{top: 7px;}
+    38%{top: 12px;}
+    50%{top: 7px;}
+}
+
+@keyframes g5 {
+    0%{top: -22px;}
+    15%{top: -32px;}
+    30%{top: -17px;}
+    40%{top: -25px;}
+    47%{top: -19px;}
+    55%{top: -22px;}
+}
+
+// 鬼鬼出現
+.ab-ghost-m1{
+    position: absolute;
+    top: 5.5px;
+}
+
+.ab-ghost-m2{
+    position: absolute;
+    top: 17px;
+    right: 10px;
+}
+
+.ab-ghost-m3{
+    position: absolute;
+    top: 17px;
+    right: -70px;
+}
+
+.ab-hint-m:hover .ab-ghost-c{
+    animation: show 1s ease;
+}
+
+// 鬼鬼出現動畫
+@keyframes show {
+    0%{opacity:0;}
+    40%{opacity:1;}
+    50%{opacity:.5;}
+    60%{opacity:1;}
+    100%{opacity:0;}
+
+}
+
 @media (min-width: 375px) and (max-width: 800px) {
     .ab-hint-wrap{
       display: block;

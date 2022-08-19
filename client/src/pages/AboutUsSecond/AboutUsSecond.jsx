@@ -9,9 +9,7 @@ import './StyleSecond.scss';
 import { ReactComponent as Pagearrow } from './imgs/pagearrow.svg';
 //data
 import info from './data/info.json';
-import Chat from '../../components/Chat/Chat';
 
-// import ChatTwo from '../../components/Chat/ChatTwo';
 function AboutUsSecond(props) {
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
@@ -23,7 +21,6 @@ function AboutUsSecond(props) {
     return (
         <>
             <div className="container">
-                {/* <Chat /> */}
                 <div className="ab-bg-sec ">
                     <Link to="/aboutusthird">
                         <Pagearrow className="ab-page-arrow" />
