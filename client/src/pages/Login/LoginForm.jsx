@@ -18,13 +18,20 @@ function LoginForm(props) {
         password: '',
     });
 
+    // 死人帳號（可以再改
     const [fillData, setFillData] = useState({
         account: 'HappyCat07',
         password: 'HappyCat07',
     });
 
+    // 活人帳號（可以再改
+    const [fillAliveData, setFillAliveData] = useState({
+        account: 'HappyCat05',
+        password: 'HappyCat05',
+    });
+
     const { pageName } = props;
-    const { authorized, setAuth, userLogout } = useContext(AuthContext);
+    const { authorized, setAuth } = useContext(AuthContext);
     const { setHeader } = useContext(HeaderContext);
     const { theme, themeContext } = useContext(ThemeContext);
     const navigate = useNavigate();
@@ -159,6 +166,13 @@ function LoginForm(props) {
                                         </div>
                                     </form>
                                 </div>
+                                 {/* 點右邊邊區塊自動填入HappyCat05登入資料 */}
+                                <div
+                                    className="member-login-auto-fill-2"
+                                    onClick={() => {
+                                        setLoginData(fillAliveData);
+                                    }}
+                                ></div>
                             </section>
                         </section>
                     </div>
