@@ -17,6 +17,9 @@ const sqlstring = require('sqlstring');
 
 // 進行寄發驗證信
 const nodemailer = require('nodemailer');
+
+const dayjs = require('dayjs');
+
 // 傳送 AJAX 用
 // const axios = require('axios');
 
@@ -363,8 +366,8 @@ router
         // 用query方法查詢驗證碼
         const sql = 'SELECT * FROM member WHERE passcode = ?';
         const [[q1]] = await db.query(sql, [req.body.passcode]);
-        console.log(q1.passcode);
-        console.log(req.body.passcode);
+        // console.log(q1.passcode);
+        // console.log(req.body.passcode);
 
         if (req.body.passcode !== q1.passcode) {
             output.code = 412;
@@ -376,7 +379,7 @@ router
             const salt = bcryptjs.genSaltSync(10);
             const hash = await bcryptjs.hash(req.body.password, salt);
             const [q3] = await db.execute(sql3, [hash, req.body.passcode]);
-            console.log(req.body.passcode);
+            // console.log(req.body.passcode);
         }
         output.success = true;
         output.error = '密碼修改成功';
@@ -414,24 +417,23 @@ router.route('/profile').get(async (req, res) => {
 
     const sql4 = 'SELECT profile_picture FROM `member` WHERE sid = ?';
     const [[q4]] = await db.query(sql4, [res.locals.loginUser.id]);
-    console.log(q4);
 
     if (q4.profile_picture == null) {
         const sql2 = 'SELECT * FROM `member` WHERE sid = ?';
         const [q2] = await db.query(sql2, [res.locals.loginUser.id]);
         output.bithdatedata = q2;
-        console.log(q2);
     } else {
         const sql =
             'SELECT m.*, sc.img_name FROM member m JOIN showcase sc ON m.profile_picture = sc.avatar_id WHERE sid = ?';
         const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
-        console.log(q1);
 
         if (q1.birthdate) {
-            q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
+            q1.birthdate = dayjs(q1.birthdate).format('YYYY-MM-DD');
+            // console.log(q1.birthdate);
         }
         if (q1.deathdate) {
-            q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
+            q1.deathdate = dayjs(q1.deathdate).format('YYYY-MM-DD');
+            // console.log(q1.deathdate);
         }
 
         output.data = q1;
@@ -440,7 +442,6 @@ router.route('/profile').get(async (req, res) => {
     const sql3 =
         'SELECT p.country, p.city, p.dist FROM place p JOIN place_in_cart pc ON p.sid = pc.place_sid  WHERE pc.member_sid = ? ORDER BY RAND() LIMIT 1';
     const [q3] = await db.query(sql3, [res.locals.loginUser.id]);
-    // console.log(q3[0]);
 
     if (q3.length !== 0) {
         output.placedata = q3[0];
@@ -449,7 +450,7 @@ router.route('/profile').get(async (req, res) => {
     const sql5 =
         'SELECT p.country, p.city, p.dist FROM place p JOIN place_liked pl ON p.sid = pl.place_sid WHERE pl.member_sid = ? ORDER BY RAND() LIMIT 1';
     const [q5] = await db.query(sql5, [res.locals.loginUser.id]);
-    console.log(q5[0]);
+    // console.log(q5[0]);
 
     if (q5.length !== 0) {
         output.placelikeddata = q5[0];
@@ -478,9 +479,10 @@ router
         };
         const sql = 'SELECT * FROM `member` WHERE sid = ?';
         const [[q1]] = await db.query(sql, [res.locals.loginUser.id]);
-        // console.log(q1);
-        q1.birthdate = new Date(q1.birthdate).toISOString().slice(0, 10);
-        q1.deathdate = new Date(q1.deathdate).toISOString().slice(0, 10);
+
+        q1.birthdate = dayjs(q1.birthdate).format('YYYY-MM-DD');
+        q1.deathdate = dayjs(q1.deathdate).format('YYYY-MM-DD');
+
         output.success = true;
         output.data = q1;
         output.error = '成功取得資料';
