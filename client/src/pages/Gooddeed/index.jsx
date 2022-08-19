@@ -1,8 +1,9 @@
 import { useContext, useState, useEffect } from 'react';
 // 會員登入context
 import AuthContext from '../../context/AuthContext/AuthContext';
+//放入主題切換樣式
+import ThemeContext from '../../context/ThemeContext/ThemeContext';
 //載入資料
-//TODO:後端修改資料獲取
 import axios from 'axios';
 import { API_GOODDEED_GET } from '../../config/ajax-path';
 // 標題（不會用）
@@ -17,6 +18,8 @@ import { useNavigate } from 'react-router-dom';
 function Gooddeed(props) {
     const { pageName, setUserGooddeed } = props;
     const { setHeader } = useContext(HeaderContext);
+    const { theme } = useContext(ThemeContext);
+
     const navigate = useNavigate();
     const backtoAbout = () => {
         navigate('/AboutUsThird', { replace: true });
@@ -74,8 +77,13 @@ function Gooddeed(props) {
             >
                 <div className="yun-start">
                     <div className="yun-start-card">
-                        <h3>{account}您已經測驗過了！</h3>
-                        <div className="yun-ques">
+                        <h3 style={{ color: theme.cHeader }}>
+                            {account}您已經測驗過了！
+                        </h3>
+                        <div
+                            className="yun-ques"
+                            style={{ color: theme.cHeader }}
+                        >
                             <div>您的陰德值為</div>
                             {/*TODO:後端取得既有分數*/}
                             {score ? <h3>{score}</h3> : ''}
@@ -105,7 +113,10 @@ function Gooddeed(props) {
                 }}
             >
                 <div className="yun-start">
-                    <div className="yun-start-card">
+                    <div
+                        className="yun-start-card"
+                        style={{ color: theme.cHeader }}
+                    >
                         <h3>陰德值檢定</h3>
                         <div className="yun-ques">
                             <div>想知道自己攢下了多少陰德值嗎?</div>
@@ -155,15 +166,15 @@ function Gooddeed(props) {
             >
                 <div className="yun-start">
                     <div className="yun-start-card">
-                        <h3>感謝作答</h3>
-                        <div className="yun-ques">
+                        <h3 style={{ color: theme.cHeader }}>感謝作答</h3>
+                        <div className="yun-ques" style={{ color: theme.cHeader }}>
                             {/*TODO:加入使用者的名字*/}
                             <div>{account}您的陰德值為</div>
                             {/*TODO:給予新的亂數分數 並且送到後端資料庫*/}
                             <h3>{randomScore}</h3>
                         </div>
 
-                        <button onClick={backtoAbout}>規劃我的來世</button>
+                        <button onClick={backtoAbout} >規劃我的來世</button>
                         <p>
                             貼心提醒：
                             <br />

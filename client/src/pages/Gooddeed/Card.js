@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 // 會員登入context
 import AuthContext from '../../context/AuthContext/AuthContext';
-
+//放入主題切換樣式
+import ThemeContext from '../../context/ThemeContext/ThemeContext';
 import { API_GOODDEED_GET } from '../../config/ajax-path';
 
 function Card(props) {
@@ -20,7 +21,7 @@ function Card(props) {
         setUserGooddeed,
         ...otherProps
     } = props;
-
+    const { theme } = useContext(ThemeContext);
     const { token } = useContext(AuthContext);
     // const ref = [];
     // const qRef_0 = useRef(null);
@@ -63,8 +64,11 @@ function Card(props) {
                     Math.abs(active - Id) > MAX_VISIBILITY ? 'none' : 'block',
             }}
         >
-            <div className="yun-card">
-                <div className="yun-ques">
+            <div
+                className="yun-card"
+                style={{ backgroundColor: theme.rebornBg }}
+            >
+                <div className="yun-ques" style={{ color: theme.cHeader }}>
                     <h3>{title}</h3>
                     <h5>{ques}</h5>
                 </div>
@@ -83,6 +87,11 @@ function Card(props) {
                                 />
                                 {active < questionID && (
                                     <label
+                                        style={{
+                                            color: theme.cHeader,
+                                            backgroundColor:
+                                                theme.bgcHeaderDecor,
+                                        }}
                                         htmlFor={v2}
                                         onClick={() => {
                                             console.log('按了按鈕');
