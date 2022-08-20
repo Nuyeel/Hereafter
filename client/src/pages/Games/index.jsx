@@ -159,7 +159,6 @@ function Games(props) {
                         speed_min: 0.5,
                         speed_max: 3,
                         direction: ['up', 'down'],
-                        color: ['#F0C860', '#5D9CFB', '#FFFFFF'],
                     },
                     blocksIndex = 0;
 
@@ -208,23 +207,24 @@ function Games(props) {
                     draw: function (b) {
                         if (player.isDead()) ctx.fillStyle = '#800000';
                         // 車子顏色
-                        else ctx.fillStyle = '#D98D00';
+                        else ctx.fillStyle = '#F0C860';
                         ctx.fillRect(b.x, b.y, b.w, b.h);
                     },
 
                     drawZone: function () {
-                        ctx.fillStyle = '#676767';
+                        ctx.fillStyle = '#4D5066';
                         ctx.fillRect(
                             start.x1,
                             0,
                             start.x2 - start.x1 + 10,
                             canvas.height
                         );
-                        ctx.fillStyle = '#C26345';
+                        // 人行道
+                        ctx.fillStyle = '#D15B5B';
                         ctx.fillRect(190, 0, 100, canvas.height);
                         ctx.fillRect(710, 0, 80, canvas.height);
 
-                        ctx.fillStyle = '#DFC6B7';
+                        ctx.fillStyle = '#D4C4D4';
                         ctx.fillRect(285, 0, 5, canvas.height);
                         ctx.fillRect(705, 0, 5, canvas.height);
 
