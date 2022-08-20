@@ -96,7 +96,7 @@ function ShareWallPostRevise(props) {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log(result.data);
+        // console.log(result.data);
 
         if (result.data === '才...才沒有這篇文章呢！') {
             return navigate('/sharewall');
