@@ -3,12 +3,20 @@ import { useRef } from 'react';
 import './NextLifeText.scss';
 
 function NextLifeText(props) {
-    const { textIsHidden, nextLifeTextareaString, setNextLifeTextareaString } = props;
+    const { textIsHidden, nextLifeTextareaString, setNextLifeTextareaString } =
+        props;
     const nextLifeTextareaRef = useRef();
 
     const handleNextLifeTextareaChange = (e) => {
         // console.log(e.target.value);
         const trimmedString = e.target.value.trim();
+
+        if (trimmedString === 'yee') {
+            return setNextLifeTextareaString(
+                '說今生無悔是不可能了，只盼來生還能懷著愧疚與你相遇。'
+            );
+        }
+
         setNextLifeTextareaString(trimmedString);
     };
 
