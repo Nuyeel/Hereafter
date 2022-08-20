@@ -142,7 +142,7 @@ function ShareWallPost(props) {
                 },
             }
         );
-        console.log(result.data);
+        // console.log(result.data);
 
         if (result.data === '還沒有這個形象呦') {
             return navigate('/sharewall');
@@ -310,7 +310,7 @@ function ShareWallPost(props) {
             }
         );
 
-        console.log(result.data);
+        // console.log(result.data);
 
         if (result.data === '還沒有這個形象呦') {
             return Swal.fire({

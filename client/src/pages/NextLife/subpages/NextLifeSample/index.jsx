@@ -29,7 +29,7 @@ function NextLifeSample(props) {
 
     const handleSampleSubmit = () => {
         const NewNextLifeStage = 2;
-        console.log(NewNextLifeStage);
+        // console.log(NewNextLifeStage);
 
         setSampleIsHidden(true);
 

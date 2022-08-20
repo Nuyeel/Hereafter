@@ -167,7 +167,7 @@ function NextLife(props) {
             },
         });
 
-        console.log(result.data);
+        // console.log(result.data);
 
         if (result.data.cubeIsMadeResult) {
             Swal.fire({

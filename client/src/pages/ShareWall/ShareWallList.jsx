@@ -292,7 +292,7 @@ function ShareWallList(props) {
         if (authorized) {
             axiosAvatarForNewPostPOST();
         } else {
-            console.log('Meow...沒登入...不用去要...');
+            // console.log('Meow...沒登入...不用去要...');
         }
     }, []);
 

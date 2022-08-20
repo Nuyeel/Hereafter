@@ -5,7 +5,7 @@ function NextLifeMusic(props) {
 
     const handleMusicSubmit = () => {
         const NewNextLifeStage = 1;
-        console.log(NewNextLifeStage);
+        // console.log(NewNextLifeStage);
 
         setMusicIsHidden(true);
 

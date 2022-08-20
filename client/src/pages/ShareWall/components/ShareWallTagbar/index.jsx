@@ -19,7 +19,7 @@ function Tagbar() {
 
     const axiosGET = async () => {
         const result = await axios.get(`${API_SHAREWALL_TAGS}`);
-        console.log(result.data);
+        // console.log(result.data);
         setTagList(result.data);
     };
 
