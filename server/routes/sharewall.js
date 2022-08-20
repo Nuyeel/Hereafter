@@ -1335,10 +1335,10 @@ router.route('/:sharepostID').get(async (req, res) => {
             post_comments_results[i]['comment_isEditable'] = false;
             for (let k = 0; k < post_comments_results.length; k++) {
                 if (
-                    post_comments_results[i]['share_post_sid'] ===
-                    post_comments_results[k]['share_post_sid']
+                    post_comments_results[i]['member_sid'] ===
+                    res.locals.loginUser.id
                 ) {
-                    post_comments_results[i]['share_post_iscollected'] = true;
+                    post_comments_results[i]['comment_isEditable'] = true;
                 }
             }
         }
