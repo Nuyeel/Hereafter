@@ -1,5 +1,16 @@
 @import '../../styles/variables.scss';
+.game-background{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 860px;
+    height: 520px;
+    border-radius: 15px 15px 0px 0px;
+    z-index: -2;
+    background-color:#3C3B67;
+    transform: translate(-50%,-50%);
 
+}
 .gameframe{
     position: absolute;
     top: 50%;
@@ -74,6 +85,7 @@
     top: 0px;
     overflow: hidden;
     border :10px solid rgb(29, 29, 29); 
+    // background-color: $bgc-D;
 }
 .game-context1{
     width: 100%;

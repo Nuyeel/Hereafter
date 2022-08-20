@@ -5,6 +5,7 @@ import HeaderContext, {
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; //sweetalert2
+import OutlineSoulAlert from '../../images/sweetalert2/outline_soul_alert.svg';
 
 // scss
 import './_mainpage.scss';
@@ -449,6 +450,15 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
+                                    if (!authorized) {
+                                        return Swal.fire({
+                                            title: '請先登入',
+                                            imageUrl: OutlineSoulAlert,
+                                            imageHeight: 50,
+                                            imageWidth: 50,
+                                            showConfirmButton: false,
+                                        });
+                                    }
                                     navigate('/gooddeed');
                                 }}
                             />
