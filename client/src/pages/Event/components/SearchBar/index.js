@@ -1,4 +1,5 @@
 import React from 'react';
+import find from '../../imgs/find.svg';
 
 function SearchBar(props) {
     const { searchWord, setSearchWord } = props;
@@ -12,6 +13,8 @@ function SearchBar(props) {
                     value={searchWord}
                     onChange={(e) => setSearchWord(e.target.value)}
                 />
+
+                <img src={find} alt="" />
             </div>
         </>
     );

@@ -5,6 +5,9 @@ import TagCheckboxArea from './TagCheckboxArea';
 
 import '../../_xuan_styles.scss';
 
+//img
+import filter_star from '../../imgs/filter_star.svg';
+
 function FilterBar(props) {
     const {
         // price radio
@@ -64,6 +67,7 @@ function FilterBar(props) {
 
                 <div className="xuan-price-filter ">
                     <h4 className="xuan-title">價格</h4>
+                    <img src={filter_star} alt="" />
 
                     <div className="d-flex">
                         {priceRangeTypes.map((value, i) => (
@@ -79,6 +83,7 @@ function FilterBar(props) {
 
                 <div className="xuan-type-filter">
                     <h4 className="xuan-title">活動種類</h4>
+                    <img src={filter_star} alt="" />
 
                     <div className="d-flex">
                         {tagTypes.map((value, i) => (
@@ -94,6 +99,7 @@ function FilterBar(props) {
 
                 <div className="xuan-area-filter">
                     <h4 className="xuan-title">地區種類</h4>
+                    <img src={filter_star} alt="" />
 
                     <div className="d-flex">
                         {areaTypes.map((value, i) => (
