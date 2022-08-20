@@ -5,12 +5,10 @@ import HeaderContext, {
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; //sweetalert2
-<<<<<<< HEAD
+import OutlineSoulAlert from '../../images/sweetalert2/outline_soul_alert.svg';
+
 //放入主題切換樣式
 import ThemeContext from '../../context/ThemeContext/ThemeContext';
-=======
-import OutlineSoulAlert from '../../images/sweetalert2/outline_soul_alert.svg';
->>>>>>> 9339de54b30e0494db30f00b6681e6809573d88f
 
 // scss
 import './_mainpage.scss';
