@@ -29,6 +29,7 @@ function Games(props) {
     const [playtimes, setPlaytimes] = useState(0);
     const [alert, setAlert] = useState(false);
     const [gooddeedAdd, setGooddeedAdd] = useState(0);
+    const [clearId, setClearId] = useState(null);
     const fetchGameScore = async () => {
         const r = await fetch(`${API_GAMES_GET}?score=${gooddeedAdd}`, {
             method: 'GET',
@@ -159,7 +160,6 @@ function Games(props) {
                         speed_min: 0.5,
                         speed_max: 3,
                         direction: ['up', 'down'],
-                        color: ['#F0C860', '#5D9CFB', '#FFFFFF'],
                     },
                     blocksIndex = 0;
 
@@ -208,23 +208,24 @@ function Games(props) {
                     draw: function (b) {
                         if (player.isDead()) ctx.fillStyle = '#800000';
                         // 車子顏色
-                        else ctx.fillStyle = '#D98D00';
+                        else ctx.fillStyle = '#F0C860';
                         ctx.fillRect(b.x, b.y, b.w, b.h);
                     },
 
                     drawZone: function () {
-                        ctx.fillStyle = '#676767';
+                        ctx.fillStyle = '#4D5066';
                         ctx.fillRect(
                             start.x1,
                             0,
                             start.x2 - start.x1 + 10,
                             canvas.height
                         );
-                        ctx.fillStyle = '#C26345';
+                        // 人行道
+                        ctx.fillStyle = '#D15B5B';
                         ctx.fillRect(190, 0, 100, canvas.height);
                         ctx.fillRect(710, 0, 80, canvas.height);
 
-                        ctx.fillStyle = '#DFC6B7';
+                        ctx.fillStyle = '#D4C4D4';
                         ctx.fillRect(285, 0, 5, canvas.height);
                         ctx.fillRect(705, 0, 5, canvas.height);
 
@@ -457,11 +458,13 @@ function Games(props) {
 
             console.log(gooddeedAdd);
 
-            setInterval(function () {
-                update();
-                draw(canvas);
-                drawFrame();
-            }, 1000 / animation_fps);
+            setClearId(
+                setInterval(function () {
+                    update();
+                    draw(canvas);
+                    drawFrame();
+                }, 1000 / animation_fps)
+            );
         }
     };
     const Canvas = (
@@ -484,15 +487,12 @@ function Games(props) {
     );
     const saveBtn = (
         <div>
-            <h4 className='yun-end-game'
-           
-            >
-                遊戲結束
-            </h4>
+            <h4 className="yun-end-game">遊戲結束</h4>
             <div
                 className="saveBtn"
                 onClick={() => {
                     fetchGameScore();
+                    clearInterval(clearId);
                     backtoMain();
                 }}
             >

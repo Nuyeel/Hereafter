@@ -950,6 +950,11 @@ position: relative;
 
   }
 
+  .xuan-box-game-show2.isDisabled  {
+    filter:grayscale(1) brightness(1.42);
+    pointer-events: none;
+  }
+
   // 關於我們
   .xuan-box-aboutus{
     background-color: #E384F2;
