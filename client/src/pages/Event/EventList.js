@@ -318,7 +318,16 @@ function EventList(props) {
                         <SortBar sortBy={sortBy} setSortBy={setSortBy} />
 
                         {/* TODO: 方案選擇 */}
-                        <h4 className="xuan-event-type">方案選擇</h4>
+
+                        <div className='xuan-event-filter-wrap'>
+                            <h4 className="xuan-event-type">方案選擇</h4>
+                            <img
+                                src={filter_star}
+                                alt=""
+                                className="xuan-event-type-star"
+                            />
+                        </div>
+
                         <div className="xuan-event-type-select">
                             {howtagsTypes.map((value, i) => (
                                 <TypeCheckbox
