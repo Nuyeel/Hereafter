@@ -360,7 +360,7 @@ function MainPage(props) {
                         <div>
                             {/* 原本的圖 */}
                             {/* <img src={time_map} alt="" /> */}
-                            <img src={new_time_map} alt=""/>
+                            <img src={new_time_map} alt="" />
                         </div>
                     </div>
                     {/* 功德撲滿 */}
@@ -465,16 +465,23 @@ function MainPage(props) {
                         </div>
                     </div>
                     {/* 遊戲小格2 */}
-                    <div className="xuan-box xuan-box-game-show2">
+                    <div
+                        className={`xuan-box xuan-box-game-show2 ${
+                            !isDead ? 'isDisabled' : ''
+                        }`}
+                    >
                         <div className="d-flex">
                             {/* 小格標題 */}
                             <p className="xuan-subtitle">行善積德小遊戲</p>
+
                             <img
                                 src={linkarrow}
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/');
+                                    if (isDead) {
+                                        navigate('/games');
+                                    }
                                 }}
                             />
                         </div>

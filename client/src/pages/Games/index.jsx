@@ -29,6 +29,7 @@ function Games(props) {
     const [playtimes, setPlaytimes] = useState(0);
     const [alert, setAlert] = useState(false);
     const [gooddeedAdd, setGooddeedAdd] = useState(0);
+    const [clearId, setClearId] = useState(null);
     const fetchGameScore = async () => {
         const r = await fetch(`${API_GAMES_GET}?score=${gooddeedAdd}`, {
             method: 'GET',
@@ -457,11 +458,13 @@ function Games(props) {
 
             console.log(gooddeedAdd);
 
-            setInterval(function () {
-                update();
-                draw(canvas);
-                drawFrame();
-            }, 1000 / animation_fps);
+            setClearId(
+                setInterval(function () {
+                    update();
+                    draw(canvas);
+                    drawFrame();
+                }, 1000 / animation_fps)
+            );
         }
     };
     const Canvas = (
@@ -484,15 +487,12 @@ function Games(props) {
     );
     const saveBtn = (
         <div>
-            <h4 className='yun-end-game'
-           
-            >
-                遊戲結束
-            </h4>
+            <h4 className="yun-end-game">遊戲結束</h4>
             <div
                 className="saveBtn"
                 onClick={() => {
                     fetchGameScore();
+                    clearInterval(clearId);
                     backtoMain();
                 }}
             >
