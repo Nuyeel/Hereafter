@@ -5,8 +5,12 @@ import HeaderContext, {
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; //sweetalert2
+<<<<<<< HEAD
 //放入主題切換樣式
 import ThemeContext from '../../context/ThemeContext/ThemeContext';
+=======
+import OutlineSoulAlert from '../../images/sweetalert2/outline_soul_alert.svg';
+>>>>>>> 9339de54b30e0494db30f00b6681e6809573d88f
 
 // scss
 import './_mainpage.scss';
@@ -451,6 +455,15 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
+                                    if (!authorized) {
+                                        return Swal.fire({
+                                            title: '請先登入',
+                                            imageUrl: OutlineSoulAlert,
+                                            imageHeight: 50,
+                                            imageWidth: 50,
+                                            showConfirmButton: false,
+                                        });
+                                    }
                                     navigate('/gooddeed');
                                 }}
                             />

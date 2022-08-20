@@ -24,7 +24,7 @@ function Gooddeed(props) {
     const backtoAbout = () => {
         navigate('/AboutUsThird', { replace: true });
     };
-    const { authorized, sid, account, token } = useContext(AuthContext);
+    const { authorized, account, token } = useContext(AuthContext);
     const [shows, setShows] = useState({
         opacity: ['1', '0', '0'],
         height: ['', '0', '0'],
@@ -42,6 +42,10 @@ function Gooddeed(props) {
 
     useEffect(() => {
         setHeader(headers[pageName]);
+    }, []);
+
+    useEffect(() => {
+        if(!authorized){navigate('/',{ replace: true })}
     }, []);
 
     useEffect(() => {
@@ -167,14 +171,17 @@ function Gooddeed(props) {
                 <div className="yun-start">
                     <div className="yun-start-card">
                         <h3 style={{ color: theme.cHeader }}>感謝作答</h3>
-                        <div className="yun-ques" style={{ color: theme.cHeader }}>
+                        <div
+                            className="yun-ques"
+                            style={{ color: theme.cHeader }}
+                        >
                             {/*TODO:加入使用者的名字*/}
                             <div>{account}您的陰德值為</div>
                             {/*TODO:給予新的亂數分數 並且送到後端資料庫*/}
                             <h3>{randomScore}</h3>
                         </div>
 
-                        <button onClick={backtoAbout} >規劃我的來世</button>
+                        <button onClick={backtoAbout}>規劃我的來世</button>
                         <p>
                             貼心提醒：
                             <br />

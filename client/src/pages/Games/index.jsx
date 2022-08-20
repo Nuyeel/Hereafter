@@ -30,6 +30,8 @@ function Games(props) {
     const [alert, setAlert] = useState(false);
     const [gooddeedAdd, setGooddeedAdd] = useState(0);
     const [clearId, setClearId] = useState(null);
+    const [saveDisable, setSaveDisable] = useState(false);
+
     const fetchGameScore = async () => {
         const r = await fetch(`${API_GAMES_GET}?score=${gooddeedAdd}`, {
             method: 'GET',
@@ -40,6 +42,10 @@ function Games(props) {
         });
         const result = await r.json();
         console.log(result);
+        setUserGooddeed({ show: true, gooddeed: result.gameScore });
+        return setTimeout(() => {
+            setUserGooddeed({ show: false, gooddeed: result.gameScore });
+        }, 3000);
     };
     console.log(canvasRef);
 
@@ -490,18 +496,26 @@ function Games(props) {
             <h4 className="yun-end-game">遊戲結束</h4>
             <div
                 className="saveBtn"
+                style={{
+                    pointerEvents: `saveDisable ? 'none' :'auto'`,
+                    // cursor: `saveDisable ? 'none' :'pointer' `,
+                }}
                 onClick={() => {
-                    fetchGameScore();
+                    if (!saveDisable) {
+                        fetchGameScore();
+                        setSaveDisable(true);
+                    }
                     clearInterval(clearId);
-                    backtoMain();
+                    setTimeout(backtoMain, 5000);
                 }}
             >
-                儲存遊戲獲得的陰德值！
+                {!saveDisable ? '儲存遊戲獲得的陰德值！' : '已更新陰德值！'}
             </div>
         </div>
     );
     return (
         <>
+            <div className="game-background"></div>
             {playtimes <= 5 ? Canvas : ''}
 
             <div className="gameframe">

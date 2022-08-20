@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 17, 2022 at 06:20 PM
+-- Generation Time: Aug 20, 2022 at 09:31 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.29
 
@@ -44,16 +44,16 @@ INSERT INTO `admin_test_jwt` (`sid`, `member_sid`, `token`, `expires`, `payload`
 (34, 14, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImFjY291bnQiOiJIYXBweUNhdDEzIiwiaWF0IjoxNjYwMTk1OTIxfQ.7AuVe-073GZ5UxaQ2WU8vJZdxmpcT7qqWhP_LnyYbrk', '1660197121154', '{\"id\":14,\"account\":\"HappyCat13\"}'),
 (59, 99, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTksImFjY291bnQiOiJIYXBweUNhdDk4IiwiaWF0IjoxNjYwMzE4OTI0fQ.XHOtBbF5br9IsaaRzSqVQgaJyKOWE7piBigamd1NcxU', '1660320124011', '{\"id\":99,\"account\":\"HappyCat98\"}'),
 (73, 37, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzcsImFjY291bnQiOiJIYXBweUNhdDM2IiwiaWF0IjoxNjYwNTMzNDE2fQ.qV5k7mXadefBCXn5JGlk3jbh-zPyxjdq1j-_-PJtC4s', '1660534616517', '{\"id\":37,\"account\":\"HappyCat36\"}'),
-(74, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudCI6IkhhcHB5Q2F0MDEiLCJpYXQiOjE2NjA3NDg0MDZ9.SWjb5jqK8r4sgLOZq-v6UZMTUlA7xO_xSK_hlLZXArc', '1660749606301', '{\"id\":1,\"account\":\"HappyCat01\"}'),
-(75, 2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiYWNjb3VudCI6IkhhcHB5Q2F0MDIiLCJpYXQiOjE2NjA3NDg3NzN9.MrE9rTLMaLoKd8ZLxYJ9mMdCq4CXW6Lg7w1-kaenT8M', '1660749973617', '{\"id\":2,\"account\":\"HappyCat02\"}'),
 (76, 3, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiYWNjb3VudCI6IkhhcHB5Q2F0MDMiLCJpYXQiOjE2NjA3NDg5ODh9.NB_7r7TlVRmqUkVK0uDcwpZfi7qPIuAEwsRhgr4UHYY', '1660750188140', '{\"id\":3,\"account\":\"HappyCat03\"}'),
-(77, 4, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiYWNjb3VudCI6IkhhcHB5Q2F0MDQiLCJpYXQiOjE2NjA3NDkzMTF9.NDp9kGpSzeOCkdIhmB-L63FizuHneMJn1flVGbJpkwY', '1660750511595', '{\"id\":4,\"account\":\"HappyCat04\"}'),
-(78, 5, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWNjb3VudCI6IkhhcHB5Q2F0MDUiLCJpYXQiOjE2NjA3NDk1NDd9.ghYnNHT-81TQ8_gbR7u_RxG-bayFM1ZJGykIpynXsKc', '1660750747979', '{\"id\":5,\"account\":\"HappyCat05\"}'),
-(79, 6, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiYWNjb3VudCI6IkhhcHB5Q2F0MDYiLCJpYXQiOjE2NjA3NTAxNjZ9.7Wz67X_nwTpDl34hKSoO42XmqibiDpCcNnmJt1gU9c8', '1660751366526', '{\"id\":6,\"account\":\"HappyCat06\"}'),
-(80, 7, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWNjb3VudCI6IkhhcHB5Q2F0MDciLCJpYXQiOjE2NjA3NTE4NTV9.ik2vI7Q5XXyx6e2KztdMAwt8NRM9dQ4bAMCyVMp_nUI', '1660753055969', '{\"id\":7,\"account\":\"HappyCat07\"}'),
 (81, 8, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiYWNjb3VudCI6IkhhcHB5Q2F0MDgiLCJpYXQiOjE2NjA3NTIyMTh9.p_LiEGvQ7kAQ8DcMtl7g2lTUmgkphxj6vRAMIzTQTSM', '1660753418977', '{\"id\":8,\"account\":\"HappyCat08\"}'),
-(82, 9, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWNjb3VudCI6IkhhcHB5Q2F0MDkiLCJpYXQiOjE2NjA3NTI0OTl9.RpI3tSRGB2x0dzDjuj2I2MqTEhvXHkX_EKfkajxdhes', '1660753699580', '{\"id\":9,\"account\":\"HappyCat09\"}'),
-(83, 10, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImFjY291bnQiOiJIYXBweUNhdDEwIiwiaWF0IjoxNjYwNzUyODk0fQ.SuyRLAGf92QX7sUa-a44M8MrwEUt6joxFL5KfN74E7c', '1660754094678', '{\"id\":10,\"account\":\"HappyCat10\"}');
+(84, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudCI6IkhhcHB5Q2F0MDEiLCJpYXQiOjE2NjA5NTk5MzV9.2TxrNjj85KZFxEzj-Aa8OOUVqz7LFPZFEoWL52RalZs', '1660961135699', '{\"id\":1,\"account\":\"HappyCat01\"}'),
+(85, 2, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiYWNjb3VudCI6IkhhcHB5Q2F0MDIiLCJpYXQiOjE2NjA5NzQyNDJ9.gX7OyusRBo1w2wc35KpaSZqZ_Ybfsrh35x09J4HwvPo', '1660975442480', '{\"id\":2,\"account\":\"HappyCat02\"}'),
+(86, 10, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImFjY291bnQiOiJIYXBweUNhdDEwIiwiaWF0IjoxNjYwOTc1MzA3fQ.53ppCyzNbC9iDAkpFxT2ovT3FqxAxnMatfaIElVAnbU', '1660976507332', '{\"id\":10,\"account\":\"HappyCat10\"}'),
+(88, 9, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWNjb3VudCI6IkhhcHB5Q2F0MDkiLCJpYXQiOjE2NjA5Nzg4NjN9.miZYE2I0gUquXMWnEbFBs9Iuuq5LDF2ud_jyhvuL2J4', '1660980063628', '{\"id\":9,\"account\":\"HappyCat09\"}'),
+(90, 4, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiYWNjb3VudCI6IkhhcHB5Q2F0MDQiLCJpYXQiOjE2NjA5Nzk3NDJ9.sHizNXkl2AoVn-JgPjUjaAHPehWh-Nwj1z5mb5GNtWo', '1660980942664', '{\"id\":4,\"account\":\"HappyCat04\"}'),
+(91, 7, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWNjb3VudCI6IkhhcHB5Q2F0MDciLCJpYXQiOjE2NjA5Nzk4NTV9.wioN0LnOzI1KPLq61rOmPgBQnnzFKcA6EJ_hFVsJsU4', '1660981055145', '{\"id\":7,\"account\":\"HappyCat07\"}'),
+(92, 6, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiYWNjb3VudCI6IkhhcHB5Q2F0MDYiLCJpYXQiOjE2NjA5ODAzNzN9.pVE40b4VIJo-iUQ8fjMwEpzdUz_93b0qh5mfybjnAf8', '1660981573222', '{\"id\":6,\"account\":\"HappyCat06\"}'),
+(93, 5, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWNjb3VudCI6IkhhcHB5Q2F0MDUiLCJpYXQiOjE2NjA5ODA0OTF9.6Cqo6fLx7TjA2Cz0XgoUU12Zc7bgYiYuyQnMA2oq1Y4', '1660981691513', '{\"id\":5,\"account\":\"HappyCat05\"}');
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,6 @@ INSERT INTO `cube` (`member_sid`, `cube_sid`, `cube_text`, `cube_style_sid`) VAL
 (4, 4, '你若對自己誠實，日積月累，就無法對別人不忠了。', 5),
 (5, 5, '我愛你，我愛你。', 7),
 (6, 6, '我們總是記得一些逼自己忘記的事...', 8),
-(7, 7, '有你我很開心！', 9),
 (8, 8, '下輩子也要當一個柔軟的人，簡稱軟軟人。', 10),
 (9, 10, '我和你道歉，也和你道別，再和自己道謝。', 11),
 (11, 14, 'YEE', 16);
@@ -475,7 +474,7 @@ INSERT INTO `member` (`sid`, `name`, `birthdate`, `deathdate`, `isdead`, `mobile
 (4, 'Bible Thumb', NULL, NULL, 'false', '', 'HappyCat04@gmail.com', 'HappyCat04', '$2y$10$xyN7xDkGJ5SustZEWCDyIuA/7RdTp0Y3yg4MhtFPFyzmnmayB9EZC', 10000, 1153, NULL, '2022-06-09 05:54:15'),
 (5, '偷尼史塔克 Tony Stark ', '1990-06-14', '2022-06-02', 'false', '0977101050', 'HappyCat05@gmail.com', 'HappyCat05', '$2y$10$sFaM2bucSZ9h0bRb9vXYJuwSy1.YS7eHOutpxih.qfOieXQX1b6ze', 10000, 1158, NULL, '2022-06-09 05:54:42'),
 (6, '怎一直下雨', '1990-03-05', '2022-05-31', 'false', '', 'HappyCat06@gmail.com', 'HappyCat06', '$2y$10$KQFhzDlfZFdk.stmlCA7U.il3fDWO2z0kkVzrHuF9SJPIgNXWKAp.', 10000, 1163, NULL, '2022-06-09 05:55:06'),
-(7, '趕著投胎', NULL, NULL, 'true', '', 'HappyCat07@gmail.com', 'HappyCat07', '$2y$10$Wy1j.2RcH0cA565y0kP2I.yIGvH8rdoEFXhWRokuDHgOerj1NNG9u', 10000, 1128, NULL, '2022-06-09 05:55:27'),
+(7, '趕著投胎', NULL, NULL, 'true', '', 'HappyCat07@gmail.com', 'HappyCat07', '$2y$10$Wy1j.2RcH0cA565y0kP2I.yIGvH8rdoEFXhWRokuDHgOerj1NNG9u', 10100, 1128, NULL, '2022-06-09 05:55:27'),
 (8, '咖啡因成癮重症患者', NULL, NULL, 'false', '', 'HappyCat08@gmail.com', 'HappyCat08', '$2y$10$hfdvXtFq2/leKrM2jLXxf.L1YiKAr5wMCq7.rp69fiSgoG3pnJlsK', 10000, 1168, NULL, '2022-06-09 05:55:47'),
 (9, '陳怡君', NULL, NULL, 'false', '', 'HappyCat09@gmail.com', 'HappyCat09', '$2y$10$7zyt3mR2ghfGKn9xkEWgdeXlmxoRy4rm3DmrP/3kDFMXoIPPEj/wy', 10000, 1173, NULL, '2022-06-09 05:56:28'),
 (10, '總有幾隻貓的', NULL, NULL, 'false', '', 'HappyCat10@gmail.com', 'HappyCat10', '$2y$10$n3p/32p42bi1QqX/U0KjBe4Yb0WdAI.8UaoZH3tiRR8NbBaxHGcOK', 10000, 1178, NULL, '2022-06-09 05:56:51'),
@@ -830,7 +829,6 @@ CREATE TABLE `place` (
 -- Dumping data for table `place`
 --
 
-
 INSERT INTO `place` (`sid`, `year`, `month`, `country`, `city`, `dist`, `quota`, `booked`, `place_price`) VALUES
 (2, 2025, 10, '美國', '紐約', '布魯克林', 2, 1, 6000),
 (4, 2032, 1, '台灣', '新北市', '三峽區', 5, 4, 4200),
@@ -928,7 +926,6 @@ INSERT INTO `place` (`sid`, `year`, `month`, `country`, `city`, `dist`, `quota`,
 (100, 2059, 12, '台灣', '臺東縣', '綠島鄉', 2, 1, 4000),
 (101, 2063, 2, '台灣', '澎湖縣', '馬公市', 3, 1, 4800),
 (102, 2084, 7, '台灣', '高雄市', '鳳山區', 3, 0, 5500);
-
 
 -- --------------------------------------------------------
 
@@ -1253,7 +1250,9 @@ INSERT INTO `share_avatar_collects` (`share_post_collect_sid`, `share_post_sid`,
 (56, 37, 9),
 (57, 28, 9),
 (58, 39, 10),
-(59, 31, 10);
+(59, 31, 10),
+(60, 39, 1),
+(61, 39, 4);
 
 -- --------------------------------------------------------
 
@@ -1295,15 +1294,15 @@ INSERT INTO `share_avatar_comments` (`share_post_comment_sid`, `share_post_sid`,
 (97, 23, 5, '海咪比較喜歡毛皮族呦', '2022-08-17 23:25:58', NULL),
 (98, 25, 5, '這到底什麼形象海咪喔喔喔', '2022-08-17 23:26:32', NULL),
 (99, 27, 5, '海咪會考慮變成黃色喔', '2022-08-17 23:26:53', NULL),
-(100, 28, 5, '@HappyCat02 其實海咪也沒有那麼好啦', '2022-08-17 23:27:27', NULL),
-(101, 28, 5, '@HappyCat03 海咪會喜歡你喔', '2022-08-17 23:27:48', NULL),
+(100, 28, 5, '其實海咪也沒有那麼好啦', '2022-08-17 23:27:27', NULL),
+(101, 28, 5, '海咪會喜歡你喔', '2022-08-17 23:27:48', NULL),
 (102, 31, 5, '欸欸你是日本太太嗎？？？海咪吃驚！', '2022-08-17 23:28:20', NULL),
-(103, 34, 5, '海咪覺得這種命名完全就是食用色素喔 #食用色素', '2022-08-17 23:29:07', NULL),
+(103, 34, 5, '海咪覺得這種命名完全就是食用色素喔～#食用色素', '2022-08-17 23:29:07', NULL),
 (104, 31, 6, '#驚', '2022-08-17 23:56:14', NULL),
 (105, 30, 6, '最近這個黃色是不是絕版了啊', '2022-08-17 23:56:32', NULL),
 (106, 28, 6, '那海咪也會愛我嗎？', '2022-08-17 23:57:01', NULL),
 (107, 36, 7, '冒牌的都這麼好看，正牌的還得了？', '2022-08-18 00:01:23', NULL),
-(108, 32, 7, '感覺應該新增哥布林標籤啊 #哥布林', '2022-08-18 00:01:49', NULL),
+(108, 32, 7, '感覺應該新增哥布林標籤啊～#哥布林', '2022-08-18 00:01:49', NULL),
 (109, 27, 7, '特地回來朝聖，這就是色素系列的始祖吧！', '2022-08-18 00:02:41', NULL),
 (110, 25, 7, '我覺得這個臉很讚喔～馬上套用', '2022-08-18 00:02:58', NULL),
 (111, 37, 8, '大肚腩就是讚', '2022-08-18 00:06:52', NULL),
@@ -1312,7 +1311,34 @@ INSERT INTO `share_avatar_comments` (`share_post_comment_sid`, `share_post_sid`,
 (114, 31, 9, '要不要阿姨幫你收驚', '2022-08-18 00:12:11', NULL),
 (115, 29, 9, '乖孫供三咪你會老我欸大，你啊欸啊罵欸傷心啦', '2022-08-18 00:13:15', NULL),
 (116, 28, 9, '少年郎哪欸災影莎蜜係愛啦', '2022-08-18 00:13:53', NULL),
-(117, 34, 10, '黃色四號好像有致癌的疑慮...', '2022-08-18 00:18:29', NULL);
+(117, 34, 10, '黃色四號好像有致癌的疑慮...', '2022-08-18 00:18:29', NULL),
+(118, 40, 1, '🐸', '2022-08-20 09:47:45', NULL),
+(119, 39, 1, '現在連阿公也玩這個呀', '2022-08-20 09:48:07', NULL),
+(120, 38, 1, '안녕하세요', '2022-08-20 09:49:24', NULL),
+(121, 36, 1, '為什麼不走出自己的一條路呢', '2022-08-20 09:50:05', NULL),
+(122, 35, 1, '真想像海咪一樣受歡迎啊', '2022-08-20 13:43:39', NULL),
+(123, 40, 2, '🐸', '2022-08-20 13:44:27', NULL),
+(124, 38, 2, '도민준씨～', '2022-08-20 13:45:54', NULL),
+(125, 34, 2, '感覺氣氛凝重了起來...', '2022-08-20 13:52:25', '2022-08-20 13:59:48'),
+(126, 29, 2, '樓上到底是啊罵還是阿公？', '2022-08-20 13:53:43', NULL),
+(128, 31, 2, '阿姨我不想收驚了...', '2022-08-20 14:01:26', NULL),
+(129, 40, 10, '🐸', '2022-08-20 14:02:00', NULL),
+(130, 39, 10, '來生投放所也慢慢夯起來了啊', '2022-08-20 14:02:17', NULL),
+(131, 38, 10, '韓文好好！', '2022-08-20 14:03:12', NULL),
+(132, 35, 10, '才...才不羨慕海咪呢！', '2022-08-20 14:04:03', NULL),
+(133, 39, 9, 'Ｊ個金價揪喝噌欸～', '2022-08-20 15:06:36', NULL),
+(134, 40, 4, '🐸', '2022-08-20 15:16:43', NULL),
+(135, 34, 4, '我的黃色四號不會致癌喔', '2022-08-20 15:17:15', NULL),
+(136, 40, 7, '青蛙大量發生！！', '2022-08-20 15:18:13', NULL),
+(137, 38, 7, '도민준씨～', '2022-08-20 15:18:29', NULL),
+(138, 37, 7, '豬鼻真的蠻可愛的～ブーブー～', '2022-08-20 15:19:13', NULL),
+(140, 40, 6, '🐸', '2022-08-20 15:26:36', NULL),
+(141, 39, 6, '最近每天都要上來晃晃', '2022-08-20 15:27:21', NULL),
+(142, 39, 6, '真的很好玩', '2022-08-20 15:27:28', NULL),
+(143, 36, 6, '進步總是從模仿開始的嘛', '2022-08-20 15:27:55', NULL),
+(144, 39, 5, '海咪也很喜歡在這裡捏海咪喔', '2022-08-20 15:28:47', NULL),
+(145, 38, 5, '海咪也想學韓文啊', '2022-08-20 15:28:58', NULL),
+(146, 36, 5, '儘管來模仿海咪吧，海咪是不會被取代的！', '2022-08-20 15:29:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -1372,7 +1398,11 @@ INSERT INTO `share_avatar_likes` (`share_post_like_sid`, `share_post_sid`, `memb
 (97, 30, 10),
 (98, 26, 10),
 (99, 24, 10),
-(100, 37, 10);
+(100, 37, 10),
+(101, 39, 1),
+(102, 35, 10),
+(104, 40, 7),
+(105, 35, 5);
 
 -- --------------------------------------------------------
 
@@ -1401,24 +1431,24 @@ CREATE TABLE `share_avatar_posts` (
 --
 
 INSERT INTO `share_avatar_posts` (`share_post_sid`, `member_sid`, `avatar_sid`, `share_post_title`, `share_post_text`, `share_post_likes`, `share_post_collects`, `Ncombination`, `NcombinationText`, `Nimg_name`, `Nprice`, `created_at`, `updated_at`) VALUES
-(23, 1, 1143, '哥布林貓人', '其實也不知道有沒有來生這種東西，但還是捏了個理想的形象，希望下輩子可以變成像凱多的貓咪，雷鳴八卦！', 1, 1, '{\"basic\":[0,0,0],\"basic_color\":1,\"body\":{\"hand\":2,\"foot\":3,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":4,\"lip\":4,\"nose\":1,\"hairFront\":3,\"hairBack\":5,\"topEar\":2},\"face_color\":{\"eye\":2,\"nose\":6,\"hairFront\":1,\"topEar\":7}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"午夜藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"阿嬤+捲捲\",\"hairColor\":\"棕\",\"ear\":\"饅頭\",\"topearColor\":\"鐵灰\",\"lip\":\"不開心\"}', '8dc3b953-5f4a-44ee-b354-2fd3e870e9df.png', 900, '2022-08-13 20:55:16', NULL),
-(24, 1, 1144, '海天使好可愛', '其實也沒什麼特別的，最近迷上海生動物，覺得轉生成海天使好像也不錯吧。提供給需要的人～', 6, 4, '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":4,\"foot\":0,\"tale\":1,\"special\":1},\"special_color\":{\"tale\":5,\"special\":6},\"face\":{\"eye\":0,\"ear\":2,\"lip\":4,\"nose\":2,\"hairFront\":4,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":1,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"魚尾\",\"bodyColor\":\"粉\",\"specialColor\":\"巧克力\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"狗狗鼻\",\"noseColor\":\"粉\",\"hair\":\"旁分+飄逸長\",\"hairColor\":\"紫\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"不開心\"}', '1e0d2c0d-1727-492b-94c3-5f465bf08161.png', 1800, '2022-08-13 20:56:50', NULL),
-(25, 2, 1133, '我都捏了什麼', '這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔', 2, 1, '{\"basic\":[2,2,2],\"basic_color\":6,\"body\":{\"hand\":2,\"foot\":0,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":1},\"face\":{\"eye\":2,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":1,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"紅\",\"specialColor\":\"石板藍\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"外星人\",\"eyeColor\":\"紅\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'ccd8abb7-2d69-4ac2-8f51-673f780d73b4.png', 900, '2022-08-13 20:58:46', NULL),
-(26, 3, 1148, '豬鼻豬鼻可愛', '豬鼻可愛人～要是來生真的可以長這樣就好了，最近水生動物好夯，就捏了這麼個形象。好像還有一些很貴但是很好的配件，要卯起來行善了，希望世界更加美好～～', 4, 2, '{\"basic\":[2,2,2],\"basic_color\":7,\"body\":{\"hand\":3,\"foot\":4,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":7},\"face\":{\"eye\":4,\"ear\":3,\"lip\":1,\"nose\":5,\"hairFront\":0,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":6,\"hairFront\":2,\"topEar\":3}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"藍綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"水藍\",\"nose\":\"小豬\",\"noseColor\":\"紅\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"天藍\",\"ear\":\"蠑螈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', 'c715b140-50b9-454d-8fd3-d91f3e7d695d.png', 1400, '2022-08-13 21:03:48', '2022-08-13 21:04:01'),
-(27, 4, 1153, '黃色一號', '這其實還蠻好玩的，大家一起捏黃色生物～', 2, 2, '{\"basic\":[0,2,0],\"basic_color\":3,\"body\":{\"hand\":0,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":3,\"hairBack\":3,\"topEar\":1},\"face_color\":{\"eye\":1,\"nose\":0,\"hairFront\":7,\"topEar\":1}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"綠\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"阿嬤+飄逸長\",\"hairColor\":\"雪\",\"ear\":\"貓耳\",\"topearColor\":\"灰\",\"lip\":\"kitty\"}', '9dc0a94a-76a2-438f-8d07-6323658b6e0a.png', 700, '2022-08-13 21:08:16', NULL),
-(28, 5, 1159, '海咪貓人', '喵喵喵喵喵喵喵喵電感應～因為太多太奇妙的觸電反應～喵喵喵喵海咪海咪～～喵喵喵喵嗚逼屋逼～海咪海咪～海咪好可愛～海咪之歌～我的最愛～大家一起～～～～轉～生～成～海～咪～～～～～～～～～～～～～～～～～～～～～～～～咪！咪！咪～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～', 6, 4, '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":4,\"special\":0},\"face\":{\"eye\":2,\"ear\":1,\"lip\":1,\"nose\":1,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":6,\"hairFront\":6,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"粉\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"紫\",\"eye\":\"外星人\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"小麥\",\"ear\":\"小精靈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '7e1e9eaa-d4f8-413d-a043-a31c392f11a6.png', 1800, '2022-08-13 21:12:28', NULL),
-(29, 6, 1164, '這太ㄎㄧㄤ啦', '來生也要 Rocking Style 喔天啊這好棒，覺得在這裡想了很多以前沒想過的事，第一次去目目非營利當志工的時候，才知道這世界上還有這麼多需要幫助的人，而且他們都比我還要努力，這些來生形象也超！對！味！啊我妹妹在叫我，我先走啦！', 1, 0, '{\"basic\":[2,2,0],\"basic_color\":1,\"body\":{\"hand\":4,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":2,\"lip\":3,\"nose\":1,\"hairFront\":2,\"hairBack\":5,\"topEar\":0},\"face_color\":{\"eye\":2,\"nose\":3,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"午夜藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"黃\",\"hair\":\"飛機+捲捲\",\"hairColor\":\"天藍\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', 'a0d9b3f2-ac79-4576-83d2-3f012476734b.png', 800, '2022-08-13 21:19:06', NULL),
-(30, 7, 1131, '露出馬尾', '這世界上最棒的東西就是馬尾，尤其是東海帝皇的馬尾，你也來跟我說馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！', 2, 1, '{\"basic\":[2,0,1],\"basic_color\":3,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"黃\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"棕\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', '81b2ab4a-74da-4774-9240-0ef0d1df2db1.png', 1400, '2022-08-13 21:22:05', NULL),
-(31, 1, 1145, '這到底什麼人', '想說沒事玩一下隨機功能，結果竟然長這樣啊...日本太太好吃驚～', 4, 3, '{\"basic\":[1,2,1],\"basic_color\":8,\"body\":{\"hand\":0,\"foot\":1,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":2,\"nose\":2,\"hairFront\":2,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":3,\"nose\":1,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"藍\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"土耳其藍\",\"nose\":\"狗狗鼻\",\"noseColor\":\"粉\",\"hair\":\"飛機+俐落短\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"下門牙\"}', '67b76259-0df4-4769-8183-dde450b7198b.png', 600, '2022-08-17 23:04:23', NULL),
-(32, 2, 1136, '大佛哥布林', '意外的有種慈眉善目的感覺？總之下輩子長這樣大概也不錯吧，陰德值太低了所以都用不起貴的形象，是應該轉生成大佛沒錯...', 2, 1, '{\"basic\":[1,2,0],\"basic_color\":1,\"body\":{\"hand\":4,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":2,\"hairFront\":3,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":2,\"nose\":3,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"午夜藍\",\"nose\":\"狗狗鼻\",\"noseColor\":\"黃\",\"hair\":\"阿嬤+不留長\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '0d91966d-a270-4d45-ba7e-44d58c5fa6f8.png', 600, '2022-08-17 23:07:50', NULL),
-(33, 3, 1150, '雪女', '轉世成雪女～感覺就像在看靈異教師神眉一樣～但是都有哥布林跟豬鼻了，轉生成雪女也不賴吧，和北極熊一起生存下去吧！！', 3, 1, '{\"basic\":[2,1,0],\"basic_color\":7,\"body\":{\"hand\":2,\"foot\":2,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":0,\"lip\":3,\"nose\":3,\"hairFront\":0,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":2,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"紫\",\"nose\":\"大鼻子\",\"noseColor\":\"灰\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"紫\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', '524e69c1-546c-41b0-ad63-30713a602a66.png', 700, '2022-08-17 23:12:04', '2022-08-17 23:12:16'),
-(34, 4, 1155, '黃色三號', '最新製作的黃色三號，絕對不是食用色素，是我的來生，我的未來，跟我的希望，我向各位保證未來會有更多黃色來生形象，黃色的時代要來了，黃色最棒！', 2, 1, '{\"basic\":[2,1,2],\"basic_color\":3,\"body\":{\"hand\":3,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":0,\"nose\":3,\"hairFront\":1,\"hairBack\":1,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":1,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"大鼻子\",\"noseColor\":\"綠\",\"hair\":\"捲捲+辮子\",\"hairColor\":\"棕\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'f5854395-7406-475e-bcd3-8e9135987f49.png', 500, '2022-08-17 23:17:17', NULL),
-(35, 5, 1160, '海咪又來囉', '海咪最近看到新上架的顏色，就用了三個小時捏出新的海咪喔，但不管怎麼捏，海咪就是海咪喵～最近在淨灘的時候啊，聽到旁邊有人在討論海咪好可愛，雖然海咪真的可愛，但還是好害羞啊～海咪才沒有那麼可愛呢！', 1, 2, '{\"basic\":[1,1,1],\"basic_color\":7,\"body\":{\"hand\":3,\"foot\":1,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":5,\"special\":0},\"face\":{\"eye\":2,\"ear\":0,\"lip\":1,\"nose\":1,\"hairFront\":1,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":6,\"hairFront\":3,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"章魚腳\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"外星人\",\"eyeColor\":\"水藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"捲捲+不留長\",\"hairColor\":\"鮭魚\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '65a9da0f-a3a2-4203-b0d6-7f23e9b27c6d.png', 1500, '2022-08-17 23:25:07', '2022-08-17 23:28:34'),
-(36, 6, 1165, '冒牌海咪', '最近去參加淨灘活動的時候發現大家都在討論海咪，剛好陰德值也夠了，就捏了一個像海咪的形象，這個相似度，下輩子應該可以當海咪的雙胞胎了吧哈哈！', 1, 1, '{\"basic\":[0,1,2],\"basic_color\":3,\"body\":{\"hand\":2,\"foot\":2,\"tale\":1,\"special\":1},\"special_color\":{\"tale\":2,\"special\":0},\"face\":{\"eye\":2,\"ear\":0,\"lip\":1,\"nose\":3,\"hairFront\":0,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":3,\"nose\":3,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"黃\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"黃\",\"eye\":\"外星人\",\"eyeColor\":\"土耳其藍\",\"nose\":\"大鼻子\",\"noseColor\":\"黃\",\"hair\":\"中分+俐落短\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '418ac8e1-0352-4f42-8af7-2e6e19d43cab.png', 1600, '2022-08-17 23:50:05', '2022-08-17 23:51:08'),
-(37, 7, 1132, '綠鼻豬力士', '人小鬼大已經不稀奇了，人小肚皮大才是真滴潮！', 2, 2, '{\"basic\":[2,0,0],\"basic_color\":2,\"body\":{\"hand\":1,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":3,\"ear\":1,\"lip\":1,\"nose\":5,\"hairFront\":0,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":1,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"小眉毛\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"中分+學生妹\",\"hairColor\":\"棕\",\"ear\":\"小精靈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '53071ced-1463-4456-bfc0-d83f63b8109c.png', 900, '2022-08-18 00:00:32', NULL),
-(38, 8, 1169, '韓國人的感覺', '玩著玩著就玩出一個很像韓國人的形象，感覺也很不錯啊，都敏俊西～希望良辰吉地趕快上架韓國～～～', 0, 0, '{\"basic\":[2,0,0],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":5,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":1,\"hairFront\":4,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":4,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"章魚腳\",\"bodyColor\":\"粉\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"水藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"綠\",\"hair\":\"旁分+不留長\",\"hairColor\":\"天藍\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '579fe4cf-0a7a-470b-a952-e1fb94945ded.png', 1400, '2022-08-18 00:06:39', NULL),
-(39, 9, 1173, '混紅豬男', '啊那個齁，我孫子啦，一直叫偶來玩這個，也不豬到素什麼東西，啊不錯玩啦，下被轉是一隻豬豬，混嫩混嫩，野宿很幸福啦！', 2, 1, '{\"basic\":[2,0,0],\"basic_color\":5,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":4,\"lip\":1,\"nose\":5,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"中毒紫\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '652ac255-02d7-4100-93de-7443ef5e69d7.png', 800, '2022-08-18 00:11:31', NULL),
-(40, 10, 1179, '雙馬尾🐸人', '最近發現可以打表情符號欸🐸', 0, 0, '{\"basic\":[2,2,2],\"basic_color\":3,\"body\":{\"hand\":3,\"foot\":1,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":2},\"face\":{\"eye\":3,\"ear\":4,\"lip\":3,\"nose\":0,\"hairFront\":1,\"hairBack\":1,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":1,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"黃\",\"specialColor\":\"碧綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"小眉毛\",\"eyeColor\":\"紫\",\"nose\":\"那個人\",\"noseColor\":\"粉\",\"hair\":\"捲捲+辮子\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', '84729db0-eadf-485e-9697-4a9c246a7043.png', 1300, '2022-08-18 00:17:16', NULL);
+(23, 1, 1143, '哥布林貓人', '其實也不知道有沒有來生這種東西，但還是捏了個理想的形象，希望下輩子可以變成像凱多的貓咪，雷鳴八卦！', 42, 17, '{\"basic\":[0,0,0],\"basic_color\":1,\"body\":{\"hand\":2,\"foot\":3,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":4,\"lip\":4,\"nose\":1,\"hairFront\":3,\"hairBack\":5,\"topEar\":2},\"face_color\":{\"eye\":2,\"nose\":6,\"hairFront\":1,\"topEar\":7}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"午夜藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"阿嬤+捲捲\",\"hairColor\":\"棕\",\"ear\":\"饅頭\",\"topearColor\":\"鐵灰\",\"lip\":\"不開心\"}', '8dc3b953-5f4a-44ee-b354-2fd3e870e9df.png', 900, '2022-08-13 20:55:16', NULL),
+(24, 1, 1144, '海天使好可愛', '其實也沒什麼特別的，最近迷上海生動物，覺得轉生成海天使好像也不錯吧。提供給需要的人～', 762, 591, '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":4,\"foot\":0,\"tale\":1,\"special\":1},\"special_color\":{\"tale\":5,\"special\":6},\"face\":{\"eye\":0,\"ear\":2,\"lip\":4,\"nose\":2,\"hairFront\":4,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":1,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"魚尾\",\"bodyColor\":\"粉\",\"specialColor\":\"巧克力\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"狗狗鼻\",\"noseColor\":\"粉\",\"hair\":\"旁分+飄逸長\",\"hairColor\":\"紫\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"不開心\"}', '1e0d2c0d-1727-492b-94c3-5f465bf08161.png', 1800, '2022-08-13 20:56:50', NULL),
+(25, 2, 1133, '我都捏了什麼', '這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔這到底是什麼形象喔喔喔喔', 9, 7, '{\"basic\":[2,2,2],\"basic_color\":6,\"body\":{\"hand\":2,\"foot\":0,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":1},\"face\":{\"eye\":2,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":1,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"紅\",\"specialColor\":\"石板藍\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"外星人\",\"eyeColor\":\"紅\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'ccd8abb7-2d69-4ac2-8f51-673f780d73b4.png', 900, '2022-08-13 20:58:46', NULL),
+(26, 3, 1148, '豬鼻豬鼻可愛', '豬鼻可愛人～要是來生真的可以長這樣就好了，最近水生動物好夯，就捏了這麼個形象。好像還有一些很貴但是很好的配件，要卯起來行善了，希望世界更加美好～～', 156, 173, '{\"basic\":[2,2,2],\"basic_color\":7,\"body\":{\"hand\":3,\"foot\":4,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":7},\"face\":{\"eye\":4,\"ear\":3,\"lip\":1,\"nose\":5,\"hairFront\":0,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":6,\"hairFront\":2,\"topEar\":3}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"藍綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"水藍\",\"nose\":\"小豬\",\"noseColor\":\"紅\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"天藍\",\"ear\":\"蠑螈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', 'c715b140-50b9-454d-8fd3-d91f3e7d695d.png', 1400, '2022-08-13 21:03:48', '2022-08-13 21:04:01'),
+(27, 4, 1153, '黃色一號', '這其實還蠻好玩的，大家一起捏黃色生物～', 76, 43, '{\"basic\":[0,2,0],\"basic_color\":3,\"body\":{\"hand\":0,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":3,\"hairBack\":3,\"topEar\":1},\"face_color\":{\"eye\":1,\"nose\":0,\"hairFront\":7,\"topEar\":1}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"綠\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"阿嬤+飄逸長\",\"hairColor\":\"雪\",\"ear\":\"貓耳\",\"topearColor\":\"灰\",\"lip\":\"kitty\"}', '9dc0a94a-76a2-438f-8d07-6323658b6e0a.png', 700, '2022-08-13 21:08:16', NULL),
+(28, 5, 1159, '海咪貓人', '喵喵喵喵喵喵喵喵電感應～因為太多太奇妙的觸電反應～喵喵喵喵海咪海咪～～喵喵喵喵嗚逼屋逼～海咪海咪～海咪好可愛～海咪之歌～我的最愛～大家一起～～～～轉～生～成～海～咪～～～～～～～～～～～～～～～～～～～～～～～～咪！咪！咪～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～', 4912, 5153, '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":4,\"special\":0},\"face\":{\"eye\":2,\"ear\":1,\"lip\":1,\"nose\":1,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":6,\"hairFront\":6,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"粉\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"紫\",\"eye\":\"外星人\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"小麥\",\"ear\":\"小精靈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '7e1e9eaa-d4f8-413d-a043-a31c392f11a6.png', 1800, '2022-08-13 21:12:28', NULL),
+(29, 6, 1164, '這太ㄎㄧㄤ啦', '來生也要 Rocking Style 喔天啊這好棒，覺得在這裡想了很多以前沒想過的事，第一次去目目非營利當志工的時候，才知道這世界上還有這麼多需要幫助的人，而且他們都比我還要努力，這些來生形象也超！對！味！啊我妹妹在叫我，我先走啦！', 98, 102, '{\"basic\":[2,2,0],\"basic_color\":1,\"body\":{\"hand\":4,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":2,\"lip\":3,\"nose\":1,\"hairFront\":2,\"hairBack\":5,\"topEar\":0},\"face_color\":{\"eye\":2,\"nose\":3,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"午夜藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"黃\",\"hair\":\"飛機+捲捲\",\"hairColor\":\"天藍\",\"ear\":\"尖尖耳\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', 'a0d9b3f2-ac79-4576-83d2-3f012476734b.png', 800, '2022-08-13 21:19:06', NULL),
+(30, 7, 1131, '露出馬尾', '這世界上最棒的東西就是馬尾，尤其是東海帝皇的馬尾，你也來跟我說馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！馬尾最棒！', 251, 265, '{\"basic\":[2,0,1],\"basic_color\":3,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"黃\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"棕\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', '81b2ab4a-74da-4774-9240-0ef0d1df2db1.png', 1400, '2022-08-13 21:22:05', NULL),
+(31, 1, 1145, '這到底什麼人', '想說沒事玩一下隨機功能，結果竟然長這樣啊...日本太太好吃驚～', 102, 34, '{\"basic\":[1,2,1],\"basic_color\":8,\"body\":{\"hand\":0,\"foot\":1,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":2,\"nose\":2,\"hairFront\":2,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":3,\"nose\":1,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"藍\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"土耳其藍\",\"nose\":\"狗狗鼻\",\"noseColor\":\"粉\",\"hair\":\"飛機+俐落短\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"下門牙\"}', '67b76259-0df4-4769-8183-dde450b7198b.png', 600, '2022-08-17 23:04:23', NULL),
+(32, 2, 1136, '大佛哥布林', '意外的有種慈眉善目的感覺？總之下輩子長這樣大概也不錯吧，陰德值太低了所以都用不起貴的形象，是應該轉生成大佛沒錯...', 24, 7, '{\"basic\":[1,2,0],\"basic_color\":1,\"body\":{\"hand\":4,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":2,\"hairFront\":3,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":2,\"nose\":3,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"蹼\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"午夜藍\",\"nose\":\"狗狗鼻\",\"noseColor\":\"黃\",\"hair\":\"阿嬤+不留長\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '0d91966d-a270-4d45-ba7e-44d58c5fa6f8.png', 600, '2022-08-17 23:07:50', NULL),
+(33, 3, 1150, '雪女', '轉世成雪女～感覺就像在看靈異教師神眉一樣～但是都有哥布林跟豬鼻了，轉生成雪女也不賴吧，和北極熊一起生存下去吧！！', 452, 519, '{\"basic\":[2,1,0],\"basic_color\":7,\"body\":{\"hand\":2,\"foot\":2,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":1,\"ear\":0,\"lip\":3,\"nose\":3,\"hairFront\":0,\"hairBack\":3,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":2,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往左看\",\"eyeColor\":\"紫\",\"nose\":\"大鼻子\",\"noseColor\":\"灰\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"紫\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', '524e69c1-546c-41b0-ad63-30713a602a66.png', 700, '2022-08-17 23:12:04', '2022-08-17 23:12:16'),
+(34, 4, 1155, '黃色三號', '最新製作的黃色三號，絕對不是食用色素，是我的來生，我的未來，跟我的希望，我向各位保證未來會有更多黃色來生形象，黃色的時代要來了，黃色最棒！', 34, 78, '{\"basic\":[2,1,2],\"basic_color\":3,\"body\":{\"hand\":3,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":0,\"lip\":0,\"nose\":3,\"hairFront\":1,\"hairBack\":1,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":1,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"饅頭\",\"bodyColor\":\"黃\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"大鼻子\",\"noseColor\":\"綠\",\"hair\":\"捲捲+辮子\",\"hairColor\":\"棕\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'f5854395-7406-475e-bcd3-8e9135987f49.png', 500, '2022-08-17 23:17:17', NULL),
+(35, 5, 1160, '海咪又來囉', '海咪最近看到新上架的顏色，就用了三個小時捏出新的海咪喔，但不管怎麼捏，海咪就是海咪喵～最近在淨灘的時候啊，聽到旁邊有人在討論海咪好可愛，雖然海咪真的可愛，但還是好害羞啊～海咪才沒有那麼可愛呢！', 3823, 3927, '{\"basic\":[1,1,1],\"basic_color\":7,\"body\":{\"hand\":3,\"foot\":1,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":5,\"special\":0},\"face\":{\"eye\":2,\"ear\":0,\"lip\":1,\"nose\":1,\"hairFront\":1,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":6,\"hairFront\":3,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"章魚腳\",\"bodyColor\":\"貝殼白\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"外星人\",\"eyeColor\":\"水藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"紅\",\"hair\":\"捲捲+不留長\",\"hairColor\":\"鮭魚\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '65a9da0f-a3a2-4203-b0d6-7f23e9b27c6d.png', 1500, '2022-08-17 23:25:07', '2022-08-17 23:28:34'),
+(36, 6, 1165, '冒牌海咪', '最近去參加淨灘活動的時候發現大家都在討論海咪，剛好陰德值也夠了，就捏了一個像海咪的形象，這個相似度，下輩子應該可以當海咪的雙胞胎了吧哈哈！', 542, 693, '{\"basic\":[0,1,2],\"basic_color\":3,\"body\":{\"hand\":2,\"foot\":2,\"tale\":1,\"special\":1},\"special_color\":{\"tale\":2,\"special\":0},\"face\":{\"eye\":2,\"ear\":0,\"lip\":1,\"nose\":3,\"hairFront\":0,\"hairBack\":2,\"topEar\":0},\"face_color\":{\"eye\":3,\"nose\":3,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"黃\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"黃\",\"eye\":\"外星人\",\"eyeColor\":\"土耳其藍\",\"nose\":\"大鼻子\",\"noseColor\":\"黃\",\"hair\":\"中分+俐落短\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '418ac8e1-0352-4f42-8af7-2e6e19d43cab.png', 1600, '2022-08-17 23:50:05', '2022-08-17 23:51:08'),
+(37, 7, 1132, '綠鼻豬力士', '人小鬼大已經不稀奇了，人小肚皮大才是真滴潮！', 76, 91, '{\"basic\":[2,0,0],\"basic_color\":2,\"body\":{\"hand\":1,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":3,\"ear\":1,\"lip\":1,\"nose\":5,\"hairFront\":0,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":1,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"小眉毛\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"中分+學生妹\",\"hairColor\":\"棕\",\"ear\":\"小精靈\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '53071ced-1463-4456-bfc0-d83f63b8109c.png', 900, '2022-08-18 00:00:32', NULL),
+(38, 8, 1169, '韓國人的感覺', '玩著玩著就玩出一個很像韓國人的形象，感覺也很不錯啊，都敏俊西～希望良辰吉地趕快上架韓國～～～', 852, 606, '{\"basic\":[2,0,0],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":5,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":1,\"hairFront\":4,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":4,\"nose\":4,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"章魚腳\",\"bodyColor\":\"粉\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"鮭魚\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"水藍\",\"nose\":\"貓貓鼻\",\"noseColor\":\"綠\",\"hair\":\"旁分+不留長\",\"hairColor\":\"天藍\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '579fe4cf-0a7a-470b-a952-e1fb94945ded.png', 1400, '2022-08-18 00:06:39', NULL),
+(39, 9, 1173, '混紅豬男', '啊那個齁，我孫子啦，一直叫偶來玩這個，也不豬到素什麼東西，啊不錯玩啦，下被轉是一隻豬豬，混嫩混嫩，野宿很幸福啦！', 1204, 1933, '{\"basic\":[2,0,0],\"basic_color\":5,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":4,\"lip\":1,\"nose\":5,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"中毒紫\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '652ac255-02d7-4100-93de-7443ef5e69d7.png', 800, '2022-08-18 00:11:31', NULL),
+(40, 10, 1179, '雙馬尾🐸人', '最近發現可以打表情符號欸🐸', 173, 83, '{\"basic\":[2,2,2],\"basic_color\":3,\"body\":{\"hand\":3,\"foot\":1,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":2},\"face\":{\"eye\":3,\"ear\":4,\"lip\":3,\"nose\":0,\"hairFront\":1,\"hairBack\":1,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":1,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"魚尾\",\"bodyColor\":\"黃\",\"specialColor\":\"碧綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"小眉毛\",\"eyeColor\":\"紫\",\"nose\":\"那個人\",\"noseColor\":\"粉\",\"hair\":\"捲捲+辮子\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"貓貓嘴\"}', '84729db0-eadf-485e-9697-4a9c246a7043.png', 1300, '2022-08-18 00:17:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -1474,7 +1504,9 @@ INSERT INTO `share_avatar_posts_to_tags` (`share_p_to_t_sid`, `share_post_sid`, 
 (78, 39, 52),
 (79, 40, 54),
 (80, 40, 76),
-(81, 40, 77);
+(81, 40, 77),
+(82, 41, 50),
+(83, 41, 78);
 
 -- --------------------------------------------------------
 
@@ -1496,7 +1528,7 @@ INSERT INTO `share_avatar_tags` (`share_post_tag_sid`, `share_post_tag_text`, `s
 (28, '小手手', 0),
 (29, '長臂猿', 0),
 (30, '瘦子Eso', 0),
-(31, '大肚腩', 2),
+(31, '大肚腩', 3),
 (32, '矮萌', 0),
 (33, '姚明', 0),
 (34, '粉紅', 0),
@@ -1517,12 +1549,12 @@ INSERT INTO `share_avatar_tags` (`share_post_tag_sid`, `share_post_tag_text`, `s
 (49, '海天使', 0),
 (50, '魚尾', 1),
 (51, '貓掌', 0),
-(52, '豬鼻', 5),
+(52, '豬鼻', 7),
 (53, '天空藍', 0),
 (54, '蛙人', 2),
 (55, '碧眼', 0),
 (56, '誰是海咪', 0),
-(57, '海咪是誰', 3),
+(57, '海咪是誰', 4),
 (58, '我就是海咪', 0),
 (59, '你會老我會大', 0),
 (60, 'ㄎ一ㄤ', 0),
@@ -1537,12 +1569,13 @@ INSERT INTO `share_avatar_tags` (`share_post_tag_sid`, `share_post_tag_text`, `s
 (69, '黃色', 0),
 (70, '食用色素', 0),
 (71, '對就是海咪', 0),
-(72, '海咪', 2),
+(72, '海咪', 3),
 (73, '馬尾', 2),
 (74, '露出狐狸尾巴', 0),
 (75, '混紅', 0),
 (76, '呱', 0),
-(77, '雙馬尾', 0);
+(77, '雙馬尾', 0),
+(78, '藍眼', 0);
 
 -- --------------------------------------------------------
 
@@ -1571,7 +1604,7 @@ INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combina
 (1125, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1126, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1127, 19960409, '2022-08-06 16:21:30', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
-(1128, 7, '2022-08-13 21:20:25', '{\"basic\":[2,2,2],\"basic_color\":6,\"body\":{\"hand\":2,\"foot\":0,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":1},\"face\":{\"eye\":2,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":1,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"紅\",\"specialColor\":\"石板藍\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"外星人\",\"eyeColor\":\"紅\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'f7e8f86c-754a-470d-bafe-209805c9e05f.png', 900),
+(1128, 7, '2022-08-13 21:20:25', '{\"basic\":[2,2,2],\"basic_color\":6,\"body\":{\"hand\":2,\"foot\":0,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":1},\"face\":{\"eye\":2,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":1,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"魚尾\",\"bodyColor\":\"紅\",\"specialColor\":\"石板藍\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"外星人\",\"eyeColor\":\"紅\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'ccd8abb7-2d69-4ac2-8f51-673f780d73b4.png', 900),
 (1129, 7, '2022-08-13 20:34:01', '{\"basic\":[0,1,1],\"basic_color\":8,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":2},\"face\":{\"eye\":4,\"ear\":3,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":3,\"topEar\":2},\"face_color\":{\"eye\":5,\"nose\":3,\"hairFront\":3,\"topEar\":7}}', '{\"hand\":\"饅頭\",\"foot\":\"魚尾\",\"bodyColor\":\"藍\",\"specialColor\":\"碧綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紫\",\"nose\":\"那個人\",\"noseColor\":\"黃\",\"hair\":\"中分+飄逸長\",\"hairColor\":\"鮭魚\",\"ear\":\"饅頭\",\"topearColor\":\"鐵灰\",\"lip\":\"kitty\"}', '804490d5-9fb0-4af4-ae71-d54c969cd359.png', 1100),
 (1130, 7, '2022-08-13 20:31:30', '{\"basic\":[2,0,2],\"basic_color\":1,\"body\":{\"hand\":3,\"foot\":4,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":1,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":1,\"nose\":0,\"hairFront\":2,\"topEar\":0}}', '{\"hand\":\"呱呱\",\"foot\":\"饅頭\",\"bodyColor\":\"史瑞克\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"綠\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"捲捲+不留長\",\"hairColor\":\"天藍\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'df778225-5859-4d9b-a51d-7fde20f7a2f6.png', 500),
 (1131, 7, '2022-08-13 20:32:56', '{\"basic\":[2,0,1],\"basic_color\":3,\"body\":{\"hand\":1,\"foot\":0,\"tale\":1,\"special\":2},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"四指\",\"foot\":\"章魚腳\",\"bodyColor\":\"黃\",\"specialColor\":\"天藍\",\"tale\":\"有\",\"taleColor\":\"棕\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', '81b2ab4a-74da-4774-9240-0ef0d1df2db1.png', 1400),
@@ -1618,7 +1651,7 @@ INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combina
 (1172, 8, '2022-08-11 14:48:14', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1173, 9, '2022-08-18 00:09:07', '{\"basic\":[2,0,0],\"basic_color\":5,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":4,\"ear\":4,\"lip\":1,\"nose\":5,\"hairFront\":1,\"hairBack\":4,\"topEar\":0},\"face_color\":{\"eye\":6,\"nose\":4,\"hairFront\":5,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"中毒紫\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"往右看\",\"eyeColor\":\"紅\",\"nose\":\"小豬\",\"noseColor\":\"綠\",\"hair\":\"捲捲+學生妹\",\"hairColor\":\"紫\",\"ear\":\"垂垂耳\",\"topearColor\":\"\",\"lip\":\"上門牙\"}', '652ac255-02d7-4100-93de-7443ef5e69d7.png', 800),
 (1174, 9, '2022-08-18 00:09:16', '{\"basic\":[2,0,2],\"basic_color\":2,\"body\":{\"hand\":1,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":1,\"nose\":0,\"hairFront\":3,\"hairBack\":4,\"topEar\":4},\"face_color\":{\"eye\":1,\"nose\":6,\"hairFront\":7,\"topEar\":2}}', '{\"hand\":\"四指\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"綠\",\"nose\":\"那個人\",\"noseColor\":\"紅\",\"hair\":\"阿嬤+學生妹\",\"hairColor\":\"雪\",\"ear\":\"勞數\",\"topearColor\":\"鼠灰\",\"lip\":\"上門牙\"}', '02ab4528-ffb7-494c-937e-9de5715079a0.png', 800),
-(1175, 9, '2022-08-11 14:55:38', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1175, 9, '2022-08-20 15:03:24', '{\"basic\":[0,2,0],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":3,\"tale\":0,\"special\":1},\"special_color\":{\"tale\":0,\"special\":4},\"face\":{\"eye\":0,\"ear\":0,\"lip\":4,\"nose\":3,\"hairFront\":2,\"hairBack\":1,\"topEar\":0},\"face_color\":{\"eye\":5,\"nose\":6,\"hairFront\":4,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"魚尾\",\"bodyColor\":\"粉\",\"specialColor\":\"綠\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"紫\",\"nose\":\"大鼻子\",\"noseColor\":\"紅\",\"hair\":\"飛機+辮子\",\"hairColor\":\"金\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"不開心\"}', '6c68bb8d-64b3-4807-b3b4-3fda78e2be90.png', 1000),
 (1176, 9, '2022-08-11 14:55:38', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1177, 9, '2022-08-11 14:55:38', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1178, 10, '2022-08-18 00:15:11', '{\"basic\":[0,2,0],\"basic_color\":2,\"body\":{\"hand\":2,\"foot\":3,\"tale\":1,\"special\":0},\"special_color\":{\"tale\":1,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":1,\"hairFront\":0,\"hairBack\":0,\"topEar\":6},\"face_color\":{\"eye\":0,\"nose\":1,\"hairFront\":7,\"topEar\":0}}', '{\"hand\":\"貓掌\",\"foot\":\"饅頭\",\"bodyColor\":\"棕\",\"specialColor\":\"\",\"tale\":\"有\",\"taleColor\":\"綠\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"貓貓鼻\",\"noseColor\":\"粉\",\"hair\":\"中分+不留長\",\"hairColor\":\"雪\",\"ear\":\"兔耳\",\"topearColor\":\"白\",\"lip\":\"kitty\"}', '31c16b8e-8a22-41fc-bc43-3661c17c7d5a.png', 1200),
@@ -1972,7 +2005,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `admin_test_jwt`
 --
 ALTER TABLE `admin_test_jwt`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `body_parts`
@@ -1990,7 +2023,7 @@ ALTER TABLE `city_type`
 -- AUTO_INCREMENT for table `cube`
 --
 ALTER TABLE `cube`
-  MODIFY `cube_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `cube_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `cube_category`
@@ -2098,7 +2131,7 @@ ALTER TABLE `npo_name`
 -- AUTO_INCREMENT for table `place`
 --
 ALTER TABLE `place`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `place_country_list`
@@ -2134,37 +2167,37 @@ ALTER TABLE `reincarnation_order`
 -- AUTO_INCREMENT for table `share_avatar_collects`
 --
 ALTER TABLE `share_avatar_collects`
-  MODIFY `share_post_collect_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `share_post_collect_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `share_avatar_comments`
 --
 ALTER TABLE `share_avatar_comments`
-  MODIFY `share_post_comment_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `share_post_comment_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
 -- AUTO_INCREMENT for table `share_avatar_likes`
 --
 ALTER TABLE `share_avatar_likes`
-  MODIFY `share_post_like_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `share_post_like_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `share_avatar_posts`
 --
 ALTER TABLE `share_avatar_posts`
-  MODIFY `share_post_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `share_post_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `share_avatar_posts_to_tags`
 --
 ALTER TABLE `share_avatar_posts_to_tags`
-  MODIFY `share_p_to_t_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `share_p_to_t_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `share_avatar_tags`
 --
 ALTER TABLE `share_avatar_tags`
-  MODIFY `share_post_tag_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `share_post_tag_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `showcase`

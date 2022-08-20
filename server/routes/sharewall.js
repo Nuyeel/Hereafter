@@ -274,17 +274,63 @@ router.route('/').get(async (req, res) => {
 
             // TODO: 加上是否喜歡的欄位
             // DONE: 先不要花時間去想 JOIN
-            results.forEach((cardItem) => {
-                cardItem.share_post_isliked = false; // 初始化
-                for (let i = 0; i < like_results.length; i++) {
+            // results.forEach((cardItem) => {
+            //     cardItem.share_post_isliked = false; // 初始化
+            //     for (let i = 0; i < like_results.length; i++) {
+            //         if (
+            //             cardItem.share_post_sid ===
+            //             like_results[i].share_post_sid
+            //         ) {
+            //             cardItem.share_post_isliked = true;
+            //         }
+            //     }
+            // });
+            for (let i = 0; i < results.length; i++) {
+                results[i]['share_post_isliked'] = false;
+                for (let k = 0; k < like_results.length; k++) {
                     if (
-                        cardItem.share_post_sid ===
-                        like_results[i].share_post_sid
+                        results[i]['share_post_sid'] ===
+                        like_results[k]['share_post_sid']
                     ) {
-                        cardItem.share_post_isliked = true;
+                        results[i]['share_post_isliked'] = true;
                     }
                 }
-            });
+            }
+
+            const $collect_sql = ` 
+                    SELECT share_post_sid
+                    FROM share_avatar_collects 
+                    WHERE member_sid = ? 
+                `;
+
+            const [collect_results] = await db.query($collect_sql, [
+                res.locals.loginUser.id,
+            ]);
+            // console.log(collect_results);
+
+            // results.forEach((cardItem) => {
+            //     cardItem.share_post_iscollected = false; // 初始化
+            //     for (let i = 0; i < collect_results.length; i++) {
+            //         if (
+            //             cardItem.share_post_sid ===
+            //             collect_results[i].share_post_sid
+            //         ) {
+            //             cardItem.share_post_iscollected = true;
+            //         }
+            //     }
+            // });
+
+            for (let i = 0; i < results.length; i++) {
+                results[i]['share_post_iscollected'] = false;
+                for (let k = 0; k < collect_results.length; k++) {
+                    if (
+                        results[i]['share_post_sid'] ===
+                        collect_results[k]['share_post_sid']
+                    ) {
+                        results[i]['share_post_iscollected'] = true;
+                    }
+                }
+            }
         }
         // console.log(results);
 
@@ -404,17 +450,64 @@ router.route('/').get(async (req, res) => {
 
                 // TODO: 加上是否喜歡的欄位
                 // DONE: 先不要花時間去想 JOIN
-                results.forEach((cardItem) => {
-                    cardItem.share_post_isliked = false; // 初始化
-                    for (let i = 0; i < like_results.length; i++) {
+                // results.forEach((cardItem) => {
+                //     cardItem.share_post_isliked = false; // 初始化
+                //     for (let i = 0; i < like_results.length; i++) {
+                //         if (
+                //             cardItem.share_post_sid ===
+                //             like_results[i].share_post_sid
+                //         ) {
+                //             cardItem.share_post_isliked = true;
+                //         }
+                //     }
+                // });
+
+                for (let i = 0; i < results.length; i++) {
+                    results[i]['share_post_isliked'] = false;
+                    for (let k = 0; k < like_results.length; k++) {
                         if (
-                            cardItem.share_post_sid ===
-                            like_results[i].share_post_sid
+                            results[i]['share_post_sid'] ===
+                            like_results[k]['share_post_sid']
                         ) {
-                            cardItem.share_post_isliked = true;
+                            results[i]['share_post_isliked'] = true;
                         }
                     }
-                });
+                }
+
+                const $collect_sql = ` 
+                    SELECT share_post_sid
+                    FROM share_avatar_collects 
+                    WHERE member_sid = ? 
+                `;
+
+                const [collect_results] = await db.query($collect_sql, [
+                    res.locals.loginUser.id,
+                ]);
+                // console.log(collect_results);
+
+                // results.forEach((cardItem) => {
+                //     cardItem.share_post_iscollected = false; // 初始化
+                //     for (let i = 0; i < collect_results.length; i++) {
+                //         if (
+                //             cardItem.share_post_sid ===
+                //             collect_results[i].share_post_sid
+                //         ) {
+                //             cardItem.share_post_iscollected = true;
+                //         }
+                //     }
+                // });
+
+                for (let i = 0; i < results.length; i++) {
+                    results[i]['share_post_iscollected'] = false;
+                    for (let k = 0; k < collect_results.length; k++) {
+                        if (
+                            results[i]['share_post_sid'] ===
+                            collect_results[k]['share_post_sid']
+                        ) {
+                            results[i]['share_post_iscollected'] = true;
+                        }
+                    }
+                }
             }
 
             res.json(results);
@@ -502,17 +595,64 @@ router.route('/').get(async (req, res) => {
 
                 // TODO: 加上是否喜歡的欄位
                 // DONE: 先不要花時間去想 JOIN
-                results.forEach((cardItem) => {
-                    cardItem.share_post_isliked = false; // 初始化
-                    for (let i = 0; i < like_results.length; i++) {
+                // results.forEach((cardItem) => {
+                //     cardItem.share_post_isliked = false; // 初始化
+                //     for (let i = 0; i < like_results.length; i++) {
+                //         if (
+                //             cardItem.share_post_sid ===
+                //             like_results[i].share_post_sid
+                //         ) {
+                //             cardItem.share_post_isliked = true;
+                //         }
+                //     }
+                // });
+
+                for (let i = 0; i < results.length; i++) {
+                    results[i]['share_post_isliked'] = false;
+                    for (let k = 0; k < like_results.length; k++) {
                         if (
-                            cardItem.share_post_sid ===
-                            like_results[i].share_post_sid
+                            results[i]['share_post_sid'] ===
+                            like_results[k]['share_post_sid']
                         ) {
-                            cardItem.share_post_isliked = true;
+                            results[i]['share_post_isliked'] = true;
                         }
                     }
-                });
+                }
+
+                const $collect_sql = ` 
+                    SELECT share_post_sid
+                    FROM share_avatar_collects 
+                    WHERE member_sid = ? 
+                `;
+
+                const [collect_results] = await db.query($collect_sql, [
+                    res.locals.loginUser.id,
+                ]);
+                // console.log(collect_results);
+
+                // results.forEach((cardItem) => {
+                //     cardItem.share_post_iscollected = false; // 初始化
+                //     for (let i = 0; i < collect_results.length; i++) {
+                //         if (
+                //             cardItem.share_post_sid ===
+                //             collect_results[i].share_post_sid
+                //         ) {
+                //             cardItem.share_post_iscollected = true;
+                //         }
+                //     }
+                // });
+
+                for (let i = 0; i < results.length; i++) {
+                    results[i]['share_post_iscollected'] = false;
+                    for (let k = 0; k < collect_results.length; k++) {
+                        if (
+                            results[i]['share_post_sid'] ===
+                            collect_results[k]['share_post_sid']
+                        ) {
+                            results[i]['share_post_iscollected'] = true;
+                        }
+                    }
+                }
             }
 
             res.json(results);
@@ -771,7 +911,7 @@ router.route('/post').post(async (req, res) => {
 
         // 存在就記下 ID
         if (tag_1_sid_isSet_result.length) {
-            tag_1_ID = tag_1_sid_isSet_result[0].share_post_tag_sid
+            tag_1_ID = tag_1_sid_isSet_result[0].share_post_tag_sid;
         } else if (!tag_1_sid_isSet_result.length) {
             // 不存在就新增
             const $tag_create_sql = ` 
@@ -1182,14 +1322,26 @@ router.route('/:sharepostID').get(async (req, res) => {
 
     if (res.locals.loginUser) {
         // 加上是否可刪除的屬性 有登入才給
-        post_comments_results.forEach((commentItem) => {
-            commentItem.comment_isEditable = false; // 初始化
-            for (let i = 0; i < post_comments_results.length; i++) {
-                if (commentItem.member_sid === res.locals.loginUser.id) {
-                    commentItem.comment_isEditable = true;
+        // post_comments_results.forEach((commentItem) => {
+        //     commentItem.comment_isEditable = false; // 初始化
+        //     for (let i = 0; i < post_comments_results.length; i++) {
+        //         if (commentItem.member_sid === res.locals.loginUser.id) {
+        //             commentItem.comment_isEditable = true;
+        //         }
+        //     }
+        // });
+
+        for (let i = 0; i < post_comments_results.length; i++) {
+            post_comments_results[i]['comment_isEditable'] = false;
+            for (let k = 0; k < post_comments_results.length; k++) {
+                if (
+                    post_comments_results[i]['member_sid'] ===
+                    res.locals.loginUser.id
+                ) {
+                    post_comments_results[i]['comment_isEditable'] = true;
                 }
             }
-        });
+        }
     }
     // console.log(post_comments_results);
     results.postCommentsResults = post_comments_results;
