@@ -47,6 +47,7 @@ const eventsRouter = require(`${__dirname}/routes/events`);
 const eventcartsRouter = require(`${__dirname}/routes/eventcarts`);
 const avatarRouter = require(`${__dirname}/routes/avatar`);
 const gooddeedRouter = require(`${__dirname}/routes/gooddeed`);
+const gamesRouter = require(`${__dirname}/routes/games`);
 const nextlifeRouter = require(`${__dirname}/routes/nextlife`);
 const newsRouter = require(`${__dirname}/routes/news`);
 
@@ -182,7 +183,8 @@ app.use('/api/reborn-cart', rebornRouter);
 
 // 陰德值心理測驗
 app.use('/api/gooddeed', gooddeedRouter);
-
+// 陰德值小遊戲
+app.use('/api/games', gamesRouter);
 //來生形象更新
 app.use('/avatar', avatarRouter);
 
@@ -216,7 +218,6 @@ app.use('/games', express.static(`${__dirname}/public/game`));
 // 細節評論頭貼
 app.use('/event/comment', express.static(`${__dirname}/public/event/comment`));
 
-app.use('/api/gooddeed', gooddeedRouter);
 app.use('/api/sendnews', newsRouter);
 
 // catch 404 and forward to error handler

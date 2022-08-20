@@ -194,12 +194,7 @@ function Nav(props) {
                             setMainpageIcon('mainpage_icon_hidden');
                         }}
                     >
-                        {/* <div className="nav_link nav_missing_word"> */}
                         <img src={missingWord} alt="" />
-                        {/* </div> */}
-                        {/* <h2 className="nav_link">
-                            功德撲滿
-                        </h2> */}
                         <h4 className="subtitle">天下沒有白吃的來生</h4>
                     </div>
 
@@ -212,8 +207,24 @@ function Nav(props) {
                         }}
                     >
                         <h2 className="nav_link">來生形象</h2>
-                        <h4 className="subtitle">若有福蔭，形象由己。無緣來此，交由天定。</h4>
+                        <h4 className="subtitle">
+                            若有福蔭，形象由己。無緣來此，交由天定。
+                        </h4>
                     </div>
+
+                    {/* <div
+                        className="nav_lightbox_list"
+                        onClick={() => {
+                            navigate('/showcase', { replace: true });
+                            setLightBox('nav_lightbox_hidden');
+                            setMainpageIcon('mainpage_icon_hidden');
+                        }}
+                    >
+                        <h2 className="nav_link">來生形象</h2>
+                        <h4 className="subtitle">
+                            若有福蔭，形象由己。無緣來此，交由天定。
+                        </h4>
+                    </div> */}
 
                     <div
                         className="nav_lightbox_list"

@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { ReactComponent as Email } from '../imgs/email.svg';
+import Swal from 'sweetalert2';
 import { NEWS_MAIL } from '../../../config/ajax-path';
 import AuthContext from '../../../context/AuthContext/AuthContext';
 
@@ -17,7 +18,11 @@ function NewsCard(props) {
         })
             .then((r) => r.json())
             .then((result) => {
-                console.log(result);
+                if (result.success) {
+                    Swal.fire('成功發送');
+                } else {
+                    Swal.fire(result.error);
+                }
             });
     };
     return (
