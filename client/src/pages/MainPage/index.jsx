@@ -224,28 +224,7 @@ function MainPage(props) {
                     <div className="xuan-mainpage-bg">
                         <img src={mainpage_test} alt="" />
                     </div>
-                    {/* 背景裝飾上半部 */}
-                    {/* <div className="bg-d-flex"> */}
-                    {/* 背景裝飾圖(左上方) */}
-                    {/* <div className="xuan-mainpage-bg-2">
-                            <img src={mainpagebg_usual} alt="" />
-                        </div> */}
-                    {/* 背景裝飾圖(右上方) */}
-                    {/* <div className="xuan-mainpage-bg-3">
-                            <img src={mainpagebg_usual} alt="" />
-                        </div>
-                    </div> */}
-                    {/* 背景裝飾下半部 */}
-                    {/* <div className="bg-bottom-d-flex">
-                        {/* 背景裝飾圖(左下方) */}
-                    {/* <div className="xuan-mainpage-bg-bottomleft">
-                            <img src={mainpagebg_usual} alt="" />
-                        </div> */}
-                    {/* 背景裝飾圖(右下方) */}
-                    {/* <div className="xuan-mainpage-bg-bottomright">
-                            <img src={mainpagebg_usual} alt="" />
-                        </div>
-                    </div>  */}
+
                     {/* ----其他方塊----- */}
                     {/* 轉生形象訂製 */}
                     <div className="xuan-box xuan-box-avatar">
@@ -271,32 +250,8 @@ function MainPage(props) {
                             {/* <img src={myavatar} alt="" /> */}
                         </div>
                     </div>
-                    {/* 會員中心 */}
-                    {/* Hsin：調整了一下路徑的權限導向 */}
-                    {/* <div
-                        className="xuan-box xuan-box-member"
-                        onClick={() => {
-                            {
-                                authorized
-                                    ? navigate('/memberprofile', {
-                                          replace: true,
-                                      })
-                                    : Swal.fire('請先登入會員');
-                                navigate('/login', {
-                                    replace: true,
-                                });
-                            }
-                        }}
-                    >
-                        <div>
-                            <img src={member_star} alt="" />
-                            <p>會員中心</p>
-                        </div>
 
-                        {/* TODO: 放會員相關圖片 */}
-                    {/* <div></div>
-                    </div> */}{' '}
-                    *{/* 會員中心 */}
+                    {/* 會員中心 */}
                     <div className="xuan-box xuan-box-member">
                         <div>
                             <img src={member_star} alt="" />
@@ -364,7 +319,11 @@ function MainPage(props) {
                         </div>
                     </div>
                     {/* 功德撲滿 */}
-                    <div className="xuan-box xuan-box-event">
+                    <div
+                        className={`xuan-box xuan-box-event ${
+                            isDead ? 'isDisabled' : ''
+                        }`}
+                    >
                         <div className="d-flex">
                             <TbPig />
                             <p>功德撲滿</p>
@@ -374,7 +333,9 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/events');
+                                    if (!isDead) {
+                                        navigate('/events');
+                                    }
                                 }}
                             />
                         </div>
@@ -595,7 +556,11 @@ function MainPage(props) {
                         </div>
                     </div>
                     {/* 活動小格01 */}
-                    <div className="xuan-box xuan-event01">
+                    <div
+                        className={`xuan-box xuan-event01 ${
+                            isDead ? 'isDisabled' : ''
+                        }`}
+                    >
                         <div>
                             <div className="d-flex">
                                 <p className="xuan-title">立即報名</p>
@@ -604,14 +569,20 @@ function MainPage(props) {
                                     alt=""
                                     className="link-arrow"
                                     onClick={() => {
-                                        navigate('/sharewall');
+                                        if (!isDead) {
+                                            navigate('/sharewall');
+                                        }
                                     }}
                                 />
                             </div>
                             <img src={event01} alt="" />
                         </div>
                     </div>
-                    <div className="xuan-box xuan-box-cart">
+                    <div
+                        className={`xuan-box xuan-box-cart ${
+                            isDead ? 'isDisabled' : ''
+                        }`}
+                    >
                         <div className="d-flex">
                             <p className="xuan-title">活動購物車</p>
                             <img
@@ -619,7 +590,9 @@ function MainPage(props) {
                                 alt=""
                                 className="link-arrow"
                                 onClick={() => {
-                                    navigate('/ordersteps');
+                                    if (!isDead) {
+                                        navigate('/ordersteps');
+                                    }
                                 }}
                             />
                         </div>
