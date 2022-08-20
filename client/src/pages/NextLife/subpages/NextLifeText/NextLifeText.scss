@@ -33,7 +33,7 @@
 }
 
 .cpl-nextlife-magic-cube-container.nlText.isHidden {
-    animation: cpl-nextlife-cube-text-area-isHidden 2s;
+    animation: cpl-nextlife-cube-text-area-isHidden 2s forwards;
 }
 
 @keyframes cpl-nextlife-cube-text-area-isHidden {
