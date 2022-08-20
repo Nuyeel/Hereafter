@@ -24,6 +24,13 @@ export const themes = {
         bgcAvatarMaker2: '#00000080',
         bgcShowacseCard: 'transparent',
         navChecked: false,
+        mblue: ' rgba(0, 0, 0, 0.6)',
+        mpink: ' rgba(0, 0, 0, 0.6)',
+        mpurple: ' rgba(0, 0, 0, 0.6)',
+        mbgopacity: 'rgb(0,0,0)',
+        mfblue: '#B8D5FF',
+        mfpurple: '#C8BEFF',
+        mfpink: '#F1C1F8',
     },
     light: {
         title: 'light',
@@ -44,6 +51,13 @@ export const themes = {
         bgcAvatarMaker2: '#8107E133',
         bgcShowacseCard: '#8107E133',
         navChecked: true,
+        mblue: '#81A8E0',
+        mpink: '#E384F2',
+        mpurple: '#9587E1',
+        mbgopacity: 'rgba(0,0,0,0)',
+        mfblue: 'white',
+        mfpurple: 'white',
+        mfpink: 'white',
     },
 };
 

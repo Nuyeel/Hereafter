@@ -15,16 +15,12 @@ position: relative;
   float:left;
   position: fixed;
   top: 0px;
-  left: 0px;
+  left: 0px;  
 }
 
 .xuan-child{
-  // outline: 1px solid red;
-  // background-color:rgb(255, 210, 75);
   width:130%;
-  // width:200%; 原本的寬度
   height: 150%;
-  //height:300%; 原本的高度
   float:left;
   font-size:15px;
   font-family:arial;
@@ -33,6 +29,25 @@ position: relative;
   position: absolute;
   top:0%;
   left: 0%;
+  z-index: 300;
+  // filter: blur(4px);
+
+}
+
+// blur遮色片(暗色模式時背景小糊)
+.xuan-m-opacity-bg{
+  width: 200%;
+  height:200%;
+  position:absolute;
+  top: 0%;
+  left: 0%;
+  // transform: translate(-50%, -50%);
+  filter: blur(50px);
+  // background-color: black ;
+  // background-color: white;
+  opacity: 0.3;
+
+  
 }
 
 .xuan-mainpage-nav{

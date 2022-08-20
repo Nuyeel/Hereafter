@@ -5,6 +5,8 @@ import HeaderContext, {
 import AuthContext from '../../context/AuthContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; //sweetalert2
+//放入主題切換樣式
+import ThemeContext from '../../context/ThemeContext/ThemeContext';
 
 // scss
 import './_mainpage.scss';
@@ -70,6 +72,9 @@ import { TbPig } from 'react-icons/tb';
 import { AiOutlineHeart } from 'react-icons/ai';
 
 function MainPage(props) {
+    // 切換主題樣式
+    const { theme } = useContext(ThemeContext);
+
     // 原有MainPage code保留---------------------------
     const { pageName, setLightBox, mainpageIcon, setMainpageIcon } = props;
     const { setHeader } = useContext(HeaderContext);
@@ -190,6 +195,12 @@ function MainPage(props) {
                     <span className="xuan-subtitle">Back To Center</span>
                 </div>
 
+                {/* 暗色背景時模糊效果 */}
+                <div
+                    className="xuan-m-opacity-bg"
+                    style={{ backgroundColor: theme.mbgopacity }}
+                ></div>
+
                 {/* 按了開啟目錄頁 */}
                 <div
                     className="xuan-mainpage-nav"
@@ -217,6 +228,7 @@ function MainPage(props) {
                         onClick={() => {
                             navigate('/');
                         }}
+                        style={{ backgroundColor: theme.mpurple }}
                     >
                         <img src={mainpage_center_logo} alt="" />
                     </div>
@@ -227,9 +239,14 @@ function MainPage(props) {
 
                     {/* ----其他方塊----- */}
                     {/* 轉生形象訂製 */}
-                    <div className="xuan-box xuan-box-avatar">
+                    <div
+                        className="xuan-box xuan-box-avatar"
+                        style={{
+                            backgroundColor: theme.mpink,
+                        }}
+                    >
                         <div className="d-flex">
-                            <p>轉生形象訂製</p>
+                            <p style={{ color: theme.mfpink }}>轉生形象訂製</p>
                             <img
                                 src={linkarrow}
                                 alt=""
@@ -252,10 +269,13 @@ function MainPage(props) {
                     </div>
 
                     {/* 會員中心 */}
-                    <div className="xuan-box xuan-box-member">
+                    <div
+                        className="xuan-box xuan-box-member"
+                        style={{ backgroundColor: theme.mblue }}
+                    >
                         <div>
                             <img src={member_star} alt="" />
-                            <p>會員中心</p>
+                            <p style={{ color: theme.mfblue }}>會員中心</p>
 
                             {/* FIXME: 為什麼會員中心不能直接連？ */}
                             <img
@@ -296,10 +316,18 @@ function MainPage(props) {
                         <img src={go_future} alt="" />
                     </div>
                     {/* 良辰吉地 */}
-                    <div className="xuan-box xuan-time">
+                    <div
+                        className="xuan-box xuan-time"
+                        style={{ backgroundColor: theme.mpurple }}
+                    >
                         <div>
                             <div className="d-flex">
-                                <p className="xuan-title">良辰吉地</p>
+                                <p
+                                    className="xuan-title"
+                                    style={{ color: theme.mfpurple }}
+                                >
+                                    良辰吉地
+                                </p>
                                 <img
                                     src={linkarrow}
                                     alt=""
@@ -323,10 +351,11 @@ function MainPage(props) {
                         className={`xuan-box xuan-box-event ${
                             isDead ? 'isDisabled' : ''
                         }`}
+                        style={{ backgroundColor: theme.mblue }}
                     >
                         <div className="d-flex">
                             <TbPig />
-                            <p>功德撲滿</p>
+                            <p style={{ color: theme.mfblue }}>功德撲滿</p>
 
                             <img
                                 src={linkarrow}
@@ -349,7 +378,10 @@ function MainPage(props) {
                         <img src={mainpage_side_logo} alt="" />
                     </div>
                     {/* 投生形象小格1 */}
-                    <div className="xuan-box xuan-box-avatar-show1">
+                    <div
+                        className="xuan-box xuan-box-avatar-show1"
+                        style={{ backgroundColor: theme.mblue }}
+                    >
                         {/* 左邊白色框 */}
                         <div>
                             <img src={avatar01} alt="" />
@@ -366,7 +398,10 @@ function MainPage(props) {
                         <AiOutlineHeart />
                     </div>
                     {/* 投生形象小格2 */}
-                    <div className="xuan-box xuan-box-avatar-show2">
+                    <div
+                        className="xuan-box xuan-box-avatar-show2"
+                        style={{ backgroundColor: theme.mpink }}
+                    >
                         {/* 左邊白色框 */}
                         <div>
                             <img src={avatar02} alt="" />
@@ -383,7 +418,10 @@ function MainPage(props) {
                         <AiOutlineHeart />
                     </div>
                     {/* 投生形象小格3 */}
-                    <div className="xuan-box xuan-box-avatar-show3">
+                    <div
+                        className="xuan-box xuan-box-avatar-show3"
+                        style={{ backgroundColor: theme.mpink }}
+                    >
                         {/* 左邊白色框 */}
                         <div>
                             <img src={avatar03} alt="" />
@@ -400,7 +438,10 @@ function MainPage(props) {
                         <AiOutlineHeart />
                     </div>
                     {/* 遊戲小格1 */}
-                    <div className="xuan-box xuan-box-game-show1">
+                    <div
+                        className="xuan-box xuan-box-game-show1"
+                        style={{ backgroundColor: theme.mpurple }}
+                    >
                         {/* 小格標題 */}
                         {/* <p className="xuan-subtitle">Game.01</p> */}
 
@@ -417,7 +458,12 @@ function MainPage(props) {
 
                         <div className="d-flex">
                             <img src={goodsoul} alt="" />
-                            <p className="xuan-subtitle">陰德值小測驗</p>
+                            <p
+                                className="xuan-subtitle"
+                                style={{ color: theme.mfpurple }}
+                            >
+                                陰德值小測驗
+                            </p>
                         </div>
 
                         {/* 底下圖片區域 */}
@@ -430,10 +476,16 @@ function MainPage(props) {
                         className={`xuan-box xuan-box-game-show2 ${
                             !isDead ? 'isDisabled' : ''
                         }`}
+                        style={{ backgroundColor: theme.mpurple }}
                     >
                         <div className="d-flex">
                             {/* 小格標題 */}
-                            <p className="xuan-subtitle">行善積德小遊戲</p>
+                            <p
+                                className="xuan-subtitle"
+                                style={{ color: theme.mfpurple }}
+                            >
+                                行善積德小遊戲
+                            </p>
 
                             <img
                                 src={linkarrow}
@@ -454,11 +506,24 @@ function MainPage(props) {
                         </div>
                     </div>
                     {/* 關於我們 */}
-                    <div className="xuan-box xuan-box-aboutus">
+                    <div
+                        className="xuan-box xuan-box-aboutus"
+                        style={{ backgroundColor: theme.mpink }}
+                    >
                         <div>
                             <img src={aboutus} alt="" />
-                            <p className="xuan-title">關於</p>
-                            <p className="xuan-title">我們</p>
+                            <p
+                                className="xuan-title"
+                                style={{ color: theme.mfpink }}
+                            >
+                                關於
+                            </p>
+                            <p
+                                className="xuan-title"
+                                style={{ color: theme.mfpink }}
+                            >
+                                我們
+                            </p>
                             <img
                                 src={linkarrow}
                                 alt=""
@@ -474,11 +539,19 @@ function MainPage(props) {
                         </div>
                     </div>
                     {/* 最新消息 */}
-                    <div className="xuan-box xuan-box-news">
+                    <div
+                        className="xuan-box xuan-box-news"
+                        style={{ backgroundColor: theme.mblue }}
+                    >
                         {/* 小標區域 */}
                         <div>
                             <img src={aboutus} alt="" />
-                            <p className="xuan-title">最新消息</p>
+                            <p
+                                className="xuan-title"
+                                style={{ color: theme.mfblue }}
+                            >
+                                最新消息
+                            </p>
                             <img
                                 src={linkarrow}
                                 alt=""
@@ -537,14 +610,27 @@ function MainPage(props) {
                         <img src={rebornsteps} alt="" />
                     </div>
                     {/* 交流分享 */}
-                    <div className="xuan-box xuan-box-share d-flex">
+                    <div
+                        className="xuan-box xuan-box-share d-flex"
+                        style={{ backgroundColor: theme.mpurple }}
+                    >
                         <div>
                             <img src={boxshare} alt="" />
                         </div>
 
                         <div>
-                            <p className="xuan-subtitle">交流</p>
-                            <p className="xuan-subtitle">分享</p>
+                            <p
+                                className="xuan-subtitle"
+                                style={{ color: theme.mfpurple }}
+                            >
+                                交流
+                            </p>
+                            <p
+                                className="xuan-subtitle"
+                                style={{ color: theme.mfpurple }}
+                            >
+                                分享
+                            </p>
                             <img
                                 src={linkarrow}
                                 alt=""
@@ -560,17 +646,23 @@ function MainPage(props) {
                         className={`xuan-box xuan-event01 ${
                             isDead ? 'isDisabled' : ''
                         }`}
+                        style={{ backgroundColor: theme.mpurple }}
                     >
                         <div>
                             <div className="d-flex">
-                                <p className="xuan-title">立即報名</p>
+                                <p
+                                    className="xuan-title"
+                                    style={{ color: theme.mfpurple }}
+                                >
+                                    立即報名
+                                </p>
                                 <img
                                     src={linkarrow}
                                     alt=""
                                     className="link-arrow"
                                     onClick={() => {
                                         if (!isDead) {
-                                            navigate('/sharewall');
+                                            navigate('/events');
                                         }
                                     }}
                                 />
@@ -582,6 +674,7 @@ function MainPage(props) {
                         className={`xuan-box xuan-box-cart ${
                             isDead ? 'isDisabled' : ''
                         }`}
+                        style={{ backgroundColor: theme.mblue }}
                     >
                         <div className="d-flex">
                             <p className="xuan-title">活動購物車</p>
