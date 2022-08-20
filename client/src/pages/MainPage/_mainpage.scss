@@ -613,6 +613,13 @@ position: relative;
 
   }
 
+  .xuan-box-event.isDisabled  {
+    // filter:grayscale(1) brightness(1.42);
+    filter:grayscale(1) brightness(1.42);
+    pointer-events: none;
+  }
+
+
   // 功德撲滿下方LOGO
   .xuan-side-logo{
     // outline: 1px solid red;
@@ -913,7 +920,6 @@ position: relative;
     padding-top: 30px;
 
       p{
-        margin-bottom: px;
         letter-spacing: 0.2rem;
         margin-right: 10px;
       }
@@ -1420,6 +1426,12 @@ position: relative;
 
 }
 
+.xuan-event01.isDisabled  {
+  // filter:grayscale(1) brightness(1.42);
+  filter:grayscale(1) brightness(1.42);
+  pointer-events: none;
+}
+
 // 活動購物車
 
 .xuan-box-cart{
@@ -1460,6 +1472,12 @@ position: relative;
       }
 
 
+}
+
+.xuan-box-cart.isDisabled  {
+  // filter:grayscale(1) brightness(1.42);
+  filter:grayscale(1) brightness(1.42);
+  pointer-events: none;
 }
 
 

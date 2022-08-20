@@ -44,7 +44,7 @@ function NextLifeInteractionButton(props) {
             },
         });
 
-        console.log(result.data);
+        // console.log(result.data);
 
         if (!result.data.cubeCreateResult) {
             return Swal.fire({
@@ -72,7 +72,7 @@ function NextLifeInteractionButton(props) {
         }
 
         const NewNextLifeStage = 3;
-        console.log(NewNextLifeStage);
+        // console.log(NewNextLifeStage);
 
         setTextIsHidden(true);
 
@@ -85,7 +85,7 @@ function NextLifeInteractionButton(props) {
 
     const handleTextRevise = () => {
         const NewNextLifeStage = 2;
-        console.log(NewNextLifeStage);
+        // console.log(NewNextLifeStage);
 
         setTextIsHidden(false);
 
