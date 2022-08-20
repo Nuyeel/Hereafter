@@ -835,7 +835,7 @@ function ShareWallDetail(props) {
                                             </span>
                                             <div className="cpl-pcb-ita-ci-edit-area d-flex justify-content-between">
                                                 {TimeTranslator(v.created_at)}
-                                                {/* FIXME: 按下跳出編輯留言 */}
+                                                {/* FIXME: 按下跳出刪除留言 */}
                                                 {v.comment_isEditable ? (
                                                     <div className="cpl-pcb-ita-ci-ea-right">
                                                         <span

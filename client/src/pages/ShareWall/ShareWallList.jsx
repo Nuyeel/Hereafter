@@ -367,6 +367,7 @@ function ShareWallList(props) {
                                 title={v.share_post_title}
                                 text={v.share_post_text}
                                 isliked={v.share_post_isliked}
+                                iscollected={v.share_post_iscollected}
                                 NimgName={v.Nimg_name}
                                 handleSearchParams={handleSearchParams}
                             />
