@@ -579,8 +579,24 @@ function ShareWallPost(props) {
                     <CgClose
                         className="cpl-pcb-close-icon"
                         onClick={() => {
-                            // ASK: navigate(-1)
-                            navigate(-1);
+                            Swal.fire({
+                                title: '您確定要放棄貼文嗎？',
+                                imageUrl: OutlineSoul,
+                                imageHeight: 50,
+                                imageWidth: 50,
+                                confirmButtonText: '確認',
+                                showDenyButton: true,
+                                denyButtonText: '取消',
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    navigate(-1);
+                                } else if (result.isDenied) {
+                                    // console.log(
+                                    //     'Sweetalert2: ',
+                                    //     '不套用...虧了...'
+                                    // );
+                                }
+                            });
                             // navigate('/sharewall', { replace: true });
                         }}
                     />
