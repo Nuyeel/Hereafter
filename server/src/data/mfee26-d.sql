@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Aug 20, 2022 at 09:31 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.29
+-- 主機： 127.0.0.1
+-- 產生時間： 2022-08-21 05:41:26
+-- 伺服器版本： 10.4.24-MariaDB
+-- PHP 版本： 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mfee26-d`
+-- 資料庫: `mfee26-d`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_test_jwt`
+-- 資料表結構 `admin_test_jwt`
 --
 
 CREATE TABLE `admin_test_jwt` (
@@ -36,7 +36,7 @@ CREATE TABLE `admin_test_jwt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `admin_test_jwt`
+-- 傾印資料表的資料 `admin_test_jwt`
 --
 
 INSERT INTO `admin_test_jwt` (`sid`, `member_sid`, `token`, `expires`, `payload`) VALUES
@@ -51,14 +51,16 @@ INSERT INTO `admin_test_jwt` (`sid`, `member_sid`, `token`, `expires`, `payload`
 (86, 10, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImFjY291bnQiOiJIYXBweUNhdDEwIiwiaWF0IjoxNjYwOTc1MzA3fQ.53ppCyzNbC9iDAkpFxT2ovT3FqxAxnMatfaIElVAnbU', '1660976507332', '{\"id\":10,\"account\":\"HappyCat10\"}'),
 (88, 9, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWNjb3VudCI6IkhhcHB5Q2F0MDkiLCJpYXQiOjE2NjA5Nzg4NjN9.miZYE2I0gUquXMWnEbFBs9Iuuq5LDF2ud_jyhvuL2J4', '1660980063628', '{\"id\":9,\"account\":\"HappyCat09\"}'),
 (90, 4, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiYWNjb3VudCI6IkhhcHB5Q2F0MDQiLCJpYXQiOjE2NjA5Nzk3NDJ9.sHizNXkl2AoVn-JgPjUjaAHPehWh-Nwj1z5mb5GNtWo', '1660980942664', '{\"id\":4,\"account\":\"HappyCat04\"}'),
-(91, 7, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWNjb3VudCI6IkhhcHB5Q2F0MDciLCJpYXQiOjE2NjA5Nzk4NTV9.wioN0LnOzI1KPLq61rOmPgBQnnzFKcA6EJ_hFVsJsU4', '1660981055145', '{\"id\":7,\"account\":\"HappyCat07\"}'),
 (92, 6, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiYWNjb3VudCI6IkhhcHB5Q2F0MDYiLCJpYXQiOjE2NjA5ODAzNzN9.pVE40b4VIJo-iUQ8fjMwEpzdUz_93b0qh5mfybjnAf8', '1660981573222', '{\"id\":6,\"account\":\"HappyCat06\"}'),
-(93, 5, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWNjb3VudCI6IkhhcHB5Q2F0MDUiLCJpYXQiOjE2NjA5ODA0OTF9.6Cqo6fLx7TjA2Cz0XgoUU12Zc7bgYiYuyQnMA2oq1Y4', '1660981691513', '{\"id\":5,\"account\":\"HappyCat05\"}');
+(96, 105, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTA1LCJhY2NvdW50IjoiRGF5MDgyMSIsImlhdCI6MTY2MTA1MTg5NX0.gZvwVcfB9l0_emtkYBpngiUZvYRth2ekagDgRI4EuJQ', '1661053095398', '{\"id\":105,\"account\":\"Day0821\"}'),
+(103, 106, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTA2LCJhY2NvdW50IjoiRGF5MDgyMiIsImlhdCI6MTY2MTA1MjY3NH0.odZ7Cbe15BFGct-irUnUkPhZlqEO-ZAlmUSfXbpRKhM', '1661053874716', '{\"id\":106,\"account\":\"Day0822\"}'),
+(105, 7, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiYWNjb3VudCI6IkhhcHB5Q2F0MDciLCJpYXQiOjE2NjEwNTI5Mzd9.L8kZwv5m7q2qtYCT1BIrCAWmdDfc_hnsPL1R5p-EWSM', '1661054137936', '{\"id\":7,\"account\":\"HappyCat07\"}'),
+(107, 5, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiYWNjb3VudCI6IkhhcHB5Q2F0MDUiLCJpYXQiOjE2NjEwNTMwNjd9.N6JcpFuYYDsY0ynW8oCGeo75TR99AzMUtE3frzN7BgQ', '1661054267323', '{\"id\":5,\"account\":\"HappyCat05\"}');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `body_parts`
+-- 資料表結構 `body_parts`
 --
 
 CREATE TABLE `body_parts` (
@@ -71,7 +73,7 @@ CREATE TABLE `body_parts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `city_type`
+-- 資料表結構 `city_type`
 --
 
 CREATE TABLE `city_type` (
@@ -82,7 +84,7 @@ CREATE TABLE `city_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `city_type`
+-- 傾印資料表的資料 `city_type`
 --
 
 INSERT INTO `city_type` (`city_sid`, `city`, `area_sid`, `area_name`) VALUES
@@ -112,7 +114,7 @@ INSERT INTO `city_type` (`city_sid`, `city`, `area_sid`, `area_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cube`
+-- 資料表結構 `cube`
 --
 
 CREATE TABLE `cube` (
@@ -123,7 +125,7 @@ CREATE TABLE `cube` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `cube`
+-- 傾印資料表的資料 `cube`
 --
 
 INSERT INTO `cube` (`member_sid`, `cube_sid`, `cube_text`, `cube_style_sid`) VALUES
@@ -140,7 +142,7 @@ INSERT INTO `cube` (`member_sid`, `cube_sid`, `cube_text`, `cube_style_sid`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cube_category`
+-- 資料表結構 `cube_category`
 --
 
 CREATE TABLE `cube_category` (
@@ -155,7 +157,7 @@ CREATE TABLE `cube_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `cube_category`
+-- 傾印資料表的資料 `cube_category`
 --
 
 INSERT INTO `cube_category` (`cube_style_sid`, `cube_img_a`, `cube_img_b`, `cube_img_c`, `cube_img_t`, `cube_color_1`, `cube_color_2`, `cube_color_font`) VALUES
@@ -188,7 +190,7 @@ INSERT INTO `cube_category` (`cube_style_sid`, `cube_img_a`, `cube_img_b`, `cube
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cube_music`
+-- 資料表結構 `cube_music`
 --
 
 CREATE TABLE `cube_music` (
@@ -198,7 +200,7 @@ CREATE TABLE `cube_music` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `cube_music`
+-- 傾印資料表的資料 `cube_music`
 --
 
 INSERT INTO `cube_music` (`cube_music_sid`, `cube_music_type`, `cube_music_name`) VALUES
@@ -210,7 +212,7 @@ INSERT INTO `cube_music` (`cube_music_sid`, `cube_music_type`, `cube_music_name`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `date_price`
+-- 資料表結構 `date_price`
 --
 
 CREATE TABLE `date_price` (
@@ -219,7 +221,7 @@ CREATE TABLE `date_price` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `date_price`
+-- 傾印資料表的資料 `date_price`
 --
 
 INSERT INTO `date_price` (`year`, `price`) VALUES
@@ -231,7 +233,7 @@ INSERT INTO `date_price` (`year`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event_cart`
+-- 資料表結構 `event_cart`
 --
 
 CREATE TABLE `event_cart` (
@@ -242,7 +244,7 @@ CREATE TABLE `event_cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `event_cart`
+-- 傾印資料表的資料 `event_cart`
 --
 
 INSERT INTO `event_cart` (`order_sid`, `event_sid`, `member_sid`, `created_at`) VALUES
@@ -255,7 +257,7 @@ INSERT INTO `event_cart` (`order_sid`, `event_sid`, `member_sid`, `created_at`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event_cart_creditcard`
+-- 資料表結構 `event_cart_creditcard`
 --
 
 CREATE TABLE `event_cart_creditcard` (
@@ -270,16 +272,21 @@ CREATE TABLE `event_cart_creditcard` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `event_cart_creditcard`
+-- 傾印資料表的資料 `event_cart_creditcard`
 --
 
 INSERT INTO `event_cart_creditcard` (`credit_sid`, `member_sid`, `cardnumber`, `cardholder`, `ex_month`, `ex_year`, `cvv`, `credit_created_at`) VALUES
-(6, '100', '32132132', '3213232132123123', '03', '2022', '321', '2022-07-29 17:36:03');
+(6, '100', '32132132', '3213232132123123', '03', '2022', '321', '2022-07-29 17:36:03'),
+(7, '105', '1234567812345678', '王小明', '05', '2028', '123', '2022-08-21 11:19:17'),
+(8, '5', '1234567812345678', '王小明', '05', '2028', '123', '2022-08-21 11:25:25'),
+(9, '5', '1234567812345678', '王小明', '05', '2028', '123', '2022-08-21 11:26:16'),
+(10, '106', '1234567812345678', '王小明', '05', '2028', '123', '2022-08-21 11:33:59'),
+(11, '106', '1234567812345678', '王小明', '05', '2028', '123', '2022-08-21 11:34:43');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event_cart_personinfo`
+-- 資料表結構 `event_cart_personinfo`
 --
 
 CREATE TABLE `event_cart_personinfo` (
@@ -299,17 +306,22 @@ CREATE TABLE `event_cart_personinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `event_cart_personinfo`
+-- 傾印資料表的資料 `event_cart_personinfo`
 --
 
 INSERT INTO `event_cart_personinfo` (`sid`, `member_sid`, `name`, `mobile_city`, `mobile`, `email`, `gender`, `ID`, `birthday`, `add_city`, `add_town`, `add_detail`, `info_created_at`) VALUES
 (26, 100, '張容瑄', 'Vietnam +84', '0988681621', 'as840922@yahoo.com.tw', '男', 'R2241354564', '2022-07-06', NULL, NULL, '自立街174巷10號5樓', '2022-07-27 22:18:55'),
-(27, 100, '張容瑄', 'Vietnam +84', '0988681621', 'as840922@yahoo.com.tw', '男', 'R2241354564', '2022-06-28', NULL, NULL, '自立街174巷10號5樓', '2022-07-27 22:19:36');
+(27, 100, '張容瑄', 'Vietnam +84', '0988681621', 'as840922@yahoo.com.tw', '男', 'R2241354564', '2022-06-28', NULL, NULL, '自立街174巷10號5樓', '2022-07-27 22:19:36'),
+(39, 105, '快樂的靈魂', '台灣 +886', '988199208', 'Day0821@gmail.com', '不提供', 'R123456789', '2022-08-24', '1', '4', '復興南路一段390號2樓', '2022-08-21 11:19:14'),
+(40, 5, '偷尼史塔克 Tony Stark ', '台灣 +886', '0977101050', 'HappyCat05@gmail.com', '不提供', 'R123456789', '1990-06-14', '1', '4', '復興南路一段390號2樓', '2022-08-21 11:25:22'),
+(41, 5, '偷尼史塔克 Tony Stark ', '台灣 +886', '0977101050', 'HappyCat05@gmail.com', '不提供', 'R123456789', '1990-06-14', '1', '4', '復興南路一段390號2樓', '2022-08-21 11:26:13'),
+(42, 106, '快樂的靈魂5555', '台灣 +886', '9881299083', 'a2827234@gmail.com', '不提供', 'R123456789', '2022-08-21', '1', '4', '復興南路一段390號2樓', '2022-08-21 11:33:56'),
+(43, 106, '快樂的靈魂5555', '台灣 +886', '988199208', 'a2827234@gmail.com', '不提供', 'R123456789', '2022-08-21', '1', '4', '復興南路一段390號2樓', '2022-08-21 11:34:40');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event_comment`
+-- 資料表結構 `event_comment`
 --
 
 CREATE TABLE `event_comment` (
@@ -322,7 +334,7 @@ CREATE TABLE `event_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `event_comment`
+-- 傾印資料表的資料 `event_comment`
 --
 
 INSERT INTO `event_comment` (`sid`, `event_comment_avatar`, `event_comment_name`, `event_comment_date`, `event_comment_star`, `event_comment`) VALUES
@@ -335,7 +347,7 @@ INSERT INTO `event_comment` (`sid`, `event_comment_avatar`, `event_comment_name`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event_order_detail`
+-- 資料表結構 `event_order_detail`
 --
 
 CREATE TABLE `event_order_detail` (
@@ -346,7 +358,7 @@ CREATE TABLE `event_order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `event_order_detail`
+-- 傾印資料表的資料 `event_order_detail`
 --
 
 INSERT INTO `event_order_detail` (`event_order_sid`, `member_sid`, `event_order_detail`, `order_created_at`) VALUES
@@ -358,12 +370,17 @@ INSERT INTO `event_order_detail` (`event_order_sid`, `member_sid`, `event_order_
 (16, 100, '22,23,24,75', '2022-07-28'),
 (17, 100, '22,23,24,75', '2022-07-28'),
 (19, 100, '22,23,24,75,24', '2022-07-28'),
-(50, 100, '23,28', '2022-07-28');
+(50, 100, '23,28', '2022-07-28'),
+(82, 105, '23,75,28,103,22', '2022-08-21'),
+(83, 5, '24,28,30,22', '2022-08-21'),
+(84, 5, '103,75', '2022-08-21'),
+(85, 106, '102,75,22', '2022-08-21'),
+(86, 106, '102,30,28', '2022-08-21');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `good_deed_games`
+-- 資料表結構 `good_deed_games`
 --
 
 CREATE TABLE `good_deed_games` (
@@ -374,7 +391,7 @@ CREATE TABLE `good_deed_games` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `good_deed_games`
+-- 傾印資料表的資料 `good_deed_games`
 --
 
 INSERT INTO `good_deed_games` (`sid`, `game_id`, `game_name`, `game_detail`) VALUES
@@ -384,7 +401,7 @@ INSERT INTO `good_deed_games` (`sid`, `game_id`, `game_name`, `game_detail`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `good_deed_games_record`
+-- 資料表結構 `good_deed_games_record`
 --
 
 CREATE TABLE `good_deed_games_record` (
@@ -400,7 +417,7 @@ CREATE TABLE `good_deed_games_record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `good_deed_games_record`
+-- 傾印資料表的資料 `good_deed_games_record`
 --
 
 INSERT INTO `good_deed_games_record` (`sid`, `member_sid`, `member_account`, `member_name`, `member_birth`, `member_death`, `play_date`, `game_id`, `game_score`) VALUES
@@ -410,7 +427,7 @@ INSERT INTO `good_deed_games_record` (`sid`, `member_sid`, `member_account`, `me
 -- --------------------------------------------------------
 
 --
--- Table structure for table `location`
+-- 資料表結構 `location`
 --
 
 CREATE TABLE `location` (
@@ -419,7 +436,7 @@ CREATE TABLE `location` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `location`
+-- 傾印資料表的資料 `location`
 --
 
 INSERT INTO `location` (`l_sid`, `location`) VALUES
@@ -444,7 +461,7 @@ INSERT INTO `location` (`l_sid`, `location`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `member`
+-- 資料表結構 `member`
 --
 
 CREATE TABLE `member` (
@@ -464,118 +481,120 @@ CREATE TABLE `member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `member`
+-- 傾印資料表的資料 `member`
 --
 
 INSERT INTO `member` (`sid`, `name`, `birthdate`, `deathdate`, `isdead`, `mobile`, `email`, `account`, `password`, `gooddeed_score`, `profile_picture`, `passcode`, `create_at`) VALUES
-(1, 'the first cat', NULL, NULL, 'false', '', 'HappyCat01@gmail.com', 'HappyCat01', '$2a$10$.Xh/TQA3aVJ.orVOX1JRZO8K3hB9rdoe7RydbkYih97T1msjAzpKq', 10000, 1143, NULL, '2022-06-09 05:52:24'),
-(2, '貓貓貓', NULL, NULL, 'false', '', 'HappyCat02@gmail.com', 'HappyCat02', '$2y$10$NYuxH3UUfyHRr8yjeDo0Ou/zw83PT/hjbaAwWQ6u.MVlwhS2KMct6', 10000, 1133, NULL, '2022-06-09 05:52:51'),
-(3, '九天玄女不在這', NULL, NULL, 'false', '', 'HappyCat03@gmail.com', 'HappyCat03', '$2y$10$QCyABgd5IjBYYmQhnK0bpeBjSOKzSjiPbyI8fFPpV.cBoclFe8f1.', 10000, 1148, NULL, '2022-06-09 05:53:34'),
-(4, 'Bible Thumb', NULL, NULL, 'false', '', 'HappyCat04@gmail.com', 'HappyCat04', '$2y$10$xyN7xDkGJ5SustZEWCDyIuA/7RdTp0Y3yg4MhtFPFyzmnmayB9EZC', 10000, 1153, NULL, '2022-06-09 05:54:15'),
-(5, '偷尼史塔克 Tony Stark ', '1990-06-14', '2022-06-02', 'false', '0977101050', 'HappyCat05@gmail.com', 'HappyCat05', '$2y$10$sFaM2bucSZ9h0bRb9vXYJuwSy1.YS7eHOutpxih.qfOieXQX1b6ze', 10000, 1158, NULL, '2022-06-09 05:54:42'),
-(6, '怎一直下雨', '1990-03-05', '2022-05-31', 'false', '', 'HappyCat06@gmail.com', 'HappyCat06', '$2y$10$KQFhzDlfZFdk.stmlCA7U.il3fDWO2z0kkVzrHuF9SJPIgNXWKAp.', 10000, 1163, NULL, '2022-06-09 05:55:06'),
-(7, '趕著投胎', NULL, NULL, 'true', '', 'HappyCat07@gmail.com', 'HappyCat07', '$2y$10$Wy1j.2RcH0cA565y0kP2I.yIGvH8rdoEFXhWRokuDHgOerj1NNG9u', 10100, 1128, NULL, '2022-06-09 05:55:27'),
-(8, '咖啡因成癮重症患者', NULL, NULL, 'false', '', 'HappyCat08@gmail.com', 'HappyCat08', '$2y$10$hfdvXtFq2/leKrM2jLXxf.L1YiKAr5wMCq7.rp69fiSgoG3pnJlsK', 10000, 1168, NULL, '2022-06-09 05:55:47'),
-(9, '陳怡君', NULL, NULL, 'false', '', 'HappyCat09@gmail.com', 'HappyCat09', '$2y$10$7zyt3mR2ghfGKn9xkEWgdeXlmxoRy4rm3DmrP/3kDFMXoIPPEj/wy', 10000, 1173, NULL, '2022-06-09 05:56:28'),
-(10, '總有幾隻貓的', NULL, NULL, 'false', '', 'HappyCat10@gmail.com', 'HappyCat10', '$2y$10$n3p/32p42bi1QqX/U0KjBe4Yb0WdAI.8UaoZH3tiRR8NbBaxHGcOK', 10000, 1178, NULL, '2022-06-09 05:56:51'),
-(11, 'unhappy cat', NULL, NULL, 'true', '', 'HappyCat11@gmail.com', 'HappyCat11', '$2y$10$JG.LjNM0flM7vAV8zkh6PO3Hb2bgA3c8xKW83W2qbgJgns/n/Hdoa', NULL, NULL, NULL, '2022-06-09 05:57:16'),
-(12, '靈魂急轉彎', '1990-06-15', '2022-06-07', 'false', '', 'HappyCat12@gmail.com', 'HappyCat12', '$2y$10$7.aum6zzCAAX1XsrQyhOf.U8r5MrG586P2fdGiW27WfBOztqK4IHa', NULL, NULL, NULL, '2022-06-09 05:57:37'),
-(13, '', NULL, NULL, 'false', '', 'admin@gmail.com', 'Admin', '$2y$10$0DADDxhf55DPxOKcyISJt.L0uHOkeiSh7J/lTqQ73jMYj1qhLBrBW', NULL, NULL, NULL, '2022-06-09 17:51:04'),
-(14, '', NULL, NULL, 'false', '', 'HappyCat13@gmail.com', 'HappyCat13', '$2y$10$HX8f.Hc7la1jgapWVPVjtuSJ.RTjTgK9ZohqVUX5ean5kn2.OZgzC', NULL, NULL, NULL, '2022-06-09 19:26:43'),
-(15, '', NULL, NULL, 'false', '', 'HappyCat14@gmail.com', 'HappyCat14', '$2y$10$rMPZyA.6wVgZHh2tskYwSOsHd0AiFNAdAU0rD5qS3SM1nZ0NTlsQ6', NULL, NULL, NULL, '2022-06-09 19:27:35'),
-(16, '', NULL, NULL, 'false', '', 'HappyCat15@gmail.com', 'HappyCat15', '$2y$10$dIWMYfd8WvjFaDuPfr5FF.gSfzczdVnmuy591Ku3fcPF64e8hbPOO', NULL, NULL, NULL, '2022-06-09 19:28:13'),
-(17, '', NULL, NULL, 'false', '', 'HappyCat16@gmail.com', 'HappyCat16', '$2y$10$h6azphKhwhRq8BeaTzAHQeUlH3grQEuFordDuUw2aFIo.EXdKiGmS', NULL, NULL, NULL, '2022-06-09 19:28:38'),
-(18, '', NULL, NULL, 'false', '', 'HappyCat17@gmail.com', 'HappyCat17', '$2y$10$Z6UOfMHaJr8dleAdAWixNu6BZNXKK1q6kJofTHiTtnRXJ3./1P5i.', NULL, NULL, NULL, '2022-06-09 19:28:56'),
-(19, '', NULL, NULL, 'false', '', 'HappyCat18@gmail.com', 'HappyCat18', '$2y$10$Evne7/6E0Ryb.c.ywAlj/.0zXlPfpvjPIAeWn6WNsu/AweIKcTh9a', NULL, NULL, NULL, '2022-06-09 19:29:10'),
-(20, '', NULL, NULL, 'false', '', 'HappyCat19@gmail.com', 'HappyCat19', '$2y$10$oa7Bc0HTZ9dCfoOWxYJNaOomtguDOXlUfwAAQ7n955AFju6ccOIum', NULL, NULL, NULL, '2022-06-09 19:30:27'),
-(21, '', NULL, NULL, 'false', '', 'HappyCat20@gmail.com', 'HappyCat20', '$2y$10$dulMYVhaUT8iNiYoUF78Oufc13.1bV7zTcsBlHjH0dtqX2JW1U/yG', NULL, NULL, NULL, '2022-06-09 19:30:39'),
-(22, '', NULL, NULL, 'false', '', 'HappyCat21@gmail.com', 'HappyCat21', '$2y$10$agYKF2IL4CKcqQg4MEBqd.Kij2eJYsI2.OVJqRUMzZmeXx2K569Xq', NULL, NULL, NULL, '2022-06-09 19:30:49'),
-(23, '', NULL, NULL, 'false', '', 'HappyCat22@gmail.com', 'HappyCat22', '$2y$10$7nvQ.ncWWItOddNTGDUGVOKOOVkKZHcNCiAyk85CjxAyNr9rH6yKK', NULL, NULL, NULL, '2022-06-09 19:31:01'),
-(24, '', NULL, NULL, 'false', '', 'HappyCat23@gmail.com', 'HappyCat23', '$2y$10$ZGAPY7FVslnPzu6x63ad9OuyQ0g7ej/g8PDgz/k3p5Kv.WgkTM2N2', NULL, NULL, NULL, '2022-06-09 19:31:12'),
-(25, '', NULL, NULL, 'false', '', 'HappyCat24@gmail.com', 'HappyCat24', '$2y$10$BHZAB6wTXsyvQVKz1ggpAOKoyz2aCnF7/tzbaCeZ5xK7pgtKF5c96', NULL, NULL, NULL, '2022-06-09 19:31:23'),
-(26, '', NULL, NULL, 'false', '', 'HappyCat25@gmail.com', 'HappyCat25', '$2y$10$KP/vubfTBUf65ziMvrDnTuMTe35AkW9qQ65c0dzGj0G0lr62hRnnW', NULL, NULL, NULL, '2022-06-09 19:31:56'),
-(27, '', NULL, NULL, 'false', '', 'HappyCat26@gmail.com', 'HappyCat26', '$2y$10$RP5WMjnK0lRgl2Y84aaZn.Zr9I.fCf5HF8BN1iomUD7v9QB0hSy3u', NULL, NULL, NULL, '2022-06-09 19:32:15'),
-(28, '', NULL, NULL, 'false', '', 'HappyCat27@gmail.com', 'HappyCat27', '$2y$10$5446DawwHc8AOJAP1lc2QexLF4y1VNA0F1RN4OM18JcMO3wq/mlqm', NULL, NULL, NULL, '2022-06-09 19:32:46'),
-(29, '', NULL, NULL, 'false', '', 'HappyCat28@gmail.com', 'HappyCat28', '$2y$10$8FJiwaznH232h48wk7lHR.uyDJnthf3ADnYsERlTbefUzB.CpoWcu', NULL, NULL, NULL, '2022-06-09 19:32:58'),
-(30, '', NULL, NULL, 'false', '', 'HappyCat29@gmail.com', 'HappyCat29', '$2y$10$gP3HIA0EXMDh9qvUJHPQSe/hp2U7qqgaCn9/szImsEsj3sAlwlaEu', NULL, NULL, NULL, '2022-06-09 19:33:10'),
-(31, '', NULL, NULL, 'false', '', 'HappyCat30@gmail.com', 'HappyCat30', '$2y$10$OpLdm4HUzxpgmE2AO1.VGuT9LNha8Uf3u7HPr5irykac.IzHsy5oq', NULL, NULL, NULL, '2022-06-09 19:33:22'),
-(32, '', NULL, NULL, 'false', '', 'HappyCat31@gmail.com', 'HappyCat31', '$2y$10$otVp1Ic9lSyMKkJPbwJM/ObXPky23VVmAx4UU/OIU9dtUQBYxPCga', NULL, NULL, NULL, '2022-06-09 19:33:35'),
+(1, 'the first cat', NULL, NULL, 'false', NULL, 'HappyCat01@gmail.com', 'HappyCat01', '$2a$10$.Xh/TQA3aVJ.orVOX1JRZO8K3hB9rdoe7RydbkYih97T1msjAzpKq', 10000, 1143, NULL, '2022-06-09 05:52:24'),
+(2, '貓貓貓', NULL, NULL, 'false', NULL, 'HappyCat02@gmail.com', 'HappyCat02', '$2y$10$NYuxH3UUfyHRr8yjeDo0Ou/zw83PT/hjbaAwWQ6u.MVlwhS2KMct6', 10000, 1133, NULL, '2022-06-09 05:52:51'),
+(3, '九天玄女不在這', NULL, NULL, 'false', NULL, 'HappyCat03@gmail.com', 'HappyCat03', '$2y$10$QCyABgd5IjBYYmQhnK0bpeBjSOKzSjiPbyI8fFPpV.cBoclFe8f1.', 10000, 1148, NULL, '2022-06-09 05:53:34'),
+(4, 'Bible Thumb', NULL, NULL, 'false', NULL, 'HappyCat04@gmail.com', 'HappyCat04', '$2y$10$xyN7xDkGJ5SustZEWCDyIuA/7RdTp0Y3yg4MhtFPFyzmnmayB9EZC', 10000, 1153, NULL, '2022-06-09 05:54:15'),
+(5, '偷尼史塔克 Tony Stark ', '1990-06-14', NULL, 'false', '0977101050', 'HappyCat05@gmail.com', 'HappyCat05', '$2y$10$sFaM2bucSZ9h0bRb9vXYJuwSy1.YS7eHOutpxih.qfOieXQX1b6ze', 10000, 1158, NULL, '2022-06-09 05:54:42'),
+(6, '怎一直下雨', '1990-03-05', '2022-05-31', 'false', NULL, 'HappyCat06@gmail.com', 'HappyCat06', '$2y$10$KQFhzDlfZFdk.stmlCA7U.il3fDWO2z0kkVzrHuF9SJPIgNXWKAp.', 10000, 1163, NULL, '2022-06-09 05:55:06'),
+(7, '趕著投胎', '1992-02-22', '2022-08-21', 'true', NULL, 'HappyCat07@gmail.com', 'HappyCat07', '$2y$10$Wy1j.2RcH0cA565y0kP2I.yIGvH8rdoEFXhWRokuDHgOerj1NNG9u', 10100, 1128, NULL, '2022-06-09 05:55:27'),
+(8, '咖啡因成癮重症患者', NULL, NULL, 'false', NULL, 'HappyCat08@gmail.com', 'HappyCat08', '$2y$10$hfdvXtFq2/leKrM2jLXxf.L1YiKAr5wMCq7.rp69fiSgoG3pnJlsK', 10000, 1168, NULL, '2022-06-09 05:55:47'),
+(9, '陳怡君', NULL, NULL, 'false', NULL, 'HappyCat09@gmail.com', 'HappyCat09', '$2y$10$7zyt3mR2ghfGKn9xkEWgdeXlmxoRy4rm3DmrP/3kDFMXoIPPEj/wy', 10000, 1173, NULL, '2022-06-09 05:56:28'),
+(10, '總有幾隻貓的', NULL, NULL, 'false', NULL, 'HappyCat10@gmail.com', 'HappyCat10', '$2y$10$n3p/32p42bi1QqX/U0KjBe4Yb0WdAI.8UaoZH3tiRR8NbBaxHGcOK', 10000, 1178, NULL, '2022-06-09 05:56:51'),
+(11, 'unhappy cat', NULL, NULL, 'true', NULL, 'HappyCat11@gmail.com', 'HappyCat11', '$2y$10$JG.LjNM0flM7vAV8zkh6PO3Hb2bgA3c8xKW83W2qbgJgns/n/Hdoa', NULL, NULL, NULL, '2022-06-09 05:57:16'),
+(12, '靈魂急轉彎', '1990-06-15', '2022-06-07', 'false', NULL, 'HappyCat12@gmail.com', 'HappyCat12', '$2y$10$7.aum6zzCAAX1XsrQyhOf.U8r5MrG586P2fdGiW27WfBOztqK4IHa', NULL, NULL, NULL, '2022-06-09 05:57:37'),
+(13, '', NULL, NULL, 'false', NULL, 'admin@gmail.com', 'Admin', '$2y$10$0DADDxhf55DPxOKcyISJt.L0uHOkeiSh7J/lTqQ73jMYj1qhLBrBW', NULL, NULL, NULL, '2022-06-09 17:51:04'),
+(14, '', NULL, NULL, 'false', NULL, 'HappyCat13@gmail.com', 'HappyCat13', '$2y$10$HX8f.Hc7la1jgapWVPVjtuSJ.RTjTgK9ZohqVUX5ean5kn2.OZgzC', NULL, NULL, NULL, '2022-06-09 19:26:43'),
+(15, '', NULL, NULL, 'false', NULL, 'HappyCat14@gmail.com', 'HappyCat14', '$2y$10$rMPZyA.6wVgZHh2tskYwSOsHd0AiFNAdAU0rD5qS3SM1nZ0NTlsQ6', NULL, NULL, NULL, '2022-06-09 19:27:35'),
+(16, '', NULL, NULL, 'false', NULL, 'HappyCat15@gmail.com', 'HappyCat15', '$2y$10$dIWMYfd8WvjFaDuPfr5FF.gSfzczdVnmuy591Ku3fcPF64e8hbPOO', NULL, NULL, NULL, '2022-06-09 19:28:13'),
+(17, '', NULL, NULL, 'false', NULL, 'HappyCat16@gmail.com', 'HappyCat16', '$2y$10$h6azphKhwhRq8BeaTzAHQeUlH3grQEuFordDuUw2aFIo.EXdKiGmS', NULL, NULL, NULL, '2022-06-09 19:28:38'),
+(18, '', NULL, NULL, 'false', NULL, 'HappyCat17@gmail.com', 'HappyCat17', '$2y$10$Z6UOfMHaJr8dleAdAWixNu6BZNXKK1q6kJofTHiTtnRXJ3./1P5i.', NULL, NULL, NULL, '2022-06-09 19:28:56'),
+(19, '', NULL, NULL, 'false', NULL, 'HappyCat18@gmail.com', 'HappyCat18', '$2y$10$Evne7/6E0Ryb.c.ywAlj/.0zXlPfpvjPIAeWn6WNsu/AweIKcTh9a', NULL, NULL, NULL, '2022-06-09 19:29:10'),
+(20, '', NULL, NULL, 'false', NULL, 'HappyCat19@gmail.com', 'HappyCat19', '$2y$10$oa7Bc0HTZ9dCfoOWxYJNaOomtguDOXlUfwAAQ7n955AFju6ccOIum', NULL, NULL, NULL, '2022-06-09 19:30:27'),
+(21, '', NULL, NULL, 'false', NULL, 'HappyCat20@gmail.com', 'HappyCat20', '$2y$10$dulMYVhaUT8iNiYoUF78Oufc13.1bV7zTcsBlHjH0dtqX2JW1U/yG', NULL, NULL, NULL, '2022-06-09 19:30:39'),
+(22, '', NULL, NULL, 'false', NULL, 'HappyCat21@gmail.com', 'HappyCat21', '$2y$10$agYKF2IL4CKcqQg4MEBqd.Kij2eJYsI2.OVJqRUMzZmeXx2K569Xq', NULL, NULL, NULL, '2022-06-09 19:30:49'),
+(23, '', NULL, NULL, 'false', NULL, 'HappyCat22@gmail.com', 'HappyCat22', '$2y$10$7nvQ.ncWWItOddNTGDUGVOKOOVkKZHcNCiAyk85CjxAyNr9rH6yKK', NULL, NULL, NULL, '2022-06-09 19:31:01'),
+(24, '', NULL, NULL, 'false', NULL, 'HappyCat23@gmail.com', 'HappyCat23', '$2y$10$ZGAPY7FVslnPzu6x63ad9OuyQ0g7ej/g8PDgz/k3p5Kv.WgkTM2N2', NULL, NULL, NULL, '2022-06-09 19:31:12'),
+(25, '', NULL, NULL, 'false', NULL, 'HappyCat24@gmail.com', 'HappyCat24', '$2y$10$BHZAB6wTXsyvQVKz1ggpAOKoyz2aCnF7/tzbaCeZ5xK7pgtKF5c96', NULL, NULL, NULL, '2022-06-09 19:31:23'),
+(26, '', NULL, NULL, 'false', NULL, 'HappyCat25@gmail.com', 'HappyCat25', '$2y$10$KP/vubfTBUf65ziMvrDnTuMTe35AkW9qQ65c0dzGj0G0lr62hRnnW', NULL, NULL, NULL, '2022-06-09 19:31:56'),
+(27, '', NULL, NULL, 'false', NULL, 'HappyCat26@gmail.com', 'HappyCat26', '$2y$10$RP5WMjnK0lRgl2Y84aaZn.Zr9I.fCf5HF8BN1iomUD7v9QB0hSy3u', NULL, NULL, NULL, '2022-06-09 19:32:15'),
+(28, '', NULL, NULL, 'false', NULL, 'HappyCat27@gmail.com', 'HappyCat27', '$2y$10$5446DawwHc8AOJAP1lc2QexLF4y1VNA0F1RN4OM18JcMO3wq/mlqm', NULL, NULL, NULL, '2022-06-09 19:32:46'),
+(29, '', NULL, NULL, 'false', NULL, 'HappyCat28@gmail.com', 'HappyCat28', '$2y$10$8FJiwaznH232h48wk7lHR.uyDJnthf3ADnYsERlTbefUzB.CpoWcu', NULL, NULL, NULL, '2022-06-09 19:32:58'),
+(30, '', NULL, NULL, 'false', NULL, 'HappyCat29@gmail.com', 'HappyCat29', '$2y$10$gP3HIA0EXMDh9qvUJHPQSe/hp2U7qqgaCn9/szImsEsj3sAlwlaEu', NULL, NULL, NULL, '2022-06-09 19:33:10'),
+(31, '', NULL, NULL, 'false', NULL, 'HappyCat30@gmail.com', 'HappyCat30', '$2y$10$OpLdm4HUzxpgmE2AO1.VGuT9LNha8Uf3u7HPr5irykac.IzHsy5oq', NULL, NULL, NULL, '2022-06-09 19:33:22'),
+(32, '', NULL, NULL, 'false', NULL, 'HappyCat31@gmail.com', 'HappyCat31', '$2y$10$otVp1Ic9lSyMKkJPbwJM/ObXPky23VVmAx4UU/OIU9dtUQBYxPCga', NULL, NULL, NULL, '2022-06-09 19:33:35'),
 (33, '快 樂 貓', NULL, NULL, 'false', '0988000111', 'HappyCat32@gmail.com', 'HappyCat32', '$2y$10$A4479RQRwSNLT5nSFUCFhecaDcEshF980fhqCE9HzuLjW83GWys1i', NULL, NULL, NULL, '2022-06-09 19:33:49'),
-(34, '', NULL, NULL, 'false', '', 'HappyCat33@gmail.com', 'HappyCat33', '$2y$10$nCEH1Lpgv82C.T7HsVbOJOU7Lhhi1I4CAlICGS5NOf/HEyFeclOhm', NULL, NULL, NULL, '2022-06-09 19:34:02'),
-(35, '', NULL, NULL, 'false', '', 'HappyCat34@gmail.com', 'HappyCat34', '$2y$10$b6qvb7RlxSExUOPcASuQD.toGgWKuTJlqUQd/fT6nyI3d7Y2km7Pm', NULL, NULL, NULL, '2022-06-09 19:34:29'),
-(36, '', NULL, NULL, 'false', '', 'HappyCat35@gmail.com', 'HappyCat35', '$2y$10$vRoey8TpPXJuH5osqirV/OAYl2vtPUYjgpbpSdd4bUENbGHN1gsCK', NULL, NULL, NULL, '2022-06-09 19:34:44'),
-(37, '', NULL, NULL, 'false', '', 'HappyCat36@gmail.com', 'HappyCat36', '$2y$10$pM5FXJZl6YpPh/rkP/QXme.4oJa9ZgVZyWeamYUSG1z2VjaUH8/OW', NULL, NULL, NULL, '2022-06-09 19:34:56'),
-(38, '', NULL, NULL, 'false', '', 'HappyCat37@gmail.com', 'HappyCat37', '$2y$10$ipQo49pUVhT0sMsEGfn2T.AhffoofpElG.6MoBBnD9FfqkuxutEBa', NULL, NULL, NULL, '2022-06-09 19:35:09'),
-(39, '', NULL, NULL, 'false', '', 'HappyCat38@gmail.com', 'HappyCat38', '$2y$10$FZlahkLFTItFsZcL7YEgJOk76E/p7ar4R6XiKBB78C6g3mHFzEevC', NULL, NULL, NULL, '2022-06-09 19:35:22'),
-(40, '', NULL, NULL, 'false', '', 'HappyCat39@gmail.com', 'HappyCat39', '$2y$10$OY5sUwd9AsfDjjd1EceA0OFd.ZfEi.GN8jbfQo1Btgqzfeq3MpKSK', NULL, NULL, NULL, '2022-06-09 19:35:40'),
-(41, '', NULL, NULL, 'false', '', 'HappyCat40@gmail.com', 'HappyCat40', '$2y$10$gd8dE6FN/DqwapbjZtEN3uu.mfPei6Y0n4g5nqivLFWL1Zw4EoCp.', NULL, NULL, NULL, '2022-06-09 19:35:53'),
-(42, '', NULL, NULL, 'false', '', 'HappyCat41@gmail.com', 'HappyCat41', '$2y$10$bd.yjSGmWpAWEiLudnHeRuttOa6Sn54dqtjtDrrwjjxfvd39.zsUu', NULL, NULL, NULL, '2022-06-09 19:36:06'),
-(43, '', NULL, NULL, 'false', '', 'HappyCat42@gmail.com', 'HappyCat42', '$2y$10$fEnbjF3O3xyfHQR8WhCgXei3P3CzEu4m/b3eH3L6l0DXqo.UF1E/e', NULL, NULL, NULL, '2022-06-09 19:36:21'),
-(44, '', NULL, NULL, 'false', '', 'HappyCat43@gmail.com', 'HappyCat43', '$2y$10$8bM6.kEcw2Rt6yAeS3Tap.tAa/H4w.5lM0GBghC0wsOk11bqlC6tu', NULL, NULL, NULL, '2022-06-09 19:36:33'),
-(45, '', NULL, NULL, 'false', '', 'HappyCat44@gmail.com', 'HappyCat44', '$2y$10$Ajm96pUGSvdNpaQWAPyRiuNTt2Xf6r2/Nmf9JgRu4lBTSly3BevE2', NULL, NULL, NULL, '2022-06-09 19:37:33'),
-(46, '', NULL, NULL, 'false', '', 'HappyCat45@gmail.com', 'HappyCat45', '$2y$10$xxuG/2G2koeshecupsmbaO3Ro3qnxsACAvQsCQbeuO8wM7LuAJq8O', NULL, NULL, NULL, '2022-06-09 19:37:43'),
-(47, '', NULL, NULL, 'false', '', 'HappyCat46@gmail.com', 'HappyCat46', '$2y$10$ij1SYBtEzFnUaJu93aWjhu9xhoEmKnjMwCgjt99VVhK5VHTqUfF/G', NULL, NULL, NULL, '2022-06-09 19:37:55'),
-(48, '', NULL, NULL, 'false', '', 'HappyCat47@gmail.com', 'HappyCat47', '$2y$10$Fgw/ds47YItdV5MpXMobnuNGraiUdo7rzImZRYs/Rm42xcsASK2m6', NULL, NULL, NULL, '2022-06-09 19:38:07'),
-(49, '', NULL, NULL, 'false', '', 'HappyCat48@gmail.com', 'HappyCat48', '$2y$10$.mrsX56BQMK/xqi2SR6xGOysfnyx0BRkjPaajY0X3AiEaSVW/kgsW', NULL, NULL, NULL, '2022-06-09 19:38:19'),
-(50, '', NULL, NULL, 'false', '', 'HappyCat49@gmail.com', 'HappyCat49', '$2y$10$pdsmbCihG98YAGamMQS/F.VWC0ZqZqcStTPRKCX7QzENwNZqsxIlK', NULL, NULL, NULL, '2022-06-09 19:38:30'),
-(51, '', NULL, NULL, 'false', '', 'HappyCat50@gmail.com', 'HappyCat50', '$2y$10$.9QHiWdOhPm/vwq2f/XlGOdu/5VSCEftWlxT7T.4D/Q3yv2yY6BYu', NULL, NULL, NULL, '2022-06-09 19:38:42'),
-(52, '', NULL, NULL, 'false', '', 'HappyCat51@gmail.com', 'HappyCat51', '$2y$10$6A83d7hqQkRtgTbtiMrGqunUjsiUiHNFe5P/UVA04JXlmJMEtncd6', NULL, NULL, NULL, '2022-06-09 19:38:59'),
-(53, '', NULL, NULL, 'false', '', 'HappyCat52@gmail.com', 'HappyCat52', '$2y$10$.9GoHgdzK96cbf3m8gqy1.K6TtepALCRehvCL8VAvYA6fccvs2DBi', NULL, NULL, NULL, '2022-06-09 19:39:10'),
-(54, '', NULL, NULL, 'false', '', 'HappyCat53@gmail.com', 'HappyCat53', '$2y$10$SLP40Q0AJ7D4lIdb62sC5OuVQMiy3zqpMgn1ua/ltJ4Ssv5MuwmVa', NULL, NULL, NULL, '2022-06-09 19:39:22'),
-(55, '', NULL, NULL, 'false', '', 'HappyCat54@gmail.com', 'HappyCat54', '$2y$10$BdICP6cq1mmSBq2kRKuppuyltkVHhbCtLhTID2rtpqtq6OI0Jf4um', NULL, NULL, NULL, '2022-06-09 19:39:39'),
-(56, '', NULL, NULL, 'false', '', 'HappyCat55@gmail.com', 'HappyCat55', '$2y$10$0kU9UB.idFLLuXaoJFB14./NFJPEGlLjPcqqrrb68rC3uR9/zycDe', NULL, NULL, NULL, '2022-06-09 19:39:51'),
-(57, '', NULL, NULL, 'false', '', 'HappyCat56@gmail.com', 'HappyCat56', '$2y$10$fYDIgfNbawaKuf.XHS9jae8zvNqG050SMoUv2hTz3Yo5dSV7zK646', NULL, NULL, NULL, '2022-06-09 19:40:13'),
-(58, '', NULL, NULL, 'false', '', 'HappyCat57@gmail.com', 'HappyCat57', '$2y$10$8JZEm/4C3NE9nPUb4gC/AeYXmviYGHfIkGf9BkLRztOF4SsvpVA42', NULL, NULL, NULL, '2022-06-09 19:40:26'),
-(59, '', NULL, NULL, 'false', '', 'HappyCat58@gmail.com', 'HappyCat58', '$2y$10$trfGqH3BxYf.5h6111Jngeg476d/wI/lFdQ2/OumhqJv8QVgsDHpu', NULL, NULL, NULL, '2022-06-09 19:40:39'),
-(60, '', NULL, NULL, 'false', '', 'HappyCat59@gmail.com', 'HappyCat59', '$2y$10$Z8IDndgNS/kwSrNAHt1xd.X.3DL4jKZ28RUHylFiTFpWzRofjkrwO', NULL, NULL, NULL, '2022-06-09 19:40:50'),
-(61, '', NULL, NULL, 'false', '', 'HappyCat60@gmail.com', 'HappyCat60', '$2y$10$SPM8Ftb51pzdpG3GJPoAjuqYPHztHo/uR2QpUFLgB/oUK2dDzSofe', NULL, NULL, NULL, '2022-06-09 19:41:03'),
-(62, '', NULL, NULL, 'false', '', 'HappyCat61@gmail.com', 'HappyCat61', '$2y$10$k1H9MnKnudr76CJ/3Axlt.rHyDyNx1wgpll/lBOakJXNuamFeNoRi', NULL, NULL, NULL, '2022-06-09 19:41:14'),
-(63, '', NULL, NULL, 'false', '', 'HappyCat62@gmail.com', 'HappyCat62', '$2y$10$hdqf0iZw9NSTAON89V6QCOtv7I7Q2QjvQKv9Sp6naHSfTNeeFSaiS', NULL, NULL, NULL, '2022-06-09 19:41:34'),
-(64, '', NULL, NULL, 'false', '', 'HappyCat63@gmail.com', 'HappyCat63', '$2y$10$5oA0Xn9p6KzH1Zz0axO2ceUQjYUbsnsQaeZ.roI37dEw5xmGnwqMK', NULL, NULL, NULL, '2022-06-09 19:42:03'),
-(65, '', NULL, NULL, 'false', '', 'HappyCat64@gmail.com', 'HappyCat64', '$2y$10$AFKm3fddtESWbIOJoHY5peSpHWOUBTHDG90HiR3/k2z/gj.KUaR7K', NULL, NULL, NULL, '2022-06-09 19:42:22'),
-(66, '', NULL, NULL, 'false', '', 'HappyCat65@gmail.com', 'HappyCat65', '$2y$10$kBCZt1NkU3ESn9sLl.jjLuF7WvWnIgced4J6Pjqqc6Cnjq9TWypc.', NULL, NULL, NULL, '2022-06-09 19:42:33'),
-(67, '', NULL, NULL, 'false', '', 'HappyCat66@gmail.com', 'HappyCat66', '$2y$10$juJHFomlxpWf4eLQXQNzLOMmYISl8e.XZuhhp9fSvw6jxJ9BV6KZ2', NULL, NULL, NULL, '2022-06-09 19:42:45'),
-(68, '', NULL, NULL, 'false', '', 'HappyCat67@gmail.com', 'HappyCat67', '$2y$10$tzu3RhCxRXFl8fmQIafCD.XnW3tdZU/.T.RGyU5hnRjK0af.INstC', NULL, NULL, NULL, '2022-06-09 19:42:59'),
-(69, '', NULL, NULL, 'false', '', 'HappyCat68@gmail.com', 'HappyCat68', '$2y$10$uqjh2NeH.cgF8GJwNr2dJecRZIt5Z6TsLOrqCwarcAOVqWO3XGwsu', NULL, NULL, NULL, '2022-06-09 19:43:29'),
-(70, '', NULL, NULL, 'false', '', 'HappyCat69@gmail.com', 'HappyCat69', '$2y$10$.OSdRIt/R9NWruh3gIex8.BN3OcL65SIsUhaMLI86efaai5D.ZdEq', NULL, NULL, NULL, '2022-06-09 19:43:40'),
-(71, '', NULL, NULL, 'false', '', 'HappyCat70@gmail.com', 'HappyCat70', '$2y$10$FvdIZpomJviDE.shvxSrBeiXhxVQs7pOg1Qf3SedRdzE1IqaYT4Em', NULL, NULL, NULL, '2022-06-09 19:43:56'),
-(72, '', NULL, NULL, 'false', '', 'HappyCat71@gmail.com', 'HappyCat71', '$2y$10$49yU4rxHhgYbZGe1PH5Mbe31u9ydRwbsNnAdmplkl4bCpAaQ3MXh.', NULL, NULL, NULL, '2022-06-09 19:44:09'),
-(73, '', NULL, NULL, 'false', '', 'HappyCat72@gmail.com', 'HappyCat72', '$2y$10$jF7H..8R7I4sx31c3hwjlOK710iPlPr5pd3WsQc5MC7PlllMU6/2O', NULL, NULL, NULL, '2022-06-09 19:44:18'),
-(74, '', NULL, NULL, 'false', '', 'HappyCat73@gmail.com', 'HappyCat73', '$2y$10$G4L6kn4WcjefItdFz2KdpebL7WVJpbbOW/edLZ2v/zFXlbkjyxZoG', NULL, NULL, NULL, '2022-06-09 19:44:32'),
-(75, '', NULL, NULL, 'false', '', 'HappyCat74@gmail.com', 'HappyCat74', '$2y$10$QKcXwYG1245itLJPsXeSTOqwtCXsaTiod0T4cXu84uGtQwdCVsFzW', NULL, NULL, NULL, '2022-06-09 19:44:43'),
-(76, '', NULL, NULL, 'false', '', 'HappyCat75@gmail.com', 'HappyCat75', '$2y$10$duWwdsiBLafSbtntJcpnFO2ekTEr9cLRZ/IL1AK7inXXOEOpSWl5G', NULL, NULL, NULL, '2022-06-09 19:44:54'),
-(77, '', NULL, NULL, 'false', '', 'HappyCat76@gmail.com', 'HappyCat76', '$2y$10$k2M5XoSSkzSR57r3zPeB/eQTe.1FxwU2fBD1gW0lAhmUl/CSNF..e', NULL, NULL, NULL, '2022-06-09 19:45:04'),
-(78, '', NULL, NULL, 'false', '', 'HappyCat77@gmail.com', 'HappyCat77', '$2y$10$YQ4TK7JVPWOdMJOty61I8O172FYdC1WTI8xFRpUMrl.pzx8q5Rztu', NULL, NULL, NULL, '2022-06-09 19:45:15'),
-(79, '', NULL, NULL, 'false', '', 'HappyCat78@gmail.com', 'HappyCat78', '$2y$10$6yKR6oZQ63JD3seB2YV5a.8l4EgYY8JeMAca/LF40it88ajGA0PTi', NULL, NULL, NULL, '2022-06-09 19:45:26'),
-(80, '', NULL, NULL, 'false', '', 'HappyCat79@gmail.com', 'HappyCat79', '$2y$10$5J0OZ/SAdIT6xL3qRF1I2.KenZNjxaCUzmFTo.73JiYobvByemQ16', NULL, NULL, NULL, '2022-06-09 19:45:36'),
-(81, '', NULL, NULL, 'false', '', 'HappyCat80@gmail.com', 'HappyCat80', '$2y$10$mC5PqOLTH2vBX.38RuB.5eg0PS1CGYmlAqJutcEKBq0sahcsZbJKK', NULL, NULL, NULL, '2022-06-09 19:45:48'),
-(82, '', NULL, NULL, 'false', '', 'HappyCat81@gmail.com', 'HappyCat81', '$2y$10$xQNe9Q2hO5hkLZjL/JYKJelEW8yTtUipcJv5HnNLJk6UnXt.F5sp.', NULL, NULL, NULL, '2022-06-09 19:46:00'),
-(83, '', NULL, NULL, 'false', '', 'HappyCat82@gmail.com', 'HappyCat82', '$2y$10$bGqXt7.kSjEPaW.W06CU4u492AQEZIXNyvTA7GXxuNP8p5jeW800G', NULL, NULL, NULL, '2022-06-09 19:46:10'),
-(84, '', NULL, NULL, 'false', '', 'HappyCat83@gmail.com', 'HappyCat83', '$2y$10$rCgyBnD0GXEiI3FuedDzReGTeWgy6znclo7F9h6FYgJBiv/Z2w0E6', NULL, NULL, NULL, '2022-06-09 19:46:22'),
-(85, '', NULL, NULL, 'false', '', 'HappyCat84@gmail.com', 'HappyCat84', '$2y$10$pPIOMPi3yXXgW.RrUDnlQOTbXTe2PQux64XTDJF5.w.ZTrn24i1Le', NULL, NULL, NULL, '2022-06-09 19:46:35'),
-(86, '', NULL, NULL, 'false', '', 'HappyCat85@gmail.com', 'HappyCat85', '$2y$10$aq2q/rDhcAodrii0LuSyi..BzMdvf6BaqARpU1Ws5CSuQ53R6WHVC', NULL, NULL, NULL, '2022-06-09 19:46:45'),
-(87, '', NULL, NULL, 'false', '', 'HappyCat86@gmail.com', 'HappyCat86', '$2y$10$Aw5ji0J7d2lwsfiPvtD2peiN972QtXx4xs1vkRWAX6xyNm8mYnIXG', NULL, NULL, NULL, '2022-06-09 19:47:16'),
-(88, '', NULL, NULL, 'false', '', 'HappyCat87@gmail.com', 'HappyCat87', '$2y$10$xoIBgG/eLLQkT7gWnaPOieLStDlCdJLvsUbLoKR52PsV4sZydKtkC', NULL, NULL, NULL, '2022-06-09 19:47:30'),
-(89, '', NULL, NULL, 'false', '', 'HappyCat88@gmail.com', 'HappyCat88', '$2y$10$VYbXm4J.SP3xwioUQY62JOu3R.q9AVuFBk3u7IDCrp5BV0U1BquBO', NULL, NULL, NULL, '2022-06-09 19:47:44'),
-(90, '', NULL, NULL, 'false', '', 'HappyCat89@gmail.com', 'HappyCat89', '$2y$10$UfSIVdnMzRG/GIh0XZhvpO6BJ2k1GEF0IzbVP9pUdMpwwJHJlDaCe', NULL, NULL, NULL, '2022-06-09 19:47:59'),
-(91, '', NULL, NULL, 'false', '', 'HappyCat90@gmail.com', 'HappyCat90', '$2y$10$PxsVj0OwAqHrZdmzgofzH.ubkfJEwr8rNHF.KMcY1JL1kKwnwa/4e', NULL, NULL, NULL, '2022-06-09 19:48:11'),
-(92, '', NULL, NULL, 'false', '', 'HappyCat91@gmail.com', 'HappyCat91', '$2y$10$Pcj0QNHU6KzdATk1wXrVP.mLvs5Il/.Dh5Q2BcAsWsZFZJxxDH8VK', NULL, NULL, NULL, '2022-06-09 19:48:30'),
-(93, '', NULL, NULL, 'false', '', 'HappyCat92@gmail.com', 'HappyCat92', '$2y$10$VP1S3X5Cs4y0nb1d7Dij6exD/6.GmlbrvxipVAfY9GvmdoycXp49C', NULL, NULL, NULL, '2022-06-09 19:48:42'),
-(94, '', NULL, NULL, 'false', '', 'HappyCat93@gmail.com', 'HappyCat93', '$2y$10$vWd4ghdJ/uvgCItzwJT4muZzJwPpQdNgF79WgKdIPFYV9qOTbF15y', NULL, NULL, NULL, '2022-06-09 19:49:07'),
-(95, '', NULL, NULL, 'false', '', 'HappyCat94@gmail.com', 'HappyCat94', '$2y$10$vW/zubmPsnn83grTYA63mOLLN0QMEZ9HVZ6ODp9Lgkp/VjyZZKoOC', NULL, NULL, NULL, '2022-06-09 19:49:23'),
-(96, '', NULL, NULL, 'false', '', 'HappyCat95@gmail.com', 'HappyCat95', '$2y$10$6kY58NIrhoOMO44E4ESlsO.5Oc64Y1OYDZ4qXHKhlYTh1tO4Y.doa', NULL, NULL, NULL, '2022-06-09 19:49:37'),
-(97, '', NULL, NULL, 'false', '', 'HappyCat96@gmail.com', 'HappyCat96', '$2y$10$I2JM6zs.tvk5CmaHCoIW.ei6Hi2ruz9TWydbeAN/6Mg9qSO8bC1J6', NULL, NULL, NULL, '2022-06-09 19:49:49'),
-(98, '', NULL, NULL, 'true', '', 'HappyCat97@gmail.com', 'HappyCat97', '$2y$10$ioWw7u0Zk5l7C/1UDjQPt.01/3bOL5LPqIPVqYKLtWYuZ8H/0bTIq', 4500, NULL, NULL, '2022-06-09 19:49:59'),
-(99, '', NULL, NULL, 'true', '', 'HappyCat98@gmail.com', 'HappyCat98', '$2y$10$.CdtzoocaY4YOYIxkxm6j.B5QeG01NbHPhwXkQrWB9L7NwUVjRG3S', 4600, NULL, NULL, '2022-06-09 19:50:09'),
-(100, '', NULL, NULL, 'false', '', 'HappyCat99@gmail.com', 'HappyCat99', '$2y$10$Aaoh2lzg8fPn4Mb/ScmnEOhglXdwr8mLL0hf4CY3X4A.BC8tLIo3y', NULL, NULL, NULL, '2022-06-09 19:50:20'),
+(34, '', NULL, NULL, 'false', NULL, 'HappyCat33@gmail.com', 'HappyCat33', '$2y$10$nCEH1Lpgv82C.T7HsVbOJOU7Lhhi1I4CAlICGS5NOf/HEyFeclOhm', NULL, NULL, NULL, '2022-06-09 19:34:02'),
+(35, '', NULL, NULL, 'false', NULL, 'HappyCat34@gmail.com', 'HappyCat34', '$2y$10$b6qvb7RlxSExUOPcASuQD.toGgWKuTJlqUQd/fT6nyI3d7Y2km7Pm', NULL, NULL, NULL, '2022-06-09 19:34:29'),
+(36, '', NULL, NULL, 'false', NULL, 'HappyCat35@gmail.com', 'HappyCat35', '$2y$10$vRoey8TpPXJuH5osqirV/OAYl2vtPUYjgpbpSdd4bUENbGHN1gsCK', NULL, NULL, NULL, '2022-06-09 19:34:44'),
+(37, '', NULL, NULL, 'false', NULL, 'HappyCat36@gmail.com', 'HappyCat36', '$2y$10$pM5FXJZl6YpPh/rkP/QXme.4oJa9ZgVZyWeamYUSG1z2VjaUH8/OW', NULL, NULL, NULL, '2022-06-09 19:34:56'),
+(38, '', NULL, NULL, 'false', NULL, 'HappyCat37@gmail.com', 'HappyCat37', '$2y$10$ipQo49pUVhT0sMsEGfn2T.AhffoofpElG.6MoBBnD9FfqkuxutEBa', NULL, NULL, NULL, '2022-06-09 19:35:09'),
+(39, '', NULL, NULL, 'false', NULL, 'HappyCat38@gmail.com', 'HappyCat38', '$2y$10$FZlahkLFTItFsZcL7YEgJOk76E/p7ar4R6XiKBB78C6g3mHFzEevC', NULL, NULL, NULL, '2022-06-09 19:35:22'),
+(40, '', NULL, NULL, 'false', NULL, 'HappyCat39@gmail.com', 'HappyCat39', '$2y$10$OY5sUwd9AsfDjjd1EceA0OFd.ZfEi.GN8jbfQo1Btgqzfeq3MpKSK', NULL, NULL, NULL, '2022-06-09 19:35:40'),
+(41, '', NULL, NULL, 'false', NULL, 'HappyCat40@gmail.com', 'HappyCat40', '$2y$10$gd8dE6FN/DqwapbjZtEN3uu.mfPei6Y0n4g5nqivLFWL1Zw4EoCp.', NULL, NULL, NULL, '2022-06-09 19:35:53'),
+(42, '', NULL, NULL, 'false', NULL, 'HappyCat41@gmail.com', 'HappyCat41', '$2y$10$bd.yjSGmWpAWEiLudnHeRuttOa6Sn54dqtjtDrrwjjxfvd39.zsUu', NULL, NULL, NULL, '2022-06-09 19:36:06'),
+(43, '', NULL, NULL, 'false', NULL, 'HappyCat42@gmail.com', 'HappyCat42', '$2y$10$fEnbjF3O3xyfHQR8WhCgXei3P3CzEu4m/b3eH3L6l0DXqo.UF1E/e', NULL, NULL, NULL, '2022-06-09 19:36:21'),
+(44, '', NULL, NULL, 'false', NULL, 'HappyCat43@gmail.com', 'HappyCat43', '$2y$10$8bM6.kEcw2Rt6yAeS3Tap.tAa/H4w.5lM0GBghC0wsOk11bqlC6tu', NULL, NULL, NULL, '2022-06-09 19:36:33'),
+(45, '', NULL, NULL, 'false', NULL, 'HappyCat44@gmail.com', 'HappyCat44', '$2y$10$Ajm96pUGSvdNpaQWAPyRiuNTt2Xf6r2/Nmf9JgRu4lBTSly3BevE2', NULL, NULL, NULL, '2022-06-09 19:37:33'),
+(46, '', NULL, NULL, 'false', NULL, 'HappyCat45@gmail.com', 'HappyCat45', '$2y$10$xxuG/2G2koeshecupsmbaO3Ro3qnxsACAvQsCQbeuO8wM7LuAJq8O', NULL, NULL, NULL, '2022-06-09 19:37:43'),
+(47, '', NULL, NULL, 'false', NULL, 'HappyCat46@gmail.com', 'HappyCat46', '$2y$10$ij1SYBtEzFnUaJu93aWjhu9xhoEmKnjMwCgjt99VVhK5VHTqUfF/G', NULL, NULL, NULL, '2022-06-09 19:37:55'),
+(48, '', NULL, NULL, 'false', NULL, 'HappyCat47@gmail.com', 'HappyCat47', '$2y$10$Fgw/ds47YItdV5MpXMobnuNGraiUdo7rzImZRYs/Rm42xcsASK2m6', NULL, NULL, NULL, '2022-06-09 19:38:07'),
+(49, '', NULL, NULL, 'false', NULL, 'HappyCat48@gmail.com', 'HappyCat48', '$2y$10$.mrsX56BQMK/xqi2SR6xGOysfnyx0BRkjPaajY0X3AiEaSVW/kgsW', NULL, NULL, NULL, '2022-06-09 19:38:19'),
+(50, '', NULL, NULL, 'false', NULL, 'HappyCat49@gmail.com', 'HappyCat49', '$2y$10$pdsmbCihG98YAGamMQS/F.VWC0ZqZqcStTPRKCX7QzENwNZqsxIlK', NULL, NULL, NULL, '2022-06-09 19:38:30'),
+(51, '', NULL, NULL, 'false', NULL, 'HappyCat50@gmail.com', 'HappyCat50', '$2y$10$.9QHiWdOhPm/vwq2f/XlGOdu/5VSCEftWlxT7T.4D/Q3yv2yY6BYu', NULL, NULL, NULL, '2022-06-09 19:38:42'),
+(52, '', NULL, NULL, 'false', NULL, 'HappyCat51@gmail.com', 'HappyCat51', '$2y$10$6A83d7hqQkRtgTbtiMrGqunUjsiUiHNFe5P/UVA04JXlmJMEtncd6', NULL, NULL, NULL, '2022-06-09 19:38:59'),
+(53, '', NULL, NULL, 'false', NULL, 'HappyCat52@gmail.com', 'HappyCat52', '$2y$10$.9GoHgdzK96cbf3m8gqy1.K6TtepALCRehvCL8VAvYA6fccvs2DBi', NULL, NULL, NULL, '2022-06-09 19:39:10'),
+(54, '', NULL, NULL, 'false', NULL, 'HappyCat53@gmail.com', 'HappyCat53', '$2y$10$SLP40Q0AJ7D4lIdb62sC5OuVQMiy3zqpMgn1ua/ltJ4Ssv5MuwmVa', NULL, NULL, NULL, '2022-06-09 19:39:22'),
+(55, '', NULL, NULL, 'false', NULL, 'HappyCat54@gmail.com', 'HappyCat54', '$2y$10$BdICP6cq1mmSBq2kRKuppuyltkVHhbCtLhTID2rtpqtq6OI0Jf4um', NULL, NULL, NULL, '2022-06-09 19:39:39'),
+(56, '', NULL, NULL, 'false', NULL, 'HappyCat55@gmail.com', 'HappyCat55', '$2y$10$0kU9UB.idFLLuXaoJFB14./NFJPEGlLjPcqqrrb68rC3uR9/zycDe', NULL, NULL, NULL, '2022-06-09 19:39:51'),
+(57, '', NULL, NULL, 'false', NULL, 'HappyCat56@gmail.com', 'HappyCat56', '$2y$10$fYDIgfNbawaKuf.XHS9jae8zvNqG050SMoUv2hTz3Yo5dSV7zK646', NULL, NULL, NULL, '2022-06-09 19:40:13'),
+(58, '', NULL, NULL, 'false', NULL, 'HappyCat57@gmail.com', 'HappyCat57', '$2y$10$8JZEm/4C3NE9nPUb4gC/AeYXmviYGHfIkGf9BkLRztOF4SsvpVA42', NULL, NULL, NULL, '2022-06-09 19:40:26'),
+(59, '', NULL, NULL, 'false', NULL, 'HappyCat58@gmail.com', 'HappyCat58', '$2y$10$trfGqH3BxYf.5h6111Jngeg476d/wI/lFdQ2/OumhqJv8QVgsDHpu', NULL, NULL, NULL, '2022-06-09 19:40:39'),
+(60, '', NULL, NULL, 'false', NULL, 'HappyCat59@gmail.com', 'HappyCat59', '$2y$10$Z8IDndgNS/kwSrNAHt1xd.X.3DL4jKZ28RUHylFiTFpWzRofjkrwO', NULL, NULL, NULL, '2022-06-09 19:40:50'),
+(61, '', NULL, NULL, 'false', NULL, 'HappyCat60@gmail.com', 'HappyCat60', '$2y$10$SPM8Ftb51pzdpG3GJPoAjuqYPHztHo/uR2QpUFLgB/oUK2dDzSofe', NULL, NULL, NULL, '2022-06-09 19:41:03'),
+(62, '', NULL, NULL, 'false', NULL, 'HappyCat61@gmail.com', 'HappyCat61', '$2y$10$k1H9MnKnudr76CJ/3Axlt.rHyDyNx1wgpll/lBOakJXNuamFeNoRi', NULL, NULL, NULL, '2022-06-09 19:41:14'),
+(63, '', NULL, NULL, 'false', NULL, 'HappyCat62@gmail.com', 'HappyCat62', '$2y$10$hdqf0iZw9NSTAON89V6QCOtv7I7Q2QjvQKv9Sp6naHSfTNeeFSaiS', NULL, NULL, NULL, '2022-06-09 19:41:34'),
+(64, '', NULL, NULL, 'false', NULL, 'HappyCat63@gmail.com', 'HappyCat63', '$2y$10$5oA0Xn9p6KzH1Zz0axO2ceUQjYUbsnsQaeZ.roI37dEw5xmGnwqMK', NULL, NULL, NULL, '2022-06-09 19:42:03'),
+(65, '', NULL, NULL, 'false', NULL, 'HappyCat64@gmail.com', 'HappyCat64', '$2y$10$AFKm3fddtESWbIOJoHY5peSpHWOUBTHDG90HiR3/k2z/gj.KUaR7K', NULL, NULL, NULL, '2022-06-09 19:42:22'),
+(66, '', NULL, NULL, 'false', NULL, 'HappyCat65@gmail.com', 'HappyCat65', '$2y$10$kBCZt1NkU3ESn9sLl.jjLuF7WvWnIgced4J6Pjqqc6Cnjq9TWypc.', NULL, NULL, NULL, '2022-06-09 19:42:33'),
+(67, '', NULL, NULL, 'false', NULL, 'HappyCat66@gmail.com', 'HappyCat66', '$2y$10$juJHFomlxpWf4eLQXQNzLOMmYISl8e.XZuhhp9fSvw6jxJ9BV6KZ2', NULL, NULL, NULL, '2022-06-09 19:42:45'),
+(68, '', NULL, NULL, 'false', NULL, 'HappyCat67@gmail.com', 'HappyCat67', '$2y$10$tzu3RhCxRXFl8fmQIafCD.XnW3tdZU/.T.RGyU5hnRjK0af.INstC', NULL, NULL, NULL, '2022-06-09 19:42:59'),
+(69, '', NULL, NULL, 'false', NULL, 'HappyCat68@gmail.com', 'HappyCat68', '$2y$10$uqjh2NeH.cgF8GJwNr2dJecRZIt5Z6TsLOrqCwarcAOVqWO3XGwsu', NULL, NULL, NULL, '2022-06-09 19:43:29'),
+(70, '', NULL, NULL, 'false', NULL, 'HappyCat69@gmail.com', 'HappyCat69', '$2y$10$.OSdRIt/R9NWruh3gIex8.BN3OcL65SIsUhaMLI86efaai5D.ZdEq', NULL, NULL, NULL, '2022-06-09 19:43:40'),
+(71, '', NULL, NULL, 'false', NULL, 'HappyCat70@gmail.com', 'HappyCat70', '$2y$10$FvdIZpomJviDE.shvxSrBeiXhxVQs7pOg1Qf3SedRdzE1IqaYT4Em', NULL, NULL, NULL, '2022-06-09 19:43:56'),
+(72, '', NULL, NULL, 'false', NULL, 'HappyCat71@gmail.com', 'HappyCat71', '$2y$10$49yU4rxHhgYbZGe1PH5Mbe31u9ydRwbsNnAdmplkl4bCpAaQ3MXh.', NULL, NULL, NULL, '2022-06-09 19:44:09'),
+(73, '', NULL, NULL, 'false', NULL, 'HappyCat72@gmail.com', 'HappyCat72', '$2y$10$jF7H..8R7I4sx31c3hwjlOK710iPlPr5pd3WsQc5MC7PlllMU6/2O', NULL, NULL, NULL, '2022-06-09 19:44:18'),
+(74, '', NULL, NULL, 'false', NULL, 'HappyCat73@gmail.com', 'HappyCat73', '$2y$10$G4L6kn4WcjefItdFz2KdpebL7WVJpbbOW/edLZ2v/zFXlbkjyxZoG', NULL, NULL, NULL, '2022-06-09 19:44:32'),
+(75, '', NULL, NULL, 'false', NULL, 'HappyCat74@gmail.com', 'HappyCat74', '$2y$10$QKcXwYG1245itLJPsXeSTOqwtCXsaTiod0T4cXu84uGtQwdCVsFzW', NULL, NULL, NULL, '2022-06-09 19:44:43'),
+(76, '', NULL, NULL, 'false', NULL, 'HappyCat75@gmail.com', 'HappyCat75', '$2y$10$duWwdsiBLafSbtntJcpnFO2ekTEr9cLRZ/IL1AK7inXXOEOpSWl5G', NULL, NULL, NULL, '2022-06-09 19:44:54'),
+(77, '', NULL, NULL, 'false', NULL, 'HappyCat76@gmail.com', 'HappyCat76', '$2y$10$k2M5XoSSkzSR57r3zPeB/eQTe.1FxwU2fBD1gW0lAhmUl/CSNF..e', NULL, NULL, NULL, '2022-06-09 19:45:04'),
+(78, '', NULL, NULL, 'false', NULL, 'HappyCat77@gmail.com', 'HappyCat77', '$2y$10$YQ4TK7JVPWOdMJOty61I8O172FYdC1WTI8xFRpUMrl.pzx8q5Rztu', NULL, NULL, NULL, '2022-06-09 19:45:15'),
+(79, '', NULL, NULL, 'false', NULL, 'HappyCat78@gmail.com', 'HappyCat78', '$2y$10$6yKR6oZQ63JD3seB2YV5a.8l4EgYY8JeMAca/LF40it88ajGA0PTi', NULL, NULL, NULL, '2022-06-09 19:45:26'),
+(80, '', NULL, NULL, 'false', NULL, 'HappyCat79@gmail.com', 'HappyCat79', '$2y$10$5J0OZ/SAdIT6xL3qRF1I2.KenZNjxaCUzmFTo.73JiYobvByemQ16', NULL, NULL, NULL, '2022-06-09 19:45:36'),
+(81, '', NULL, NULL, 'false', NULL, 'HappyCat80@gmail.com', 'HappyCat80', '$2y$10$mC5PqOLTH2vBX.38RuB.5eg0PS1CGYmlAqJutcEKBq0sahcsZbJKK', NULL, NULL, NULL, '2022-06-09 19:45:48'),
+(82, '', NULL, NULL, 'false', NULL, 'HappyCat81@gmail.com', 'HappyCat81', '$2y$10$xQNe9Q2hO5hkLZjL/JYKJelEW8yTtUipcJv5HnNLJk6UnXt.F5sp.', NULL, NULL, NULL, '2022-06-09 19:46:00'),
+(83, '', NULL, NULL, 'false', NULL, 'HappyCat82@gmail.com', 'HappyCat82', '$2y$10$bGqXt7.kSjEPaW.W06CU4u492AQEZIXNyvTA7GXxuNP8p5jeW800G', NULL, NULL, NULL, '2022-06-09 19:46:10'),
+(84, '', NULL, NULL, 'false', NULL, 'HappyCat83@gmail.com', 'HappyCat83', '$2y$10$rCgyBnD0GXEiI3FuedDzReGTeWgy6znclo7F9h6FYgJBiv/Z2w0E6', NULL, NULL, NULL, '2022-06-09 19:46:22'),
+(85, '', NULL, NULL, 'false', NULL, 'HappyCat84@gmail.com', 'HappyCat84', '$2y$10$pPIOMPi3yXXgW.RrUDnlQOTbXTe2PQux64XTDJF5.w.ZTrn24i1Le', NULL, NULL, NULL, '2022-06-09 19:46:35'),
+(86, '', NULL, NULL, 'false', NULL, 'HappyCat85@gmail.com', 'HappyCat85', '$2y$10$aq2q/rDhcAodrii0LuSyi..BzMdvf6BaqARpU1Ws5CSuQ53R6WHVC', NULL, NULL, NULL, '2022-06-09 19:46:45'),
+(87, '', NULL, NULL, 'false', NULL, 'HappyCat86@gmail.com', 'HappyCat86', '$2y$10$Aw5ji0J7d2lwsfiPvtD2peiN972QtXx4xs1vkRWAX6xyNm8mYnIXG', NULL, NULL, NULL, '2022-06-09 19:47:16'),
+(88, '', NULL, NULL, 'false', NULL, 'HappyCat87@gmail.com', 'HappyCat87', '$2y$10$xoIBgG/eLLQkT7gWnaPOieLStDlCdJLvsUbLoKR52PsV4sZydKtkC', NULL, NULL, NULL, '2022-06-09 19:47:30'),
+(89, '', NULL, NULL, 'false', NULL, 'HappyCat88@gmail.com', 'HappyCat88', '$2y$10$VYbXm4J.SP3xwioUQY62JOu3R.q9AVuFBk3u7IDCrp5BV0U1BquBO', NULL, NULL, NULL, '2022-06-09 19:47:44'),
+(90, '', NULL, NULL, 'false', NULL, 'HappyCat89@gmail.com', 'HappyCat89', '$2y$10$UfSIVdnMzRG/GIh0XZhvpO6BJ2k1GEF0IzbVP9pUdMpwwJHJlDaCe', NULL, NULL, NULL, '2022-06-09 19:47:59'),
+(91, '', NULL, NULL, 'false', NULL, 'HappyCat90@gmail.com', 'HappyCat90', '$2y$10$PxsVj0OwAqHrZdmzgofzH.ubkfJEwr8rNHF.KMcY1JL1kKwnwa/4e', NULL, NULL, NULL, '2022-06-09 19:48:11'),
+(92, '', NULL, NULL, 'false', NULL, 'HappyCat91@gmail.com', 'HappyCat91', '$2y$10$Pcj0QNHU6KzdATk1wXrVP.mLvs5Il/.Dh5Q2BcAsWsZFZJxxDH8VK', NULL, NULL, NULL, '2022-06-09 19:48:30'),
+(93, '', NULL, NULL, 'false', NULL, 'HappyCat92@gmail.com', 'HappyCat92', '$2y$10$VP1S3X5Cs4y0nb1d7Dij6exD/6.GmlbrvxipVAfY9GvmdoycXp49C', NULL, NULL, NULL, '2022-06-09 19:48:42'),
+(94, '', NULL, NULL, 'false', NULL, 'HappyCat93@gmail.com', 'HappyCat93', '$2y$10$vWd4ghdJ/uvgCItzwJT4muZzJwPpQdNgF79WgKdIPFYV9qOTbF15y', NULL, NULL, NULL, '2022-06-09 19:49:07'),
+(95, '', NULL, NULL, 'false', NULL, 'HappyCat94@gmail.com', 'HappyCat94', '$2y$10$vW/zubmPsnn83grTYA63mOLLN0QMEZ9HVZ6ODp9Lgkp/VjyZZKoOC', NULL, NULL, NULL, '2022-06-09 19:49:23'),
+(96, '', NULL, NULL, 'false', NULL, 'HappyCat95@gmail.com', 'HappyCat95', '$2y$10$6kY58NIrhoOMO44E4ESlsO.5Oc64Y1OYDZ4qXHKhlYTh1tO4Y.doa', NULL, NULL, NULL, '2022-06-09 19:49:37'),
+(97, '', NULL, NULL, 'false', NULL, 'HappyCat96@gmail.com', 'HappyCat96', '$2y$10$I2JM6zs.tvk5CmaHCoIW.ei6Hi2ruz9TWydbeAN/6Mg9qSO8bC1J6', NULL, NULL, NULL, '2022-06-09 19:49:49'),
+(98, '', NULL, NULL, 'true', NULL, 'HappyCat97@gmail.com', 'HappyCat97', '$2y$10$ioWw7u0Zk5l7C/1UDjQPt.01/3bOL5LPqIPVqYKLtWYuZ8H/0bTIq', 4500, NULL, NULL, '2022-06-09 19:49:59'),
+(99, '', NULL, NULL, 'true', NULL, 'HappyCat98@gmail.com', 'HappyCat98', '$2y$10$.CdtzoocaY4YOYIxkxm6j.B5QeG01NbHPhwXkQrWB9L7NwUVjRG3S', 4600, NULL, NULL, '2022-06-09 19:50:09'),
+(100, '', NULL, NULL, 'false', NULL, 'HappyCat99@gmail.com', 'HappyCat99', '$2y$10$Aaoh2lzg8fPn4Mb/ScmnEOhglXdwr8mLL0hf4CY3X4A.BC8tLIo3y', NULL, NULL, NULL, '2022-06-09 19:50:20'),
 (101, '快樂貓', NULL, NULL, 'false', '0900111222', 'HappyCat100@gmail.com', 'HappyCat100', '$2y$10$RscDUr0vT/ndUx9ndYpvNe49wvxixQYYBQmL7rUNP1frBs/Tc9FVG', NULL, NULL, NULL, '2022-06-09 19:51:04'),
 (102, '涼枕', '1993-03-08', '2022-03-08', 'true', '0955667788', 'coolpilla@ggqq.com', 'coolpillow', '$2y$10$a11J3a0Jruj0y2dr3z2vYuYaqwMt4QB/puKbyQxphIJRc8t5tuZce', NULL, NULL, NULL, '2022-06-10 13:35:14'),
-(104, NULL, NULL, NULL, 'false', NULL, 'CarCat999@gmail.com', 'CarCat999', '$2y$10$Dz/WmrGg/nerW7t/sJmfaumz64j26FVWD6BzWmWZGBmcRbohmdSy6', NULL, NULL, NULL, '2022-06-13 04:51:54');
+(104, NULL, NULL, NULL, 'false', NULL, 'CarCat999@gmail.com', 'CarCat999', '$2y$10$Dz/WmrGg/nerW7t/sJmfaumz64j26FVWD6BzWmWZGBmcRbohmdSy6', NULL, NULL, NULL, '2022-06-13 04:51:54'),
+(105, '快樂的靈魂', '2022-08-24', NULL, 'false', NULL, 'Day0821@gmail.com', 'Day0821', '$2a$10$0CCqYbliKRa27zbAE5uQYOYFJfw7X0nc4vrfZeXmga7v1eaNXe/cu', NULL, 1193, NULL, '2022-08-21 03:16:07'),
+(106, '快樂的靈魂5555', '2022-08-21', NULL, 'false', NULL, 'Day0822@gmail.com', 'Day0822', '$2a$10$skhdY/Ucpqu6yQ6Po0JNeuzCRu.y3obL.L/S2LWDclQb7z8Epbpce', NULL, 1198, NULL, '2022-08-21 03:30:55');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `music_category`
+-- 資料表結構 `music_category`
 --
 
 CREATE TABLE `music_category` (
@@ -585,7 +604,7 @@ CREATE TABLE `music_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `music_category`
+-- 傾印資料表的資料 `music_category`
 --
 
 INSERT INTO `music_category` (`music_type_sid`, `music_type_en`, `music_type_ch`) VALUES
@@ -596,7 +615,7 @@ INSERT INTO `music_category` (`music_type_sid`, `music_type_en`, `music_type_ch`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- 資料表結構 `news`
 --
 
 CREATE TABLE `news` (
@@ -611,7 +630,7 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `news`
+-- 傾印資料表的資料 `news`
 --
 
 INSERT INTO `news` (`sid`, `topic`, `event_time`, `type_sid`, `img`, `location_sid`, `content`, `publish_date`) VALUES
@@ -629,7 +648,7 @@ INSERT INTO `news` (`sid`, `topic`, `event_time`, `type_sid`, `img`, `location_s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news_tag`
+-- 資料表結構 `news_tag`
 --
 
 CREATE TABLE `news_tag` (
@@ -639,7 +658,7 @@ CREATE TABLE `news_tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `news_tag`
+-- 傾印資料表的資料 `news_tag`
 --
 
 INSERT INTO `news_tag` (`nt_sid`, `news_sid`, `tag_sid`) VALUES
@@ -712,7 +731,7 @@ INSERT INTO `news_tag` (`nt_sid`, `news_sid`, `tag_sid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `npo_act`
+-- 資料表結構 `npo_act`
 --
 
 CREATE TABLE `npo_act` (
@@ -737,7 +756,7 @@ CREATE TABLE `npo_act` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `npo_act`
+-- 傾印資料表的資料 `npo_act`
 --
 
 INSERT INTO `npo_act` (`sid`, `img`, `type_sid`, `program_type`, `comment_star`, `price`, `value`, `start`, `start_time`, `end`, `end_time`, `npo_name`, `act_title`, `place_city`, `place_other`, `place_location`, `limit_num`, `intro`) VALUES
@@ -755,7 +774,7 @@ INSERT INTO `npo_act` (`sid`, `img`, `type_sid`, `program_type`, `comment_star`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `npo_act_type`
+-- 資料表結構 `npo_act_type`
 --
 
 CREATE TABLE `npo_act_type` (
@@ -764,7 +783,7 @@ CREATE TABLE `npo_act_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `npo_act_type`
+-- 傾印資料表的資料 `npo_act_type`
 --
 
 INSERT INTO `npo_act_type` (`typesid`, `name`) VALUES
@@ -778,7 +797,7 @@ INSERT INTO `npo_act_type` (`typesid`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `npo_name`
+-- 資料表結構 `npo_name`
 --
 
 CREATE TABLE `npo_name` (
@@ -793,7 +812,7 @@ CREATE TABLE `npo_name` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `npo_name`
+-- 傾印資料表的資料 `npo_name`
 --
 
 INSERT INTO `npo_name` (`npo_sid`, `npo_name`, `npo_img`, `email`, `phone`, `mobile`, `npo_intro`, `create_at`) VALUES
@@ -810,7 +829,7 @@ INSERT INTO `npo_name` (`npo_sid`, `npo_name`, `npo_img`, `email`, `phone`, `mob
 -- --------------------------------------------------------
 
 --
--- Table structure for table `place`
+-- 資料表結構 `place`
 --
 
 CREATE TABLE `place` (
@@ -826,7 +845,7 @@ CREATE TABLE `place` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `place`
+-- 傾印資料表的資料 `place`
 --
 
 INSERT INTO `place` (`sid`, `year`, `month`, `country`, `city`, `dist`, `quota`, `booked`, `place_price`) VALUES
@@ -930,7 +949,7 @@ INSERT INTO `place` (`sid`, `year`, `month`, `country`, `city`, `dist`, `quota`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `place_city`
+-- 資料表結構 `place_city`
 --
 
 CREATE TABLE `place_city` (
@@ -940,7 +959,7 @@ CREATE TABLE `place_city` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `place_city`
+-- 傾印資料表的資料 `place_city`
 --
 
 INSERT INTO `place_city` (`sid`, `country`, `city`) VALUES
@@ -967,7 +986,7 @@ INSERT INTO `place_city` (`sid`, `country`, `city`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `place_country_list`
+-- 資料表結構 `place_country_list`
 --
 
 CREATE TABLE `place_country_list` (
@@ -976,7 +995,7 @@ CREATE TABLE `place_country_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `place_country_list`
+-- 傾印資料表的資料 `place_country_list`
 --
 
 INSERT INTO `place_country_list` (`sid`, `country`) VALUES
@@ -986,7 +1005,7 @@ INSERT INTO `place_country_list` (`sid`, `country`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `place_dist`
+-- 資料表結構 `place_dist`
 --
 
 CREATE TABLE `place_dist` (
@@ -996,7 +1015,7 @@ CREATE TABLE `place_dist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `place_dist`
+-- 傾印資料表的資料 `place_dist`
 --
 
 INSERT INTO `place_dist` (`country`, `city`, `dist`) VALUES
@@ -1054,7 +1073,7 @@ INSERT INTO `place_dist` (`country`, `city`, `dist`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `place_in_cart`
+-- 資料表結構 `place_in_cart`
 --
 
 CREATE TABLE `place_in_cart` (
@@ -1065,7 +1084,7 @@ CREATE TABLE `place_in_cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `place_in_cart`
+-- 傾印資料表的資料 `place_in_cart`
 --
 
 INSERT INTO `place_in_cart` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUES
@@ -1093,7 +1112,7 @@ INSERT INTO `place_in_cart` (`sid`, `member_sid`, `place_sid`, `created_at`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `place_liked`
+-- 資料表結構 `place_liked`
 --
 
 CREATE TABLE `place_liked` (
@@ -1104,7 +1123,7 @@ CREATE TABLE `place_liked` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `place_liked`
+-- 傾印資料表的資料 `place_liked`
 --
 
 INSERT INTO `place_liked` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUES
@@ -1136,7 +1155,7 @@ INSERT INTO `place_liked` (`sid`, `member_sid`, `place_sid`, `created_at`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reborn_order`
+-- 資料表結構 `reborn_order`
 --
 
 CREATE TABLE `reborn_order` (
@@ -1150,7 +1169,7 @@ CREATE TABLE `reborn_order` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reincarnation`
+-- 資料表結構 `reincarnation`
 --
 
 CREATE TABLE `reincarnation` (
@@ -1160,7 +1179,7 @@ CREATE TABLE `reincarnation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `reincarnation`
+-- 傾印資料表的資料 `reincarnation`
 --
 
 INSERT INTO `reincarnation` (`member_sid`, `soul_id`, `generation`) VALUES
@@ -1176,7 +1195,7 @@ INSERT INTO `reincarnation` (`member_sid`, `soul_id`, `generation`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reincarnation_order`
+-- 資料表結構 `reincarnation_order`
 --
 
 CREATE TABLE `reincarnation_order` (
@@ -1197,7 +1216,7 @@ CREATE TABLE `reincarnation_order` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sessions`
+-- 資料表結構 `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -1209,7 +1228,7 @@ CREATE TABLE `sessions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `share_avatar_collects`
+-- 資料表結構 `share_avatar_collects`
 --
 
 CREATE TABLE `share_avatar_collects` (
@@ -1219,7 +1238,7 @@ CREATE TABLE `share_avatar_collects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `share_avatar_collects`
+-- 傾印資料表的資料 `share_avatar_collects`
 --
 
 INSERT INTO `share_avatar_collects` (`share_post_collect_sid`, `share_post_sid`, `member_sid`) VALUES
@@ -1257,7 +1276,7 @@ INSERT INTO `share_avatar_collects` (`share_post_collect_sid`, `share_post_sid`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `share_avatar_comments`
+-- 資料表結構 `share_avatar_comments`
 --
 
 CREATE TABLE `share_avatar_comments` (
@@ -1270,7 +1289,7 @@ CREATE TABLE `share_avatar_comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `share_avatar_comments`
+-- 傾印資料表的資料 `share_avatar_comments`
 --
 
 INSERT INTO `share_avatar_comments` (`share_post_comment_sid`, `share_post_sid`, `member_sid`, `share_post_comment_text`, `created_at`, `updated_at`) VALUES
@@ -1343,7 +1362,7 @@ INSERT INTO `share_avatar_comments` (`share_post_comment_sid`, `share_post_sid`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `share_avatar_likes`
+-- 資料表結構 `share_avatar_likes`
 --
 
 CREATE TABLE `share_avatar_likes` (
@@ -1353,7 +1372,7 @@ CREATE TABLE `share_avatar_likes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `share_avatar_likes`
+-- 傾印資料表的資料 `share_avatar_likes`
 --
 
 INSERT INTO `share_avatar_likes` (`share_post_like_sid`, `share_post_sid`, `member_sid`) VALUES
@@ -1407,7 +1426,7 @@ INSERT INTO `share_avatar_likes` (`share_post_like_sid`, `share_post_sid`, `memb
 -- --------------------------------------------------------
 
 --
--- Table structure for table `share_avatar_posts`
+-- 資料表結構 `share_avatar_posts`
 --
 
 CREATE TABLE `share_avatar_posts` (
@@ -1427,7 +1446,7 @@ CREATE TABLE `share_avatar_posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `share_avatar_posts`
+-- 傾印資料表的資料 `share_avatar_posts`
 --
 
 INSERT INTO `share_avatar_posts` (`share_post_sid`, `member_sid`, `avatar_sid`, `share_post_title`, `share_post_text`, `share_post_likes`, `share_post_collects`, `Ncombination`, `NcombinationText`, `Nimg_name`, `Nprice`, `created_at`, `updated_at`) VALUES
@@ -1453,7 +1472,7 @@ INSERT INTO `share_avatar_posts` (`share_post_sid`, `member_sid`, `avatar_sid`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `share_avatar_posts_to_tags`
+-- 資料表結構 `share_avatar_posts_to_tags`
 --
 
 CREATE TABLE `share_avatar_posts_to_tags` (
@@ -1463,7 +1482,7 @@ CREATE TABLE `share_avatar_posts_to_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `share_avatar_posts_to_tags`
+-- 傾印資料表的資料 `share_avatar_posts_to_tags`
 --
 
 INSERT INTO `share_avatar_posts_to_tags` (`share_p_to_t_sid`, `share_post_sid`, `share_post_tag_sid`) VALUES
@@ -1511,7 +1530,7 @@ INSERT INTO `share_avatar_posts_to_tags` (`share_p_to_t_sid`, `share_post_sid`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `share_avatar_tags`
+-- 資料表結構 `share_avatar_tags`
 --
 
 CREATE TABLE `share_avatar_tags` (
@@ -1521,7 +1540,7 @@ CREATE TABLE `share_avatar_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `share_avatar_tags`
+-- 傾印資料表的資料 `share_avatar_tags`
 --
 
 INSERT INTO `share_avatar_tags` (`share_post_tag_sid`, `share_post_tag_text`, `share_post_tag_search_times`) VALUES
@@ -1580,7 +1599,7 @@ INSERT INTO `share_avatar_tags` (`share_post_tag_sid`, `share_post_tag_text`, `s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `showcase`
+-- 資料表結構 `showcase`
 --
 
 CREATE TABLE `showcase` (
@@ -1594,7 +1613,7 @@ CREATE TABLE `showcase` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `showcase`
+-- 傾印資料表的資料 `showcase`
 --
 
 INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combination`, `combinationText`, `img_name`, `price`) VALUES
@@ -1668,12 +1687,23 @@ INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combina
 (1189, 37, '2022-08-15 11:18:17', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1190, 37, '2022-08-15 11:18:17', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
 (1191, 37, '2022-08-15 11:18:17', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
-(1192, 37, '2022-08-15 11:18:17', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300);
+(1192, 37, '2022-08-15 11:18:17', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1193, 105, '2022-08-21 11:16:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1194, 105, '2022-08-21 11:16:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1195, 105, '2022-08-21 11:16:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1196, 105, '2022-08-21 11:16:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1197, 105, '2022-08-21 11:16:07', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300);
+INSERT INTO `showcase` (`avatar_id`, `member_sid`, `avatar_created_at`, `combination`, `combinationText`, `img_name`, `price`) VALUES
+(1198, 106, '2022-08-21 11:30:55', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1199, 106, '2022-08-21 11:30:55', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1200, 106, '2022-08-21 11:30:55', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1201, 106, '2022-08-21 11:30:55', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300),
+(1202, 106, '2022-08-21 11:30:55', '{\"basic\":[1,1,1],\"basic_color\":0,\"body\":{\"hand\":0,\"foot\":0,\"tale\":0,\"special\":0},\"special_color\":{\"tale\":0,\"special\":0},\"face\":{\"eye\":0,\"ear\":0,\"lip\":0,\"nose\":0,\"hairFront\":0,\"hairBack\":0,\"topEar\":0},\"face_color\":{\"eye\":0,\"nose\":0,\"hairFront\":0,\"topEar\":0}}', '{\"hand\":\"饅頭\",\"foot\":\"饅頭\",\"bodyColor\":\"粉\",\"specialColor\":\"\",\"tale\":\"無\",\"taleColor\":\"\",\"eye\":\"瞇瞇眼\",\"eyeColor\":\"灰\",\"nose\":\"那個人\",\"noseColor\":\"白\",\"hair\":\"中分+不留長\",\"hairColor\":\"黑\",\"ear\":\"小饅頭\",\"topearColor\":\"\",\"lip\":\"kitty\"}', 'default.png', 300);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tag`
+-- 資料表結構 `tag`
 --
 
 CREATE TABLE `tag` (
@@ -1682,7 +1712,7 @@ CREATE TABLE `tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tag`
+-- 傾印資料表的資料 `tag`
 --
 
 INSERT INTO `tag` (`tg_sid`, `tag_name`) VALUES
@@ -1718,7 +1748,7 @@ INSERT INTO `tag` (`tg_sid`, `tag_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type`
+-- 資料表結構 `type`
 --
 
 CREATE TABLE `type` (
@@ -1727,7 +1757,7 @@ CREATE TABLE `type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `type`
+-- 傾印資料表的資料 `type`
 --
 
 INSERT INTO `type` (`ty_sid`, `type_name`) VALUES
@@ -1739,114 +1769,114 @@ INSERT INTO `type` (`ty_sid`, `type_name`) VALUES
 (6, '投胎');
 
 --
--- Indexes for dumped tables
+-- 已傾印資料表的索引
 --
 
 --
--- Indexes for table `admin_test_jwt`
+-- 資料表索引 `admin_test_jwt`
 --
 ALTER TABLE `admin_test_jwt`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `body_parts`
+-- 資料表索引 `body_parts`
 --
 ALTER TABLE `body_parts`
   ADD PRIMARY KEY (`parts_sid`);
 
 --
--- Indexes for table `city_type`
+-- 資料表索引 `city_type`
 --
 ALTER TABLE `city_type`
   ADD PRIMARY KEY (`city_sid`);
 
 --
--- Indexes for table `cube`
+-- 資料表索引 `cube`
 --
 ALTER TABLE `cube`
   ADD PRIMARY KEY (`cube_sid`),
   ADD KEY `member_sid` (`member_sid`);
 
 --
--- Indexes for table `cube_category`
+-- 資料表索引 `cube_category`
 --
 ALTER TABLE `cube_category`
   ADD PRIMARY KEY (`cube_style_sid`);
 
 --
--- Indexes for table `cube_music`
+-- 資料表索引 `cube_music`
 --
 ALTER TABLE `cube_music`
   ADD PRIMARY KEY (`cube_music_sid`);
 
 --
--- Indexes for table `date_price`
+-- 資料表索引 `date_price`
 --
 ALTER TABLE `date_price`
   ADD PRIMARY KEY (`year`);
 
 --
--- Indexes for table `event_cart`
+-- 資料表索引 `event_cart`
 --
 ALTER TABLE `event_cart`
   ADD PRIMARY KEY (`order_sid`);
 
 --
--- Indexes for table `event_cart_creditcard`
+-- 資料表索引 `event_cart_creditcard`
 --
 ALTER TABLE `event_cart_creditcard`
   ADD PRIMARY KEY (`credit_sid`);
 
 --
--- Indexes for table `event_cart_personinfo`
+-- 資料表索引 `event_cart_personinfo`
 --
 ALTER TABLE `event_cart_personinfo`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `event_comment`
+-- 資料表索引 `event_comment`
 --
 ALTER TABLE `event_comment`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `event_order_detail`
+-- 資料表索引 `event_order_detail`
 --
 ALTER TABLE `event_order_detail`
   ADD PRIMARY KEY (`event_order_sid`);
 
 --
--- Indexes for table `good_deed_games`
+-- 資料表索引 `good_deed_games`
 --
 ALTER TABLE `good_deed_games`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `good_deed_games_record`
+-- 資料表索引 `good_deed_games_record`
 --
 ALTER TABLE `good_deed_games_record`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `location`
+-- 資料表索引 `location`
 --
 ALTER TABLE `location`
   ADD PRIMARY KEY (`l_sid`);
 
 --
--- Indexes for table `member`
+-- 資料表索引 `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `music_category`
+-- 資料表索引 `music_category`
 --
 ALTER TABLE `music_category`
   ADD PRIMARY KEY (`music_type_sid`);
 
 --
--- Indexes for table `news`
+-- 資料表索引 `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`sid`),
@@ -1854,7 +1884,7 @@ ALTER TABLE `news`
   ADD KEY `type_sid` (`type_sid`);
 
 --
--- Indexes for table `news_tag`
+-- 資料表索引 `news_tag`
 --
 ALTER TABLE `news_tag`
   ADD PRIMARY KEY (`nt_sid`),
@@ -1862,7 +1892,7 @@ ALTER TABLE `news_tag`
   ADD KEY `tag_sid` (`tag_sid`);
 
 --
--- Indexes for table `npo_act`
+-- 資料表索引 `npo_act`
 --
 ALTER TABLE `npo_act`
   ADD PRIMARY KEY (`sid`),
@@ -1870,359 +1900,359 @@ ALTER TABLE `npo_act`
   ADD KEY `place_city` (`place_city`);
 
 --
--- Indexes for table `npo_act_type`
+-- 資料表索引 `npo_act_type`
 --
 ALTER TABLE `npo_act_type`
   ADD PRIMARY KEY (`typesid`);
 
 --
--- Indexes for table `npo_name`
+-- 資料表索引 `npo_name`
 --
 ALTER TABLE `npo_name`
   ADD PRIMARY KEY (`npo_sid`);
 
 --
--- Indexes for table `place`
+-- 資料表索引 `place`
 --
 ALTER TABLE `place`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `place_city`
+-- 資料表索引 `place_city`
 --
 ALTER TABLE `place_city`
   ADD PRIMARY KEY (`city`),
   ADD KEY `place_city_ibfk_1` (`country`);
 
 --
--- Indexes for table `place_country_list`
+-- 資料表索引 `place_country_list`
 --
 ALTER TABLE `place_country_list`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `place_dist`
+-- 資料表索引 `place_dist`
 --
 ALTER TABLE `place_dist`
   ADD PRIMARY KEY (`dist`),
   ADD KEY `place_dist_ibfk_2` (`country`);
 
 --
--- Indexes for table `place_in_cart`
+-- 資料表索引 `place_in_cart`
 --
 ALTER TABLE `place_in_cart`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `place_liked`
+-- 資料表索引 `place_liked`
 --
 ALTER TABLE `place_liked`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `reborn_order`
+-- 資料表索引 `reborn_order`
 --
 ALTER TABLE `reborn_order`
   ADD PRIMARY KEY (`sid`);
 
 --
--- Indexes for table `reincarnation`
+-- 資料表索引 `reincarnation`
 --
 ALTER TABLE `reincarnation`
   ADD KEY `member_sid` (`member_sid`);
 
 --
--- Indexes for table `reincarnation_order`
+-- 資料表索引 `reincarnation_order`
 --
 ALTER TABLE `reincarnation_order`
   ADD PRIMARY KEY (`reincarnation_order_sid`);
 
 --
--- Indexes for table `sessions`
+-- 資料表索引 `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`session_id`);
 
 --
--- Indexes for table `share_avatar_collects`
+-- 資料表索引 `share_avatar_collects`
 --
 ALTER TABLE `share_avatar_collects`
   ADD PRIMARY KEY (`share_post_collect_sid`);
 
 --
--- Indexes for table `share_avatar_comments`
+-- 資料表索引 `share_avatar_comments`
 --
 ALTER TABLE `share_avatar_comments`
   ADD PRIMARY KEY (`share_post_comment_sid`);
 
 --
--- Indexes for table `share_avatar_likes`
+-- 資料表索引 `share_avatar_likes`
 --
 ALTER TABLE `share_avatar_likes`
   ADD PRIMARY KEY (`share_post_like_sid`);
 
 --
--- Indexes for table `share_avatar_posts`
+-- 資料表索引 `share_avatar_posts`
 --
 ALTER TABLE `share_avatar_posts`
   ADD PRIMARY KEY (`share_post_sid`);
 
 --
--- Indexes for table `share_avatar_posts_to_tags`
+-- 資料表索引 `share_avatar_posts_to_tags`
 --
 ALTER TABLE `share_avatar_posts_to_tags`
   ADD PRIMARY KEY (`share_p_to_t_sid`);
 
 --
--- Indexes for table `share_avatar_tags`
+-- 資料表索引 `share_avatar_tags`
 --
 ALTER TABLE `share_avatar_tags`
   ADD PRIMARY KEY (`share_post_tag_sid`);
 
 --
--- Indexes for table `showcase`
+-- 資料表索引 `showcase`
 --
 ALTER TABLE `showcase`
   ADD PRIMARY KEY (`avatar_id`);
 
 --
--- Indexes for table `tag`
+-- 資料表索引 `tag`
 --
 ALTER TABLE `tag`
   ADD PRIMARY KEY (`tg_sid`);
 
 --
--- Indexes for table `type`
+-- 資料表索引 `type`
 --
 ALTER TABLE `type`
   ADD PRIMARY KEY (`ty_sid`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
 --
--- AUTO_INCREMENT for table `admin_test_jwt`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `admin_test_jwt`
 --
 ALTER TABLE `admin_test_jwt`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
--- AUTO_INCREMENT for table `body_parts`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `body_parts`
 --
 ALTER TABLE `body_parts`
   MODIFY `parts_sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `city_type`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `city_type`
 --
 ALTER TABLE `city_type`
   MODIFY `city_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `cube`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `cube`
 --
 ALTER TABLE `cube`
   MODIFY `cube_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `cube_category`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `cube_category`
 --
 ALTER TABLE `cube_category`
   MODIFY `cube_style_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `cube_music`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `cube_music`
 --
 ALTER TABLE `cube_music`
   MODIFY `cube_music_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `event_cart`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart`
 --
 ALTER TABLE `event_cart`
-  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
--- AUTO_INCREMENT for table `event_cart_creditcard`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart_creditcard`
 --
 ALTER TABLE `event_cart_creditcard`
-  MODIFY `credit_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `credit_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `event_cart_personinfo`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `event_cart_personinfo`
 --
 ALTER TABLE `event_cart_personinfo`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `event_comment`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `event_comment`
 --
 ALTER TABLE `event_comment`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `event_order_detail`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `event_order_detail`
 --
 ALTER TABLE `event_order_detail`
-  MODIFY `event_order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `event_order_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
--- AUTO_INCREMENT for table `good_deed_games`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `good_deed_games`
 --
 ALTER TABLE `good_deed_games`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `good_deed_games_record`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `good_deed_games_record`
 --
 ALTER TABLE `good_deed_games_record`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `location`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `location`
 --
 ALTER TABLE `location`
   MODIFY `l_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `member`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `member`
 --
 ALTER TABLE `member`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
--- AUTO_INCREMENT for table `music_category`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `music_category`
 --
 ALTER TABLE `music_category`
   MODIFY `music_type_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `news`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `news`
 --
 ALTER TABLE `news`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `news_tag`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `news_tag`
 --
 ALTER TABLE `news_tag`
   MODIFY `nt_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=238;
 
 --
--- AUTO_INCREMENT for table `npo_act`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `npo_act`
 --
 ALTER TABLE `npo_act`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
--- AUTO_INCREMENT for table `npo_act_type`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `npo_act_type`
 --
 ALTER TABLE `npo_act_type`
   MODIFY `typesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `npo_name`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `npo_name`
 --
 ALTER TABLE `npo_name`
   MODIFY `npo_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
--- AUTO_INCREMENT for table `place`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `place`
 --
 ALTER TABLE `place`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
--- AUTO_INCREMENT for table `place_country_list`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `place_country_list`
 --
 ALTER TABLE `place_country_list`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `place_in_cart`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `place_in_cart`
 --
 ALTER TABLE `place_in_cart`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `place_liked`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `place_liked`
 --
 ALTER TABLE `place_liked`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `reborn_order`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `reborn_order`
 --
 ALTER TABLE `reborn_order`
   MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `reincarnation_order`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `reincarnation_order`
 --
 ALTER TABLE `reincarnation_order`
   MODIFY `reincarnation_order_sid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `share_avatar_collects`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_collects`
 --
 ALTER TABLE `share_avatar_collects`
   MODIFY `share_post_collect_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT for table `share_avatar_comments`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_comments`
 --
 ALTER TABLE `share_avatar_comments`
   MODIFY `share_post_comment_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
--- AUTO_INCREMENT for table `share_avatar_likes`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_likes`
 --
 ALTER TABLE `share_avatar_likes`
   MODIFY `share_post_like_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
--- AUTO_INCREMENT for table `share_avatar_posts`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_posts`
 --
 ALTER TABLE `share_avatar_posts`
   MODIFY `share_post_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `share_avatar_posts_to_tags`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_posts_to_tags`
 --
 ALTER TABLE `share_avatar_posts_to_tags`
   MODIFY `share_p_to_t_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
--- AUTO_INCREMENT for table `share_avatar_tags`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `share_avatar_tags`
 --
 ALTER TABLE `share_avatar_tags`
   MODIFY `share_post_tag_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT for table `showcase`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `showcase`
 --
 ALTER TABLE `showcase`
-  MODIFY `avatar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1193;
+  MODIFY `avatar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1203;
 
 --
--- AUTO_INCREMENT for table `tag`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `tag`
 --
 ALTER TABLE `tag`
   MODIFY `tg_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `type`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `type`
 --
 ALTER TABLE `type`
   MODIFY `ty_sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Constraints for dumped tables
+-- 已傾印資料表的限制式
 --
 
 --
--- Constraints for table `news`
+-- 資料表的限制式 `news`
 --
 ALTER TABLE `news`
   ADD CONSTRAINT `news_ibfk_1` FOREIGN KEY (`location_sid`) REFERENCES `location` (`l_sid`),
