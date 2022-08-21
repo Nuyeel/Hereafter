@@ -1,5 +1,16 @@
 @import '../../styles/variables.scss';
+.game-background{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 860px;
+    height: 520px;
+    border-radius: 15px 15px 0px 0px;
+    z-index: -2;
+    background-color:#3C3B67;
+    transform: translate(-50%,-50%);
 
+}
 .gameframe{
     position: absolute;
     top: 50%;
@@ -8,25 +19,41 @@
     height: 520px;
     transform: translate(-50%,-50%);
     border-radius: 15px 15px 0px 0px;
-    border: 30px solid #aedfff;
-    border-top: 70px solid #aedfff;
-    border-bottom: 40px solid #aedfff;
+    border: 30px solid #8dd1ff;
+    border-top: 70px solid #8dd1ff;
+    border-bottom: 40px solid #8dd1ff;
 
 
     overflow: hidden;
     // background-color: rgba(212, 61, 61, 0.421);
 }
+.yun-end-game{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    display: inline-block;
+    line-height: 2.5rem;
+    font-size: 30px;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    padding: 0px 20px;
+    font-weight: 600;
+
+    
+   color: #E384F2;
+}
 .saveBtn{
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 60%;
     transform: translate(-50%,-50%);
     display: inline-block;
     
     border: 3px solid #E384F2;
     box-shadow: 0px 0px 8px #fc93e0;
     font-size: $fz-subtitle;
-    line-height: 4.5rem;
+    line-height: 3.5rem;
     font-weight: 600;
     color: #E384F2;
     padding: 0px 20px;
@@ -58,6 +85,7 @@
     top: 0px;
     overflow: hidden;
     border :10px solid rgb(29, 29, 29); 
+    // background-color: $bgc-D;
 }
 .game-context1{
     width: 100%;
@@ -139,7 +167,7 @@
 
 .yun-controlpanel1{
     position: absolute;
-    bottom: 0;
+    top: calc(50% + 340px);
     left: 50%;
     width: 930px;
     height: 50px;
@@ -152,7 +180,7 @@
 }
 .yun-controlpanel2{
     position: absolute;
-    top: 89%;
+    top: calc(50% + 300px);
     left: 50%;
     width: 900px;
     height: 100px;
@@ -164,7 +192,7 @@
         width: 900px;
         height: 100px;
         border-radius: 0px 0px 15px 15px ;
-        background-color: #8dd1ff;
+        background-color: #aedfff;
         
         transform: perspective(40px) rotateX(2deg);
     }
@@ -221,7 +249,7 @@
         left: 15%;
         top: 30%;
         transform: translate(-50%,-50%);
-        box-shadow: inset 0px 40px 5px #ebebeb ;
+        box-shadow: inset -5px 0px 0px #cfcdcd ;
     }
     .control-bar::after{
         content: '';
@@ -234,6 +262,8 @@
         left: 50%;
         top: -10%;
         transform: translate(-50%,-50%);
+        box-shadow: inset -10px -10px 0px #c268d0 ;
+
        
 
 

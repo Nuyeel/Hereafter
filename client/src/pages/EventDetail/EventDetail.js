@@ -311,6 +311,7 @@ const EventDetail = () => {
                                                 fetchEventAddCart();
                                                 Swal.fire('商品已加入購物車');
                                                 dispatch(increment());
+
                                                 setCartBtn(true);
                                                 setCartBtnWord('已加入');
                                                 setCartBuyWord('前往結帳');

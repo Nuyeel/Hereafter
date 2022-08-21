@@ -30,7 +30,7 @@ function HeaderShareWallButton() {
 
     const navigate = useNavigate();
 
-    console.log(shareWallSearchState);
+    // console.log(shareWallSearchState);
 
     // FIXME: 有空再統一放 context
     const axiosListGET = async () => {

@@ -61,6 +61,17 @@ function ShareWallPost(props) {
     const handleAvatarTitleInputChange = (e) => {
         // console.log(e.target.value);
         const trimmedString = e.target.value.trim();
+
+        if (trimmedString === 'yee') {
+            setAvatarTitleInputString('魚尾凱多二號');
+            setAvatarTagInputString_1('魚尾');
+            setAvatarTagInputString_2('凱多');
+            setAvatarTagInputString_3('火眼金睛');
+            return setAvatarTextareaString(
+                '最近一個月都在動物收容所當志工，因為想養寵物，所以想學習各種照顧動物與安撫動物的方法，因為都在來生投放所這裡報名，所以積累了不少陰德值，也就趁機捏了魚尾凱多全新力作，其實來生形象是不是真的無所謂，我更努力過生活，也努力變成更好的人，希望世界和平～'
+            );
+        }
+
         setAvatarTitleInputString(trimmedString);
     };
 
@@ -142,7 +153,7 @@ function ShareWallPost(props) {
                 },
             }
         );
-        console.log(result.data);
+        // console.log(result.data);
 
         if (result.data === '還沒有這個形象呦') {
             return navigate('/sharewall');
@@ -310,7 +321,7 @@ function ShareWallPost(props) {
             }
         );
 
-        console.log(result.data);
+        // console.log(result.data);
 
         if (result.data === '還沒有這個形象呦') {
             return Swal.fire({
@@ -579,8 +590,24 @@ function ShareWallPost(props) {
                     <CgClose
                         className="cpl-pcb-close-icon"
                         onClick={() => {
-                            // ASK: navigate(-1)
-                            navigate(-1);
+                            Swal.fire({
+                                title: '您確定要放棄貼文嗎？',
+                                imageUrl: OutlineSoul,
+                                imageHeight: 50,
+                                imageWidth: 50,
+                                confirmButtonText: '確認',
+                                showDenyButton: true,
+                                denyButtonText: '取消',
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    navigate(-1);
+                                } else if (result.isDenied) {
+                                    // console.log(
+                                    //     'Sweetalert2: ',
+                                    //     '不套用...虧了...'
+                                    // );
+                                }
+                            });
                             // navigate('/sharewall', { replace: true });
                         }}
                     />

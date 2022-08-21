@@ -164,7 +164,7 @@ function PlaceLikedPage(props) {
         });
     };
 
-    // TODO: 點選place的地圖icon, 顯示地圖&列表第一筆為此資料(place_sid)
+    // 點選place的地圖icon, 顯示地圖&列表第一筆為此資料(place_sid)
     const handlePlaceMapIconClicked = (e) => {
         const placeIndex = e.currentTarget
             .closest('.place-info-card')

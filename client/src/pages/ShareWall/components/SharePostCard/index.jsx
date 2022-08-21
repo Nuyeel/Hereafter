@@ -8,8 +8,8 @@ import Swal from 'sweetalert2';
 import OutlineSoul from '../../../../images/sweetalert2/outline_soul.svg';
 import OutlineSoulAlert from '../../../../images/sweetalert2/outline_soul_alert.svg';
 
-import { AiOutlineHeart } from 'react-icons/ai';
-import { AiFillHeart } from 'react-icons/ai';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { FaBookmark } from 'react-icons/fa';
 
 import './SharePostCard.scss';
 
@@ -32,6 +32,7 @@ function SharePostCard(props) {
         title,
         text,
         isliked,
+        iscollected,
         handleSearchParams,
     } = props;
 
@@ -83,6 +84,11 @@ function SharePostCard(props) {
                             : 'cpl-spc-box-shadow-dark'
                     } flex-shrink-0`}
                 >
+                    {iscollected ? (
+                        <FaBookmark className="cpl-spc-FaBookmark" />
+                    ) : (
+                        ''
+                    )}
                     {/* 來生形象 */}
                     {/* FIXME: 資料要從後端過來 網址不對 */}
                     {/* FIXME: 改成長手長腳測試 */}

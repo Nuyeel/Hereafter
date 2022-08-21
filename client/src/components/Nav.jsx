@@ -22,7 +22,6 @@ import { ReactComponent as NavLogo } from '../images/Nav/nav_logo.svg';
 import { ReactComponent as NavSoul } from '../images/Nav/nav_soul.svg';
 import { ReactComponent as NavSkeleton } from '../images/Nav/nav_toggle_skeleton.svg';
 import { ReactComponent as NavCuteBoy } from '../images/Nav/nav_toggle_cuteboy.svg';
-// import { ReactComponent as Soul } from '../images/Nav/soul.svg';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaBars } from 'react-icons/fa';
@@ -40,8 +39,9 @@ import { IoLogoClosedCaptioning } from 'react-icons/io5';
 
 // img
 import missingWord from '../images/Nav/missing_word.svg';
-
 import OutlineSoulAlert from '../images/sweetalert2/outline_soul_alert.svg';
+import OutlineSoul from '../images/sweetalert2/outline_soul.svg';
+import missingWord2 from '../images/Nav/missing_word_2.svg';
 
 // mainpage測試
 import mainpage_nav from '../pages/MainPage/imgs/mainpage_nav.svg';
@@ -189,13 +189,24 @@ function Nav(props) {
                     <div
                         className="nav_lightbox_list"
                         onClick={() => {
-                            navigate('/events', { replace: true });
-                            setLightBox('nav_lightbox_hidden');
-                            setMainpageIcon('mainpage_icon_hidden');
+                            if (!isDead) {
+                                navigate('/events', { replace: true });
+                                setLightBox('nav_lightbox_hidden');
+                                setMainpageIcon('mainpage_icon_hidden');
+                            }
                         }}
                     >
-                        <img src={missingWord} alt="" />
-                        <h4 className="subtitle">天下沒有白吃的來生</h4>
+                        <img src={missingWord2} alt="" />
+
+                        {!isDead ? (
+                            <h4 className="subtitle xuan-missing-h4">
+                                天下沒有白吃的來生
+                            </h4>
+                        ) : (
+                            <h4 className="subtitle xuan-missing-h4">
+                                此生已無緣，來生再相會
+                            </h4>
+                        )}
                     </div>
 
                     <div
@@ -211,20 +222,6 @@ function Nav(props) {
                             若有福蔭，形象由己。無緣來此，交由天定。
                         </h4>
                     </div>
-
-                    {/* <div
-                        className="nav_lightbox_list"
-                        onClick={() => {
-                            navigate('/showcase', { replace: true });
-                            setLightBox('nav_lightbox_hidden');
-                            setMainpageIcon('mainpage_icon_hidden');
-                        }}
-                    >
-                        <h2 className="nav_link">來生形象</h2>
-                        <h4 className="subtitle">
-                            若有福蔭，形象由己。無緣來此，交由天定。
-                        </h4>
-                    </div> */}
 
                     <div
                         className="nav_lightbox_list"

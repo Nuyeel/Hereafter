@@ -50,7 +50,7 @@ function ShareWallDetail(props) {
         },
         isLoading: true,
     });
-    const [sharePostComment, setsharePostComment] = useState('');
+    const [sharePostComment, setSharePostComment] = useState('');
     const [enterCounter, setEnterCounter] = useState(0);
 
     const { pageName } = props;
@@ -835,7 +835,7 @@ function ShareWallDetail(props) {
                                             </span>
                                             <div className="cpl-pcb-ita-ci-edit-area d-flex justify-content-between">
                                                 {TimeTranslator(v.created_at)}
-                                                {/* FIXME: 按下跳出編輯留言 */}
+                                                {/* FIXME: 按下跳出刪除留言 */}
                                                 {v.comment_isEditable ? (
                                                     <div className="cpl-pcb-ita-ci-ea-right">
                                                         <span
@@ -1005,7 +1005,10 @@ function ShareWallDetail(props) {
                                                 : '我想說...'
                                         }`}
                                         onChange={(e) => {
-                                            setsharePostComment(e.target.value);
+                                            if (e.target.value === 'yee') {
+                                                return setSharePostComment('這個形象真讚阿');
+                                            }
+                                            setSharePostComment(e.target.value);
                                         }}
                                         // DONE: Enter 直接留言
                                         // DONE: 留言寫進資料表
@@ -1032,7 +1035,7 @@ function ShareWallDetail(props) {
                                                     }
                                                     handleCommentSubmit();
                                                     setEnterCounter(0);
-                                                    return setsharePostComment(
+                                                    return setSharePostComment(
                                                         ''
                                                     );
                                                 }

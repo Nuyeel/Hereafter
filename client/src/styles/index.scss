@@ -232,19 +232,24 @@ h3 {
 .nav_lightbox_wrap {
     width: 80%;
     position: relative;
-    // outline: 1px solid white;
 
     > .nav_lightbox_list {
         display: flex;
         border-radius: 10px;
+        height: 50px;
+        max-height: 50px;
+        // outline: 1px solid yellow;
+        align-items: center;
+
 
         > h2 {
+            font-size: 1.5rem;
             color: #ffffff;
             line-height: 4.5rem;
-            // line-height: 4rem;
             margin-right: 20px;
             margin-left: 10px;
         }
+
 
         > h4 {
             // 手機版介紹文字不出現
@@ -253,6 +258,14 @@ h3 {
             line-height: 6rem;
             letter-spacing: 0.2rem;
             visibility: hidden;
+        }
+
+        // 功德撲滿缺字處理
+        img{
+            margin: 0px;
+            // outline: 1px solid white;
+            width: 31.7%;
+            margin-left: 10px;
         }
     }
 
@@ -288,13 +301,15 @@ h3 {
 
 .nav-btn {
     font-family: $ff-h, $ff-t;
-    font-size: $fz-h5;
+    // font-size: $fz-h5;
     font-weight: 500;
     color: #fff;
     height: 65px;
     text-align: center;
     background-color: $primary;
     border-radius: 10px;
+    // 新增加的
+    font-size: 1.5rem;
 }
 
 .nav-btn:hover {
@@ -305,12 +320,11 @@ h3 {
 
 // 目錄頁_漢堡_visible
 .mainpage_icon_visible{
-    // outline: 1px solid red;
     position: fixed;
     right: 0px;
     top: 0px;
     width: 25%;
-    visibility: visible;
+    display: block;
 
     >img{
         width: 100%;
@@ -319,7 +333,7 @@ h3 {
 
 // 目錄頁_漢堡_hidden
 .mainpage_icon_hidden{
-    visibility: hidden;
+    display: none;
 }
 
 
@@ -344,10 +358,12 @@ h3 {
             display: flex;
             align-items: center;
             margin-right: 140px;
-            max-height: 65px;
+            height: 85px;
+            max-height: 85px;
 
             > h2 {
                 margin-right: 25px;
+                font-size: 3rem;
             }
 
             > h4 {
@@ -359,19 +375,23 @@ h3 {
     // 功德撲滿缺字處理
     .nav_lightbox_list {
         img {
-            width: 10.5%;
-            margin-top: 14px;
-            margin-bottom: 14px;
+            max-height: 75px;
+            max-width: 193px;
+            height: 70px;
             margin-right: 25px;
             // outline: 1px solid red;
-            margin-left: 9px;
+        }
+
+        .xuan-missing-h4{
+            margin-left: 25px;
         }
     }
 
 
     // 目錄頁_漢堡_hidden
     .mainpage_icon_hidden{
-        visibility: hidden;
+        // visibility: hidden;
+        display: none;
         position: fixed;
         right: 0px;
         top: 0px;
@@ -384,15 +404,22 @@ h3 {
 
     // 目錄頁_漢堡_visible
     .mainpage_icon_visible{
+        display: block;
         position: fixed;
         right: 0px;
         top: 0px;
         width: 12%;
-        visibility: visible;
+        // visibility: visible;
 
         >img{
             width: 100%;
         }
+    }
+
+
+    .nav-btn{
+        font-size: 2rem;
+        margin-left: 10px;
     }
 
 }
