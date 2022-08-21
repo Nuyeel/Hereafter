@@ -41,6 +41,7 @@ import { IoLogoClosedCaptioning } from 'react-icons/io5';
 import missingWord from '../images/Nav/missing_word.svg';
 import OutlineSoulAlert from '../images/sweetalert2/outline_soul_alert.svg';
 import OutlineSoul from '../images/sweetalert2/outline_soul.svg';
+import missingWord2 from '../images/Nav/missing_word_2.svg';
 
 // mainpage測試
 import mainpage_nav from '../pages/MainPage/imgs/mainpage_nav.svg';
@@ -195,12 +196,16 @@ function Nav(props) {
                             }
                         }}
                     >
-                        <img src={missingWord} alt="" />
+                        <img src={missingWord2} alt="" />
 
                         {!isDead ? (
-                            <h4 className="subtitle">天下沒有白吃的來生</h4>
+                            <h4 className="subtitle xuan-missing-h4">
+                                天下沒有白吃的來生
+                            </h4>
                         ) : (
-                            <h4 className="subtitle">此生已無緣，來生再相會</h4>
+                            <h4 className="subtitle xuan-missing-h4">
+                                此生已無緣，來生再相會
+                            </h4>
                         )}
                     </div>
 
