@@ -1022,7 +1022,7 @@
       width: 14%;
       position: fixed;
       // bottom: 18vw;
-      bottom: 17vw;
+      bottom: 18vw;
       right:16.7vw;
 
       button{
@@ -1031,9 +1031,6 @@
         min-width: 95px;
       }
 
-      .xuan-btn-m{
-        // font-size: 20px;
-      }
       
     }
 
@@ -1192,6 +1189,7 @@
     // 訂單明細
     .xuan-readytobuy-container-visible{
 
+
       // 白底區塊
       .xuan-center-block{
         max-width: 500px;
@@ -1199,10 +1197,20 @@
       }
     }
 
+    .xuan-readytobuy-item{
+      align-items: center;
+    }
+
 
     .xuan-readytobuy-img{
-      width: 80px;
-      margin-right: 20px;
+      width: 100px !important;
+      margin-right: 20px !important;
+      margin-left: 8px !important;
+      // outline: 1px solid red;
+
+        img{
+          height: 100%;
+        }
     }
 
 
@@ -1286,6 +1294,9 @@
                         .xuan-payment-submit-button{
                           // outline: 1px solid red;
                           display: block;
+                          position: absolute;
+                          top:68%;
+                          left: 49.5%;
                           padding-top: 5px;
                           margin-bottom: 10px;
                           // padding-top: 150px;
