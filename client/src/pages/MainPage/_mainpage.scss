@@ -983,7 +983,7 @@ position: relative;
     width: 22%;
     height: 16%;
     position:absolute;
-    top: 58.5%;
+    top: 58.8%;
     left: 81%;
     transform: translate(-50%, -50%);
     z-index: 300;
@@ -1319,42 +1319,60 @@ position: relative;
   // background-color: #9587E1;
   // outline: 1px solid red;
   // border-radius: 20px;
-  width: 9%;
+  // outline: 1px solid red;
+  width:11%;
   height: 19%;
   position:absolute;
   top: 98%;
-  left: 4%;
+  left: 5.2%;
   transform: translate(-50%, -50%);
   z-index: 300;
   color: white;
   padding: 20px;
 
+  img{
+    width: 83%;
+    // outline: 1px solid blue;
+  }
+
 }
 // 左下背景素材補圖
 .de-left-2{
-  width: 9%;
+  width: 9.5%;
   height: 19%;
   position:absolute;
-  top: 100%;
-  left: 35%;
+  top: 101%;
+  left: 35.5%;
   transform: translate(-50%, -50%);
   z-index: 300;
   color: white;
   padding: 20px;
+  // outline: 1px solid white;
+
+    img{
+      width: 100%;
+      // outline: 1px solid blue;
+    }
 
 }
 
 .de-left-middle{
   // outline: 1px solid red;
-  width: 15%;
+  width: 22.3%;
   height: 10%;
   position:absolute;
   top: 108.5%;
-  left:46%;
+  left:49.6%;
   transform: translate(-50%, -50%);
   z-index: 300;
   color: white;
   padding: 20px;
+  // outline: 1px solid white;
+
+        img{
+          // outline: 1px solid blue;
+          width: 100%;
+        }
 }
 
 .bg_top_left{
@@ -1413,7 +1431,7 @@ position: relative;
   background-color: #9587E1;
   border-radius: 20px;
   width: 10.5%;
-  height: 30%;
+  height: 29%;
   position:absolute;
   top: 26%;
   left: 6%;

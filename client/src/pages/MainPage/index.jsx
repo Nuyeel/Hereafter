@@ -61,9 +61,9 @@ import game01 from './imgs/game01.svg';
 import game02 from './imgs/game02.svg';
 
 // 這邊處理背景不足的素材裝飾
-import decorate_left from './imgs/decorate-left.svg';
-import decorate_left_2 from './imgs/decorate-left-2.svg';
-import decorate_left_middle from './imgs/de-left-middle.svg';
+import decorate_left from './imgs/decorate-left2.svg';
+import decorate_left_2 from './imgs/decorate-left-2B.svg';
+import decorate_left_middle from './imgs/de-left-middle2.svg';
 import bg_top_left from './imgs/bg-top-left.svg';
 import bg_top from './imgs/bg-top.svg';
 import bg_top_right from './imgs/bg-top-right.svg';
@@ -580,7 +580,7 @@ function MainPage(props) {
                     </div>
                     {/* 投放所服務員1 */}
                     <div className="xuan-box-waiter-1">
-                        <img src={waiter01} alt="" />
+                        <img src={waiter05} alt="" />
                         {/* <p className="xuan-subtitle">投放所服務員</p> */}
                     </div>
                     {/* /aboutussecond */}
@@ -594,7 +594,7 @@ function MainPage(props) {
                     </div>
                     {/* 投放所服務員2 */}
                     <div className="xuan-box-waiter-2">
-                        <img src={waiter02} alt="" />
+                        <img src={waiter04} alt="" />
                     </div>
                     <div
                         className="xuan-box-waiter-2-word"
@@ -712,6 +712,7 @@ function MainPage(props) {
                     {/* 背景不足的素材部分 */}
                     {/* 左下-最左邊 */}
                     <div className="de-left">
+                        {/* <img src={decorate_left} alt="" /> */}
                         <img src={decorate_left} alt="" />
                     </div>
                     {/* 左下-倒數第二個 */}
