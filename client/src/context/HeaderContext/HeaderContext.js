@@ -17,7 +17,7 @@ export const headers = {
         title: '投放所服務員',
     },
     aboutusthird: {
-        title: '轉生3步驟',
+        title: '轉生流程',
     },
     genies: {
         title: '轉生小精靈', // TODO: '來生服務員' 二選一
