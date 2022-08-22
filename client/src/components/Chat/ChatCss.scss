@@ -302,18 +302,17 @@ animation: show2 .8s .5s ease forwards;
 
 }
 .ab-test-card-wrap{
-    // perspective: 1000px;
     transform-style: preserve-3d;
     position: relative;
     transition: .5s;
 }
 .ab-test-card-wrap img{
-position: absolute;
-border-radius: 5px;
-overflow: hidden;
-top: 0;
-left: 0;
-backface-visibility: hidden;
+    position: absolute;
+    border-radius: 5px;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
 }
 
 .ab-card-b{
@@ -323,14 +322,11 @@ backface-visibility: hidden;
     overflow: hidden;
 
 }
-.ab-test-card-wrap:hover{
+.ab-card-b:hover .ab-test-card-wrap{
     transform: rotateY(180deg);
 
 }
-.ab-card-b:hover{
-    transform: rotateY(180deg);
-  
-}
+
 .ab-card-bf{
     transform: rotateY(180deg);
 }
