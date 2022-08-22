@@ -24,6 +24,7 @@ export const themes = {
         bgcAvatarMaker2: '#00000080',
         bgcShowacseCard: 'transparent',
         navChecked: false,
+        gooddeedcard: '#00000033'
     },
     light: {
         title: 'light',
@@ -44,6 +45,7 @@ export const themes = {
         bgcAvatarMaker2: '#8107E133',
         bgcShowacseCard: '#8107E133',
         navChecked: true,
+        gooddeedcard: '#FFFFFF30'
     },
 };
 
