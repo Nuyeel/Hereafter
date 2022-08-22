@@ -102,13 +102,13 @@ function Nav(props) {
         fetchEventCartNum();
     }, [sid]);
 
-    const getUserGooddeedData = async () => {
+    const getUserGooddeedData = async (show) => {
         const r = await fetch(`${PLACE_CARTDATA_API}/${sid}`);
         const output = await r.json();
         const newGooddeed = output.goodDeed;
         setUserGooddeed({
             ...userGooddeed,
-            show: false,
+            show: show,
             gooddeed: newGooddeed,
         });
     };
@@ -116,11 +116,19 @@ function Nav(props) {
     useEffect(() => {
         if (authorized === true) {
             // console.log('去要陰德值了');
-            getUserGooddeedData();
+            getUserGooddeedData(true);
         } else {
             // console.log('沒有登入無法顯示陰德值');
         }
-    }, []);
+    }, [sid]);
+
+    useEffect(() => {
+        if (userGooddeed.show) {
+            setTimeout(() => {
+                getUserGooddeedData(false);
+            }, 3000);
+        }
+    }, [userGooddeed.show]);
 
     useEffect(() => {
         if (location.pathname === '/intro') {
@@ -433,22 +441,8 @@ function Nav(props) {
                                             imageWidth: 50,
                                             showConfirmButton: false,
                                         });
-                                    } else if (userGooddeed.show) {
-                                        setUserGooddeed({
-                                            ...userGooddeed,
-                                            show: false,
-                                        });
-                                    } else {
-                                        setUserGooddeed({
-                                            ...userGooddeed,
-                                            show: true,
-                                        });
-                                        setTimeout(() => {
-                                            setUserGooddeed({
-                                                ...userGooddeed,
-                                                show: false,
-                                            });
-                                        }, 3000);
+                                    } else if (!userGooddeed.show) {
+                                        getUserGooddeedData(true);
                                     }
                                 }}
                             >
