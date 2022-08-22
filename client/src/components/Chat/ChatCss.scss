@@ -301,13 +301,13 @@ animation: show2 .8s .5s ease forwards;
     100%{opacity: 1;}
 
 }
-.ab-card-wrap{
+.ab-test-card-wrap{
     // perspective: 1000px;
     transform-style: preserve-3d;
     position: relative;
     transition: .5s;
 }
-.ab-card-wrap img{
+.ab-test-card-wrap img{
 position: absolute;
 border-radius: 5px;
 overflow: hidden;
@@ -323,7 +323,7 @@ backface-visibility: hidden;
     overflow: hidden;
 
 }
-.ab-card-wrap:hover{
+.ab-test-card-wrap:hover{
     transform: rotateY(180deg);
 
 }

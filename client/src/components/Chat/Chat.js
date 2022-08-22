@@ -118,7 +118,7 @@ const steps = [
             <div id="abCard" className="ab-card-c-wrap">
                 <div className="ab-card-c">
                     <div className="ab-card-b" onClick={handleClick}>
-                        <div className="ab-card-wrap">
+                        <div className="ab-test-card-wrap">
                             <img
                                 className="ab-card-bf"
                                 src={require('./imgs/card01.png')}
@@ -132,7 +132,7 @@ const steps = [
                         </div>
                     </div>
                     <div className="ab-card-b" onClick={handleClick}>
-                        <div className="ab-card-wrap">
+                        <div className="ab-test-card-wrap">
                             <img
                                 className="ab-card-bf"
                                 src={require('./imgs/card02.png')}
@@ -146,7 +146,7 @@ const steps = [
                         </div>
                     </div>
                     <div className="ab-card-b" onClick={handleClick}>
-                        <div className="ab-card-wrap">
+                        <div className="ab-test-card-wrap">
                             <img
                                 className="ab-card-bf"
                                 src={require('./imgs/card03.png')}
