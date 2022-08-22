@@ -158,8 +158,7 @@ const EventDetail = () => {
                                                 <div>
                                                     <img
                                                         src={
-                                                            'http://localhost:3500/event/eventlist/' +
-                                                            v.img
+                                                            'http://localhost:3500/event/eventlist/25.svg'
                                                         }
                                                         alt=""
                                                     />
@@ -167,8 +166,7 @@ const EventDetail = () => {
                                                 <div>
                                                     <img
                                                         src={
-                                                            'http://localhost:3500/event/eventlist/' +
-                                                            v.img
+                                                            'http://localhost:3500/event/eventlist/26.svg'
                                                         }
                                                         alt=""
                                                     />
