@@ -290,21 +290,21 @@ function Games(props) {
                             }
 
                             //colission detection
-                            if (
-                                px >= blocks[i].x &&
-                                px <= blocks[i].x + blocks[i].w &&
-                                py >= blocks[i].y &&
-                                py <= blocks[i].y + blocks[i].h
-                            ) {
-                                player.die();
-                            } else if (
-                                px + pw <= blocks[i].x + blocks[i] + 10 &&
-                                px + pw >= blocks[i].x &&
-                                py + ph <= blocks[i].y + blocks[i].h + 25 &&
-                                py + ph >= blocks[i].y
-                            ) {
-                                player.die();
-                            }
+                            // if (
+                            //     px >= blocks[i].x &&
+                            //     px <= blocks[i].x + blocks[i].w &&
+                            //     py >= blocks[i].y &&
+                            //     py <= blocks[i].y + blocks[i].h
+                            // ) {
+                            //     player.die();
+                            // } else if (
+                            //     px + pw <= blocks[i].x + blocks[i].w + 10 &&
+                            //     px + pw >= blocks[i].x &&
+                            //     py + ph <= blocks[i].y + blocks[i].h + 25 &&
+                            //     py + ph >= blocks[i].y
+                            // ) {
+                            //     player.die();
+                            // }
                             //colission detection
                             if (
                                 px >= blocks[i].x &&
@@ -463,7 +463,7 @@ function Games(props) {
                     ctx.fillText('Use keyboard arrows', 10, 60);
                     ctx.fillText('or [A] [W] [S] [D]', 10, 80);
 
-                    let gooddeedPlus = (blocks.curLevel() - 1) * 50;
+                    let gooddeedPlus = (blocks.curLevel() - 1) * 300;
                     ctx.fillText('gooddeedPlus : ' + gooddeedPlus, 10, 130);
                     ctx.fillText('Level : ' + blocks.curLevel(), 10, 150);
 
