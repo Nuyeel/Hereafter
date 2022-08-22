@@ -6,6 +6,7 @@ function InputIME(props, ref) {
         value,
         passcodePrevious,
         passwordPrevious,
+        confirmPasswordPrevious,
         setPasscodePrevious,
         setPasswordPrevious,
         setConfirmPasswordPrevious,
@@ -49,10 +50,22 @@ function InputIME(props, ref) {
     };
 
     useEffect(() => {
-        if (otherProps.name === 'passcode') {
+        if (isAutoFill && otherProps.name === 'passcode') {
             setInputValue(passcodePrevious);
         }
-    }, [isAutoFill])
+    }, [isAutoFill]);
+
+    useEffect(() => {
+        if (isAutoFill && otherProps.name === 'password') {
+            setInputValue(passwordPrevious);
+        }
+    }, [isAutoFill]);
+
+    useEffect(() => {
+        if (isAutoFill && otherProps.name === 'confirmPassword') {
+            setInputValue(confirmPasswordPrevious);
+        }
+    }, [isAutoFill]);
 
     return (
         <input

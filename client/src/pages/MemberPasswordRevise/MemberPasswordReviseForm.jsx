@@ -21,6 +21,12 @@ function MemberProfileForm(props) {
         confirmPassword: '',
     });
 
+    const [fillPasswordData, setFillPasswordData] = useState({
+        currentPassword: 'Day0824',
+        password: 'Day0824',
+        confirmPassword: 'Day0824',
+    });
+
     const [currentPasswordFieldType, setCurrentPasswordFieldType] =
         useState('password');
     const [passwordFieldType, setPasswordFieldType] = useState('password');
@@ -40,6 +46,8 @@ function MemberProfileForm(props) {
     const [validationCssClassname2, setValidationCssClassname2] = useState('');
     const [validationCssClassname3, setValidationCssClassname3] = useState('');
     const [validationCssClassname4, setValidationCssClassname4] = useState('');
+
+    const [isAutoFill, setIsAutoFill] = useState(false);
 
     const passwordRe = /^[a-zA-Z0-9_]\w*.{6,}$/;
 
@@ -340,6 +348,15 @@ function MemberProfileForm(props) {
                                                                         onChange={
                                                                             handleCurrentPasswordChange
                                                                         }
+                                                                        currentPasswordPrevious={
+                                                                            currentPasswordPrevious
+                                                                        }
+                                                                        passwordPrevious={
+                                                                            passwordPrevious
+                                                                        }
+                                                                        confirmPasswordPrevious={
+                                                                            confirmPasswordPrevious
+                                                                        }
                                                                         setCurrentPasswordPrevious={
                                                                             setCurrentPasswordPrevious
                                                                         }
@@ -348,6 +365,9 @@ function MemberProfileForm(props) {
                                                                         }
                                                                         setConfirmPasswordPrevious={
                                                                             setConfirmPasswordPrevious
+                                                                        }
+                                                                        isAutoFill={
+                                                                            isAutoFill
                                                                         }
                                                                         required
                                                                     />
@@ -369,6 +389,15 @@ function MemberProfileForm(props) {
                                                                         onChange={
                                                                             handlePasswordChange
                                                                         }
+                                                                        currentPasswordPrevious={
+                                                                            currentPasswordPrevious
+                                                                        }
+                                                                        passwordPrevious={
+                                                                            passwordPrevious
+                                                                        }
+                                                                        confirmPasswordPrevious={
+                                                                            confirmPasswordPrevious
+                                                                        }
                                                                         setCurrentPasswordPrevious={
                                                                             setCurrentPasswordPrevious
                                                                         }
@@ -377,6 +406,9 @@ function MemberProfileForm(props) {
                                                                         }
                                                                         setConfirmPasswordPrevious={
                                                                             setConfirmPasswordPrevious
+                                                                        }
+                                                                        isAutoFill={
+                                                                            isAutoFill
                                                                         }
                                                                         required
                                                                     />
@@ -398,6 +430,15 @@ function MemberProfileForm(props) {
                                                                         onChange={
                                                                             handleConfirmPasswordChange
                                                                         }
+                                                                        currentPasswordPrevious={
+                                                                            currentPasswordPrevious
+                                                                        }
+                                                                        passwordPrevious={
+                                                                            passwordPrevious
+                                                                        }
+                                                                        confirmPasswordPrevious={
+                                                                            confirmPasswordPrevious
+                                                                        }
                                                                         setCurrentPasswordPrevious={
                                                                             setCurrentPasswordPrevious
                                                                         }
@@ -406,6 +447,9 @@ function MemberProfileForm(props) {
                                                                         }
                                                                         setConfirmPasswordPrevious={
                                                                             setConfirmPasswordPrevious
+                                                                        }
+                                                                        isAutoFill={
+                                                                            isAutoFill
                                                                         }
                                                                         required
                                                                     />
@@ -427,6 +471,32 @@ function MemberProfileForm(props) {
                                                 </section>
                                             </div>
                                         </div>
+                                        <div
+                                            className="member-login-auto-fill"
+                                            onClick={() => {
+                                                // setForgotPasswordReviseData(
+                                                //     fillPasswordData
+                                                // );
+                                                // console.log(fillPasswordData);
+                                                setIsAutoFill(true);
+                                                setCurrentPasswordPrevious(
+                                                    fillPasswordData.currentPassword
+                                                );
+                                                setPasswordPrevious(
+                                                    fillPasswordData.password
+                                                );
+                                                setConfirmPasswordPrevious(
+                                                    fillPasswordData.confirmPassword
+                                                );
+                                                console.log(
+                                                    currentPasswordPrevious
+                                                );
+                                                console.log(passwordPrevious);
+                                                console.log(
+                                                    confirmPasswordPrevious
+                                                );
+                                            }}
+                                        ></div>
                                     </section>
                                 </section>
                             </div>

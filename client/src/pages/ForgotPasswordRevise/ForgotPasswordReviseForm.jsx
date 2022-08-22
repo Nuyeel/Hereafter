@@ -19,7 +19,7 @@ function ForgotPasswordReviseForm(props) {
     });
 
     const [fillPasswordData, setFillPasswordData] = useState({
-        passcode: '',
+        passcode: ' ',
         password: 'Day0824',
         confirmPassword: 'Day0824',
     });
@@ -191,15 +191,27 @@ function ForgotPasswordReviseForm(props) {
                                 style={{ backgroundColor: theme.memberBgCard }}
                             >
                                 <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
-                                <div
+                                    <div
                                         className="member-login-auto-fill"
                                         onClick={() => {
                                             // setForgotPasswordReviseData(
                                             //     fillPasswordData
                                             // );
                                             // console.log(fillPasswordData);
-                                            setPasscodePrevious('666666');
-                                            console.log(passcodePrevious)
+                                            setIsAutoFill(true);
+                                            setPasscodePrevious(
+                                                fillPasswordData.passcode
+                                            );
+                                            setPasswordPrevious(
+                                                fillPasswordData.password
+                                            );
+                                            setConfirmPasswordPrevious(
+                                                fillPasswordData.confirmPassword
+                                            );
+                                            console.log(passcodePrevious);
+                                            console.log(
+                                                confirmPasswordPrevious
+                                            );
                                         }}
                                     ></div>
                                     <div className="tab-content">
@@ -226,11 +238,14 @@ function ForgotPasswordReviseForm(props) {
                                                     onChange={
                                                         handlePasscodeChange
                                                     }
+                                                    passcodePrevious={
+                                                        passcodePrevious
+                                                    }
                                                     passwordPrevious={
                                                         passwordPrevious
                                                     }
-                                                    passcodePrevious={
-                                                        passcodePrevious
+                                                    confirmPasswordPrevious={
+                                                        confirmPasswordPrevious
                                                     }
                                                     setPasscodePrevious={
                                                         setPasscodePrevious
@@ -241,7 +256,7 @@ function ForgotPasswordReviseForm(props) {
                                                     setConfirmPasswordPrevious={
                                                         setConfirmPasswordPrevious
                                                     }
-                                                    isAutoFill={isAutoFill}
+                                                    // isAutoFill={isAutoFill}
                                                     required
                                                 />
                                             </div>
@@ -260,8 +275,14 @@ function ForgotPasswordReviseForm(props) {
                                                     onChange={
                                                         handlePasswordChange
                                                     }
+                                                    passcodePrevious={
+                                                        passcodePrevious
+                                                    }
                                                     passwordPrevious={
                                                         passwordPrevious
+                                                    }
+                                                    confirmPasswordPrevious={
+                                                        confirmPasswordPrevious
                                                     }
                                                     setPasscodePrevious={
                                                         setPasscodePrevious
@@ -272,6 +293,7 @@ function ForgotPasswordReviseForm(props) {
                                                     setConfirmPasswordPrevious={
                                                         setConfirmPasswordPrevious
                                                     }
+                                                    isAutoFill={isAutoFill}
                                                     required
                                                 />
                                             </div>
@@ -292,8 +314,14 @@ function ForgotPasswordReviseForm(props) {
                                                     onChange={
                                                         handleConfirmPasswordChange
                                                     }
+                                                    passcodePrevious={
+                                                        passcodePrevious
+                                                    }
                                                     passwordPrevious={
                                                         passwordPrevious
+                                                    }
+                                                    confirmPasswordPrevious={
+                                                        confirmPasswordPrevious
                                                     }
                                                     setPasscodePrevious={
                                                         setPasscodePrevious
@@ -304,6 +332,7 @@ function ForgotPasswordReviseForm(props) {
                                                     setConfirmPasswordPrevious={
                                                         setConfirmPasswordPrevious
                                                     }
+                                                    isAutoFill={isAutoFill}
                                                     required
                                                 />
                                             </div>
