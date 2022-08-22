@@ -342,14 +342,14 @@ function MemberProfileReviseForm() {
                                                                 </div>
                                                             </form>
                                                         </div>
-                                                        <div
+                                                        {/* <div
                                                             className="member-login-auto-fill"
                                                             onClick={() => {
                                                                 setMemberProfileData(
                                                                     fillProfileData
                                                                 );
                                                             }}
-                                                        ></div>
+                                                        ></div> */}
                                                     </section>
                                                 </section>
                                             </div>
