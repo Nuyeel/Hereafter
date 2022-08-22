@@ -59,7 +59,7 @@ function AboutUsThird(props) {
                         </Link>
                         <div class="ab-card-wrap">
                             <div class="ab-card">
-                                <div class="ab-c-step">步驟.1</div>
+                                <div class="ab-c-step">Step.1</div>
                                 <div class="ab-c-pic">
                                     <div className="ab-c-pic-wrap">
                                         <img
@@ -84,7 +84,7 @@ function AboutUsThird(props) {
                             </div>
 
                             <div class="ab-card">
-                                <div class="ab-c-step">步驟.2</div>
+                                <div class="ab-c-step">Step.2</div>
                                 <div class="ab-c-pic">
                                     <div className="ab-c-pic-wrap-2">
                                         <img
@@ -109,7 +109,7 @@ function AboutUsThird(props) {
                             </div>
 
                             <div class="ab-card">
-                                <div class="ab-c-step">步驟.3</div>
+                                <div class="ab-c-step">Step.3</div>
                                 <div class="ab-c-pic">
                                     <div className="ab-c-pic-wrap-3">
                                         <img

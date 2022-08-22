@@ -1335,10 +1335,10 @@ router.route('/:sharepostID').get(async (req, res) => {
             post_comments_results[i]['comment_isEditable'] = false;
             for (let k = 0; k < post_comments_results.length; k++) {
                 if (
-                    post_comments_results[i]['share_post_sid'] ===
-                    post_comments_results[k]['share_post_sid']
+                    post_comments_results[i]['member_sid'] ===
+                    res.locals.loginUser.id
                 ) {
-                    post_comments_results[i]['share_post_iscollected'] = true;
+                    post_comments_results[i]['comment_isEditable'] = true;
                 }
             }
         }
@@ -1690,7 +1690,7 @@ router.route('/:sharepostID/:actionType?').put(async (req, res) => {
             postsToTagsResult: false,
         };
 
-        // console.log(req.body);
+        console.log(req.body);
 
         if (!res.locals.loginUser) {
             return res.send('請先登入');
@@ -1764,10 +1764,11 @@ router.route('/:sharepostID/:actionType?').put(async (req, res) => {
         // DONE: 修改文章
         const $post_update_sql = ` 
             UPDATE share_avatar_posts 
-            SET share_post_text = ?, updated_at = NOW() 
+            SET share_post_title = ?, share_post_text = ?, updated_at = NOW() 
             WHERE share_post_sid = ? 
         `;
         const formatSql = SqlString.format($post_update_sql, [
+            req.body.sharePostTitle,
             req.body.sharePostTextarea,
             req.body.sharePostSid,
         ]);

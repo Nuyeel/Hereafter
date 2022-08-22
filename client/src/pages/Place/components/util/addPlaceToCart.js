@@ -28,7 +28,7 @@ function AddPlaceToCart(e, userSid) {
                     imageUrl: soulIconAlert,
                     imageHeight: 50,
                     imageWidth: 50,
-                    timer: 3000,
+                    // timer: 3000,
                 });
             } else {
                 cartBtn.classList.add('likedBtnCartBtnAnimation-add');

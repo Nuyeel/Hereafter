@@ -8,7 +8,6 @@ import './StyleNews.scss';
 import PopCard from './components/PopCard';
 //data
 import newsDataJson from './data/newsData.json';
-import Chat from '../../components/Chat/Chat';
 
 function News(props) {
     const [newsData, setNewsData] = useState([]);
@@ -16,7 +15,7 @@ function News(props) {
     const [popShow, setShow] = useState(false);
     const { pageName } = props;
     const { setHeader } = useContext(HeaderContext);
-    const typeArray = ['新聞', '造型', '時間', '地點'];
+    const typeArray = ['全部', '新聞', '造型', '時間', '地點'];
 
     useEffect(() => {
         setHeader(headers[pageName]);
@@ -40,7 +39,7 @@ function News(props) {
     const handleFilter = (type) => {
         let tempData = [...newsDataJson.news];
         tempData = tempData.filter((v) => {
-            return v.type === type;
+            return type === '全部' ? true : v.type === type;
         });
         setNewsData(tempData);
     };
@@ -48,13 +47,12 @@ function News(props) {
     return (
         <>
             <div className="container">
-                <Chat />
                 <div className="ab-news-filter-wrap">
                     {typeArray.map((v, i) => {
                         return (
                             <div
                                 key={i}
-                                className="ab-news-filter"
+                                className={'ab-news-filter ab-color' + (i % 3)}
                                 onClick={() => {
                                     handleFilter(v);
                                 }}
@@ -86,15 +84,23 @@ function News(props) {
                                 style={{ columnCount: popShow ? 2 : 4 }}
                             >
                                 <div className="ab-fake"></div>
-                                {newsData.map((v, i) => {
-                                    return (
-                                        <NewsCard
-                                            handleClickChild={handleClickParent}
-                                            key={v.sid}
-                                            card={v}
-                                        />
-                                    );
-                                })}
+                                {newsData.length > 0 ? (
+                                    newsData.map((v, i) => {
+                                        return (
+                                            <NewsCard
+                                                handleClickChild={
+                                                    handleClickParent
+                                                }
+                                                key={v.sid}
+                                                card={v}
+                                            />
+                                        );
+                                    })
+                                ) : (
+                                    <div className="ab-news-notype">
+                                        沒有此類型的消息
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

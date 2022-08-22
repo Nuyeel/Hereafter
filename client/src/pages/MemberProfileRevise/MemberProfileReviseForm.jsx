@@ -23,6 +23,11 @@ function MemberProfileReviseForm() {
         email: '',
     });
 
+    const [fillProfileData, setFillProfileData] = useState({
+        name: '快樂的靈魂跳舞555',
+        email: 'HappyCat100@gmail.com',
+    });
+
     const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, token } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -337,6 +342,14 @@ function MemberProfileReviseForm() {
                                                                 </div>
                                                             </form>
                                                         </div>
+                                                        {/* <div
+                                                            className="member-login-auto-fill"
+                                                            onClick={() => {
+                                                                setMemberProfileData(
+                                                                    fillProfileData
+                                                                );
+                                                            }}
+                                                        ></div> */}
                                                     </section>
                                                 </section>
                                             </div>

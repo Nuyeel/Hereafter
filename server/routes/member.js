@@ -301,13 +301,13 @@ router
 
         // 先隨機產生一組驗證碼
         const verifyNum = Math.random().toFixed(6).slice(-6);
-        console.log(verifyNum);
-        // console.log(Math.random().toString().slice(-6));
+        // console.log(verifyNum);
+        // console.log(typeof verifyNum);
 
         console.log(req.body.account);
         // 存進資料表看看
         const passcodeupdate = async () => {
-            const sql = `UPDATE member SET passcode=${verifyNum} WHERE account = ?`;
+            const sql = `UPDATE member SET passcode='${verifyNum}' WHERE account = ?`;
             const [r] = await db.execute(sql, [req.body.account]);
             console.log(r);
         };

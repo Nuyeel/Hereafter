@@ -2,8 +2,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     height: 650px;
-
-    // padding: 20px;
+    position: relative;
   }
 
   .ab-bg-wrap{
@@ -122,8 +121,6 @@
     display: flex;
   }
   .ab-news-filter{
-    // width: 6%;
-    background-color: #8ED0BB;
     height: 100%;
     margin-right: 20px;
     border-radius: 30px;
@@ -132,6 +129,18 @@
     font-size: 18px;
     padding: 5px 15px;
     line-height: 1.5rem;
+  }
+  .ab-news-filter:hover{
+    color: #fff;
+background-color: #e384f2;
+  }
+  .ab-news-notype{
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 300px;
+    font-size: 24px;
   }
 
   .ab-mail{
@@ -284,9 +293,6 @@
 /* Track */
 .ab-news-bg::-webkit-scrollbar-track {
   border-radius: 15px;
-  /* border: 5px solid white; */
-  // background: #fff;
-
 
 }
  

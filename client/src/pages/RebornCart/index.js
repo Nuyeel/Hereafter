@@ -113,10 +113,12 @@ function RebornCart(props) {
 
     // 選擇地點後於訂單顯示
     const handlePlaceSelect = () => {
-        const newSelectedPlaceInfo = cartPlaceList.filter((place) => {
-            return place.sid === selectedPlace;
-        });
-        setSelectedPlaceInfo(newSelectedPlaceInfo);
+        if (selectedPlace !== -1) {
+            const newSelectedPlaceInfo = cartPlaceList.filter((place) => {
+                return place.sid === selectedPlace;
+            });
+            setSelectedPlaceInfo(newSelectedPlaceInfo);
+        }
     };
 
     // 資料移出轉生購物車
@@ -456,6 +458,7 @@ function RebornCart(props) {
                         >
                             <div className="deed-enough-wrap-title">
                                 {selectedPlaceInfo.length > 0 &&
+                                avatarData.length > 0 &&
                                 memberGooddeed -
                                     avatarData[selectedAvatarInd].price -
                                     Number(selectedPlaceInfo[0].place_price) >
@@ -464,7 +467,7 @@ function RebornCart(props) {
                                 ) : (
                                     <>
                                         陰德值不足！
-                                        <Link to="/" className="gotoGame">
+                                        <Link to="/games" className="gotoGame">
                                             <BsQuestionCircleFill
                                                 className="gotogame-icon
                                         "
@@ -476,6 +479,7 @@ function RebornCart(props) {
                             </div>
                             <div className="deed-enough-wrap-text">
                                 {selectedPlaceInfo.length > 0 &&
+                                    avatarData.length > 0 &&
                                     memberGooddeed -
                                         avatarData[selectedAvatarInd].price -
                                         Number(
@@ -602,7 +606,8 @@ function RebornCart(props) {
                                                 />
                                                 <span>
                                                     {selectedPlaceInfo.length >
-                                                    0
+                                                        0 &&
+                                                    avatarData.length > 0
                                                         ? avatarData[
                                                               selectedAvatarInd
                                                           ].price +
