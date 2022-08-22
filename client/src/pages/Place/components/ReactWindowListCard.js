@@ -1,11 +1,14 @@
-import { Fragment, useState } from 'react';
-import ListCard from './ListCard';
 import { FixedSizeList } from 'react-window';
 
 import MapIcon from './MapIcon';
 import SoulIcon from './SoulIcon';
 import { FaHeart } from 'react-icons/fa';
-import { BsFillCartPlusFill } from 'react-icons/bs';
+import {
+    BsFillCartPlusFill,
+    BsCart,
+    BsBookmark,
+    BsBookmarkCheckFill,
+} from 'react-icons/bs';
 import AddPlaceToCart from './util/addPlaceToCart';
 
 function ReactWindowListCard(props) {
@@ -91,15 +94,13 @@ function ReactWindowListCard(props) {
                                             )}
                                             onChange={(e) => console.log('')}
                                         />
-                                        <FaHeart
-                                            className={
-                                                likedPlaceSidArr.includes(
-                                                    placeDisplay[index].sid
-                                                )
-                                                    ? 'place-like-icon btn-checked'
-                                                    : 'place-like-icon'
-                                            }
-                                        />
+                                        {likedPlaceSidArr.includes(
+                                            placeDisplay[index].sid
+                                        ) ? (
+                                            <BsBookmarkCheckFill className="place-like-icon btn-checked" />
+                                        ) : (
+                                            <BsBookmark className="place-like-icon" />
+                                        )}
                                     </div>
                                     {/* 死了才顯示加入轉生購物車按鈕 */}
                                     {isDead && (

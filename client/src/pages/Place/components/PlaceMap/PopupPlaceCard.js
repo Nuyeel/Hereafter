@@ -1,11 +1,15 @@
 import MapIcon from '../MapIcon';
 import SoulIcon from '../SoulIcon';
 import { FaHeart } from 'react-icons/fa';
-import { BsFillCartPlusFill } from 'react-icons/bs';
+import {
+    BsFillCartPlusFill,
+    BsBookmark,
+    BsBookmarkCheckFill,
+} from 'react-icons/bs';
 import AddPlaceToCart from '../util/addPlaceToCart';
 
 function PopupPlaceCard(props) {
-    const { saveLikedPlace, userSid, isDead } = props;
+    const { saveLikedPlace, likedPlaceSidArr, userSid, isDead } = props;
     const {
         sid,
         year,
@@ -49,7 +53,11 @@ function PopupPlaceCard(props) {
                         onClick={saveLikedPlace}
                         data-hover="加入收藏"
                     >
-                        <FaHeart className="place-like-icon " />
+                        {likedPlaceSidArr.includes(sid) ? (
+                            <BsBookmarkCheckFill className="place-like-icon btn-checked" />
+                        ) : (
+                            <BsBookmark className="place-like-icon" />
+                        )}
                     </div>
 
                     {/* 死了才顯示加入轉生購物車按鈕 */}

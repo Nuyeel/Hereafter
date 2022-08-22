@@ -1,7 +1,11 @@
 import MapIcon from './MapIcon';
 import SoulIcon from './SoulIcon';
 import { FaHeart } from 'react-icons/fa';
-import { BsFillCartPlusFill } from 'react-icons/bs';
+import {
+    BsFillCartPlusFill,
+    BsBookmark,
+    BsBookmarkCheckFill,
+} from 'react-icons/bs';
 import AddPlaceToCart from './util/addPlaceToCart';
 
 function ListCard(props) {
@@ -77,13 +81,11 @@ function ListCard(props) {
                             checked={likedPlaceSidArr.includes(sid)}
                             onChange={(e) => console.log('')}
                         />
-                        <FaHeart
-                            className={
-                                likedPlaceSidArr.includes(sid)
-                                    ? 'place-like-icon btn-checked'
-                                    : 'place-like-icon'
-                            }
-                        />
+                        {likedPlaceSidArr.includes(sid) ? (
+                            <BsBookmarkCheckFill className="place-like-icon btn-checked" />
+                        ) : (
+                            <BsBookmark className="place-like-icon" />
+                        )}
                     </div>
                     {/* 死了才顯示加入轉生購物車按鈕 */}
                     {isDead && (

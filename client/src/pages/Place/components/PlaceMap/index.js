@@ -28,6 +28,7 @@ function PlaceMap(props) {
         userSid,
         isDead,
         saveLikedPlace,
+        likedPlaceSidArr,
         rawPlaceData,
         markerRef,
         markersArr,
@@ -278,6 +279,9 @@ function PlaceMap(props) {
                                                 isDead={isDead}
                                                 AddPlaceToCart={AddPlaceToCart}
                                                 saveLikedPlace={saveLikedPlace}
+                                                likedPlaceSidArr={
+                                                    likedPlaceSidArr
+                                                }
                                             />
                                         </Popup>
                                     </Marker>
