@@ -24,10 +24,10 @@ function LoginForm(props) {
         password: 'HappyCat07',
     });
 
-    // 活人帳號（可以再改
+    // 活人新帳號
     const [fillAliveData, setFillAliveData] = useState({
-        account: 'HappyCat05',
-        password: 'HappyCat05',
+        account: 'Day0824',
+        password: 'Day0824',
     });
 
     const { pageName } = props;

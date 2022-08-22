@@ -1,13 +1,15 @@
-import { useRef, useState, forwardRef } from 'react';
+import { useRef, useState, forwardRef, useEffect } from 'react';
 
 function InputIME(props, ref) {
     const {
         onChange,
         value,
+        passcodePrevious,
         passwordPrevious,
         setPasscodePrevious,
         setPasswordPrevious,
         setConfirmPasswordPrevious,
+        isAutoFill,
         ...otherProps
     } = props;
     // console.log(otherProps);
@@ -45,6 +47,12 @@ function InputIME(props, ref) {
             onChange(event);
         }
     };
+
+    useEffect(() => {
+        if (otherProps.name === 'passcode') {
+            setInputValue(passcodePrevious);
+        }
+    }, [isAutoFill])
 
     return (
         <input
