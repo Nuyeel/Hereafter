@@ -24,6 +24,9 @@ export const themes = {
         bgcAvatarMaker2: '#00000080',
         bgcShowacseCard: 'transparent',
         navChecked: false,
+
+        gooddeedcard: '#00000033',
+
         mblue: ' rgba(0, 0, 0, 0.6)',
         mpink: ' rgba(0, 0, 0, 0.6)',
         mpurple: ' rgba(0, 0, 0, 0.6)',
@@ -51,6 +54,9 @@ export const themes = {
         bgcAvatarMaker2: '#8107E133',
         bgcShowacseCard: '#8107E133',
         navChecked: true,
+
+        gooddeedcard: '#FFFFFF30',
+
         mblue: '#81A8E0',
         mpink: '#E384F2',
         mpurple: '#9587E1',

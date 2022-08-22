@@ -89,8 +89,7 @@ function Card(props) {
                                     <label
                                         style={{
                                             color: theme.cHeader,
-                                            backgroundColor:
-                                                theme.bgcHeaderDecor,
+                                            backgroundColor: theme.gooddeedcard,
                                         }}
                                         htmlFor={v2}
                                         onClick={() => {

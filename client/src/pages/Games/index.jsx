@@ -81,8 +81,8 @@ function Games(props) {
             let player = (function () {
                 let x = 0,
                     y = canvas.height / 2,
-                    w = 60,
-                    h = 25,
+                    w = 72,
+                    h = 30,
                     speed = 5,
                     dead = false,
                     death = 0;
@@ -290,6 +290,22 @@ function Games(props) {
                             }
 
                             //colission detection
+                            // if (
+                            //     px >= blocks[i].x &&
+                            //     px <= blocks[i].x + blocks[i].w &&
+                            //     py >= blocks[i].y &&
+                            //     py <= blocks[i].y + blocks[i].h
+                            // ) {
+                            //     player.die();
+                            // } else if (
+                            //     px + pw <= blocks[i].x + blocks[i] &&
+                            //     px + pw >= blocks[i].x &&
+                            //     py + ph <= blocks[i].y + blocks[i].h &&
+                            //     py + ph >= blocks[i].y
+                            // ) {
+                            //     player.die();
+                            // }
+                            //colission detection
                             if (
                                 px >= blocks[i].x &&
                                 px <= blocks[i].x + blocks[i].w &&
@@ -298,13 +314,35 @@ function Games(props) {
                             ) {
                                 player.die();
                             } else if (
-                                px + pw <= blocks[i].x + blocks[i].w &&
+                                px + pw <= blocks[i].x + blocks[i] &&
+                                px + pw >= blocks[i].x &&
+                                py <= blocks[i].y + blocks[i].h &&
+                                py >= blocks[i].y
+                            ) {
+                                player.die();
+                            } else if (
+                                px <= blocks[i].x + blocks[i] &&
+                                px >= blocks[i].x &&
+                                py + ph <= blocks[i].y + blocks[i].h &&
+                                py + ph >= blocks[i].y
+                            ) {
+                                player.die();
+                            } else if (
+                                px + pw <= blocks[i].x + blocks[i] &&
                                 px + pw >= blocks[i].x &&
                                 py + ph <= blocks[i].y + blocks[i].h &&
                                 py + ph >= blocks[i].y
                             ) {
                                 player.die();
                             }
+                            // else if (
+                            //     px + pw / 2 <= blocks[i].x + blocks[i] &&
+                            //     px + pw / 2 >= blocks[i].x &&
+                            //     py + ph / 2 <= blocks[i].y + blocks[i].h &&
+                            //     py + ph / 2 >= blocks[i].y
+                            // ) {
+                            //     player.die();
+                            // }
                         }
                     },
 
@@ -521,11 +559,13 @@ function Games(props) {
             <div className="gameframe">
                 <img
                     src="http://localhost:3500/games/Player-alive.svg"
+                    alt=""
                     className="player-alive"
                     style={{ display: 'none' }}
                 />
                 <img
                     src="http://localhost:3500/games/Player-dead.svg"
+                    alt=""
                     className="player-dead"
                     style={{ display: 'none' }}
                 />
@@ -586,7 +626,7 @@ function Games(props) {
                                     marginTop: '20px',
                                 }}
                             >
-                                <p>
+                                <div>
                                     累計陰德值：
                                     <br />
                                     <span
@@ -608,7 +648,7 @@ function Games(props) {
                                             marginLeft: '4px',
                                         }}
                                     ></div>
-                                </p>
+                                </div>
                                 <p>
                                     本日遊戲機會剩：
                                     <br />

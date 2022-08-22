@@ -15,6 +15,11 @@ function ForgotPasswordForm() {
         email: '',
     });
 
+    const [fillPasswordData, setFillPasswordData] = useState({
+        account: 'Day0824',
+        email: 'day220824@gmail.com',
+    });
+
     const { theme, themeContext } = useContext(ThemeContext);
     const { authorized, setAuth, userLogout } = useContext(AuthContext);
     // const navigate = useNavigate();
@@ -80,6 +85,14 @@ function ForgotPasswordForm() {
                                 style={{ backgroundColor: theme.memberBgCard }}
                             >
                                 <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
+                                    <div
+                                        className="member-login-auto-fill"
+                                        onClick={() => {
+                                            setforgotPasswordData(
+                                                fillPasswordData
+                                            );
+                                        }}
+                                    ></div>
                                     <div className="tab-content">
                                         <form
                                             name="form1"
