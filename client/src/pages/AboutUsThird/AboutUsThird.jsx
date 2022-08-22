@@ -41,10 +41,10 @@ function AboutUsThird(props) {
                                 <Ghost class="ab-ghost-m3" width="21px" />
                             </div>
                             <i class="fa-solid fa-star"></i>
-                            查看前世紀錄與陰德值
+                            查看會員資訊
                         </Link>
 
-                        <Link class="ab-hint-r" to="/games">
+                        <Link class="ab-hint-r" to="/events">
                             <div className="ab-ghost-b">
                                 <Ghost class="ab-ghost-r1" width="43px" />
                                 <Ghost class="ab-ghost-r2" width="21px" />
