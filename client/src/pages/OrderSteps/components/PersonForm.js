@@ -81,7 +81,7 @@ function PersonForm(props) {
             // member_sid: sid, //預設一開始就代入會員資訊
             // fullname: '王小明', //預設一開始就代入會員資訊
             mobile_city: '台灣 +886',
-            // mobile: '0912345678', //預設一開始就代入會員資訊
+            mobile: '0912345678', //預設一開始就代入會員資訊
             // email: 'passtest@yahoo.com.tw',
             gender: '不提供',
             ID: 'R123456789',
@@ -220,7 +220,7 @@ function PersonForm(props) {
             mobile: response.data[0].mobile,
             email: response.data[0].email,
             birthday: response.data[0].birthdate,
-            mobile_city: '台灣 +886',
+            // mobile_city: '台灣 +886',
         });
 
         await console.log(myInfor);
