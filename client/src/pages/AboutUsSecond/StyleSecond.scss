@@ -44,6 +44,10 @@
     top: 25px;
     right: -7px;
     transform: rotate(60deg);
+    path{
+        fill: #FF78E9;
+
+    }
 
 }
 .ab-g-3{
@@ -53,9 +57,13 @@
     right: 27px;
     transform: rotate(35deg);
     z-index: 99;
+    path{
+        fill: #F3F59F;
+
+    }
 
 }
-.ab-box:hover .ab-g-3{
+.ab-box:nth-child(2n):hover:hover .ab-g-3{
     opacity: 1;
     animation: fall 1s ease ;
     animation-fill-mode: forwards;

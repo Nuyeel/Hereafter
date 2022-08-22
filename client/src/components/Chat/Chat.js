@@ -118,22 +118,46 @@ const steps = [
             <div id="abCard" className="ab-card-c-wrap">
                 <div className="ab-card-c">
                     <div className="ab-card-b" onClick={handleClick}>
-                        <img
-                            src={require('./imgs/card01.png')}
-                            alt="Background"
-                        />
+                        <div className="ab-card-wrap">
+                            <img
+                                className="ab-card-bf"
+                                src={require('./imgs/card01.png')}
+                                alt="Background"
+                            />
+                            <img
+                                className="ab-card-bg"
+                                src={require('./imgs/card.png')}
+                                alt="Background"
+                            />
+                        </div>
                     </div>
                     <div className="ab-card-b" onClick={handleClick}>
-                        <img
-                            src={require('./imgs/card02.png')}
-                            alt="Background"
-                        />
+                        <div className="ab-card-wrap">
+                            <img
+                                className="ab-card-bf"
+                                src={require('./imgs/card02.png')}
+                                alt="Background"
+                            />
+                            <img
+                                className="ab-card-bg"
+                                src={require('./imgs/card.png')}
+                                alt="Background"
+                            />
+                        </div>
                     </div>
                     <div className="ab-card-b" onClick={handleClick}>
-                        <img
-                            src={require('./imgs/card03.png')}
-                            alt="Background"
-                        />
+                        <div className="ab-card-wrap">
+                            <img
+                                className="ab-card-bf"
+                                src={require('./imgs/card03.png')}
+                                alt="Background"
+                            />
+                            <img
+                                className="ab-card-bg"
+                                src={require('./imgs/card.png')}
+                                alt="Background"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
