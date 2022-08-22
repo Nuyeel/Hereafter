@@ -22,7 +22,7 @@ function Gooddeed(props) {
 
     const navigate = useNavigate();
     const backtoAbout = () => {
-        navigate('/AboutUsThird', { replace: true });
+        navigate('/AboutUsFirst', { replace: true });
     };
     const { authorized, account, token } = useContext(AuthContext);
     const [shows, setShows] = useState({
