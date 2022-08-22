@@ -26,6 +26,7 @@ export const themes = {
         navChecked: false,
 
         gooddeedcard: '#00000033',
+        gooddeedcardbg:'#0000004d',
 
         mblue: ' rgba(0, 0, 0, 0.6)',
         mpink: ' rgba(0, 0, 0, 0.6)',
@@ -56,7 +57,7 @@ export const themes = {
         navChecked: true,
 
         gooddeedcard: '#FFFFFF30',
-
+        gooddeedcardbg:' #ffffff80',
         mblue: '#81A8E0',
         mpink: '#E384F2',
         mpurple: '#9587E1',

@@ -66,7 +66,7 @@ function Card(props) {
         >
             <div
                 className="yun-card"
-                style={{ backgroundColor: theme.rebornBg }}
+                style={{ backgroundColor: theme.gooddeedcardbg }}
             >
                 <div className="yun-ques" style={{ color: theme.cHeader }}>
                     <h3>{title}</h3>
