@@ -196,8 +196,9 @@ function Nav(props) {
                             }
                         }}
                     >
-                        <img src={missingWord2} alt="" />
+                        {/* <img src={missingWord2} alt="" /> */}
 
+                        <h2 className="nav_link">功徳撲滿</h2>
                         {!isDead ? (
                             <h4 className="subtitle xuan-missing-h4">
                                 天下沒有白吃的來生
