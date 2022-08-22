@@ -467,36 +467,36 @@ function MemberProfileForm(props) {
                                                                 </div>
                                                             </form>
                                                         </div>
+                                                        <div
+                                                            className="member-login-auto-fill-3"
+                                                            onClick={() => {
+                                                                setIsAutoFill(
+                                                                    true
+                                                                );
+                                                                setCurrentPasswordPrevious(
+                                                                    fillPasswordData.currentPassword
+                                                                );
+                                                                setPasswordPrevious(
+                                                                    fillPasswordData.password
+                                                                );
+                                                                setConfirmPasswordPrevious(
+                                                                    fillPasswordData.confirmPassword
+                                                                );
+                                                                console.log(
+                                                                    currentPasswordPrevious
+                                                                );
+                                                                console.log(
+                                                                    passwordPrevious
+                                                                );
+                                                                console.log(
+                                                                    confirmPasswordPrevious
+                                                                );
+                                                            }}
+                                                        ></div>
                                                     </section>
                                                 </section>
                                             </div>
                                         </div>
-                                        <div
-                                            className="member-login-auto-fill"
-                                            onClick={() => {
-                                                // setForgotPasswordReviseData(
-                                                //     fillPasswordData
-                                                // );
-                                                // console.log(fillPasswordData);
-                                                setIsAutoFill(true);
-                                                setCurrentPasswordPrevious(
-                                                    fillPasswordData.currentPassword
-                                                );
-                                                setPasswordPrevious(
-                                                    fillPasswordData.password
-                                                );
-                                                setConfirmPasswordPrevious(
-                                                    fillPasswordData.confirmPassword
-                                                );
-                                                console.log(
-                                                    currentPasswordPrevious
-                                                );
-                                                console.log(passwordPrevious);
-                                                console.log(
-                                                    confirmPasswordPrevious
-                                                );
-                                            }}
-                                        ></div>
                                     </section>
                                 </section>
                             </div>
