@@ -243,9 +243,10 @@ $maxWidth: 376px;
 
                 .place-btns-wrap {
                     margin: 0;
-                    width: 100%;
-                    max-width: 100%;
+                    width: 105%;
+                    max-width: 105%;
                     transform: translate(-2px, 0);
+                    justify-content: center;
 
                     > div {
                         padding: 10px;
