@@ -63,12 +63,12 @@ function ShareWallPost(props) {
         const trimmedString = e.target.value.trim();
 
         if (trimmedString === 'yee') {
-            setAvatarTitleInputString('魚尾凱多二號');
-            setAvatarTagInputString_1('魚尾');
+            setAvatarTitleInputString('金毛凱多二號');
+            setAvatarTagInputString_1('金毛');
             setAvatarTagInputString_2('凱多');
-            setAvatarTagInputString_3('火眼金睛');
+            setAvatarTagInputString_3('喵拳');
             return setAvatarTextareaString(
-                '最近一個月都在動物收容所當志工，因為想養寵物，所以想學習各種照顧動物與安撫動物的方法，因為都在來生投放所這裡報名，所以積累了不少陰德值，也就趁機捏了魚尾凱多全新力作，其實來生形象是不是真的無所謂，我更努力過生活，也努力變成更好的人，希望世界和平～'
+                '最近一個月都在動物收容所當志工，因為想養寵物，所以想學習各種照顧動物與安撫動物的方法，因為都在來生投放所這裡報名，所以積累了不少陰德值，也就趁機捏了金毛凱多全新力作，其實來生形象是不是真的無所謂，我更努力過生活，也努力變成更好的人，希望世界和平～'
             );
         }
 
