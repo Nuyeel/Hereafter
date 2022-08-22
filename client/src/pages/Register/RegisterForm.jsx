@@ -20,6 +20,13 @@ function RegisterForm(props) {
         confirmPassword: '',
     });
 
+    const [fillRegisterData, setFillRegisterData] = useState({
+        account: 'HappyCat07',
+        email: 'HappyCat07@gmail.com',
+        password: 'Day0824',
+        confirmPassword: 'Day0824',
+    });
+
     const [passwordFieldType, setPasswordFieldType] = useState('password');
     const [confirmPasswordFieldType, setConfirmPasswordFieldType] =
         useState('password');
@@ -42,6 +49,8 @@ function RegisterForm(props) {
     const [validationCssClassname2, setValidationCssClassname2] = useState('');
     const [validationCssClassname3, setValidationCssClassname3] = useState('');
     const [validationCssClassname4, setValidationCssClassname4] = useState('');
+
+    const [isAutoFill, setIsAutoFill] = useState(false);
 
     // 正規表達式定義在這邊，前端檢查only
     const accountRe = /^[a-zA-Z0-9_]\w*$/;
@@ -254,6 +263,32 @@ function RegisterForm(props) {
                             style={{ backgroundColor: theme.memberBgCard }}
                         >
                             <section className="w-100 p-4 d-flex justify-content-center pb-4 ">
+                                <div
+                                    className="member-login-auto-fill"
+                                    onClick={() => {
+                                        // setForgotPasswordReviseData(
+                                        //     fillPasswordData
+                                        // );
+                                        // console.log(fillPasswordData);
+                                        setIsAutoFill(true);
+                                        setAccountPrevious(
+                                            fillRegisterData.account
+                                        );
+                                        setEmailPrevious(
+                                            fillRegisterData.email
+                                        );
+                                        setPasswordPrevious(
+                                            fillRegisterData.password
+                                        );
+                                        setConfirmPasswordPrevious(
+                                            fillRegisterData.confirmPassword
+                                        );
+                                        console.log(accountPrevious);
+                                        console.log(emailPrevious);
+                                        console.log(passwordPrevious);
+                                        console.log(confirmPasswordPrevious);
+                                    }}
+                                ></div>
                                 <div className="tab-content">
                                     <form name="form1" onSubmit={handleSubmit}>
                                         <div className="mb-3 d-flex justify-content-center member-page-title">
@@ -273,11 +308,15 @@ function RegisterForm(props) {
                                                 name="account"
                                                 placeholder="例：HappyCats"
                                                 onChange={handleAccountChange}
+                                                accountPrevious={
+                                                    accountPrevious
+                                                }
+                                                emailPrevious={emailPrevious}
                                                 passwordPrevious={
                                                     passwordPrevious
                                                 }
-                                                setPasswordPrevious={
-                                                    setPasswordPrevious
+                                                confirmPasswordPrevious={
+                                                    confirmPasswordPrevious
                                                 }
                                                 setAccountPrevious={
                                                     setAccountPrevious
@@ -285,9 +324,13 @@ function RegisterForm(props) {
                                                 setEmailPrevious={
                                                     setEmailPrevious
                                                 }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
                                                 setConfirmPasswordPrevious={
                                                     setConfirmPasswordPrevious
                                                 }
+                                                isAutoFill={isAutoFill}
                                                 maxLength="10"
                                                 required
                                             />
@@ -305,11 +348,15 @@ function RegisterForm(props) {
                                                 name="email"
                                                 placeholder="請輸入一個有效的電子信箱"
                                                 onChange={handleEmailChange}
+                                                accountPrevious={
+                                                    accountPrevious
+                                                }
+                                                emailPrevious={emailPrevious}
                                                 passwordPrevious={
                                                     passwordPrevious
                                                 }
-                                                setPasswordPrevious={
-                                                    setPasswordPrevious
+                                                confirmPasswordPrevious={
+                                                    confirmPasswordPrevious
                                                 }
                                                 setAccountPrevious={
                                                     setAccountPrevious
@@ -317,9 +364,13 @@ function RegisterForm(props) {
                                                 setEmailPrevious={
                                                     setEmailPrevious
                                                 }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
                                                 setConfirmPasswordPrevious={
                                                     setConfirmPasswordPrevious
                                                 }
+                                                isAutoFill={isAutoFill}
                                                 required
                                             />
                                         </div>
@@ -336,11 +387,15 @@ function RegisterForm(props) {
                                                 name="password"
                                                 placeholder="英文大小寫及數字至少七字"
                                                 onChange={handlePasswordChange}
+                                                accountPrevious={
+                                                    accountPrevious
+                                                }
+                                                emailPrevious={emailPrevious}
                                                 passwordPrevious={
                                                     passwordPrevious
                                                 }
-                                                setPasswordPrevious={
-                                                    setPasswordPrevious
+                                                confirmPasswordPrevious={
+                                                    confirmPasswordPrevious
                                                 }
                                                 setAccountPrevious={
                                                     setAccountPrevious
@@ -348,9 +403,13 @@ function RegisterForm(props) {
                                                 setEmailPrevious={
                                                     setEmailPrevious
                                                 }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
                                                 setConfirmPasswordPrevious={
                                                     setConfirmPasswordPrevious
                                                 }
+                                                isAutoFill={isAutoFill}
                                                 required
                                             />
                                         </div>
@@ -369,11 +428,15 @@ function RegisterForm(props) {
                                                 onChange={
                                                     handleConfirmPasswordChange
                                                 }
+                                                accountPrevious={
+                                                    accountPrevious
+                                                }
+                                                emailPrevious={emailPrevious}
                                                 passwordPrevious={
                                                     passwordPrevious
                                                 }
-                                                setPasswordPrevious={
-                                                    setPasswordPrevious
+                                                confirmPasswordPrevious={
+                                                    confirmPasswordPrevious
                                                 }
                                                 setAccountPrevious={
                                                     setAccountPrevious
@@ -381,35 +444,16 @@ function RegisterForm(props) {
                                                 setEmailPrevious={
                                                     setEmailPrevious
                                                 }
+                                                setPasswordPrevious={
+                                                    setPasswordPrevious
+                                                }
                                                 setConfirmPasswordPrevious={
                                                     setConfirmPasswordPrevious
                                                 }
+                                                isAutoFill={isAutoFill}
                                                 required
                                             />
                                         </div>
-                                        {/* 
-                                                    <div className="text-center mb-3">
-                                                        <p>以其他方式註冊：</p>
-                                                        <button
-                                                            type="button"
-                                                            className="btn-member btn-member-member-link btn-member-floating mx-1"
-                                                        >
-                                                            <i className="fab fa-facebook-f"></i>
-                                                        </button>
-                                                        <button
-                                                            type="button"
-                                                            className="btn-member btn-member-member-link btn-member-floating mx-1"
-                                                        >
-                                                            <i className="fab fa-google"></i>
-                                                        </button>
-                                                        <button
-                                                            type="button"
-                                                            className="btn-member btn-member-member-link btn-member-floating mx-1"
-                                                        >
-                                                            <i className="fab fa-twitter"></i>
-                                                        </button>
-                                                    </div> 
-                                                    */}
                                         <br />
                                         <div className="d-flex justify-content-center ">
                                             <button
