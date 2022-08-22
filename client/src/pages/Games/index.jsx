@@ -41,13 +41,13 @@ function Games(props) {
             },
         });
         const result = await r.json();
-        console.log(result);
+        // console.log(result);
         setUserGooddeed({ show: true, gooddeed: result.gameScore });
         return setTimeout(() => {
             setUserGooddeed({ show: false, gooddeed: result.gameScore });
         }, 3000);
     };
-    console.log(canvasRef);
+    // console.log(canvasRef);
 
     useEffect(() => {
         setHeader(headers[pageName]);
@@ -116,14 +116,14 @@ function Games(props) {
                     resurrect: function () {
                         this.moveTo(100, canvas.height / 2);
                         dead = false;
-                        console.log('偶數了');
+                        // console.log('偶數了');
                         this.draw();
                     },
 
                     respawn: function () {
                         this.moveTo(100, canvas.height / 2);
                         this.draw();
-                        console.log('偶升等嚕');
+                        // console.log('偶升等嚕');
                         blocks.nextLevel();
                     },
 
@@ -298,9 +298,9 @@ function Games(props) {
                             // ) {
                             //     player.die();
                             // } else if (
-                            //     px + pw <= blocks[i].x + blocks[i] &&
+                            //     px + pw <= blocks[i].x + blocks[i].w + 10 &&
                             //     px + pw >= blocks[i].x &&
-                            //     py + ph <= blocks[i].y + blocks[i].h &&
+                            //     py + ph <= blocks[i].y + blocks[i].h + 25 &&
                             //     py + ph >= blocks[i].y
                             // ) {
                             //     player.die();
@@ -314,35 +314,34 @@ function Games(props) {
                             ) {
                                 player.die();
                             } else if (
-                                px + pw <= blocks[i].x + blocks[i] &&
+                                px + pw <= blocks[i].x + blocks[i].w &&
                                 px + pw >= blocks[i].x &&
                                 py <= blocks[i].y + blocks[i].h &&
                                 py >= blocks[i].y
                             ) {
                                 player.die();
                             } else if (
-                                px <= blocks[i].x + blocks[i] &&
+                                px <= blocks[i].x + blocks[i].w &&
                                 px >= blocks[i].x &&
                                 py + ph <= blocks[i].y + blocks[i].h &&
                                 py + ph >= blocks[i].y
                             ) {
                                 player.die();
                             } else if (
-                                px + pw <= blocks[i].x + blocks[i] &&
+                                px + pw <= blocks[i].x + blocks[i].w &&
                                 px + pw >= blocks[i].x &&
                                 py + ph <= blocks[i].y + blocks[i].h &&
                                 py + ph >= blocks[i].y
                             ) {
                                 player.die();
+                            } else if (
+                                px + pw / 2 <= blocks[i].x + blocks[i].w &&
+                                px + pw / 2 >= blocks[i].x &&
+                                py + ph / 2 <= blocks[i].y + blocks[i].h &&
+                                py + ph / 2 >= blocks[i].y
+                            ) {
+                                player.die();
                             }
-                            // else if (
-                            //     px + pw / 2 <= blocks[i].x + blocks[i] &&
-                            //     px + pw / 2 >= blocks[i].x &&
-                            //     py + ph / 2 <= blocks[i].y + blocks[i].h &&
-                            //     py + ph / 2 >= blocks[i].y
-                            // ) {
-                            //     player.die();
-                            // }
                         }
                     },
 
@@ -464,7 +463,7 @@ function Games(props) {
                     ctx.fillText('Use keyboard arrows', 10, 60);
                     ctx.fillText('or [A] [W] [S] [D]', 10, 80);
 
-                    let gooddeedPlus = (blocks.curLevel() - 1) * 50;
+                    let gooddeedPlus = (blocks.curLevel() - 1) * 300;
                     ctx.fillText('gooddeedPlus : ' + gooddeedPlus, 10, 130);
                     ctx.fillText('Level : ' + blocks.curLevel(), 10, 150);
 
@@ -500,7 +499,7 @@ function Games(props) {
 
             let animation_fps = 60;
 
-            console.log(gooddeedAdd);
+            // console.log(gooddeedAdd);
 
             setClearId(
                 setInterval(function () {
