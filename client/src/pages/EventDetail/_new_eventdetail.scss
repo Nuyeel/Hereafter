@@ -202,6 +202,11 @@ a{
       display: flex;
       margin-bottom: 15px;
 
+
+        .xuan-h2{
+          margin-top: 5px;
+        }
+
         >.xuan-cost-price{
           width: 50%;
           margin-right: 10px;
@@ -217,8 +222,10 @@ a{
           }
 
           img{
+            // outline: 1px solid red;
             width: 30px;
             margin-right: 10px;
+            margin-bottom: 3px;
 
           }
 
@@ -261,6 +268,7 @@ a{
 
 .xuan-comment-group{
   color: #3C3B67;
+  // outline: 1px solid red;
 
   .xuan-comment-bar{
     width: 100%;
@@ -271,6 +279,7 @@ a{
       align-items: center;
       border-radius: 15px;
       background-color: white;
+      
       width: 100%;
       margin-bottom: 15px;
       padding: 10px;
@@ -295,10 +304,6 @@ a{
             height: 100%;
             margin:auto  10px;
             
-          
-              >svg{
-                // padding-top:0.5px
-              }
     
               .xuan-subtitle{
                   margin-right: 10px;
@@ -371,7 +376,8 @@ a{
               }
 
               .xuan-intro-bar{
-                min-height: 350px;
+                min-height: 370px;
+                max-height: 370px;
                 // outline: 1px solid red;
               }
 
@@ -416,6 +422,21 @@ a{
     }
   }
 
+
+  .xuan-comment-bar{
+    max-height: 430px;
+  }
+  
+  .xuan-comment-item{
+    padding-left: 20px !important;
+    width: 95% !important;
+  }
+  
+
+
+
+
+
 }
 
 
@@ -430,8 +451,4 @@ a{
 
 .xuan-intro-box-title {
   padding: 10px 40px 10px 30px;
-}
-
-.xuan-comment-bar{
-  max-height: 410px;
 }
