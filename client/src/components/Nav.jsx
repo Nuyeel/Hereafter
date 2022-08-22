@@ -120,7 +120,7 @@ function Nav(props) {
         } else {
             // console.log('沒有登入無法顯示陰德值');
         }
-    }, []);
+    }, [sid]);
 
     useEffect(() => {
         if (location.pathname === '/intro') {
