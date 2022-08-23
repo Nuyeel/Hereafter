@@ -22,7 +22,7 @@ function RegisterForm(props) {
 
     const [fillRegisterData, setFillRegisterData] = useState({
         account: 'HappyCat07',
-        email: 'HappyCat07@gmail.com',
+        email: 'day220824@gmail.com',
         password: 'Day0824',
         confirmPassword: 'Day0824',
     });
