@@ -46,6 +46,7 @@
         "react-window": "^1.8.7",
         "sass": "^1.53.0",
         "simplebar-react": "^2.4.1",
+        "styled-components": "^5.3.5",
         "sweetalert2": "^11.4.24",
         "swiper": "^8.3.1",
         "three": "^0.142.0",
