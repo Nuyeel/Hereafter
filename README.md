@@ -131,6 +131,7 @@ HereAfter 是一個線上的互動實驗，使用電商平台作為媒介，讓�
 <img width="1432" alt="截圖 2022-09-01 01 58 01" src="https://user-images.githubusercontent.com/106054083/187749234-366b7690-9c07-4a13-9b6d-670152f1e112.png">
 <img width="1423" alt="截圖 2022-09-01 02 00 10" src="https://user-images.githubusercontent.com/106054083/187749294-260b3cb2-575b-4302-87f9-e8db1bd74eb0.png">
 <img width="1432" alt="截圖 2022-09-01 02 00 27" src="https://user-images.githubusercontent.com/106054083/187749321-4515f1f6-60f5-4704-9fa2-3ddcb2482a94.png">
+<img width="1435" alt="截圖 2022-09-01 21 32 57" src="https://user-images.githubusercontent.com/106054083/187927117-ee342cb1-fa04-41a8-a35d-7d2d7bd8c456.png">
 <img width="1430" alt="截圖 2022-09-01 02 00 57" src="https://user-images.githubusercontent.com/106054083/187749378-20579e50-fb91-49cc-bec8-f4dd5d1794f5.png">
 <img width="1431" alt="截圖 2022-09-01 02 01 29" src="https://user-images.githubusercontent.com/106054083/187749425-24f47cb1-04d5-4c09-8ba9-c1bc22651ae5.png">
 
